@@ -84,7 +84,6 @@ const config: HardhatUserConfig = {
       chainId: 43114,
       accounts: [deploymentAccount]
     },
-
     subnet_local: {
       url: chainInstance,
       gasPrice: 225000000000,

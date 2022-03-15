@@ -15,4 +15,8 @@ contract FungibleInGameToken is ERC20, Guard, IFungibleInGameToken {
     function burnToken(address _account, uint256 _amount) external override onlyGameContracts {
         _burn(_account, _amount);
     }
+
+    function spendToken(address _account, address _to, uint256 _amount) external override onlyGameContracts {
+        _transfer(_account, _to, _amount);
+    }
 }
