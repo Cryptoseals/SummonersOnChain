@@ -1,9 +1,10 @@
 pragma solidity ^0.8.0;
 
-import "../Common/FungibleInGameToken.sol";
+import "../Common/FungibleAndClaimableInGameToken.sol";
 
-contract Gold is FungibleInGameToken {
-    constructor(string memory _name, string memory _symbol) FungibleInGameToken(_name, _symbol) {
+contract Gold is FungibleAndClaimableInGameToken {
+    constructor(uint _interval, uint _reward, address _navigator)
+    FungibleAndClaimableInGameToken("Gold", "GOLD", _interval, _reward, _navigator) {
 
     }
 }
