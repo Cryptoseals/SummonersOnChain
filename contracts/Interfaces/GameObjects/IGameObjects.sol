@@ -9,7 +9,7 @@ library GameObjects {
     }
 
     enum ItemType {
-        WEAPON, ARMOR, MISC
+        HELMET, ARMOR, WEAPON, SHIELD, MISC
     }
 
     enum StatsEnum {
@@ -48,10 +48,21 @@ library GameObjects {
         Element element;
     }
 
+    struct EquippedArtifact {
+        uint artifactType;
+        uint artifactTier;
+    }
+
     struct Elixir {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+    }
+
+    struct ConsumedElixir {
+        uint artifactType;
+        uint artifactTier;
+        uint deadline;
     }
 
     struct Helmet {
@@ -60,10 +71,20 @@ library GameObjects {
         Stats statBonus;
     }
 
+    struct EquippedHelmet {
+        uint helmetId;
+        uint helmetTier;
+    }
+
     struct Armor {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+    }
+
+    struct EquippedArmor {
+        uint armorId;
+        uint armorTier;
     }
 
     struct Boots {
@@ -72,10 +93,20 @@ library GameObjects {
         Stats statBonus;
     }
 
+    struct EquippedBoots {
+        uint bootsId;
+        uint bootsTier;
+    }
+
     struct Weapon {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+    }
+
+    struct EquippedWeapon {
+        uint weaponId;
+        uint weaponTier;
     }
 
     struct Shield {
@@ -84,17 +115,41 @@ library GameObjects {
         Stats statBonus;
     }
 
+    struct EquippedShield {
+        uint shieldId;
+        uint shieldTier;
+    }
 
-    struct Pet {
+    struct Companion {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+    }
+
+    struct SummonedCompanion {
+        address companionAddress;
+        uint companionId;
+    }
+
+    struct Seal {
+        ItemMetadata metadata;
+        ItemRequirement requirement;
+        Stats statBonus;
+    }
+
+    struct EquippedSeal {
+        uint sealId;
     }
 
     struct Mount {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+    }
+
+    struct EquippedMount {
+        uint mountId;
+        uint mountTier;
     }
 
     struct MiscItem {
@@ -106,4 +161,6 @@ library GameObjects {
         uint[] requiredMiscItemTypes;
         uint[] requiredCommonItemTypes;
     }
+
+
 }

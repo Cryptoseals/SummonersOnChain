@@ -2,15 +2,12 @@ import "../Core/Common/Errors.sol";
 import "../Interfaces/GameObjects/IGameEntities.sol";
 import "../Interfaces/GameObjects/IGameObjects.sol";
 import "../Interfaces/Inventory/EquipableLibrary.sol";
-import "../Interfaces/Summoners/ISummoners.sol";
-import "../Interfaces/Core/Navigator/INavigator.sol";
 import "../Interfaces/Core/Constants/Constants.sol";
+import "../Core/Navigator/InitNavigator.sol";
 
 pragma solidity ^0.8.0;
 
-contract Attributes {
-    ISummoners Summoners;
-    INavigator Navigator;
+contract Attributes is InitNavigator {
     // @TODO change this to default stat, according to GDD
     GameObjects.Stats public DEFAULT_STAT = GameObjects.Stats(8,8,8,8,8,8);
 
@@ -20,13 +17,9 @@ contract Attributes {
     mapping(uint => uint) public UsedPoints;
     mapping(uint => uint) public UsedLevelPoints;
 
-    constructor (address _navigator) {
-        Navigator = INavigator(_navigator);
-        address summonersAddress = Navigator.getContractAddress(0);
-        Summoners = ISummoners(summonersAddress);
-    }
+    constructor (address _navigator) InitNavigator(_navigator) {}
 
-    function allocate(uint summoner, GameObjects.Stats memory _stats) external {
+    function allocate(uint summoner, GameObjects.Stats memory _stats) external ensureNotPaused {
         if (UsedPoints[summoner] > 0) revert AlreadyAllocated(summoner, "ALREADY ALLOCATED");
         if (!Summoners.senderIsOwner(summoner) || Navigator.isGameContract(msg.sender)) revert UnauthorizedSender(msg.sender, "CALLER IS NOT THE OWNER");
 
@@ -44,7 +37,7 @@ contract Attributes {
         UsedPoints[summoner] = _usedPoints;
     }
 
-    function increaseStat(uint summoner, GameObjects.StatsEnum stat) external {
+    function increaseStat(uint summoner, GameObjects.StatsEnum stat) external ensureNotPaused {
         if(UsedLevelPoints[summoner] >= pointsFromLevel(summoner)) revert AlreadyAllocated(summoner, "NO POINTS LEFT");
         if (!Summoners.senderIsOwner(summoner)) revert UnauthorizedSender(msg.sender, "CALLER IS NOT THE OWNER");
 

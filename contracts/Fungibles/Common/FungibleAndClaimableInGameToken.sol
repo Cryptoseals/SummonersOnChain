@@ -3,28 +3,21 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "../../Core/Common/Errors.sol";
-import "../../Interfaces/Core/Navigator/INavigator.sol";
 import "../../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
-import "../../Interfaces/Summoners/ISummoners.sol";
+import "../../Core/Navigator/InitNavigator.sol";
 
-contract FungibleAndClaimableInGameToken is ERC20, Ownable, IFungibleInGameToken {
+contract FungibleAndClaimableInGameToken is ERC20, Ownable, IFungibleInGameToken, InitNavigator {
 
     event Claim(uint[] summoners, uint claimed);
-
-    INavigator Navigator;
-    ISummoners SummonersContract;
 
     uint256 CLAIM_INTERVAL = 1 days;
     uint256 REWARD_PER_LEVEL = 1e18;
     mapping(uint => uint) public LAST_CLAIMS;
 
     constructor(string memory _name, string memory _symbol, uint256 _claimInterval,
-        uint256 _rewardPerLevel, address _navigator) ERC20(_name, _symbol) {
+        uint256 _rewardPerLevel, address _navigator) ERC20(_name, _symbol) InitNavigator(_navigator) {
         CLAIM_INTERVAL = _claimInterval;
         REWARD_PER_LEVEL = _rewardPerLevel;
-        Navigator = INavigator(_navigator);
-        address summonersAddress = Navigator.getContractAddress(0);
-        SummonersContract = ISummoners(summonersAddress);
     }
 
     function setIntervalAndRewardPerLevel(uint _interval, uint _rewardPerLevel) external onlyOwner {
@@ -57,7 +50,7 @@ contract FungibleAndClaimableInGameToken is ERC20, Ownable, IFungibleInGameToken
             if (block.timestamp < LAST_CLAIMS[_summoners[i]]) {
                 revert TooEarly(LAST_CLAIMS[_summoners[i]], block.timestamp);
             }
-            toMint += SummonersContract.level(_summoners[i]) * REWARD_PER_LEVEL;
+            toMint += Summoners.level(_summoners[i]) * REWARD_PER_LEVEL;
             LAST_CLAIMS[_summoners[i]] = block.timestamp;
         }
         _mint(msg.sender, toMint);
