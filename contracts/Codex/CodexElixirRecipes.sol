@@ -1,4 +1,4 @@
-import "../Interfaces/GameObjects/GameObjects.sol";
+import "../Interfaces/GameObjects/IGameObjects.sol";
 import "./Common/Rarity.sol";
 
 // SPDX-License-Identifier: MIT

@@ -1,4 +1,4 @@
-import "../GameObjects/GameObjects.sol";
+import "../GameObjects/IGameObjects.sol";
 
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.7;
