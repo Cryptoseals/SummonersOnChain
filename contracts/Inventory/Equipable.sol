@@ -7,7 +7,6 @@ contract Equipable {
     // @dev Maps summoners to equipment slots, and slots to stat bonus of the equipped item.
     mapping(uint => mapping(EquipableLibrary.Slot => GameObjects.Stats)) public EquipableSlotStats;
 
-
     function equipSeal () external {
 
     }

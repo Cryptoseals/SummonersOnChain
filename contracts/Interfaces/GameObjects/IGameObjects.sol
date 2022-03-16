@@ -12,6 +12,10 @@ library GameObjects {
         WEAPON, ARMOR, MISC
     }
 
+    enum StatsEnum {
+        STR, AGI, INT, DEX, VIT, LUCK
+    }
+
     struct Stats {
         uint STR;
         uint AGI;
