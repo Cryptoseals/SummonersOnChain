@@ -17,4 +17,6 @@ interface INavigator {
     function getContractAddress (uint _contractId) external view returns(address);
     function isGameContract(address _address) external view returns(bool);
     function isPaused() external view returns(bool);
+    function sealIsOwned(uint summoner) external returns (bool);
+    function nftIsOwned(address _address,uint _tokenId) external returns (bool);
 }

@@ -19,22 +19,24 @@ contract Equipable is InitNavigator {
     mapping(uint => mapping(EquipableLibrary.Slot => GameObjects.EquippedArmor)) public EquippedArmors;
     mapping(uint => mapping(EquipableLibrary.Slot => GameObjects.EquippedWeapon)) public EquippedWeapons;
     mapping(uint => mapping(EquipableLibrary.Slot => GameObjects.EquippedShield)) public EquippedShields;
-    mapping(uint => mapping(EquipableLibrary.Slot => GameObjects.EquippedSeal)) public EquippedSeal;
+    mapping(uint => mapping(EquipableLibrary.Slot => GameObjects.EquippedSeal)) public EquippedSeals;
     mapping(uint => mapping(EquipableLibrary.Slot => GameObjects.SummonedCompanion)) public SummonedCompanions;
 
-    function equipSeal() external ensureNotPaused {
-
+    function equipSeal(uint summoner, uint id) external ensureNotPaused
+    senderIsSummonerOwner(summoner) {
+        EquippedSeals[summoner][EquipableLibrary.Slot.SEAL].sealId = id;
     }
 
-    function equipHelmet() external ensureNotPaused {}
+    function equipHelmet(uint summoner, uint id) external ensureNotPaused
+    senderIsSummonerOwner(summoner) /* @TODO , nftIsOwned(address(0))*/ {}
 
-    function equipArmor() external ensureNotPaused {}
+    function equipArmor(uint summoner, uint id) external ensureNotPaused senderIsSummonerOwner(summoner) {}
 
-    function equipWeapon() external ensureNotPaused {}
+    function equipWeapon(uint summoner, uint id) external ensureNotPaused senderIsSummonerOwner(summoner) {}
 
-    function equipShield() external ensureNotPaused {}
+    function equipShield(uint summoner, uint id) external ensureNotPaused senderIsSummonerOwner(summoner) {}
 
     // @notice equip pet
-    function summonCompanion() external ensureNotPaused {}
+    function summonCompanion(uint summoner, address _contract, uint _id) external ensureNotPaused senderIsSummonerOwner(summoner) {}
 
 }

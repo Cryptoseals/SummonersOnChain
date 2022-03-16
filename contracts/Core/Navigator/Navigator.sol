@@ -3,7 +3,17 @@ pragma solidity ^0.8.0;
 import "../../Interfaces/Core/Navigator/INavigator.sol";
 import "../Security/Guard.sol";
 
+
+interface ERC721 {
+    function ownerOf(uint256 tokenId) external view returns (address);
+}
+
 contract Navigator is Guard, INavigator {
+    ERC721 Seals;
+
+    constructor(address _seals) {
+        Seals = ERC721(_seals);
+    }
 
     bool public _isPaused;
 
@@ -30,5 +40,16 @@ contract Navigator is Guard, INavigator {
 
     function isPaused() external virtual view override returns (bool) {
         return _isPaused;
+    }
+
+    function sealIsOwned(uint summoner) external override returns (bool) {
+        if (Seals.ownerOf(summoner) == msg.sender) {
+            return true;
+        } else revert UnauthorizedSender(msg.sender, "CALLER IS NOT THE OWNER");
+    }
+    function nftIsOwned(address _address, uint _tokenId) external override returns (bool) {
+        if (ERC721(_address).ownerOf(_tokenId) == msg.sender) {
+            return true;
+        } else revert UnauthorizedSender(msg.sender, "CALLER IS NOT THE OWNER");
     }
 }

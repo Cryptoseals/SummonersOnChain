@@ -19,9 +19,8 @@ contract Attributes is InitNavigator {
 
     constructor (address _navigator) InitNavigator(_navigator) {}
 
-    function allocate(uint summoner, GameObjects.Stats memory _stats) external ensureNotPaused {
+    function allocate(uint summoner, GameObjects.Stats memory _stats) external ensureNotPaused senderIsSummonerOwner(summoner) {
         if (UsedPoints[summoner] > 0) revert AlreadyAllocated(summoner, "ALREADY ALLOCATED");
-        if (!Summoners.senderIsOwner(summoner) || Navigator.isGameContract(msg.sender)) revert UnauthorizedSender(msg.sender, "CALLER IS NOT THE OWNER");
 
         // @TODO , stat allocation conditions will be implemented as they decided in GDD
         SummonerStats[summoner] = _stats;
@@ -37,9 +36,8 @@ contract Attributes is InitNavigator {
         UsedPoints[summoner] = _usedPoints;
     }
 
-    function increaseStat(uint summoner, GameObjects.StatsEnum stat) external ensureNotPaused {
+    function increaseStat(uint summoner, GameObjects.StatsEnum stat) external ensureNotPaused senderIsSummonerOwner(summoner) {
         if(UsedLevelPoints[summoner] >= pointsFromLevel(summoner)) revert AlreadyAllocated(summoner, "NO POINTS LEFT");
-        if (!Summoners.senderIsOwner(summoner)) revert UnauthorizedSender(msg.sender, "CALLER IS NOT THE OWNER");
 
         // @TODO check conditions,
 
