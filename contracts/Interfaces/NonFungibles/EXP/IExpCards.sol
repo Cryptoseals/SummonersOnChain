@@ -6,7 +6,7 @@ interface IExpCards {
 
     function expByCardId() external view returns(uint);
 
-    function card (uint tokenId) external view returns(EXPCardLib.ExpCard memory);
+    function card (uint tokenId) external view returns(EXPCardLib.EXPCard memory);
 
     function redeem(uint tokenId, uint summoner) external;
 }
