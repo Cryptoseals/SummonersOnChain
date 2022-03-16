@@ -40,7 +40,6 @@ library GameObjects {
         address createdBy;
     }
 
-
     struct Artifact {
         ItemMetadata metadata;
         ItemRequirement requirement;
@@ -51,6 +50,7 @@ library GameObjects {
     struct EquippedArtifact {
         uint artifactType;
         uint artifactTier;
+        uint tokenId;
     }
 
     struct Elixir {
@@ -74,6 +74,7 @@ library GameObjects {
     struct EquippedHelmet {
         uint helmetId;
         uint helmetTier;
+        uint tokenId;
     }
 
     struct Armor {
@@ -85,6 +86,7 @@ library GameObjects {
     struct EquippedArmor {
         uint armorId;
         uint armorTier;
+        uint tokenId;
     }
 
     struct Boots {
@@ -96,6 +98,8 @@ library GameObjects {
     struct EquippedBoots {
         uint bootsId;
         uint bootsTier;
+        uint tokenId;
+
     }
 
     struct Weapon {
@@ -107,6 +111,8 @@ library GameObjects {
     struct EquippedWeapon {
         uint weaponId;
         uint weaponTier;
+        uint tokenId;
+
     }
 
     struct Shield {
@@ -118,6 +124,8 @@ library GameObjects {
     struct EquippedShield {
         uint shieldId;
         uint shieldTier;
+        uint tokenId;
+
     }
 
     struct Companion {
@@ -139,6 +147,7 @@ library GameObjects {
 
     struct EquippedSeal {
         uint sealId;
+        bool isEquipped;
     }
 
     struct Mount {

@@ -19,4 +19,5 @@ interface INavigator {
     function isPaused() external view returns(bool);
     function sealIsOwned(uint summoner) external returns (bool);
     function nftIsOwned(address _address,uint _tokenId) external returns (bool);
+    function onlyGameContracts() external returns (bool);
 }

@@ -4,6 +4,7 @@ library EquipableLibrary {
     enum Slot {
         HELMET,
         ARMOR,
+        BOOTS,
         WEAPON,
         SHIELD,
         SEAL,

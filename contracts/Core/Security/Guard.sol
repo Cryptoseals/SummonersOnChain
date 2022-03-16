@@ -23,10 +23,4 @@ contract Guard is Ownable {
         return gameContracts[_address];
     }
 
-    modifier onlyGameContracts() {
-        if(!gameContracts[msg.sender]){
-            revert UnauthorizedSender(msg.sender, "Not a game contract");
-        }
-        _;
-    }
 }

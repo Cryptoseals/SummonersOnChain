@@ -14,13 +14,16 @@ contract InitNavigator {
     }
 
     modifier ensureNotPaused() {
-        require(Navigator.isPaused(), "Paused");
+        require(!Navigator.isPaused(), "Paused");
         _;
     }
 
     modifier senderIsSummonerOwner(uint summoner) {
         if (!Summoners.senderIsOwner(summoner)) revert UnauthorizedSender(msg.sender, "CALLER IS NOT THE OWNER");
         _;
+    }
+    function ownerOfSummoner(uint summoner) public returns(address) {
+        return Summoners.ownerOf(summoner);
     }
 
     modifier sealIsOwned(uint summoner) {
@@ -33,4 +36,8 @@ contract InitNavigator {
         _;
     }
 
+    modifier onlyGameContracts() {
+        Navigator.onlyGameContracts();
+        _;
+    }
 }

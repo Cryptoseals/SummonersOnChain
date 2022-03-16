@@ -35,6 +35,11 @@ contract Attributes is InitNavigator {
 
         UsedPoints[summoner] = _usedPoints;
     }
+    function reset(uint summoner) external ensureNotPaused senderIsSummonerOwner(summoner) {
+        if (UsedPoints[summoner] > 0) revert AlreadyAllocated(summoner, "ALREADY ALLOCATED");
+        SummonerStats[summoner] = DEFAULT_STAT;
+        UsedPoints[summoner] = 0;
+    }
 
     function increaseStat(uint summoner, GameObjects.StatsEnum stat) external ensureNotPaused senderIsSummonerOwner(summoner) {
         if(UsedLevelPoints[summoner] >= pointsFromLevel(summoner)) revert AlreadyAllocated(summoner, "NO POINTS LEFT");

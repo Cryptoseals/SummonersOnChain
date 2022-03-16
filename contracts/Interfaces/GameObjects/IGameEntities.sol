@@ -2,6 +2,12 @@ pragma solidity ^0.8.0;
 
 library GameEntities {
 
+    enum SummonerState {
+        FREE,
+        BUSY,
+        EXHAUSTED
+    }
+
     struct SummonerMetadata {
         uint id;
         string summonerName;
@@ -11,7 +17,7 @@ library GameEntities {
     struct SummonerData {
         uint level;
         uint EXP;
-        bool isBusy;
+        SummonerState state;
     }
 
 }

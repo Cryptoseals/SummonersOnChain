@@ -25,13 +25,12 @@ contract FungibleAndClaimableInGameToken is ERC20, Ownable, IFungibleInGameToken
         REWARD_PER_LEVEL = _rewardPerLevel;
     }
 
-    function rewardToken(address _account, uint256 _amount) external override {
-        if(!Navigator.isGameContract(msg.sender)) revert UnauthorizedSender(msg.sender, "NOT A GAME CONTRACT");
+    function rewardToken(address _account, uint256 _amount) external override onlyGameContracts {
+
         _mint(_account, _amount);
     }
 
-    function burnToken(address _account, uint256 _amount) external override {
-        if(!Navigator.isGameContract(msg.sender)) revert UnauthorizedSender(msg.sender, "NOT A GAME CONTRACT");
+    function burnToken(address _account, uint256 _amount) external override onlyGameContracts {
         _burn(_account, _amount);
     }
 
@@ -40,13 +39,14 @@ contract FungibleAndClaimableInGameToken is ERC20, Ownable, IFungibleInGameToken
     }
 
     function claim(uint[] memory _summoners) external {
-        if(!Navigator.isGameContract(msg.sender)) revert UnauthorizedSender(msg.sender, "NOT A GAME CONTRACT");
         _claim(_summoners);
     }
 
     function _claim(uint[] memory _summoners) internal {
         uint toMint = 0;
         for (uint i = 0; i < _summoners.length; i++) {
+            require(ownerOfSummoner(_summoners[i]) == msg.sender, "unauth");
+
             if (block.timestamp < LAST_CLAIMS[_summoners[i]]) {
                 revert TooEarly(LAST_CLAIMS[_summoners[i]], block.timestamp);
             }

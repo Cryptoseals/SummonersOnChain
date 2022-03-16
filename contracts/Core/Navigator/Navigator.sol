@@ -52,4 +52,15 @@ contract Navigator is Guard, INavigator {
             return true;
         } else revert UnauthorizedSender(msg.sender, "CALLER IS NOT THE OWNER");
     }
+
+    function onlyGameContracts() external override _onlyGameContracts returns(bool) {
+        return true;
+    }
+
+    modifier _onlyGameContracts() {
+        if(!gameContracts[msg.sender]){
+            revert UnauthorizedSender(msg.sender, "Not a game contract");
+        }
+        _;
+    }
 }
