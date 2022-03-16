@@ -1,54 +1,53 @@
 pragma solidity ^0.8.0;
 
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "../../Core/Common/Errors.sol";
 import "../../Interfaces/Core/Navigator/INavigator.sol";
 import "../../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
-import "../../Core/Security/Guard.sol";
+import "../../Interfaces/Summoners/ISummoners.sol";
 
-    error TooEarly(uint lastClaim, uint now);
-
-interface Summoners {
-    function level(uint id) external view returns (uint);
-}
-
-contract FungibleAndClaimableInGameToken is ERC20, Guard, IFungibleInGameToken {
-
+contract FungibleAndClaimableInGameToken is ERC20, Ownable, IFungibleInGameToken {
 
     event Claim(uint[] summoners, uint claimed);
 
     INavigator Navigator;
-    Summoners SummonersContract;
+    ISummoners SummonersContract;
 
     uint256 CLAIM_INTERVAL = 1 days;
     uint256 REWARD_PER_LEVEL = 1e18;
     mapping(uint => uint) public LAST_CLAIMS;
 
-    constructor(string memory _name, string memory _symbol, uint256 _claimInterval, uint256 _rewardPerLevel, address _navigator) ERC20(_name, _symbol) {
+    constructor(string memory _name, string memory _symbol, uint256 _claimInterval,
+        uint256 _rewardPerLevel, address _navigator) ERC20(_name, _symbol) {
         CLAIM_INTERVAL = _claimInterval;
         REWARD_PER_LEVEL = _rewardPerLevel;
         Navigator = INavigator(_navigator);
         address summonersAddress = Navigator.getContractAddress(0);
-        SummonersContract = Summoners(summonersAddress);
+        SummonersContract = ISummoners(summonersAddress);
     }
 
     function setIntervalAndRewardPerLevel(uint _interval, uint _rewardPerLevel) external onlyOwner {
         CLAIM_INTERVAL = _interval;
-        REWARD_PER_LEVEL = _reward;
+        REWARD_PER_LEVEL = _rewardPerLevel;
     }
 
-    function rewardToken(address _account, uint256 _amount) external override onlyGameContracts {
+    function rewardToken(address _account, uint256 _amount) external override {
+        if(!Navigator.isGameContract(msg.sender)) revert UnauthorizedSender(msg.sender, "NOT A GAME CONTRACT");
         _mint(_account, _amount);
     }
 
-    function burnToken(address _account, uint256 _amount) external override onlyGameContracts {
+    function burnToken(address _account, uint256 _amount) external override {
+        if(!Navigator.isGameContract(msg.sender)) revert UnauthorizedSender(msg.sender, "NOT A GAME CONTRACT");
         _burn(_account, _amount);
     }
 
-    function spendToken(address _account, address _to, uint256 _amount) external override onlyGameContracts {
+    function spendToken(address _account, address _to, uint256 _amount) external override {
         _transfer(_account, _to, _amount);
     }
 
     function claim(uint[] memory _summoners) external {
+        if(!Navigator.isGameContract(msg.sender)) revert UnauthorizedSender(msg.sender, "NOT A GAME CONTRACT");
         _claim(_summoners);
     }
 

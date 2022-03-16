@@ -13,6 +13,8 @@ interface INavigator {
         JOB // 7
     }
 
-    function setGameContracts (address[] memory _addresses) external;
+    function setGameContractsAddresses (address[] memory _addresses, bool value) external;
     function getContractAddress (uint _contractId) external view returns(address);
+    function isGameContract(address _address) external view returns(bool);
+    function isPaused() external view returns(bool);
 }

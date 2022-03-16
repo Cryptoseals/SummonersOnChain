@@ -1,19 +1,22 @@
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "../../Interfaces/Core/Security/IGuard.sol";
+import "../../Core/Common/Errors.sol";
+//import "../../Interfaces/Core/Security/IGuard.sol";
 
 pragma solidity ^0.8.0;
 
 
-error VOID();
-error UNKNOWN_CALLER();
-contract Guard is IGuard, Ownable {
+
+contract Guard is Ownable {
+
     mapping(address => bool) public gameContracts;
 
-    function addOrRemoveGameContract(address _address, bool _value) external override onlyOwner {
-        gameContracts[_address] = _value;
+    function addOrRemoveGameContracts(address[] memory _addresses, bool _value) external onlyOwner {
+        for (uint i = 0; i < _addresses.length; i++) {
+            gameContracts[_addresses[i]] = _value;
+        }
     }
 
-    function isGameContract(address _address) public override view returns (bool) {
+    function isGameContract(address _address) external virtual view returns (bool) {
         if(_address != address(0)) {
             revert VOID();
         }
@@ -21,10 +24,9 @@ contract Guard is IGuard, Ownable {
     }
 
     modifier onlyGameContracts() {
-        if(!isGameContract(msg.sender)){
-            revert UNKNOWN_CALLER();
+        if(!gameContracts[msg.sender]){
+            revert UnauthorizedSender(msg.sender, "Not a game contract");
         }
         _;
     }
-
 }
