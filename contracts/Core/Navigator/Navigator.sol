@@ -26,8 +26,8 @@ contract Navigator is Guard, INavigator {
         }
     }
 
-    function getContractAddress(uint _contractId) external override view returns (address){
-        return CONTRACTS[_contractId];
+    function getContractAddress(INavigator.CONTRACT _contractId) external override view returns (address){
+        return CONTRACTS[uint(_contractId)];
     }
 
     function isGameContract(address _address) external virtual view override(Guard, INavigator) returns (bool) {

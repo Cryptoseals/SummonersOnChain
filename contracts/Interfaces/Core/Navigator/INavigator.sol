@@ -10,11 +10,12 @@ interface INavigator {
         GOLD, // 4
         ESSENCE, // 5
         SCRAPS, // 6
-        JOB // 7
+        JOB, // 7
+        WEAPONS_CODEX //8
     }
 
     function setGameContractsAddresses (address[] memory _addresses, bool value) external;
-    function getContractAddress (uint _contractId) external view returns(address);
+    function getContractAddress (CONTRACT _contractId) external view returns(address);
     function isGameContract(address _address) external view returns(bool);
     function isPaused() external view returns(bool);
     function sealIsOwned(uint summoner) external returns (bool);

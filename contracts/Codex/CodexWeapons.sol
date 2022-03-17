@@ -5,7 +5,7 @@ contract CodexWeapons {
     string constant public index = "Codex";
     string constant public class = "Weapons";
 
-    function weapon(uint _id, uint8 _tier) public pure returns (GameObjects.Weapon memory) {
+    function weapon(uint _id, uint _tier) public pure returns (GameObjects.Weapon memory) {
         if (_id == 1) {
             return DummyWeapon(_tier);
         }
@@ -13,7 +13,7 @@ contract CodexWeapons {
         revert("invalid");
     }
 
-    function DummyWeapon(uint8 tier) public pure returns (GameObjects.Weapon memory _weapon) {
+    function DummyWeapon(uint tier) public pure returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 1;
         _weapon.metadata.baseType = GameObjects.ItemType.ARMOR;
         _weapon.metadata.name = "Dummy Weapon";

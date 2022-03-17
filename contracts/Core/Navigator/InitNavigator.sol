@@ -9,7 +9,7 @@ contract InitNavigator {
     ISummoners Summoners;
     constructor (address _navigator) {
         Navigator = INavigator(_navigator);
-        address summonersAddress = Navigator.getContractAddress(0);
+        address summonersAddress = Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS);
         Summoners = ISummoners(summonersAddress);
     }
 
@@ -22,8 +22,13 @@ contract InitNavigator {
         if (!Summoners.senderIsOwner(summoner)) revert UnauthorizedSender(msg.sender, "CALLER IS NOT THE OWNER");
         _;
     }
+
     function ownerOfSummoner(uint summoner) public returns(address) {
         return Summoners.ownerOf(summoner);
+    }
+
+    function contractAddress(INavigator.CONTRACT _contract) public view returns(address) {
+        return Navigator.getContractAddress(_contract);
     }
 
     modifier sealIsOwned(uint summoner) {

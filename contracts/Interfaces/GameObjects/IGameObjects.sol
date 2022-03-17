@@ -2,7 +2,15 @@ pragma solidity ^0.8.0;
 
 library GameObjects {
 
-    enum Element {FIRE, WATER, EARTH, DARK, LIGHT, VOID}
+    enum Element {
+        FIRE,
+        COLD,
+        EARTH,
+        LIGHTNING,
+        DARK,
+        HOLY,
+        VOID
+    }
 
     enum Class {
         Barbarian, Paladin, Assassin, Wizard, Necromancer, Priest
@@ -29,7 +37,6 @@ library GameObjects {
         uint DPS;
         uint P_ATK;
         uint M_ATK;
-        uint M_ATK;
         uint P_DEF;
         uint M_DEF;
     }
@@ -37,7 +44,7 @@ library GameObjects {
     struct ElementalAtk {
         uint FIRE_ATK;
         uint COLD_ATK;
-        uint NATURE_ATK;
+        uint EARTH_ATK;
         uint LIGHTNING_ATK;
         uint DARK_ATK;
         uint HOLY_ATK;
@@ -47,11 +54,18 @@ library GameObjects {
     struct ElementalDef {
         uint FIRE_DEF;
         uint COLD_DEF;
-        uint NATURE_DEF;
+        uint EARTH_DEF;
         uint LIGHTNING_DEF;
         uint DARK_DEF;
         uint HOLY_DEF;
         uint VOID_DEF;
+    }
+
+    struct SummonerStats {
+        Stats Stats;
+        GeneratedStats GeneratedStats;
+        ElementalAtk ElementalAtk;
+        ElementalDef ElementalDef;
     }
 
     struct ItemRequirement {

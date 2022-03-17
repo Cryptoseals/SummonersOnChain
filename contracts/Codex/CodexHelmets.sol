@@ -5,7 +5,7 @@ contract CodexHelmets {
     string constant public index = "Codex";
     string constant public class = "Helmets";
 
-    function armor(uint _id, uint8 _tier) public pure returns (GameObjects.Helmet memory) {
+    function armor(uint _id, uint _tier) public pure returns (GameObjects.Helmet memory) {
         if (_id == 1) {
             return DummyHelmet(_tier);
         }
@@ -13,7 +13,7 @@ contract CodexHelmets {
         revert("invalid");
     }
 
-    function DummyHelmet(uint8 tier) public pure returns (GameObjects.Helmet memory _helmet) {
+    function DummyHelmet(uint tier) public pure returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 1;
         _helmet.metadata.baseType = GameObjects.ItemType.ARMOR;
         _helmet.metadata.name = "Dummy Helmet";

@@ -5,7 +5,7 @@ contract CodexOffHands {
     string constant public index = "Codex";
     string constant public class = "OffHands";
 
-    function offHand(uint _id, uint8 _tier) public pure returns (GameObjects.OffHand memory) {
+    function offHand(uint _id, uint _tier) public pure returns (GameObjects.OffHand memory) {
         if (_id == 1) {
             return DummyShield(_tier);
         }
@@ -13,7 +13,7 @@ contract CodexOffHands {
         revert("invalid");
     }
 
-    function DummyShield(uint8 tier) public pure returns (GameObjects.OffHand memory _offHand) {
+    function DummyShield(uint tier) public pure returns (GameObjects.OffHand memory _offHand) {
         _offHand.metadata.id = 1;
         _offHand.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _offHand.metadata.name = "Dummy Shield";

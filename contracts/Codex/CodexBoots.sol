@@ -5,7 +5,7 @@ contract CodexBoots {
     string constant public index = "Codex";
     string constant public class = "Boots";
 
-    function boots(uint _id, uint8 _tier) public pure returns (GameObjects.Boots memory) {
+    function boots(uint _id, uint _tier) public pure returns (GameObjects.Boots memory) {
         if (_id == 1) {
             return DummyShield(_tier);
         }
@@ -13,7 +13,7 @@ contract CodexBoots {
         revert("invalid");
     }
 
-    function DummyShield(uint8 tier) public pure returns (GameObjects.Boots memory _boots) {
+    function DummyShield(uint tier) public pure returns (GameObjects.Boots memory _boots) {
         _boots.metadata.id = 1;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
         _boots.metadata.name = "Dummy Shield";
