@@ -16,56 +16,49 @@ contract Equipable is InitNavigator, IERC721Receiver {
 
 
     struct EquippedGear {
-        GameObjects.EquippedHelmet helmet;
-        GameObjects.EquippedArmor armor;
-        GameObjects.EquippedBoots boots;
-        GameObjects.EquippedWeapon weapon;
-        GameObjects.EquippedShield shield;
-        GameObjects.EquippedSeal seal;
+        uint helmetTokenId;
+        uint armorTokenId;
+        uint bootsTokenId;
+        uint weaponTokenId;
+        uint shieldTokenId;
+        uint sealTokenId;
         GameObjects.SummonedCompanion companion;
     }
 
-    // @TODO , CREATE A SPECIAL STRUCT TO STORE DATA OF EACH EQUIPABLE,
-    //(ARTIFACTS AND ELIXIR WILL BE IN THEIR OWN CONTRACT)
-
-    mapping(uint => GameObjects.EquippedHelmet) public EquippedHelmets;
-    mapping(uint => GameObjects.EquippedArmor) public EquippedArmors;
-    mapping(uint => GameObjects.EquippedBoots) public EquippedBoots;
-    mapping(uint => GameObjects.EquippedWeapon) public EquippedWeapons;
-    mapping(uint => GameObjects.EquippedShield) public EquippedShields;
-    mapping(uint => GameObjects.EquippedSeal) public EquippedSeals;
+    // @TODO mappings of equipped item tokenIds
+    mapping(uint => uint) public EquippedHelmets;
+    mapping(uint => uint) public EquippedArmors;
+    mapping(uint => uint) public EquippedBoots;
+    mapping(uint => uint) public EquippedWeapons;
+    mapping(uint => uint) public EquippedOffHands;
+    mapping(uint => uint) public EquippedSeals;
     mapping(uint => GameObjects.SummonedCompanion) public SummonedCompanions;
 
     function equipSeal(uint summoner, uint id) external ensureNotPaused
     senderIsSummonerOwner(summoner) {
-        EquippedSeals[summoner].sealId = id;
+        EquippedSeals[summoner] = id;
     }
 
     function equipHelmet(uint summoner, uint id) external ensureNotPaused
     senderIsSummonerOwner(summoner) /* @TODO , nftIsOwned(address(0))*/ {
         // @TODO Get Info From ITEM NFT Contract and apply tier
-        EquippedHelmets[summoner].helmetId = id;
-        EquippedHelmets[summoner].helmetId = id;
+        EquippedHelmets[summoner] = id;
     }
 
     function equipArmor(uint summoner, uint id) external ensureNotPaused senderIsSummonerOwner(summoner) {
-        EquippedArmors[summoner].armorId = id;
-        EquippedArmors[summoner].armorTier = id;
+        EquippedArmors[summoner] = id;
     }
 
     function equipWeapon(uint summoner, uint id) external ensureNotPaused senderIsSummonerOwner(summoner) {
-        EquippedWeapons[summoner].weaponId = id;
-        EquippedWeapons[summoner].weaponTier = id;
+        EquippedWeapons[summoner] = id;
     }
 
-    function equipShield(uint summoner, uint id) external ensureNotPaused senderIsSummonerOwner(summoner) {
-        EquippedShields[summoner].shieldId = id;
-        EquippedShields[summoner].shieldTier = id;
+    function equipOffHand(uint summoner, uint id) external ensureNotPaused senderIsSummonerOwner(summoner) {
+        EquippedOffHands[summoner] = id;
     }
 
     function equipBoots(uint summoner, uint id) external ensureNotPaused senderIsSummonerOwner(summoner) {
-        EquippedBoots[summoner].bootsId = id;
-        EquippedBoots[summoner].bootsTier = id;
+        EquippedBoots[summoner] = id;
     }
 
     // @notice equip pet
@@ -76,34 +69,29 @@ contract Equipable is InitNavigator, IERC721Receiver {
 
     function unequipSeal(uint summoner, uint id) external ensureNotPaused
     senderIsSummonerOwner(summoner) {
-        delete EquippedSeals[summoner].sealId;
+        delete EquippedSeals[summoner];
     }
 
     function unequipHelmet(uint summoner, uint id) external ensureNotPaused
     senderIsSummonerOwner(summoner) /* @TODO , nftIsOwned(address(0))*/ {
         // @TODO refund the item nft.
-        delete EquippedHelmets[summoner].helmetId;
-        delete EquippedHelmets[summoner].helmetId;
+        delete EquippedHelmets[summoner];
     }
 
     function unequipArmor(uint summoner, uint id) external ensureNotPaused senderIsSummonerOwner(summoner) {
-        delete EquippedArmors[summoner].armorId;
-        delete EquippedArmors[summoner].armorTier;
+        delete EquippedArmors[summoner];
     }
 
     function unequipWeapon(uint summoner, uint id) external ensureNotPaused senderIsSummonerOwner(summoner) {
-        delete EquippedWeapons[summoner].weaponId;
-        delete EquippedWeapons[summoner].weaponTier;
+        delete EquippedWeapons[summoner];
     }
 
-    function unequipShield(uint summoner, uint id) external ensureNotPaused senderIsSummonerOwner(summoner) {
-        delete EquippedShields[summoner].shieldId;
-        delete EquippedShields[summoner].shieldTier;
+    function unequipOffHand(uint summoner, uint id) external ensureNotPaused senderIsSummonerOwner(summoner) {
+        delete EquippedOffHands[summoner];
     }
 
     function unequipBoots(uint summoner, uint id) external ensureNotPaused senderIsSummonerOwner(summoner) {
-        delete EquippedBoots[summoner].bootsId;
-        delete EquippedBoots[summoner].bootsTier;
+        delete EquippedBoots[summoner];
     }
 
     // @notice equip pet
@@ -112,30 +100,48 @@ contract Equipable is InitNavigator, IERC721Receiver {
         SummonedCompanions[summoner].companionId = id;
     }
 
-    function getEquipped(uint summoner) public view returns (EquippedGear memory) {
-        GameObjects.EquippedHelmet memory _helmet = EquippedHelmets[summoner];
-        GameObjects.EquippedArmor memory _armor = EquippedArmors[summoner];
-        GameObjects.EquippedBoots memory _boots = EquippedBoots[summoner];
-        GameObjects.EquippedWeapon memory _weapon = EquippedWeapons[summoner];
-        GameObjects.EquippedShield memory _shield = EquippedShields[summoner];
-        GameObjects.EquippedSeal memory _seal = EquippedSeals[summoner];
+    function getEquippedItemTokenIds(uint summoner) public view returns (EquippedGear memory) {
+        uint _helmet = EquippedHelmets[summoner];
+        uint _armor = EquippedArmors[summoner];
+        uint _boots = EquippedBoots[summoner];
+        uint _weapon = EquippedWeapons[summoner];
+        uint _offHand = EquippedOffHands[summoner];
+        uint _seal = EquippedSeals[summoner];
         GameObjects.SummonedCompanion memory _companion = SummonedCompanions[summoner];
-        return EquippedGear(_helmet, _armor, _boots, _weapon, _shield, _seal, _companion);
+        return EquippedGear(_helmet, _armor, _boots, _weapon, _offHand, _seal, _companion);
+    }
+    function getEquippedItems(uint summoner) public view returns (EquippedGear memory) {
+        uint _helmet = EquippedHelmets[summoner];
+        uint _armor = EquippedArmors[summoner];
+        uint _boots = EquippedBoots[summoner];
+        uint _weapon = EquippedWeapons[summoner];
+        uint _offHand = EquippedOffHands[summoner];
+        uint _seal = EquippedSeals[summoner];
+        GameObjects.SummonedCompanion memory _companion = SummonedCompanions[summoner];
+        return EquippedGear(_helmet, _armor, _boots, _weapon, _offHand, _seal, _companion);
     }
 
     function getEquippedItemStats(uint summoner) public view returns (GameObjects.Stats memory) {
-        GameObjects.Stats memory result = GameObjects.Stats(0,0,0,0,0,0);
-        EquippedGear memory gear = getEquipped(summoner);
+        GameObjects.Stats memory result = GameObjects.Stats(0, 0, 0, 0, 0, 0);
+        EquippedGear memory gear = getEquippedItemTokenIds(summoner);
+        GameObjects.Stats memory fromArmor = getBonusFromArmors(gear.helmetTokenId, gear.armorTokenId, gear.bootsTokenId);
+        GameObjects.Stats memory fromWeapon = getBonusFromWeapons(gear.weaponTokenId, gear.shieldTokenId, gear.sealTokenId);
+        result.STR += fromArmor.STR + fromWeapon.STR;
+        result.AGI += fromArmor.AGI + fromWeapon.AGI;
+        result.DEX += fromArmor.DEX + fromWeapon.DEX;
+        result.INT += fromArmor.INT + fromWeapon.INT;
+        result.VIT += fromArmor.VIT + fromWeapon.VIT;
+        result.LUCK += fromArmor.LUCK + fromWeapon.LUCK;
         return result;
     }
 
-    function getEquippedHelmetStats(uint summoner) public returns(GameObjects.Stats memory) {
-        // todo get stats from item codex of helmet by id and implement it;
-        
+    function getBonusFromArmors(uint helmet, uint armor, uint boots) public view returns (GameObjects.Stats memory _stats) {
+
     }
 
+    function getBonusFromWeapons(uint weapon, uint shield, uint seal) public view returns (GameObjects.Stats memory _stats) {
 
-
+    }
 
 
 

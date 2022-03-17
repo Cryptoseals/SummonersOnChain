@@ -9,7 +9,7 @@ library GameObjects {
     }
 
     enum ItemType {
-        HELMET, ARMOR, WEAPON, SHIELD, MISC
+        HELMET, ARMOR, BOOTS, WEAPON, OFFHAND, MISC
     }
 
     enum StatsEnum {
@@ -25,6 +25,35 @@ library GameObjects {
         uint LUCK;
     }
 
+    struct GeneratedStats {
+        uint DPS;
+        uint P_ATK;
+        uint M_ATK;
+        uint M_ATK;
+        uint P_DEF;
+        uint M_DEF;
+    }
+
+    struct ElementalAtk {
+        uint FIRE_ATK;
+        uint COLD_ATK;
+        uint NATURE_ATK;
+        uint LIGHTNING_ATK;
+        uint DARK_ATK;
+        uint HOLY_ATK;
+        uint VOID_ATK;
+    }
+
+    struct ElementalDef {
+        uint FIRE_DEF;
+        uint COLD_DEF;
+        uint NATURE_DEF;
+        uint LIGHTNING_DEF;
+        uint DARK_DEF;
+        uint HOLY_DEF;
+        uint VOID_DEF;
+    }
+
     struct ItemRequirement {
         uint level;
         Stats statRequirement;
@@ -36,8 +65,12 @@ library GameObjects {
         uint id;
         string name;
         string description;
+        bool upgradable;
+    }
+
+    struct ItemNFTMetadata {
+        address creator;
         uint created;
-        address createdBy;
     }
 
     struct Artifact {
@@ -60,8 +93,8 @@ library GameObjects {
     }
 
     struct ConsumedElixir {
-        uint artifactType;
-        uint artifactTier;
+        uint elixirType;
+        uint elixirTier;
         uint deadline;
     }
 
@@ -71,22 +104,11 @@ library GameObjects {
         Stats statBonus;
     }
 
-    struct EquippedHelmet {
-        uint helmetId;
-        uint helmetTier;
-        uint tokenId;
-    }
 
     struct Armor {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
-    }
-
-    struct EquippedArmor {
-        uint armorId;
-        uint armorTier;
-        uint tokenId;
     }
 
     struct Boots {
@@ -95,12 +117,6 @@ library GameObjects {
         Stats statBonus;
     }
 
-    struct EquippedBoots {
-        uint bootsId;
-        uint bootsTier;
-        uint tokenId;
-
-    }
 
     struct Weapon {
         ItemMetadata metadata;
@@ -108,25 +124,13 @@ library GameObjects {
         Stats statBonus;
     }
 
-    struct EquippedWeapon {
-        uint weaponId;
-        uint weaponTier;
-        uint tokenId;
 
-    }
-
-    struct Shield {
+    struct OffHand {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
     }
 
-    struct EquippedShield {
-        uint shieldId;
-        uint shieldTier;
-        uint tokenId;
-
-    }
 
     struct Companion {
         ItemMetadata metadata;
@@ -145,20 +149,11 @@ library GameObjects {
         Stats statBonus;
     }
 
-    struct EquippedSeal {
-        uint sealId;
-        bool isEquipped;
-    }
 
     struct Mount {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
-    }
-
-    struct EquippedMount {
-        uint mountId;
-        uint mountTier;
     }
 
     struct MiscItem {
@@ -170,6 +165,4 @@ library GameObjects {
         uint[] requiredMiscItemTypes;
         uint[] requiredCommonItemTypes;
     }
-
-
 }
