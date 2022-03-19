@@ -5,7 +5,8 @@ library GameEntities {
     enum SummonerState {
         FREE,
         BUSY,
-        EXHAUSTED
+        EXHAUSTED,
+        IN_FIGHT
     }
 
     struct SummonerMetadata {

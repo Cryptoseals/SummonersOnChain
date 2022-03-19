@@ -34,11 +34,12 @@ library GameObjects {
     }
 
     struct GeneratedStats {
-        uint DPS;
         uint P_ATK;
         uint M_ATK;
         uint P_DEF;
         uint M_DEF;
+        uint ACCURACY;
+        uint DODGE;
     }
 
     struct ElementalAtk {
