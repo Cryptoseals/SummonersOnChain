@@ -1,3 +1,4 @@
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../Interfaces/GameObjects/IGameObjects.sol";
 import "../Interfaces/Codex/ICodexHelmets.sol";
 import "../Interfaces/Codex/ICodexArmors.sol";
@@ -13,7 +14,9 @@ pragma solidity ^0.8.0;
 
 contract Equipable is InitNavigator, IERC721Receiver {
 
-    constructor(address _navigator) InitNavigator(_navigator) {}
+    function initialize(address _navigator) public initializer {
+        initializeNavigator(_navigator);
+    }
 
     // held nfts
 

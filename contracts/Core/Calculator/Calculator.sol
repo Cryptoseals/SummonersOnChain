@@ -1,12 +1,15 @@
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../../Interfaces/Core/Calculator/ICalculator.sol";
 import "../../Core/Navigator/InitNavigator.sol";
 import "../../Interfaces/Codex/ICodexWeapons.sol";
 import "../../Interfaces/Attributes/IAttributes.sol";
 pragma solidity ^0.8.0;
 
-contract Calculator is InitNavigator, ICalculator {
+contract Calculator is Initializable, InitNavigator, ICalculator {
 
-    constructor(address _navigator) InitNavigator(_navigator) {}
+    function initialize(address _navigator) public initializer {
+        initializeNavigator(_navigator);
+    }
 
     function damage(uint ATK, uint DEF) external view override returns (uint){
         return ATK * (100 / (100 + DEF));

@@ -1,13 +1,15 @@
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../../Core/Common/Errors.sol";
 import "../../Interfaces/Core/Navigator/INavigator.sol";
 import "../../Interfaces/Summoners/ISummoners.sol";
 
 pragma solidity ^0.8.0;
 
-contract InitNavigator {
+contract InitNavigator is Initializable  {
     INavigator Navigator;
     ISummoners Summoners;
-    constructor (address _navigator) {
+
+    function initializeNavigator (address _navigator) internal {
         Navigator = INavigator(_navigator);
         address summonersAddress = Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS);
         Summoners = ISummoners(summonersAddress);
@@ -31,6 +33,10 @@ contract InitNavigator {
         return Navigator.getContractAddress(_contract);
     }
 
+    function navigator() public view returns(address) {
+        return address(Navigator);
+    }
+
     modifier sealIsOwned(uint summoner) {
         Navigator.sealIsOwned(summoner);
         _;
@@ -42,7 +48,7 @@ contract InitNavigator {
     }
 
     modifier onlyGameContracts() {
-        Navigator.onlyGameContracts();
+        require(Navigator.isGameContract(msg.sender), "UNAUTHORIZED");
         _;
     }
 }

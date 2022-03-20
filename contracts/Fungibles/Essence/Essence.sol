@@ -1,8 +1,10 @@
 pragma solidity ^0.8.0;
-
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../Common/FungibleInGameToken.sol";
 
 contract Essence is FungibleInGameToken {
-    constructor(string memory _name, string memory _symbol, address _navigator)
-    FungibleInGameToken(_name, _symbol, _navigator) {}
+    function initialize(string memory _name, string memory _symbol, address _navigator) public initializer
+    {
+        initializeFungible(_name, _symbol, _navigator);
+    }
 }

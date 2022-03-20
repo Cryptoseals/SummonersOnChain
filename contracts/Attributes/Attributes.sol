@@ -1,3 +1,4 @@
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../Core/Common/Errors.sol";
 import "../Interfaces/GameObjects/IGameEntities.sol";
 import "../Interfaces/GameObjects/IGameObjects.sol";
@@ -7,9 +8,9 @@ import "../Core/Navigator/InitNavigator.sol";
 
 pragma solidity ^0.8.0;
 
-contract Attributes is InitNavigator {
+contract Attributes is Initializable, InitNavigator {
     // @TODO change this to default stat, according to GDD
-    GameObjects.Stats public DEFAULT_STAT = GameObjects.Stats(8,8,8,8,8,8);
+    GameObjects.Stats public DEFAULT_STAT;
 
     // @dev maps each summoner to their allocated stats
     mapping(uint => GameObjects.Stats) public SummonerStats;
@@ -17,7 +18,10 @@ contract Attributes is InitNavigator {
     mapping(uint => uint) public UsedPoints;
     mapping(uint => uint) public UsedLevelPoints;
 
-    constructor (address _navigator) InitNavigator(_navigator) {}
+    function initialize(address _navigator) public initializer {
+        initializeNavigator(_navigator);
+        DEFAULT_STAT = GameObjects.Stats(8,8,8,8,8,8);
+    }
 
     function allocate(uint summoner, GameObjects.Stats memory _stats) external ensureNotPaused senderIsSummonerOwner(summoner) {
         if (UsedPoints[summoner] > 0) revert AlreadyAllocated(summoner, "ALREADY ALLOCATED");

@@ -4,26 +4,49 @@ pragma solidity ^0.8.0;
 contract CodexWeapons {
     string constant public index = "Codex";
     string constant public class = "Weapons";
+    string constant public version = "0.0.1";
 
-    function weapon(uint _id, uint _tier) public pure returns (GameObjects.Weapon memory) {
+    function weapon(uint _id) public view returns (GameObjects.Weapon memory) {
         if (_id == 1) {
-            return DummyWeapon(_tier);
+            return DummyWeapon();
+        }
+      if (_id == 2) {
+            return DummyWeapon2();
         }
 
         revert("invalid");
     }
 
-    function DummyWeapon(uint tier) public pure returns (GameObjects.Weapon memory _weapon) {
+    function DummyWeapon() public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 1;
-        _weapon.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _weapon.metadata.name = "Dummy Weapon";
-        _weapon.metadata.description = "Dummy Weapon is best armor";
+        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.name = "Dummy Weapon 1";
+        _weapon.metadata.description = "Dummy Weapon is besttt weapon";
         _weapon.metadata.upgradable = true;
 
-        _weapon.requirement.level = 1;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](0);
-        _weapon.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _weapon.requirement.level = 6;
+        _weapon.requirement.classRequirement = new GameObjects.Class[](2);
+        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
+        _weapon.requirement.classRequirement[1] = GameObjects.Class.Assassin;
+        _weapon.requirement.statRequirement = GameObjects.Stats({STR : 2, DEX : 0, AGI : 5, INT : 0, VIT : 0, LUCK : 0});
 
-        _weapon.statBonus = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _weapon.statBonus = GameObjects.Stats({STR : 2, DEX : 2, AGI : 0, INT : 2, VIT : 0, LUCK : 0});
     }
+
+    function DummyWeapon2() public view returns (GameObjects.Weapon memory _weapon) {
+        _weapon.metadata.id = 2;
+        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.name = "Dummy Weapon 2";
+        _weapon.metadata.description = "Dummy Weapon is besttt weapon";
+        _weapon.metadata.upgradable = true;
+
+        _weapon.requirement.level = 6;
+        _weapon.requirement.classRequirement = new GameObjects.Class[](2);
+        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
+        _weapon.requirement.classRequirement[1] = GameObjects.Class.Assassin;
+        _weapon.requirement.statRequirement = GameObjects.Stats({STR : 2, DEX : 0, AGI : 5, INT : 0, VIT : 0, LUCK : 0});
+
+        _weapon.statBonus = GameObjects.Stats({STR : 2, DEX : 2, AGI : 0, INT : 2, VIT : 0, LUCK : 0});
+    }
+
 }

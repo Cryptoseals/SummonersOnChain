@@ -1,4 +1,6 @@
 import * as dotenv from "dotenv";
+dotenv.config();
+
 import { HardhatUserConfig, task } from "hardhat/config";
 import "@nomiclabs/hardhat-etherscan";
 import "@nomiclabs/hardhat-waffle";
@@ -6,7 +8,8 @@ import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
 import "hardhat-contract-sizer";
-dotenv.config();
+import "@openzeppelin/hardhat-upgrades";
+
 const deploymentAccount = process.env.DEPLOYMENT_ACCOUNT_KEY || ""
 const chainInstance = process.env.CHAIN_INSTANCE || ""
 // This is a sample Hardhat task. To learn how to create your own go to
