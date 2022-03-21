@@ -210,7 +210,7 @@ contract Equipable is InitNavigator, IERC721Receiver {
     }
 
     function getEquippedItemGeneratedStats(uint summoner) public view returns (GameObjects.GeneratedStats memory) {
-        GameObjects.GeneratedStats memory result = GameObjects.GeneratedStats(0, 0, 0, 0, 0, 0, 0, 0);
+        GameObjects.GeneratedStats memory result = GameObjects.GeneratedStats(0, 0, 0, 0, 0, 0, 0, 0, 0);
         EquippedGear memory gear = getEquippedItemTokenIds(summoner);
         GameObjects.GeneratedStats memory fromArmor = getBonusGeneratedStatsFromArmors(gear.helmetTokenId, gear.armorTokenId, gear.bootsTokenId);
         GameObjects.GeneratedStats memory fromWeapon = getBonusGeneratedStatsFromArmors(gear.weaponTokenId, gear.offHandTokenId, gear.sealTokenId);

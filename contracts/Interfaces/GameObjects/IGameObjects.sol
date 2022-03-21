@@ -35,6 +35,7 @@ library GameObjects {
     }
 
     struct GeneratedStats {
+        uint HP;
         uint P_ATK;
         uint M_ATK;
         uint P_DEF;

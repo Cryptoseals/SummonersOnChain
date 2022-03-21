@@ -84,6 +84,30 @@ contract Calculator is Initializable, InitNavigator {
         return DEF_W_DECIMAL + (STAT_W_DECIMAL / 2) + (LVL_W_DECIMAL / 4);
     }
 
+    function HP(uint summoner) public view returns (uint) {
+        (GameObjects.Stats memory _summonerStats,
+        GameObjects.Stats memory _statsFromEquipments,
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,
+        uint lvl) = getAllStats(summoner);
+        return DEFWDecimals(_generatedStatsFromEquipments.HP, _summonerStats.VIT + _statsFromEquipments.VIT, lvl) / GameConstants.GAME_DECIMAL;
+    }
+
+    function HPWDecimals(uint summoner) public view returns (uint) {
+        (GameObjects.Stats memory _summonerStats,
+        GameObjects.Stats memory _statsFromEquipments,
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,
+        uint lvl) = getAllStats(summoner);
+        return DEFWDecimals(_generatedStatsFromEquipments.HP, _summonerStats.VIT + _statsFromEquipments.VIT, lvl);
+    }
+
+    function HIT_POINTS(uint HP, uint VIT, uint LVL) public pure returns (uint) {
+        // equipTotalHP+(lvl*10)+(vit*10)
+        uint HP_W_DECIMAL = HP * GameConstants.GAME_DECIMAL;
+        uint VIT_W_DECIMAL = VIT * GameConstants.GAME_DECIMAL;
+        uint LVL_W_DECIMAL = LVL * GameConstants.GAME_DECIMAL;
+        return HP_W_DECIMAL + (LVL_W_DECIMAL * 10) + (VIT_W_DECIMAL * 4);
+    }
+
     function ACCURACY(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
@@ -114,6 +138,7 @@ contract Calculator is Initializable, InitNavigator {
         return DODWDecimals(_generatedStatsFromEquipments.DODGE,
             _summonerStats.AGI + _statsFromEquipments.AGI) / GameConstants.GAME_DECIMAL;
     }
+
     function DODGEWDecimals(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
@@ -128,6 +153,7 @@ contract Calculator is Initializable, InitNavigator {
         uint AGI_W_DECIMAL = AGI * GameConstants.GAME_DECIMAL;
         return DODGE_W_DECIMAL + GameConstants.GAME_DECIMAL + (AGI_W_DECIMAL / 3);
     }
+
     function LUCK(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
@@ -135,6 +161,7 @@ contract Calculator is Initializable, InitNavigator {
         return DODWDecimals(_generatedStatsFromEquipments.CRIT,
             _summonerStats.LUCK + _statsFromEquipments.LUCK) / GameConstants.GAME_DECIMAL;
     }
+
     function LUCKWDecimals(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
@@ -179,18 +206,20 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     function classBaseStats(GameObjects.Class _class) public view returns (GameObjects.GeneratedStats memory) {
-        if (_class == GameObjects.Class.Barbarian)
-            return GameObjects.GeneratedStats({P_ATK : 0, M_ATK : 0, P_DEF : 0, M_DEF : 0, ACCURACY : 0, DODGE : 0, CRIT : 0, CRIT_MULTIPLIER : 0});
-        else if (_class == GameObjects.Class.Paladin)
-            return GameObjects.GeneratedStats({P_ATK : 0, M_ATK : 0, P_DEF : 0, M_DEF : 0, ACCURACY : 0, DODGE : 0, CRIT : 0, CRIT_MULTIPLIER : 0});
-        else if (_class == GameObjects.Class.Assassin)
-            return GameObjects.GeneratedStats({P_ATK : 0, M_ATK : 0, P_DEF : 0, M_DEF : 0, ACCURACY : 0, DODGE : 0, CRIT : 0, CRIT_MULTIPLIER : 0});
-        else if (_class == GameObjects.Class.Wizard)
-            return GameObjects.GeneratedStats({P_ATK : 0, M_ATK : 0, P_DEF : 0, M_DEF : 0, ACCURACY : 0, DODGE : 0, CRIT : 0, CRIT_MULTIPLIER : 0});
-        else if (_class == GameObjects.Class.Necromancer)
-            return GameObjects.GeneratedStats({P_ATK : 0, M_ATK : 0, P_DEF : 0, M_DEF : 0, ACCURACY : 0, DODGE : 0, CRIT : 0, CRIT_MULTIPLIER : 0});
-        else if (_class == GameObjects.Class.Priest)
-            return GameObjects.GeneratedStats({P_ATK : 0, M_ATK : 0, P_DEF : 0, M_DEF : 0, ACCURACY : 0, DODGE : 0, CRIT : 0, CRIT_MULTIPLIER : 0});
-        return GameObjects.GeneratedStats({P_ATK : 0, M_ATK : 0, P_DEF : 0, M_DEF : 0, ACCURACY : 0, DODGE : 0, CRIT : 0, CRIT_MULTIPLIER : 0});
+        //        if (_class == GameObjects.Class.Barbarian)
+        //            return GameObjects.GeneratedStats({HP: 1,P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
+        //        else if (_class == GameObjects.Class.Paladin)
+        //            return GameObjects.GeneratedStats({HP: 1,P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
+        //        else if (_class == GameObjects.Class.Assassin)
+        //            return GameObjects.GeneratedStats({HP: 1,P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
+        //        else if (_class == GameObjects.Class.Wizard)
+        //            return GameObjects.GeneratedStats({HP: 1,P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
+        //        else if (_class == GameObjects.Class.Necromancer)
+        //            return GameObjects.GeneratedStats({HP: 1,P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
+        //        else if (_class == GameObjects.Class.Priest)
+        //            return GameObjects.GeneratedStats({HP: 1,P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
+        //        return GameObjects.GeneratedStats({HP: 1,P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
+        //    }
+        return GameObjects.GeneratedStats({HP : 1, P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
     }
 }
