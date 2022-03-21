@@ -18,6 +18,7 @@ async function main() {
     const contracts = {
         CodexWeapons: instance.address
     }
+
     console.log(contracts)
 
     fs.writeFileSync('./scripts/contracts.json', JSON.stringify(contracts))

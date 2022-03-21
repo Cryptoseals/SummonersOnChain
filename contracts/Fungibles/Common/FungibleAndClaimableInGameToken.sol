@@ -31,15 +31,15 @@ IFungibleInGameToken {
         REWARD_PER_LEVEL = _rewardPerLevel;
     }
 
-    function rewardToken(address _account, uint256 _amount) external override onlyGameContracts {
+    function rewardToken(address _account, uint256 _amount) external override onlyGameContracts ensureNotPaused {
         _mint(_account, _amount);
     }
 
-    function burnToken(address _account, uint256 _amount) external override onlyGameContracts {
+    function burnToken(address _account, uint256 _amount) external override onlyGameContracts ensureNotPaused {
         _burn(_account, _amount);
     }
 
-    function spendToken(address _account, address _to, uint256 _amount) external override onlyGameContracts {
+    function spendToken(address _account, address _to, uint256 _amount) external override onlyGameContracts ensureNotPaused {
         _transfer(_account, _to, _amount);
     }
 

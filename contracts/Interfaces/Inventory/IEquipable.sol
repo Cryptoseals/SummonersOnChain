@@ -12,4 +12,8 @@ interface IEquipable {
         uint _shield,
         uint _seal,
         GameObjects.SummonedCompanion memory _companion);
+    function getPreCalculatedStats (uint summoner) external view returns(GameObjects.Stats memory);
+
+
+    function getPreCalculatedGeneratedStats (uint summoner) external view returns(GameObjects.GeneratedStats memory);
 }

@@ -41,7 +41,7 @@ contract Navigator is Initializable, OwnableUpgradeable, Guard, INavigator {
         _isPaused = !_isPaused;
     }
 
-    function isPaused() external virtual view override returns (bool) {
+    function isPaused() public virtual view override returns (bool) {
         return _isPaused;
     }
 

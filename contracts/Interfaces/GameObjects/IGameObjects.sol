@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 library GameObjects {
 
     enum Element {
+        NON_ELEMENTAL,
         FIRE,
         COLD,
         EARTH,
@@ -40,6 +41,8 @@ library GameObjects {
         uint M_DEF;
         uint ACCURACY;
         uint DODGE;
+        uint CRIT;
+        uint CRIT_MULTIPLIER;
     }
 
     struct ElementalAtk {
@@ -92,6 +95,7 @@ library GameObjects {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+        GeneratedStats generatedStatBonus;
         Element element;
     }
 
@@ -105,6 +109,7 @@ library GameObjects {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+        GeneratedStats generatedStatBonus;
     }
 
     struct ConsumedElixir {
@@ -117,6 +122,7 @@ library GameObjects {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+        GeneratedStats generatedStatBonus;
     }
 
 
@@ -124,12 +130,14 @@ library GameObjects {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+        GeneratedStats generatedStatBonus;
     }
 
     struct Boots {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+        GeneratedStats generatedStatBonus;
     }
 
 
@@ -137,6 +145,7 @@ library GameObjects {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+        GeneratedStats generatedStatBonus;
     }
 
 
@@ -144,6 +153,7 @@ library GameObjects {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+        GeneratedStats generatedStatBonus;
     }
 
 
@@ -151,6 +161,7 @@ library GameObjects {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+        GeneratedStats generatedStatBonus;
     }
 
     struct SummonedCompanion {
