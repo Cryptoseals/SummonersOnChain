@@ -11,13 +11,40 @@ import "../../Interfaces/Summoners/ISummoners.sol";
 pragma solidity ^0.8.0;
 
 contract Calculator is Initializable, InitNavigator {
-    function initialize(address _navigator) public initializer {
-        initializeNavigator(_navigator);
-    }
 
-    function CostOfSkill (uint skill) external view returns(uint) {
+    function CostOfStat(uint skill) public view returns (uint) {
         //1+target_skill_point/10
         return skill == 0 || skill == 1 ? 0 : 1 + (skill / 10);
+    }
+
+    function SumOfStatSetCost(GameObjects.Stats memory stats) external view returns (uint) {
+        uint cost = 0;
+
+        for (uint i = 0; i <= stats.STR; i++) {
+            cost += CostOfStat(i);
+        }
+
+        for (uint i = 0; i <= stats.DEX; i++) {
+            cost += CostOfStat(i);
+        }
+
+        for (uint i = 0; i <= stats.AGI; i++) {
+            cost += CostOfStat(i);
+        }
+
+        for (uint i = 0; i <= stats.INT; i++) {
+            cost += CostOfStat(i);
+        }
+
+        for (uint i = 0; i <= stats.VIT; i++) {
+            cost += CostOfStat(i);
+        }
+
+        for (uint i = 0; i <= stats.LUCK; i++) {
+            cost += CostOfStat(i);
+        }
+
+        return cost;
     }
 
     // generated value based calculations
@@ -43,8 +70,6 @@ contract Calculator is Initializable, InitNavigator {
         //(1+luk/3)/100
         return (CRIT_W_DECIMAL + GameConstants.GAME_DECIMAL + (LUCK_W_DECIMAL / 3));
     }
-
-
 
     // @param _dns, N of dice, n=20 means d20
     function BatchRollN(uint summoner, uint[] calldata _seeds, uint[] calldata _chances, uint[] calldata _dns) external view returns (bool[] memory) {

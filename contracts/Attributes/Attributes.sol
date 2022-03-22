@@ -31,26 +31,7 @@ contract Attributes is Initializable, InitNavigator {
         // calculate cost.
         ICalculator calculator = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR));
 
-        uint _usedPoints = 0;
-
-        for (uint i = 0; i <= _stats.STR; i++) {
-            _usedPoints += calculator.CostOfSkill(i);
-        }
-        for (uint i = 0; i <= _stats.DEX; i++) {
-            _usedPoints += calculator.CostOfSkill(i);
-        }
-        for (uint i = 0; i <= _stats.INT; i++) {
-            _usedPoints += calculator.CostOfSkill(i);
-        }
-        for (uint i = 0; i <= _stats.AGI; i++) {
-            _usedPoints += calculator.CostOfSkill(i);
-        }
-        for (uint i = 0; i <= _stats.VIT; i++) {
-            _usedPoints += calculator.CostOfSkill(i);
-        }
-        for (uint i = 0; i <= _stats.LUCK; i++) {
-            _usedPoints += calculator.CostOfSkill(i);
-        }
+        uint _usedPoints = calculator.SumOfStatSetCost(_stats);
 
         // check if exceeds initial points
         require(GameConstants.SUMMONER_INITIAL_STAT_POINTS >= _usedPoints, "NOT ENOUGH POINTS");
@@ -93,7 +74,7 @@ contract Attributes is Initializable, InitNavigator {
             SummonerStats[summoner].LUCK++;
         }
 
-        uint cost = calculator.CostOfSkill(nextStatLevel);
+        uint cost = calculator.CostOfStat(nextStatLevel+1);
         require(used + cost <= total, "EXCEEDS MAX. POINTS");
         UsedLevelPoints[summoner] += cost;
     }
