@@ -25,11 +25,12 @@ contract Attributes is Initializable, InitNavigator {
 
     function allocate(uint summoner, GameObjects.Stats memory _stats) external ensureNotPaused senderIsSummonerOwner(summoner) {
         if (Distributed[summoner] || UsedPoints[summoner] > 0) revert AlreadyAllocated(summoner, "ALREADY ALLOCATED");
-        if(_stats.STR == 0 || _stats.DEX == 0 || _stats.INT == 0 || _stats.AGI == 0 || _stats.VIT == 0 || _stats.LUCK == 0)
+        if (_stats.STR == 0 || _stats.DEX == 0 || _stats.INT == 0 || _stats.AGI == 0 || _stats.VIT == 0 || _stats.LUCK == 0) revert StatZero("STAT CANNOT BE 0");
         Distributed[summoner] = true;
 
         // calculate cost.
         ICalculator calculator = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR));
+
         uint _usedPoints = 0;
 
         for (uint i = 0; i <= _stats.STR; i++) {
@@ -50,6 +51,7 @@ contract Attributes is Initializable, InitNavigator {
         for (uint i = 0; i <= _stats.LUCK; i++) {
             _usedPoints += calculator.CostOfSkill(i);
         }
+
         // check if exceeds initial points
         require(GameConstants.SUMMONER_INITIAL_STAT_POINTS >= _usedPoints, "NOT ENOUGH POINTS");
         SummonerStats[summoner] = _stats;
@@ -91,7 +93,7 @@ contract Attributes is Initializable, InitNavigator {
         }
 
         uint cost = calculator.CostOfSkill(nextStatLevel);
-        require(used+cost <= total, "EXCEEDS MAX. POINTS");
+        require(used + cost <= total, "EXCEEDS MAX. POINTS");
         UsedLevelPoints[summoner] += cost;
     }
 

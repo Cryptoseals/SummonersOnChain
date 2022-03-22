@@ -17,7 +17,7 @@ contract Calculator is Initializable, InitNavigator {
 
     function CostOfSkill (uint skill) external view returns(uint) {
         //1+target_skill_point/10
-        return skill == 0 ? 0 : 1 + (skill / 10);
+        return skill == 0 || skill == 1 ? 0 : 1 + (skill / 10);
     }
 
     // generated value based calculations
@@ -179,7 +179,7 @@ contract Calculator is Initializable, InitNavigator {
         GameObjects.Stats memory _statsFromEquipments,
         GameObjects.GeneratedStats memory _generatedStatsFromEquipments,
         uint lvl) = getAllStats(summoner);
-        return DEFWDecimals(_generatedStatsFromEquipments.HP, _summonerStats.VIT + _statsFromEquipments.VIT, lvl) / GameConstants.GAME_DECIMAL;
+        return HIT_POINTS(_generatedStatsFromEquipments.HP, _summonerStats.VIT + _statsFromEquipments.VIT, lvl) / GameConstants.GAME_DECIMAL;
     }
 
     function HPWDecimals(uint summoner) public view returns (uint) {
@@ -187,7 +187,7 @@ contract Calculator is Initializable, InitNavigator {
         GameObjects.Stats memory _statsFromEquipments,
         GameObjects.GeneratedStats memory _generatedStatsFromEquipments,
         uint lvl) = getAllStats(summoner);
-        return DEFWDecimals(_generatedStatsFromEquipments.HP, _summonerStats.VIT + _statsFromEquipments.VIT, lvl);
+        return HIT_POINTS(_generatedStatsFromEquipments.HP, _summonerStats.VIT + _statsFromEquipments.VIT, lvl);
     }
 
     function HIT_POINTS(uint HP, uint VIT, uint LVL) public pure returns (uint) {
@@ -244,23 +244,23 @@ contract Calculator is Initializable, InitNavigator {
         return DODGE_W_DECIMAL + GameConstants.GAME_DECIMAL + (AGI_W_DECIMAL / 3);
     }
 
-    function LUCK(uint summoner) public view returns (uint) {
+    function CRIT(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
         GameObjects.GeneratedStats memory _generatedStatsFromEquipments,) = getAllStats(summoner);
-        return DODWDecimals(_generatedStatsFromEquipments.CRIT,
+        return CRITICALWDecimals(_generatedStatsFromEquipments.CRIT,
             _summonerStats.LUCK + _statsFromEquipments.LUCK) / GameConstants.GAME_DECIMAL;
     }
 
-    function LUCKWDecimals(uint summoner) public view returns (uint) {
+    function CRITWDecimals(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
         GameObjects.GeneratedStats memory _generatedStatsFromEquipments,) = getAllStats(summoner);
-        return LUCWDecimals(_generatedStatsFromEquipments.CRIT,
+        return CRITICALWDecimals(_generatedStatsFromEquipments.CRIT,
             _summonerStats.LUCK + _statsFromEquipments.LUCK);
     }
 
-    function LUCWDecimals(uint CRIT, uint LUCK) public pure returns (uint){
+    function CRITICALWDecimals(uint CRIT, uint LUCK) public pure returns (uint){
         //1+(agi/3)
         uint CRIT_W_DECIMAL = CRIT * GameConstants.GAME_DECIMAL;
         uint LUCK_W_DECIMAL = LUCK * GameConstants.GAME_DECIMAL;
