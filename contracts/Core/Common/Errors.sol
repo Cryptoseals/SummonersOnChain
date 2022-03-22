@@ -6,3 +6,4 @@ error UnauthorizedSender(address sender, string _msg);
 error TooEarly(uint lastClaim, uint now);
 error AlreadyAllocated(uint summoner, string message);
 error StatZero(string message);
+error NotDistributed(string message);

@@ -59,7 +59,8 @@ contract Attributes is Initializable, InitNavigator {
     }
 
     function reset(uint summoner) external ensureNotPaused senderIsSummonerOwner(summoner) {
-        if (UsedPoints[summoner] > 0) revert AlreadyAllocated(summoner, "ALREADY ALLOCATED");
+        if (UsedPoints[summoner] == 0 || !Distributed[summoner]) revert NotDistributed("NOT ALLOCATED");
+        Distributed[summoner] = false;
         SummonerStats[summoner] = GameObjects.Stats(0, 0, 0, 0, 0, 0);
         UsedPoints[summoner] = 0;
     }
