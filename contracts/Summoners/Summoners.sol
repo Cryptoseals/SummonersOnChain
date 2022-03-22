@@ -12,21 +12,31 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     mapping(uint => GameEntities.SummonerData) public SummonerData;
     mapping(uint => GameEntities.SummonerState) public SummonerState;
 
+    mapping(uint => uint) public SummonerEXP;
+    mapping(uint => uint) public SummonerLevels;
+
     function initialize(address _navigator) public initializer {
         initializeNavigator(_navigator);
         __ERC721_init("Summoners on Chain Season 1", "SoC1");
     }
 
-    function senderIsOwner(uint summonerId) external returns (bool) {
-        return ownerOf(summonerId) == msg.sender;
+    function senderIsOwner(uint summonerId, address sender) external returns (bool) {
+        return ownerOf(summonerId) == sender;
     }
 
     function setSummonerState(uint summoner, GameEntities.SummonerState state) public onlyGameContracts {
         SummonerState[summoner] = state;
     }
 
-    // view functions
+    function rewardXP(uint summoner, uint xp) public onlyGameContracts {
+        SummonerEXP[summoner] += xp;
+    }
 
+    function spendXP(uint summoner, uint xp) public onlyGameContracts {
+        SummonerEXP[summoner] -= xp;
+    }
+
+    // view functions
     function level(uint id) external view returns (uint) {
         GameEntities.SummonerData memory _data = SummonerData[id];
         return _data.level;
@@ -40,5 +50,14 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     function state(uint id) external view returns (GameEntities.SummonerState _state) {
         GameEntities.SummonerData memory _data = SummonerData[id];
         _state = _data.state;
+    }
+
+    function summonerData(uint id) external view returns (GameEntities.SummonerData memory) {
+        GameEntities.SummonerData memory _data = GameEntities.SummonerData({
+        level : SummonerLevels[id],
+        state : SummonerState[id],
+        EXP : SummonerEXP[id]
+        });
+        return _data;
     }
 }

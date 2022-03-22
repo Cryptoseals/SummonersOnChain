@@ -29,6 +29,11 @@ contract Navigator is Initializable, OwnableUpgradeable, Guard, INavigator {
         addOrRemoveGameContracts(_gameContractAddresses, value);
     }
 
+    function setGameContractsById(INavigator.CONTRACT _contractId, address _address, bool value) external override onlyOwner {
+        CONTRACTS[uint(_contractId)] = _address;
+        addOrRemoveGameContract(_address, value);
+    }
+
     function getContractAddress(INavigator.CONTRACT _contractId) external override view returns (address){
         return CONTRACTS[uint(_contractId)];
     }
@@ -45,16 +50,16 @@ contract Navigator is Initializable, OwnableUpgradeable, Guard, INavigator {
         return _isPaused;
     }
 
-    function sealIsOwned(uint summoner) external override returns (bool) {
-        if (Seals.ownerOf(summoner) == msg.sender) {
+    function sealIsOwned(uint summoner, address sender) external view override returns (bool) {
+        if (Seals.ownerOf(summoner) == sender) {
             return true;
         } else revert UnauthorizedSender(msg.sender, "CALLER IS NOT THE OWNER");
     }
 
-    function nftIsOwned(address _address, uint _tokenId) external override returns (bool) {
-        if (ERC721(_address).ownerOf(_tokenId) == msg.sender) {
+    function nftIsOwned(address _address, address _sender, uint _tokenId) external view override returns (bool) {
+        if (ERC721(_address).ownerOf(_tokenId) == _sender) {
             return true;
-        } else revert UnauthorizedSender(msg.sender, "CALLER IS NOT THE OWNER");
+        } else revert UnauthorizedSender(_sender, "NOT OWNED");
     }
 
     function onlyGameContracts() external override _onlyGameContracts returns (bool) {

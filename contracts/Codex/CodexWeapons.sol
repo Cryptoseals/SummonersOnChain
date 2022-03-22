@@ -6,7 +6,7 @@ contract CodexWeapons {
     string constant public class = "Weapons";
     string constant public version = "0.0.1";
 
-    function weapon(uint _id) public view returns (GameObjects.Weapon memory) {
+    function weapon(uint _id, uint _tier) external pure returns (GameObjects.Weapon memory) {
         if (_id == 1) {
             return DummyWeapon();
         }
@@ -14,7 +14,7 @@ contract CodexWeapons {
         revert("invalid");
     }
 
-    function DummyWeapon() public view returns (GameObjects.Weapon memory _weapon) {
+    function DummyWeapon() public pure returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 1;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         _weapon.metadata.name = "Dummy Weapon 1";

@@ -103,7 +103,7 @@ contract Attributes is Initializable, InitNavigator {
         _stats = SummonerStats[summoner];
     }
 
-    function totalPointsOfSummoner(uint summoner) public returns (uint) {
+    function totalPointsOfSummoner(uint summoner) public view returns (uint) {
         uint level = Summoners.level(summoner);
         return GameConstants.SUMMONER_INITIAL_STAT_POINTS + level * 10;
     }

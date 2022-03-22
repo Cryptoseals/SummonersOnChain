@@ -86,7 +86,7 @@ contract CodexElixirRecipes is Rarity {
         _requiredItems[1] = 13;
         _requiredItems[2] = 40;
         _recipe.id = 1;
-        _recipe.requiredMiscItemTypes = _requiredItems;
+        _recipe.requiredMiscItemIDs = _requiredItems;
     }
 
     function ElixirOfWealth(uint tier) public pure returns (GameObjects.ElixirRecipe memory _recipe) {
@@ -95,7 +95,7 @@ contract CodexElixirRecipes is Rarity {
         _requiredItems[1] = 40;
         _requiredItems[2] = 63;
         _recipe.id = 2;
-        _recipe.requiredMiscItemTypes = _requiredItems;
+        _recipe.requiredMiscItemIDs = _requiredItems;
     }
 
     function TonicOfTranscendence(uint tier) public pure returns (GameObjects.ElixirRecipe memory _recipe) {
@@ -104,7 +104,7 @@ contract CodexElixirRecipes is Rarity {
         _requiredItems[1] = 54;
         _requiredItems[2] = 52;
         _recipe.id = 3;
-        _recipe.requiredMiscItemTypes = _requiredItems;
+        _recipe.requiredMiscItemIDs = _requiredItems;
     }
 
     function BlacksmithsPotion(uint tier) public pure returns (GameObjects.ElixirRecipe memory _recipe) {
@@ -113,7 +113,7 @@ contract CodexElixirRecipes is Rarity {
         _requiredItems[1] = 55;
         _requiredItems[2] = 64;
         _recipe.id = 4;
-        _recipe.requiredMiscItemTypes = _requiredItems;
+        _recipe.requiredMiscItemIDs = _requiredItems;
     }
 
     function TonicOfAnger(uint tier) public pure returns (GameObjects.ElixirRecipe memory _recipe) {
@@ -122,7 +122,7 @@ contract CodexElixirRecipes is Rarity {
         _requiredItems[1] = 56;
         _requiredItems[2] = 65;
         _recipe.id = 5;
-        _recipe.requiredMiscItemTypes = _requiredItems;
+        _recipe.requiredMiscItemIDs = _requiredItems;
     }
 
     function PhialOfAgility(uint tier) public pure returns (GameObjects.ElixirRecipe memory _recipe) {
@@ -131,7 +131,7 @@ contract CodexElixirRecipes is Rarity {
         _requiredItems[1] = 57;
         _requiredItems[2] = 66;
         _recipe.id = 6;
-        _recipe.requiredMiscItemTypes = _requiredItems;
+        _recipe.requiredMiscItemIDs = _requiredItems;
     }
 
     function PotionOfIronSkin(uint tier) public pure returns (GameObjects.ElixirRecipe memory _recipe) {
@@ -140,7 +140,7 @@ contract CodexElixirRecipes is Rarity {
         _requiredItems[1] = 47;
         _requiredItems[2] = 58;
         _recipe.id = 7;
-        _recipe.requiredMiscItemTypes = _requiredItems;
+        _recipe.requiredMiscItemIDs = _requiredItems;
     }
 
     function ElixirOfSolutions(uint tier) public pure returns (GameObjects.ElixirRecipe memory _recipe) {
@@ -149,7 +149,7 @@ contract CodexElixirRecipes is Rarity {
         _requiredItems[1] = 54;
         _requiredItems[2] = 59;
         _recipe.id = 8;
-        _recipe.requiredMiscItemTypes = _requiredItems;
+        _recipe.requiredMiscItemIDs = _requiredItems;
     }
 
     function ExperimentersFlask(uint tier) public pure returns (GameObjects.ElixirRecipe memory _recipe) {
@@ -158,7 +158,7 @@ contract CodexElixirRecipes is Rarity {
         _requiredItems[1] = 43;
         _requiredItems[2] = 60;
         _recipe.id = 9;
-        _recipe.requiredMiscItemTypes = _requiredItems;
+        _recipe.requiredMiscItemIDs = _requiredItems;
     }
 
     function PerfumeOfBewitching(uint tier) public pure returns (GameObjects.ElixirRecipe memory _recipe) {
@@ -167,7 +167,7 @@ contract CodexElixirRecipes is Rarity {
         _requiredItems[1] = 49;
         _requiredItems[2] = 61;
         _recipe.id = 10;
-        _recipe.requiredMiscItemTypes = _requiredItems;
+        _recipe.requiredMiscItemIDs = _requiredItems;
     }
 
     function VialOfCapability(uint tier) public pure returns (GameObjects.ElixirRecipe memory _recipe) {
@@ -176,7 +176,7 @@ contract CodexElixirRecipes is Rarity {
         _requiredItems[1] = 47;
         _requiredItems[2] = 58;
         _recipe.id = 11;
-        _recipe.requiredMiscItemTypes = _requiredItems;
+        _recipe.requiredMiscItemIDs = _requiredItems;
     }
 
     function PotionOfAcumen(uint tier) public pure returns (GameObjects.ElixirRecipe memory _recipe) {
@@ -185,7 +185,7 @@ contract CodexElixirRecipes is Rarity {
         _requiredItems[1] = 52;
         _requiredItems[2] = 62;
         _recipe.id = 12;
-        _recipe.requiredMiscItemTypes = _requiredItems;
+        _recipe.requiredMiscItemIDs = _requiredItems;
     }
 
     function ElixirOfAdvantage(uint tier) public pure returns (GameObjects.ElixirRecipe memory _recipe) {
@@ -194,7 +194,7 @@ contract CodexElixirRecipes is Rarity {
         _requiredItems[1] = 50;
         _requiredItems[2] = 52;
         _recipe.id = 13;
-        _recipe.requiredMiscItemTypes = _requiredItems;
+        _recipe.requiredMiscItemIDs = _requiredItems;
     }
 
     function TrollsBlood(uint tier) public pure returns (GameObjects.ElixirRecipe memory _recipe) {
@@ -203,7 +203,7 @@ contract CodexElixirRecipes is Rarity {
         _requiredItems[1] = 58;
         _requiredItems[2] = 58;
         _recipe.id = 14;
-        _recipe.requiredMiscItemTypes = _requiredItems;
+        _recipe.requiredMiscItemIDs = _requiredItems;
     }
 
     function VialOfSpirit(uint tier) public pure returns (GameObjects.ElixirRecipe memory _recipe) {
@@ -212,6 +212,6 @@ contract CodexElixirRecipes is Rarity {
         _requiredItems[1] = 53;
         _requiredItems[2] = 62;
         _recipe.id = 15;
-        _recipe.requiredMiscItemTypes = _requiredItems;
+        _recipe.requiredMiscItemIDs = _requiredItems;
     }
 }

@@ -17,7 +17,7 @@ library GameObjects {
     }
 
     enum ItemType {
-        HELMET, ARMOR, BOOTS, WEAPON, OFFHAND, MISC
+        HELMET, ARMOR, BOOTS, WEAPON, OFFHAND, AMULET, RING, BELT, EARRING, ARTIFACT, ELIXIR, MISC
     }
 
     enum StatsEnum {
@@ -123,6 +123,8 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
+        ElementalAtk ElementalAtk;
+        ElementalDef ElementalDef;
     }
 
 
@@ -131,6 +133,8 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
+        ElementalAtk ElementalAtk;
+        ElementalDef ElementalDef;
     }
 
     struct Boots {
@@ -138,6 +142,8 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
+        ElementalAtk ElementalAtk;
+        ElementalDef ElementalDef;
     }
 
 
@@ -146,6 +152,8 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
+        ElementalAtk ElementalAtk;
+        ElementalDef ElementalDef;
     }
 
 
@@ -154,6 +162,44 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
+        ElementalAtk ElementalAtk;
+        ElementalDef ElementalDef;
+    }
+
+    struct Ring {
+        ItemMetadata metadata;
+        ItemRequirement requirement;
+        Stats statBonus;
+        GeneratedStats generatedStatBonus;
+        ElementalAtk ElementalAtk;
+        ElementalDef ElementalDef;
+    }
+
+    struct Amulet {
+        ItemMetadata metadata;
+        ItemRequirement requirement;
+        Stats statBonus;
+        GeneratedStats generatedStatBonus;
+        ElementalAtk ElementalAtk;
+        ElementalDef ElementalDef;
+    }
+
+    struct Earring {
+        ItemMetadata metadata;
+        ItemRequirement requirement;
+        Stats statBonus;
+        GeneratedStats generatedStatBonus;
+        ElementalAtk ElementalAtk;
+        ElementalDef ElementalDef;
+    }
+
+    struct Belt {
+        ItemMetadata metadata;
+        ItemRequirement requirement;
+        Stats statBonus;
+        GeneratedStats generatedStatBonus;
+        ElementalAtk ElementalAtk;
+        ElementalDef ElementalDef;
     }
 
 
@@ -162,6 +208,16 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
+        ElementalAtk ElementalAtk;
+        ElementalDef ElementalDef;
+    }
+    struct EquipableItem {
+        ItemMetadata metadata;
+        ItemRequirement requirement;
+        Stats statBonus;
+        GeneratedStats generatedStatBonus;
+        ElementalAtk ElementalAtk;
+        ElementalDef ElementalDef;
     }
 
     struct SummonedCompanion {
@@ -173,6 +229,8 @@ library GameObjects {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+        ElementalAtk ElementalAtk;
+        ElementalDef ElementalDef;
     }
 
 
@@ -180,6 +238,8 @@ library GameObjects {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+        ElementalAtk ElementalAtk;
+        ElementalDef ElementalDef;
     }
 
     struct MiscItem {
@@ -188,7 +248,6 @@ library GameObjects {
 
     struct ElixirRecipe {
         uint id;
-        uint[] requiredMiscItemTypes;
-        uint[] requiredCommonItemTypes;
+        uint[] requiredMiscItemIDs;
     }
 }

@@ -14,4 +14,7 @@ contract Guard is Initializable {
             gameContracts[_addresses[i]] = _value;
         }
     }
+    function addOrRemoveGameContract(address _address, bool _value) internal {
+            gameContracts[_address] = _value;
+    }
 }

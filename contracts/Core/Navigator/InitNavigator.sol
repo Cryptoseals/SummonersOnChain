@@ -5,14 +5,12 @@ import "../../Interfaces/Summoners/ISummoners.sol";
 
 pragma solidity ^0.8.0;
 
-contract InitNavigator is Initializable  {
+contract InitNavigator is Initializable {
     INavigator Navigator;
     ISummoners Summoners;
 
-    function initializeNavigator (address _navigator) internal {
+    function initializeNavigator(address _navigator) internal {
         Navigator = INavigator(_navigator);
-        address summonersAddress = Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS);
-        Summoners = ISummoners(summonersAddress);
     }
 
     modifier ensureNotPaused() {
@@ -21,29 +19,31 @@ contract InitNavigator is Initializable  {
     }
 
     modifier senderIsSummonerOwner(uint summoner) {
-        if (!Summoners.senderIsOwner(summoner)) revert UnauthorizedSender(msg.sender, "CALLER IS NOT THE OWNER");
+        ISummoners Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
+        if (!Summoners.senderIsOwner(summoner, msg.sender)) revert UnauthorizedSender(msg.sender, "CALLER IS NOT THE OWNER");
         _;
     }
 
-    function ownerOfSummoner(uint summoner) public returns(address) {
+    function ownerOfSummoner(uint summoner) public view returns (address) {
+        ISummoners Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
         return Summoners.ownerOf(summoner);
     }
 
-    function contractAddress(INavigator.CONTRACT _contract) public view returns(address) {
+    function contractAddress(INavigator.CONTRACT _contract) public view returns (address) {
         return Navigator.getContractAddress(_contract);
     }
 
-    function navigator() public view returns(address) {
+    function navigator() public view returns (address) {
         return address(Navigator);
     }
 
     modifier sealIsOwned(uint summoner) {
-        Navigator.sealIsOwned(summoner);
+        Navigator.sealIsOwned(summoner, msg.sender);
         _;
     }
 
     modifier hasNFT(address _address, uint _tokenId) {
-        Navigator.nftIsOwned(_address, _tokenId);
+        Navigator.nftIsOwned(_address, msg.sender, _tokenId);
         _;
     }
 
