@@ -8,7 +8,6 @@ import "../../Interfaces/Attributes/IAttributes.sol";
 import "../../Interfaces/Core/Constants/Constants.sol";
 import "../../Interfaces/Inventory/IEquipable.sol";
 import "../../Interfaces/Summoners/ISummoners.sol";
-import "../../Lib/ABDKMath64x64.sol";
 pragma solidity ^0.8.0;
 
 contract Calculator is Initializable, InitNavigator {
@@ -243,9 +242,9 @@ contract Calculator is Initializable, InitNavigator {
             _summonerStats.AGI + _statsFromEquipments.AGI);
     }
 
-    function DODWDecimals(uint DODGE, uint AGI) public pure returns (uint){
+    function DODWDecimals(uint _DODGE, uint AGI) public pure returns (uint){
         //1+(agi/3)
-        uint DODGE_W_DECIMAL = DODGE * GameConstants.GAME_DECIMAL;
+        uint DODGE_W_DECIMAL = _DODGE * GameConstants.GAME_DECIMAL;
         uint AGI_W_DECIMAL = AGI * GameConstants.GAME_DECIMAL;
         return DODGE_W_DECIMAL + GameConstants.GAME_DECIMAL + (AGI_W_DECIMAL / 3);
     }
@@ -266,9 +265,9 @@ contract Calculator is Initializable, InitNavigator {
             _summonerStats.LUCK + _statsFromEquipments.LUCK);
     }
 
-    function CRITICALWDecimals(uint CRIT, uint LUCK) public pure returns (uint){
+    function CRITICALWDecimals(uint _CRIT, uint LUCK) public pure returns (uint){
         //1+(agi/3)
-        uint CRIT_W_DECIMAL = CRIT * GameConstants.GAME_DECIMAL;
+        uint CRIT_W_DECIMAL = _CRIT * GameConstants.GAME_DECIMAL;
         uint LUCK_W_DECIMAL = LUCK * GameConstants.GAME_DECIMAL;
         return CRIT_W_DECIMAL + GameConstants.GAME_DECIMAL + (LUCK_W_DECIMAL / 3);
     }
