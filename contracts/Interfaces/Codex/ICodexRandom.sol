@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.7;
 
-interface CryptoSealsCodexRandom {
+interface ICodexRandom {
 
     function d100(uint _input) external view returns (uint);
 

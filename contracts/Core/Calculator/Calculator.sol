@@ -3,6 +3,7 @@ import "../../Interfaces/Core/Calculator/ICalculator.sol";
 import "../../Core/Navigator/InitNavigator.sol";
 import "../../Interfaces/Core/Navigator/INavigator.sol";
 import "../../Interfaces/Codex/ICodexWeapons.sol";
+import "../../Interfaces/Codex/ICodexRandom.sol";
 import "../../Interfaces/Attributes/IAttributes.sol";
 import "../../Interfaces/Core/Constants/Constants.sol";
 import "../../Interfaces/Inventory/IEquipable.sol";
@@ -10,16 +11,90 @@ import "../../Interfaces/Summoners/ISummoners.sol";
 pragma solidity ^0.8.0;
 
 contract Calculator is Initializable, InitNavigator {
-
     function initialize(address _navigator) public initializer {
         initializeNavigator(_navigator);
     }
 
-    function damageToArmor(uint ATK, uint DEF) external pure returns (uint){
-        return damageToWDecimals(ATK, DEF) / GameConstants.GAME_DECIMAL;
+    function CostOfSkill (uint skill) external view returns(uint) {
+        //1+target_skill_point/10
+        return skill == 0 ? 0 : 1 + (skill / 10);
     }
 
-    function damageToWDecimals(uint ATK, uint DEF) public pure returns (uint) {
+    // generated value based calculations
+    function HitChance(uint ACC, uint DODGE) external pure returns (uint){
+        return HitChanceWDecimals(ACC, DODGE) / GameConstants.GAME_DECIMAL;
+    }
+
+    function HitChanceWDecimals(uint ACC, uint DODGE) public pure returns (uint) {
+        //(100+(accuracy - dodge))/100
+        int ACC_W_DECIMAL = int(ACC * GameConstants.GAME_DECIMAL);
+        int DODGE_W_DECIMAL = int(DODGE * GameConstants.GAME_DECIMAL);
+        int CHANCE = (int(GameConstants.HUNDRED) + ACC_W_DECIMAL - DODGE_W_DECIMAL);
+        return CHANCE > 0 ? uint(CHANCE) : uint(0);
+    }
+
+    function CritChance(uint LUCK, uint CRIT) external pure returns (uint){
+        return CritChanceWDecimals(LUCK, CRIT) / GameConstants.GAME_DECIMAL;
+    }
+
+    function CritChanceWDecimals(uint LUCK, uint CRIT) public pure returns (uint) {
+        uint CRIT_W_DECIMAL = CRIT * GameConstants.GAME_DECIMAL;
+        uint LUCK_W_DECIMAL = LUCK * GameConstants.GAME_DECIMAL;
+        //(1+luk/3)/100
+        return (CRIT_W_DECIMAL + GameConstants.GAME_DECIMAL + (LUCK_W_DECIMAL / 3));
+    }
+
+
+
+    // @param _dns, N of dice, n=20 means d20
+    function BatchRollN(uint summoner, uint[] calldata _seeds, uint[] calldata _chances, uint[] calldata _dns) external view returns (bool[] memory) {
+        bool[] memory results = new bool[](_chances.length);
+        for (uint i = 0; i < _seeds.length; i++) {
+            results[i] = IsSuccessfulDiceRollN(summoner, _seeds[i], _chances[i], _dns[i]);
+        }
+        return results;
+    }
+
+    function BatchRoll100(uint summoner, uint[] calldata _seeds, uint[] calldata _chances) external view returns (bool[] memory) {
+        bool[] memory results = new bool[](_chances.length);
+        for (uint i = 0; i < _seeds.length; i++) {
+            results[i] = IsSuccessfulDiceRoll100(summoner, _seeds[i], _chances[i]);
+        }
+        return results;
+    }
+
+    // chance based calculations
+    function IsSuccessfulDiceRoll100(uint summoner, uint seed, uint chance) public view returns (bool) {
+        uint CHANCE_W_DEC = chance * GameConstants.E18;
+        ICodexRandom RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
+        uint _seed = uint(keccak256(abi.encodePacked(msg.sender, block.number, summoner, seed)));
+        uint rollE18 = GameConstants.HUNDRED - (RNG.d100(_seed) * GameConstants.E18);
+        /* @notice */
+        /* example: assume crit chance = 10, use rolled 80, 100-80=20, 20 <= 10, false*/
+        /* example2: assume crit chance = 20, use rolled 80, 100-80=20, 20 <= 20, true*/
+        return rollE18 <= CHANCE_W_DEC;
+    }
+
+    // chance based calculations
+    function IsSuccessfulDiceRollN(uint summoner, uint seed, uint chance, uint dice) public view returns (bool) {
+        uint CHANCE_W_DEC = chance * GameConstants.E18;
+        ICodexRandom RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
+        uint _seed = uint(keccak256(abi.encodePacked(msg.sender, block.number, summoner, seed)));
+        uint rollE18 = (dice * GameConstants.E18) - (RNG.dn(_seed, dice) * GameConstants.E18);
+        /* @notice */
+        /* example: assume crit chance = 10, use rolled 80, 100-80=20, 20 <= 10, false*/
+        /* example2: assume crit chance = 20, use rolled 80, 100-80=20, 20 <= 20, true*/
+        return rollE18 <= CHANCE_W_DEC;
+    }
+
+
+
+    // STAT RELATED CALCULATIONS
+    function DPS(uint ATK, uint DEF) external pure returns (uint){
+        return DPSWDecimals(ATK, DEF) / GameConstants.GAME_DECIMAL;
+    }
+
+    function DPSWDecimals(uint ATK, uint DEF) public pure returns (uint) {
         return (ATK * GameConstants.GAME_DECIMAL) *
         (GameConstants.HUNDRED /
         (GameConstants.HUNDRED + (DEF * GameConstants.GAME_DECIMAL) * GameConstants.GAME_DECIMAL));
@@ -74,6 +149,21 @@ contract Calculator is Initializable, InitNavigator {
         GameObjects.GeneratedStats memory _generatedStatsFromEquipments,
         uint lvl) = getAllStats(summoner);
         return DEFWDecimals(_generatedStatsFromEquipments.P_DEF, _summonerStats.VIT + _statsFromEquipments.VIT, lvl);
+    }
+
+    function M_DEF(uint summoner) public view returns (uint) {
+        (GameObjects.Stats memory _summonerStats,
+        GameObjects.Stats memory _statsFromEquipments,
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,uint lvl) = getAllStats(summoner);
+        return DEFWDecimals(_generatedStatsFromEquipments.M_DEF, _summonerStats.INT + _statsFromEquipments.INT, lvl) / GameConstants.GAME_DECIMAL;
+    }
+
+    function M_DEFWDecimals(uint summoner) public view returns (uint) {
+        (GameObjects.Stats memory _summonerStats,
+        GameObjects.Stats memory _statsFromEquipments,
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,
+        uint lvl) = getAllStats(summoner);
+        return DEFWDecimals(_generatedStatsFromEquipments.M_DEF, _summonerStats.INT + _statsFromEquipments.INT, lvl);
     }
 
     function DEFWDecimals(uint DEF, uint STAT, uint LVL) public pure returns (uint) {
@@ -177,7 +267,7 @@ contract Calculator is Initializable, InitNavigator {
         return CRIT_W_DECIMAL + GameConstants.GAME_DECIMAL + (LUCK_W_DECIMAL / 3);
     }
 
-    // @notice UTILS
+    // @notice VIEW UTILS
 
     function getAllStats(uint summoner) internal view returns (GameObjects.Stats memory, GameObjects.Stats memory, GameObjects.GeneratedStats memory, uint) {
         ISummoners summonersContract = ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS));
@@ -190,36 +280,7 @@ contract Calculator is Initializable, InitNavigator {
         return (_summonerStats, _statsFromEquipments, _generatedStatsFromEquipments, lvl);
     }
 
-
-    function getWeapon(uint id, uint tier) internal view returns (GameObjects.Weapon memory) {
-        address codex = InitNavigator.contractAddress(INavigator.CONTRACT.WEAPONS_CODEX);
-        return ICodexWeapons(codex).weapon(id, tier);
-    }
-
-    function bonusGeneratedStats(uint summoner) internal view returns (GameObjects.GeneratedStats memory _generated) {
-        address attributes = InitNavigator.contractAddress(INavigator.CONTRACT.WEAPONS_CODEX);
-        GameObjects.Stats memory _stats = IAttributes(attributes).stats(summoner);
-
-        // TODO calculate generated stats according to GDD Formula
-
-        return _generated;
-    }
-
-    function classBaseStats(GameObjects.Class _class) public view returns (GameObjects.GeneratedStats memory) {
-        //        if (_class == GameObjects.Class.Barbarian)
-        //            return GameObjects.GeneratedStats({HP: 1,P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
-        //        else if (_class == GameObjects.Class.Paladin)
-        //            return GameObjects.GeneratedStats({HP: 1,P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
-        //        else if (_class == GameObjects.Class.Assassin)
-        //            return GameObjects.GeneratedStats({HP: 1,P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
-        //        else if (_class == GameObjects.Class.Wizard)
-        //            return GameObjects.GeneratedStats({HP: 1,P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
-        //        else if (_class == GameObjects.Class.Necromancer)
-        //            return GameObjects.GeneratedStats({HP: 1,P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
-        //        else if (_class == GameObjects.Class.Priest)
-        //            return GameObjects.GeneratedStats({HP: 1,P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
-        //        return GameObjects.GeneratedStats({HP: 1,P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
-        //    }
+    function summonerBaseStats(GameObjects.Class _class) public view returns (GameObjects.GeneratedStats memory) {
         return GameObjects.GeneratedStats({HP : 1, P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
     }
 }

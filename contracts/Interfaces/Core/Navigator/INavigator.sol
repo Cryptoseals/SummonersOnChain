@@ -18,7 +18,9 @@ interface INavigator {
         WEAPONS_CODEX, //13
         OFF_HANDS_CODEX, //14
         ARTIFACTS_CODEX, //15
-        MOUNTS_CODEX //16
+        MOUNTS_CODEX, //16
+        RANDOM_CODEX, //17
+        CALCULATOR // 18
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;
