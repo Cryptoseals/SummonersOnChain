@@ -8,6 +8,7 @@ library GameConstants {
     uint constant public FIVE_E18 = 5e18;
     uint constant public TEN_E18 = 10e18;
     uint constant public HUNDRED = 100e18;
+    uint constant public THOUSAND = 1000e18;
     uint constant public GAME_DECIMAL = 1e18;
     uint constant public SUMMONER_INITIAL_STAT_POINTS = 30;
     uint constant public STAT_POINT_PER_LEVEL = 10;

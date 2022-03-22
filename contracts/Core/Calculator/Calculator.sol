@@ -8,6 +8,7 @@ import "../../Interfaces/Attributes/IAttributes.sol";
 import "../../Interfaces/Core/Constants/Constants.sol";
 import "../../Interfaces/Inventory/IEquipable.sol";
 import "../../Interfaces/Summoners/ISummoners.sol";
+import "../../Lib/ABDKMath64x64.sol";
 pragma solidity ^0.8.0;
 
 contract Calculator is Initializable, InitNavigator {
@@ -95,9 +96,14 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     function DPSWDecimals(uint ATK, uint DEF) public pure returns (uint) {
-        return (ATK * GameConstants.GAME_DECIMAL) *
-        (GameConstants.HUNDRED /
-        (GameConstants.HUNDRED + (DEF * GameConstants.GAME_DECIMAL) * GameConstants.GAME_DECIMAL));
+        uint DEF_W_DECIMAL = (DEF * GameConstants.GAME_DECIMAL);
+        uint ATK_W_DECIMAL = (ATK * GameConstants.GAME_DECIMAL);
+        uint DEF_PLUS_H = (GameConstants.HUNDRED + DEF_W_DECIMAL);
+        uint MULTIPLIER = GameConstants.HUNDRED * GameConstants.HUNDRED;
+        uint PERCENTAGE = MULTIPLIER / DEF_PLUS_H;
+        // @TODO, add penetration stat
+        uint FINAL_ATK = (ATK_W_DECIMAL * (PERCENTAGE / GameConstants.GAME_DECIMAL)) / 100;
+        return FINAL_ATK;
     }
 
     function P_ATK(uint summoner) public view returns (uint) {
