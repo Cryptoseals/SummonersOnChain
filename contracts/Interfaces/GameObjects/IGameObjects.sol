@@ -47,6 +47,12 @@ library GameObjects {
         uint CRIT_CHANCE;
     }
 
+    enum ArtifactAndElixirSlot {
+        SLOT1,
+        SLOT2,
+        SLOT3
+    }
+
     struct Stats {
         uint STR;
         uint AGI;
@@ -141,6 +147,7 @@ library GameObjects {
         Stats statBonus;
         GeneratedStats generatedStatBonus;
         ElementalStats elementalStats;
+        uint expirationTime;
     }
 
     struct ConsumedElixir {

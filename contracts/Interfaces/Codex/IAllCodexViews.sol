@@ -12,4 +12,6 @@ interface IAllCodexViews {
     function earring(uint _id, uint _tier) external view returns (GameObjects.Earring memory);
     function belt(uint _id, uint _tier) external pure returns (GameObjects.Belt memory);
     function mount(uint _id, uint _tier) external pure returns (GameObjects.Mount memory);
+    function elixir(uint _id, uint _tier) external pure returns (GameObjects.Elixir memory);
+    function artifact(uint _id, uint _tier) external pure returns (GameObjects.Artifact memory);
 }

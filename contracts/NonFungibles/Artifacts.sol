@@ -22,8 +22,9 @@ contract Artifacts is Initializable, OwnableUpgradeable, InitNavigator, ERC721En
         _mint(player, nextToken);
     }
 
-    function burnItem(uint tokenId) external onlyGameContracts {
+    function burnItem(uint tokenId) external onlyGameContracts returns(bool) {
         _burn(tokenId);
+        return true;
     }
 
     function upgrade(uint id) external onlyGameContracts {

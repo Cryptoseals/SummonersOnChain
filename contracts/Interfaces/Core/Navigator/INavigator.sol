@@ -23,12 +23,14 @@ interface INavigator {
         EARRINGS_CODEX, //18
         BELTS_CODEX, //19
         ARTIFACTS_CODEX, //20
-        MOUNTS_CODEX, //21
-        RANDOM_CODEX, //22
-        CALCULATOR, // 23
-        CRYPTO_SEAL, // 23
-        ARTIFACT_SLOTS, // 23
-        ELIXIR_SLOTS // 23
+        ELIXIRS_CODEX, //21
+        MOUNTS_CODEX, //22
+        RANDOM_CODEX, //23
+        CALCULATOR, // 24
+        CRYPTO_SEAL, // 25
+        ARTIFACT_AND_ELIXIR_SLOTS, // 26
+        ARTIFACTS,
+        ELIXIRS
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;
