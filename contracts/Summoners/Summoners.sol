@@ -44,8 +44,8 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     }
 
 
-    function setSummonerState(uint summoner, GameEntities.SummonerState state) public onlyGameContracts {
-        SummonerState[summoner] = state;
+    function setSummonerState(uint summoner, GameEntities.SummonerState _state) public onlyGameContracts {
+        SummonerState[summoner] = _state;
     }
 
     function rewardXP(uint summoner, uint xp) public onlyGameContracts {

@@ -6,45 +6,52 @@ import "../../Interfaces/Codex/ICodexWeapons.sol";
 import "../../Interfaces/Codex/ICodexRandom.sol";
 import "../../Interfaces/Attributes/IAttributes.sol";
 import "../../Interfaces/Core/Constants/Constants.sol";
+import "../../Inventory/EquipableUtils.sol";
 import "../../Interfaces/Inventory/IEquipable.sol";
 import "../../Interfaces/Summoners/ISummoners.sol";
 pragma solidity ^0.8.0;
 
 contract Calculator is Initializable, InitNavigator {
 
-    function CostOfStat(uint skill) public view returns (uint) {
-        //1+target_skill_point/10
-        return skill == 0 || skill == 1 ? 0 : 1 + (skill / 10);
+
+    function initialize(address _navigator) external initializer {
+        initializeNavigator(_navigator);
     }
 
-    function SumOfStatSetCost(GameObjects.Stats memory stats) external view returns (uint) {
-        uint cost = 0;
+    function VSBattleStats(uint summoner, uint summoner2) external view returns (
+        GameObjects.BattleStats memory _battleStats1,
+        GameObjects.BattleStats memory _battleStats2
+    ){
+        // implement artifact and elixir calculations
+        (GameObjects.Stats memory _statsFromEquips1,
+        GameObjects.GeneratedStats memory _genStatsFromEquips1,
+        GameObjects.ElementalStats memory _eleStatsFromEquips1) = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY)).getSummonerBattleStats(summoner);
 
-        for (uint i = 0; i <= stats.STR; i++) {
-            cost += CostOfStat(i);
-        }
+        (GameObjects.Stats memory _statsFromEquips2,
+        GameObjects.GeneratedStats memory _genStatsFromEquips2,
+        GameObjects.ElementalStats memory _eleStatsFromEquips2) = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY)).getSummonerBattleStats(summoner2);
 
-        for (uint i = 0; i <= stats.DEX; i++) {
-            cost += CostOfStat(i);
-        }
+    }
 
-        for (uint i = 0; i <= stats.AGI; i++) {
-            cost += CostOfStat(i);
-        }
 
-        for (uint i = 0; i <= stats.INT; i++) {
-            cost += CostOfStat(i);
-        }
+    function GetBattleStats(
+        GameObjects.Stats memory _stats1,
+        GameObjects.GeneratedStats memory _gen_stats1,
+        GameObjects.ElementalStats memory _eleStats1,
+        GameObjects.Stats memory _stats2,
+        GameObjects.GeneratedStats memory _gen_stats2,
+        GameObjects.ElementalStats memory _eleStats2
+    ) public view returns(
+        GameObjects.BattleStats memory _battleStats1,
+        GameObjects.BattleStats memory _battleStats2) {
+        _battleStats1.CRIT_CHANCE = CritChanceWDecimals(_stats1.LUCK, _gen_stats1.CRIT);
+        _battleStats2.CRIT_CHANCE = CritChanceWDecimals(_stats2.LUCK, _gen_stats2.CRIT);
 
-        for (uint i = 0; i <= stats.VIT; i++) {
-            cost += CostOfStat(i);
-        }
+        _battleStats1.DODGE_CHANCE = DODWDecimals(_stats1.AGI, _gen_stats1.DODGE);
+        _battleStats2.DODGE_CHANCE = DODWDecimals(_stats2.AGI, _gen_stats2.DODGE);
 
-        for (uint i = 0; i <= stats.LUCK; i++) {
-            cost += CostOfStat(i);
-        }
-
-        return cost;
+        _battleStats1.HIT_CHANCE = HitChanceWDecimals(_gen_stats1.ACCURACY, _gen_stats2.DODGE);
+        _battleStats2.HIT_CHANCE = HitChanceWDecimals(_gen_stats2.ACCURACY, _gen_stats1.DODGE);
     }
 
     // generated value based calculations
@@ -133,28 +140,28 @@ contract Calculator is Initializable, InitNavigator {
     function P_ATK(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,) = getAllStats(summoner);
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
         return ATKWDecimals(_generatedStatsFromEquipments.P_ATK, _summonerStats.STR + _statsFromEquipments.STR) / GameConstants.GAME_DECIMAL;
     }
 
     function P_ATKwDecimal(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,) = getAllStats(summoner);
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
         return ATKWDecimals(_generatedStatsFromEquipments.P_ATK, _summonerStats.STR + _statsFromEquipments.STR);
     }
 
     function M_ATK(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,) = getAllStats(summoner);
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
         return ATKWDecimals(_generatedStatsFromEquipments.M_ATK, _summonerStats.INT + _statsFromEquipments.INT) / GameConstants.GAME_DECIMAL;
     }
 
     function M_ATKwDecimal(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,) = getAllStats(summoner);
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
         return ATKWDecimals(_generatedStatsFromEquipments.M_ATK, _summonerStats.INT + _statsFromEquipments.INT);
     }
 
@@ -169,14 +176,14 @@ contract Calculator is Initializable, InitNavigator {
     function P_DEF(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,uint lvl) = getAllStats(summoner);
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,uint lvl) = getAllStats(summoner);
         return DEFWDecimals(_generatedStatsFromEquipments.P_DEF, _summonerStats.VIT + _statsFromEquipments.VIT, lvl) / GameConstants.GAME_DECIMAL;
     }
 
     function P_DEFWDecimals(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,
         uint lvl) = getAllStats(summoner);
         return DEFWDecimals(_generatedStatsFromEquipments.P_DEF, _summonerStats.VIT + _statsFromEquipments.VIT, lvl);
     }
@@ -184,14 +191,14 @@ contract Calculator is Initializable, InitNavigator {
     function M_DEF(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,uint lvl) = getAllStats(summoner);
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,uint lvl) = getAllStats(summoner);
         return DEFWDecimals(_generatedStatsFromEquipments.M_DEF, _summonerStats.INT + _statsFromEquipments.INT, lvl) / GameConstants.GAME_DECIMAL;
     }
 
     function M_DEFWDecimals(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,
         uint lvl) = getAllStats(summoner);
         return DEFWDecimals(_generatedStatsFromEquipments.M_DEF, _summonerStats.INT + _statsFromEquipments.INT, lvl);
     }
@@ -207,7 +214,7 @@ contract Calculator is Initializable, InitNavigator {
     function HP(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,
         uint lvl) = getAllStats(summoner);
         return HIT_POINTS(_generatedStatsFromEquipments.HP, _summonerStats.VIT + _statsFromEquipments.VIT, lvl) / GameConstants.GAME_DECIMAL;
     }
@@ -215,7 +222,7 @@ contract Calculator is Initializable, InitNavigator {
     function HPWDecimals(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,
         uint lvl) = getAllStats(summoner);
         return HIT_POINTS(_generatedStatsFromEquipments.HP, _summonerStats.VIT + _statsFromEquipments.VIT, lvl);
     }
@@ -231,7 +238,7 @@ contract Calculator is Initializable, InitNavigator {
     function ACCURACY(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,) = getAllStats(summoner);
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
         return ACCWDecimals(_generatedStatsFromEquipments.ACCURACY,
             _summonerStats.DEX + _statsFromEquipments.DEX) / GameConstants.GAME_DECIMAL;
     }
@@ -239,7 +246,7 @@ contract Calculator is Initializable, InitNavigator {
     function ACCURACYWDecimals(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,) = getAllStats(summoner);
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
         return ACCWDecimals(_generatedStatsFromEquipments.ACCURACY,
             _summonerStats.DEX + _statsFromEquipments.DEX);
     }
@@ -254,7 +261,7 @@ contract Calculator is Initializable, InitNavigator {
     function DODGE(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,) = getAllStats(summoner);
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
         return DODWDecimals(_generatedStatsFromEquipments.DODGE,
             _summonerStats.AGI + _statsFromEquipments.AGI) / GameConstants.GAME_DECIMAL;
     }
@@ -262,7 +269,7 @@ contract Calculator is Initializable, InitNavigator {
     function DODGEWDecimals(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,) = getAllStats(summoner);
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
         return DODWDecimals(_generatedStatsFromEquipments.DODGE,
             _summonerStats.AGI + _statsFromEquipments.AGI);
     }
@@ -277,7 +284,7 @@ contract Calculator is Initializable, InitNavigator {
     function CRIT(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,) = getAllStats(summoner);
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
         return CRITICALWDecimals(_generatedStatsFromEquipments.CRIT,
             _summonerStats.LUCK + _statsFromEquipments.LUCK) / GameConstants.GAME_DECIMAL;
     }
@@ -285,7 +292,7 @@ contract Calculator is Initializable, InitNavigator {
     function CRITWDecimals(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,) = getAllStats(summoner);
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
         return CRITICALWDecimals(_generatedStatsFromEquipments.CRIT,
             _summonerStats.LUCK + _statsFromEquipments.LUCK);
     }
@@ -298,18 +305,59 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     // @notice VIEW UTILS
-    function getAllStats(uint summoner) internal view returns (GameObjects.Stats memory, GameObjects.Stats memory, GameObjects.GeneratedStats memory, uint) {
+    function getAllStats(uint summoner) internal view returns (GameObjects.Stats memory, GameObjects.Stats memory, GameObjects.GeneratedStats memory, GameObjects.ElementalStats memory, uint) {
+
+
         ISummoners summonersContract = ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS));
-        IEquipable equipablesContract = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY));
-        IAttributes attributesContract = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES));
-        GameObjects.Stats memory _summonerStats = attributesContract.stats(summoner);
-        GameObjects.Stats memory _statsFromEquipments = equipablesContract.getPreCalculatedStats(summoner);
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments = equipablesContract.getPreCalculatedGeneratedStats(summoner);
+        //function getSummonerBattleStats(uint summoner) public view returns
+        //(GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats)
+        GameObjects.Stats memory _summonerStats = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(summoner);
+        (GameObjects.Stats memory _stats,
+        GameObjects.GeneratedStats memory _gen_stats,
+        GameObjects.ElementalStats memory _ele_stats) = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY)).getSummonerBattleStats(summoner);
+
         uint lvl = summonersContract.level(summoner);
-        return (_summonerStats, _statsFromEquipments, _generatedStatsFromEquipments, lvl);
+        return (_summonerStats, _stats, _gen_stats, _ele_stats, lvl);
     }
 
-    function summonerBaseStats(GameObjects.Class _class) public view returns (GameObjects.GeneratedStats memory) {
+    function SummonerBaseStats(GameObjects.Class _class) public view returns (GameObjects.GeneratedStats memory) {
         return GameObjects.GeneratedStats({HP : 1, P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
     }
+
+    function CostOfStat(uint skill) public view returns (uint) {
+        //1+target_skill_point/10
+        return skill == 0 || skill == 1 ? 0 : 1 + (skill / 10);
+    }
+
+    function SumOfStatSetCost(GameObjects.Stats memory stats) external view returns (uint) {
+        uint cost = 0;
+
+        for (uint i = 0; i <= stats.STR; i++) {
+            cost += CostOfStat(i);
+        }
+
+        for (uint i = 0; i <= stats.DEX; i++) {
+            cost += CostOfStat(i);
+        }
+
+        for (uint i = 0; i <= stats.AGI; i++) {
+            cost += CostOfStat(i);
+        }
+
+        for (uint i = 0; i <= stats.INT; i++) {
+            cost += CostOfStat(i);
+        }
+
+        for (uint i = 0; i <= stats.VIT; i++) {
+            cost += CostOfStat(i);
+        }
+
+        for (uint i = 0; i <= stats.LUCK; i++) {
+            cost += CostOfStat(i);
+        }
+
+        return cost;
+    }
+
+
 }

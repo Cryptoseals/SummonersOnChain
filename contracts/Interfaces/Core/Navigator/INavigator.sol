@@ -6,8 +6,8 @@ interface INavigator {
         SUMMONERS, // 0
         ATTRIBUTES, // 1
         SKILLS, // 2
-        EQUIPABLE_ITEMS, // 4
-        INVENTORY, // 5
+        EQUIPABLE_ITEMS, // 4 NFTS
+        INVENTORY, // 5 EQUIP SLOTS
         EXP, // 6
         GOLD, // 7
         ESSENCE, // 8
@@ -26,7 +26,9 @@ interface INavigator {
         MOUNTS_CODEX, //21
         RANDOM_CODEX, //22
         CALCULATOR, // 23
-        CRYPTO_SEAL // 23
+        CRYPTO_SEAL, // 23
+        ARTIFACT_SLOTS, // 23
+        ELIXIR_SLOTS // 23
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;

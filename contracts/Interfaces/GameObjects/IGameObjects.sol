@@ -2,7 +2,7 @@ pragma solidity ^0.8.0;
 
 library GameObjects {
     enum Element {
-        NON_ELEMENTAL,
+        PHYSICAL,
         FIRE,
         COLD,
         EARTH,
@@ -39,6 +39,13 @@ library GameObjects {
         STR, AGI, INT, DEX, VIT, LUCK
     }
 
+    struct BattleStats {
+        uint DPS;
+        uint HIT_CHANCE;
+        uint DODGE_CHANCE;
+        uint CRIT_CHANCE;
+    }
+
     struct Stats {
         uint STR;
         uint AGI;
@@ -58,6 +65,11 @@ library GameObjects {
         uint DODGE;
         uint CRIT;
         uint CRIT_MULTIPLIER;
+    }
+
+    struct ElementalStats {
+        ElementalAtk ElementalAtk;
+        ElementalDef ElementalDef;
     }
 
     struct ElementalAtk {
@@ -83,8 +95,7 @@ library GameObjects {
     struct SummonerStats {
         Stats Stats;
         GeneratedStats GeneratedStats;
-        ElementalAtk ElementalAtk;
-        ElementalDef ElementalDef;
+        ElementalStats ElementalStats;
     }
 
     struct ItemRequirement {
@@ -111,6 +122,7 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
+        ElementalStats elementalStats;
         Element element;
     }
 
@@ -125,6 +137,7 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
+        ElementalStats elementalStats;
     }
 
     struct ConsumedElixir {
@@ -138,18 +151,17 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
-        ElementalAtk ElementalAtk;
-        ElementalDef ElementalDef;
-    }
+        ElementalStats elementalStats;
 
+    }
 
     struct Armor {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
-        ElementalAtk ElementalAtk;
-        ElementalDef ElementalDef;
+        ElementalStats elementalStats;
+
     }
 
     struct Boots {
@@ -157,8 +169,8 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
-        ElementalAtk ElementalAtk;
-        ElementalDef ElementalDef;
+        ElementalStats elementalStats;
+
     }
 
 
@@ -167,8 +179,8 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
-        ElementalAtk ElementalAtk;
-        ElementalDef ElementalDef;
+        ElementalStats elementalStats;
+        Element damageType;
     }
 
 
@@ -177,8 +189,8 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
-        ElementalAtk ElementalAtk;
-        ElementalDef ElementalDef;
+        ElementalStats elementalStats;
+
     }
 
     struct Ring {
@@ -186,8 +198,8 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
-        ElementalAtk ElementalAtk;
-        ElementalDef ElementalDef;
+        ElementalStats elementalStats;
+
     }
 
     struct Amulet {
@@ -195,8 +207,8 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
-        ElementalAtk ElementalAtk;
-        ElementalDef ElementalDef;
+        ElementalStats elementalStats;
+
     }
 
     struct Earring {
@@ -204,8 +216,8 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
-        ElementalAtk ElementalAtk;
-        ElementalDef ElementalDef;
+        ElementalStats elementalStats;
+
     }
 
     struct Belt {
@@ -213,8 +225,8 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
-        ElementalAtk ElementalAtk;
-        ElementalDef ElementalDef;
+        ElementalStats elementalStats;
+
     }
 
 
@@ -223,8 +235,8 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
-        ElementalAtk ElementalAtk;
-        ElementalDef ElementalDef;
+        ElementalStats elementalStats;
+
     }
 
     struct EquipableItem {
@@ -232,8 +244,8 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
-        ElementalAtk ElementalAtk;
-        ElementalDef ElementalDef;
+        ElementalStats elementalStats;
+
     }
 
     struct SummonedCompanion {
@@ -246,8 +258,8 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
-        ElementalAtk ElementalAtk;
-        ElementalDef ElementalDef;
+        ElementalStats elementalStats;
+
     }
 
 
@@ -256,8 +268,8 @@ library GameObjects {
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
-        ElementalAtk ElementalAtk;
-        ElementalDef ElementalDef;
+        ElementalStats elementalStats;
+
     }
 
     struct MiscItem {
