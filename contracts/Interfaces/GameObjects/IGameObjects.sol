@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 library GameObjects {
     enum Element {
         PHYSICAL,
+        ARCANE,
         FIRE,
         COLD,
         EARTH,
@@ -65,11 +66,13 @@ library GameObjects {
         uint DODGE;
         uint CRIT;
         uint CRIT_MULTIPLIER;
+        uint INFUSION;
     }
 
     struct ElementalStats {
         ElementalAtk ElementalAtk;
         ElementalDef ElementalDef;
+        Element SummonerDamageType;
     }
 
     struct ElementalAtk {

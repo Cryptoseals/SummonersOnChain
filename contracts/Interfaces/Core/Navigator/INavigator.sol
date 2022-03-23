@@ -32,7 +32,9 @@ interface INavigator {
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;
+
     function setGameContractsById(CONTRACT _contractId, address _address, bool value) external;
+
     function getContractAddress(CONTRACT _contractId) external view returns (address);
 
     function isGameContract(address _address) external view returns (bool);

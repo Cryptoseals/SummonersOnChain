@@ -19,18 +19,35 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     function VSBattleStats(uint summoner, uint summoner2) external view returns (
-        GameObjects.BattleStats memory _battleStats1,
-        GameObjects.BattleStats memory _battleStats2
+        GameObjects.BattleStats memory,
+        GameObjects.BattleStats memory
     ){
         // implement artifact and elixir calculations
-        (GameObjects.Stats memory _statsFromEquips1,
+        (
+        GameObjects.Stats memory _statsFromEquips1,
+        GameObjects.Stats memory _statsBase1,
         GameObjects.GeneratedStats memory _genStatsFromEquips1,
-        GameObjects.ElementalStats memory _eleStatsFromEquips1) = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY)).getSummonerBattleStats(summoner);
+        GameObjects.ElementalStats memory _eleStatsFromEquips1,) = getAllStats(summoner);
 
-        (GameObjects.Stats memory _statsFromEquips2,
+        (
+        GameObjects.Stats memory _statsFromEquips2,
+        GameObjects.Stats memory _statsBase2,
         GameObjects.GeneratedStats memory _genStatsFromEquips2,
-        GameObjects.ElementalStats memory _eleStatsFromEquips2) = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY)).getSummonerBattleStats(summoner2);
+        GameObjects.ElementalStats memory _eleStatsFromEquips2,) = getAllStats(summoner2);
 
+        (
+        GameObjects.BattleStats memory _battleStats1,
+        GameObjects.BattleStats memory _battleStats2
+        ) = GetBattleStats(
+            EquipableUtils.sumStats(_statsFromEquips1, _statsBase1),
+            _genStatsFromEquips1,
+            _eleStatsFromEquips1,
+            EquipableUtils.sumStats(_statsFromEquips2, _statsBase2),
+            _genStatsFromEquips2,
+            _eleStatsFromEquips2
+        );
+
+        return (_battleStats1, _battleStats2);
     }
 
 
@@ -41,9 +58,70 @@ contract Calculator is Initializable, InitNavigator {
         GameObjects.Stats memory _stats2,
         GameObjects.GeneratedStats memory _gen_stats2,
         GameObjects.ElementalStats memory _eleStats2
-    ) public view returns(
+    ) internal view returns (
         GameObjects.BattleStats memory _battleStats1,
         GameObjects.BattleStats memory _battleStats2) {
+
+        if (_eleStats1.SummonerDamageType == GameObjects.Element.PHYSICAL) {
+            _battleStats1.DPS = DPSWDecimals(_gen_stats1.P_ATK, _gen_stats2.P_DEF, _gen_stats1.INFUSION);
+        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.ARCANE) {
+            _battleStats1.DPS = DPSWDecimals(_gen_stats1.M_ATK, _gen_stats2.M_DEF, _gen_stats1.INFUSION);
+        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.FIRE) {
+            _battleStats1.DPS = DPSWDecimals(_eleStats1.ElementalAtk.FIRE_ATK,
+                _eleStats2.ElementalDef.FIRE_DEF, _gen_stats1.INFUSION);
+        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.COLD) {
+            _battleStats1.DPS = DPSWDecimals(_eleStats1.ElementalAtk.COLD_ATK,
+                _eleStats2.ElementalDef.COLD_DEF, _gen_stats1.INFUSION);
+        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.EARTH) {
+            _battleStats1.DPS = DPSWDecimals(_eleStats1.ElementalAtk.EARTH_ATK,
+                _eleStats2.ElementalDef.EARTH_DEF, _gen_stats1.INFUSION);
+        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.LIGHTNING) {
+            _battleStats1.DPS = DPSWDecimals(_eleStats1.ElementalAtk.LIGHTNING_ATK,
+                _eleStats2.ElementalDef.LIGHTNING_DEF, _gen_stats1.INFUSION);
+        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.DARK) {
+            _battleStats1.DPS = DPSWDecimals(_eleStats1.ElementalAtk.DARK_ATK,
+                _eleStats2.ElementalDef.DARK_DEF, _gen_stats1.INFUSION);
+        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.HOLY) {
+            _battleStats1.DPS = DPSWDecimals(_eleStats1.ElementalAtk.HOLY_ATK,
+                _eleStats2.ElementalDef.HOLY_DEF, _gen_stats1.INFUSION);
+        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.VOID) {
+            _battleStats1.DPS = DPSWDecimals(_eleStats1.ElementalAtk.VOID_ATK,
+                _eleStats2.ElementalDef.VOID_DEF, _gen_stats1.INFUSION);
+        } else {
+            revert("ELEM ERROR");
+        }
+
+
+        if (_eleStats2.SummonerDamageType == GameObjects.Element.PHYSICAL) {
+            _battleStats2.DPS = DPSWDecimals(_gen_stats2.P_ATK, _gen_stats1.P_DEF, _gen_stats2.INFUSION);
+        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.ARCANE) {
+            _battleStats2.DPS = DPSWDecimals(_gen_stats2.M_ATK, _gen_stats1.M_DEF, _gen_stats2.INFUSION);
+        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.FIRE) {
+            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.FIRE_ATK,
+                _eleStats1.ElementalDef.FIRE_DEF, _gen_stats2.INFUSION);
+        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.COLD) {
+            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.COLD_ATK,
+                _eleStats1.ElementalDef.COLD_DEF, _gen_stats2.INFUSION);
+        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.EARTH) {
+            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.EARTH_ATK,
+                _eleStats1.ElementalDef.EARTH_DEF, _gen_stats2.INFUSION);
+        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.LIGHTNING) {
+            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.LIGHTNING_ATK,
+                _eleStats1.ElementalDef.LIGHTNING_DEF, _gen_stats2.INFUSION);
+        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.DARK) {
+            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.DARK_ATK,
+                _eleStats1.ElementalDef.DARK_DEF, _gen_stats2.INFUSION);
+        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.HOLY) {
+            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.HOLY_ATK,
+                _eleStats1.ElementalDef.HOLY_DEF, _gen_stats2.INFUSION);
+        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.VOID) {
+            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.VOID_ATK,
+                _eleStats1.ElementalDef.VOID_DEF, _gen_stats2.INFUSION);
+        } else {
+            revert("ELEM ERROR2");
+        }
+
+
         _battleStats1.CRIT_CHANCE = CritChanceWDecimals(_stats1.LUCK, _gen_stats1.CRIT);
         _battleStats2.CRIT_CHANCE = CritChanceWDecimals(_stats2.LUCK, _gen_stats2.CRIT);
 
@@ -118,8 +196,6 @@ contract Calculator is Initializable, InitNavigator {
         /* example2: assume crit chance = 20, use rolled 80, 100-80=20, 20 <= 20, true*/
         return rollE18 <= CHANCE_W_DEC;
     }
-
-
 
     // STAT RELATED CALCULATIONS
     function DPS(uint ATK, uint DEF, uint PEN) external pure returns (uint){
@@ -321,7 +397,7 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     function SummonerBaseStats(GameObjects.Class _class) public view returns (GameObjects.GeneratedStats memory) {
-        return GameObjects.GeneratedStats({HP : 1, P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1});
+        return GameObjects.GeneratedStats({HP : 1, P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1, INFUSION : 0});
     }
 
     function CostOfStat(uint skill) public view returns (uint) {
