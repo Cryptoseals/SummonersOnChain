@@ -48,10 +48,10 @@ contract ElixirSlots is Initializable, InitNavigator {
         GameObjects.Elixir memory elixir = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX)).elixir(elixirId, tier);
         require(elixirContract.burnItem(id), "?!");
         ElixirSlots[summoner][slot] = ConsumedElixir({
-            elixirId : elixirId,
-            tier : tier,
-            tokenId : id,
-            expirationTime : block.timestamp + elixir.expirationTime
+        elixirId : elixirId,
+        tier : tier,
+        tokenId : id,
+        expirationTime : block.timestamp + elixir.expirationTime
         });
     }
 
@@ -73,10 +73,10 @@ contract ElixirSlots is Initializable, InitNavigator {
         });
     }
 
-    function activeElixirs(uint summoner) external view returns (GameObjects.Stats memory _stats,GameObjects.GeneratedStats memory _gen_stats,GameObjects.ElementalStats memory _ele_stats){
+    function activeElixirs(uint summoner) public view returns (GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats){
         for (uint i = 1; i <= ELIXIR_SLOTS; i++) {
             ConsumedElixir memory _consumed = ElixirSlots[summoner][i];
-            if(_consumed.expirationTime < block.timestamp) continue;
+            if (_consumed.expirationTime < block.timestamp) continue;
 
             GameObjects.Elixir memory elixir = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX)).elixir(_consumed.elixirId, _consumed.tier);
             EquipableUtils.sumStats(_stats, elixir.statBonus);
@@ -85,7 +85,7 @@ contract ElixirSlots is Initializable, InitNavigator {
         }
     }
 
-    function activeArtifacts(uint summoner) external view returns (GameObjects.Stats memory _stats,GameObjects.GeneratedStats memory _gen_stats,GameObjects.ElementalStats memory _ele_stats){
+    function activeArtifacts(uint summoner) public view returns (GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats){
         for (uint i = 1; i <= ARTIFACT_SLOTS; i++) {
             EquippedArtifact memory _consumed = ArtifactSlots[summoner][i];
             GameObjects.Artifact memory artifact = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX)).artifact(_consumed.artifactId, _consumed.tier);
@@ -93,5 +93,30 @@ contract ElixirSlots is Initializable, InitNavigator {
             EquipableUtils.sumGeneratedStats(_gen_stats, artifact.generatedStatBonus);
             EquipableUtils.sumGeneratedElementalStats(_ele_stats, artifact.elementalStats);
         }
+    }
+
+    function activeEffects(uint summoner) external view returns (
+        GameObjects.Stats memory _stats,
+        GameObjects.GeneratedStats memory _gen_stats,
+        GameObjects.ElementalStats memory _ele_stats){
+
+        (
+        GameObjects.Stats memory _stats1,
+        GameObjects.GeneratedStats memory _gen_stats1,
+        GameObjects.ElementalStats memory _ele_stats1
+        ) = activeElixirs(summoner);
+
+        (
+        GameObjects.Stats memory _stats2,
+        GameObjects.GeneratedStats memory _gen_stats2,
+        GameObjects.ElementalStats memory _ele_stats2
+        ) = activeArtifacts(summoner);
+
+        EquipableUtils.sumStats(_stats, _stats1);
+        EquipableUtils.sumStats(_stats, _stats2);
+        EquipableUtils.sumGeneratedStats(_gen_stats, _gen_stats1);
+        EquipableUtils.sumGeneratedStats(_gen_stats, _gen_stats2);
+        EquipableUtils.sumGeneratedElementalStats(_ele_stats, _ele_stats1);
+        EquipableUtils.sumGeneratedElementalStats(_ele_stats, _ele_stats2);
     }
 }

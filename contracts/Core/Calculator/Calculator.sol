@@ -8,6 +8,7 @@ import "../../Interfaces/Attributes/IAttributes.sol";
 import "../../Interfaces/Core/Constants/Constants.sol";
 import "../../Inventory/EquipableUtils.sol";
 import "../../Interfaces/Inventory/IEquipable.sol";
+import "../../Interfaces/Inventory/IElixirAndArtifactSlots.sol";
 import "../../Interfaces/Summoners/ISummoners.sol";
 pragma solidity ^0.8.0;
 
@@ -22,7 +23,6 @@ contract Calculator is Initializable, InitNavigator {
         GameObjects.BattleStats memory,
         GameObjects.BattleStats memory
     ){
-        // implement artifact and elixir calculations later...
         (
         GameObjects.Stats memory _statsFromEquips1,
         GameObjects.Stats memory _statsBase1,
@@ -381,19 +381,26 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     // @notice VIEW UTILS
-    function getAllStats(uint summoner) internal view returns (GameObjects.Stats memory, GameObjects.Stats memory, GameObjects.GeneratedStats memory, GameObjects.ElementalStats memory, uint) {
-
+    function getAllStats(uint summoner) internal view returns (GameObjects.Stats memory _stats_base, GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _generated_stats, GameObjects.ElementalStats memory _ele_stats, uint lvl) {
 
         ISummoners summonersContract = ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS));
         //function getSummonerBattleStats(uint summoner) public view returns
         //(GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats)
         GameObjects.Stats memory _summonerStats = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(summoner);
-        (GameObjects.Stats memory _stats,
-        GameObjects.GeneratedStats memory _gen_stats,
-        GameObjects.ElementalStats memory _ele_stats) = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY)).getSummonerBattleStats(summoner);
 
-        uint lvl = summonersContract.level(summoner);
-        return (_summonerStats, _stats, _gen_stats, _ele_stats, lvl);
+        (GameObjects.Stats memory _stats_eq,
+        GameObjects.GeneratedStats memory _gen_stats_eq,
+        GameObjects.ElementalStats memory _ele_stats_eq) = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY)).getSummonerBattleStats(summoner);
+
+        (GameObjects.Stats memory _stats_fx,
+        GameObjects.GeneratedStats memory _gen_stats_fx,
+        GameObjects.ElementalStats memory _ele_stats_fx) = IElixirAndArtifactSlots(contractAddress(INavigator.CONTRACT.INVENTORY)).activeEffects(summoner);
+
+        lvl = summonersContract.level(summoner);
+        _stats_base = _summonerStats;
+        _stats = _stats_eq;
+        _generated_stats = EquipableUtils.sumGeneratedStats(_gen_stats_eq, _gen_stats_fx);
+        _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats_eq, _ele_stats_fx);
     }
 
     function SummonerBaseStats(GameObjects.Class _class) public view returns (GameObjects.GeneratedStats memory) {
