@@ -245,6 +245,7 @@ library GameObjects {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+        GeneratedStats generatedStatBonus;
         ElementalAtk ElementalAtk;
         ElementalDef ElementalDef;
     }
@@ -254,6 +255,7 @@ library GameObjects {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
+        GeneratedStats generatedStatBonus;
         ElementalAtk ElementalAtk;
         ElementalDef ElementalDef;
     }

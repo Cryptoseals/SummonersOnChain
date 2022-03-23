@@ -16,7 +16,7 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
     }
 
     function mintItem(address player, GameObjects.ItemType _type, uint id) external onlyGameContracts {
-        uint nextToken = totalSupply();
+        uint nextToken = totalSupply()+1;
         tokenToType[nextToken] = _type;
         _mint(player, id);
         tokenToItemId[nextToken] = id;

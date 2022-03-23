@@ -9,6 +9,7 @@ import "hardhat-gas-reporter";
 import "solidity-coverage";
 import "hardhat-contract-sizer";
 import "@openzeppelin/hardhat-upgrades";
+import "hardhat-contract-sizer";
 
 const deploymentAccount = process.env.DEPLOYMENT_ACCOUNT_KEY || ""
 const chainInstance = process.env.CHAIN_INSTANCE || ""
@@ -37,7 +38,7 @@ const config: HardhatUserConfig = {
   },
   contractSizer: {
     alphaSort: true,
-    runOnCompile: false,
+    runOnCompile: true,
     disambiguatePaths: false,
   },
 

@@ -6,6 +6,7 @@ pragma solidity 0.8.7;
 contract CodexMiscItems is Rarity {
     string constant public index = "Codex";
     string constant public class = "MiscItems";
+    string constant public version = "0.0.1";
 
     function getAllMiscItems() external pure returns (GameObjects.MiscItem[] memory) {
         GameObjects.MiscItem[] memory result = new GameObjects.MiscItem[](66);

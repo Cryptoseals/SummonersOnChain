@@ -2,8 +2,9 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
 import "../Interfaces/GameObjects/IGameEntities.sol";
 import "../Interfaces/GameObjects/IGameObjects.sol";
-import "../Interfaces/Inventory/EquipableLibrary.sol";
 import "../Core/Navigator/InitNavigator.sol";
+import "../Core/Common/Errors.sol";
+import "../Interfaces/Core/Constants/Constants.sol";
 
 pragma solidity ^0.8.0;
 
@@ -24,6 +25,25 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
         return ownerOf(summonerId) == sender;
     }
 
+
+    function levelUp(uint id) external {
+        if (!(ownerOf(id) == msg.sender)) revert UnauthorizedSender(msg.sender, "NOT OWNED");
+        _levelUp(id);
+    }
+
+    function levelUpSummoner(uint id) external onlyGameContracts {
+        _levelUp(id);
+    }
+
+    function _levelUp(uint id) internal {
+        uint nextLevel = SummonerLevels[id] + 1;
+        uint requiredXP = nextLevel * GameConstants.XP_PER_LEVEL;
+        require(SummonerEXP[id] >= requiredXP, "NOT ENOUGH XP");
+        _spendXP(id, requiredXP);
+        SummonerLevels[id]++;
+    }
+
+
     function setSummonerState(uint summoner, GameEntities.SummonerState state) public onlyGameContracts {
         SummonerState[summoner] = state;
     }
@@ -33,6 +53,10 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     }
 
     function spendXP(uint summoner, uint xp) public onlyGameContracts {
+        _spendXP(summoner, xp);
+    }
+
+    function _spendXP(uint summoner, uint xp) internal onlyGameContracts {
         SummonerEXP[summoner] -= xp;
     }
 
