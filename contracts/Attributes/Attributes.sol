@@ -74,7 +74,7 @@ contract Attributes is Initializable, InitNavigator {
             SummonerStats[summoner].LUCK++;
         }
 
-        uint cost = calculator.CostOfStat(nextStatLevel+1);
+        uint cost = calculator.CostOfStat(nextStatLevel + 1);
         require(used + cost <= total, "EXCEEDS MAX. POINTS");
         UsedLevelPoints[summoner] += cost;
     }
@@ -85,6 +85,7 @@ contract Attributes is Initializable, InitNavigator {
     }
 
     function totalPointsOfSummoner(uint summoner) public view returns (uint) {
+        ISummoners Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
         uint level = Summoners.level(summoner);
         return GameConstants.SUMMONER_INITIAL_STAT_POINTS + level * 10;
     }

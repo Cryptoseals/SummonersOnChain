@@ -7,7 +7,6 @@ pragma solidity ^0.8.0;
 
 contract InitNavigator is Initializable {
     INavigator Navigator;
-    ISummoners Summoners;
 
     function initializeNavigator(address _navigator) internal {
         Navigator = INavigator(_navigator);
@@ -38,7 +37,7 @@ contract InitNavigator is Initializable {
     }
 
     modifier sealIsOwned(uint summoner) {
-        Navigator.sealIsOwned(summoner, msg.sender);
+        require(Navigator.sealIsOwned(summoner, msg.sender), "UNAUTHORIZED");
         _;
     }
 

@@ -48,6 +48,7 @@ IFungibleInGameToken {
     }
 
     function _claim(uint[] memory _summoners) internal {
+        ISummoners Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
         uint toMint = 0;
         for (uint i = 0; i < _summoners.length; i++) {
             require(ownerOfSummoner(_summoners[i]) == msg.sender, "unauth");

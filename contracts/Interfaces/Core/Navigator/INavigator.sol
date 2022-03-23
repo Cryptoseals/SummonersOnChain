@@ -6,25 +6,27 @@ interface INavigator {
         SUMMONERS, // 0
         ATTRIBUTES, // 1
         SKILLS, // 2
-        EQUIPABLES, // 4
-        EXP, // 5
-        GOLD, // 6
-        ESSENCE, // 7
-        SCRAPS, // 8
-        JOB, // 9
-        HELMETS_CODEX, //10
-        ARMORS_CODEX, //11
-        BOOTS_CODEX, // 12
-        WEAPONS_CODEX, //13
-        OFF_HANDS_CODEX, //14
-        AMULETS_CODEX, //15
-        RINGS_CODEX, //16
-        EARRINGS_CODEX, //17
-        BELTS_CODEX, //18
-        ARTIFACTS_CODEX, //19
-        MOUNTS_CODEX, //20
-        RANDOM_CODEX, //21
-        CALCULATOR // 22
+        EQUIPABLE_ITEMS, // 4
+        INVENTORY, // 5
+        EXP, // 6
+        GOLD, // 7
+        ESSENCE, // 8
+        SCRAPS, // 9
+        JOB, // 10
+        HELMETS_CODEX, //11
+        ARMORS_CODEX, //12
+        BOOTS_CODEX, // 13
+        WEAPONS_CODEX, //14
+        OFF_HANDS_CODEX, //15
+        AMULETS_CODEX, //16
+        RINGS_CODEX, //17
+        EARRINGS_CODEX, //18
+        BELTS_CODEX, //19
+        ARTIFACTS_CODEX, //20
+        MOUNTS_CODEX, //21
+        RANDOM_CODEX, //22
+        CALCULATOR, // 23
+        CRYPTO_SEAL // 23
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;

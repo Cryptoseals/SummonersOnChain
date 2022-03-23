@@ -115,17 +115,17 @@ contract Calculator is Initializable, InitNavigator {
 
 
     // STAT RELATED CALCULATIONS
-    function DPS(uint ATK, uint DEF) external pure returns (uint){
-        return DPSWDecimals(ATK, DEF) / GameConstants.GAME_DECIMAL;
+    function DPS(uint ATK, uint DEF, uint PEN) external pure returns (uint){
+        return DPSWDecimals(ATK, DEF, PEN) / GameConstants.GAME_DECIMAL;
     }
 
-    function DPSWDecimals(uint ATK, uint DEF) public pure returns (uint) {
+    function DPSWDecimals(uint ATK, uint DEF, uint PEN) public pure returns (uint) {
         uint DEF_W_DECIMAL = (DEF * GameConstants.GAME_DECIMAL);
         uint ATK_W_DECIMAL = (ATK * GameConstants.GAME_DECIMAL);
-        uint DEF_PLUS_H = (GameConstants.HUNDRED + DEF_W_DECIMAL);
+        uint DEF_PENETRATED = DEF_W_DECIMAL - ((DEF_W_DECIMAL) * (PEN * GameConstants.GAME_DECIMAL)) / GameConstants.HUNDRED;
+        uint DEF_PLUS_H = (GameConstants.HUNDRED + DEF_PENETRATED);
         uint MULTIPLIER = GameConstants.HUNDRED * GameConstants.HUNDRED;
-        uint PERCENTAGE = MULTIPLIER / DEF_PLUS_H;
-        // @TODO, add penetration stat
+        uint PERCENTAGE = (MULTIPLIER / DEF_PLUS_H);
         uint FINAL_ATK = (ATK_W_DECIMAL * (PERCENTAGE / GameConstants.GAME_DECIMAL)) / 100;
         return FINAL_ATK;
     }
@@ -298,10 +298,9 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     // @notice VIEW UTILS
-
     function getAllStats(uint summoner) internal view returns (GameObjects.Stats memory, GameObjects.Stats memory, GameObjects.GeneratedStats memory, uint) {
         ISummoners summonersContract = ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS));
-        IEquipable equipablesContract = IEquipable(contractAddress(INavigator.CONTRACT.EQUIPABLES));
+        IEquipable equipablesContract = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY));
         IAttributes attributesContract = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES));
         GameObjects.Stats memory _summonerStats = attributesContract.stats(summoner);
         GameObjects.Stats memory _statsFromEquipments = equipablesContract.getPreCalculatedStats(summoner);

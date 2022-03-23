@@ -17,7 +17,22 @@ library GameObjects {
     }
 
     enum ItemType {
-        HELMET, ARMOR, BOOTS, WEAPON, OFFHAND, AMULET, RING, BELT, EARRING, ARTIFACT, ELIXIR, MISC
+        WEAPON,
+        OFFHAND,
+        HELMET,
+        ARMOR,
+        BOOTS,
+        AMULET,
+        RING,
+        EARRING,
+        BELT,
+        ARTIFACT,
+        ELIXIR,
+        MOUNT,
+        FISHING_ROD,
+        MISC,
+        MISC2,
+        MISC3
     }
 
     enum StatsEnum {
@@ -211,6 +226,7 @@ library GameObjects {
         ElementalAtk ElementalAtk;
         ElementalDef ElementalDef;
     }
+
     struct EquipableItem {
         ItemMetadata metadata;
         ItemRequirement requirement;
