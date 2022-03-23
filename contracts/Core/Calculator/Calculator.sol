@@ -22,7 +22,7 @@ contract Calculator is Initializable, InitNavigator {
         GameObjects.BattleStats memory,
         GameObjects.BattleStats memory
     ){
-        // implement artifact and elixir calculations
+        // implement artifact and elixir calculations later...
         (
         GameObjects.Stats memory _statsFromEquips1,
         GameObjects.Stats memory _statsBase1,

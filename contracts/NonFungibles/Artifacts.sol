@@ -5,10 +5,9 @@ import "../Core/Navigator/InitNavigator.sol";
 import "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
-contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC721EnumerableUpgradeable {
+contract Artifacts is Initializable, OwnableUpgradeable, InitNavigator, ERC721EnumerableUpgradeable {
 
-    mapping(uint => GameObjects.ItemType) public tokenToType;
-    mapping(uint => uint) public tokenToItemId;
+    mapping(uint => uint) public tokenToArtifactId;
     mapping(uint => uint) public tokenToEnchantmentLevel;
 
     function initialize(address _navigator, string memory name, string memory symbol) external initializer {
@@ -16,10 +15,10 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
         __ERC721_init(name, symbol);
     }
 
-    function mintItem(address player, GameObjects.ItemType _type, uint id) external onlyGameContracts {
-        uint nextToken = totalSupply()+1;
-        tokenToType[nextToken] = _type;
-        tokenToItemId[nextToken] = id;
+    function mintItem(address player, uint artifactId, uint artifactTier) external onlyGameContracts {
+        uint nextToken = totalSupply() + 1;
+        tokenToArtifactId[nextToken] = artifactId;
+        tokenToEnchantmentLevel[nextToken] = artifactTier;
         _mint(player, nextToken);
     }
 
@@ -46,8 +45,9 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
         return result;
     }
 
-    function itemType(uint id) external view returns (GameObjects.ItemType _type) {
+    function itemType(uint id) external view returns (uint _type) {
         if (!_exists(id)) revert InvalidItem("DOES NOT EXIST");
-        _type = tokenToType[id];
+        _type = tokenToArtifactId[id];
     }
+
 }
