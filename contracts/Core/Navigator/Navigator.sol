@@ -17,7 +17,7 @@ contract Navigator is Initializable, OwnableUpgradeable, Guard, INavigator {
 
     mapping(uint => address) public CONTRACTS;
 
-    function initialize(address _seals) public initializer {
+    function initialize(address _seals) external initializer {
         Seals = ERC721(_seals);
         __Ownable_init();
     }

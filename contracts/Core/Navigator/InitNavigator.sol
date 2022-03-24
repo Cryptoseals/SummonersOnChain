@@ -2,6 +2,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../../Core/Common/Errors.sol";
 import "../../Interfaces/Core/Navigator/INavigator.sol";
 import "../../Interfaces/Summoners/ISummoners.sol";
+import "../../Interfaces/GameObjects/IGameEntities.sol";
 
 pragma solidity ^0.8.0;
 
@@ -48,6 +49,11 @@ contract InitNavigator is Initializable {
 
     modifier onlyGameContracts() {
         require(Navigator.isGameContract(msg.sender), "UNAUTHORIZED");
+        _;
+    }
+    modifier notInFight(uint summoner) {
+        ISummoners Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
+        require(Summoners.state(summoner) != GameEntities.SummonerState.IN_FIGHT, "IN_FIGHT");
         _;
     }
 }

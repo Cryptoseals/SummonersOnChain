@@ -47,7 +47,7 @@ contract Equipable is Initializable, InitNavigator {
     mapping(uint => GameObjects.Element) public DamageTypesOfSummoners;
     mapping(uint => GameObjects.SummonedCompanion) public SummonedCompanions;
 
-    function initialize(address _navigator) public initializer {
+    function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
     }
 

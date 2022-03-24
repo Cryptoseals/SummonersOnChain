@@ -31,11 +31,11 @@ contract ElixirSlots is Initializable, InitNavigator {
         uint tier;
     }
 
-    function initialize(address _navigator) public initializer {
+    function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
     }
 
-    function consumeElixir(uint summoner, uint slot, uint id) external {
+    function consumeElixir(uint summoner, uint slot, uint id) external senderIsSummonerOwner(summoner) notInFight(summoner) {
         require(slot > 0 && slot <= ELIXIR_SLOTS, "");
         // check ownership, remove previous effects and apply new
         require(
@@ -55,7 +55,7 @@ contract ElixirSlots is Initializable, InitNavigator {
         });
     }
 
-    function equipArtifact(uint summoner, uint slot, uint id) external {
+    function equipArtifact(uint summoner, uint slot, uint id) external senderIsSummonerOwner(summoner) notInFight(summoner) {
         require(slot > 0 && slot <= ARTIFACT_SLOTS, "");
         // check ownership, remove previous effects and apply new
         require(
@@ -99,7 +99,6 @@ contract ElixirSlots is Initializable, InitNavigator {
         GameObjects.Stats memory _stats,
         GameObjects.GeneratedStats memory _gen_stats,
         GameObjects.ElementalStats memory _ele_stats){
-
         (
         GameObjects.Stats memory _stats1,
         GameObjects.GeneratedStats memory _gen_stats1,
@@ -112,11 +111,11 @@ contract ElixirSlots is Initializable, InitNavigator {
         GameObjects.ElementalStats memory _ele_stats2
         ) = activeArtifacts(summoner);
 
-        EquipableUtils.sumStats(_stats, _stats1);
-        EquipableUtils.sumStats(_stats, _stats2);
-        EquipableUtils.sumGeneratedStats(_gen_stats, _gen_stats1);
-        EquipableUtils.sumGeneratedStats(_gen_stats, _gen_stats2);
-        EquipableUtils.sumGeneratedElementalStats(_ele_stats, _ele_stats1);
-        EquipableUtils.sumGeneratedElementalStats(_ele_stats, _ele_stats2);
+        _stats = EquipableUtils.sumStats(_stats, _stats1);
+        _stats = EquipableUtils.sumStats(_stats, _stats2);
+        _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, _gen_stats1);
+        _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, _gen_stats2);
+        _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, _ele_stats1);
+        _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, _ele_stats2);
     }
 }
