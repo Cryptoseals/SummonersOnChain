@@ -19,6 +19,8 @@ contract CodexAdventures {
         _adventure.Metadata.name = "First Level";
         _adventure.Metadata.description = "First Level is very easy.";
 
+        _adventure.damageType = GameObjects.Element.FIRE;
+
         _adventure.EnemyElementalStats.ElementalAtk = GameObjects.ElementalAtk({FIRE_ATK : 1, COLD_ATK : 1, EARTH_ATK : 1, LIGHTNING_ATK : 1, DARK_ATK : 1, HOLY_ATK : 1, VOID_ATK : 1});
         _adventure.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : 1, COLD_DEF : 1, EARTH_DEF : 1, LIGHTNING_DEF : 1, DARK_DEF : 1, HOLY_DEF : 1, VOID_DEF : 1});
         _adventure.EnemyGeneratedStats = GameObjects.GeneratedStats({HP : 0, P_ATK : 0, M_ATK : 0, P_DEF : 0, M_DEF : 0, ACCURACY : 0, DODGE : 0, CRIT : 0, CRIT_MULTIPLIER : 0, INFUSION : 0});

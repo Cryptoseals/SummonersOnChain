@@ -15,6 +15,7 @@ interface IAdventure {
         GameObjects.ElementalStats EnemyElementalStats;
         GameObjects.ItemRequirement Requirements;
         IGameRewards.Reward Rewards;
+        GameObjects.Element damageType;
     }
 
 }
