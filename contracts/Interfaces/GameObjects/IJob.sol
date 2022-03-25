@@ -1,3 +1,4 @@
+import "./IGameObjects.sol";
 import "./IGameRewards.sol";
 pragma solidity ^0.8.0;
 
