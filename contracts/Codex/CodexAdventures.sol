@@ -7,9 +7,9 @@ contract CodexAdventures {
     string constant public class = "Adventures";
     string constant public version = "0.0.1";
 
-    function adventure(uint _id, uint _tier) public pure returns (IAdventure.AdventureLevel memory) {
+    function adventure(uint _id, uint difficulty) public pure returns (IAdventure.AdventureLevel memory) {
         if (_id == 1) {
-            return DummyAdventure(_tier);
+            return DummyAdventure(difficulty);
         }
 
         revert("invalid");
