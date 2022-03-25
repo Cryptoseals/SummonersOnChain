@@ -13,6 +13,7 @@ contract Elixirs is Initializable, OwnableUpgradeable, InitNavigator, ERC721Enum
     function initialize(address _navigator, string memory name, string memory symbol) external initializer {
         initializeNavigator(_navigator);
         __ERC721_init(name, symbol);
+        __Ownable_init();
     }
 
     function mintItem(address player, uint elixirId, uint elixirTier) external onlyGameContracts {
@@ -22,7 +23,7 @@ contract Elixirs is Initializable, OwnableUpgradeable, InitNavigator, ERC721Enum
         _mint(player, nextToken);
     }
 
-    function burnItem(uint tokenId) external onlyGameContracts returns(bool) {
+    function burnItem(uint tokenId) external onlyGameContracts returns (bool) {
         _burn(tokenId);
         return true;
     }

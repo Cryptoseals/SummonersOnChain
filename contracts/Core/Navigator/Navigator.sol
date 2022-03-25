@@ -14,12 +14,18 @@ contract Navigator is Initializable, OwnableUpgradeable, Guard, INavigator {
     ERC721 Seals;
 
     bool public _isPaused;
+    uint public _endingDate;
 
     mapping(uint => address) public CONTRACTS;
 
-    function initialize(address _seals) external initializer {
+    function initialize(address _seals, uint _end) external initializer {
         Seals = ERC721(_seals);
         __Ownable_init();
+        _endingDate = block.timestamp + (_end * 1 days);
+    }
+
+    function extendGameTime(uint _end) external onlyOwner override {
+        _endingDate = block.timestamp + (_end * 1 days);
     }
 
     function setGameContractsAddresses(address[] memory _gameContractAddresses, bool value) external override onlyOwner {
@@ -47,7 +53,7 @@ contract Navigator is Initializable, OwnableUpgradeable, Guard, INavigator {
     }
 
     function isPaused() public virtual view override returns (bool) {
-        return _isPaused;
+        return _isPaused || _endingDate < block.timestamp;
     }
 
     function sealIsOwned(uint summoner, address sender) external view override returns (bool) {

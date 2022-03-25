@@ -30,7 +30,9 @@ interface INavigator {
         CRYPTO_SEAL, // 25
         ARTIFACT_AND_ELIXIR_SLOTS, // 26
         ARTIFACTS,
-        ELIXIRS
+        ELIXIRS,
+        MISC_CODEX,
+        MISC_ITEMS
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;
@@ -48,4 +50,6 @@ interface INavigator {
     function nftIsOwned(address _address, address sender, uint _tokenId) external view returns (bool);
 
     function onlyGameContracts() external returns (bool);
+
+    function extendGameTime(uint _end) external;
 }

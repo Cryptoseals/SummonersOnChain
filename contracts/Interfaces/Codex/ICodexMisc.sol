@@ -2,6 +2,6 @@ import "../GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
-interface CodexMisc {
+interface ICodexMisc {
     function item(uint _id) external pure returns (GameObjects.MiscItem memory _misc);
 }
