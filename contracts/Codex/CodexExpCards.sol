@@ -7,7 +7,8 @@ pragma solidity 0.8.7;
 
 contract CodexExpCards is Rarity {
     string constant public index = "Codex";
-    string constant public class = "MiscItems";
+    string constant public class = "ExpCards";
+    string constant public version = "0.0.1";
 
     function getAllCards() external view returns (EXPCardLib.EXPCard[] memory) {
         EXPCardLib.EXPCard[] memory result = new EXPCardLib.EXPCard[](5);

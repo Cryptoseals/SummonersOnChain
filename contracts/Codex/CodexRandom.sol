@@ -4,6 +4,7 @@ pragma solidity 0.8.7;
 contract CodexRandom {
     string constant public index = "Codex";
     string constant public class = "Random";
+    string constant public version = "0.0.1";
 
     function d100(uint _input) external view returns (uint) {
         return dn(_input, 100);

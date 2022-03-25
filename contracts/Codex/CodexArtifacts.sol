@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 contract CodexArtifacts {
     string constant public index = "Codex";
     string constant public class = "Artifacts";
+    string constant public version = "0.0.1";
 
     function artifact(uint _id, uint _tier) public pure returns (GameObjects.Artifact memory) {
         if (_id == 1) {

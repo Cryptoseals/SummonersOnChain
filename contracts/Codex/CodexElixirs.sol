@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 contract CodexElixirs {
     string constant public index = "Codex";
     string constant public class = "Elixirs";
+    string constant public version = "0.0.1";
 
     function elixir(uint _id, uint _tier) public pure returns (GameObjects.Elixir memory) {
         if (_id == 1) {

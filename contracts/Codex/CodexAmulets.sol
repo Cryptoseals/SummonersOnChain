@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 contract CodexAmulets {
     string constant public index = "Codex";
     string constant public class = "Amulets";
+    string constant public version = "0.0.1";
 
     function amulet(uint _id, uint _tier) public pure returns (GameObjects.Amulet memory) {
         if (_id == 1) {

@@ -7,6 +7,7 @@ pragma solidity 0.8.7;
 contract CodexElixirRecipes is Rarity {
     string constant public index = "Codex";
     string constant public class = "ElixirRecipe";
+    string constant public version = "0.0.1";
 
     function lifetime_by_tier(uint _id) public pure returns (uint256) {
         if (_id == 1) {

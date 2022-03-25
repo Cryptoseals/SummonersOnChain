@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 contract CodexBoots {
     string constant public index = "Codex";
     string constant public class = "Boots";
+    string constant public version = "0.0.1";
 
     function boots(uint _id, uint _tier) public pure returns (GameObjects.Boots memory) {
         if (_id == 1) {

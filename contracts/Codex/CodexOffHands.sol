@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 contract CodexOffHands {
     string constant public index = "Codex";
     string constant public class = "OffHands";
+    string constant public version = "0.0.1";
 
     function offHand(uint _id, uint _tier) public pure returns (GameObjects.OffHand memory) {
         if (_id == 1) {
