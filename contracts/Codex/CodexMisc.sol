@@ -614,6 +614,6 @@ contract CodexMiscItems is Rarity {
         _misc.metadata.baseType = GameObjects.ItemType.MISC;
         _misc.metadata.id = 66;
         _misc.metadata.name = "Lizard Tail";
-        _misc.metadata.description = "Looks like a scared lizard lost its own tail. ";
+        _misc.metadata.description = "Looks like a scared lizard lost its own tail.";
     }
 }

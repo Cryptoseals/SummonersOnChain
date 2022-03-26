@@ -1,3 +1,4 @@
+import "./IGenericMetadata.sol";
 pragma solidity ^0.8.0;
 
 library GameObjects {
@@ -283,5 +284,16 @@ library GameObjects {
     struct ElixirRecipe {
         uint id;
         uint[] requiredMiscItemIDs;
+    }
+
+    struct Spell {
+        uint id;
+        IGenericMetadata.Metadata metadata;
+        Class classes;
+        ItemRequirement requirement;
+        uint damageMultiplier;
+        uint infusion;
+        bool isElemental;
+        Element element;
     }
 }

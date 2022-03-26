@@ -2,7 +2,6 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../../Interfaces/Core/Calculator/ICalculator.sol";
 import "../../Core/Navigator/InitNavigator.sol";
 import "../../Interfaces/Core/Navigator/INavigator.sol";
-import "../../Interfaces/Codex/ICodexWeapons.sol";
 import "../../Interfaces/Codex/ICodexRandom.sol";
 import "../../Interfaces/Attributes/IAttributes.sol";
 import "../../Interfaces/Core/Constants/Constants.sol";
@@ -10,6 +9,28 @@ import "../../Inventory/EquipableUtils.sol";
 import "../../Interfaces/Inventory/IEquipable.sol";
 import "../../Interfaces/Inventory/IElixirAndArtifactSlots.sol";
 import "../../Interfaces/Summoners/ISummoners.sol";
+
+/*
+            Generated stats
+            Health
+            equipTotalHP+(lvl*10)+(vit*10)
+            DPS
+            attack*(100/(100+target defense))
+            Attack
+            (equipTotalAttack+(1+(STR/100/2))+STR/2)
+            Magic Attack
+            (equipTotalMagicAttack+(1+(INT/100/2))+INT/2)
+            Defence
+            (vit/2)+(lv/4)
+            Magic Defence
+            (int/2)+(lv/4)
+            Accuracy
+            1+(dex/2)
+            Dodge
+            1+(agi/3)
+            Critical Chance
+            (1+luk/3)/100
+*/
 pragma solidity ^0.8.0;
 
 contract Calculator is Initializable, InitNavigator {
@@ -141,8 +162,11 @@ contract Calculator is Initializable, InitNavigator {
         //(100+(accuracy - dodge))/100
         int ACC_W_DECIMAL = int(ACC * GameConstants.GAME_DECIMAL);
         int DODGE_W_DECIMAL = int(DODGE * GameConstants.GAME_DECIMAL);
-        int CHANCE = (int(GameConstants.HUNDRED) + ACC_W_DECIMAL - DODGE_W_DECIMAL);
-        return CHANCE > 0 ? uint(CHANCE) : uint(0);
+        int DIFF = ((DODGE_W_DECIMAL - ACC_W_DECIMAL));
+        uint X = uint(DIFF) / 2;
+        if(X > GameConstants.HUNDRED) return 0;
+        uint CHANCE = DIFF <= 0 ? GameConstants.HUNDRED : GameConstants.HUNDRED - X;
+        return CHANCE >= GameConstants.HUNDRED ? GameConstants.HUNDRED : CHANCE;
     }
 
     function CritChance(uint LUCK, uint CRIT) external pure returns (uint){
