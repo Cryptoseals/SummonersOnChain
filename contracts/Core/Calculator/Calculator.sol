@@ -227,13 +227,24 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     function DPSWDecimals(uint ATK, uint DEF, uint PEN) public pure returns (uint) {
+        uint256 DECIMAL = 0;
+        uint256 TEMP = DEF;
+        while (TEMP != 0) { TEMP >>= 8; DECIMAL++; }
+
+        int diff = int(DEF) - int(ATK);
+        uint ratio;
+
+        if ( diff > 0 ) {
+            ratio = uint(DEF/ATK);
+        }
+
         uint DEF_W_DECIMAL = (DEF * GameConstants.GAME_DECIMAL);
         uint ATK_W_DECIMAL = (ATK * GameConstants.GAME_DECIMAL);
-        uint DEF_PENETRATED = DEF_W_DECIMAL - ((DEF_W_DECIMAL) * (PEN * GameConstants.GAME_DECIMAL)) / GameConstants.HUNDRED;
+        uint DEF_PENETRATED = DEF_W_DECIMAL - (((DEF_W_DECIMAL) * (PEN * GameConstants.GAME_DECIMAL)) / GameConstants.HUNDRED);
         uint DEF_PLUS_H = (GameConstants.HUNDRED + DEF_PENETRATED);
-        uint MULTIPLIER = GameConstants.HUNDRED * GameConstants.HUNDRED;
+        uint MULTIPLIER = GameConstants.THOUSAND * 10**DECIMAL;
         uint PERCENTAGE = (MULTIPLIER / DEF_PLUS_H);
-        uint FINAL_ATK = (ATK_W_DECIMAL * (PERCENTAGE / GameConstants.GAME_DECIMAL)) / 100;
+        uint FINAL_ATK = (ATK_W_DECIMAL * (PERCENTAGE) / 10 / 10**DECIMAL);
         return FINAL_ATK;
     }
 
