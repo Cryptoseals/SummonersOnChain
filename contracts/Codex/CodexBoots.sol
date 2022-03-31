@@ -8,17 +8,17 @@ contract CodexBoots {
 
     function boots(uint _id, uint _tier) public pure returns (GameObjects.Boots memory) {
         if (_id == 1) {
-            return DummyShield(_tier);
+            return DummyBoots(_tier);
         }
 
         revert("invalid");
     }
 
-    function DummyShield(uint tier) public pure returns (GameObjects.Boots memory _boots) {
+    function DummyBoots(uint tier) public pure returns (GameObjects.Boots memory _boots) {
         _boots.metadata.id = 1;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _boots.metadata.name = "Dummy Shield";
-        _boots.metadata.description = "Dummy Shield is best armor";
+        _boots.metadata.name = "Dummy Boots";
+        _boots.metadata.description = "Dummy Boots is best armor";
         _boots.metadata.upgradable = true;
 
         _boots.requirement.level = 1;
