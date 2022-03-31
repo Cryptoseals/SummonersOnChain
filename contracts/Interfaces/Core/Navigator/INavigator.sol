@@ -34,7 +34,8 @@ interface INavigator {
         MISC_CODEX,
         MISC_ITEMS,
         PREFIX_CODEX,
-        SUFFIX_CODEX
+        SUFFIX_CODEX,
+        EXP_CARDS
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;
