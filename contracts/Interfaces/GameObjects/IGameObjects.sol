@@ -121,13 +121,36 @@ library GameObjects {
         uint created;
     }
 
+    struct Prefix {
+        string title;
+        Stats statBonus;
+        GeneratedStats generatedStatBonus;
+        ElementalStats elementalStats;
+    }
+
+    struct Suffix {
+        string title;
+        Stats statBonus;
+        GeneratedStats generatedStatBonus;
+        ElementalStats elementalStats;
+    }
+
+    struct EquippedItemStruct {
+        uint tokenId;
+        uint itemId;
+        uint itemTier;
+        uint prefixId;
+        uint prefixTier;
+        uint suffixId;
+        uint suffixTier;
+    }
+
     struct Artifact {
         ItemMetadata metadata;
         ItemRequirement requirement;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
         ElementalStats elementalStats;
-        Element element;
     }
 
     struct EquippedArtifact {

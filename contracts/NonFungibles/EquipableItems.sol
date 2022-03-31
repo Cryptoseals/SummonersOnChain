@@ -10,6 +10,10 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
     mapping(uint => GameObjects.ItemType) public tokenToType;
     mapping(uint => uint) public tokenToItemId;
     mapping(uint => uint) public tokenToEnchantmentLevel;
+    mapping(uint => uint) public tokenPrefix;
+    mapping(uint => uint) public tokenPrefixTier;
+    mapping(uint => uint) public tokenSuffix;
+    mapping(uint => uint) public tokenSuffixTier;
 
     function initialize(address _navigator, string memory name, string memory symbol) external initializer {
         initializeNavigator(_navigator);
@@ -17,10 +21,14 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
         __Ownable_init();
     }
 
-    function mintItem(address player, GameObjects.ItemType _type, uint id) external onlyGameContracts {
+    function mintItem(address player,
+        GameObjects.ItemType _type,
+        uint id, uint prefix, uint prefixTier, uint suffix, uint suffixTier) external onlyGameContracts {
         uint nextToken = totalSupply() + 1;
         tokenToType[nextToken] = _type;
         tokenToItemId[nextToken] = id;
+        tokenPrefix[nextToken] = prefix;
+        tokenSuffix[nextToken] = suffix;
         _mint(player, nextToken);
     }
 
@@ -50,5 +58,18 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
     function itemType(uint id) external view returns (GameObjects.ItemType _type) {
         if (!_exists(id)) revert InvalidItem("DOES NOT EXIST");
         _type = tokenToType[id];
+    }
+    function item(uint id) external view returns (GameObjects.ItemType _type, uint _tier) {
+        if (!_exists(id)) revert InvalidItem("DOES NOT EXIST");
+        _type = tokenToType[id];
+        _tier = tokenToEnchantmentLevel[id];
+    }
+
+    function prefixAndSuffix(uint id) external view returns (uint prefix, uint prefixTier, uint suffix, uint suffixTier) {
+        if (!_exists(id)) revert InvalidItem("DOES NOT EXIST");
+        prefix = tokenPrefix[id];
+        prefixTier = tokenPrefixTier[id];
+        suffix= tokenSuffix[id];
+        suffixTier = tokenSuffixTier[id];
     }
 }
