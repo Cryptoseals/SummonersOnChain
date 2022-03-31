@@ -8,12 +8,10 @@ contract CodexWeaponCraftingRecipes {
     
 
     function recipe(uint weaponId) external view returns (ICraftingWeapon.WeaponRecipe memory _recipe) {
-        
         if(weaponId == 1) {
             return DummyRecipe();
         }
-
-        revert("");
+        revert("?");
     }
 
     function DummyRecipe() view public returns (ICraftingWeapon.WeaponRecipe memory _recipe) {
