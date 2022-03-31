@@ -13,4 +13,7 @@ library GameConstants {
     uint constant public SUMMONER_INITIAL_STAT_POINTS = 30;
     uint constant public STAT_POINT_PER_LEVEL = 10;
     uint constant public XP_PER_LEVEL = 1000e18;
+    uint constant public ITEM_MAX_TIER = 9;
+    uint constant public PREFIX_MAX_TIER = 5;
+    uint constant public SUFFIX_MAX_TIER = 5;
 }
