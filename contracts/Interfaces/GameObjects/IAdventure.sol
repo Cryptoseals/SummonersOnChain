@@ -1,3 +1,4 @@
+import "./IGameObjects.sol";
 import "./IGameRewards.sol";
 import "./IMonster.sol";
 import "./IGenericMetadata.sol";

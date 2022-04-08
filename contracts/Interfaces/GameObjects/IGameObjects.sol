@@ -18,6 +18,16 @@ library GameObjects {
         Barbarian, Paladin, Assassin, Wizard, Necromancer, Priest
     }
 
+    enum WeaponType {
+        SWORD,
+        DAGGER,
+        STAFF,
+        AXE,
+        BOWANDCROSSBOW,
+        FOCUS,
+        SHIELD
+    }
+
     enum ItemType {
         WEAPON,
         OFFHAND,
@@ -126,6 +136,7 @@ library GameObjects {
         Stats statBonus;
         GeneratedStats generatedStatBonus;
         ElementalStats elementalStats;
+        uint difficulty;
     }
 
     struct Suffix {
@@ -133,6 +144,7 @@ library GameObjects {
         Stats statBonus;
         GeneratedStats generatedStatBonus;
         ElementalStats elementalStats;
+        uint difficulty;
     }
 
     struct EquippedItemStruct {
@@ -227,7 +239,6 @@ library GameObjects {
         Stats statBonus;
         GeneratedStats generatedStatBonus;
         ElementalStats elementalStats;
-
     }
 
     struct Amulet {

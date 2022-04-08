@@ -35,7 +35,14 @@ interface INavigator {
         MISC_ITEMS,
         PREFIX_CODEX,
         SUFFIX_CODEX,
-        EXP_CARDS
+        EXP_CARDS,
+        FIRE_ENEMY_CODEX,
+        COLD_ENEMY_CODEX,
+        LIGHTNING_ENEMY_CODEX,
+        EARTH_ENEMY_CODEX,
+        DARK_ENEMY_CODEX,
+        HOLY_ENEMY_CODEX,
+        VOID_ENEMY_CODEX
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;
