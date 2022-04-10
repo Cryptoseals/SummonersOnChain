@@ -21,12 +21,6 @@ contract CodexRings is UpgradeableCodex {
         revert("invalid");
     }
 
-    function prefixAndSuffix(uint _prefix, uint _prefixTier, uint _suffix, uint _suffixTier) internal view returns (GameObjects.Prefix memory, GameObjects.Suffix memory) {
-        GameObjects.Prefix memory prefix = PrefixContract.prefix(_prefix, _prefixTier);
-        GameObjects.Suffix memory suffix = SuffixContract.suffix(_suffix, _suffixTier);
-
-        return (prefix, suffix);
-    }
 
     function DummyRing(uint tier) public pure returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 1;

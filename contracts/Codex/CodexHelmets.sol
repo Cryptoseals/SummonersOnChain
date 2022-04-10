@@ -9,23 +9,14 @@ contract CodexHelmets is UpgradeableCodex {
 
     function helmet(EquippedItemStruct memory _equipable) public view returns (GameObjects.Helmet memory) {
         GameObjects.Helmet memory _helmet;
-        GameObjects.Prefix memory _prefix;
-        GameObjects.Suffix memory _suffix;
+        GameObjects.Prefix memory _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
+        GameObjects.Suffix memory _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
 
         if (_equipable.itemId == 1) {
             _helmet = DummyHelmet(_equipable.itemTier);
-            _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
-            _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
         }
 
         revert("invalid");
-    }
-
-    function prefixAndSuffix(uint _prefix, uint _prefixTier, uint _suffix, uint _suffixTier) internal view returns (GameObjects.Prefix memory, GameObjects.Suffix memory) {
-        GameObjects.Prefix memory prefix = PrefixContract.prefix(_prefix, _prefixTier);
-        GameObjects.Suffix memory suffix = SuffixContract.suffix(_suffix, _suffixTier);
-
-        return (prefix, suffix);
     }
 
     function DummyHelmet(uint tier) public pure returns (GameObjects.Helmet memory _helmet) {

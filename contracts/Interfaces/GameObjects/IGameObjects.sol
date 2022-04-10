@@ -134,6 +134,8 @@ library GameObjects {
     struct Prefix {
         string title;
         Stats statBonus;
+
+        // these are percentages.
         GeneratedStats generatedStatBonus;
         ElementalStats elementalStats;
         uint difficulty;
