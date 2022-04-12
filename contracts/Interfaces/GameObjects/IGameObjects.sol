@@ -322,14 +322,4 @@ library GameObjects {
         uint[] requiredMiscItemIDs;
     }
 
-    struct Spell {
-        uint id;
-        IGenericMetadata.Metadata metadata;
-        Class classes;
-        ItemRequirement requirement;
-        uint damageMultiplier;
-        uint infusion;
-        bool isElemental;
-        Element element;
-    }
 }

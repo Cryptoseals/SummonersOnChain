@@ -1,4 +1,4 @@
-import "../Interfaces/GameObjects/IGameObjects.sol";
+import "../Interfaces/GameObjects/ISpell.sol";
 pragma solidity ^0.8.0;
 
 contract CodexSpells {
@@ -6,24 +6,42 @@ contract CodexSpells {
     string constant public class = "Spells";
     string constant public version = "0.0.1";
 
-    function spell(uint _id, uint _tier) public pure returns (GameObjects.Spell memory) {
+    function spell(uint _id, uint _tier) public pure returns (ISpell.Spell memory) {
         if (_id == 1) {
-            return BasicAttack(_tier);
+            return HealingFireball(_tier);
         }
 
         revert("invalid");
     }
 
-    function BasicAttack(uint tier) public pure returns (GameObjects.Spell memory _spell) {
+    function HealingFireball(uint tier) public pure returns (ISpell.Spell memory _spell) {
         _spell.id = 1;
-        _spell.metadata.name = "Basic Attack";
-        _spell.metadata.description = "Deal damage with your weapon.";
+        _spell.name = "Healing Fireball";
+        _spell.cooldown = 3;
+        _spell.spellType = ISpell.SpellType.LIFESTEAL;
 
-        _spell.isElemental = false;
-        _spell.damageMultiplier = 20; //%
+        _spell.attackProps.element = GameObjects.Element.FIRE;
+        _spell.attackProps.damageMultiplier = 120;
+        _spell.attackProps.infusion = 5;
+        _spell.attackProps.multiplierBonusPerTier = 5;
 
-        _spell.requirement.level = 1;
-        _spell.requirement.classRequirement = new GameObjects.Class[](0); // everyone
-        _spell.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _spell.healingProps.maxAmount = 20;
+        _spell.healingProps.maxAmount = 25;
+        _spell.healingProps.bonusHealingPerTier = 2;
+
+        _spell.maxSpellLevel = 12;
+
+        _spell.learningCost = 50e18;
+
+        _spell.upgradeCostMultiplier = 3;
+
+        _spell.requirements.level = 1;
+        _spell.requirements.levelRequirementPerTier = 4;
+
+        _spell.requirements.statRequirement.AGI = 2;
+        _spell.requirements.additionalStatRequirementsPerTier.AGI = 2;
+
+        _spell.requirements.statRequirement.INT = 6;
+        _spell.requirements.additionalStatRequirementsPerTier.INT = 3;
     }
 }
