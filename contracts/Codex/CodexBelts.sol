@@ -7,16 +7,30 @@ contract CodexBelts is UpgradeableCodex {
     string constant public class = "Belts";
     string constant public version = "0.0.1";
 
+    function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Belt memory _belt) public pure returns(GameObjects.Belt memory) {
+        _belt.generatedStatBonus = EquipableUtils.sumGeneratedStats(_belt.generatedStatBonus, _pre.generatedStatBonus);
+        _belt.generatedStatBonus = EquipableUtils.sumGeneratedStats(_belt.generatedStatBonus, _suf.generatedStatBonus);
+
+        _belt.statBonus = EquipableUtils.sumStats(_belt.statBonus, _pre.statBonus);
+        _belt.statBonus = EquipableUtils.sumStats(_belt.statBonus, _suf.statBonus);
+
+        _belt.elementalStats = EquipableUtils.sumGeneratedElementalStats(_belt.elementalStats, _pre.elementalStats);
+        _belt.elementalStats = EquipableUtils.sumGeneratedElementalStats(_belt.elementalStats, _suf.elementalStats);
+        _belt.metadata.name  = string(abi.encodePacked(_pre.title, _belt.metadata.name, _suf.title));
+        return _belt;
+    }
+
     function belt(EquippedItemStruct memory _equipable) public view returns (GameObjects.Belt memory) {
         GameObjects.Belt memory _belt;
         GameObjects.Prefix memory _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         GameObjects.Suffix memory _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
 
+
         if (_equipable.itemId == 1) {
             _belt = DummyBelt(_equipable.itemTier);
         }
 
-        revert("invalid");
+        return applyPrefixAndSuffix(_prefix, _suffix, _belt);
     }
 
     function DummyBelt(uint tier) public pure returns (GameObjects.Belt memory _belt) {

@@ -7,6 +7,20 @@ contract CodexOffHands is UpgradeableCodex {
     string constant public class = "OffHands";
     string constant public version = "0.0.1";
 
+
+    function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.OffHand memory _offHand) public pure returns(GameObjects.OffHand memory) {
+        _offHand.generatedStatBonus = EquipableUtils.sumGeneratedStats(_offHand.generatedStatBonus, _pre.generatedStatBonus);
+        _offHand.generatedStatBonus = EquipableUtils.sumGeneratedStats(_offHand.generatedStatBonus, _suf.generatedStatBonus);
+
+        _offHand.statBonus = EquipableUtils.sumStats(_offHand.statBonus, _pre.statBonus);
+        _offHand.statBonus = EquipableUtils.sumStats(_offHand.statBonus, _suf.statBonus);
+
+        _offHand.elementalStats = EquipableUtils.sumGeneratedElementalStats(_offHand.elementalStats, _pre.elementalStats);
+        _offHand.elementalStats = EquipableUtils.sumGeneratedElementalStats(_offHand.elementalStats, _suf.elementalStats);
+        _offHand.metadata.name  = string(abi.encodePacked(_pre.title, _offHand.metadata.name, _suf.title));
+        return _offHand;
+    }
+    
     function offHand(EquippedItemStruct memory _equipable) public view returns (GameObjects.OffHand memory) {
         GameObjects.OffHand memory _offHand;
         GameObjects.Prefix memory _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
@@ -16,7 +30,7 @@ contract CodexOffHands is UpgradeableCodex {
             _offHand = DummyOffHand(_equipable.itemTier);
         }
 
-        revert("invalid");
+        return applyPrefixAndSuffix(_prefix, _suffix, _offHand);
     }
 
     function DummyOffHand(uint tier) public pure returns (GameObjects.OffHand memory _offHand) {

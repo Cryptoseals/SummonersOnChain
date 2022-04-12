@@ -7,6 +7,19 @@ contract CodexRings is UpgradeableCodex {
     string constant public class = "Rings";
     string constant public version = "0.0.1";
 
+    function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Ring memory _ring) public pure returns(GameObjects.Ring memory) {
+        _ring.generatedStatBonus = EquipableUtils.sumGeneratedStats(_ring.generatedStatBonus, _pre.generatedStatBonus);
+        _ring.generatedStatBonus = EquipableUtils.sumGeneratedStats(_ring.generatedStatBonus, _suf.generatedStatBonus);
+
+        _ring.statBonus = EquipableUtils.sumStats(_ring.statBonus, _pre.statBonus);
+        _ring.statBonus = EquipableUtils.sumStats(_ring.statBonus, _suf.statBonus);
+
+        _ring.elementalStats = EquipableUtils.sumGeneratedElementalStats(_ring.elementalStats, _pre.elementalStats);
+        _ring.elementalStats = EquipableUtils.sumGeneratedElementalStats(_ring.elementalStats, _suf.elementalStats);
+        _ring.metadata.name  = string(abi.encodePacked(_pre.title, _ring.metadata.name, _suf.title));
+        return _ring;
+    }
+
     function ring(EquippedItemStruct memory _equipable) public view returns (GameObjects.Ring memory) {
         GameObjects.Ring memory _ring;
         GameObjects.Prefix memory _prefix;

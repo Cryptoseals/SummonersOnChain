@@ -7,16 +7,31 @@ contract CodexEarrings is UpgradeableCodex {
     string constant public class = "Earrings";
     string constant public version = "0.0.1";
 
-    function belt(EquippedItemStruct memory _equipable) public view returns (GameObjects.Earring memory) {
+    function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Earring memory _earring) public pure returns(GameObjects.Earring memory) {
+        _earring.generatedStatBonus = EquipableUtils.sumGeneratedStats(_earring.generatedStatBonus, _pre.generatedStatBonus);
+        _earring.generatedStatBonus = EquipableUtils.sumGeneratedStats(_earring.generatedStatBonus, _suf.generatedStatBonus);
+
+        _earring.statBonus = EquipableUtils.sumStats(_earring.statBonus, _pre.statBonus);
+        _earring.statBonus = EquipableUtils.sumStats(_earring.statBonus, _suf.statBonus);
+
+        _earring.elementalStats = EquipableUtils.sumGeneratedElementalStats(_earring.elementalStats, _pre.elementalStats);
+        _earring.elementalStats = EquipableUtils.sumGeneratedElementalStats(_earring.elementalStats, _suf.elementalStats);
+        _earring.metadata.name  = string(abi.encodePacked(_pre.title, _earring.metadata.name, _suf.title));
+        return _earring;
+    }
+
+    function earrings(EquippedItemStruct memory _equipable) public view returns (GameObjects.Earring memory) {
         GameObjects.Earring memory _earring;
         GameObjects.Prefix memory _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         GameObjects.Suffix memory _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
+
 
         if (_equipable.itemId == 1) {
             _earring = DummyEarring(_equipable.itemTier);
         }
 
-        revert("invalid");
+        return applyPrefixAndSuffix(_prefix, _suffix, _earring);
+
     }
 
 

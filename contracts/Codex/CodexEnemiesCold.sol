@@ -91,7 +91,7 @@ contract CodexEnemiesCold {
         VOID_DEF : 0
         });
     }
-    function Seaqueen() public pure returns (IMonster.Monster memory _enemy) {
+    function SeaQueen() public pure returns (IMonster.Monster memory _enemy) {
         _enemy.MonsterMetadata.name = "Seaqueen";
 
 

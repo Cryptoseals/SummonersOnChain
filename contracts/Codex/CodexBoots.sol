@@ -8,16 +8,29 @@ contract CodexBoots is UpgradeableCodex {
     string constant public class = "Boots";
     string constant public version = "0.0.1";
 
+    function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Boots memory _boots) public pure returns(GameObjects.Boots memory) {
+        _boots.generatedStatBonus = EquipableUtils.sumGeneratedStats(_boots.generatedStatBonus, _pre.generatedStatBonus);
+        _boots.generatedStatBonus = EquipableUtils.sumGeneratedStats(_boots.generatedStatBonus, _suf.generatedStatBonus);
+
+        _boots.statBonus = EquipableUtils.sumStats(_boots.statBonus, _pre.statBonus);
+        _boots.statBonus = EquipableUtils.sumStats(_boots.statBonus, _suf.statBonus);
+
+        _boots.elementalStats = EquipableUtils.sumGeneratedElementalStats(_boots.elementalStats, _pre.elementalStats);
+        _boots.elementalStats = EquipableUtils.sumGeneratedElementalStats(_boots.elementalStats, _suf.elementalStats);
+        _boots.metadata.name  = string(abi.encodePacked(_pre.title, _boots.metadata.name, _suf.title));
+        return _boots;
+    }
+
     function boots(EquippedItemStruct memory _equipable) public view returns (GameObjects.Boots memory) {
-        GameObjects.Earring memory _boots;
+        GameObjects.Boots memory _boots;
         GameObjects.Prefix memory _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         GameObjects.Suffix memory _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
 
         if (_equipable.itemId == 1) {
-            return DummyBoots(_equipable.itemTier);
+            _boots = DummyBoots(_equipable.itemTier);
         }
 
-        revert("invalid");
+        return applyPrefixAndSuffix(_prefix, _suffix, _boots);
     }
 
     function DummyBoots(uint tier) public pure returns (GameObjects.Boots memory _boots) {

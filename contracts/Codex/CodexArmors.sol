@@ -7,7 +7,21 @@ contract CodexArmors is UpgradeableCodex {
     string constant public class = "Armors";
     string constant public version = "0.0.1";
 
-    function amulet(EquippedItemStruct memory _equipable) public view returns (GameObjects.Armor memory) {
+    function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Armor memory _armor) public pure returns(GameObjects.Armor memory) {
+        _armor.generatedStatBonus = EquipableUtils.sumGeneratedStats(_armor.generatedStatBonus, _pre.generatedStatBonus);
+        _armor.generatedStatBonus = EquipableUtils.sumGeneratedStats(_armor.generatedStatBonus, _suf.generatedStatBonus);
+
+        _armor.statBonus = EquipableUtils.sumStats(_armor.statBonus, _pre.statBonus);
+        _armor.statBonus = EquipableUtils.sumStats(_armor.statBonus, _suf.statBonus);
+
+        _armor.elementalStats = EquipableUtils.sumGeneratedElementalStats(_armor.elementalStats, _pre.elementalStats);
+        _armor.elementalStats = EquipableUtils.sumGeneratedElementalStats(_armor.elementalStats, _suf.elementalStats);
+        _armor.metadata.name  = string(abi.encodePacked(_pre.title, _armor.metadata.name, _suf.title));
+        return _armor;
+    }
+
+
+    function armor(EquippedItemStruct memory _equipable) public view returns (GameObjects.Armor memory) {
         GameObjects.Armor memory _armor;
         GameObjects.Prefix memory _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         GameObjects.Suffix memory _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
@@ -16,7 +30,7 @@ contract CodexArmors is UpgradeableCodex {
             _armor = DummyArmor(_equipable.itemTier);
         }
 
-        revert("invalid");
+        return applyPrefixAndSuffix(_prefix, _suffix, _armor);
     }
 
     function DummyArmor(uint tier) public pure returns (GameObjects.Armor memory _armor) {

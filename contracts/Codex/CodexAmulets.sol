@@ -7,6 +7,20 @@ contract CodexAmulets is UpgradeableCodex {
     string constant public class = "Amulets";
     string constant public version = "0.0.1";
 
+
+    function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Amulet memory _amulet) public pure returns(GameObjects.Amulet memory) {
+        _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStats(_amulet.generatedStatBonus, _pre.generatedStatBonus);
+        _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStats(_amulet.generatedStatBonus, _suf.generatedStatBonus);
+
+        _amulet.statBonus = EquipableUtils.sumStats(_amulet.statBonus, _pre.statBonus);
+        _amulet.statBonus = EquipableUtils.sumStats(_amulet.statBonus, _suf.statBonus);
+
+        _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStats(_amulet.elementalStats, _pre.elementalStats);
+        _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStats(_amulet.elementalStats, _suf.elementalStats);
+        _amulet.metadata.name  = string(abi.encodePacked(_pre.title, _amulet.metadata.name, _suf.title));
+        return _amulet;
+    }
+
     function amulet(EquippedItemStruct memory _equipable) public view returns (GameObjects.Amulet memory) {
         GameObjects.Amulet memory _amulet;
         GameObjects.Prefix memory _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
@@ -16,7 +30,7 @@ contract CodexAmulets is UpgradeableCodex {
             _amulet = DummyAmulet(_equipable.itemTier);
         }
 
-        revert("invalid");
+        return applyPrefixAndSuffix(_prefix, _suffix, _amulet);
     }
 
 

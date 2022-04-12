@@ -16,7 +16,20 @@ contract CodexWeapons is UpgradeableCodex {
             _weapon = DummyWeapon(_equipable.itemTier);
         }
 
-        revert("invalid");
+        return applyPrefixAndSuffix(_prefix, _suffix, _weapon);
+    }
+
+    function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Weapon memory _weapon) public pure returns(GameObjects.Weapon memory) {
+        _weapon.generatedStatBonus = EquipableUtils.sumGeneratedStats(_weapon.generatedStatBonus, _pre.generatedStatBonus);
+        _weapon.generatedStatBonus = EquipableUtils.sumGeneratedStats(_weapon.generatedStatBonus, _suf.generatedStatBonus);
+
+        _weapon.statBonus = EquipableUtils.sumStats(_weapon.statBonus, _pre.statBonus);
+        _weapon.statBonus = EquipableUtils.sumStats(_weapon.statBonus, _suf.statBonus);
+
+        _weapon.elementalStats = EquipableUtils.sumGeneratedElementalStats(_weapon.elementalStats, _pre.elementalStats);
+        _weapon.elementalStats = EquipableUtils.sumGeneratedElementalStats(_weapon.elementalStats, _suf.elementalStats);
+        _weapon.metadata.name  = string(abi.encodePacked(_pre.title, _weapon.metadata.name, _suf.title));
+        return _weapon;
     }
 
 

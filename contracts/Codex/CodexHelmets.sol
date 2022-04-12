@@ -7,6 +7,22 @@ contract CodexHelmets is UpgradeableCodex {
     string constant public class = "Helmets";
     string constant public version = "0.0.1";
 
+
+
+    function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Helmet memory _helmet) public pure returns(GameObjects.Helmet memory) {
+        _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStats(_helmet.generatedStatBonus, _pre.generatedStatBonus);
+        _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStats(_helmet.generatedStatBonus, _suf.generatedStatBonus);
+
+        _helmet.statBonus = EquipableUtils.sumStats(_helmet.statBonus, _pre.statBonus);
+        _helmet.statBonus = EquipableUtils.sumStats(_helmet.statBonus, _suf.statBonus);
+
+        _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStats(_helmet.elementalStats, _pre.elementalStats);
+        _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStats(_helmet.elementalStats, _suf.elementalStats);
+        _helmet.metadata.name  = string(abi.encodePacked(_pre.title, _helmet.metadata.name, _suf.title));
+        return _helmet;
+    }
+
+
     function helmet(EquippedItemStruct memory _equipable) public view returns (GameObjects.Helmet memory) {
         GameObjects.Helmet memory _helmet;
         GameObjects.Prefix memory _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
@@ -16,7 +32,7 @@ contract CodexHelmets is UpgradeableCodex {
             _helmet = DummyHelmet(_equipable.itemTier);
         }
 
-        revert("invalid");
+        return applyPrefixAndSuffix(_prefix, _suffix, _helmet);
     }
 
     function DummyHelmet(uint tier) public pure returns (GameObjects.Helmet memory _helmet) {
