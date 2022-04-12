@@ -20,14 +20,15 @@ contract CodexWeapons is UpgradeableCodex {
     }
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Weapon memory _weapon) public pure returns(GameObjects.Weapon memory) {
-        _weapon.generatedStatBonus = EquipableUtils.sumGeneratedStats(_weapon.generatedStatBonus, _pre.generatedStatBonus);
-        _weapon.generatedStatBonus = EquipableUtils.sumGeneratedStats(_weapon.generatedStatBonus, _suf.generatedStatBonus);
+        GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);
+        _weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_weapon.generatedStatBonus, _genStatFromPreFixAndSuffix);
 
         _weapon.statBonus = EquipableUtils.sumStats(_weapon.statBonus, _pre.statBonus);
         _weapon.statBonus = EquipableUtils.sumStats(_weapon.statBonus, _suf.statBonus);
 
-        _weapon.elementalStats = EquipableUtils.sumGeneratedElementalStats(_weapon.elementalStats, _pre.elementalStats);
-        _weapon.elementalStats = EquipableUtils.sumGeneratedElementalStats(_weapon.elementalStats, _suf.elementalStats);
+        GameObjects.ElementalStats memory _eleStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedElementalStats(_pre.elementalStats, _suf.elementalStats);
+
+        _weapon.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_weapon.elementalStats, _eleStatFromPreFixAndSuffix);
         _weapon.metadata.name  = string(abi.encodePacked(_pre.title, _weapon.metadata.name, _suf.title));
         return _weapon;
     }

@@ -9,14 +9,15 @@ contract CodexAmulets is UpgradeableCodex {
 
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Amulet memory _amulet) public pure returns(GameObjects.Amulet memory) {
-        _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStats(_amulet.generatedStatBonus, _pre.generatedStatBonus);
-        _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStats(_amulet.generatedStatBonus, _suf.generatedStatBonus);
+        GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);
+        _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_amulet.generatedStatBonus, _genStatFromPreFixAndSuffix);
 
         _amulet.statBonus = EquipableUtils.sumStats(_amulet.statBonus, _pre.statBonus);
         _amulet.statBonus = EquipableUtils.sumStats(_amulet.statBonus, _suf.statBonus);
 
-        _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStats(_amulet.elementalStats, _pre.elementalStats);
-        _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStats(_amulet.elementalStats, _suf.elementalStats);
+        GameObjects.ElementalStats memory _eleStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedElementalStats(_pre.elementalStats, _suf.elementalStats);
+
+        _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_amulet.elementalStats, _eleStatFromPreFixAndSuffix);
         _amulet.metadata.name  = string(abi.encodePacked(_pre.title, _amulet.metadata.name, _suf.title));
         return _amulet;
     }

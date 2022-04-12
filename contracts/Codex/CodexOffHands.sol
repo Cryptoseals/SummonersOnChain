@@ -9,14 +9,15 @@ contract CodexOffHands is UpgradeableCodex {
 
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.OffHand memory _offHand) public pure returns(GameObjects.OffHand memory) {
-        _offHand.generatedStatBonus = EquipableUtils.sumGeneratedStats(_offHand.generatedStatBonus, _pre.generatedStatBonus);
-        _offHand.generatedStatBonus = EquipableUtils.sumGeneratedStats(_offHand.generatedStatBonus, _suf.generatedStatBonus);
+        GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);
+        _offHand.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_offHand.generatedStatBonus, _genStatFromPreFixAndSuffix);
 
         _offHand.statBonus = EquipableUtils.sumStats(_offHand.statBonus, _pre.statBonus);
         _offHand.statBonus = EquipableUtils.sumStats(_offHand.statBonus, _suf.statBonus);
 
-        _offHand.elementalStats = EquipableUtils.sumGeneratedElementalStats(_offHand.elementalStats, _pre.elementalStats);
-        _offHand.elementalStats = EquipableUtils.sumGeneratedElementalStats(_offHand.elementalStats, _suf.elementalStats);
+        GameObjects.ElementalStats memory _eleStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedElementalStats(_pre.elementalStats, _suf.elementalStats);
+
+        _offHand.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_offHand.elementalStats, _eleStatFromPreFixAndSuffix);
         _offHand.metadata.name  = string(abi.encodePacked(_pre.title, _offHand.metadata.name, _suf.title));
         return _offHand;
     }

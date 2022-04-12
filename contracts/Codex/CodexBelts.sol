@@ -8,14 +8,15 @@ contract CodexBelts is UpgradeableCodex {
     string constant public version = "0.0.1";
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Belt memory _belt) public pure returns(GameObjects.Belt memory) {
-        _belt.generatedStatBonus = EquipableUtils.sumGeneratedStats(_belt.generatedStatBonus, _pre.generatedStatBonus);
-        _belt.generatedStatBonus = EquipableUtils.sumGeneratedStats(_belt.generatedStatBonus, _suf.generatedStatBonus);
+        GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);
+        _belt.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_belt.generatedStatBonus, _genStatFromPreFixAndSuffix);
 
         _belt.statBonus = EquipableUtils.sumStats(_belt.statBonus, _pre.statBonus);
         _belt.statBonus = EquipableUtils.sumStats(_belt.statBonus, _suf.statBonus);
 
-        _belt.elementalStats = EquipableUtils.sumGeneratedElementalStats(_belt.elementalStats, _pre.elementalStats);
-        _belt.elementalStats = EquipableUtils.sumGeneratedElementalStats(_belt.elementalStats, _suf.elementalStats);
+        GameObjects.ElementalStats memory _eleStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedElementalStats(_pre.elementalStats, _suf.elementalStats);
+
+        _belt.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_belt.elementalStats, _eleStatFromPreFixAndSuffix);
         _belt.metadata.name  = string(abi.encodePacked(_pre.title, _belt.metadata.name, _suf.title));
         return _belt;
     }

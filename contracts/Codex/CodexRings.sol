@@ -8,14 +8,15 @@ contract CodexRings is UpgradeableCodex {
     string constant public version = "0.0.1";
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Ring memory _ring) public pure returns(GameObjects.Ring memory) {
-        _ring.generatedStatBonus = EquipableUtils.sumGeneratedStats(_ring.generatedStatBonus, _pre.generatedStatBonus);
-        _ring.generatedStatBonus = EquipableUtils.sumGeneratedStats(_ring.generatedStatBonus, _suf.generatedStatBonus);
+        GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);
+        _ring.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_ring.generatedStatBonus, _genStatFromPreFixAndSuffix);
 
         _ring.statBonus = EquipableUtils.sumStats(_ring.statBonus, _pre.statBonus);
         _ring.statBonus = EquipableUtils.sumStats(_ring.statBonus, _suf.statBonus);
 
-        _ring.elementalStats = EquipableUtils.sumGeneratedElementalStats(_ring.elementalStats, _pre.elementalStats);
-        _ring.elementalStats = EquipableUtils.sumGeneratedElementalStats(_ring.elementalStats, _suf.elementalStats);
+        GameObjects.ElementalStats memory _eleStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedElementalStats(_pre.elementalStats, _suf.elementalStats);
+
+        _ring.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_ring.elementalStats, _eleStatFromPreFixAndSuffix);
         _ring.metadata.name  = string(abi.encodePacked(_pre.title, _ring.metadata.name, _suf.title));
         return _ring;
     }

@@ -8,14 +8,15 @@ contract CodexEarrings is UpgradeableCodex {
     string constant public version = "0.0.1";
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Earring memory _earring) public pure returns(GameObjects.Earring memory) {
-        _earring.generatedStatBonus = EquipableUtils.sumGeneratedStats(_earring.generatedStatBonus, _pre.generatedStatBonus);
-        _earring.generatedStatBonus = EquipableUtils.sumGeneratedStats(_earring.generatedStatBonus, _suf.generatedStatBonus);
+        GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);
+        _earring.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_earring.generatedStatBonus, _genStatFromPreFixAndSuffix);
 
         _earring.statBonus = EquipableUtils.sumStats(_earring.statBonus, _pre.statBonus);
         _earring.statBonus = EquipableUtils.sumStats(_earring.statBonus, _suf.statBonus);
 
-        _earring.elementalStats = EquipableUtils.sumGeneratedElementalStats(_earring.elementalStats, _pre.elementalStats);
-        _earring.elementalStats = EquipableUtils.sumGeneratedElementalStats(_earring.elementalStats, _suf.elementalStats);
+        GameObjects.ElementalStats memory _eleStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedElementalStats(_pre.elementalStats, _suf.elementalStats);
+
+        _earring.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_earring.elementalStats, _eleStatFromPreFixAndSuffix);
         _earring.metadata.name  = string(abi.encodePacked(_pre.title, _earring.metadata.name, _suf.title));
         return _earring;
     }

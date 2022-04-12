@@ -9,14 +9,15 @@ contract CodexBoots is UpgradeableCodex {
     string constant public version = "0.0.1";
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Boots memory _boots) public pure returns(GameObjects.Boots memory) {
-        _boots.generatedStatBonus = EquipableUtils.sumGeneratedStats(_boots.generatedStatBonus, _pre.generatedStatBonus);
-        _boots.generatedStatBonus = EquipableUtils.sumGeneratedStats(_boots.generatedStatBonus, _suf.generatedStatBonus);
+        GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);
+        _boots.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_boots.generatedStatBonus, _genStatFromPreFixAndSuffix);
 
         _boots.statBonus = EquipableUtils.sumStats(_boots.statBonus, _pre.statBonus);
         _boots.statBonus = EquipableUtils.sumStats(_boots.statBonus, _suf.statBonus);
 
-        _boots.elementalStats = EquipableUtils.sumGeneratedElementalStats(_boots.elementalStats, _pre.elementalStats);
-        _boots.elementalStats = EquipableUtils.sumGeneratedElementalStats(_boots.elementalStats, _suf.elementalStats);
+        GameObjects.ElementalStats memory _eleStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedElementalStats(_pre.elementalStats, _suf.elementalStats);
+
+        _boots.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_boots.elementalStats, _eleStatFromPreFixAndSuffix);
         _boots.metadata.name  = string(abi.encodePacked(_pre.title, _boots.metadata.name, _suf.title));
         return _boots;
     }
