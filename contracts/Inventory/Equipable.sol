@@ -84,12 +84,12 @@ contract Equipable is Initializable, InitNavigator {
     senderIsSummonerOwner(summoner) {
         // @warning check if owner
         require(IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS)).ownerOf(id) == msg.sender, "not owned");
-        (GameObjects.ItemType _type, uint tier) = IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS)).item(id);
+        // call NFT contract to get items tier and type.
+        (GameObjects.ItemType _type,uint _itemId, uint tier) = IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS)).item(id);
         (uint prefix, uint prefixTier, uint suffix, uint suffixTier) = IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS)).prefixAndSuffix(id);
 
         if (_type == GameObjects.ItemType.HELMET) {
-            // @TODO Get Info From ITEM NFT Contract and apply tier
-            GameObjects.Helmet memory _helmet = IAllCodexViews(contractAddress(INavigator.CONTRACT.HELMETS_CODEX)).helmetCore(id);
+            GameObjects.Helmet memory _helmet = IAllCodexViews(contractAddress(INavigator.CONTRACT.HELMETS_CODEX)).helmetCore(_itemId);
             if (!canEquip(summoner, _helmet.requirement)) revert CannotEquip("You are too weak to equip this.");
             EquippedHelmets[summoner].tokenId = id;
             EquippedHelmets[summoner].prefixId = prefix;
@@ -98,7 +98,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedHelmets[summoner].suffixTier = suffixTier;
             EquippedHelmets[summoner].itemTier = tier;
         } else if (_type == GameObjects.ItemType.ARMOR) {
-            GameObjects.Armor memory _armor = IAllCodexViews(contractAddress(INavigator.CONTRACT.ARMORS_CODEX)).armorCore(uint(_type));
+            GameObjects.Armor memory _armor = IAllCodexViews(contractAddress(INavigator.CONTRACT.ARMORS_CODEX)).armorCore(_itemId);
             if (!canEquip(summoner, _armor.requirement)) revert CannotEquip("You are too weak to equip this.");
             EquippedArmors[summoner].tokenId = id;
             EquippedArmors[summoner].prefixId = prefix;
@@ -108,7 +108,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedArmors[summoner].itemTier = tier;
 
         } else if (_type == GameObjects.ItemType.WEAPON) {
-            GameObjects.Weapon memory _weapon = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(uint(_type));
+            GameObjects.Weapon memory _weapon = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(_itemId);
             if (!canEquip(summoner, _weapon.requirement)) revert CannotEquip("You are too weak to equip this.");
             EquippedWeapons[summoner].tokenId = id;
             EquippedWeapons[summoner].prefixId = prefix;
@@ -120,7 +120,7 @@ contract Equipable is Initializable, InitNavigator {
             DamageTypesOfSummoners[summoner] = _weapon.damageType;
 
         } else if (_type == GameObjects.ItemType.OFFHAND) {
-            GameObjects.OffHand memory _offHand = IAllCodexViews(contractAddress(INavigator.CONTRACT.OFF_HANDS_CODEX)).offHandCore(uint(_type));
+            GameObjects.OffHand memory _offHand = IAllCodexViews(contractAddress(INavigator.CONTRACT.OFF_HANDS_CODEX)).offHandCore(_itemId);
             if (!canEquip(summoner, _offHand.requirement)) revert CannotEquip("You are too weak to equip this.");
             EquippedOffHands[summoner].tokenId = id;
             EquippedOffHands[summoner].prefixId = prefix;
@@ -130,7 +130,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedOffHands[summoner].itemTier = tier;
 
         } else if (_type == GameObjects.ItemType.BOOTS) {
-            GameObjects.Boots memory _boots = IAllCodexViews(contractAddress(INavigator.CONTRACT.BOOTS_CODEX)).bootsCore(uint(_type));
+            GameObjects.Boots memory _boots = IAllCodexViews(contractAddress(INavigator.CONTRACT.BOOTS_CODEX)).bootsCore(_itemId);
             if (!canEquip(summoner, _boots.requirement)) revert CannotEquip("You are too weak to equip this.");
             EquippedBoots[summoner].tokenId = id;
             EquippedBoots[summoner].prefixId = prefix;
@@ -140,7 +140,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedBoots[summoner].itemTier = tier;
 
         } else if (_type == GameObjects.ItemType.AMULET) {
-            GameObjects.Amulet memory _amulet = IAllCodexViews(contractAddress(INavigator.CONTRACT.AMULETS_CODEX)).amuletCore(uint(id));
+            GameObjects.Amulet memory _amulet = IAllCodexViews(contractAddress(INavigator.CONTRACT.AMULETS_CODEX)).amuletCore(_itemId);
             if (!canEquip(summoner, _amulet.requirement)) revert CannotEquip("You are too weak to equip this.");
             EquippedAmulet[summoner].tokenId = id;
             EquippedAmulet[summoner].prefixId = prefix;
@@ -150,7 +150,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedAmulet[summoner].itemTier = tier;
 
         } else if (_type == GameObjects.ItemType.RING) {
-            GameObjects.Ring memory _ring = IAllCodexViews(contractAddress(INavigator.CONTRACT.RINGS_CODEX)).ringCore(uint(id));
+            GameObjects.Ring memory _ring = IAllCodexViews(contractAddress(INavigator.CONTRACT.RINGS_CODEX)).ringCore(_itemId);
             if (!canEquip(summoner, _ring.requirement)) revert CannotEquip("You are too weak to equip this.");
             EquippedRing[summoner].tokenId = id;
             EquippedRing[summoner].prefixId = prefix;
@@ -160,7 +160,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedRing[summoner].itemTier = tier;
         }
         else if (_type == GameObjects.ItemType.EARRING) {
-            GameObjects.Earring memory _earring = IAllCodexViews(contractAddress(INavigator.CONTRACT.EARRINGS_CODEX)).earringCore(uint(id));
+            GameObjects.Earring memory _earring = IAllCodexViews(contractAddress(INavigator.CONTRACT.EARRINGS_CODEX)).earringCore(_itemId);
             if (!canEquip(summoner, _earring.requirement)) revert CannotEquip("You are too weak to equip this.");
             EquippedEarring[summoner].tokenId = id;
             EquippedEarring[summoner].prefixId = prefix;
@@ -169,7 +169,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedEarring[summoner].suffixTier = suffixTier;
             EquippedEarring[summoner].itemTier = tier;
         } else if (_type == GameObjects.ItemType.BELT) {
-            GameObjects.Belt memory _belt = IAllCodexViews(contractAddress(INavigator.CONTRACT.BELTS_CODEX)).beltCore(uint(id));
+            GameObjects.Belt memory _belt = IAllCodexViews(contractAddress(INavigator.CONTRACT.BELTS_CODEX)).beltCore(_itemId);
             if (!canEquip(summoner, _belt.requirement)) revert CannotEquip("You are too weak to equip this.");
             EquippedBelt[summoner].tokenId = id;
             EquippedBelt[summoner].prefixId = prefix;

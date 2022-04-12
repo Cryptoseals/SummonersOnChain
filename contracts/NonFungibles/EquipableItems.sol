@@ -87,10 +87,11 @@ contract EquipableItems is
     function item(uint256 id)
         external
         view
-        returns (GameObjects.ItemType _type, uint256 _tier)
+        returns (GameObjects.ItemType _type, uint _itemId, uint256 _tier)
     {
         if (!_exists(id)) revert InvalidItem("DOES NOT EXIST");
         _type = tokenToType[id];
+        _itemId = tokenToItemId[id];
         _tier = tokenToEnchantmentLevel[id];
     }
 

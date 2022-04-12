@@ -6,7 +6,7 @@ pragma solidity ^0.8.0;
 
 
 interface ICodexEnemy_ {
-    function enemy(uint256 _id, uint256 _lvl)
+    function enemy(uint256 _id)
     external
     pure
     returns (IMonster.Monster memory);
@@ -25,7 +25,11 @@ contract CodexEnemies is Initializable, InitNavigator {
     returns (IMonster.Monster memory)
     {
         ICodexEnemy_ _contract;
-        if(ele == GameObjects.Element.FIRE) {
+        if(ele == GameObjects.Element.PHYSICAL) {
+            _contract = ICodexEnemy_(contractAddress(INavigator.CONTRACT.PHYSICAL_ENEMY_CODEX));
+        }if(ele == GameObjects.Element.ARCANE) {
+            _contract = ICodexEnemy_(contractAddress(INavigator.CONTRACT.ARCANE_ENEMY_CODEX));
+        } if(ele == GameObjects.Element.FIRE) {
             _contract = ICodexEnemy_(contractAddress(INavigator.CONTRACT.FIRE_ENEMY_CODEX));
         } else if(ele == GameObjects.Element.COLD) {
             _contract = ICodexEnemy_(contractAddress(INavigator.CONTRACT.COLD_ENEMY_CODEX));
@@ -43,7 +47,7 @@ contract CodexEnemies is Initializable, InitNavigator {
             revert("?");
         }
 
-        return _contract.enemy(_id, _lvl);
+        return applyLvlEffect(_contract.enemy(_id), _lvl);
     }
 
     function applyLvlEffect(IMonster.Monster memory _Enemy, uint lvl) internal pure returns (IMonster.Monster memory) {

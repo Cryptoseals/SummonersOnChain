@@ -42,7 +42,9 @@ interface INavigator {
         EARTH_ENEMY_CODEX,
         DARK_ENEMY_CODEX,
         HOLY_ENEMY_CODEX,
-        VOID_ENEMY_CODEX
+        VOID_ENEMY_CODEX,
+        PHYSICAL_ENEMY_CODEX,
+        ARCANE_ENEMY_CODEX
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;
