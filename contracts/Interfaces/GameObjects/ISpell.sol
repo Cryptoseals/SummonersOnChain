@@ -33,8 +33,9 @@ interface ISpell {
     struct AttackProperties {
         GameObjects.Element element;
         uint damageMultiplier; // @notice example, 120 means 120% of element damage
-        uint infusion;
         uint multiplierBonusPerTier;
+        uint infusion;
+        uint infusionBonusPerTier;
     }
 
     struct HealingProperties {
