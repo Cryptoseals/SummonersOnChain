@@ -30,4 +30,5 @@ interface IAllCodexViews {
     function prefixCore(uint _id, uint _tier) external pure returns (GameObjects.Prefix memory);
     function suffix(uint _id, uint _tier) external pure returns (GameObjects.Suffix memory);
     function suffixCore(uint _id, uint _tier) external pure returns (GameObjects.Suffix memory);
+
 }

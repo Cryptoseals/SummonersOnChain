@@ -17,6 +17,7 @@ library GameEntities {
 
     struct SummonerData {
         uint level;
+        uint class;
         uint EXP;
         SummonerState state;
     }

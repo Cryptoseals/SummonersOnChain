@@ -10,8 +10,8 @@ pragma solidity ^0.8.0;
 
 contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     mapping(uint => GameEntities.SummonerMetadata) public SummonerMetadatas;
-    mapping(uint => GameEntities.SummonerData) public SummonerData;
     mapping(uint => GameEntities.SummonerState) public SummonerState;
+    mapping(uint => GameObjects.Class) public SummonerClasses;
 
     mapping(uint => uint) public SummonerEXP;
     mapping(uint => uint) public SummonerLevels;
@@ -61,24 +61,26 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     }
 
     // view functions
+    function class(uint id) external view returns (GameObjects.Class) {
+        return SummonerClasses[id];
+    }
+
     function level(uint id) external view returns (uint) {
-        GameEntities.SummonerData memory _data = SummonerData[id];
-        return _data.level;
+        return SummonerLevels[id];
     }
 
     function exp(uint id) external view returns (uint) {
-        GameEntities.SummonerData memory _data = SummonerData[id];
-        return _data.EXP;
+        return SummonerEXP[id];
     }
 
-    function state(uint id) external view returns (GameEntities.SummonerState _state) {
-        GameEntities.SummonerData memory _data = SummonerData[id];
-        _state = _data.state;
+    function state(uint id) external view returns (GameEntities.SummonerState) {
+        return SummonerState[id];
     }
 
     function summonerData(uint id) external view returns (GameEntities.SummonerData memory) {
         GameEntities.SummonerData memory _data = GameEntities.SummonerData({
         level : SummonerLevels[id],
+        class: uint(SummonerClasses[id]),
         state : SummonerState[id],
         EXP : SummonerEXP[id]
         });
