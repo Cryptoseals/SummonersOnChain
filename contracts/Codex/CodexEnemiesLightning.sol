@@ -3,13 +3,55 @@ pragma solidity ^0.8.0;
 
 contract CodexEnemiesLightning {
 
-    function enemy(uint256 _id)
+    function enemy(uint256 _id, uint256 _lvl)
     public
     pure
     returns (IMonster.Monster memory)
     {
         if (_id == 1) {
             return LightningElemental();
+        } else if (_id == 2) {
+            return StormWorm();
+        } else if (_id == 3) {
+            return ShockingNeedle();
+        } else if (_id == 4) {
+            return Wolfury();
+        } else if (_id == 5) {
+            return Shocksnake();
+        } else if (_id == 6) {
+            return Voltarion();
+        } else if (_id == 7) {
+            return HauntingStorm();
+        } else if (_id == 8) {
+            return SparkyOgre();
+        } else if (_id == 9) {
+            return ExaltedPylon();
+        } else if (_id == 10) {
+            return StormNagaClan();
+        } else if (_id == 11) {
+            return LightningSculpture();
+        } else if (_id == 12) {
+            return WizardLizard();
+        } else if (_id == 13) {
+            return GiantStormHawk();
+        } else if (_id == 14) {
+            return Thundervolt();
+        } else if (_id == 15) {
+            return Electra();
+        } else if (_id == 16) {
+            return Stormveil();
+        } else if (_id == 17) {
+            return Thornado();
+        } else if (_id == 18) {
+            return Levin();
+        } else if (_id == 19) {
+            return ThunderSerpent();
+        } else if (_id == 20) {
+            return Voltvoid();
+        } else if (_id == 21) {
+            return StormbonetheUndead();
+        } else if (_id == 22) {
+            return LightningBehemoth();
         }
         revert();
     }
@@ -19,37 +61,37 @@ contract CodexEnemiesLightning {
         _enemy.MonsterMetadata.name = "Lightning Elemental";
 
 
-        _enemy.EnemyStats.STR = 2;
-        _enemy.EnemyStats.AGI = 1;
-        _enemy.EnemyStats.INT = 1;
-        _enemy.EnemyStats.DEX = 1;
-        _enemy.EnemyStats.VIT = 3;
-        _enemy.EnemyStats.LUCK = 1;
+        _enemy.EnemyStats.STR = 20;
+        _enemy.EnemyStats.AGI = 10;
+        _enemy.EnemyStats.INT = 10;
+        _enemy.EnemyStats.DEX = 10;
+        _enemy.EnemyStats.VIT = 30;
+        _enemy.EnemyStats.LUCK = 10;
 
         _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 10,
-        P_ATK : 3,
-        M_ATK : 3,
-        P_DEF : 10,
-        M_DEF : 10,
-        ACCURACY : 5,
-        DODGE : 1,
+        HP : 100,
+        P_ATK : 30,
+        M_ATK : 30,
+        P_DEF : 100,
+        M_DEF : 100,
+        ACCURACY : 50,
+        DODGE : 10,
         CRIT : 1,
-        CRIT_MULTIPLIER : 25,
+        CRIT_MULTIPLIER : 250,
         INFUSION : 0
         });
 
         _enemy.damageType = IMonster.Element.LIGHTNING;
         _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 20;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 200;
 
         _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 40,
-        COLD_DEF : 40,
-        EARTH_DEF : 40,
-        LIGHTNING_DEF : 80,
-        DARK_DEF : 20,
-        HOLY_DEF : 40,
+        FIRE_DEF : 400,
+        COLD_DEF : 400,
+        EARTH_DEF : 400,
+        LIGHTNING_DEF : 800,
+        DARK_DEF : 200,
+        HOLY_DEF : 400,
         VOID_DEF : 0
         });
     }
@@ -57,783 +99,23 @@ contract CodexEnemiesLightning {
         _enemy.MonsterMetadata.name = "Storm Worm";
 
 
-        _enemy.EnemyStats.STR = 3;
-        _enemy.EnemyStats.AGI = 1;
-        _enemy.EnemyStats.INT = 1;
-        _enemy.EnemyStats.DEX = 1;
-        _enemy.EnemyStats.VIT = 4;
-        _enemy.EnemyStats.LUCK = 2;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 15,
-        P_ATK : 5,
-        M_ATK : 5,
-        P_DEF : 12,
-        M_DEF : 12,
-        ACCURACY : 7,
-        DODGE : 2,
-        CRIT : 1,
-        CRIT_MULTIPLIER : 25,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 24;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 48,
-        COLD_DEF : 48,
-        EARTH_DEF : 48,
-        LIGHTNING_DEF : 96,
-        DARK_DEF : 24,
-        HOLY_DEF : 48,
-        VOID_DEF : 0
-        });
-    }
-    function ShockingNeedle() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Shocking Needle";
-
-
-        _enemy.EnemyStats.STR = 4;
-        _enemy.EnemyStats.AGI = 2;
-        _enemy.EnemyStats.INT = 2;
-        _enemy.EnemyStats.DEX = 2;
-        _enemy.EnemyStats.VIT = 5;
-        _enemy.EnemyStats.LUCK = 2;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 20,
-        P_ATK : 7,
-        M_ATK : 7,
-        P_DEF : 15,
-        M_DEF : 15,
-        ACCURACY : 8,
-        DODGE : 4,
-        CRIT : 2,
-        CRIT_MULTIPLIER : 25,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 30;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 60,
-        COLD_DEF : 60,
-        EARTH_DEF : 60,
-        LIGHTNING_DEF :120,
-        DARK_DEF : 30,
-        HOLY_DEF : 60,
-        VOID_DEF : 0
-        });
-    }
-    function Wolfury() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Wolfury";
-
-
-        _enemy.EnemyStats.STR = 5;
-        _enemy.EnemyStats.AGI = 3;
-        _enemy.EnemyStats.INT = 3;
-        _enemy.EnemyStats.DEX = 3;
-        _enemy.EnemyStats.VIT = 4;
-        _enemy.EnemyStats.LUCK = 3;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 25,
-        P_ATK : 9,
-        M_ATK : 9,
-        P_DEF : 18,
-        M_DEF : 18,
-        ACCURACY : 12,
-        DODGE : 8,
-        CRIT : 2,
-        CRIT_MULTIPLIER : 25,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 36;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 72,
-        COLD_DEF : 72,
-        EARTH_DEF : 72,
-        LIGHTNING_DEF :144,
-        DARK_DEF : 36,
-        HOLY_DEF : 72,
-        VOID_DEF : 0
-        });
-    }
-    function Shocksnake() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Shocksnake";
-
-
-        _enemy.EnemyStats.STR = 6;
-        _enemy.EnemyStats.AGI = 4;
-        _enemy.EnemyStats.INT = 4;
-        _enemy.EnemyStats.DEX = 2;
-        _enemy.EnemyStats.VIT = 6;
-        _enemy.EnemyStats.LUCK = 4;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 30,
-        P_ATK : 10,
-        M_ATK : 10,
-        P_DEF : 18,
-        M_DEF : 21,
-        ACCURACY : 16,
-        DODGE : 12,
-        CRIT : 4,
-        CRIT_MULTIPLIER : 25,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 42;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 84,
-        COLD_DEF : 84,
-        EARTH_DEF : 84,
-        LIGHTNING_DEF :168,
-        DARK_DEF : 42,
-        HOLY_DEF : 84,
-        VOID_DEF : 0
-        });
-    }
-    function Voltarion() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Voltarion";
-
-
-        _enemy.EnemyStats.STR = 6;
-        _enemy.EnemyStats.AGI = 4;
-        _enemy.EnemyStats.INT = 4;
-        _enemy.EnemyStats.DEX = 4;
-        _enemy.EnemyStats.VIT = 5;
-        _enemy.EnemyStats.LUCK = 4;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 35,
-        P_ATK : 12,
-        M_ATK : 12,
-        P_DEF : 24,
-        M_DEF : 24,
-        ACCURACY : 20,
-        DODGE : 16,
-        CRIT : 4,
-        CRIT_MULTIPLIER : 25,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 48;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 96,
-        COLD_DEF : 96,
-        EARTH_DEF : 96,
-        LIGHTNING_DEF :192,
-        DARK_DEF : 48,
-        HOLY_DEF : 96,
-        VOID_DEF : 0
-        });
-    }
-    function HauntingStorm() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Haunting Storm";
-
-
-        _enemy.EnemyStats.STR = 7;
-        _enemy.EnemyStats.AGI = 5;
-        _enemy.EnemyStats.INT = 5;
-        _enemy.EnemyStats.DEX = 5;
-        _enemy.EnemyStats.VIT = 6;
-        _enemy.EnemyStats.LUCK = 4;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 40,
-        P_ATK : 14,
-        M_ATK : 14,
-        P_DEF : 28,
-        M_DEF : 28,
-        ACCURACY : 24,
-        DODGE : 20,
-        CRIT : 5,
-        CRIT_MULTIPLIER : 50,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 52;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 104,
-        COLD_DEF : 104,
-        EARTH_DEF : 104,
-        LIGHTNING_DEF : 208,
-        DARK_DEF : 52,
-        HOLY_DEF : 104,
-        VOID_DEF : 0
-        });
-    }
-    function SparkyOgre() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Sparky Ogre";
-
-
-        _enemy.EnemyStats.STR = 8;
-        _enemy.EnemyStats.AGI = 5;
-        _enemy.EnemyStats.INT = 5;
-        _enemy.EnemyStats.DEX = 6;
-        _enemy.EnemyStats.VIT = 6;
-        _enemy.EnemyStats.LUCK = 5;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 45,
-        P_ATK : 16,
-        M_ATK : 16,
-        P_DEF : 32,
-        M_DEF : 32,
-        ACCURACY : 28,
-        DODGE : 24,
-        CRIT : 5,
-        CRIT_MULTIPLIER : 50,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 64;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 120,
-        COLD_DEF : 120,
-        EARTH_DEF : 120,
-        LIGHTNING_DEF : 240,
-        DARK_DEF : 64,
-        HOLY_DEF : 120,
-        VOID_DEF : 0
-        });
-    }
-    function ExaltedPylon() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Exalted Pilon";
-
-
-        _enemy.EnemyStats.STR = 9;
-        _enemy.EnemyStats.AGI = 6;
-        _enemy.EnemyStats.INT = 6;
-        _enemy.EnemyStats.DEX = 7;
-        _enemy.EnemyStats.VIT = 8;
-        _enemy.EnemyStats.LUCK = 5;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 50,
-        P_ATK : 18,
-        M_ATK : 18,
-        P_DEF : 36,
-        M_DEF : 36,
-        ACCURACY : 32,
-        DODGE : 28,
-        CRIT : 6,
-        CRIT_MULTIPLIER : 60,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 72;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 144,
-        COLD_DEF : 144,
-        EARTH_DEF : 144,
-        LIGHTNING_DEF : 288,
-        DARK_DEF : 72,
-        HOLY_DEF : 144,
-        VOID_DEF : 0
-        });
-    }
-    function StormNagaClan() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Storm Naga Clan";
-
-
-        _enemy.EnemyStats.STR = 10;
-        _enemy.EnemyStats.AGI = 7;
-        _enemy.EnemyStats.INT = 7;
-        _enemy.EnemyStats.DEX = 8;
-        _enemy.EnemyStats.VIT = 9;
-        _enemy.EnemyStats.LUCK = 6;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 55,
-        P_ATK : 20,
-        M_ATK : 20,
-        P_DEF : 44,
-        M_DEF : 44,
-        ACCURACY : 36,
-        DODGE : 32,
-        CRIT : 6,
-        CRIT_MULTIPLIER : 60,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 88;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 176,
-        COLD_DEF : 176,
-        EARTH_DEF : 176,
-        LIGHTNING_DEF : 340,
-        DARK_DEF : 88,
-        HOLY_DEF : 176,
-        VOID_DEF : 0
-        });
-    }
-    function LightningSculpture() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Lightning Sculpture";
-
-
-        _enemy.EnemyStats.STR = 11;
-        _enemy.EnemyStats.AGI = 8;
-        _enemy.EnemyStats.INT = 8;
-        _enemy.EnemyStats.DEX = 8;
-        _enemy.EnemyStats.VIT = 10;
-        _enemy.EnemyStats.LUCK = 7;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 60,
-        P_ATK : 24,
-        M_ATK : 24,
-        P_DEF : 48,
-        M_DEF : 48,
-        ACCURACY : 40,
-        DODGE : 36,
-        CRIT : 8,
-        CRIT_MULTIPLIER : 70,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 96;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 192,
-        COLD_DEF : 192,
-        EARTH_DEF : 192,
-        LIGHTNING_DEF : 384,
-        DARK_DEF : 96,
-        HOLY_DEF : 192,
-        VOID_DEF : 0
-        });
-    }
-    function WizardLizard() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Wizard Lizard";
-
-
-        _enemy.EnemyStats.STR = 12;
-        _enemy.EnemyStats.AGI = 9;
-        _enemy.EnemyStats.INT = 9;
-        _enemy.EnemyStats.DEX = 9;
-        _enemy.EnemyStats.VIT = 11;
-        _enemy.EnemyStats.LUCK = 8;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 65,
-        P_ATK : 28,
-        M_ATK : 28,
-        P_DEF : 52,
-        M_DEF : 52,
-        ACCURACY : 44,
-        DODGE : 40,
-        CRIT : 8,
-        CRIT_MULTIPLIER : 70,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 104;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 208,
-        COLD_DEF : 208,
-        EARTH_DEF : 208,
-        LIGHTNING_DEF : 416,
-        DARK_DEF : 104,
-        HOLY_DEF : 208,
-        VOID_DEF : 0
-        });
-    }
-    function GiantStormHawk() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Giant Storm Hawk";
-
-
-        _enemy.EnemyStats.STR = 13;
-        _enemy.EnemyStats.AGI = 11;
-        _enemy.EnemyStats.INT = 11;
-        _enemy.EnemyStats.DEX = 11;
-        _enemy.EnemyStats.VIT = 15;
-        _enemy.EnemyStats.LUCK = 8;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 70,
-        P_ATK : 32,
-        M_ATK : 32,
-        P_DEF : 58,
-        M_DEF : 58,
-        ACCURACY : 48,
-        DODGE : 44,
-        CRIT : 9,
-        CRIT_MULTIPLIER : 90,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 116;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 232,
-        COLD_DEF : 232,
-        EARTH_DEF : 232,
-        LIGHTNING_DEF : 464,
-        DARK_DEF : 116,
-        HOLY_DEF : 232,
-        VOID_DEF : 0
-        });
-    }
-    function Thundervolt() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Thundervolt";
-
-
-        _enemy.EnemyStats.STR = 15;
-        _enemy.EnemyStats.AGI = 12;
-        _enemy.EnemyStats.INT = 12;
-        _enemy.EnemyStats.DEX = 12;
-        _enemy.EnemyStats.VIT = 14;
-        _enemy.EnemyStats.LUCK = 12;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 75,
-        P_ATK : 36,
-        M_ATK : 36,
-        P_DEF : 62,
-        M_DEF : 62,
-        ACCURACY : 52,
-        DODGE : 48,
-        CRIT : 9,
-        CRIT_MULTIPLIER : 90,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 124;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 248,
-        COLD_DEF : 248,
-        EARTH_DEF : 248,
-        LIGHTNING_DEF : 496,
-        DARK_DEF : 123,
-        HOLY_DEF : 248,
-        VOID_DEF : 0
-        });
-    }
-    function Electra() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Electra";
-
-
-        _enemy.EnemyStats.STR = 16;
-        _enemy.EnemyStats.AGI = 14;
-        _enemy.EnemyStats.INT = 9;
-        _enemy.EnemyStats.DEX = 8;
-        _enemy.EnemyStats.VIT = 11;
-        _enemy.EnemyStats.LUCK = 9;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 80,
-        P_ATK : 40,
-        M_ATK : 40,
-        P_DEF : 66,
-        M_DEF : 66,
-        ACCURACY : 56,
-        DODGE : 52,
-        CRIT : 10,
-        CRIT_MULTIPLIER : 100,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 132;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 264,
-        COLD_DEF : 264,
-        EARTH_DEF : 264,
-        LIGHTNING_DEF : 528,
-        DARK_DEF : 132,
-        HOLY_DEF : 264,
-        VOID_DEF : 0
-        });
-    }
-    function Stormveil() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Stormveil";
-
-
-        _enemy.EnemyStats.STR = 12;
-        _enemy.EnemyStats.AGI = 14;
-        _enemy.EnemyStats.INT = 13;
-        _enemy.EnemyStats.DEX = 13;
-        _enemy.EnemyStats.VIT = 14;
-        _enemy.EnemyStats.LUCK = 15;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 85,
-        P_ATK : 42,
-        M_ATK : 42,
-        P_DEF : 70,
-        M_DEF : 70,
-        ACCURACY : 60,
-        DODGE : 56,
-        CRIT : 10,
-        CRIT_MULTIPLIER : 100,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 140;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 280,
-        COLD_DEF : 280,
-        EARTH_DEF : 280,
-        LIGHTNING_DEF : 560,
-        DARK_DEF : 140,
-        HOLY_DEF : 280,
-        VOID_DEF : 0
-        });
-    }
-    function Thornado() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Thornado";
-
-
-        _enemy.EnemyStats.STR = 14;
-        _enemy.EnemyStats.AGI = 14;
-        _enemy.EnemyStats.INT = 15;
-        _enemy.EnemyStats.DEX = 16;
-        _enemy.EnemyStats.VIT = 18;
-        _enemy.EnemyStats.LUCK = 19;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 90,
-        P_ATK : 46,
-        M_ATK : 46,
-        P_DEF : 74,
-        M_DEF : 74,
-        ACCURACY : 64,
-        DODGE : 60,
-        CRIT : 12,
-        CRIT_MULTIPLIER : 120,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 148;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 296,
-        COLD_DEF : 296,
-        EARTH_DEF : 296,
-        LIGHTNING_DEF : 592,
-        DARK_DEF : 148,
-        HOLY_DEF : 296,
-        VOID_DEF : 0
-        });
-    }
-    function Levin () public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Levin";
-
-
-        _enemy.EnemyStats.STR = 16;
-        _enemy.EnemyStats.AGI = 15;
-        _enemy.EnemyStats.INT = 23;
-        _enemy.EnemyStats.DEX = 18;
-        _enemy.EnemyStats.VIT = 21;
-        _enemy.EnemyStats.LUCK = 21;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 95,
-        P_ATK : 48,
-        M_ATK : 48,
-        P_DEF : 78,
-        M_DEF : 78,
-        ACCURACY : 68,
-        DODGE : 64,
-        CRIT : 12,
-        CRIT_MULTIPLIER : 120,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 156;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 312,
-        COLD_DEF : 312,
-        EARTH_DEF : 312,
-        LIGHTNING_DEF : 624,
-        DARK_DEF : 156,
-        HOLY_DEF : 312,
-        VOID_DEF : 0
-        });
-    }
-    function ThunderSerpent() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Thunder Serpent";
-
-
-        _enemy.EnemyStats.STR = 18;
-        _enemy.EnemyStats.AGI = 17;
-        _enemy.EnemyStats.INT = 24;
-        _enemy.EnemyStats.DEX = 19;
-        _enemy.EnemyStats.VIT = 23;
-        _enemy.EnemyStats.LUCK = 24;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 100,
-        P_ATK : 50,
-        M_ATK : 50,
-        P_DEF : 82,
-        M_DEF : 82,
-        ACCURACY : 72,
-        DODGE : 68,
-        CRIT : 14,
-        CRIT_MULTIPLIER : 130,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 164;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 328,
-        COLD_DEF : 328,
-        EARTH_DEF : 328,
-        LIGHTNING_DEF : 656,
-        DARK_DEF : 164,
-        HOLY_DEF : 328,
-        VOID_DEF : 0
-        });
-    }
-    function Voltvoid() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Voltvoid";
-
-
-        _enemy.EnemyStats.STR = 20;
-        _enemy.EnemyStats.AGI = 18;
-        _enemy.EnemyStats.INT = 25;
-        _enemy.EnemyStats.DEX = 20;
-        _enemy.EnemyStats.VIT = 25;
-        _enemy.EnemyStats.LUCK = 26;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 125,
-        P_ATK : 54,
-        M_ATK : 54,
-        P_DEF : 86,
-        M_DEF : 86,
-        ACCURACY : 76,
-        DODGE : 72,
-        CRIT : 14,
-        CRIT_MULTIPLIER : 130,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 172;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 344,
-        COLD_DEF : 344,
-        EARTH_DEF : 344,
-        LIGHTNING_DEF : 688,
-        DARK_DEF : 172,
-        HOLY_DEF : 344,
-        VOID_DEF : 0
-        });
-    }
-    function StormbonetheUndead() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Stormbone the Undead";
-
-
-        _enemy.EnemyStats.STR = 24;
-        _enemy.EnemyStats.AGI = 22;
-        _enemy.EnemyStats.INT = 30;
-        _enemy.EnemyStats.DEX = 24;
-        _enemy.EnemyStats.VIT = 30;
-        _enemy.EnemyStats.LUCK = 29;
+        _enemy.EnemyStats.STR = 30;
+        _enemy.EnemyStats.AGI = 10;
+        _enemy.EnemyStats.INT = 10;
+        _enemy.EnemyStats.DEX = 10;
+        _enemy.EnemyStats.VIT = 40;
+        _enemy.EnemyStats.LUCK = 20;
 
         _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
         HP : 150,
-        P_ATK : 58,
-        M_ATK : 58,
-        P_DEF : 90,
-        M_DEF : 90,
-        ACCURACY : 80,
-        DODGE : 76,
-        CRIT : 15,
-        CRIT_MULTIPLIER : 150,
-        INFUSION : 1
-        });
-
-        _enemy.damageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
-        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 180;
-
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
-        FIRE_DEF : 360,
-        COLD_DEF : 360,
-        EARTH_DEF : 360,
-        LIGHTNING_DEF : 720,
-        DARK_DEF : 180,
-        HOLY_DEF : 360,
-        VOID_DEF : 0
-        });
-    }
-    function LightningBehemoth() public pure returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Lightning Behemoth";
-
-
-        _enemy.EnemyStats.STR = 32;
-        _enemy.EnemyStats.AGI = 33;
-        _enemy.EnemyStats.INT = 36;
-        _enemy.EnemyStats.DEX = 39;
-        _enemy.EnemyStats.VIT = 42;
-        _enemy.EnemyStats.LUCK = 36;
-
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
-        HP : 200,
-        P_ATK : 75,
-        M_ATK : 75,
+        P_ATK : 50,
+        M_ATK : 50,
         P_DEF : 120,
         M_DEF : 120,
-        ACCURACY : 120,
-        DODGE : 80,
-        CRIT : 20,
-        CRIT_MULTIPLIER : 200,
+        ACCURACY : 70,
+        DODGE : 20,
+        CRIT : 1,
+        CRIT_MULTIPLIER : 250,
         INFUSION : 1
         });
 
@@ -848,6 +130,766 @@ contract CodexEnemiesLightning {
         LIGHTNING_DEF : 960,
         DARK_DEF : 240,
         HOLY_DEF : 480,
+        VOID_DEF : 0
+        });
+    }
+    function ShockingNeedle() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Shocking Needle";
+
+
+        _enemy.EnemyStats.STR = 40;
+        _enemy.EnemyStats.AGI = 20;
+        _enemy.EnemyStats.INT = 20;
+        _enemy.EnemyStats.DEX = 20;
+        _enemy.EnemyStats.VIT = 50;
+        _enemy.EnemyStats.LUCK = 20;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 200,
+        P_ATK : 70,
+        M_ATK : 70,
+        P_DEF : 150,
+        M_DEF : 150,
+        ACCURACY : 80,
+        DODGE : 40,
+        CRIT : 2,
+        CRIT_MULTIPLIER : 250,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 300;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 600,
+        COLD_DEF : 600,
+        EARTH_DEF : 600,
+        LIGHTNING_DEF :1200,
+        DARK_DEF : 300,
+        HOLY_DEF : 600,
+        VOID_DEF : 0
+        });
+    }
+    function Wolfury() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Wolfury";
+
+
+        _enemy.EnemyStats.STR = 50;
+        _enemy.EnemyStats.AGI = 30;
+        _enemy.EnemyStats.INT = 30;
+        _enemy.EnemyStats.DEX = 30;
+        _enemy.EnemyStats.VIT = 40;
+        _enemy.EnemyStats.LUCK = 30;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 250,
+        P_ATK : 90,
+        M_ATK : 90,
+        P_DEF : 180,
+        M_DEF : 180,
+        ACCURACY : 120,
+        DODGE : 80,
+        CRIT : 2,
+        CRIT_MULTIPLIER : 250,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 360;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 720,
+        COLD_DEF : 720,
+        EARTH_DEF : 720,
+        LIGHTNING_DEF :1440,
+        DARK_DEF : 360,
+        HOLY_DEF : 720,
+        VOID_DEF : 0
+        });
+    }
+    function Shocksnake() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Shocksnake";
+
+
+        _enemy.EnemyStats.STR = 60;
+        _enemy.EnemyStats.AGI = 40;
+        _enemy.EnemyStats.INT = 40;
+        _enemy.EnemyStats.DEX = 20;
+        _enemy.EnemyStats.VIT = 60;
+        _enemy.EnemyStats.LUCK = 40;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 300,
+        P_ATK : 100,
+        M_ATK : 100,
+        P_DEF : 180,
+        M_DEF : 210,
+        ACCURACY : 160,
+        DODGE : 120,
+        CRIT : 4,
+        CRIT_MULTIPLIER : 250,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 420;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 840,
+        COLD_DEF : 840,
+        EARTH_DEF : 840,
+        LIGHTNING_DEF :1680,
+        DARK_DEF : 420,
+        HOLY_DEF : 840,
+        VOID_DEF : 0
+        });
+    }
+    function Voltarion() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Voltarion";
+
+
+        _enemy.EnemyStats.STR = 60;
+        _enemy.EnemyStats.AGI = 40;
+        _enemy.EnemyStats.INT = 40;
+        _enemy.EnemyStats.DEX = 40;
+        _enemy.EnemyStats.VIT = 50;
+        _enemy.EnemyStats.LUCK = 40;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 350,
+        P_ATK : 120,
+        M_ATK : 120,
+        P_DEF : 240,
+        M_DEF : 240,
+        ACCURACY : 200,
+        DODGE : 160,
+        CRIT : 4,
+        CRIT_MULTIPLIER : 250,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 480;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 960,
+        COLD_DEF : 960,
+        EARTH_DEF : 960,
+        LIGHTNING_DEF :1920,
+        DARK_DEF : 480,
+        HOLY_DEF : 960,
+        VOID_DEF : 0
+        });
+    }
+    function HauntingStorm() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Haunting Storm";
+
+
+        _enemy.EnemyStats.STR = 70;
+        _enemy.EnemyStats.AGI = 50;
+        _enemy.EnemyStats.INT = 50;
+        _enemy.EnemyStats.DEX = 50;
+        _enemy.EnemyStats.VIT = 60;
+        _enemy.EnemyStats.LUCK = 40;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 400,
+        P_ATK : 140,
+        M_ATK : 140,
+        P_DEF : 280,
+        M_DEF : 280,
+        ACCURACY : 240,
+        DODGE : 200,
+        CRIT : 5,
+        CRIT_MULTIPLIER : 500,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 520;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 1040,
+        COLD_DEF : 1040,
+        EARTH_DEF : 1040,
+        LIGHTNING_DEF : 2080,
+        DARK_DEF : 520,
+        HOLY_DEF : 1040,
+        VOID_DEF : 0
+        });
+    }
+    function SparkyOgre() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Sparky Ogre";
+
+
+        _enemy.EnemyStats.STR = 80;
+        _enemy.EnemyStats.AGI = 50;
+        _enemy.EnemyStats.INT = 50;
+        _enemy.EnemyStats.DEX = 60;
+        _enemy.EnemyStats.VIT = 60;
+        _enemy.EnemyStats.LUCK = 50;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 450,
+        P_ATK : 160,
+        M_ATK : 160,
+        P_DEF : 320,
+        M_DEF : 320,
+        ACCURACY : 280,
+        DODGE : 240,
+        CRIT : 5,
+        CRIT_MULTIPLIER : 500,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 640;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 1200,
+        COLD_DEF : 1200,
+        EARTH_DEF : 1200,
+        LIGHTNING_DEF : 2400,
+        DARK_DEF : 640,
+        HOLY_DEF : 1200,
+        VOID_DEF : 0
+        });
+    }
+    function ExaltedPylon() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Exalted Pilon";
+
+
+        _enemy.EnemyStats.STR = 90;
+        _enemy.EnemyStats.AGI = 60;
+        _enemy.EnemyStats.INT = 60;
+        _enemy.EnemyStats.DEX = 70;
+        _enemy.EnemyStats.VIT = 80;
+        _enemy.EnemyStats.LUCK = 50;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 500,
+        P_ATK : 180,
+        M_ATK : 180,
+        P_DEF : 360,
+        M_DEF : 360,
+        ACCURACY : 320,
+        DODGE : 280,
+        CRIT : 6,
+        CRIT_MULTIPLIER : 600,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 720;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 1440,
+        COLD_DEF : 1440,
+        EARTH_DEF : 1440,
+        LIGHTNING_DEF : 2880,
+        DARK_DEF : 720,
+        HOLY_DEF : 1440,
+        VOID_DEF : 0
+        });
+    }
+    function StormNagaClan() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Storm Naga Clan";
+
+
+        _enemy.EnemyStats.STR = 100;
+        _enemy.EnemyStats.AGI = 70;
+        _enemy.EnemyStats.INT = 70;
+        _enemy.EnemyStats.DEX = 80;
+        _enemy.EnemyStats.VIT = 90;
+        _enemy.EnemyStats.LUCK = 60;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 550,
+        P_ATK : 200,
+        M_ATK : 200,
+        P_DEF : 440,
+        M_DEF : 440,
+        ACCURACY : 360,
+        DODGE : 320,
+        CRIT : 6,
+        CRIT_MULTIPLIER : 600,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 880;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 1760,
+        COLD_DEF : 1760,
+        EARTH_DEF : 1760,
+        LIGHTNING_DEF : 3400,
+        DARK_DEF : 880,
+        HOLY_DEF : 1760,
+        VOID_DEF : 0
+        });
+    }
+    function LightningSculpture() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Lightning Sculpture";
+
+
+        _enemy.EnemyStats.STR = 110;
+        _enemy.EnemyStats.AGI = 80;
+        _enemy.EnemyStats.INT = 80;
+        _enemy.EnemyStats.DEX = 80;
+        _enemy.EnemyStats.VIT = 100;
+        _enemy.EnemyStats.LUCK = 70;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 600,
+        P_ATK : 240,
+        M_ATK : 240,
+        P_DEF : 480,
+        M_DEF : 480,
+        ACCURACY : 400,
+        DODGE : 360,
+        CRIT : 8,
+        CRIT_MULTIPLIER : 700,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 960;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 1920,
+        COLD_DEF : 1920,
+        EARTH_DEF : 1920,
+        LIGHTNING_DEF : 3840,
+        DARK_DEF : 960,
+        HOLY_DEF : 1920,
+        VOID_DEF : 0
+        });
+    }
+    function WizardLizard() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Wizard Lizard";
+
+
+        _enemy.EnemyStats.STR = 120;
+        _enemy.EnemyStats.AGI = 90;
+        _enemy.EnemyStats.INT = 90;
+        _enemy.EnemyStats.DEX = 90;
+        _enemy.EnemyStats.VIT = 110;
+        _enemy.EnemyStats.LUCK = 80;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 650,
+        P_ATK : 280,
+        M_ATK : 280,
+        P_DEF : 520,
+        M_DEF : 520,
+        ACCURACY : 440,
+        DODGE : 400,
+        CRIT : 8,
+        CRIT_MULTIPLIER : 700,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 1040;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 2080,
+        COLD_DEF : 2080,
+        EARTH_DEF : 2080,
+        LIGHTNING_DEF : 4160,
+        DARK_DEF : 1040,
+        HOLY_DEF : 2080,
+        VOID_DEF : 0
+        });
+    }
+    function GiantStormHawk() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Giant Storm Hawk";
+
+
+        _enemy.EnemyStats.STR = 130;
+        _enemy.EnemyStats.AGI = 110;
+        _enemy.EnemyStats.INT = 110;
+        _enemy.EnemyStats.DEX = 110;
+        _enemy.EnemyStats.VIT = 150;
+        _enemy.EnemyStats.LUCK = 80;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 700,
+        P_ATK : 320,
+        M_ATK : 320,
+        P_DEF : 580,
+        M_DEF : 580,
+        ACCURACY : 480,
+        DODGE : 440,
+        CRIT : 9,
+        CRIT_MULTIPLIER : 900,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 1160;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 2320,
+        COLD_DEF : 2320,
+        EARTH_DEF : 2320,
+        LIGHTNING_DEF : 4640,
+        DARK_DEF : 1160,
+        HOLY_DEF : 2320,
+        VOID_DEF : 0
+        });
+    }
+    function Thundervolt() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Thundervolt";
+
+
+        _enemy.EnemyStats.STR = 150;
+        _enemy.EnemyStats.AGI = 120;
+        _enemy.EnemyStats.INT = 120;
+        _enemy.EnemyStats.DEX = 120;
+        _enemy.EnemyStats.VIT = 140;
+        _enemy.EnemyStats.LUCK = 120;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 750,
+        P_ATK : 360,
+        M_ATK : 360,
+        P_DEF : 620,
+        M_DEF : 620,
+        ACCURACY : 520,
+        DODGE : 480,
+        CRIT : 9,
+        CRIT_MULTIPLIER : 900,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 1240;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 2480,
+        COLD_DEF : 2480,
+        EARTH_DEF : 2480,
+        LIGHTNING_DEF : 4960,
+        DARK_DEF : 1230,
+        HOLY_DEF : 2480,
+        VOID_DEF : 0
+        });
+    }
+    function Electra() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Electra";
+
+
+        _enemy.EnemyStats.STR = 160;
+        _enemy.EnemyStats.AGI = 140;
+        _enemy.EnemyStats.INT = 90;
+        _enemy.EnemyStats.DEX = 80;
+        _enemy.EnemyStats.VIT = 110;
+        _enemy.EnemyStats.LUCK = 90;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 800,
+        P_ATK : 400,
+        M_ATK : 400,
+        P_DEF : 660,
+        M_DEF : 660,
+        ACCURACY : 560,
+        DODGE : 520,
+        CRIT : 10,
+        CRIT_MULTIPLIER : 1000,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 1320;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 2640,
+        COLD_DEF : 2640,
+        EARTH_DEF : 2640,
+        LIGHTNING_DEF : 5280,
+        DARK_DEF : 1320,
+        HOLY_DEF : 2640,
+        VOID_DEF : 0
+        });
+    }
+    function Stormveil() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Stormveil";
+
+
+        _enemy.EnemyStats.STR = 120;
+        _enemy.EnemyStats.AGI = 140;
+        _enemy.EnemyStats.INT = 130;
+        _enemy.EnemyStats.DEX = 130;
+        _enemy.EnemyStats.VIT = 140;
+        _enemy.EnemyStats.LUCK = 150;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 850,
+        P_ATK : 420,
+        M_ATK : 420,
+        P_DEF : 700,
+        M_DEF : 700,
+        ACCURACY : 600,
+        DODGE : 560,
+        CRIT : 10,
+        CRIT_MULTIPLIER : 1000,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 1400;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 2800,
+        COLD_DEF : 2800,
+        EARTH_DEF : 2800,
+        LIGHTNING_DEF : 5600,
+        DARK_DEF : 1400,
+        HOLY_DEF : 2800,
+        VOID_DEF : 0
+        });
+    }
+    function Thornado() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Thornado";
+
+
+        _enemy.EnemyStats.STR = 140;
+        _enemy.EnemyStats.AGI = 140;
+        _enemy.EnemyStats.INT = 150;
+        _enemy.EnemyStats.DEX = 160;
+        _enemy.EnemyStats.VIT = 180;
+        _enemy.EnemyStats.LUCK = 190;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 900,
+        P_ATK : 460,
+        M_ATK : 460,
+        P_DEF : 740,
+        M_DEF : 740,
+        ACCURACY : 640,
+        DODGE : 600,
+        CRIT : 12,
+        CRIT_MULTIPLIER : 1200,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 1480;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 2960,
+        COLD_DEF : 2960,
+        EARTH_DEF : 2960,
+        LIGHTNING_DEF : 5920,
+        DARK_DEF : 1480,
+        HOLY_DEF : 2960,
+        VOID_DEF : 0
+        });
+    }
+    function Levin () public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Levin";
+
+
+        _enemy.EnemyStats.STR = 160;
+        _enemy.EnemyStats.AGI = 150;
+        _enemy.EnemyStats.INT = 230;
+        _enemy.EnemyStats.DEX = 180;
+        _enemy.EnemyStats.VIT = 210;
+        _enemy.EnemyStats.LUCK = 210;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 950,
+        P_ATK : 480,
+        M_ATK : 480,
+        P_DEF : 780,
+        M_DEF : 780,
+        ACCURACY : 680,
+        DODGE : 640,
+        CRIT : 12,
+        CRIT_MULTIPLIER : 1200,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 1560;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 3120,
+        COLD_DEF : 3120,
+        EARTH_DEF : 3120,
+        LIGHTNING_DEF : 6240,
+        DARK_DEF : 1560,
+        HOLY_DEF : 3120,
+        VOID_DEF : 0
+        });
+    }
+    function ThunderSerpent() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Thunder Serpent";
+
+
+        _enemy.EnemyStats.STR = 180;
+        _enemy.EnemyStats.AGI = 170;
+        _enemy.EnemyStats.INT = 240;
+        _enemy.EnemyStats.DEX = 190;
+        _enemy.EnemyStats.VIT = 230;
+        _enemy.EnemyStats.LUCK = 240;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 1000,
+        P_ATK : 500,
+        M_ATK : 500,
+        P_DEF : 820,
+        M_DEF : 820,
+        ACCURACY : 720,
+        DODGE : 680,
+        CRIT : 14,
+        CRIT_MULTIPLIER : 1300,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 1640;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 3280,
+        COLD_DEF : 3280,
+        EARTH_DEF : 3280,
+        LIGHTNING_DEF : 6560,
+        DARK_DEF : 1640,
+        HOLY_DEF : 3280,
+        VOID_DEF : 0
+        });
+    }
+    function Voltvoid() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Voltvoid";
+
+
+        _enemy.EnemyStats.STR = 200;
+        _enemy.EnemyStats.AGI = 180;
+        _enemy.EnemyStats.INT = 250;
+        _enemy.EnemyStats.DEX = 200;
+        _enemy.EnemyStats.VIT = 250;
+        _enemy.EnemyStats.LUCK = 260;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 1250,
+        P_ATK : 540,
+        M_ATK : 540,
+        P_DEF : 860,
+        M_DEF : 860,
+        ACCURACY : 760,
+        DODGE : 720,
+        CRIT : 14,
+        CRIT_MULTIPLIER : 1300,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 1720;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 3440,
+        COLD_DEF : 3440,
+        EARTH_DEF : 3440,
+        LIGHTNING_DEF : 6880,
+        DARK_DEF : 1720,
+        HOLY_DEF : 3440,
+        VOID_DEF : 0
+        });
+    }
+    function StormbonetheUndead() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Stormbone the Undead";
+
+
+        _enemy.EnemyStats.STR = 240;
+        _enemy.EnemyStats.AGI = 220;
+        _enemy.EnemyStats.INT = 300;
+        _enemy.EnemyStats.DEX = 240;
+        _enemy.EnemyStats.VIT = 300;
+        _enemy.EnemyStats.LUCK = 290;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 1500,
+        P_ATK : 580,
+        M_ATK : 580,
+        P_DEF : 900,
+        M_DEF : 900,
+        ACCURACY : 800,
+        DODGE : 760,
+        CRIT : 15,
+        CRIT_MULTIPLIER : 1500,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 1800;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 3600,
+        COLD_DEF : 3600,
+        EARTH_DEF : 3600,
+        LIGHTNING_DEF : 7200,
+        DARK_DEF : 1800,
+        HOLY_DEF : 3600,
+        VOID_DEF : 0
+        });
+    }
+    function LightningBehemoth() public pure returns (IMonster.Monster memory _enemy) {
+        _enemy.MonsterMetadata.name = "Lightning Behemoth";
+
+
+        _enemy.EnemyStats.STR = 320;
+        _enemy.EnemyStats.AGI = 330;
+        _enemy.EnemyStats.INT = 360;
+        _enemy.EnemyStats.DEX = 390;
+        _enemy.EnemyStats.VIT = 420;
+        _enemy.EnemyStats.LUCK = 360;
+
+        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        HP : 2000,
+        P_ATK : 750,
+        M_ATK : 750,
+        P_DEF : 1200,
+        M_DEF : 1200,
+        ACCURACY : 1200,
+        DODGE : 800,
+        CRIT : 20,
+        CRIT_MULTIPLIER : 2000,
+        INFUSION : 1
+        });
+
+        _enemy.damageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.LIGHTNING;
+        _enemy.EnemyElementalStats.ElementalAtk.LIGHTNING_ATK = 2400;
+
+        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        FIRE_DEF : 4800,
+        COLD_DEF : 4800,
+        EARTH_DEF : 4800,
+        LIGHTNING_DEF : 9600,
+        DARK_DEF : 2400,
+        HOLY_DEF : 4800,
         VOID_DEF : 0
         });
     }

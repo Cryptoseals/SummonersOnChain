@@ -14,45 +14,48 @@ contract CodexSuffixes {
 
         revert("invalid");
     }
-
-
-    function baseStat() internal pure returns (uint) {
-        return 1;
+    
+    function getPercentage(uint val, uint percentage) internal pure returns(uint) {
+        return (val * percentage) / 100;
     }
 
-    function baseAtk() internal pure returns (uint) {
-        return 3;
-    }
-
-    function baseDef() internal pure returns (uint) {
-        return 5;
-    }
-
-    function baseCrit() internal pure returns (uint) {
-        return 1;
-    }
-
-    function baseCritMulti() internal pure returns (uint) {
+    function baseStat() internal pure returns(uint) {
         return 10;
     }
 
-    function baseDodge() internal pure returns (uint) {
-        return 2;
+    function baseAtk() internal pure returns(uint) {
+        return 30;
     }
 
-    function baseAcc() internal pure returns (uint) {
-        return 3;
+    function baseDef() internal pure returns(uint) {
+        return 50;
     }
 
-    function baseEleDef() internal pure returns (uint) {
-        return 5;
+    function baseCrit() internal pure returns(uint) {
+        return 1;
     }
 
-    function baseEleAtk() internal pure returns (uint) {
-        return 3;
+    function baseCritMulti() internal pure returns(uint) {
+        return 100;
     }
-    function baseHp() internal pure returns (uint) {
-        return 3;
+
+    function baseDodge() internal pure returns(uint) {
+        return 20;
+    }
+
+    function baseAcc() internal pure returns(uint) {
+        return 30;
+    }
+
+    function baseEleDef() internal pure returns(uint) {
+        return 50;
+    }
+
+    function baseEleAtk() internal pure returns(uint) {
+        return 30;
+    }
+    function baseHp() internal pure returns(uint) {
+        return 30;
     }
 
     function OfSolarion(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
