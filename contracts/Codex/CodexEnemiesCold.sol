@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 contract CodexEnemiesCold {
 
-    function enemy(uint256 _id, uint256 _lvl)
+    function enemy(uint256 _id)
     public
     pure
     returns (IMonster.Monster memory)

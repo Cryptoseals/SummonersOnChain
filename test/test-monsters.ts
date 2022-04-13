@@ -1,6 +1,6 @@
 import {ethers, upgrades} from "hardhat";
 import {expect} from "chai";
-
+import fs from 'fs'
 const ether = ethers.utils.parseEther("1");
 
 enum CONTRACT {
@@ -44,7 +44,19 @@ enum CONTRACT {
     DARK_ENEMY_CODEX,
     HOLY_ENEMY_CODEX,
     VOID_ENEMY_CODEX,
-    PHYSICAL_ENEMY_CODEX
+    PHYSICAL_ENEMY_CODEX,
+    ARCANE_ENEMY_CODEX,
+    SPELLS_CODEX,
+    FIRE_SPELLS,
+    COLD_SPELLS,
+    EARTH_SPELLS,
+    LIGHTNING_SPELLS,
+    GADGET_SPELLS,
+    PHYSICAL_SPELLS,
+    ARCANE_SPELLS,
+    DARK_SPELLS,
+    HOLY_SPELLS,
+    VOID_SPELLS
 }
 
 enum Element {
@@ -83,82 +95,101 @@ describe("Navigator and Enemy Codexs", () => {
     let voidMonsters: any;
     let PhysicalMonsters: any;
     let physicalMonsters: any;
+    let ArcaneMonsters: any;
+    let arcaneMonsters: any;
 
     let tx;
 
     it('Should deploy navigator.', async () => {
-        const [w1] = await ethers.getSigners();
-        deployer = w1;
+
+
         Navigator = await ethers.getContractFactory("Navigator");
         navigator = await upgrades.deployProxy(Navigator, [ethers.constants.AddressZero, 30], {
             initializer: "initialize"
         });
-        return true;
+
+
     })
 
     it('Should deploy earth monster data ', async () => {
-        const [w1] = await ethers.getSigners();
-        deployer = w1;
+
+
         EarthMonsters = await ethers.getContractFactory("CodexEnemiesEarth");
         earthMonsters = await upgrades.deployProxy(EarthMonsters, []);
         console.log("Earth monsters deployed.")
-        return true;
+
     })
     it('Should deploy fire monster data ', async () => {
-        const [w1] = await ethers.getSigners();
-        deployer = w1;
+
+
         FireMonsters = await ethers.getContractFactory("CodexEnemiesFire");
         fireMonsters = await upgrades.deployProxy(FireMonsters, []);
         console.log("Fire monsters deployed.")
-        return true;
+
+
     })
     it('Should deploy cold monster data ', async () => {
-        const [w1] = await ethers.getSigners();
-        deployer = w1;
+
+
         ColdMonsters = await ethers.getContractFactory("CodexEnemiesCold");
         coldMonsters = await upgrades.deployProxy(ColdMonsters, []);
         console.log("Cold monsters deployed.")
-        return true;
+
+
     })
     it('Should deploy lightning monster data ', async () => {
-        const [w1] = await ethers.getSigners();
-        deployer = w1;
+
+
         LightningMonsters = await ethers.getContractFactory("CodexEnemiesLightning");
         lightningMonsters = await upgrades.deployProxy(LightningMonsters, []);
         console.log("Lightning monsters deployed.")
-        return true;
+
+
     })
     it('Should deploy dark monster data ', async () => {
-        const [w1] = await ethers.getSigners();
-        deployer = w1;
+
+
         DarkMonsters = await ethers.getContractFactory("CodexEnemiesDark");
         darkMonsters = await upgrades.deployProxy(DarkMonsters, []);
         console.log("Dark monsters deployed.")
-        return true;
+
+
     })
     it('Should deploy holy monster data ', async () => {
-        const [w1] = await ethers.getSigners();
-        deployer = w1;
+
+
         HolyMonsters = await ethers.getContractFactory("CodexEnemiesHoly");
         holyMonsters = await upgrades.deployProxy(HolyMonsters, []);
         console.log("Holy monsters deployed.")
-        return true;
+
+
     })
     it('Should deploy void monster data ', async () => {
-        const [w1] = await ethers.getSigners();
-        deployer = w1;
+
+
         VoidMonsters = await ethers.getContractFactory("CodexEnemiesVoid");
         voidMonsters = await upgrades.deployProxy(VoidMonsters, []);
         console.log("Void monsters deployed.")
-        return true;
+
+
     })
     it('Should deploy physical monster data ', async () => {
-        const [w1] = await ethers.getSigners();
-        deployer = w1;
+
+
         PhysicalMonsters = await ethers.getContractFactory("CodexEnemiesPhysical");
         physicalMonsters = await upgrades.deployProxy(PhysicalMonsters, []);
         console.log("Phyiscal monsters deployed.")
-        return true;
+
+
+    })
+    it('Should deploy arcane monster data ', async () => {
+
+
+        ArcaneMonsters = await ethers.getContractFactory("CodexEnemiesArcane");
+        arcaneMonsters = await upgrades.deployProxy(ArcaneMonsters, []);
+        console.log("Arcane monsters deployed.")
+
+
     })
     it('Should set addresses on navigator.', async () => {
         tx = await navigator.setGameContractsById(CONTRACT.EARTH_ENEMY_CODEX, earthMonsters.address, true);
@@ -185,41 +216,69 @@ describe("Navigator and Enemy Codexs", () => {
         tx = await navigator.setGameContractsById(CONTRACT.PHYSICAL_ENEMY_CODEX, physicalMonsters.address, true);
         await tx.wait(1);
         console.log("Physical address set.")
-    })
+        tx = await navigator.setGameContractsById(CONTRACT.ARCANE_ENEMY_CODEX, arcaneMonsters.address, true);
+        await tx.wait(1);
+        console.log("Arcane address set.")
 
-    it('Should deploy main enemy codex and set navigator.', async () => {
+
         CodexEnemy = await ethers.getContractFactory("CodexEnemies");
         codexEnemy = await upgrades.deployProxy(CodexEnemy, [navigator.address], {
             initializer: "initialize"
         });
+
+
         console.log("Main codex deployed.")
+
+
+    })
+
+    it('Should deploy main enemy codex and set navigator.', async () => {
+
     })
 
     it('Should fetch enemies from main codex.', async () => {
-        let monster = await codexEnemy.enemy(Element.FIRE, 1, 1)
-        console.log("fire:")
-        console.log(monster)
-        monster = await codexEnemy.enemy(Element.COLD, 1, 1)
-        console.log("cold:")
-        console.log(monster)
-        monster = await codexEnemy.enemy(Element.EARTH, 1, 1)
-        console.log("earth:")
-        console.log(monster)
-        monster = await codexEnemy.enemy(Element.LIGHTNING, 1, 1)
-        console.log("lightning:")
-        console.log(monster)
-        monster = await codexEnemy.enemy(Element.DARK, 1, 1)
-        console.log("dark:")
-        console.log(monster)
-        monster = await codexEnemy.enemy(Element.HOLY, 1, 1)
-        console.log("holy:")
-        console.log(monster)
-        monster = await codexEnemy.enemy(Element.VOID, 1, 1)
-        console.log("void:")
-        console.log(monster)
-        monster = await codexEnemy.enemy(Element.PHYSICAL, 1, 1)
-        console.log("physical:")
-        console.log(monster)
+        try {
+            let monster = await codexEnemy.enemy(Element.FIRE, 1, 1)
+            console.log("fire:")
+            console.log(monster)
+            monster = await codexEnemy.enemy(Element.COLD, 1, 1)
+            console.log("cold:")
+            console.log(monster)
+            monster = await codexEnemy.enemy(Element.EARTH, 1, 1)
+            console.log("earth:")
+            console.log(monster)
+            monster = await codexEnemy.enemy(Element.LIGHTNING, 1, 1)
+            console.log("lightning:")
+            console.log(monster)
+            monster = await codexEnemy.enemy(Element.DARK, 1, 1)
+            console.log("dark:")
+            console.log(monster)
+            monster = await codexEnemy.enemy(Element.HOLY, 1, 1)
+            console.log("holy:")
+            console.log(monster)
+            monster = await codexEnemy.enemy(Element.VOID, 1, 1)
+            console.log("void:")
+            console.log(monster)
+            monster = await codexEnemy.enemy(Element.PHYSICAL, 1, 1)
+            console.log("physical:")
+            console.log(monster)
+        } catch (e) {
+            console.log(e)
+        }
+        fs.writeFileSync('./last-deploy.json', JSON.stringify({
+            PhysicalMonstersCodex: physicalMonsters.address,
+            FireMonstersCodex: fireMonsters.address,
+            ColdMonstersCodex: coldMonsters.address,
+            LightningMonstersCodex: lightningMonsters.address,
+            EarthMonstersCodex: earthMonsters.address,
+            DarkMonstersCodex: darkMonsters.address,
+            HolyMonstersCodex: holyMonsters.address,
+            ArcaneMonstersCodex: arcaneMonsters.address,
+            VoidMonstersCodex: voidMonsters.address,
+            Codex: codexEnemy.address,
+            Nav: navigator.address
+        }),{});
+
     })
 })
 

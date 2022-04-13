@@ -27,9 +27,9 @@ contract CodexEnemies is Initializable, InitNavigator {
         ICodexEnemy_ _contract;
         if(ele == GameObjects.Element.PHYSICAL) {
             _contract = ICodexEnemy_(contractAddress(INavigator.CONTRACT.PHYSICAL_ENEMY_CODEX));
-        }if(ele == GameObjects.Element.ARCANE) {
+        } else if(ele == GameObjects.Element.ARCANE) {
             _contract = ICodexEnemy_(contractAddress(INavigator.CONTRACT.ARCANE_ENEMY_CODEX));
-        } if(ele == GameObjects.Element.FIRE) {
+        } else if(ele == GameObjects.Element.FIRE) {
             _contract = ICodexEnemy_(contractAddress(INavigator.CONTRACT.FIRE_ENEMY_CODEX));
         } else if(ele == GameObjects.Element.COLD) {
             _contract = ICodexEnemy_(contractAddress(INavigator.CONTRACT.COLD_ENEMY_CODEX));
