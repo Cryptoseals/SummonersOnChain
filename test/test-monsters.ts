@@ -265,7 +265,7 @@ describe("Navigator and Enemy Codexs", () => {
         } catch (e) {
             console.log(e)
         }
-        fs.writeFileSync('./last-deploy.json', JSON.stringify({
+        fs.writeFileSync('./test/last-deploy.json', JSON.stringify({
             PhysicalMonstersCodex: physicalMonsters.address,
             FireMonstersCodex: fireMonsters.address,
             ColdMonstersCodex: coldMonsters.address,
