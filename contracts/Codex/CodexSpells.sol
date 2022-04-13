@@ -1,47 +1,49 @@
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "../Core/Navigator/InitNavigator.sol";
 import "../Interfaces/GameObjects/ISpell.sol";
 pragma solidity ^0.8.0;
 
-contract CodexSpells {
+interface SpellCodex {
+    function spell(uint _id, uint _tier) external pure returns (ISpell.Spell memory);
+}
+
+contract CodexSpells is Initializable, InitNavigator {
     string constant public index = "Codex";
     string constant public class = "Spells";
     string constant public version = "0.0.1";
 
-    function spell(uint _id, uint _tier) public pure returns (ISpell.Spell memory) {
-        if (_id == 1) {
-            return HealingFireball(_tier);
+    function initialize(address _navigator) external initializer {
+        initializeNavigator(_navigator);
+    }
+
+
+    function spell(ISpell.SpellCategories _category, uint _id, uint _tier) public view returns (ISpell.Spell memory) {
+        SpellCodex _contract;
+        if (_category == ISpell.SpellCategories.PHYSICAL) {
+            _contract = SpellCodex(contractAddress(INavigator.CONTRACT.PHYSICAL_ENEMY_CODEX));
+        } else if (_category == ISpell.SpellCategories.ARCANE) {
+            _contract = SpellCodex(contractAddress(INavigator.CONTRACT.ARCANE_ENEMY_CODEX));
+        } else if (_category == ISpell.SpellCategories.FIRE) {
+            _contract = SpellCodex(contractAddress(INavigator.CONTRACT.FIRE_SPELLS));
+        } else if (_category == ISpell.SpellCategories.COLD) {
+            _contract = SpellCodex(contractAddress(INavigator.CONTRACT.COLD_SPELLS));
+        } else if (_category == ISpell.SpellCategories.LIGHTNING) {
+            _contract = SpellCodex(contractAddress(INavigator.CONTRACT.LIGHTNING_SPELLS));
+        } else if (_category == ISpell.SpellCategories.EARTH) {
+            _contract = SpellCodex(contractAddress(INavigator.CONTRACT.EARTH_SPELLS));
+        } else if (_category == ISpell.SpellCategories.DARK) {
+            _contract = SpellCodex(contractAddress(INavigator.CONTRACT.DARK_SPELLS));
+        } else if (_category == ISpell.SpellCategories.HOLY) {
+            _contract = SpellCodex(contractAddress(INavigator.CONTRACT.HOLY_SPELLS));
+        }  else if (_category == ISpell.SpellCategories.GADGET) {
+            _contract = SpellCodex(contractAddress(INavigator.CONTRACT.GADGET_SPELLS));
+        } else if (_category == ISpell.SpellCategories.VOID) {
+            _contract = SpellCodex(contractAddress(INavigator.CONTRACT.VOID_SPELLS));
+        } else {
+            revert("?");
         }
 
-        revert("invalid");
+        return _contract.spell(_id, _tier);
     }
 
-    function HealingFireball(uint tier) public pure returns (ISpell.Spell memory _spell) {
-        _spell.id = 1;
-        _spell.name = "Healing Fireball";
-        _spell.cooldown = 3;
-        _spell.spellType = ISpell.SpellType.LIFESTEAL;
-
-        _spell.attackProps.element = GameObjects.Element.FIRE;
-        _spell.attackProps.damageMultiplier = 120;
-        _spell.attackProps.infusion = 5;
-        _spell.attackProps.multiplierBonusPerTier = 5;
-
-        _spell.healingProps.maxAmount = 20;
-        _spell.healingProps.maxAmount = 25;
-        _spell.healingProps.bonusHealingPerTier = 2;
-
-        _spell.maxSpellLevel = 12;
-
-        _spell.learningCost = 50e18;
-
-        _spell.upgradeCostMultiplier = 3;
-
-        _spell.requirements.level = 1;
-        _spell.requirements.levelRequirementPerTier = 4;
-
-        _spell.requirements.statRequirement.AGI = 2;
-        _spell.requirements.additionalStatRequirementsPerTier.AGI = 2;
-
-        _spell.requirements.statRequirement.INT = 6;
-        _spell.requirements.additionalStatRequirementsPerTier.INT = 3;
-    }
 }

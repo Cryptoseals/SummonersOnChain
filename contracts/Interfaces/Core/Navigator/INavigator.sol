@@ -45,7 +45,17 @@ interface INavigator {
         VOID_ENEMY_CODEX,
         PHYSICAL_ENEMY_CODEX,
         ARCANE_ENEMY_CODEX,
-        SPELLS_CODEX
+        SPELLS_CODEX,
+        FIRE_SPELLS,
+        COLD_SPELLS,
+        EARTH_SPELLS,
+        LIGHTNING_SPELLS,
+        GADGET_SPELLS,
+        PHYSICAL_SPELLS,
+        ARCANE_SPELLS,
+        DARK_SPELLS,
+        HOLY_SPELLS,
+        VOID_SPELLS
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;

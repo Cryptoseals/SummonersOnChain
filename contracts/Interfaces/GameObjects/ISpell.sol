@@ -3,6 +3,10 @@ pragma solidity ^0.8.0;
 
 interface ISpell {
 
+    enum SpellCategories {
+        FIRE, COLD, EARTH, LIGHTNING, ARCANE, PHYSICAL, DARK, HOLY, GADGET, VOID
+    }
+
     enum SpellType {
         ATTACK,
         HEALING,
