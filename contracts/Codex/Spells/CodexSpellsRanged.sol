@@ -1,7 +1,7 @@
-import "../Interfaces/GameObjects/ISpell.sol";
+import "../../Interfaces/GameObjects/ISpell.sol";
 pragma solidity ^0.8.0;
 
-contract CodexSpellsPhysical {
+contract CodexSpellsRanged {
 
     function spell(uint _id, uint _tier) public pure returns (ISpell.Spell memory) {
         if (_id == 1) {
@@ -15,9 +15,9 @@ contract CodexSpellsPhysical {
         _spell.id = 1;
         _spell.name = "Healing Fireball";
         _spell.cooldown = 3;
-        _spell.spellType = ISpell.SpellType.LIFESTEAL;
+        _spell.spellType = ISpell.SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.FIRE;
+        _spell.attackProps.element = GameObjects.Element.PHYSICAL;
         _spell.attackProps.damageMultiplier = 120;
         _spell.attackProps.infusion = 5;
         _spell.attackProps.multiplierBonusPerTier = 5;

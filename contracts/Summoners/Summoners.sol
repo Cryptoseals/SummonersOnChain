@@ -80,7 +80,7 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     function summonerData(uint id) external view returns (GameEntities.SummonerData memory) {
         GameEntities.SummonerData memory _data = GameEntities.SummonerData({
         level : SummonerLevels[id],
-        class: uint(SummonerClasses[id]),
+        class: SummonerClasses[id],
         state : SummonerState[id],
         EXP : SummonerEXP[id]
         });

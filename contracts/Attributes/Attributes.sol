@@ -26,6 +26,7 @@ contract Attributes is Initializable, InitNavigator {
     function allocate(uint summoner, GameObjects.Stats memory _stats) external ensureNotPaused senderIsSummonerOwner(summoner) {
         if (Distributed[summoner] || UsedPoints[summoner] > 0) revert AlreadyAllocated(summoner, "ALREADY ALLOCATED");
         if (_stats.STR == 0 || _stats.DEX == 0 || _stats.INT == 0 || _stats.AGI == 0 || _stats.VIT == 0 || _stats.LUCK == 0) revert StatZero("STAT CANNOT BE 0");
+        if (_stats.STR > 10 || _stats.DEX > 10 || _stats.INT > 10 || _stats.AGI > 10 || _stats.VIT > 10 || _stats.LUCK > 10) revert StatOverflow("GT 10");
         Distributed[summoner] = true;
 
         // calculate cost.
@@ -35,7 +36,7 @@ contract Attributes is Initializable, InitNavigator {
 
         // check if exceeds initial points
         require(GameConstants.SUMMONER_INITIAL_STAT_POINTS >= _usedPoints, "NOT ENOUGH POINTS");
-        SummonerStats[summoner] = _stats;
+        SummonerStats[summoner] = GameObjects.Stats({STR: _stats.STR*10, AGI: _stats.AGI*10, DEX: _stats.DEX*10, INT: _stats.INT*10, VIT:_stats.VIT*10, LUCK : _stats.LUCK*10});
         UsedPoints[summoner] = _usedPoints;
     }
 
@@ -56,25 +57,25 @@ contract Attributes is Initializable, InitNavigator {
         // apply
         if (stat == GameObjects.StatsEnum.STR) {
             nextStatLevel = SummonerStats[summoner].STR;
-            SummonerStats[summoner].STR++;
+            SummonerStats[summoner].STR+=10;
         } else if (stat == GameObjects.StatsEnum.AGI) {
             nextStatLevel = SummonerStats[summoner].AGI;
-            SummonerStats[summoner].AGI++;
+            SummonerStats[summoner].AGI+=10;
         } else if (stat == GameObjects.StatsEnum.INT) {
             nextStatLevel = SummonerStats[summoner].INT;
-            SummonerStats[summoner].INT++;
+            SummonerStats[summoner].INT+=10;
         } else if (stat == GameObjects.StatsEnum.DEX) {
             nextStatLevel = SummonerStats[summoner].DEX;
-            SummonerStats[summoner].DEX++;
+            SummonerStats[summoner].DEX+=10;
         } else if (stat == GameObjects.StatsEnum.VIT) {
             nextStatLevel = SummonerStats[summoner].VIT;
-            SummonerStats[summoner].VIT++;
+            SummonerStats[summoner].VIT+=10;
         } else if (stat == GameObjects.StatsEnum.LUCK) {
             nextStatLevel = SummonerStats[summoner].LUCK;
-            SummonerStats[summoner].LUCK++;
+            SummonerStats[summoner].LUCK+=10;
         }
 
-        uint cost = calculator.CostOfStat(nextStatLevel + 1);
+        uint cost = calculator.CostOfStat(nextStatLevel/10);
         require(used + cost <= total, "EXCEEDS MAX. POINTS");
         UsedLevelPoints[summoner] += cost;
     }

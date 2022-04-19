@@ -159,14 +159,12 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     function HitChanceWDecimals(uint ACC, uint DODGE) public pure returns (uint) {
-        //(100+(accuracy - dodge))/100
+        //(100+(dodge - accuracy))/100
         int ACC_W_DECIMAL = int(ACC * GameConstants.GAME_DECIMAL);
         int DODGE_W_DECIMAL = int(DODGE * GameConstants.GAME_DECIMAL);
-        int DIFF = ((DODGE_W_DECIMAL - ACC_W_DECIMAL));
-        uint X = uint(DIFF) / 2;
-        if(X > GameConstants.HUNDRED) return 0;
-        uint CHANCE = DIFF <= 0 ? GameConstants.HUNDRED : GameConstants.HUNDRED - X;
-        return CHANCE >= GameConstants.HUNDRED ? GameConstants.HUNDRED : CHANCE;
+        int DIFF = (DODGE_W_DECIMAL - ACC_W_DECIMAL);
+        int X = int(GameConstants.HUNDRED) + DIFF;
+        return uint(int(GameConstants.HUNDRED) - (X/100));
     }
 
     function CritChance(uint LUCK, uint CRIT) external pure returns (uint){

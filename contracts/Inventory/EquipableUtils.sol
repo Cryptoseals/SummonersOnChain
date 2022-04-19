@@ -14,6 +14,16 @@ library EquipableUtils {
         return _a;
     }
 
+    function sumStatsAsTier(GameObjects.Stats memory _a, uint tier) internal pure returns (GameObjects.Stats memory) {
+        _a.STR += percentage(_a.STR, tier);
+        _a.AGI += percentage(_a.AGI, tier);
+        _a.DEX += percentage(_a.DEX, tier);
+        _a.INT += percentage(_a.INT, tier);
+        _a.VIT += percentage(_a.VIT, tier);
+        _a.LUCK += percentage(_a.LUCK, tier);
+        return _a;
+    }
+
     function sumGeneratedStats(GameObjects.GeneratedStats memory _a, GameObjects.GeneratedStats memory _b) internal pure returns (GameObjects.GeneratedStats memory) {
         _a.P_ATK += _b.P_ATK;
         _a.M_ATK += _b.M_ATK;
@@ -23,6 +33,7 @@ library EquipableUtils {
         _a.DODGE += _b.DODGE;
         _a.CRIT += _b.CRIT;
         _a.CRIT_MULTIPLIER += _b.CRIT_MULTIPLIER;
+        _a.INFUSION += _b.INFUSION;
         return _a;
     }
 
@@ -37,6 +48,21 @@ library EquipableUtils {
         _a.DODGE += percentage(_a.DODGE, _b.DODGE);
         _a.CRIT += percentage(_a.CRIT, _b.CRIT);
         _a.CRIT_MULTIPLIER += percentage(_a.CRIT_MULTIPLIER, _b.CRIT_MULTIPLIER);
+        _a.INFUSION += percentage(_a.INFUSION, _b.INFUSION);
+        return _a;
+    }
+    function sumGeneratedStatsAsTier(
+        GameObjects.GeneratedStats memory _a,
+        uint tier) internal pure returns (GameObjects.GeneratedStats memory) {
+        _a.P_ATK += percentage(_a.P_ATK, tier);
+        _a.M_ATK += percentage(_a.M_ATK, tier);
+        _a.P_DEF += percentage(_a.P_DEF, tier);
+        _a.M_DEF += percentage(_a.M_DEF, tier);
+        _a.ACCURACY += percentage(_a.ACCURACY, tier);
+        _a.DODGE += percentage(_a.DODGE, tier);
+        _a.CRIT += percentage(_a.CRIT, tier);
+        _a.CRIT_MULTIPLIER += percentage(_a.CRIT_MULTIPLIER, tier);
+        _a.INFUSION += percentage(_a.INFUSION, tier);
         return _a;
     }
 
@@ -58,6 +84,7 @@ library EquipableUtils {
         _a.ElementalDef.VOID_DEF += _b.ElementalDef.VOID_DEF;
         return _a;
     }
+
     function sumGeneratedElementalStatsAsPercentage(GameObjects.ElementalStats memory _a, GameObjects.ElementalStats memory _b) internal pure returns (GameObjects.ElementalStats memory) {
         _a.ElementalAtk.FIRE_ATK += percentage(_a.ElementalAtk.FIRE_ATK, _b.ElementalAtk.FIRE_ATK);
         _a.ElementalAtk.COLD_ATK += percentage(_a.ElementalAtk.COLD_ATK, _b.ElementalAtk.COLD_ATK);
@@ -74,6 +101,25 @@ library EquipableUtils {
         _a.ElementalDef.HOLY_DEF += percentage(_a.ElementalDef.HOLY_DEF, _b.ElementalDef.HOLY_DEF);
         _a.ElementalDef.DARK_DEF += percentage(_a.ElementalDef.DARK_DEF, _b.ElementalDef.DARK_DEF);
         _a.ElementalDef.VOID_DEF += percentage(_a.ElementalDef.VOID_DEF, _b.ElementalDef.VOID_DEF);
+        return _a;
+    }
+
+    function sumGeneratedElementalStatsAsTier(GameObjects.ElementalStats memory _a, uint tier) internal pure returns (GameObjects.ElementalStats memory) {
+        _a.ElementalAtk.FIRE_ATK += percentage(_a.ElementalAtk.FIRE_ATK, tier);
+        _a.ElementalAtk.COLD_ATK += percentage(_a.ElementalAtk.COLD_ATK, tier);
+        _a.ElementalAtk.LIGHTNING_ATK += percentage(_a.ElementalAtk.LIGHTNING_ATK, tier);
+        _a.ElementalAtk.EARTH_ATK += percentage(_a.ElementalAtk.EARTH_ATK, tier);
+        _a.ElementalAtk.HOLY_ATK += percentage(_a.ElementalAtk.HOLY_ATK, tier);
+        _a.ElementalAtk.DARK_ATK += percentage(_a.ElementalAtk.DARK_ATK, tier);
+        _a.ElementalAtk.VOID_ATK += percentage(_a.ElementalAtk.VOID_ATK, tier);
+
+        _a.ElementalDef.FIRE_DEF += percentage(_a.ElementalDef.FIRE_DEF, tier);
+        _a.ElementalDef.COLD_DEF += percentage(_a.ElementalDef.COLD_DEF, tier);
+        _a.ElementalDef.LIGHTNING_DEF += percentage(_a.ElementalDef.LIGHTNING_DEF, tier);
+        _a.ElementalDef.EARTH_DEF += percentage(_a.ElementalDef.EARTH_DEF, tier);
+        _a.ElementalDef.HOLY_DEF += percentage(_a.ElementalDef.HOLY_DEF, tier);
+        _a.ElementalDef.DARK_DEF += percentage(_a.ElementalDef.DARK_DEF, tier);
+        _a.ElementalDef.VOID_DEF += percentage(_a.ElementalDef.VOID_DEF, tier);
         return _a;
     }
 

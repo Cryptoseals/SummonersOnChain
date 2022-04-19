@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 interface ISpell {
 
     enum SpellCategories {
-        FIRE, COLD, EARTH, LIGHTNING, ARCANE, PHYSICAL, DARK, HOLY, GADGET, VOID
+        FIRE, COLD, EARTH, LIGHTNING, ARCANE, PHYSICAL, DARK, HOLY, GADGET, VOID, RANGED
     }
 
     enum SpellType {
@@ -32,6 +32,7 @@ interface ISpell {
         GameObjects.Stats statRequirement;
         GameObjects.Stats additionalStatRequirementsPerTier;
         GameObjects.Class[] classRequirement;
+        GameObjects.WeaponType requiredItem;
     }
 
     struct AttackProperties {

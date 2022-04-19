@@ -15,7 +15,7 @@ library GameObjects {
     }
 
     enum Class {
-        Barbarian, Paladin, Assassin, Wizard, Necromancer, Priest, Engineer
+        Barbarian, Paladin, Assassin, Wizard, Necromancer, Priest, Engineer, Ranger
     }
 
     enum WeaponType {
