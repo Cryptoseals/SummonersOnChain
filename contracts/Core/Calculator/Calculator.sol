@@ -143,8 +143,8 @@ contract Calculator is Initializable, InitNavigator {
         }
 
 
-        _battleStats1.CRIT_CHANCE = CritChanceWDecimals(_stats1.LUCK, _gen_stats1.CRIT);
-        _battleStats2.CRIT_CHANCE = CritChanceWDecimals(_stats2.LUCK, _gen_stats2.CRIT);
+        _battleStats1.CRIT_CHANCE = CRITICALWDecimals(_stats1.LUCK, _gen_stats1.CRIT);
+        _battleStats2.CRIT_CHANCE = CRITICALWDecimals(_stats2.LUCK, _gen_stats2.CRIT);
 
         _battleStats1.DODGE_CHANCE = DODWDecimals(_stats1.AGI, _gen_stats1.DODGE);
         _battleStats2.DODGE_CHANCE = DODWDecimals(_stats2.AGI, _gen_stats2.DODGE);
@@ -164,19 +164,9 @@ contract Calculator is Initializable, InitNavigator {
         int DODGE_W_DECIMAL = int(DODGE * GameConstants.GAME_DECIMAL);
         int DIFF = (DODGE_W_DECIMAL - ACC_W_DECIMAL);
         int X = int(GameConstants.HUNDRED) + DIFF;
-        return uint(int(GameConstants.HUNDRED) - (X/100));
+        return uint(int(GameConstants.HUNDRED) - (X / 100));
     }
 
-    function CritChance(uint LUCK, uint CRIT) external pure returns (uint){
-        return CritChanceWDecimals(LUCK, CRIT) / GameConstants.GAME_DECIMAL;
-    }
-
-    function CritChanceWDecimals(uint LUCK, uint CRIT) public pure returns (uint) {
-        uint CRIT_W_DECIMAL = CRIT * GameConstants.GAME_DECIMAL;
-        uint LUCK_W_DECIMAL = LUCK * GameConstants.GAME_DECIMAL;
-        //(1+luk/3)/100
-        return (CRIT_W_DECIMAL + GameConstants.GAME_DECIMAL + (LUCK_W_DECIMAL / 3));
-    }
 
     // @param _dns, N of dice, n=20 means d20
     function BatchRollN(uint summoner, uint[] calldata _seeds, uint[] calldata _chances, uint[] calldata _dns) external view returns (bool[] memory) {
@@ -227,22 +217,23 @@ contract Calculator is Initializable, InitNavigator {
     function DPSWDecimals(uint ATK, uint DEF, uint PEN) public pure returns (uint) {
         uint256 DECIMAL = 0;
         uint256 TEMP = DEF;
-        while (TEMP != 0) { TEMP >>= 8; DECIMAL++; }
+        while (TEMP != 0) {TEMP >>= 8;
+            DECIMAL++;}
 
         int diff = int(DEF) - int(ATK);
         uint ratio;
 
-        if ( diff > 0 ) {
-            ratio = uint(DEF/ATK);
+        if (diff > 0) {
+            ratio = uint(DEF / ATK);
         }
 
         uint DEF_W_DECIMAL = (DEF * GameConstants.GAME_DECIMAL);
         uint ATK_W_DECIMAL = (ATK * GameConstants.GAME_DECIMAL);
         uint DEF_PENETRATED = DEF_W_DECIMAL - (((DEF_W_DECIMAL) * (PEN * GameConstants.GAME_DECIMAL)) / GameConstants.HUNDRED);
         uint DEF_PLUS_H = (GameConstants.HUNDRED + DEF_PENETRATED);
-        uint MULTIPLIER = GameConstants.THOUSAND * 10**DECIMAL;
+        uint MULTIPLIER = GameConstants.THOUSAND * 10 ** DECIMAL;
         uint PERCENTAGE = (MULTIPLIER / DEF_PLUS_H);
-        uint FINAL_ATK = (ATK_W_DECIMAL * (PERCENTAGE) / 10 / 10**DECIMAL);
+        uint FINAL_ATK = (ATK_W_DECIMAL * (PERCENTAGE) / 10 / 10 ** DECIMAL);
         return FINAL_ATK;
     }
 
@@ -364,7 +355,7 @@ contract Calculator is Initializable, InitNavigator {
         // 1+(dex/2)
         uint DEX_W_DECIMAL = DEX * GameConstants.GAME_DECIMAL;
         uint ACC_W_DECIMAL = ACC * GameConstants.GAME_DECIMAL;
-        return ACC_W_DECIMAL + GameConstants.GAME_DECIMAL + (DEX_W_DECIMAL / 2);
+        return ACC_W_DECIMAL + GameConstants.GAME_DECIMAL + (DEX_W_DECIMAL / 10);
     }
 
     function DODGE(uint summoner) public view returns (uint) {
@@ -387,7 +378,7 @@ contract Calculator is Initializable, InitNavigator {
         //1+(agi/3)
         uint DODGE_W_DECIMAL = _DODGE * GameConstants.GAME_DECIMAL;
         uint AGI_W_DECIMAL = AGI * GameConstants.GAME_DECIMAL;
-        return DODGE_W_DECIMAL + GameConstants.GAME_DECIMAL + (AGI_W_DECIMAL / 3);
+        return DODGE_W_DECIMAL + GameConstants.GAME_DECIMAL + (AGI_W_DECIMAL / 10);
     }
 
     function CRIT(uint summoner) public view returns (uint) {
@@ -410,7 +401,7 @@ contract Calculator is Initializable, InitNavigator {
         //1+(agi/3)
         uint CRIT_W_DECIMAL = _CRIT * GameConstants.GAME_DECIMAL;
         uint LUCK_W_DECIMAL = LUCK * GameConstants.GAME_DECIMAL;
-        return CRIT_W_DECIMAL + GameConstants.GAME_DECIMAL + (LUCK_W_DECIMAL / 3);
+        return CRIT_W_DECIMAL + GameConstants.GAME_DECIMAL + (LUCK_W_DECIMAL / 50);
     }
 
     // @notice VIEW UTILS
@@ -437,7 +428,7 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     function SummonerBaseStats(GameObjects.Class _class) public view returns (GameObjects.GeneratedStats memory) {
-        return GameObjects.GeneratedStats({HP : 1, P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1, INFUSION : 0});
+        return GameObjects.GeneratedStats({HP : 10, P_ATK : 10, M_ATK : 10, P_DEF : 10, M_DEF : 10, ACCURACY : 10, DODGE : 10, CRIT : 1, CRIT_MULTIPLIER : 10, INFUSION : 0});
     }
 
     function CostOfStat(uint skill) public view returns (uint) {

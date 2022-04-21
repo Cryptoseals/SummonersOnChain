@@ -15,6 +15,7 @@ contract Names is
 {
     uint256 public constant GOLD_COST = 50e18;
     mapping(uint256 => uint256) internal SummonerToName;
+    mapping(uint256 => uint256) internal NameToSummoner;
     mapping(string => uint256) public NamesToToken;
     mapping(uint => string) public TokenToName;
 
@@ -47,6 +48,7 @@ contract Names is
     {
         require(ownerOf(nameToken) == msg.sender, "must own");
         SummonerToName[summoner] = nameToken;
+        NameToSummoner[nameToken] = summoner;
         emit ChangeName(summoner, nameToken, TokenToName[nameToken]);
     }
 

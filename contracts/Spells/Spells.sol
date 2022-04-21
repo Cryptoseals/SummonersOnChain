@@ -36,6 +36,7 @@ contract Spells is Initializable, InitNavigator {
         uint nextTier = SummonerSpellLevels[_summoner][spellId]+1;
         ISpell.Spell memory spell = ICodexSpells(contractAddress(INavigator.CONTRACT.SPELLS_CODEX)).spell(spellId, nextTier);
         GameObjects.Stats memory summed = EquipableUtils.sumStats(spell.requirements.statRequirement, spell.requirements.additionalStatRequirementsPerTier);
+
     }
 
     function checkClass(GameObjects.Class _summonerClass, ISpell.SpellCategories cat) internal view returns (bool) {

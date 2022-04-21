@@ -56,7 +56,9 @@ interface INavigator {
         DARK_SPELLS,
         HOLY_SPELLS,
         VOID_SPELLS,
-        RANGED_SPELLS
+        RANGED_SPELLS,
+        BASE_ENEMY_STATS,
+        CODEX_ENEMIES
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;
