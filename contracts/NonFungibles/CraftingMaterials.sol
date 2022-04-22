@@ -80,7 +80,7 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         require(amount <= ActiveProcessings[processId].amount, "scam?");
 
         uint timeRequiredPerMaterial = (ActiveProcessings[processId].when - ActiveProcessings[processId].startingDate) / ActiveProcessings[processId].amount;
-        require(block.timestamp > ActiveProcessings[processId].startingDate * amount, "early");
+        require(block.timestamp > ActiveProcessings[processId].startingDate + timeRequiredPerMaterial * amount, "early");
 
         ActiveProcessings[processId].startingDate += timeRequiredPerMaterial * amount;
         ActiveProcessings[processId].amount -= amount;
