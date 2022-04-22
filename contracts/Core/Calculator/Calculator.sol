@@ -114,29 +114,29 @@ contract Calculator is Initializable, InitNavigator {
 
 
         if (_eleStats2.SummonerDamageType == GameObjects.Element.PHYSICAL) {
-            _battleStats2.DPS = DPSWDecimals(_gen_stats2.P_ATK, _stats1.STR, _gen_stats1.P_DEF, _gen_stats2.INFUSION);
+            _battleStats2.DPS = DPSWDecimals(_gen_stats2.P_ATK, _stats2.STR, _gen_stats1.P_DEF, _gen_stats2.INFUSION);
         } else if (_eleStats2.SummonerDamageType == GameObjects.Element.ARCANE) {
-            _battleStats2.DPS = DPSWDecimals(_gen_stats2.M_ATK, _stats1.INT, _gen_stats1.M_DEF, _gen_stats2.INFUSION);
+            _battleStats2.DPS = DPSWDecimals(_gen_stats2.M_ATK, _stats2.INT, _gen_stats1.M_DEF, _gen_stats2.INFUSION);
         } else if (_eleStats2.SummonerDamageType == GameObjects.Element.FIRE) {
-            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.FIRE_ATK, _stats1.INT > _stats1.STR ? _stats1.INT : _stats1.STR,
+            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.FIRE_ATK, _stats2.INT > _stats2.STR ? _stats2.INT : _stats2.STR,
                 _eleStats1.ElementalDef.FIRE_DEF, _gen_stats2.INFUSION);
         } else if (_eleStats2.SummonerDamageType == GameObjects.Element.COLD) {
-            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.COLD_ATK, _stats1.INT > _stats1.STR ? _stats1.INT : _stats1.STR,
+            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.COLD_ATK, _stats2.INT > _stats2.STR ? _stats2.INT : _stats2.STR,
                 _eleStats1.ElementalDef.COLD_DEF, _gen_stats2.INFUSION);
         } else if (_eleStats2.SummonerDamageType == GameObjects.Element.EARTH) {
-            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.EARTH_ATK, _stats1.INT > _stats1.STR ? _stats1.INT : _stats1.STR,
+            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.EARTH_ATK, _stats2.INT > _stats2.STR ? _stats2.INT : _stats2.STR,
                 _eleStats1.ElementalDef.EARTH_DEF, _gen_stats2.INFUSION);
         } else if (_eleStats2.SummonerDamageType == GameObjects.Element.LIGHTNING) {
-            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.LIGHTNING_ATK, _stats1.INT > _stats1.STR ? _stats1.INT : _stats1.STR,
+            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.LIGHTNING_ATK, _stats2.INT > _stats2.STR ? _stats2.INT : _stats2.STR,
                 _eleStats1.ElementalDef.LIGHTNING_DEF, _gen_stats2.INFUSION);
         } else if (_eleStats2.SummonerDamageType == GameObjects.Element.DARK) {
-            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.DARK_ATK, _stats1.INT > _stats1.STR ? _stats1.INT : _stats1.STR,
+            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.DARK_ATK, _stats2.INT > _stats2.STR ? _stats2.INT : _stats2.STR,
                 _eleStats1.ElementalDef.DARK_DEF, _gen_stats2.INFUSION);
         } else if (_eleStats2.SummonerDamageType == GameObjects.Element.HOLY) {
-            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.HOLY_ATK, _stats1.INT > _stats1.STR ? _stats1.INT : _stats1.STR,
+            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.HOLY_ATK, _stats2.INT > _stats2.STR ? _stats2.INT : _stats2.STR,
                 _eleStats1.ElementalDef.HOLY_DEF, _gen_stats2.INFUSION);
         } else if (_eleStats2.SummonerDamageType == GameObjects.Element.VOID) {
-            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.VOID_ATK, _stats1.INT > _stats1.STR ? _stats1.INT : _stats1.STR,
+            _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.VOID_ATK, _stats2.INT > _stats2.STR ? _stats2.INT : _stats2.STR,
                 _eleStats1.ElementalDef.VOID_DEF, _gen_stats2.INFUSION);
         } else {
             revert("ELEM ERROR2");
