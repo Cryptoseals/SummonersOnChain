@@ -58,7 +58,13 @@ interface INavigator {
         VOID_SPELLS,
         RANGED_SPELLS,
         BASE_ENEMY_STATS,
-        CODEX_ENEMIES
+        CODEX_ENEMIES,
+        CRAFTING,
+        CRAFTING_MATERIALS,
+        ARMOR_RECIPES,
+        WEAPON_RECIPES,
+        ELIXIR_RECIPES,
+        ARTIFACT_RECIPES
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;
