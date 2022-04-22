@@ -2,6 +2,12 @@ pragma solidity ^0.8.0;
 
 interface ICraftingMaterials {
 
+    enum MaterialTypes {
+        ORE,
+        WOOD,
+        CLOTH
+    }
+
     enum CraftingMaterial {
         COPPER, TIN, IRON, SILVER, GOLD, PLATINUM, MYTHRIL, ORICALCHUM,
         OBSIDIAN, LUMINITE,
@@ -40,6 +46,19 @@ interface ICraftingMaterials {
         CraftingMaterial requiredMaterial;
         uint amount;
         uint requiredTime;
+    }
+
+    struct ProcessingProcess {
+        CraftingMaterial rewardMaterial;
+        uint amount;
+        uint when;
+        address who;
+        bool isClaimed;
+    }
+
+    struct UpgradingRecipe {
+        CraftingMaterial requiredMaterial;
+        uint amount;
     }
 
 }
