@@ -69,31 +69,31 @@ contract ProcessingOreRecipes {
     function GoldIngot (uint amount) public view returns(ICraftingMaterials.ProcessingRecipe memory _recipe) {
         _recipe.requiredMaterial = ICraftingMaterials.CraftingMaterial.GOLD;
         _recipe.amount = amount * 10;
-        _recipe.requiredTime = amount * 30 minutes;
+        _recipe.requiredTime = amount * 35 minutes;
     }
 
     function PlatinumIngot (uint amount) public view returns(ICraftingMaterials.ProcessingRecipe memory _recipe) {
         _recipe.requiredMaterial = ICraftingMaterials.CraftingMaterial.PLATINUM;
         _recipe.amount = amount * 10;
-        _recipe.requiredTime = amount * 30 minutes;
+        _recipe.requiredTime = amount * 40 minutes;
     }
 
     function MythrilIngot (uint amount) public view returns(ICraftingMaterials.ProcessingRecipe memory _recipe) {
         _recipe.requiredMaterial = ICraftingMaterials.CraftingMaterial.MYTHRIL;
         _recipe.amount = amount * 10;
-        _recipe.requiredTime = amount * 35 minutes;
+        _recipe.requiredTime = amount * 45 minutes;
     }
 
     function OricalchumIngot (uint amount) public view returns(ICraftingMaterials.ProcessingRecipe memory _recipe) {
         _recipe.requiredMaterial = ICraftingMaterials.CraftingMaterial.ORICALCHUM;
         _recipe.amount = amount * 10;
-        _recipe.requiredTime = amount * 40 minutes;
+        _recipe.requiredTime = amount * 50 minutes;
     }
 
     function ObsidianIngot (uint amount) public view returns(ICraftingMaterials.ProcessingRecipe memory _recipe) {
         _recipe.requiredMaterial = ICraftingMaterials.CraftingMaterial.OBSIDIAN;
         _recipe.amount = amount * 10;
-        _recipe.requiredTime = amount * 45 minutes;
+        _recipe.requiredTime = amount * 55 minutes;
     }
 
     function LuminiteIngot (uint amount) public view returns(ICraftingMaterials.ProcessingRecipe memory _recipe) {
