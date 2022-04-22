@@ -1,3 +1,4 @@
+import "./ICrafting/ICraftingMaterials.sol";
 pragma solidity ^0.8.0;
 
 interface IGameRewards {
@@ -18,6 +19,7 @@ interface IGameRewards {
         bool yieldsChest;
         bool yieldsPet;
         bool yieldsFish;
+        bool yieldsCraftingMaterial;
     }
 
     struct Rewards {
@@ -27,6 +29,13 @@ interface IGameRewards {
         MiscItemRewards miscItemRewards;
         GoldRewards goldRewards;
         EssenceRewards essenceRewards;
+        CraftingMaterialRewards craftingMaterialRewards;
+    }
+
+    struct CraftingMaterialRewards {
+        ICraftingMaterials.CraftingMaterial[] materialIds;
+        uint[] min;
+        uint[] max;
     }
 
     struct ArtifactRewards {

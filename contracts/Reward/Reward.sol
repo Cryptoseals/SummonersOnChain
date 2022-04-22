@@ -10,6 +10,12 @@ import "../Core/Common/Errors.sol";
 import "../Interfaces/Core/Constants/Constants.sol";
 import "../Interfaces/GameObjects/IGameRewards.sol";
 import "../Interfaces/NonFungibles/Common/IRewardNonFungible.sol";
+import "../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
+
+
+interface CraftingMaterialContract {
+    function mintMaterial(ICraftingMaterials.CraftingMaterial material, address to, uint amount) external;
+}
 
 pragma solidity ^0.8.0;
 
@@ -25,6 +31,7 @@ contract Reward is InitNavigator {
         if (_reward.pool.yieldsGold) rewardGold(to, _reward.rewards.goldRewards.minAmount, _reward.rewards.goldRewards.maxAmount);
         if (_reward.pool.yieldsEssence) rewardEssence(to, _reward.rewards.essenceRewards.minAmount, _reward.rewards.essenceRewards.maxAmount);
         if (_reward.pool.yieldsMiscItem) rewardMiscItem(to, _reward.rewards.miscItemRewards.miscType, _reward.rewards.miscItemRewards.minAmount, _reward.rewards.miscItemRewards.maxAmount);
+        if (_reward.pool.yieldsCraftingMaterial) rewardCraftingMaterial(to, _reward.rewards.craftingMaterialRewards.materialIds, _reward.rewards.craftingMaterialRewards.min, _reward.rewards.craftingMaterialRewards.max);
     }
 
     function rewardGold(address to, uint min, uint max) internal {
@@ -45,6 +52,11 @@ contract Reward is InitNavigator {
         uint roll = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).dn(block.number + max + nonce, max - min);
         IRewardNonFungible(contractAddress(INavigator.CONTRACT.MISC_ITEMS)).rewardMiscItem(to, itemId, roll+min);
     }
-
+    function rewardCraftingMaterial(address to, ICraftingMaterials.CraftingMaterial[] memory itemIds, uint[] memory mins, uint[] memory maxs) internal {
+        uint itemTypeRoll = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).dn(uint256(uint160(msg.sender)) + block.number + itemIds.length + nonce, itemIds.length);
+        ICraftingMaterials.CraftingMaterial itemType = itemIds[itemTypeRoll];
+        uint roll = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).dn(block.number + uint(itemType) + nonce + 1, maxs[itemTypeRoll] - mins[itemTypeRoll]);
+        CraftingMaterialContract(contractAddress(INavigator.CONTRACT.CRAFTING_MATERIALS)).mintMaterial(itemType, msg.sender, roll+mins[itemTypeRoll]);
+    }
 
 }
