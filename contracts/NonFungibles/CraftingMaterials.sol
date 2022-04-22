@@ -75,7 +75,18 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
 
     function upgradeMaterial(ICraftingMaterials.MaterialTypes materialType,
         ICraftingMaterials.CraftingMaterial targetMaterial, uint amount) external {
-
+        ICraftingMaterials.UpgradingRecipe memory _recipe;
+        if (materialType == ICraftingMaterials.MaterialTypes.ORE) {
+            _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.ORE_UPGRADING_RECIPES)).upgradeRecipe(targetMaterial, amount);
+        } else if (materialType == ICraftingMaterials.MaterialTypes.WOOD) {
+            _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.WOOD_UPGRADING_RECIPES)).upgradeRecipe(targetMaterial, amount);
+        } else if (materialType == ICraftingMaterials.MaterialTypes.CLOTH) {
+            _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.CLOTH_UPGRADING_RECIPES)).upgradeRecipe(targetMaterial, amount);
+        } else {
+            revert("?");
+        }
+        _burn(msg.sender, uint(_recipe.requiredMaterial), _recipe.amount);
+        _mint(msg.sender, uint(targetMaterial), amount, new bytes(0));
     }
 
     function activeProcessingsOfUser(address account) external view returns (uint[] memory _result) {
