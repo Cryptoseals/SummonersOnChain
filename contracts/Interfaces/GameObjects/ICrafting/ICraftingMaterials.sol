@@ -52,6 +52,7 @@ interface ICraftingMaterials {
         CraftingMaterial rewardMaterial;
         uint amount;
         uint when;
+        uint startingDate;
         address who;
         bool isClaimed;
     }

@@ -51,7 +51,8 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         rewardMaterial : targetMaterial,
         when : block.timestamp + _recipe.requiredTime,
         who : msg.sender,
-        isClaimed : false
+        isClaimed : false,
+        startingDate : block.timestamp
         });
 
         AccountsActiveProcessings[msg.sender].add(nextProcessId);
@@ -71,6 +72,20 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
 
             _mint(msg.sender, uint(process.rewardMaterial), process.amount, new bytes(0));
         }
+    }
+
+    function partialClaimProcess(uint processId, uint amount) external {
+        require(ActiveProcessings[processId].isClaimed == false, "claimed");
+        require(ActiveProcessings[processId].who == msg.sender, "unauth");
+        require(amount <= ActiveProcessings[processId].amount, "scam?");
+
+        uint timeRequiredPerMaterial = (ActiveProcessings[processId].when - ActiveProcessings[processId].startingDate) / ActiveProcessings[processId].amount;
+        require(block.timestamp > ActiveProcessings[processId].startingDate * amount, "early");
+
+        ActiveProcessings[processId].startingDate += timeRequiredPerMaterial * amount;
+        ActiveProcessings[processId].amount -= amount;
+
+        _mint(msg.sender, uint(ActiveProcessings[processId].rewardMaterial), amount, new bytes(0));
     }
 
     function upgradeMaterial(ICraftingMaterials.MaterialTypes materialType,
