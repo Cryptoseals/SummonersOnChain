@@ -70,7 +70,14 @@ interface INavigator {
         ARMOR_RECIPES,
         WEAPON_RECIPES,
         ELIXIR_RECIPES,
-        ARTIFACT_RECIPES
+        ARTIFACT_RECIPES,
+        SWORD_STATS,
+        DAGGER_STATS,
+        SHIELD_STATS,
+        BOW_STATS,
+        AXE_STATS,
+        STAFF_STATS,
+        FOCUS_STATS
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;

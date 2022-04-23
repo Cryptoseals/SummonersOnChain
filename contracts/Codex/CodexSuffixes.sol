@@ -10,6 +10,92 @@ contract CodexSuffixes {
         uint _tier) public pure returns (GameObjects.Suffix memory) {
         if (_id == 1) {
             return OfSolarion(_tier);
+        } else if (_id == 1) {
+            return OfTemplar(_tier);
+        } else if (_id == 1) {
+            return OfPhoenix(_tier);
+        } else if (_id == 1) {
+            return OfCelestion(_tier);
+        } else if (_id == 1) {
+            return OfBaphomet(_tier);
+        } else if (_id == 1) {
+            return OfSujin(_tier);
+        } else if (_id == 1) {
+            return OfSentinel(_tier);
+        } else if (_id == 1) {
+            return OfVerdant(_tier);
+        } else if (_id == 1) {
+            return OfWatcher(_tier);
+        } else if (_id == 1) {
+            return OfDeathbringer(_tier);
+        } else if (_id == 1) {
+            return OfWraith(_tier);
+        } else if (_id == 1) {
+            return OfSpellcaster(_tier);
+        } else if (_id == 1) {
+            return OfLuminous(_tier);
+        } else if (_id == 1) {
+            return OfFallen(_tier);
+        } else if (_id == 1) {
+            return OfGreedy(_tier);
+        } else if (_id == 1) {
+            return OfBlacksmith(_tier);
+        } else if (_id == 1) {
+            return OfSun(_tier);
+        } else if (_id == 1) {
+            return OfMoon(_tier);
+        } else if (_id == 1) {
+            return OfStorm(_tier);
+        } else if (_id == 1) {
+            return OfGladiator(_tier);
+        } else if (_id == 1) {
+            return OfVoidheart(_tier);
+        } else if (_id == 1) {
+            return OfTroll(_tier);
+        } else if (_id == 1) {
+            return OfWarmonger(_tier);
+        } else if (_id == 1) {
+            return OfAssassin(_tier);
+        } else if (_id == 1) {
+            return OfDeath(_tier);
+        } else if (_id == 1) {
+            return OfAcrobat(_tier);
+        } else if (_id == 1) {
+            return OfShadow(_tier);
+        } else if (_id == 1) {
+            return OfConcentration(_tier);
+        } else if (_id == 1) {
+            return OfGuardian(_tier);
+        } else if (_id == 1) {
+            return OfSavage(_tier);
+        } else if (_id == 1) {
+            return OfCultist(_tier);
+        } else if (_id == 1) {
+            return OfFaith(_tier);
+        } else if (_id == 1) {
+            return OfWanderer(_tier);
+        } else if (_id == 1) {
+            return OfRoots(_tier);
+        } else if (_id == 1) {
+            return OfOrder(_tier);
+        } else if (_id == 1) {
+            return OfSeal(_tier);
+        } else if (_id == 1) {
+            return OfResistance(_tier);
+        } else if (_id == 1) {
+            return OfFortitude(_tier);
+        } else if (_id == 1) {
+            return OfRunes(_tier);
+        } else if (_id == 1) {
+            return OfMalevolence(_tier);
+        } else if (_id == 1) {
+            return OfEclipse(_tier);
+        } else if (_id == 1) {
+            return OfImmortal(_tier);
+        } else if (_id == 1) {
+            return OfSanctity(_tier);
+        } else if (_id == 1) {
+            return OfWisdom(_tier);
         }
 
         revert("invalid");
@@ -19,16 +105,37 @@ contract CodexSuffixes {
         return (val * percentage) / 100;
     }
 
-    function baseStat() internal pure returns(uint) {
-        return 10;
+
+    function baseStr() internal pure returns(uint) {
+        return 14;
+    }
+
+    function baseDex() internal pure returns(uint) {
+        return 3;
+    }
+
+    function baseAgi() internal pure returns(uint) {
+        return 3;
+    }
+
+    function baseInt() internal pure returns(uint) {
+        return 15;
+    }
+    
+    function baseVit() internal pure returns(uint) {
+        return 16;
+    }
+    
+    function baseLuck() internal pure returns(uint) {
+        return 3;
     }
 
     function baseAtk() internal pure returns(uint) {
-        return 30;
+        return 3;
     }
 
     function baseDef() internal pure returns(uint) {
-        return 50;
+        return 5;
     }
 
     function baseCrit() internal pure returns(uint) {
@@ -36,26 +143,26 @@ contract CodexSuffixes {
     }
 
     function baseCritMulti() internal pure returns(uint) {
-        return 100;
+        return 10;
     }
 
     function baseDodge() internal pure returns(uint) {
-        return 20;
+        return 2;
     }
 
     function baseAcc() internal pure returns(uint) {
-        return 30;
+        return 3;
     }
 
     function baseEleDef() internal pure returns(uint) {
-        return 50;
+        return 5;
     }
 
     function baseEleAtk() internal pure returns(uint) {
-        return 30;
+        return 3;
     }
     function baseHp() internal pure returns(uint) {
-        return 30;
+        return 3;
     }
 
     function OfSolarion(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
@@ -425,9 +532,9 @@ contract CodexSuffixes {
         STR : 0,
         DEX : 0,
         AGI : 0,
-        INT : baseStat() * _tier,
+        INT : baseInt() * _tier,
         VIT : 0,
-        LUCK : baseStat() * _tier
+        LUCK : baseLuck() * _tier
         });
 
         _suffix.generatedStatBonus = GameObjects.GeneratedStats({
@@ -472,7 +579,7 @@ contract CodexSuffixes {
         AGI : 0,
         INT : 0,
         VIT : 0,
-        LUCK : baseStat() * _tier
+        LUCK : baseLuck() * _tier
         });
 
         _suffix.generatedStatBonus = GameObjects.GeneratedStats({
@@ -560,7 +667,7 @@ contract CodexSuffixes {
         STR : 0,
         DEX : 0,
         AGI : 0,
-        INT : baseStat() * _tier,
+        INT : baseInt() * _tier,
         VIT : 0,
         LUCK : 0
         });
@@ -697,7 +804,7 @@ contract CodexSuffixes {
         AGI : 0,
         INT : 0,
         VIT : 0,
-        LUCK : baseStat() * _tier
+        LUCK : baseLuck() * _tier
         });
 
         _suffix.generatedStatBonus = GameObjects.GeneratedStats({
@@ -740,9 +847,9 @@ contract CodexSuffixes {
         STR : 0,
         DEX : 0,
         AGI : 0,
-        INT : baseStat() * _tier,
+        INT : baseInt() * _tier,
         VIT : 0,
-        LUCK : baseStat() * _tier
+        LUCK : baseLuck() * _tier
         });
 
         _suffix.generatedStatBonus = GameObjects.GeneratedStats({
@@ -786,7 +893,7 @@ contract CodexSuffixes {
         DEX : 0,
         AGI : 0,
         INT : 0,
-        VIT : baseStat() * _tier,
+        VIT : baseVit() * _tier,
         LUCK : 0
         });
 
@@ -831,7 +938,7 @@ contract CodexSuffixes {
         DEX : 0,
         AGI : 0,
         INT : 0,
-        VIT : baseStat() * _tier,
+        VIT : baseVit() * _tier,
         LUCK : 0
         });
 
@@ -875,7 +982,7 @@ contract CodexSuffixes {
         STR : 0,
         DEX : 0,
         AGI : 0,
-        INT : baseStat() * _tier,
+        INT : baseInt() * _tier,
         VIT : 0,
         LUCK : 0
         });
@@ -1007,11 +1114,11 @@ contract CodexSuffixes {
         _suffix.title = "of Troll";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
-        STR : baseStat() * _tier,
+        STR : baseStr() * _tier,
         DEX : 0,
         AGI : 0,
         INT : 0,
-        VIT : baseStat() * _tier,
+        VIT : baseVit() * _tier,
         LUCK : 0
         });
 
@@ -1052,8 +1159,8 @@ contract CodexSuffixes {
         _suffix.title = "of Warmonger";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
-        STR : baseStat() * _tier,
-        DEX : baseStat() * _tier,
+        STR : baseStr() * _tier,
+        DEX : baseDex() * _tier,
         AGI : 0,
         INT : 0,
         VIT : 0,
@@ -1098,8 +1205,8 @@ contract CodexSuffixes {
         _suffix.difficulty = 3;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
-        DEX : baseStat() * _tier,
-        AGI : baseStat() * _tier,
+        DEX : baseDex() * _tier,
+        AGI : baseAgi() * _tier,
         INT : 0,
         VIT : 0,
         LUCK : 0
@@ -1143,7 +1250,7 @@ contract CodexSuffixes {
         _suffix.difficulty = 3;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
-        DEX : baseStat() * _tier,
+        DEX : baseDex() * _tier,
         AGI : 0,
         INT : 0,
         VIT : 0,
@@ -1188,8 +1295,8 @@ contract CodexSuffixes {
         _suffix.difficulty = 3;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
-        DEX : baseStat() * _tier,
-        AGI : baseStat() * _tier,
+        DEX : baseDex() * _tier,
+        AGI : baseAgi() * _tier,
         INT : 0,
         VIT : 0,
         LUCK : 0
@@ -1280,7 +1387,7 @@ contract CodexSuffixes {
         STR : 0,
         DEX : 0,
         AGI : 0,
-        INT : baseStat() * _tier,
+        INT : baseInt() * _tier,
         VIT : 0,
         LUCK : 0
         });
@@ -1326,7 +1433,7 @@ contract CodexSuffixes {
         DEX : 0,
         AGI : 0,
         INT : 0,
-        VIT : baseStat() * _tier,
+        VIT : baseVit() * _tier,
         LUCK : 0
         });
 
@@ -1460,7 +1567,7 @@ contract CodexSuffixes {
         STR : 0,
         DEX : 0,
         AGI : 0,
-        INT : baseStat() * _tier,
+        INT : baseInt() * _tier,
         VIT : 0,
         LUCK : 0
         });
@@ -1503,7 +1610,7 @@ contract CodexSuffixes {
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
-        DEX : baseStat() * _tier,
+        DEX : baseDex() * _tier,
         AGI : 0,
         INT : 0,
         VIT : 0,
@@ -1549,7 +1656,7 @@ contract CodexSuffixes {
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
         DEX : 0,
-        AGI : baseStat() * _tier,
+        AGI : baseAgi() * _tier,
         INT : 0,
         VIT : 0,
         LUCK : 0
@@ -1595,9 +1702,9 @@ contract CodexSuffixes {
         STR : 0,
         DEX : 0,
         AGI : 0,
-        INT : baseStat() * _tier,
+        INT : baseInt() * _tier,
         VIT : 0,
-        LUCK : baseStat() * _tier
+        LUCK : baseLuck() * _tier
         });
 
         _suffix.generatedStatBonus = GameObjects.GeneratedStats({
@@ -1773,7 +1880,7 @@ contract CodexSuffixes {
         _suffix.difficulty = 3;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
-        DEX : baseStat() * _tier,
+        DEX : baseDex() * _tier,
         AGI : 0,
         INT : 0,
         VIT : 0,
@@ -2000,7 +2107,7 @@ contract CodexSuffixes {
         STR : 0,
         DEX : 0,
         AGI : 0,
-        INT : baseStat() *_tier,
+        INT : baseInt() *_tier,
         VIT : 0,
         LUCK : 0
         });

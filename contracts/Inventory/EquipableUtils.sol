@@ -125,7 +125,7 @@ library EquipableUtils {
 
 
     function percentage(uint val, uint percentage) public pure returns (uint){
-        require(percentage > 0, "?");
+        if(percentage == 0) return 0;
         return val * percentage / 100;
     }
 }

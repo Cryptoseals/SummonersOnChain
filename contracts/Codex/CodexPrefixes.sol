@@ -9,6 +9,90 @@ contract CodexPrefixes {
     function prefix(uint _id, uint _tier) public pure returns (GameObjects.Prefix memory) {
         if (_id == 1) {
             return Berserkers(_tier);
+        } else if (_id == 1) {
+            return Wizards(_tier);
+        } else if (_id == 1) {
+            return Elementalists(_tier);
+        } else if (_id == 1) {
+            return Ferocious(_tier);
+        } else if (_id == 1) {
+            return Wicked(_tier);
+        } else if (_id == 1) {
+            return Sharpshooter(_tier);
+        } else if (_id == 1) {
+            return Skirmishing(_tier);
+        } else if (_id == 1) {
+            return Defiant(_tier);
+        } else if (_id == 1) {
+            return Merciless(_tier);
+        } else if (_id == 1) {
+            return Fiery(_tier);
+        } else if (_id == 1) {
+            return Thunderous(_tier);
+        } else if (_id == 1) {
+            return Holy(_tier);
+        } else if (_id == 1) {
+            return Frozen(_tier);
+        } else if (_id == 1) {
+            return Natural(_tier);
+        } else if (_id == 1) {
+            return Sacred(_tier);
+        } else if (_id == 1) {
+            return Eternal(_tier);
+        } else if (_id == 1) {
+            return Devastating(_tier);
+        } else if (_id == 1) {
+            return Forged(_tier);
+        } else if (_id == 1) {
+            return Mystical(_tier);
+        } else if (_id == 1) {
+            return Clever(_tier);
+        } else if (_id == 1) {
+            return Enormous(_tier);
+        } else if (_id == 1) {
+            return Ethereal(_tier);
+        } else if (_id == 1) {
+            return Vengeful(_tier);
+        } else if (_id == 1) {
+            return Divine(_tier);
+        } else if (_id == 1) {
+            return Elusive(_tier);
+        } else if (_id == 1) {
+            return Protective(_tier);
+        } else if (_id == 1) {
+            return Pristine(_tier);
+        } else if (_id == 1) {
+            return Glacial(_tier);
+        } else if (_id == 1) {
+            return Rugged(_tier);
+        } else if (_id == 1) {
+            return Ruthless(_tier);
+        } else if (_id == 1) {
+            return Lurid(_tier);
+        } else if (_id == 1) {
+            return Pastoral(_tier);
+        } else if (_id == 1) {
+            return Supreme(_tier);
+        } else if (_id == 1) {
+            return Banishing(_tier);
+        } else if (_id == 1) {
+            return Shapened(_tier);
+        } else if (_id == 1) {
+            return Obsidian(_tier);
+        } else if (_id == 1) {
+            return Devoted(_tier);
+        } else if (_id == 1) {
+            return Revival(_tier);
+        } else if (_id == 1) {
+            return Damned(_tier);
+        } else if (_id == 1) {
+            return Unholy(_tier);
+        } else if (_id == 1) {
+            return Smoky(_tier);
+        } else if (_id == 1) {
+            return Shardy(_tier);
+        } else if (_id == 1) {
+            return Shiny(_tier);
         }
 
         revert("invalid");
@@ -18,16 +102,36 @@ contract CodexPrefixes {
         return (val * percentage) / 100;
     }
 
-    function baseStat() internal pure returns(uint) {
-        return 10;
+    function baseStr() internal pure returns(uint) {
+        return 14;
+    }
+
+    function baseDex() internal pure returns(uint) {
+        return 3;
+    }
+
+    function baseAgi() internal pure returns(uint) {
+        return 3;
+    }
+
+    function baseInt() internal pure returns(uint) {
+        return 15;
+    }
+    
+    function baseVit() internal pure returns(uint) {
+        return 16;
+    }
+    
+    function baseLuck() internal pure returns(uint) {
+        return 3;
     }
 
     function baseAtk() internal pure returns(uint) {
-        return 30;
+        return 3;
     }
 
     function baseDef() internal pure returns(uint) {
-        return 50;
+        return 5;
     }
 
     function baseCrit() internal pure returns(uint) {
@@ -35,26 +139,26 @@ contract CodexPrefixes {
     }
 
     function baseCritMulti() internal pure returns(uint) {
-        return 100;
+        return 10;
     }
 
     function baseDodge() internal pure returns(uint) {
-        return 20;
+        return 2;
     }
 
     function baseAcc() internal pure returns(uint) {
-        return 30;
+        return 3;
     }
 
     function baseEleDef() internal pure returns(uint) {
-        return 50;
+        return 5;
     }
 
     function baseEleAtk() internal pure returns(uint) {
-        return 30;
+        return 3;
     }
     function baseHp() internal pure returns(uint) {
-        return 30;
+        return 3;
     }
 
 
@@ -63,7 +167,7 @@ contract CodexPrefixes {
         _prefix.title = "Berserker's";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
-        STR : baseStat() * _tier,
+        STR : baseStr() * _tier,
         DEX : 0,
         AGI : 0,
         INT : 0,
@@ -115,7 +219,7 @@ contract CodexPrefixes {
         STR : 0,
         DEX : 0,
         AGI : 0,
-        INT : baseStat() * _tier,
+        INT : baseInt() * _tier,
         VIT : 0,
         LUCK : 0
         });
@@ -259,7 +363,7 @@ contract CodexPrefixes {
         _prefix.title = "Wicked";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
-        STR : baseStat() * _tier,
+        STR : baseStr() * _tier,
         DEX : 0,
         AGI : 0,
         INT : 0,
@@ -310,7 +414,7 @@ contract CodexPrefixes {
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
         DEX : 0,
-        AGI : baseStat() * _tier,
+        AGI : baseAgi() * _tier,
         INT : 0,
         VIT : 0,
         LUCK : 0
@@ -678,7 +782,7 @@ contract CodexPrefixes {
 
         _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
         FIRE_ATK : 0,
-        COLD_ATK : baseStat() * _tier,
+        COLD_ATK : baseEleAtk() * _tier,
         EARTH_ATK : 0,
         LIGHTNING_ATK : 0,
         DARK_ATK : 0,
@@ -703,7 +807,7 @@ contract CodexPrefixes {
         STR : 0,
         DEX : 0,
         AGI : 0,
-        INT : baseStat() * _tier,
+        INT : baseInt() * _tier,
         VIT : 0,
         LUCK : 0
         });
@@ -749,12 +853,12 @@ contract CodexPrefixes {
         _prefix.title = "Sacred";
         _prefix.difficulty = 3;
         _prefix.statBonus = GameObjects.Stats({
-        STR : baseStat() * _tier,
-        DEX : baseStat() * _tier,
-        AGI : baseStat() * _tier,
-        INT : baseStat() * _tier,
-        VIT : baseStat() * _tier,
-        LUCK : baseStat() * _tier
+        STR : baseStr() * _tier,
+        DEX : baseDex() * _tier,
+        AGI : baseAgi() * _tier,
+        INT : baseInt() * _tier,
+        VIT : baseVit() * _tier,
+        LUCK : baseLuck() * _tier
         });
 
 
@@ -847,12 +951,12 @@ contract CodexPrefixes {
         _prefix.title = "Devastating ";
         _prefix.difficulty = 3;
         _prefix.statBonus = GameObjects.Stats({
-        STR : baseStat() * _tier,
+        STR : baseStr() * _tier,
         DEX : 0,
         AGI : 0,
         INT : 0,
         VIT : 0,
-        LUCK : baseStat() * _tier
+        LUCK : baseLuck() * _tier
         });
 
 
@@ -896,7 +1000,7 @@ contract CodexPrefixes {
         _prefix.title = "Forged";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
-        STR : baseStat() * _tier,
+        STR : baseStr() * _tier,
         DEX : 0,
         AGI : 0,
         INT : 0,
@@ -948,7 +1052,7 @@ contract CodexPrefixes {
         STR : 0,
         DEX : 0,
         AGI : 0,
-        INT : baseStat() * _tier,
+        INT : baseInt() * _tier,
         VIT : 0,
         LUCK : 0
         });
@@ -996,8 +1100,8 @@ contract CodexPrefixes {
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
         DEX : 0,
-        AGI : baseStat() * _tier,
-        INT : baseStat() * _tier,
+        AGI : baseAgi() * _tier,
+        INT : baseInt() * _tier,
         VIT : 0,
         LUCK : 0
         });
@@ -1047,7 +1151,7 @@ contract CodexPrefixes {
         DEX : 0,
         AGI : 0,
         INT : 0,
-        VIT : baseStat() * _tier,
+        VIT : baseVit() * _tier,
         LUCK : 0
         });
 
@@ -1143,7 +1247,7 @@ contract CodexPrefixes {
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
         DEX : 0,
-        AGI : baseStat() * _tier,
+        AGI : baseAgi() * _tier,
         INT : 0,
         VIT : 0,
         LUCK : 0
@@ -1240,8 +1344,8 @@ contract CodexPrefixes {
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
-        DEX : baseStat() * _tier,
-        AGI : baseStat() * _tier,
+        DEX : baseDex() * _tier,
+        AGI : baseAgi() * _tier,
         INT : 0,
         VIT : 0,
         LUCK : 0
@@ -1342,7 +1446,7 @@ contract CodexPrefixes {
         AGI : 0,
         INT : 0,
         VIT : 0,
-        LUCK : baseStat() * _tier
+        LUCK : baseLuck() * _tier
         });
 
 
@@ -1440,7 +1544,7 @@ contract CodexPrefixes {
         AGI : 0,
         INT : 0,
         VIT : 0,
-        LUCK : baseStat() * _tier
+        LUCK : baseLuck() * _tier
         });
 
 
@@ -1484,7 +1588,7 @@ contract CodexPrefixes {
         _prefix.title = "Ruthless";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
-        STR : baseStat() * _tier,
+        STR : baseStr() * _tier,
         DEX : 0,
         AGI : 0,
         INT : 0,
@@ -1586,7 +1690,7 @@ contract CodexPrefixes {
         DEX : 0,
         AGI : 0,
         INT : 0,
-        VIT : baseStat() * _tier,
+        VIT : baseVit() * _tier,
         LUCK : 0
         });
 
@@ -1631,9 +1735,9 @@ contract CodexPrefixes {
         _prefix.title = "Supreme";
         _prefix.difficulty = 3;
         _prefix.statBonus = GameObjects.Stats({
-        STR : baseStat() * _tier,
-        DEX : baseStat() * _tier,
-        AGI : baseStat() * _tier,
+        STR : baseStr() * _tier,
+        DEX : baseDex() * _tier,
+        AGI : baseAgi() * _tier,
         INT : 0,
         VIT : 0,
         LUCK : 0
@@ -1683,7 +1787,7 @@ contract CodexPrefixes {
         STR : 0,
         DEX : 0,
         AGI : 0,
-        INT : baseStat() * _tier,
+        INT : baseInt() * _tier,
         VIT : 0,
         LUCK : 0
         });
@@ -1780,7 +1884,7 @@ contract CodexPrefixes {
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
         DEX : 0,
-        AGI : baseStat() * _tier,
+        AGI : baseAgi() * _tier,
         INT : 0,
         VIT : 0,
         LUCK : 0
@@ -1832,7 +1936,7 @@ contract CodexPrefixes {
         AGI : 0,
         INT : 0,
         VIT : 0,
-        LUCK : baseStat() * _tier
+        LUCK : baseLuck() * _tier
         });
 
 
@@ -1878,7 +1982,7 @@ contract CodexPrefixes {
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
         DEX : 0,
-        AGI : baseStat() * _tier,
+        AGI : baseAgi() * _tier,
         INT : 0,
         VIT : 0,
         LUCK : 0
@@ -1907,7 +2011,7 @@ contract CodexPrefixes {
         EARTH_ATK : 0,
         LIGHTNING_ATK : 0,
         DARK_ATK : 0,
-        HOLY_ATK : baseStat() * _tier,
+        HOLY_ATK : baseEleAtk() * _tier,
         VOID_ATK : 0
         });
 
@@ -2124,7 +2228,7 @@ contract CodexPrefixes {
         STR : 0,
         DEX : 0,
         AGI : 0,
-        INT : baseStat() * _tier,
+        INT : baseInt() * _tier,
         VIT : 0,
         LUCK : 0
         });
