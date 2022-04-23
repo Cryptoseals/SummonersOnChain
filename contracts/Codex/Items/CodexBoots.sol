@@ -22,7 +22,7 @@ contract CodexBoots is UpgradeableCodex {
         return _boots;
     }
 
-    function boots(EquippedItemStruct memory _equipable) public view returns (GameObjects.Boots memory) {
+    function boots(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Boots memory) {
         GameObjects.Boots memory _boots;
         GameObjects.Prefix memory _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         GameObjects.Suffix memory _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);

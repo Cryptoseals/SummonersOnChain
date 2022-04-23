@@ -24,7 +24,7 @@ contract CodexHelmets is UpgradeableCodex {
     }
 
 
-    function helmet(EquippedItemStruct memory _equipable) public view returns (GameObjects.Helmet memory) {
+    function helmet(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Helmet memory) {
         GameObjects.Helmet memory _helmet;
         GameObjects.Prefix memory _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         GameObjects.Suffix memory _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);

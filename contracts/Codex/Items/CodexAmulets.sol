@@ -22,7 +22,7 @@ contract CodexAmulets is UpgradeableCodex {
         return _amulet;
     }
 
-    function amulet(EquippedItemStruct memory _equipable) public view returns (GameObjects.Amulet memory) {
+    function amulet(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Amulet memory) {
         GameObjects.Amulet memory _amulet;
         GameObjects.Prefix memory _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         GameObjects.Suffix memory _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);

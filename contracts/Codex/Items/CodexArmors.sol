@@ -22,7 +22,7 @@ contract CodexArmors is UpgradeableCodex {
     }
 
 
-    function armor(EquippedItemStruct memory _equipable) public view returns (GameObjects.Armor memory) {
+    function armor(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Armor memory) {
         GameObjects.Armor memory _armor;
         GameObjects.Prefix memory _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         GameObjects.Suffix memory _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);

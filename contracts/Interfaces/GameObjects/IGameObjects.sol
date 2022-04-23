@@ -157,6 +157,7 @@ library GameObjects {
         uint prefixTier;
         uint suffixId;
         uint suffixTier;
+        GameObjects.Element element;
     }
 
     struct Artifact {

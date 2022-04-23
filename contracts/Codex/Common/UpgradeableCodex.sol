@@ -7,15 +7,6 @@ contract UpgradeableCodex is InitNavigator {
     ICodexPrefixAndSuffix PrefixContract;
     ICodexPrefixAndSuffix SuffixContract;
 
-    struct EquippedItemStruct {
-        uint tokenId;
-        uint itemId;
-        uint itemTier;
-        uint prefixId;
-        uint prefixTier;
-        uint suffixId;
-        uint suffixTier;
-    }
 
     function initialize (address _navigator) external initializer {
         initializeNavigator(_navigator);

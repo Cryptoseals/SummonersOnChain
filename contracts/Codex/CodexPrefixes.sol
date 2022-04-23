@@ -5,93 +5,95 @@ contract CodexPrefixes {
     string constant public index = "Codex";
     string constant public class = "Prefixes";
     string constant public version = "0.0.1";
-
     function prefix(uint _id, uint _tier) public pure returns (GameObjects.Prefix memory) {
-        if (_id == 1) {
+        require(_tier < 21, "?");
+        if (_id == 0) {
+            return none();
+        } else if (_id == 1) {
             return Berserkers(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 2) {
             return Wizards(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 3) {
             return Elementalists(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 4) {
             return Ferocious(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 5) {
             return Wicked(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 6) {
             return Sharpshooter(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 7) {
             return Skirmishing(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 8) {
             return Defiant(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 9) {
             return Merciless(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 10) {
             return Fiery(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 11) {
             return Thunderous(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 12) {
             return Holy(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 13) {
             return Frozen(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 14) {
             return Natural(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 15) {
             return Sacred(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 16) {
             return Eternal(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 17) {
             return Devastating(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 18) {
             return Forged(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 19) {
             return Mystical(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 20) {
             return Clever(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 21) {
             return Enormous(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 22) {
             return Ethereal(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 23) {
             return Vengeful(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 24) {
             return Divine(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 25) {
             return Elusive(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 26) {
             return Protective(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 27) {
             return Pristine(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 28) {
             return Glacial(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 29) {
             return Rugged(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 30) {
             return Ruthless(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 31) {
             return Lurid(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 32) {
             return Pastoral(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 33) {
             return Supreme(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 34) {
             return Banishing(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 35) {
             return Shapened(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 36) {
             return Obsidian(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 37) {
             return Devoted(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 38) {
             return Revival(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 39) {
             return Damned(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 40) {
             return Unholy(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 41) {
             return Smoky(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 42) {
             return Shardy(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 43) {
             return Shiny(_tier);
         }
 
@@ -163,6 +165,55 @@ contract CodexPrefixes {
 
 
 
+    function none() public pure returns (GameObjects.Prefix memory _prefix) {
+        _prefix.title = "";
+        _prefix.difficulty = 1;
+        _prefix.statBonus = GameObjects.Stats({
+        STR : 0,
+        DEX : 0,
+        AGI : 0,
+        INT : 0,
+        VIT : 0,
+        LUCK : 0
+        });
+
+
+
+        // these are percentages.
+
+        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
+        HP : 0,
+        P_ATK : 0,
+        M_ATK : 0,
+        P_DEF : 0,
+        M_DEF : 0,
+        ACCURACY : 0,
+        DODGE : 0,
+        CRIT : 0,
+        CRIT_MULTIPLIER : 0,
+        INFUSION : 0
+        });
+
+        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        FIRE_ATK : 0,
+        COLD_ATK : 0,
+        EARTH_ATK : 0,
+        LIGHTNING_ATK : 0,
+        DARK_ATK : 0,
+        HOLY_ATK : 0,
+        VOID_ATK : 0
+        });
+
+        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        FIRE_DEF : 0,
+        COLD_DEF : 0,
+        EARTH_DEF : 0,
+        LIGHTNING_DEF : 0,
+        DARK_DEF : 0,
+        HOLY_DEF : 0,
+        VOID_DEF : 0
+        });
+    }
     function Berserkers(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
         _prefix.title = "Berserker's";
         _prefix.difficulty = 1;

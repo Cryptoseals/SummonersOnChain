@@ -97,14 +97,14 @@ contract CodexShields is Initializable {
 
     function applyTier(GameObjects.Weapon memory weapon, uint tier, uint percentage) public view returns (GameObjects.Weapon memory){
         if (tier == 0) return weapon;
-        weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(weapon.generatedStatBonus, (tier+1)*percentage);
-        weapon.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(weapon.elementalStats, (tier+1)*percentage);
+        weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(weapon.generatedStatBonus, (tier) * percentage);
+        weapon.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(weapon.elementalStats, (tier) * percentage);
         return weapon;
     }
 
     function SmallWoodenShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 1;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Small Wooden Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
@@ -116,13 +116,8 @@ contract CodexShields is Initializable {
         // enum Class {
         //      Barbarian, Paladin, Assassin, Wizard, Necromancer, Priest, Engineer, Ranger
         // }
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
 
 
         _weapon.requirement.statRequirement = GameObjects.Stats({
@@ -146,22 +141,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[0];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[0];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[0];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[0], EARTH_DEF : BASE_PDEF[0], COLD_DEF : BASE_PDEF[0], LIGHTNING_DEF : BASE_PDEF[0], DARK_DEF : BASE_PDEF[0], HOLY_DEF : BASE_PDEF[0], VOID_DEF :0});
     }
 
     function SmallCopperShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 2;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Small Copper Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 5;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -179,22 +170,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[1];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[1];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[1];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[1], EARTH_DEF : BASE_PDEF[1], COLD_DEF : BASE_PDEF[1], LIGHTNING_DEF : BASE_PDEF[1], DARK_DEF : BASE_PDEF[1], HOLY_DEF : BASE_PDEF[1], VOID_DEF :0});
     }
 
     function SmallBronzeShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 3;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Small Bronze Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 10;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -212,22 +199,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[2];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[2];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[2];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[2], EARTH_DEF : BASE_PDEF[2], COLD_DEF : BASE_PDEF[2], LIGHTNING_DEF : BASE_PDEF[2], DARK_DEF : BASE_PDEF[2], HOLY_DEF : BASE_PDEF[2], VOID_DEF :0});
     }
 
     function MediumCopperShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 4;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Medium Copper Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 15;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -245,22 +228,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[3];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[3];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[3];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[3], EARTH_DEF : BASE_PDEF[3], COLD_DEF : BASE_PDEF[3], LIGHTNING_DEF : BASE_PDEF[3], DARK_DEF : BASE_PDEF[3], HOLY_DEF : BASE_PDEF[3], VOID_DEF :0});
     }
 
     function MediumBronzeShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 5;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Medium Bronze Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 20;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -278,22 +257,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[4];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[4];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[4];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[4], EARTH_DEF : BASE_PDEF[4], COLD_DEF : BASE_PDEF[4], LIGHTNING_DEF : BASE_PDEF[4], DARK_DEF : BASE_PDEF[4], HOLY_DEF : BASE_PDEF[4], VOID_DEF :0});
     }
 
     function TitaniumShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 6;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Titanium Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 25;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -311,22 +286,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[5];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[5];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[5];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[5], EARTH_DEF : BASE_PDEF[5], COLD_DEF : BASE_PDEF[5], LIGHTNING_DEF : BASE_PDEF[5], DARK_DEF : BASE_PDEF[5], HOLY_DEF : BASE_PDEF[5], VOID_DEF :0});
     }
 
     function ChitinShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 7;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Chitin Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 30;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -344,22 +315,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[6];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[6];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[6];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[6], EARTH_DEF : BASE_PDEF[6], COLD_DEF : BASE_PDEF[6], LIGHTNING_DEF : BASE_PDEF[6], DARK_DEF : BASE_PDEF[6], HOLY_DEF : BASE_PDEF[6], VOID_DEF :0});
     }
 
     function ChromiumShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 8;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Chromium Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 35;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -377,22 +344,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[7];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[7];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[7];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[7], EARTH_DEF : BASE_PDEF[7], COLD_DEF : BASE_PDEF[7], LIGHTNING_DEF : BASE_PDEF[7], DARK_DEF : BASE_PDEF[7], HOLY_DEF : BASE_PDEF[7], VOID_DEF :0});
     }
 
     function DarksteelShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 9;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Darksteel Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 40;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -410,22 +373,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[8];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[8];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[8];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[8], EARTH_DEF : BASE_PDEF[8], COLD_DEF : BASE_PDEF[8], LIGHTNING_DEF : BASE_PDEF[8], DARK_DEF : BASE_PDEF[8], HOLY_DEF : BASE_PDEF[8], VOID_DEF :0});
     }
 
     function TungstenShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 10;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Tungsten Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 45;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -443,22 +402,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[9];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[9];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[9];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[9], EARTH_DEF : BASE_PDEF[9], COLD_DEF : BASE_PDEF[9], LIGHTNING_DEF : BASE_PDEF[9], DARK_DEF : BASE_PDEF[9], HOLY_DEF : BASE_PDEF[9], VOID_DEF :0});
     }
 
     function Moonshield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 11;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Moonshield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 50;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -476,22 +431,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[10];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[10];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[10];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[10], EARTH_DEF : BASE_PDEF[10], COLD_DEF : BASE_PDEF[10], LIGHTNING_DEF : BASE_PDEF[10], DARK_DEF : BASE_PDEF[10], HOLY_DEF : BASE_PDEF[10], VOID_DEF : 0});
     }
 
     function Sunshield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 12;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Sunshield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 55;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -509,22 +460,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[11];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[11];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[11];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[11], EARTH_DEF : BASE_PDEF[11], COLD_DEF : BASE_PDEF[11], LIGHTNING_DEF : BASE_PDEF[11], DARK_DEF : BASE_PDEF[11], HOLY_DEF : BASE_PDEF[11], VOID_DEF : 0});
     }
 
     function CycleShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 13;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Cycle Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 60;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -542,22 +489,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[12];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[12];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[12];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[12], EARTH_DEF : BASE_PDEF[12], COLD_DEF : BASE_PDEF[12], LIGHTNING_DEF : BASE_PDEF[12], DARK_DEF : BASE_PDEF[12], HOLY_DEF : BASE_PDEF[12], VOID_DEF : 0});
     }
 
     function PhantasmalShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 14;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Phantasmal Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 65;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -575,22 +518,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[13];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[13];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[13];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[13], EARTH_DEF : BASE_PDEF[13], COLD_DEF : BASE_PDEF[13], LIGHTNING_DEF : BASE_PDEF[13], DARK_DEF : BASE_PDEF[13], HOLY_DEF : BASE_PDEF[13], VOID_DEF : 0});
     }
 
     function HolyPaladinsShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 15;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Holy Paladin's Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 70;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -608,22 +547,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[14];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[14];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[14];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[14], EARTH_DEF : BASE_PDEF[14], COLD_DEF : BASE_PDEF[14], LIGHTNING_DEF : BASE_PDEF[14], DARK_DEF : BASE_PDEF[14], HOLY_DEF : BASE_PDEF[14], VOID_DEF : 0});
     }
 
     function LuminousShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 16;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Luminous Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 75;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -641,22 +576,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[15];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[15];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[15];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[15], EARTH_DEF : BASE_PDEF[15], COLD_DEF : BASE_PDEF[15], LIGHTNING_DEF : BASE_PDEF[15], DARK_DEF : BASE_PDEF[15], HOLY_DEF : BASE_PDEF[15], VOID_DEF : 0});
     }
 
     function ShieldOfCalamity(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 17;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Shield of Calamity";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 80;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -674,22 +605,18 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[16];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[16];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[16];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[16], EARTH_DEF : BASE_PDEF[16], COLD_DEF : BASE_PDEF[16], LIGHTNING_DEF : BASE_PDEF[16], DARK_DEF : BASE_PDEF[16], HOLY_DEF : BASE_PDEF[16], VOID_DEF : 0});
     }
 
     function Reflector(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 18;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Reflector";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 85;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -707,22 +634,17 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[17];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[17];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[17];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[17], EARTH_DEF : BASE_PDEF[17], COLD_DEF : BASE_PDEF[17], LIGHTNING_DEF : BASE_PDEF[17], DARK_DEF : BASE_PDEF[17], HOLY_DEF : BASE_PDEF[17], VOID_DEF : 0});
     }
 
     function EssenceCapacitorShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 20;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Essence Capacitor Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 90;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -740,22 +662,17 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[18];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[18];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[18];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[18], EARTH_DEF : BASE_PDEF[18], COLD_DEF : BASE_PDEF[18], LIGHTNING_DEF : BASE_PDEF[18], DARK_DEF : BASE_PDEF[18], HOLY_DEF : BASE_PDEF[18], VOID_DEF : 0});
     }
 
     function AetherealShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 21;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "Aethereal Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 95;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -773,22 +690,17 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[19];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[19];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[19];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[19], EARTH_DEF : BASE_PDEF[19], COLD_DEF : BASE_PDEF[19], LIGHTNING_DEF : BASE_PDEF[19], DARK_DEF : BASE_PDEF[19], HOLY_DEF : BASE_PDEF[19], VOID_DEF : 0});
     }
 
     function TheProtector(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 22;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
         _weapon.metadata.name = "TheProtector";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 100;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](7);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Barbarian;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Paladin;
-        _weapon.requirement.classRequirement[3] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[4] = GameObjects.Class.Priest;
-        _weapon.requirement.classRequirement[5] = GameObjects.Class.Engineer;
-        _weapon.requirement.classRequirement[6] = GameObjects.Class.Necromancer;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -806,5 +718,19 @@ contract CodexShields is Initializable {
         _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[20];
         _weapon.generatedStatBonus.M_DEF = BASE_MDEF[20];
         _weapon.generatedStatBonus.P_DEF = BASE_PDEF[20];
+        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[20], EARTH_DEF : BASE_PDEF[20], COLD_DEF : BASE_PDEF[20], LIGHTNING_DEF : BASE_PDEF[20], DARK_DEF : BASE_PDEF[20], HOLY_DEF : BASE_PDEF[20], VOID_DEF : 0});
+    }
+
+    function classRequirement () internal view returns(GameObjects.Class[] memory) {
+        GameObjects.Class[] memory classRequirement = new GameObjects.Class[](7);
+        classRequirement[0] = GameObjects.Class.Barbarian;
+        classRequirement[1] = GameObjects.Class.Paladin;
+
+
+        classRequirement[3] = GameObjects.Class.Wizard;
+        classRequirement[4] = GameObjects.Class.Priest;
+        classRequirement[5] = GameObjects.Class.Engineer;
+        classRequirement[6] = GameObjects.Class.Necromancer;
+        return classRequirement;
     }
 }

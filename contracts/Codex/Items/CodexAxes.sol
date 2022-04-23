@@ -36,7 +36,7 @@ contract CodexAxes is Initializable {
     }
 
     function initializeATK() public {
-        BASE_AGI = [46, 56, 70, 88, 110, 139, 177, 216, 286, 363, 462, 589, 750, 955, 1218, 1553, 1981, 2528, 3224, 4113, 5249];
+        BASE_ATK = [46, 56, 70, 88, 110, 139, 177, 216, 286, 363, 462, 589, 750, 955, 1218, 1553, 1981, 2528, 3224, 4113, 5249];
     }
 
     function initializeCRIT() public {
@@ -103,8 +103,8 @@ contract CodexAxes is Initializable {
 
     function applyTier(GameObjects.Weapon memory weapon, uint tier, uint percentage) public view returns (GameObjects.Weapon memory){
         if (tier == 0) return weapon;
-        weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(weapon.generatedStatBonus, (tier+1) *percentage);
-        weapon.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(weapon.elementalStats, (tier+1) *percentage);
+        weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(weapon.generatedStatBonus, (tier) *percentage);
+        weapon.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(weapon.elementalStats, (tier) *percentage);
         return weapon;
     }
 

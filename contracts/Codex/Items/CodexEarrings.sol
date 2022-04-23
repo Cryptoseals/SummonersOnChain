@@ -21,7 +21,7 @@ contract CodexEarrings is UpgradeableCodex {
         return _earring;
     }
 
-    function earrings(EquippedItemStruct memory _equipable) public view returns (GameObjects.Earring memory) {
+    function earrings(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Earring memory) {
         GameObjects.Earring memory _earring;
         GameObjects.Prefix memory _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         GameObjects.Suffix memory _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);

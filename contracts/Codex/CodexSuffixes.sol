@@ -8,93 +8,94 @@ contract CodexSuffixes {
 
     function suffix(uint _id,
         uint _tier) public pure returns (GameObjects.Suffix memory) {
+        require(_tier < 21, "?");
         if (_id == 1) {
             return OfSolarion(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 2) {
             return OfTemplar(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 3) {
             return OfPhoenix(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 4) {
             return OfCelestion(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 5) {
             return OfBaphomet(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 6) {
             return OfSujin(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 7) {
             return OfSentinel(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 8) {
             return OfVerdant(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 9) {
             return OfWatcher(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 10) {
             return OfDeathbringer(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 11) {
             return OfWraith(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 12) {
             return OfSpellcaster(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 13) {
             return OfLuminous(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 14) {
             return OfFallen(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 15) {
             return OfGreedy(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 16) {
             return OfBlacksmith(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 17) {
             return OfSun(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 18) {
             return OfMoon(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 19) {
             return OfStorm(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 20) {
             return OfGladiator(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 21) {
             return OfVoidheart(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 22) {
             return OfTroll(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 23) {
             return OfWarmonger(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 24) {
             return OfAssassin(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 25) {
             return OfDeath(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 26) {
             return OfAcrobat(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 27) {
             return OfShadow(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 28) {
             return OfConcentration(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 29) {
             return OfGuardian(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 30) {
             return OfSavage(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 31) {
             return OfCultist(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 32) {
             return OfFaith(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 33) {
             return OfWanderer(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 34) {
             return OfRoots(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 35) {
             return OfOrder(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 36) {
             return OfSeal(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 37) {
             return OfResistance(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 38) {
             return OfFortitude(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 39) {
             return OfRunes(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 40) {
             return OfMalevolence(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 41) {
             return OfEclipse(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 42) {
             return OfImmortal(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 43) {
             return OfSanctity(_tier);
-        } else if (_id == 1) {
+        } else if (_id == 44) {
             return OfWisdom(_tier);
         }
 
@@ -165,6 +166,51 @@ contract CodexSuffixes {
         return 3;
     }
 
+    function none() public pure returns (GameObjects.Suffix memory _suffix) {
+        _suffix.title = "";
+        _suffix.difficulty = 1;
+        _suffix.statBonus = GameObjects.Stats({
+        STR : 0,
+        DEX : 0,
+        AGI : 0,
+        INT : 0,
+        VIT : 0,
+        LUCK : 0
+        });
+
+        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        HP : 0,
+        P_ATK : 0,
+        M_ATK : 0,
+        P_DEF : 0,
+        M_DEF : 0,
+        ACCURACY : 0,
+        DODGE : 0,
+        CRIT : 0,
+        CRIT_MULTIPLIER : 0,
+        INFUSION : 0
+        });
+
+        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        FIRE_ATK : 0,
+        COLD_ATK : 0,
+        EARTH_ATK : 0,
+        LIGHTNING_ATK : 0,
+        DARK_ATK : 0,
+        HOLY_ATK : 0,
+        VOID_ATK : 0
+        });
+
+        _suffix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        FIRE_DEF : 0,
+        COLD_DEF : 0,
+        EARTH_DEF : 0,
+        LIGHTNING_DEF : 0,
+        DARK_DEF : 0,
+        HOLY_DEF : 0,
+        VOID_DEF : 0
+        });
+    }
     function OfSolarion(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
         _suffix.title = "of Solarion";
         _suffix.difficulty = 1;

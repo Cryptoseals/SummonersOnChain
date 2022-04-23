@@ -21,7 +21,7 @@ contract CodexRings is UpgradeableCodex {
         return _ring;
     }
 
-    function ring(EquippedItemStruct memory _equipable) public view returns (GameObjects.Ring memory) {
+    function ring(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Ring memory) {
         GameObjects.Ring memory _ring;
         GameObjects.Prefix memory _prefix;
         GameObjects.Suffix memory _suffix;
