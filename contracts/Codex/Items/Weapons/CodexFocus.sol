@@ -1,5 +1,5 @@
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "../../Inventory/EquipableUtils.sol";
+import "../../../Inventory/EquipableUtils.sol";
 
 pragma solidity ^0.8.0;
 
