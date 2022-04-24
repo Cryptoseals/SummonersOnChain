@@ -1,6 +1,5 @@
 // 0xc51b2f8E24acc0164ED2a5966b36Febeb20c510C
 import {ethers, upgrades} from "hardhat";
-import contracts from '../scripts/contracts.json'
 import fs from "fs";
 
 enum CONTRACT {

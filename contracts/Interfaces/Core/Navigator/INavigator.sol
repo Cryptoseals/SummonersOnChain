@@ -14,7 +14,7 @@ interface INavigator {
         SCRAPS, // 9
         JOB, // 10
         HELMETS_CODEX, //11
-        ARMORS_CODEX, //12
+        BODY_ARMORS_CODEX, //12
         BOOTS_CODEX, // 13
         WEAPONS_CODEX, //14
         OFF_HANDS_CODEX, //15
@@ -77,7 +77,16 @@ interface INavigator {
         BOW_STATS,
         AXE_STATS,
         STAFF_STATS,
-        FOCUS_STATS
+        FOCUS_STATS,
+        HEAVY_HELMET_STATS,
+        MEDIUM_HELMET_STATS,
+        LIGHT_HELMET_STATS,
+        HEAVY_ARMOR_STATS,
+        MEDIUM_ARMOR_STATS,
+        LIGHT_ARMOR_STATS,
+        HEAVY_BOOTS_STATS,
+        MEDIUM_BOOTS_STATS,
+        LIGHT_BOOTS_STATS
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;

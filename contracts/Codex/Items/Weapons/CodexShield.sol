@@ -6,7 +6,9 @@ pragma solidity ^0.8.0;
 contract CodexShields is Initializable {
 
     uint[21] public BASE_STR;
+    uint[21] public BASE_ATK;
     uint[21] public BASE_VIT;
+    uint[21] public BASE_HP;
     uint[21] public BASE_MDEF;
     uint[21] public BASE_PDEF;
     uint[21] public BASE_ACCURACY;
@@ -14,7 +16,9 @@ contract CodexShields is Initializable {
 
     function initialize() external initializer {
         initializeVIT();
+        initializeHP();
         initializeSTR();
+        initializeATK();
         initializeDODGE();
         initializeMDEF();
         initializePDEF();
@@ -25,8 +29,16 @@ contract CodexShields is Initializable {
         BASE_VIT = [1, 5, 9, 13, 17, 22, 26, 30, 34, 39, 43, 47, 51, 56, 60, 64, 68, 73, 77, 81, 85];
     }
 
+    function initializeHP() public {
+        BASE_HP = [25,125,250,375,500,625,750,875,1000,1125,1250,1375,1500,1625,1750,1875,2000,2125,2250,2375,2500];
+    }
+
     function initializeSTR() public {
         BASE_STR = [7, 33, 66, 99, 132, 165, 198, 231, 264, 297, 330, 363, 396, 429, 462, 495, 528, 561, 594, 627, 660];
+    }
+
+    function initializeATK() public {
+        BASE_STR = [30,36,46,57,72,91,115,147,186,237,302,384,489,623,795,1013,1292,1649,2103,2683,3765];
     }
 
     function initializeDODGE() public {
@@ -130,18 +142,9 @@ contract CodexShields is Initializable {
 
 
         // bonuses here
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[1],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[1],
-        LUCK : 0});
-
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[0];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[0];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[0];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[0], EARTH_DEF : BASE_PDEF[0], COLD_DEF : BASE_PDEF[0], LIGHTNING_DEF : BASE_PDEF[0], DARK_DEF : BASE_PDEF[0], HOLY_DEF : BASE_PDEF[0], VOID_DEF :0});
+        _weapon.statBonus = weaponStats(1);
+        _weapon.generatedStatBonus = weaponGenStats(1);
+        _weapon.elementalStats.ElementalDef = weaponEle(1);
     }
 
     function SmallCopperShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -160,17 +163,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[1],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[1],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[1];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[1];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[1];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[1], EARTH_DEF : BASE_PDEF[1], COLD_DEF : BASE_PDEF[1], LIGHTNING_DEF : BASE_PDEF[1], DARK_DEF : BASE_PDEF[1], HOLY_DEF : BASE_PDEF[1], VOID_DEF :0});
+        _weapon.statBonus = weaponStats(1);
+        _weapon.generatedStatBonus = weaponGenStats(1);
+        _weapon.elementalStats.ElementalDef = weaponEle(1);
     }
 
     function SmallBronzeShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -189,17 +184,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[2],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[2],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[2];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[2];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[2];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[2], EARTH_DEF : BASE_PDEF[2], COLD_DEF : BASE_PDEF[2], LIGHTNING_DEF : BASE_PDEF[2], DARK_DEF : BASE_PDEF[2], HOLY_DEF : BASE_PDEF[2], VOID_DEF :0});
+        _weapon.statBonus = weaponStats(2);
+        _weapon.generatedStatBonus = weaponGenStats(2);
+        _weapon.elementalStats.ElementalDef = weaponEle(2);
     }
 
     function MediumCopperShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -218,17 +205,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[3],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[3],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[3];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[3];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[3];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[3], EARTH_DEF : BASE_PDEF[3], COLD_DEF : BASE_PDEF[3], LIGHTNING_DEF : BASE_PDEF[3], DARK_DEF : BASE_PDEF[3], HOLY_DEF : BASE_PDEF[3], VOID_DEF :0});
+        _weapon.statBonus = weaponStats(3);
+        _weapon.generatedStatBonus = weaponGenStats(3);
+        _weapon.elementalStats.ElementalDef = weaponEle(3);
     }
 
     function MediumBronzeShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -247,17 +226,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[4],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[4],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[4];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[4];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[4];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[4], EARTH_DEF : BASE_PDEF[4], COLD_DEF : BASE_PDEF[4], LIGHTNING_DEF : BASE_PDEF[4], DARK_DEF : BASE_PDEF[4], HOLY_DEF : BASE_PDEF[4], VOID_DEF :0});
+        _weapon.statBonus = weaponStats(4);
+        _weapon.generatedStatBonus = weaponGenStats(4);
+        _weapon.elementalStats.ElementalDef = weaponEle(4);
     }
 
     function TitaniumShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -276,17 +247,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[5],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[5],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[5];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[5];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[5];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[5], EARTH_DEF : BASE_PDEF[5], COLD_DEF : BASE_PDEF[5], LIGHTNING_DEF : BASE_PDEF[5], DARK_DEF : BASE_PDEF[5], HOLY_DEF : BASE_PDEF[5], VOID_DEF :0});
+        _weapon.statBonus = weaponStats(5);
+        _weapon.generatedStatBonus = weaponGenStats(5);
+        _weapon.elementalStats.ElementalDef = weaponEle(5);
     }
 
     function ChitinShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -305,17 +268,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[6],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[6],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[6];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[6];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[6];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[6], EARTH_DEF : BASE_PDEF[6], COLD_DEF : BASE_PDEF[6], LIGHTNING_DEF : BASE_PDEF[6], DARK_DEF : BASE_PDEF[6], HOLY_DEF : BASE_PDEF[6], VOID_DEF :0});
+        _weapon.statBonus = weaponStats(6);
+        _weapon.generatedStatBonus = weaponGenStats(6);
+        _weapon.elementalStats.ElementalDef = weaponEle(6);
     }
 
     function ChromiumShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -334,17 +289,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[7],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[7],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[7];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[7];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[7];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[7], EARTH_DEF : BASE_PDEF[7], COLD_DEF : BASE_PDEF[7], LIGHTNING_DEF : BASE_PDEF[7], DARK_DEF : BASE_PDEF[7], HOLY_DEF : BASE_PDEF[7], VOID_DEF :0});
+        _weapon.statBonus = weaponStats(7);
+        _weapon.generatedStatBonus = weaponGenStats(7);
+        _weapon.elementalStats.ElementalDef = weaponEle(7);
     }
 
     function DarksteelShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -363,17 +310,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[8],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[8],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[8];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[8];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[8];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[8], EARTH_DEF : BASE_PDEF[8], COLD_DEF : BASE_PDEF[8], LIGHTNING_DEF : BASE_PDEF[8], DARK_DEF : BASE_PDEF[8], HOLY_DEF : BASE_PDEF[8], VOID_DEF :0});
+        _weapon.statBonus = weaponStats(8);
+        _weapon.generatedStatBonus = weaponGenStats(8);
+        _weapon.elementalStats.ElementalDef = weaponEle(8);
     }
 
     function TungstenShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -392,17 +331,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[9],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[9],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[9];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[9];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[9];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[9], EARTH_DEF : BASE_PDEF[9], COLD_DEF : BASE_PDEF[9], LIGHTNING_DEF : BASE_PDEF[9], DARK_DEF : BASE_PDEF[9], HOLY_DEF : BASE_PDEF[9], VOID_DEF :0});
+        _weapon.statBonus = weaponStats(9);
+        _weapon.generatedStatBonus = weaponGenStats(9);
+        _weapon.elementalStats.ElementalDef = weaponEle(9);
     }
 
     function Moonshield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -421,17 +352,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[10],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[10],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[10];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[10];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[10];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[10], EARTH_DEF : BASE_PDEF[10], COLD_DEF : BASE_PDEF[10], LIGHTNING_DEF : BASE_PDEF[10], DARK_DEF : BASE_PDEF[10], HOLY_DEF : BASE_PDEF[10], VOID_DEF : 0});
+        _weapon.statBonus = weaponStats(10);
+        _weapon.generatedStatBonus = weaponGenStats(10);
+        _weapon.elementalStats.ElementalDef = weaponEle(10);
     }
 
     function Sunshield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -450,17 +373,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[11],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[11],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[11];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[11];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[11];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[11], EARTH_DEF : BASE_PDEF[11], COLD_DEF : BASE_PDEF[11], LIGHTNING_DEF : BASE_PDEF[11], DARK_DEF : BASE_PDEF[11], HOLY_DEF : BASE_PDEF[11], VOID_DEF : 0});
+        _weapon.statBonus = weaponStats(11);
+        _weapon.generatedStatBonus = weaponGenStats(11);
+        _weapon.elementalStats.ElementalDef = weaponEle(11);
     }
 
     function CycleShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -479,17 +394,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[12],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[12],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[12];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[12];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[12];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[12], EARTH_DEF : BASE_PDEF[12], COLD_DEF : BASE_PDEF[12], LIGHTNING_DEF : BASE_PDEF[12], DARK_DEF : BASE_PDEF[12], HOLY_DEF : BASE_PDEF[12], VOID_DEF : 0});
+        _weapon.statBonus = weaponStats(12);
+        _weapon.generatedStatBonus = weaponGenStats(12);
+        _weapon.elementalStats.ElementalDef = weaponEle(12);
     }
 
     function PhantasmalShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -508,17 +415,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[13],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[13],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[13];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[13];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[13];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[13], EARTH_DEF : BASE_PDEF[13], COLD_DEF : BASE_PDEF[13], LIGHTNING_DEF : BASE_PDEF[13], DARK_DEF : BASE_PDEF[13], HOLY_DEF : BASE_PDEF[13], VOID_DEF : 0});
+        _weapon.statBonus = weaponStats(13);
+        _weapon.generatedStatBonus = weaponGenStats(13);
+        _weapon.elementalStats.ElementalDef = weaponEle(13);
     }
 
     function HolyPaladinsShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -537,17 +436,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[14],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[14],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[14];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[14];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[14];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[14], EARTH_DEF : BASE_PDEF[14], COLD_DEF : BASE_PDEF[14], LIGHTNING_DEF : BASE_PDEF[14], DARK_DEF : BASE_PDEF[14], HOLY_DEF : BASE_PDEF[14], VOID_DEF : 0});
+        _weapon.statBonus = weaponStats(14);
+        _weapon.generatedStatBonus = weaponGenStats(14);
+        _weapon.elementalStats.ElementalDef = weaponEle(14);
     }
 
     function LuminousShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -566,17 +457,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[15],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[15],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[15];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[15];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[15];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[15], EARTH_DEF : BASE_PDEF[15], COLD_DEF : BASE_PDEF[15], LIGHTNING_DEF : BASE_PDEF[15], DARK_DEF : BASE_PDEF[15], HOLY_DEF : BASE_PDEF[15], VOID_DEF : 0});
+        _weapon.statBonus = weaponStats(15);
+        _weapon.generatedStatBonus = weaponGenStats(15);
+        _weapon.elementalStats.ElementalDef = weaponEle(15);
     }
 
     function ShieldOfCalamity(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -595,17 +478,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[16],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[16],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[16];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[16];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[16];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[16], EARTH_DEF : BASE_PDEF[16], COLD_DEF : BASE_PDEF[16], LIGHTNING_DEF : BASE_PDEF[16], DARK_DEF : BASE_PDEF[16], HOLY_DEF : BASE_PDEF[16], VOID_DEF : 0});
+        _weapon.statBonus = weaponStats(16);
+        _weapon.generatedStatBonus = weaponGenStats(16);
+        _weapon.elementalStats.ElementalDef = weaponEle(16);
     }
 
     function Reflector(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -624,17 +499,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[17],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[17],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[17];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[17];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[17];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[17], EARTH_DEF : BASE_PDEF[17], COLD_DEF : BASE_PDEF[17], LIGHTNING_DEF : BASE_PDEF[17], DARK_DEF : BASE_PDEF[17], HOLY_DEF : BASE_PDEF[17], VOID_DEF : 0});
+        _weapon.statBonus = weaponStats(17);
+        _weapon.generatedStatBonus = weaponGenStats(17);
+        _weapon.elementalStats.ElementalDef = weaponEle(17);
     }
 
     function EssenceCapacitorShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -652,17 +519,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[18],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[18],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[18];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[18];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[18];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[18], EARTH_DEF : BASE_PDEF[18], COLD_DEF : BASE_PDEF[18], LIGHTNING_DEF : BASE_PDEF[18], DARK_DEF : BASE_PDEF[18], HOLY_DEF : BASE_PDEF[18], VOID_DEF : 0});
+        _weapon.statBonus = weaponStats(18);
+        _weapon.generatedStatBonus = weaponGenStats(18);
+        _weapon.elementalStats.ElementalDef = weaponEle(18);
     }
 
     function AetherealShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -680,17 +539,9 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[19],
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : BASE_VIT[19],
-        LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[19];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[19];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[19];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[19], EARTH_DEF : BASE_PDEF[19], COLD_DEF : BASE_PDEF[19], LIGHTNING_DEF : BASE_PDEF[19], DARK_DEF : BASE_PDEF[19], HOLY_DEF : BASE_PDEF[19], VOID_DEF : 0});
+        _weapon.statBonus = weaponStats(19);
+        _weapon.generatedStatBonus = weaponGenStats(19);
+        _weapon.elementalStats.ElementalDef = weaponEle(19);
     }
 
     function TheProtector(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -708,29 +559,51 @@ contract CodexShields is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : BASE_STR[20],
+        _weapon.statBonus = weaponStats(20);
+        _weapon.generatedStatBonus = weaponGenStats(20);
+        _weapon.elementalStats.ElementalDef = weaponEle(20);
+    }
+
+    function weaponEle(uint index) internal view returns (GameObjects.ElementalDef memory) {
+        GameObjects.ElementalDef memory stats = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[index], EARTH_DEF : BASE_PDEF[index], COLD_DEF : BASE_PDEF[index], LIGHTNING_DEF : BASE_PDEF[index], DARK_DEF : BASE_PDEF[index], HOLY_DEF : BASE_PDEF[index], VOID_DEF : 0});
+        return stats;
+    }
+
+    function weaponStats(uint index) internal view returns (GameObjects.Stats memory) {
+        GameObjects.Stats memory stats = GameObjects.Stats({
+        STR : BASE_STR[index],
         DEX : 0,
         AGI : 0,
         INT : 0,
-        VIT : BASE_VIT[20],
+        VIT : BASE_VIT[index],
         LUCK : 0});
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[20];
-        _weapon.generatedStatBonus.M_DEF = BASE_MDEF[20];
-        _weapon.generatedStatBonus.P_DEF = BASE_PDEF[20];
-        _weapon.elementalStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_PDEF[20], EARTH_DEF : BASE_PDEF[20], COLD_DEF : BASE_PDEF[20], LIGHTNING_DEF : BASE_PDEF[20], DARK_DEF : BASE_PDEF[20], HOLY_DEF : BASE_PDEF[20], VOID_DEF : 0});
+        return stats;
+    }
+
+    function weaponGenStats(uint index) internal view returns (GameObjects.GeneratedStats memory) {
+        GameObjects.GeneratedStats memory stats = GameObjects.GeneratedStats({
+        HP : BASE_HP[index],
+        P_ATK : BASE_ATK[index],
+        M_ATK : 0,
+        P_DEF : BASE_PDEF[index],
+        M_DEF : BASE_MDEF[index],
+        ACCURACY : BASE_ACCURACY[index],
+        DODGE : BASE_DODGE[index],
+        CRIT : 0,
+        CRIT_MULTIPLIER : 0,
+        INFUSION : 0
+        });
+        return stats;
     }
 
     function classRequirement () internal view returns(GameObjects.Class[] memory) {
-        GameObjects.Class[] memory classRequirement = new GameObjects.Class[](7);
+        GameObjects.Class[] memory classRequirement = new GameObjects.Class[](6);
         classRequirement[0] = GameObjects.Class.Barbarian;
         classRequirement[1] = GameObjects.Class.Paladin;
-
-
-        classRequirement[3] = GameObjects.Class.Wizard;
-        classRequirement[4] = GameObjects.Class.Priest;
-        classRequirement[5] = GameObjects.Class.Engineer;
-        classRequirement[6] = GameObjects.Class.Necromancer;
+        classRequirement[2] = GameObjects.Class.Wizard;
+        classRequirement[3] = GameObjects.Class.Priest;
+        classRequirement[4] = GameObjects.Class.Engineer;
+        classRequirement[5] = GameObjects.Class.Necromancer;
         return classRequirement;
     }
 }

@@ -98,7 +98,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedHelmets[summoner].suffixTier = suffixTier;
             EquippedHelmets[summoner].itemTier = tier;
         } else if (_type == GameObjects.ItemType.ARMOR) {
-            GameObjects.Armor memory _armor = IAllCodexViews(contractAddress(INavigator.CONTRACT.ARMORS_CODEX)).armorCore(_itemId);
+            GameObjects.Armor memory _armor = IAllCodexViews(contractAddress(INavigator.CONTRACT.BODY_ARMORS_CODEX)).armorCore(_itemId);
             if (!canEquip(summoner, _armor.requirement)) revert CannotEquip("You are too weak to equip this.");
             EquippedArmors[summoner].tokenId = id;
             EquippedArmors[summoner].prefixId = prefix;
@@ -296,7 +296,7 @@ contract Equipable is Initializable, InitNavigator {
         ).helmet(EquippedHelmets[summoner]);
 
         GameObjects.Armor memory _armor = IAllCodexViews(
-            contractAddress(INavigator.CONTRACT.ARMORS_CODEX)
+            contractAddress(INavigator.CONTRACT.BODY_ARMORS_CODEX)
         ).armor(EquippedArmors[summoner]);
         GameObjects.Boots memory _boots = IAllCodexViews(
             contractAddress(INavigator.CONTRACT.BOOTS_CODEX)

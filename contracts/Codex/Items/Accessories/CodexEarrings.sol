@@ -1,5 +1,5 @@
-import "./../Common/UpgradeableCodex.sol";
-import "../../Inventory/EquipableUtils.sol";
+import "./../../Common/UpgradeableCodex.sol";
+import "../../../Inventory/EquipableUtils.sol";
 pragma solidity ^0.8.0;
 
 contract CodexEarrings is UpgradeableCodex {

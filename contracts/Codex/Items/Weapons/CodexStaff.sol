@@ -129,10 +129,7 @@ contract CodexStaves is Initializable {
         // enum Class {
         //      Barbarian, Paladin, Assassin, Wizard, Necromancer, Priest, Engineer, Ranger
         // }
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
 
 
         _weapon.requirement.statRequirement = GameObjects.Stats({
@@ -145,18 +142,8 @@ contract CodexStaves is Initializable {
 
 
         // bonuses here
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[0],
-        AGI : BASE_AGI[0],
-        INT : BASE_INT[0],
-        VIT : 0,
-        LUCK : BASE_LUK[0]});
-
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[0];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[0];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[0];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[0];
+        _weapon.statBonus  = weaponStats(0);
+        _weapon.generatedStatBonus = weaponGenStats(0);
     }
 
     function MarbleStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -166,10 +153,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 5;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -177,17 +161,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[1],
-        AGI : BASE_AGI[1],
-        INT : BASE_INT[1],
-        VIT : 0,
-        LUCK : BASE_LUK[1]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[1];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[1];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[1];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[1];
+        _weapon.statBonus = weaponStats(1);
+        _weapon.generatedStatBonus = weaponGenStats(1);
     }
 
     function TotemicStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -197,10 +172,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 10;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -208,17 +180,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[2],
-        AGI : BASE_AGI[2],
-        INT : BASE_INT[2],
-        VIT : 0,
-        LUCK : BASE_LUK[2]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[2];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[2];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[2];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[2];
+        _weapon.statBonus = weaponStats(2);
+        _weapon.generatedStatBonus = weaponGenStats(2);
     }
 
     function AuraStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -228,10 +191,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 15;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -239,17 +199,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[3],
-        AGI : BASE_AGI[3],
-        INT : BASE_INT[3],
-        VIT : 0,
-        LUCK : BASE_LUK[3]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[3];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[3];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[3];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[3];
+        _weapon.statBonus = weaponStats(3);
+        _weapon.generatedStatBonus = weaponGenStats(3);
     }
 
     function BattleseenStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -259,10 +210,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 20;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -270,17 +218,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[4],
-        AGI : BASE_AGI[4],
-        INT : BASE_INT[4],
-        VIT : 0,
-        LUCK : BASE_LUK[4]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[4];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[4];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[4];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[4];
+        _weapon.statBonus = weaponStats(4);
+        _weapon.generatedStatBonus = weaponGenStats(4);
     }
 
     function WizardStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -290,10 +229,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 25;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -301,17 +237,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[5],
-        AGI : BASE_AGI[5],
-        INT : BASE_INT[5],
-        VIT : 0,
-        LUCK : BASE_LUK[5]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[5];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[5];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[5];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[5];
+        _weapon.statBonus = weaponStats(5);
+        _weapon.generatedStatBonus = weaponGenStats(5);
     }
 
     function RubyStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -321,10 +248,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 30;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -332,17 +256,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[6],
-        AGI : BASE_AGI[6],
-        INT : BASE_INT[6],
-        VIT : 0,
-        LUCK : BASE_LUK[6]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[6];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[6];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[6];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[6];
+        _weapon.statBonus = weaponStats(6);
+        _weapon.generatedStatBonus = weaponGenStats(6);
     }
 
     function VerdantStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -352,10 +267,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 35;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -363,17 +275,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[7],
-        AGI : BASE_AGI[7],
-        INT : BASE_INT[7],
-        VIT : 0,
-        LUCK : BASE_LUK[7]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[7];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[7];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[7];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[7];
+        _weapon.statBonus = weaponStats(7);
+        _weapon.generatedStatBonus = weaponGenStats(7);
     }
 
     function StarfallensStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -383,10 +286,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 40;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -394,17 +294,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[8],
-        AGI : BASE_AGI[8],
-        INT : BASE_INT[8],
-        VIT : 0,
-        LUCK : BASE_LUK[8]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[8];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[8];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[8];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[8];
+        _weapon.statBonus = weaponStats(8);
+        _weapon.generatedStatBonus = weaponGenStats(8);
     }
 
     function Lightbringer(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -414,10 +305,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 45;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -425,17 +313,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[9],
-        AGI : BASE_AGI[9],
-        INT : BASE_INT[9],
-        VIT : 0,
-        LUCK : BASE_LUK[9]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[9];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[9];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[9];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[9];
+        _weapon.statBonus = weaponStats(9);
+        _weapon.generatedStatBonus = weaponGenStats(9);
     }
 
     function StaffOfMoonlight(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -445,10 +324,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 50;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -456,17 +332,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[10],
-        AGI : BASE_AGI[10],
-        INT : BASE_INT[10],
-        VIT : 0,
-        LUCK : BASE_LUK[10]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[10];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[10];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[10];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[10];
+        _weapon.statBonus = weaponStats(10);
+        _weapon.generatedStatBonus = weaponGenStats(10);
     }
 
     function StaffOfSunlight(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -476,10 +343,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 55;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -487,17 +351,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[11],
-        AGI : BASE_AGI[11],
-        INT : BASE_INT[11],
-        VIT : 0,
-        LUCK : BASE_LUK[11]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[11];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[11];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[11];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[11];
+        _weapon.statBonus = weaponStats(11);
+        _weapon.generatedStatBonus = weaponGenStats(11);
     }
 
     function CycleStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -507,10 +362,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 60;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -518,17 +370,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[12],
-        AGI : BASE_AGI[12],
-        INT : BASE_INT[12],
-        VIT : 0,
-        LUCK : BASE_LUK[12]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[12];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[12];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[12];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[12];
+        _weapon.statBonus = weaponStats(12);
+        _weapon.generatedStatBonus = weaponGenStats(12);
     }
 
     function PhantasmalStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -538,10 +381,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 65;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -549,17 +389,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[13],
-        AGI : BASE_AGI[13],
-        INT : BASE_INT[13],
-        VIT : 0,
-        LUCK : BASE_LUK[13]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[13];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[13];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[13];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[13];
+        _weapon.statBonus = weaponStats(13);
+        _weapon.generatedStatBonus = weaponGenStats(13);
     }
 
     function WarlocksStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -569,10 +400,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 70;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -580,17 +408,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[14],
-        AGI : BASE_AGI[14],
-        INT : BASE_INT[14],
-        VIT : 0,
-        LUCK : BASE_LUK[14]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[14];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[14];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[14];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[14];
+        _weapon.statBonus = weaponStats(14);
+        _weapon.generatedStatBonus = weaponGenStats(14);
     }
 
     function LuminescentStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -600,10 +419,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 75;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -611,17 +427,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[15],
-        AGI : BASE_AGI[15],
-        INT : BASE_INT[15],
-        VIT : 0,
-        LUCK : BASE_LUK[15]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[15];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[15];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[15];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[15];
+        _weapon.statBonus = weaponStats(15);
+        _weapon.generatedStatBonus = weaponGenStats(15);
     }
 
     function AncientElementalistsStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -631,10 +438,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 80;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -642,17 +446,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[16],
-        AGI : BASE_AGI[16],
-        INT : BASE_INT[16],
-        VIT : 0,
-        LUCK : BASE_LUK[16]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[16];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[16];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[16];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[16];
+        _weapon.statBonus = weaponStats(16);
+        _weapon.generatedStatBonus = weaponGenStats(16);
     }
 
     function Spellcatcher(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -662,10 +457,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 85;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -673,17 +465,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[17],
-        AGI : BASE_AGI[17],
-        INT : BASE_INT[17],
-        VIT : 0,
-        LUCK : BASE_LUK[17]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[17];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[17];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[17];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[17];
+        _weapon.statBonus = weaponStats(17);
+        _weapon.generatedStatBonus = weaponGenStats(17);
     }
 
     function IncursionStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -693,10 +476,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 90;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -704,17 +484,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[18],
-        AGI : BASE_AGI[18],
-        INT : BASE_INT[18],
-        VIT : 0,
-        LUCK : BASE_LUK[18]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[18];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[18];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[18];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[18];
+        _weapon.statBonus = weaponStats(18);
+        _weapon.generatedStatBonus = weaponGenStats(18);
     }
 
     function EldersMark(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -724,10 +495,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 95;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -735,17 +503,8 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : BASE_DEX[19],
-        AGI : BASE_AGI[19],
-        INT : BASE_INT[19],
-        VIT : 0,
-        LUCK : BASE_LUK[19]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[19];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[19];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[19];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[19];
+        _weapon.statBonus = weaponStats(19);
+        _weapon.generatedStatBonus = weaponGenStats(19);
     }
 
     function Soultrapper(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
@@ -755,10 +514,7 @@ contract CodexStaves is Initializable {
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 100;
-        _weapon.requirement.classRequirement = new GameObjects.Class[](3);
-        _weapon.requirement.classRequirement[0] = GameObjects.Class.Wizard;
-        _weapon.requirement.classRequirement[1] = GameObjects.Class.Necromancer;
-        _weapon.requirement.classRequirement[2] = GameObjects.Class.Priest;
+        _weapon.requirement.classRequirement = classRequirement();
         _weapon.requirement.statRequirement = GameObjects.Stats({
         STR : 0,
         DEX : 0,
@@ -766,16 +522,42 @@ contract CodexStaves is Initializable {
         INT : 0,
         VIT : 0,
         LUCK : 0});
-        _weapon.statBonus = GameObjects.Stats({
+        _weapon.statBonus = weaponStats(20);
+        _weapon.generatedStatBonus = weaponGenStats(20);
+    }
+
+    function weaponStats(uint index) internal view returns (GameObjects.Stats memory) {
+        GameObjects.Stats memory stats = GameObjects.Stats({
         STR : 0,
-        DEX : BASE_DEX[20],
-        AGI : BASE_AGI[20],
-        INT : BASE_INT[20],
+        DEX : BASE_DEX[index],
+        AGI : BASE_AGI[index],
+        INT : BASE_INT[index],
         VIT : 0,
-        LUCK : BASE_LUK[20]});
-        _weapon.generatedStatBonus.M_ATK = BASE_MATK[20];
-        _weapon.generatedStatBonus.ACCURACY = BASE_ACCURACY[20];
-        _weapon.generatedStatBonus.CRIT = BASE_CRIT[20];
-        _weapon.generatedStatBonus.CRIT_MULTIPLIER = BASE_CRITMULTI[20];
+        LUCK : BASE_LUK[index]});
+        return stats;
+    }
+
+    function weaponGenStats(uint index) internal view returns (GameObjects.GeneratedStats memory) {
+        GameObjects.GeneratedStats memory stats = GameObjects.GeneratedStats({
+        HP : 0,
+        P_ATK : 0,
+        M_ATK : BASE_MATK[index],
+        P_DEF : 0,
+        M_DEF : 0,
+        ACCURACY : BASE_ACCURACY[index],
+        DODGE : 0,
+        CRIT : BASE_CRIT[index],
+        CRIT_MULTIPLIER : BASE_CRITMULTI[index],
+        INFUSION : 0
+        });
+        return stats;
+    }
+
+    function classRequirement() internal view returns (GameObjects.Class[] memory) {
+        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](3);
+        _reqClass[0] = GameObjects.Class.Wizard;
+        _reqClass[1] = GameObjects.Class.Necromancer;
+        _reqClass[2] = GameObjects.Class.Priest;
+        return _reqClass;
     }
 }
