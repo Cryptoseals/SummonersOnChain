@@ -606,10 +606,9 @@ contract CodexBootsLight is Initializable {
     }
 
     function classRequirement() internal view returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](3);
-        _reqClass[0] = GameObjects.Class.Assassin;
-        _reqClass[1] = GameObjects.Class.Ranger;
-        _reqClass[2] = GameObjects.Class.Engineer;
+        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](2);
+        _reqClass[0] = GameObjects.Class.Wizard;
+        _reqClass[1] = GameObjects.Class.Priest;
         return _reqClass;
     }
 }
