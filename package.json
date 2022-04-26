@@ -16,9 +16,18 @@
     "av-prepare-upgrade-prod": "npx hardhat run scripts/prepare-upgrade.js --network prod",
     "av-verify-prod": "npx hardhat verify --network prod",
     "av-deploy-subnet": "yarn clean-contracts && npx hardhat run scripts/deploy.js --network local",
-    "fuji-boss": "npx hardhat run scripts/add-world-boss.js --network fuji",
-    "fuji-chest": "npx hardhat run scripts/add-chest.js --network fuji",
-    "fuji-flip": "npx hardhat run scripts/flip-state.js --network fuji"
+    "deploy-fuji-1": "npx hardhat run scripts/1-deploy-navigator.ts --network fuji",
+    "deploy-fuji-2": "npx hardhat run scripts/2-deploy-prefix-and-suffix.ts --network fuji",
+    "deploy-fuji-3": "npx hardhat run scripts/3-deploy-items.ts --network fuji",
+    "deploy-fuji-4": "npx hardhat run scripts/4-deploy-amulets.ts --network fuji",
+    "deploy-fuji-5": "npx hardhat run scripts/5-deploy-belts.ts --network fuji",
+    "deploy-fuji-6": "npx hardhat run scripts/6-deploy-rings.ts --network fuji",
+    "deploy-fuji-7": "npx hardhat run scripts/7-deploy-earrings.ts --network fuji",
+    "deploy-fuji-8": "npx hardhat run scripts/8-deploy-monsters.ts --network fuji",
+    "deploy-fuji-9": "npx hardhat run scripts/9-deploy-fungibles.ts --network fuji",
+    "deploy-fuji-10": "npx hardhat run scripts/10-deploy-crafting-materials.ts --network fuji",
+    "deploy-fuji-11": "npx hardhat run scripts/11-deploy-equipments.ts --network fuji",
+    "deploy-fuji-12": "npx hardhat run scripts/12-deploy-inventory.ts --network fuji"
   },
   "engines": {
     "node": "16.14"

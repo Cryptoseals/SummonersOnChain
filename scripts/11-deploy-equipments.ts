@@ -22,6 +22,7 @@ async function main() {
     let tx = await navigator.setGameContractsById(CONTRACTS.EQUIPABLE_ITEMS,
         equipableItems.address, true);
     await tx.wait(1)
+    console.log('set in contracts')
 
     fs.writeFileSync(DeployedFileLocations.crafting_materials, JSON.stringify({
         equipableItems: equipableItems.address,

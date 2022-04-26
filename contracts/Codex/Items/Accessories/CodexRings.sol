@@ -2,10 +2,11 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../../../Interfaces/Codex/ICodexPrefixAndSuffix.sol";
 import "../../../Inventory/EquipableUtils.sol";
 import "../../../Core/Navigator/InitNavigator.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 pragma solidity ^0.8.0;
 
-contract CodexRings is InitNavigator {
+contract CodexRings is InitNavigator, OwnableUpgradeable {
     ICodexPrefixAndSuffix PrefixContract;
     ICodexPrefixAndSuffix SuffixContract;
 
@@ -31,91 +32,52 @@ contract CodexRings is InitNavigator {
     uint[21] public BASE_ACC;
 
 
-    function initializeCodex(address _navigator) external initializer {
+    function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
-        initializeSTR();
-        initializeAGI();
-        initializeDEX();
-        initializeINT();
-        initializeVIT();
-        initializeLUK();
-        initializeATK();
-        initializeMATK();
-        initializeDEF();
-        initializeMDEF();
-        initializeEDEF();
-        initializeHP();
-        initializeACC();
-        initializeDODGE();
-        initializeCRIT();
-        initializeCRITDMG();
         PrefixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.PREFIX_CODEX));
         SuffixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.SUFFIX_CODEX));
+        __Ownable_init();
     }
 
-    function initializeSTR() public {
-        BASE_STR = [3, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, 255, 270, 285, 300];
+    function initializeCodex1(
+        uint[21] memory _BASE_STR,
+        uint[21] memory _BASE_AGI,
+        uint[21] memory _BASE_DEX,
+        uint[21] memory _BASE_INT,
+        uint[21] memory _BASE_VIT,
+        uint[21] memory _BASE_LUK,
+        uint[21] memory _BASE_ATK,
+        uint[21] memory _BASE_MATK) external onlyOwner {
+        BASE_STR = _BASE_STR;
+        BASE_AGI = _BASE_AGI;
+        BASE_DEX = _BASE_DEX;
+        BASE_INT = _BASE_INT;
+        BASE_VIT = _BASE_VIT;
+        BASE_LUK = _BASE_LUK;
+        BASE_ATK = _BASE_ATK;
+        BASE_MATK = _BASE_MATK;
     }
 
-    function initializeAGI() public {
-        BASE_AGI = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+
+    function initializeCodex2(
+        uint[21] memory _BASE_DEF,
+        uint[21] memory _BASE_MDEF,
+        uint[21] memory _BASE_EDEF,
+        uint[21] memory _BASE_HP,
+        uint[21] memory _BASE_DODGE,
+        uint[21] memory _BASE_CRIT,
+        uint[21] memory _BASE_CRITDMG,
+        uint[21] memory _BASE_ACC) external onlyOwner {
+        BASE_DEF = _BASE_DEF;
+        BASE_MDEF = _BASE_MDEF;
+        BASE_EDEF = _BASE_EDEF;
+        BASE_HP = _BASE_HP;
+        BASE_DODGE = _BASE_DODGE;
+        BASE_CRIT = _BASE_CRIT;
+        BASE_CRITDMG = _BASE_CRITDMG;
+        BASE_ACC = _BASE_ACC;
     }
 
-    function initializeDEX() public {
-        BASE_DEX = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
-    }
-
-    function initializeINT() public {
-        BASE_INT = [4, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300, 320, 340, 360, 380, 400];
-    }
-
-    function initializeVIT() public {
-        BASE_VIT = [2, 8, 15, 23, 30, 38, 45, 53, 60, 68, 75, 83, 90, 98, 105, 113, 120, 128, 135, 143, 150];
-    }
-
-    function initializeATK() public {
-        BASE_ATK = [10, 12, 16, 19, 24, 31, 39, 47, 62, 79, 101, 128, 163, 208, 265, 338, 431, 550, 701, 895, 1141];
-    }
-
-    function initializeMATK() public {
-        BASE_MATK = [15, 18, 23, 29, 36, 46, 58, 71, 93, 119, 151, 192, 245, 312, 398, 507, 646, 825, 1052, 1342, 1712];
-    }
-
-    function initializeLUK() public {
-        BASE_LUK = [3, 13, 25, 38, 50, 63, 75, 88, 100, 113, 125, 138, 150, 163, 175, 188, 200, 213, 225, 238, 250];
-    }
-
-    function initializeDEF() public {
-        BASE_DEF = [5, 6, 7, 9, 10, 12, 15, 18, 21, 26, 31, 38, 46, 55, 67, 81, 99, 120, 145, 177, 215];
-    }
-
-    function initializeMDEF() public {
-        BASE_MDEF = [20, 24, 28, 33, 40, 48, 58, 70, 84, 102, 123, 149, 181, 219, 266, 323, 393, 477, 580, 705, 857];
-    }
-
-    function initializeEDEF() public {
-        BASE_EDEF = [18, 21, 25, 30, 36, 43, 52, 63, 76, 92, 111, 134, 163, 197, 240, 291, 354, 430, 522, 635, 772];
-    }
-
-    function initializeHP() public {
-        BASE_HP = [13, 63, 125, 188, 250, 313, 375, 438, 500, 563, 625, 688, 750, 813, 875, 938, 1000, 1063, 1125, 1188, 1250];
-    }
-
-    function initializeACC() public {
-        BASE_ACC = [24, 28, 34, 41, 50, 60, 72, 88, 106, 129, 157, 190, 231, 281, 341, 415, 504, 613, 746, 907, 1103];
-    }
-
-    function initializeDODGE() public {
-        BASE_DODGE = [50, 61, 78, 99, 125, 160, 203, 259, 330, 421, 537, 665, 874, 1115, 1423, 1816, 2317, 2957, 3773, 4815, 6145];
-    }
-
-    function initializeCRIT() public {
-        BASE_CRIT = [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5];
-    }
-
-    function initializeCRITDMG() public {
-        BASE_CRITDMG = [23, 25, 27, 29, 32, 35, 38, 41, 45, 50, 54, 59, 60, 60, 60, 60, 60, 60, 60, 60, 60];
-    }
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Ring memory _ring) public view returns (GameObjects.Ring memory) {
         GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);

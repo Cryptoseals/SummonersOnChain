@@ -2,10 +2,11 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../../../Interfaces/Codex/ICodexPrefixAndSuffix.sol";
 import "../../../Inventory/EquipableUtils.sol";
 import "../../../Core/Navigator/InitNavigator.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 pragma solidity ^0.8.0;
 
-contract CodexBelts is InitNavigator  {
+contract CodexBelts is InitNavigator, OwnableUpgradeable {
     ICodexPrefixAndSuffix PrefixContract;
     ICodexPrefixAndSuffix SuffixContract;
 
@@ -27,70 +28,45 @@ contract CodexBelts is InitNavigator  {
     uint[21] public BASE_ACC;
 
 
-    function initializeCodex(address _navigator) external initializer {
+    function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
-        initializeSTR();
-        initializeAGI();
-        initializeDEX();
-        initializeINT();
-        initializeVIT();
-        initializeLUK();
-        initializeDEF();
-        initializeMDEF();
-        initializeEDEF();
-        initializeHP();
-        initializeACC();
-        initializeDODGE();
         PrefixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.PREFIX_CODEX));
         SuffixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.SUFFIX_CODEX));
+        __Ownable_init();
     }
 
-    function initializeSTR() public {
-        BASE_STR = [2,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200];
+    function initializeCodex1(
+        uint[21] memory _BASE_STR,
+        uint[21] memory _BASE_AGI,
+        uint[21] memory _BASE_DEX,
+        uint[21] memory _BASE_INT,
+        uint[21] memory _BASE_VIT,
+        uint[21] memory _BASE_LUK
+    ) external onlyOwner {
+        BASE_STR = _BASE_STR;
+        BASE_AGI = _BASE_AGI;
+        BASE_DEX = _BASE_DEX;
+        BASE_INT = _BASE_INT;
+        BASE_VIT = _BASE_VIT;
+        BASE_LUK = _BASE_LUK;
     }
 
-    function initializeAGI() public {
-        BASE_AGI = [1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100];
+    function initializeCodex2(address _navigator,
+        uint[21] memory _BASE_DEF,
+        uint[21] memory _BASE_MDEF,
+        uint[21] memory _BASE_EDEF,
+        uint[21] memory _BASE_HP,
+        uint[21] memory _BASE_DODGE,
+        uint[21] memory _BASE_ACC
+    ) external onlyOwner {
+        BASE_DEF = _BASE_DEF;
+        BASE_MDEF = _BASE_MDEF;
+        BASE_EDEF = _BASE_EDEF;
+        BASE_HP = _BASE_HP;
+        BASE_DODGE = _BASE_DODGE;
+        BASE_ACC = _BASE_ACC;
     }
 
-    function initializeDEX() public {
-        BASE_DEX = [2,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200];
-    }
-
-    function initializeINT() public {
-        BASE_INT = [2,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200];}
-
-    function initializeVIT() public {
-        BASE_VIT = [3,15,30,45,60,75,90,105,120,135,150,165,180,195,210,225,240,255,270,285,300];
-    }
-
-    function initializeLUK() public {
-        BASE_LUK = [3,13,25,38,50,63,75,88,100,113,125,138,150,163,175,188,200,213,225,238,250];
-    }
-
-    function initializeDEF() public {
-        BASE_DEF = [36, 42, 50, 60, 72, 85, 104, 125, 151, 183, 221, 268, 325, 394, 479, 582, 707, 859, 1044, 1269, 1543];
-    }
-
-    function initializeMDEF() public {
-        BASE_MDEF = [16,19,23,27,32,38,46,56,67,81,99,119,145,176,213,259,314,382,464,564,686];
-    }
-
-    function initializeEDEF() public {
-        BASE_EDEF = [18,21,25,30,36,43,52,63,76,92,111,134,163,197,240,291,354,430,522,635,772];
-    }
-
-    function initializeHP() public {
-        BASE_HP = [25,125,250,375,500,625,750,875,1000,1125,1250,1375,1500,1625,1750,1875,2000,2125,2250,2375,2500];
-    }
-
-    function initializeACC() public {
-        BASE_ACC = [24,28,34,41,50,60,72,88,106,129,157,190,231,281,341,415,504,613,746,907,1103];
-    }
-
-    function initializeDODGE() public {
-        BASE_DODGE = [50,61,78,99,125,160,203,259,330,421,537,665,874,1115,1423,1816,2317,2957,3773,4815,6145];
-    }
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Belt memory _belt) public view returns (GameObjects.Belt memory) {
         GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);
@@ -189,7 +165,7 @@ contract CodexBelts is InitNavigator  {
             _belt = applyTier(EternalSealedBelt(_equipable.itemTier), _equipable.itemTier, 13);
         }
 
-        if(_equipable.element == GameObjects.Element.VOID) {
+        if (_equipable.element == GameObjects.Element.VOID) {
             _belt.elementalStats.ElementalDef.VOID_DEF = _belt.generatedStatBonus.M_DEF;
         }
 

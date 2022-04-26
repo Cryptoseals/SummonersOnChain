@@ -110,9 +110,9 @@ export const DeployedFileLocations = {
     codex_earrings: "./scripts/deployed-contracts/codex_earrings.json",
     codex_belts: "./scripts/deployed-contracts/codex_belts.json",
     equipable_items: "./scripts/deployed-contracts/equipable_items.json",
-    inventory: "./scripts/deployed-contracts/inventory.json",
     summoners: "./scripts/deployed-contracts/summoners.json",
     calculator: "./scripts/deployed-contracts/calculator.json",
     crafting_materials: "./scripts/deployed-contracts/crafting_materials.json",
+    inventory: "./scripts/deployed-contracts/inventory.json",
 }
 

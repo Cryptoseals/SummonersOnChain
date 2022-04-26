@@ -19,6 +19,7 @@ async function main() {
     await essence.deployed();
     let tx = await navigator.setGameContractsById(CONTRACTS.ESSENCE, essence.address, true);
     await tx.wait(1)
+    console.log('essence set in contracts')
 
     let Gold = await ethers.getContractFactory("Gold");
     let gold = await upgrades.deployProxy(Gold, [
@@ -32,6 +33,8 @@ async function main() {
     await gold.deployed();
     tx = await navigator.setGameContractsById(CONTRACTS.GOLD, gold.address, true);
     await tx.wait(1)
+    console.log('gold set in contracts')
+
     fs.writeFileSync(DeployedFileLocations.codex_enemies, JSON.stringify({
         gold: gold.address,
         essence: essence.address

@@ -1,6 +1,7 @@
 import {ethers, upgrades} from "hardhat";
 import fs from "fs";
 import {CONTRACTS, DeployedFileLocations} from "./helpers/constants";
+import * as Belt from "./helpers/Accessories/CodexBelts";
 
 const deployment_mode = process.env?.DEPLOYMENT_MODE || "dev-local"
 
@@ -13,12 +14,32 @@ async function main() {
 
     // belts
     let CodexBelts = await ethers.getContractFactory("CodexBelts")
-    let codexBelts = await upgrades.deployProxy(CodexBelts, [navigator.address], {
+    let codexBelts = await upgrades.deployProxy(CodexBelts, [
+        navigator.address
+    ], {
         initializer: "initialize"
     });
     await codexBelts.deployed()
+    let tx = await codexBelts.initializeCodex1(
+        Belt.BASE_STR,
+        Belt.BASE_AGI,
+        Belt.BASE_DEX,
+        Belt.BASE_INT,
+        Belt.BASE_VIT,
+        Belt.BASE_LUCK,
+    )
+    await tx.wait(1)
+    tx = await codexBelts.initializeCodex2(
+        Belt.BASE_DEF,
+        Belt.BASE_M_DEF,
+        Belt.BASE_ELE_DEF,
+        Belt.BASE_HP,
+        Belt.BASE_DODGE,
+        Belt.BASE_ACC,
+    )
+    await tx.wait(1)
     console.log("CodexBelts deployed to:", codexBelts.address,)
-    let tx = await navigator.setGameContractsById(CONTRACTS.BELTS_CODEX, codexBelts.address, true)
+    tx = await navigator.setGameContractsById(CONTRACTS.BELTS_CODEX, codexBelts.address, true)
     await tx.wait(1)
     console.log("and set in navigator.")
 

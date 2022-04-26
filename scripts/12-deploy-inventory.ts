@@ -21,7 +21,7 @@ async function main() {
         equipable.address, true);
     await tx.wait(1)
 
-    fs.writeFileSync(DeployedFileLocations.crafting_materials, JSON.stringify({
+    fs.writeFileSync(DeployedFileLocations.inventory, JSON.stringify({
         inventory: equipable.address,
     }), {});
 
