@@ -85,8 +85,7 @@ contract Equipable is Initializable, InitNavigator {
         // @warning check if owner
         require(IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS)).ownerOf(id) == msg.sender, "not owned");
         // call NFT contract to get items tier and type.
-        (GameObjects.ItemType _type,uint _itemId, uint tier) = IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS)).item(id);
-        (uint prefix, uint prefixTier, uint suffix, uint suffixTier) = IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS)).prefixAndSuffix(id);
+        (GameObjects.ItemType _type,uint _itemId, uint tier, uint prefix, uint prefixTier, uint suffix, uint suffixTier, GameObjects.Element element) = IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS)).item(id);
 
         if (_type == GameObjects.ItemType.HELMET) {
             GameObjects.Helmet memory _helmet = IAllCodexViews(contractAddress(INavigator.CONTRACT.HELMETS_CODEX)).helmetCore(_itemId);
@@ -97,6 +96,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedHelmets[summoner].prefixTier = prefixTier;
             EquippedHelmets[summoner].suffixTier = suffixTier;
             EquippedHelmets[summoner].itemTier = tier;
+            EquippedHelmets[summoner].element = element;
         } else if (_type == GameObjects.ItemType.ARMOR) {
             GameObjects.Armor memory _armor = IAllCodexViews(contractAddress(INavigator.CONTRACT.BODY_ARMORS_CODEX)).armorCore(_itemId);
             if (!canEquip(summoner, _armor.requirement)) revert CannotEquip("You are too weak to equip this.");
@@ -106,6 +106,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedArmors[summoner].prefixTier = prefixTier;
             EquippedArmors[summoner].suffixTier = suffixTier;
             EquippedArmors[summoner].itemTier = tier;
+            EquippedArmors[summoner].element = element;
 
         } else if (_type == GameObjects.ItemType.WEAPON) {
             GameObjects.Weapon memory _weapon = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(_itemId);
@@ -116,6 +117,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedWeapons[summoner].prefixTier = prefixTier;
             EquippedWeapons[summoner].suffixTier = suffixTier;
             EquippedWeapons[summoner].itemTier = tier;
+            EquippedWeapons[summoner].element = element;
 
             DamageTypesOfSummoners[summoner] = _weapon.damageType;
 
@@ -128,6 +130,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedOffHands[summoner].prefixTier = prefixTier;
             EquippedOffHands[summoner].suffixTier = suffixTier;
             EquippedOffHands[summoner].itemTier = tier;
+            EquippedOffHands[summoner].element = element;
 
         } else if (_type == GameObjects.ItemType.BOOTS) {
             GameObjects.Boots memory _boots = IAllCodexViews(contractAddress(INavigator.CONTRACT.BOOTS_CODEX)).bootsCore(_itemId);
@@ -138,6 +141,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedBoots[summoner].prefixTier = prefixTier;
             EquippedBoots[summoner].suffixTier = suffixTier;
             EquippedBoots[summoner].itemTier = tier;
+            EquippedBoots[summoner].element = element;
 
         } else if (_type == GameObjects.ItemType.AMULET) {
             GameObjects.Amulet memory _amulet = IAllCodexViews(contractAddress(INavigator.CONTRACT.AMULETS_CODEX)).amuletCore(_itemId);
@@ -148,6 +152,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedAmulet[summoner].prefixTier = prefixTier;
             EquippedAmulet[summoner].suffixTier = suffixTier;
             EquippedAmulet[summoner].itemTier = tier;
+            EquippedAmulet[summoner].element = element;
 
         } else if (_type == GameObjects.ItemType.RING) {
             GameObjects.Ring memory _ring = IAllCodexViews(contractAddress(INavigator.CONTRACT.RINGS_CODEX)).ringCore(_itemId);
@@ -158,6 +163,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedRing[summoner].prefixTier = prefixTier;
             EquippedRing[summoner].suffixTier = suffixTier;
             EquippedRing[summoner].itemTier = tier;
+            EquippedRing[summoner].element = element;
         }
         else if (_type == GameObjects.ItemType.EARRING) {
             GameObjects.Earring memory _earring = IAllCodexViews(contractAddress(INavigator.CONTRACT.EARRINGS_CODEX)).earringCore(_itemId);
@@ -168,6 +174,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedEarring[summoner].prefixTier = prefixTier;
             EquippedEarring[summoner].suffixTier = suffixTier;
             EquippedEarring[summoner].itemTier = tier;
+            EquippedEarring[summoner].element = element;
         } else if (_type == GameObjects.ItemType.BELT) {
             GameObjects.Belt memory _belt = IAllCodexViews(contractAddress(INavigator.CONTRACT.BELTS_CODEX)).beltCore(_itemId);
             if (!canEquip(summoner, _belt.requirement)) revert CannotEquip("You are too weak to equip this.");
@@ -177,6 +184,7 @@ contract Equipable is Initializable, InitNavigator {
             EquippedBelt[summoner].prefixTier = prefixTier;
             EquippedBelt[summoner].suffixTier = suffixTier;
             EquippedBelt[summoner].itemTier = tier;
+            EquippedBelt[summoner].element = element;
 
         } else {
             revert InvalidItem("Not Implemented");
@@ -386,7 +394,6 @@ contract Equipable is Initializable, InitNavigator {
     function getPreCalculatedGeneratedStats(uint summoner) external view returns (GameObjects.GeneratedStats memory){
         return PreCalculatedGeneratedEquipmentStats[summoner];
     }
-
 
     function _escrowNFT(address _erc721, uint _token, address from) internal {
         IERC721(_erc721).transferFrom(from, address(this), _token);

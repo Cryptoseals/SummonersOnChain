@@ -9,55 +9,32 @@ contract CodexBootsHeavy is Initializable {
     uint[21] public BASE_VIT;
     uint[21] public BASE_DEF;
     uint[21] public BASE_MDEF;
+    uint[21] public BASE_EDEF;
     uint[21] public BASE_HP;
     uint[21] public BASE_DODGE;
 
 
-    function initialize() external initializer {
-        initializeSTR();
-        initializeAGI();
-        initializeDEX();
-        initializeVIT();
-        initializeDEF();
-        initializeMDEF();
-        initializeHP();
-        initializeDODGE();
+    function initialize(
+        uint[21] memory _BASE_STR,
+        uint[21] memory _BASE_AGI,
+        uint[21] memory _BASE_DEX,
+        uint[21] memory _BASE_VIT,
+        uint[21] memory _BASE_DEF,
+        uint[21] memory _BASE_MDEF,
+        uint[21] memory _BASE_EDEF,
+        uint[21] memory _BASE_HP,
+        uint[21] memory _BASE_DODGE
+    ) external initializer {
+        BASE_STR = _BASE_STR;
+        BASE_AGI = _BASE_AGI;
+        BASE_DEX = _BASE_DEX;
+        BASE_VIT = _BASE_VIT;
+        BASE_DEF = _BASE_DEF;
+        BASE_MDEF = _BASE_MDEF;
+        BASE_HP = _BASE_HP;
+        BASE_DODGE = _BASE_DODGE;
+        BASE_EDEF = _BASE_EDEF;
     }
-
-    function initializeSTR() public {
-        BASE_STR = [2, 9, 17, 25, 33, 42, 50, 58, 66, 75, 83, 91, 99, 108, 116, 124, 132, 141, 149, 157, 165];
-    }
-
-    function initializeAGI() public {
-        BASE_AGI = [2, 9, 18, 27, 36, 45, 54, 63, 72, 81, 90, 99, 108, 117, 126, 135, 144, 153, 162, 171, 180];
-    }
-
-
-    function initializeDEX() public {
-        BASE_DEX = [2, 7, 14, 21, 27, 34, 41, 48, 54, 61, 68, 75, 81, 88, 95, 102, 108, 115, 122, 129, 135];
-    }
-
-    function initializeVIT() public {
-        BASE_VIT = [7, 33, 66, 99, 132, 165, 198, 231, 264, 297, 330, 363, 396, 429, 462, 495, 528, 561, 594, 627, 660];
-    }
-
-    function initializeDEF() public {
-        BASE_DEF = [24, 28, 34, 40, 48, 57, 69, 84, 101, 122, 148, 179, 217, 263, 319, 388, 471, 573, 696, 846, 1029];
-    }
-
-    function initializeMDEF() public {
-        BASE_MDEF = [12, 14, 17, 20, 24, 29, 35, 42, 51, 61, 74, 90, 109, 132, 160, 194, 236, 287, 348, 423, 515];
-    }
-
-    function initializeHP() public {
-        BASE_HP = [50, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500, 3750, 4000, 4250, 4500, 4750, 5000];
-    }
-
-    function initializeDODGE() public {
-        BASE_DODGE = [135, 164, 209, 265, 338, 430, 548, 699, 891, 1136, 1449, 1795, 2359, 3010, 3841, 4902, 6255, 7982, 10186, 13000, 16590];
-    }
-
-
     function applyTier(GameObjects.Boots memory _boots, uint tier, uint percentage) public view returns (GameObjects.Boots memory){
         if (tier == 0) return _boots;
         _boots.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_boots.generatedStatBonus, (tier) * percentage);

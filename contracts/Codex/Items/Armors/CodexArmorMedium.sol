@@ -9,53 +9,32 @@ contract CodexArmorsMedium is Initializable {
     uint[21] public BASE_VIT;
     uint[21] public BASE_DEF;
     uint[21] public BASE_MDEF;
+    uint[21] public BASE_EDEF;
     uint[21] public BASE_HP;
     uint[21] public BASE_DODGE;
 
 
-    function initialize() external initializer {
-        initializeSTR();
-        initializeAGI();
-        initializeDEX();
-        initializeVIT();
-        initializeDEF();
-        initializeMDEF();
-        initializeHP();
-        initializeDODGE();
+    function initialize(
+        uint[21] memory _BASE_STR,
+        uint[21] memory _BASE_AGI,
+        uint[21] memory _BASE_DEX,
+        uint[21] memory _BASE_VIT,
+        uint[21] memory _BASE_DEF,
+        uint[21] memory _BASE_MDEF,
+        uint[21] memory _BASE_EDEF,
+        uint[21] memory _BASE_HP,
+        uint[21] memory _BASE_DODGE
+    ) external initializer {
+        BASE_STR = _BASE_STR;
+        BASE_AGI = _BASE_AGI;
+        BASE_DEX = _BASE_DEX;
+        BASE_VIT = _BASE_VIT;
+        BASE_DEF = _BASE_DEF;
+        BASE_MDEF = _BASE_MDEF;
+        BASE_HP = _BASE_HP;
+        BASE_DODGE = _BASE_DODGE;
+        BASE_EDEF = _BASE_EDEF;
     }
-
-    function initializeSTR() public {
-        BASE_STR = [2,8,15,22,29,36,43,50,57,65,72,79,86,93,100,107,114,122,129,136,143];
-    }
-
-    function initializeAGI() public {
-        BASE_AGI = [2,6,11,16,21,27,32,37,42,48,53,58,63,69,74,79,84,90,95,100,105];
-    }
-
-
-    function initializeDEX() public {
-        BASE_DEX = [2,9,18,26,35,44,52,61,69,78,87,95,104,113,121,130,138,147,156,164,173];
-    }
-
-    function initializeVIT() public {
-        BASE_VIT = [11,53,105,158,210,263,315,368,420,473,525,578,630,683,735,788,840,893,945,998,1050];
-    }
-
-    function initializeDEF() public {
-        BASE_DEF = [30,35,42,50,60,71,87,104,126,152,184,223,271,329,399,485,589,716,870,1058,1286];
-    }
-
-    function initializeMDEF() public {
-        BASE_MDEF = [12, 14, 17, 20, 24, 29, 35, 42, 51, 61, 74, 90, 109, 132, 160, 194, 236, 287, 348, 423, 515];}
-
-    function initializeHP() public {
-        BASE_HP = [88, 438, 875, 1313, 1750, 2188, 2625, 3063, 3500, 3938, 4375, 4813, 5250, 5688, 6125, 6563, 7000, 7438, 7875, 8313, 8750];
-    }
-
-    function initializeDODGE() public {
-        BASE_DODGE = [115, 140, 178, 226, 288, 367, 467, 596, 759, 968, 1235, 1529, 2010, 2564, 3272, 4175, 5328, 6800, 8677, 11074, 14132];}
-
-
     function applyTier(GameObjects.Armor memory _armor, uint tier, uint percentage) public view returns (GameObjects.Armor memory){
         if (tier == 0) return _armor;
         _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_armor.generatedStatBonus, (tier) * percentage);

@@ -6,60 +6,37 @@ contract CodexArmorsLight is Initializable {
     uint[21] public BASE_STR;
     uint[21] public BASE_AGI;
     uint[21] public BASE_DEX;
-    uint[21] public BASE_INT;
     uint[21] public BASE_VIT;
+    uint[21] public BASE_INT;
     uint[21] public BASE_DEF;
     uint[21] public BASE_MDEF;
+    uint[21] public BASE_EDEF;
     uint[21] public BASE_HP;
     uint[21] public BASE_DODGE;
 
 
-    function initialize() external initializer {
-        initializeSTR();
-        initializeAGI();
-        initializeINT();
-        initializeDEX();
-        initializeVIT();
-        initializeDEF();
-        initializeMDEF();
-        initializeHP();
-        initializeDODGE();
-    }
-
-    function initializeSTR() public {
-        BASE_STR = [2, 7, 14, 21, 27, 34, 41, 48, 54, 61, 68, 75, 81, 88, 95, 102, 108, 115, 122, 129, 135];
-    }
-
-    function initializeAGI() public {
-        BASE_AGI = [2, 6, 11, 17, 22, 28, 33, 39, 44, 50, 55, 61, 66, 72, 77, 83, 88, 94, 99, 105, 110];
-    }
-
-    function initializeINT() public {
-        BASE_INT = [3, 14, 28, 42, 55, 69, 83, 96, 110, 124, 137, 151, 165, 179, 192, 206, 220, 233, 247, 261, 274];
-    }
-
-    function initializeDEX() public {
-        BASE_DEX = [2, 8, 16, 24, 32, 40, 48, 56, 63, 71, 79, 87, 95, 103, 111, 119, 126, 134, 142, 150, 158];
-    }
-
-    function initializeVIT() public {
-        BASE_VIT = [10, 48, 95, 142, 189, 237, 284, 331, 378, 426, 473, 520, 567, 615, 662, 709, 756, 804, 851, 898, 945];
-    }
-
-    function initializeDEF() public {
-        BASE_DEF = [26, 30, 36, 43, 51, 61, 74, 89, 107, 130, 157, 190, 230, 279, 339, 412, 501, 608, 740, 899, 1093];
-    }
-
-    function initializeMDEF() public {
-        BASE_MDEF = [22, 26, 30, 36, 43, 51, 62, 75, 91, 110, 133, 161, 195, 237, 288, 349, 424, 515, 627, 762, 926];
-    }
-
-    function initializeHP() public {
-        BASE_HP = [88, 438, 875, 1313, 1750, 2188, 2625, 3063, 3500, 3938, 4375, 4813, 5250, 5688, 6125, 6563, 7000, 7438, 7875, 8313, 8750];
-    }
-
-    function initializeDODGE() public {
-        BASE_DODGE = [105, 128, 162, 207, 263, 335, 427, 544, 693, 884, 1127, 1396, 1835, 2341, 2988, 3812, 4865, 6208, 7923, 10111, 12904];
+    function initialize(
+        uint[21] memory _BASE_STR,
+        uint[21] memory _BASE_AGI,
+        uint[21] memory _BASE_DEX,
+        uint[21] memory _BASE_VIT,
+        uint[21] memory _BASE_INT,
+        uint[21] memory _BASE_DEF,
+        uint[21] memory _BASE_MDEF,
+        uint[21] memory _BASE_EDEF,
+        uint[21] memory _BASE_HP,
+        uint[21] memory _BASE_DODGE
+    ) external initializer {
+        BASE_STR = _BASE_STR;
+        BASE_AGI = _BASE_AGI;
+        BASE_DEX = _BASE_DEX;
+        BASE_VIT = _BASE_VIT;
+        BASE_INT = _BASE_INT;
+        BASE_DEF = _BASE_DEF;
+        BASE_MDEF = _BASE_MDEF;
+        BASE_HP = _BASE_HP;
+        BASE_DODGE = _BASE_DODGE;
+        BASE_EDEF = _BASE_EDEF;
     }
 
 

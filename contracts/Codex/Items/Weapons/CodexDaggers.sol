@@ -14,47 +14,24 @@ contract CodexDaggers is Initializable {
     uint[21] public BASE_CRITMULTI;
     uint[21] public BASE_ACCURACY;
 
-    function initialize() external initializer {
-        initializeSTR();
-        initializeAGI();
-        initializeDEX();
-        initializeLUCK();
-        initializeATK();
-        initializeCRIT();
-        initializeCRITMULTI();
-        initializeACCURACY();
-    }
-
-    function initializeSTR() public {
-        BASE_STR = [9, 45, 90, 135, 180, 225, 270, 315, 360, 405, 450, 495, 540, 585, 630, 675, 720, 765, 810, 855, 900];
-    }
-
-    function initializeAGI() public {
-        BASE_AGI = [2, 6, 11, 16, 21, 27, 32, 37, 42, 48, 53, 58, 63, 69, 74, 79, 84, 90, 95, 100, 105];
-    }
-
-    function initializeDEX() public {
-        BASE_DEX = [2, 6, 11, 17, 22, 28, 33, 39, 44, 50, 55, 61, 66, 72, 77, 83, 88, 94, 99, 105, 110];
-    }
-
-    function initializeLUCK() public {
-        BASE_LUCK = [3, 14, 27, 40, 53, 66, 79, 92, 105, 119, 132, 145, 158, 171, 184, 197, 210, 224, 237, 250, 263];
-    }
-
-    function initializeATK() public {
-        BASE_ATK = [44, 53, 67, 84, 106, 133, 169, 206, 273, 348, 442, 563, 717, 914, 1165, 1485, 1895, 2418, 3084, 3935, 5020];
-    }
-
-    function initializeCRIT() public {
-        BASE_CRIT = [8, 8, 8, 8, 8, 9, 11, 12, 14, 15, 17, 18, 20, 21, 23, 24, 26, 27, 29, 30, 32];
-    }
-
-    function initializeCRITMULTI() public {
-        BASE_CRITMULTI = [120, 130, 142, 154, 168, 184, 200, 220, 240, 262, 288, 316, 320, 320, 320, 320, 320, 320, 320, 320, 320];
-    }
-
-    function initializeACCURACY() public {
-        BASE_ACCURACY = [147, 171, 206, 249, 301, 365, 441, 535, 649, 788, 957, 1163, 1413, 1717, 2088, 2539, 3087, 3753, 4565, 5553, 6755];
+    function initialize(
+        uint[21] memory _BASE_STR,
+        uint[21] memory _BASE_AGI,
+        uint[21] memory _BASE_DEX,
+        uint[21] memory _BASE_LUCK,
+        uint[21] memory _BASE_ATK,
+        uint[21] memory _BASE_CRIT,
+        uint[21] memory _BASE_CRITMULTI,
+        uint[21] memory _BASE_ACCURACY
+    ) external initializer {
+        BASE_STR = _BASE_STR;
+        BASE_AGI = _BASE_AGI;
+        BASE_DEX = _BASE_DEX;
+        BASE_LUCK = _BASE_LUCK;
+        BASE_ATK = _BASE_ATK;
+        BASE_CRIT = _BASE_CRIT;
+        BASE_CRITMULTI = _BASE_CRITMULTI;
+        BASE_ACCURACY = _BASE_ACCURACY;
     }
 
     function weapon(uint id, uint tier) public view returns (GameObjects.Weapon memory) {
@@ -573,7 +550,7 @@ contract CodexDaggers is Initializable {
         return stats;
     }
 
-    function classRequirement () internal view returns(GameObjects.Class[] memory) {
+    function classRequirement() internal view returns (GameObjects.Class[] memory) {
         GameObjects.Class[] memory _reqClass = new GameObjects.Class[](3);
         _reqClass[0] = GameObjects.Class.Assassin;
         _reqClass[1] = GameObjects.Class.Wizard;

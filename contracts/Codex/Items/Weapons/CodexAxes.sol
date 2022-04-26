@@ -13,50 +13,31 @@ contract CodexAxes is Initializable {
     uint[21] public BASE_CRITMULTI;
     uint[21] public BASE_ACCURACY;
 
-    function initialize() external initializer {
-        initializeSTR();
-        initializeAGI();
-        initializeDEX();
-        initializeATK();
-        initializeCRIT();
-        initializeCRITMULTI();
-        initializeACCURACY();
+    function initialize(
+        uint[21] memory _BASE_STR,
+        uint[21] memory _BASE_AGI,
+        uint[21] memory _BASE_DEX,
+        uint[21] memory _BASE_ATK,
+        uint[21] memory _BASE_CRIT,
+        uint[21] memory _BASE_CRITMULTI,
+        uint[21] memory _BASE_ACCURACY
+    ) external initializer {
+        BASE_STR = _BASE_STR;
+        BASE_AGI = _BASE_AGI;
+        BASE_DEX = _BASE_DEX;
+        BASE_ATK = _BASE_ATK;
+        BASE_CRIT = _BASE_CRIT;
+        BASE_CRITMULTI = _BASE_CRITMULTI;
+        BASE_ACCURACY = _BASE_ACCURACY;
     }
 
-    function initializeSTR() public {
-        BASE_STR = [10, 50, 99, 149, 198, 248, 297, 347, 396, 446, 495, 545, 594, 644, 693, 743, 792, 842, 891, 941, 990];
-    }
-
-    function initializeAGI() public {
-        BASE_AGI = [1, 3, 5, 8, 10, 12, 15, 17, 19, 22, 24, 27, 29, 31, 34, 36, 38, 41, 43, 46, 48];
-    }
-
-    function initializeDEX() public {
-        BASE_DEX = [1, 5, 10, 15, 19, 24, 29, 34, 38, 43, 48, 53, 57, 62, 67, 72, 76, 81, 86, 91, 95];
-    }
-
-    function initializeATK() public {
-        BASE_ATK = [46, 56, 70, 88, 110, 139, 177, 216, 286, 363, 462, 589, 750, 955, 1218, 1553, 1981, 2528, 3224, 4113, 5249];
-    }
-
-    function initializeCRIT() public {
-        BASE_CRIT = [3, 3, 3, 3, 3, 3, 4, 4, 5, 5, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11];
-    }
-
-    function initializeCRITMULTI() public {
-        BASE_CRITMULTI = [120, 120, 130, 142, 154, 168, 184, 200, 219, 239, 262, 287, 315, 320, 320, 320, 320, 320, 320, 320, 320];
-    }
-
-    function initializeACCURACY() public {
-        BASE_ACCURACY = [114, 114, 132, 159, 192, 232, 282, 341, 413, 501, 608, 739, 897, 1090, 1324, 1611, 1959, 2381, 2896, 3522, 4284];
-    }
 
     function weapon(uint id, uint tier) public view returns (GameObjects.Weapon memory) {
         require(tier < 10, "t");
 
         if (id == 64) {
             return applyTier(WoodenAxe(tier), tier, 4);
-        } else if(id == 65) {
+        } else if (id == 65) {
             return applyTier(StoneAxe(tier), tier, 5);
         } else if (id == 66) {
             return applyTier(FlintAxe(tier), tier, 5);
@@ -103,8 +84,8 @@ contract CodexAxes is Initializable {
 
     function applyTier(GameObjects.Weapon memory weapon, uint tier, uint percentage) public view returns (GameObjects.Weapon memory){
         if (tier == 0) return weapon;
-        weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(weapon.generatedStatBonus, (tier) *percentage);
-        weapon.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(weapon.elementalStats, (tier) *percentage);
+        weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(weapon.generatedStatBonus, (tier) * percentage);
+        weapon.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(weapon.elementalStats, (tier) * percentage);
         return weapon;
     }
 
@@ -519,6 +500,7 @@ contract CodexAxes is Initializable {
         _weapon.statBonus = weaponStats(20);
         _weapon.generatedStatBonus = weaponGenStats(20);
     }
+
     function weaponStats(uint index) internal view returns (GameObjects.Stats memory) {
         GameObjects.Stats memory stats = GameObjects.Stats({
         STR : BASE_STR[index],
@@ -547,7 +529,7 @@ contract CodexAxes is Initializable {
     }
 
 
-    function classRequirement () internal view returns(GameObjects.Class[] memory) {
+    function classRequirement() internal view returns (GameObjects.Class[] memory) {
         GameObjects.Class[] memory _reqClass = new GameObjects.Class[](3);
         _reqClass[0] = GameObjects.Class.Barbarian;
         _reqClass[1] = GameObjects.Class.Necromancer;

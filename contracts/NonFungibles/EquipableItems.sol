@@ -8,10 +8,10 @@ import "../Lib/Base64.sol";
 pragma solidity ^0.8.0;
 
 contract EquipableItems is
-    Initializable,
-    OwnableUpgradeable,
-    InitNavigator,
-    ERC721EnumerableUpgradeable
+Initializable,
+OwnableUpgradeable,
+InitNavigator,
+ERC721EnumerableUpgradeable
 {
     mapping(uint256 => GameObjects.ItemType) public tokenToType;
     mapping(uint256 => uint256) public tokenToItemId;
@@ -20,6 +20,7 @@ contract EquipableItems is
     mapping(uint256 => uint256) public tokenPrefixTier;
     mapping(uint256 => uint256) public tokenSuffix;
     mapping(uint256 => uint256) public tokenSuffixTier;
+    mapping(uint256 => GameObjects.Element) public tokenElement;
 
     function initialize(
         address _navigator,
@@ -38,13 +39,15 @@ contract EquipableItems is
         uint256 prefix,
         uint256 prefixTier,
         uint256 suffix,
-        uint256 suffixTier
+        uint256 suffixTier,
+        GameObjects.Element element
     ) external onlyGameContracts {
         uint256 nextToken = totalSupply() + 1;
         tokenToType[nextToken] = _type;
         tokenToItemId[nextToken] = id;
         tokenPrefix[nextToken] = prefix;
         tokenSuffix[nextToken] = suffix;
+        tokenElement[nextToken] = element;
         _mint(player, nextToken);
     }
 
@@ -63,9 +66,9 @@ contract EquipableItems is
     }
 
     function tiers(uint256[] memory ids)
-        external
-        view
-        returns (uint256[] memory)
+    external
+    view
+    returns (uint256[] memory)
     {
         uint256[] memory result = new uint256[](ids.length);
         for (uint256 i = 0; i < ids.length; i++) {
@@ -76,34 +79,40 @@ contract EquipableItems is
     }
 
     function itemType(uint256 id)
-        external
-        view
-        returns (GameObjects.ItemType _type)
+    external
+    view
+    returns (GameObjects.ItemType _type)
     {
         if (!_exists(id)) revert InvalidItem("DOES NOT EXIST");
         _type = tokenToType[id];
     }
 
     function item(uint256 id)
-        external
-        view
-        returns (GameObjects.ItemType _type, uint _itemId, uint256 _tier)
+    external
+    view
+    returns (GameObjects.ItemType _type, uint _itemId, uint256 _tier, uint _prefix, uint _prefixTier, uint _suffix, uint _suffixTier, GameObjects.Element _element)
     {
         if (!_exists(id)) revert InvalidItem("DOES NOT EXIST");
+
         _type = tokenToType[id];
         _itemId = tokenToItemId[id];
         _tier = tokenToEnchantmentLevel[id];
+        _element = tokenElement[id];
+        _prefix = tokenPrefix[id];
+        _prefixTier = tokenPrefixTier[id];
+        _suffix = tokenSuffix [id];
+        _suffixTier = tokenSuffixTier[id];
     }
 
     function prefixAndSuffix(uint256 id)
-        external
-        view
-        returns (
-            uint256 prefix,
-            uint256 prefixTier,
-            uint256 suffix,
-            uint256 suffixTier
-        )
+    external
+    view
+    returns (
+        uint256 prefix,
+        uint256 prefixTier,
+        uint256 suffix,
+        uint256 suffixTier
+    )
     {
         if (!_exists(id)) revert InvalidItem("DOES NOT EXIST");
         prefix = tokenPrefix[id];
@@ -112,40 +121,21 @@ contract EquipableItems is
         suffixTier = tokenSuffixTier[id];
     }
 
-    function itemName(uint256 tokenId) public view returns (string memory) {
-        GameObjects.Prefix memory prefix = IAllCodexViews(
-            contractAddress(INavigator.CONTRACT.PREFIX_CODEX)
-        ).prefix(tokenPrefix[tokenId], 1);
-        GameObjects.Suffix memory suffix = IAllCodexViews(
-            contractAddress(INavigator.CONTRACT.SUFFIX_CODEX)
-        ).suffix(tokenSuffix[tokenId], 1);
-        GameObjects.Weapon memory weapon = IAllCodexViews(
-            contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)
-        ).weaponCore(tokenToItemId[tokenId]);
-        return
-            string(
-                abi.encodePacked(
-                    prefix.title,
-                    weapon.metadata.name,
-                    suffix.title
-                )
-            );
-    }
-
+    // implement later.
     function tokenURI(uint256 tokenId)
-        public
-        view
-        override
-        returns (string memory tokenURI)
+    public
+    view
+    override
+    returns (string memory tokenURI)
     {
-        string memory name = itemName(tokenId);
+       // string memory name = itemName(tokenId);
 
         string[5] memory parts;
         parts[
-            0
+        0
         ] = '<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350"><style>.base { fill: white; font-family: serif; font-size: 14px; }</style><rect width="100%" height="100%" fill="black" /><text x="10" y="20" class="base">';
 
-        parts[1] = string(abi.encodePacked("Name", " ", name));
+        parts[1] = string(abi.encodePacked("Name", " "));
 
         parts[2] = '</text><text x="10" y="40" class="base">';
 
@@ -173,8 +163,8 @@ contract EquipableItems is
             bytes(
                 string(
                     abi.encodePacked(
-                        '{"name: "', name,
-                        '", "description": "Rarity is achieved via an active economy, summoners must level, gain feats, learn spells, to be able to craft gear. This allows for market driven rarity while allowing an ever growing economy. Feats, spells, and summoner gear is ommitted as part of further expansions.", "image": "data:image/svg+xml;base64,',
+                        '{"name: "', "",
+                        '", "description": "text here.", "image": "data:image/svg+xml;base64,',
                         Base64.encode(bytes(output)),
                         '"}'
                     )

@@ -9,52 +9,31 @@ contract CodexArmorsHeavy is Initializable {
     uint[21] public BASE_VIT;
     uint[21] public BASE_DEF;
     uint[21] public BASE_MDEF;
+    uint[21] public BASE_EDEF;
     uint[21] public BASE_HP;
     uint[21] public BASE_DODGE;
 
 
-    function initialize() external initializer {
-        initializeSTR();
-        initializeAGI();
-        initializeDEX();
-        initializeVIT();
-        initializeDEF();
-        initializeMDEF();
-        initializeHP();
-        initializeDODGE();
-    }
-
-    function initializeSTR() public {
-        BASE_STR = [2, 9, 17, 25, 33, 42, 50, 58, 66, 75, 83, 91, 99, 108, 116, 124, 132, 141, 149, 157, 165];
-    }
-
-    function initializeAGI() public {
-        BASE_AGI = [1, 5, 9, 14, 18, 23, 27, 32, 36, 41, 45, 50, 54, 59, 63, 68, 72, 77, 81, 86, 90];
-    }
-
-
-    function initializeDEX() public {
-        BASE_DEX = [2, 7, 14, 21, 27, 34, 41, 48, 54, 61, 68, 75, 81, 88, 95, 102, 108, 115, 122, 129, 135];
-    }
-
-    function initializeVIT() public {
-        BASE_VIT = [12, 58, 116, 174, 231, 289, 347, 405, 462, 520, 578, 636, 693, 751, 809, 867, 924, 982, 1040, 1098, 1155];
-    }
-
-    function initializeDEF() public {
-        BASE_DEF = [36, 42, 50, 60, 72, 85, 104, 125, 151, 183, 221, 268, 325, 394, 479, 582, 707, 859, 1044, 1269, 1543];
-    }
-
-    function initializeMDEF() public {
-        BASE_MDEF = [12, 14, 16, 19, 23, 27, 33, 40, 48, 58, 70, 85, 103, 125, 152, 185, 224, 272, 331, 402, 489];
-    }
-
-    function initializeHP() public {
-        BASE_HP = [88, 438, 875, 1313, 1750, 2188, 2625, 3063, 3500, 3938, 4375, 4813, 5250, 5688, 6125, 6563, 7000, 7438, 7875, 8313, 8750];
-    }
-
-    function initializeDODGE() public {
-        BASE_DODGE = [90, 110, 139, 177, 225, 287, 366, 466, 594, 758, 966, 1197, 1573, 2007, 2561, 3268, 4170, 5321, 6791, 8667, 11060];
+    function initialize(
+        uint[21] memory _BASE_STR,
+        uint[21] memory _BASE_AGI,
+        uint[21] memory _BASE_DEX,
+        uint[21] memory _BASE_VIT,
+        uint[21] memory _BASE_DEF,
+        uint[21] memory _BASE_MDEF,
+        uint[21] memory _BASE_EDEF,
+        uint[21] memory _BASE_HP,
+        uint[21] memory _BASE_DODGE
+    ) external initializer {
+        BASE_STR = _BASE_STR;
+        BASE_AGI = _BASE_AGI;
+        BASE_DEX = _BASE_DEX;
+        BASE_VIT = _BASE_VIT;
+        BASE_DEF = _BASE_DEF;
+        BASE_MDEF = _BASE_MDEF;
+        BASE_HP = _BASE_HP;
+        BASE_DODGE = _BASE_DODGE;
+        BASE_EDEF = _BASE_EDEF;
     }
 
 

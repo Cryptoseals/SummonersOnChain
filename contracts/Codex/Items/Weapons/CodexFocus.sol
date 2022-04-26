@@ -16,52 +16,26 @@ contract CodexFocuses is Initializable {
     uint[21] public BASE_DODGE;
 
 
-    function initialize() external initializer {
-        initializeINT();
-        initializeAGI();
-        initializeDEX();
-        initializeLUK();
-        initializeMATK();
-        initializeCRIT();
-        initializeCRITMULTI();
-        initializeACCURACY();
-        initializeDODGE();
-    }
-
-    function initializeINT() public {
-        BASE_INT = [8, 38, 76, 114, 152, 190, 228, 266, 304, 342, 380, 418, 456, 494, 532, 570, 608, 646, 684, 722, 760];
-    }
-
-    function initializeAGI() public {
-        BASE_AGI = [2, 6, 11, 16, 21, 27, 32, 37, 42, 48, 53, 58, 63, 69, 74, 79, 84, 90, 95, 100, 105];
-    }
-
-    function initializeDEX() public {
-        BASE_DEX = [2, 6, 11, 16, 21, 27, 32, 37, 42, 48, 53, 58, 63, 69, 74, 79, 84, 90, 95, 100, 105];
-    }
-
-    function initializeLUK() public {
-        BASE_LUK = [1, 1, 2, 2, 3, 4, 4, 5, 5, 6, 7, 7, 8, 9, 9, 10, 10, 11, 12, 12, 13];
-    }
-
-    function initializeMATK() public {
-        BASE_MATK = [33, 40, 50, 63, 79, 100, 127, 155, 205, 261, 332, 423, 538, 686, 874, 1114, 1421, 1814, 2313, 2951, 3765];
-    }
-
-    function initializeCRIT() public {
-        BASE_CRIT = [1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3];
-    }
-
-    function initializeCRITMULTI() public {
-        BASE_CRITMULTI = [25, 27, 30, 32, 35, 38, 42, 46, 50, 54, 60, 65, 66, 66, 66, 66, 66, 66, 66, 66, 66];
-    }
-
-    function initializeACCURACY() public {
-        BASE_ACCURACY = [48, 56, 68, 82, 99, 119, 144, 175, 212, 258, 313, 380, 462, 561, 682, 829, 1008, 1226, 1491, 1813, 2206];
-    }
-
-    function initializeDODGE() public {
-        BASE_DODGE = [23, 28, 35, 45, 57, 72, 92, 117, 149, 190, 242, 300, 394, 502, 641, 817, 1043, 1331, 1698, 2167, 2765];
+    function initialize(
+        uint[21] memory _BASE_INT,
+        uint[21] memory _BASE_AGI,
+        uint[21] memory _BASE_DEX,
+        uint[21] memory _BASE_LUK,
+        uint[21] memory _BASE_MATK,
+        uint[21] memory _BASE_CRIT,
+        uint[21] memory _BASE_CRITMULTI,
+        uint[21] memory _BASE_ACCURACY,
+        uint[21] memory _BASE_DODGE
+    ) external initializer {
+        BASE_INT = _BASE_INT;
+        BASE_AGI = _BASE_AGI;
+        BASE_DEX = _BASE_DEX;
+        BASE_LUK = _BASE_LUK;
+        BASE_MATK = _BASE_MATK;
+        BASE_CRIT = _BASE_CRIT;
+        BASE_CRITMULTI = _BASE_CRITMULTI;
+        BASE_ACCURACY = _BASE_ACCURACY;
+        BASE_DODGE = _BASE_DODGE;
     }
 
     function weapon(uint id, uint tier) public view returns (GameObjects.Weapon memory) {
@@ -116,8 +90,8 @@ contract CodexFocuses is Initializable {
 
     function applyTier(GameObjects.Weapon memory weapon, uint tier, uint percentage) public view returns (GameObjects.Weapon memory){
         if (tier == 0) return weapon;
-        weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(weapon.generatedStatBonus, (tier)*percentage);
-        weapon.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(weapon.elementalStats, (tier)*percentage);
+        weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(weapon.generatedStatBonus, (tier) * percentage);
+        weapon.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(weapon.elementalStats, (tier) * percentage);
         return weapon;
     }
 
@@ -560,7 +534,7 @@ contract CodexFocuses is Initializable {
         return stats;
     }
 
-    function classRequirement () internal view returns(GameObjects.Class[] memory) {
+    function classRequirement() internal view returns (GameObjects.Class[] memory) {
         GameObjects.Class[] memory _reqClass = new GameObjects.Class[](4);
         _reqClass[0] = GameObjects.Class.Wizard;
         _reqClass[1] = GameObjects.Class.Necromancer;

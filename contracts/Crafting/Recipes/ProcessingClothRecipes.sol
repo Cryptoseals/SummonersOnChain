@@ -23,6 +23,8 @@ contract ProcessingClothRecipes {
             return BoltOfViscose(amount);
         } else if (material == ICraftingMaterials.CraftingMaterial.LYOCELL) {
             return BoltOfLyocell(amount);
+        } else if (material == ICraftingMaterials.CraftingMaterial.RAYON) {
+            return BoltOfRayon(amount);
         }
     }
 

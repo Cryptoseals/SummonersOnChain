@@ -16,6 +16,8 @@ contract UpgradingOreRecipes {
             return PlatinumIngot(amount);
         } else if (material == ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT) {
             return MythrilIngot(amount);
+        }  else if (material == ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT) {
+            return OricalchumIngot(amount);
         } else if (material == ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT) {
             return ObsidianIngot(amount);
         } else if (material == ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT) {

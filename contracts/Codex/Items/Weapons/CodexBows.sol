@@ -14,48 +14,25 @@ contract CodexBows is Initializable {
     uint[21] public BASE_CRITMULTI;
     uint[21] public BASE_ACCURACY;
 
-    function initialize() external initializer {
-        initializeSTR();
-        initializeAGI();
-        initializeDEX();
-        initializeLUCK();
-        initializeATK();
-        initializeCRIT();
-        initializeCRITMULTI();
-        initializeACCURACY();
+    function initialize(
+        uint[21] memory _BASE_STR,
+        uint[21] memory _BASE_AGI,
+        uint[21] memory _BASE_DEX,
+        uint[21] memory _BASE_LUCK,
+        uint[21] memory _BASE_ATK,
+        uint[21] memory _BASE_CRIT,
+        uint[21] memory _BASE_CRITMULTI,
+        uint[21] memory _BASE_ACCURACY) external initializer {
+        BASE_STR = _BASE_STR;
+        BASE_AGI = _BASE_AGI;
+        BASE_DEX = _BASE_DEX;
+        BASE_LUCK = _BASE_LUCK;
+        BASE_ATK = _BASE_ATK;
+        BASE_CRIT = _BASE_CRIT;
+        BASE_CRITMULTI = _BASE_CRITMULTI;
+        BASE_ACCURACY = _BASE_ACCURACY;
     }
 
-    function initializeSTR() public {
-        BASE_STR = [9, 45, 90, 135, 180, 225, 270, 315, 360, 405, 450, 495, 540, 585, 630, 675, 720, 765, 810, 855, 900];
-    }
-
-    function initializeAGI() public {
-        BASE_AGI = [1, 3, 5, 8, 10, 13, 15, 18, 20, 23, 25, 28, 30, 33, 35, 38, 40, 43, 45, 48, 50];
-    }
-
-    function initializeDEX() public {
-        BASE_DEX = [2, 6, 11, 17, 22, 28, 33, 39, 44, 50, 55, 61, 66, 72, 77, 83, 88, 94, 99, 105, 110];
-    }
-
-    function initializeLUCK() public {
-        BASE_LUCK = [3, 14, 27, 40, 53, 66, 79, 92, 105, 119, 132, 145, 158, 171, 184, 197, 210, 224, 237, 250, 263];
-    }
-
-    function initializeATK() public {
-        BASE_ATK = [44, 53, 67, 84, 106, 133, 169, 206, 273, 348, 442, 563, 717, 914, 1165, 1485, 1895, 2418, 3084, 3935, 5020];
-    }
-
-    function initializeCRIT() public {
-        BASE_CRIT = [7, 7, 7, 7, 7, 8, 10, 11, 12, 14, 15, 16, 18, 19, 20, 22, 23, 24, 26, 27, 28];
-    }
-
-    function initializeCRITMULTI() public {
-        BASE_CRITMULTI = [113, 122, 133, 144, 157, 172, 187, 205, 223, 245, 268, 294, 300, 300, 300, 300, 300, 300, 300, 300, 300];
-    }
-
-    function initializeACCURACY() public {
-        BASE_ACCURACY = [126, 146, 177, 214, 258, 313, 378, 459, 556, 676, 821, 997, 1211, 1472, 1790, 2176, 2646, 3217, 3913, 4760, 5790];
-    }
 
     function weapon(uint id, uint tier) public view returns (GameObjects.Weapon memory) {
         require(tier < 10, "t");
@@ -552,7 +529,8 @@ contract CodexBows is Initializable {
         });
         return stats;
     }
-    function classRequirement () internal view returns(GameObjects.Class[] memory) {
+
+    function classRequirement() internal view returns (GameObjects.Class[] memory) {
         GameObjects.Class[] memory _reqClass = new GameObjects.Class[](2);
         _reqClass[0] = GameObjects.Class.Assassin;
         _reqClass[1] = GameObjects.Class.Ranger;

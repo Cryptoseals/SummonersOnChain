@@ -10,59 +10,34 @@ contract CodexBootsLight is Initializable {
     uint[21] public BASE_INT;
     uint[21] public BASE_DEF;
     uint[21] public BASE_MDEF;
+    uint[21] public BASE_EDEF;
     uint[21] public BASE_HP;
     uint[21] public BASE_DODGE;
 
 
-    function initialize() external initializer {
-        initializeSTR();
-        initializeAGI();
-        initializeDEX();
-        initializeVIT();
-        initializeINT();
-        initializeDEF();
-        initializeMDEF();
-        initializeHP();
-        initializeDODGE();
+    function initialize(
+        uint[21] memory _BASE_STR,
+        uint[21] memory _BASE_AGI,
+        uint[21] memory _BASE_DEX,
+        uint[21] memory _BASE_VIT,
+        uint[21] memory _BASE_INT,
+        uint[21] memory _BASE_DEF,
+        uint[21] memory _BASE_MDEF,
+        uint[21] memory _BASE_EDEF,
+        uint[21] memory _BASE_HP,
+        uint[21] memory _BASE_DODGE
+    ) external initializer {
+        BASE_STR = _BASE_STR;
+        BASE_AGI = _BASE_AGI;
+        BASE_DEX = _BASE_DEX;
+        BASE_VIT = _BASE_VIT;
+        BASE_INT = _BASE_INT;
+        BASE_DEF = _BASE_DEF;
+        BASE_MDEF = _BASE_MDEF;
+        BASE_HP = _BASE_HP;
+        BASE_DODGE = _BASE_DODGE;
+        BASE_EDEF = _BASE_EDEF;
     }
-
-    function initializeSTR() public {
-        BASE_STR = [2, 7, 14, 21, 27, 34, 41, 48, 54, 61, 68, 75, 81, 88, 95, 102, 108, 115, 122, 129, 135];
-    }
-
-    function initializeAGI() public {
-        BASE_AGI = [3, 11, 22, 33, 44, 55, 66, 77, 88, 99, 110, 121, 132, 143, 154, 165, 176, 187, 198, 209, 220];
-    }
-
-
-    function initializeDEX() public {
-        BASE_DEX = [2, 8, 16, 24, 32, 40, 48, 56, 63, 71, 79, 87, 95, 103, 111, 119, 126, 134, 142, 150, 158];
-    }
-
-    function initializeVIT() public {
-        BASE_VIT = [6, 27, 54, 81, 108, 135, 162, 189, 216, 243, 270, 297, 324, 351, 378, 405, 432, 459, 486, 513, 540];
-    }
-
-    function initializeINT() public {
-        BASE_VIT = [3, 14, 28, 42, 55, 69, 83, 96, 110, 124, 137, 151, 165, 179, 192, 206, 220, 233, 247, 261, 274];
-    }
-
-    function initializeDEF() public {
-        BASE_DEF = [17, 20, 24, 29, 34, 41, 49, 59, 72, 87, 105, 127, 154, 186, 226, 275, 334, 406, 493, 600, 729];
-    }
-
-    function initializeMDEF() public {
-        BASE_MDEF = [18, 21, 25, 30, 36, 43, 52, 63, 76, 92, 111, 134, 163, 197, 240, 291, 354, 430, 522, 635, 772];
-    }
-
-    function initializeHP() public {
-        BASE_HP = [50, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500, 3750, 4000, 4250, 4500, 4750, 5000];
-    }
-
-    function initializeDODGE() public {
-        BASE_DODGE = [158, 191, 243, 310, 394, 502, 640, 815, 1040, 1326, 1691, 2094, 2752, 3511, 4481, 5718, 7297, 9312, 11884, 15166, 19355];
-    }
-
 
     function applyTier(GameObjects.Boots memory _grieves, uint tier, uint percentage) public view returns (GameObjects.Boots memory){
         if (tier == 0) return _grieves;

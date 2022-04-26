@@ -46,27 +46,26 @@ contract CodexBelts is InitNavigator  {
     }
 
     function initializeSTR() public {
-        BASE_STR = [2, 9, 17, 25, 33, 42, 50, 58, 66, 75, 83, 91, 99, 108, 116, 124, 132, 141, 149, 157, 165];
+        BASE_STR = [2,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200];
     }
 
     function initializeAGI() public {
-        BASE_AGI = [1, 5, 9, 14, 18, 23, 27, 32, 36, 41, 45, 50, 54, 59, 63, 68, 72, 77, 81, 86, 90];
+        BASE_AGI = [1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100];
     }
 
     function initializeDEX() public {
-        BASE_DEX = [2, 7, 14, 21, 27, 34, 41, 48, 54, 61, 68, 75, 81, 88, 95, 102, 108, 115, 122, 129, 135];
+        BASE_DEX = [2,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200];
     }
 
     function initializeINT() public {
-        BASE_INT = [2, 7, 14, 21, 27, 34, 41, 48, 54, 61, 68, 75, 81, 88, 95, 102, 108, 115, 122, 129, 135];
-    }
+        BASE_INT = [2,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200];}
 
     function initializeVIT() public {
-        BASE_VIT = [12, 58, 116, 174, 231, 289, 347, 405, 462, 520, 578, 636, 693, 751, 809, 867, 924, 982, 1040, 1098, 1155];
+        BASE_VIT = [3,15,30,45,60,75,90,105,120,135,150,165,180,195,210,225,240,255,270,285,300];
     }
 
     function initializeLUK() public {
-        BASE_LUK = [12, 58, 116, 174, 231, 289, 347, 405, 462, 520, 578, 636, 693, 751, 809, 867, 924, 982, 1040, 1098, 1155];
+        BASE_LUK = [3,13,25,38,50,63,75,88,100,113,125,138,150,163,175,188,200,213,225,238,250];
     }
 
     function initializeDEF() public {
@@ -74,23 +73,23 @@ contract CodexBelts is InitNavigator  {
     }
 
     function initializeMDEF() public {
-        BASE_MDEF = [12, 14, 16, 19, 23, 27, 33, 40, 48, 58, 70, 85, 103, 125, 152, 185, 224, 272, 331, 402, 489];
+        BASE_MDEF = [16,19,23,27,32,38,46,56,67,81,99,119,145,176,213,259,314,382,464,564,686];
     }
 
     function initializeEDEF() public {
-        BASE_EDEF = [12, 14, 16, 19, 23, 27, 33, 40, 48, 58, 70, 85, 103, 125, 152, 185, 224, 272, 331, 402, 489];
+        BASE_EDEF = [18,21,25,30,36,43,52,63,76,92,111,134,163,197,240,291,354,430,522,635,772];
     }
 
     function initializeHP() public {
-        BASE_HP = [88, 438, 875, 1313, 1750, 2188, 2625, 3063, 3500, 3938, 4375, 4813, 5250, 5688, 6125, 6563, 7000, 7438, 7875, 8313, 8750];
+        BASE_HP = [25,125,250,375,500,625,750,875,1000,1125,1250,1375,1500,1625,1750,1875,2000,2125,2250,2375,2500];
     }
 
     function initializeACC() public {
-        BASE_ACC = [90, 110, 139, 177, 225, 287, 366, 466, 594, 758, 966, 1197, 1573, 2007, 2561, 3268, 4170, 5321, 6791, 8667, 11060];
+        BASE_ACC = [24,28,34,41,50,60,72,88,106,129,157,190,231,281,341,415,504,613,746,907,1103];
     }
 
     function initializeDODGE() public {
-        BASE_DODGE = [90, 110, 139, 177, 225, 287, 366, 466, 594, 758, 966, 1197, 1573, 2007, 2561, 3268, 4170, 5321, 6791, 8667, 11060];
+        BASE_DODGE = [50,61,78,99,125,160,203,259,330,421,537,665,874,1115,1423,1816,2317,2957,3773,4815,6145];
     }
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Belt memory _belt) public view returns (GameObjects.Belt memory) {
@@ -509,7 +508,7 @@ contract CodexBelts is InitNavigator  {
     }
 
     function beltEle(uint index) internal view returns (GameObjects.ElementalDef memory) {
-        GameObjects.ElementalDef memory stats = GameObjects.ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
+        GameObjects.ElementalDef memory stats = GameObjects.ElementalDef({FIRE_DEF : BASE_EDEF[index], EARTH_DEF : BASE_EDEF[index], COLD_DEF : BASE_EDEF[index], LIGHTNING_DEF : BASE_EDEF[index], DARK_DEF : BASE_EDEF[index], HOLY_DEF : BASE_EDEF[index], VOID_DEF : 0});
         return stats;
     }
 

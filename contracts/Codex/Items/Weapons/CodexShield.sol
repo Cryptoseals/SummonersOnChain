@@ -14,48 +14,26 @@ contract CodexShields is Initializable {
     uint[21] public BASE_ACCURACY;
     uint[21] public BASE_DODGE;
 
-    function initialize() external initializer {
-        initializeVIT();
-        initializeHP();
-        initializeSTR();
-        initializeATK();
-        initializeDODGE();
-        initializeMDEF();
-        initializePDEF();
-        initializeACCURACY();
+    function initialize(
+        uint[21] memory _BASE_STR,
+        uint[21] memory _BASE_ATK,
+        uint[21] memory _BASE_VIT,
+        uint[21] memory _BASE_HP,
+        uint[21] memory _BASE_MDEF,
+        uint[21] memory _BASE_PDEF,
+        uint[21] memory _BASE_ACCURACY,
+        uint[21] memory _BASE_DODGE
+    ) external initializer {
+        BASE_STR = _BASE_STR;
+        BASE_ATK = _BASE_ATK;
+        BASE_VIT = _BASE_VIT;
+        BASE_HP = _BASE_HP;
+        BASE_MDEF = _BASE_MDEF;
+        BASE_PDEF = _BASE_PDEF;
+        BASE_ACCURACY = _BASE_ACCURACY;
+        BASE_DODGE = _BASE_DODGE;
     }
 
-    function initializeVIT() public {
-        BASE_VIT = [1, 5, 9, 13, 17, 22, 26, 30, 34, 39, 43, 47, 51, 56, 60, 64, 68, 73, 77, 81, 85];
-    }
-
-    function initializeHP() public {
-        BASE_HP = [25,125,250,375,500,625,750,875,1000,1125,1250,1375,1500,1625,1750,1875,2000,2125,2250,2375,2500];
-    }
-
-    function initializeSTR() public {
-        BASE_STR = [7, 33, 66, 99, 132, 165, 198, 231, 264, 297, 330, 363, 396, 429, 462, 495, 528, 561, 594, 627, 660];
-    }
-
-    function initializeATK() public {
-        BASE_STR = [30,36,46,57,72,91,115,147,186,237,302,384,489,623,795,1013,1292,1649,2103,2683,3765];
-    }
-
-    function initializeDODGE() public {
-        BASE_DODGE = [68, 82, 105, 133, 169, 215, 274, 350, 446, 568, 725, 898, 1180, 1505, 1921, 2451, 3128, 3991, 5093, 6500, 8295];
-    }
-
-    function initializeMDEF() public {
-        BASE_MDEF = [12, 14, 17, 20, 24, 29, 35, 42, 51, 61, 74, 90, 109, 132, 160, 194, 236, 287, 348, 423, 515];
-    }
-
-    function initializePDEF() public {
-        BASE_PDEF = [24, 28, 34, 40, 48, 57, 69, 84, 101, 122, 148, 179, 217, 263, 319, 388, 471, 573, 696, 846, 1029];
-    }
-
-    function initializeACCURACY() public {
-        BASE_ACCURACY = [48, 56, 68, 82, 99, 119, 144, 175, 212, 258, 313, 380, 462, 561, 682, 829, 1008, 1226, 1491, 1813, 2206];
-    }
 
     function weapon(uint id, uint tier) public view returns (GameObjects.Weapon memory) {
         require(tier < 10, "t");
@@ -596,7 +574,7 @@ contract CodexShields is Initializable {
         return stats;
     }
 
-    function classRequirement () internal view returns(GameObjects.Class[] memory) {
+    function classRequirement() internal view returns (GameObjects.Class[] memory) {
         GameObjects.Class[] memory classRequirement = new GameObjects.Class[](6);
         classRequirement[0] = GameObjects.Class.Barbarian;
         classRequirement[1] = GameObjects.Class.Paladin;

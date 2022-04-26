@@ -1,4 +1,3 @@
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../../../Interfaces/Codex/ICodexPrefixAndSuffix.sol";
 import "../../../Inventory/EquipableUtils.sol";
 import "../../../Core/Navigator/InitNavigator.sol";
@@ -114,7 +113,8 @@ contract CodexAmulets is InitNavigator {
     }
 
     function initializeCRITDMG() public {
-        BASE_CRITDMG = [23, 25, 27, 29, 32, 35, 38, 41, 45, 50, 54, 59, 60, 60, 60, 60, 60, 60, 60, 60, 60];}
+        BASE_CRITDMG = [23, 25, 27, 29, 32, 35, 38, 41, 45, 50, 54, 59, 60, 60, 60, 60, 60, 60, 60, 60, 60];
+    }
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Amulet memory _amulet) public view returns (GameObjects.Amulet memory) {
         GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);
@@ -210,7 +210,8 @@ contract CodexAmulets is InitNavigator {
         } else if (_equipable.itemId == 21) {
             _amulet = applyTier(ShinyDiamondAmulet(_equipable.itemTier), _equipable.itemTier, 13);
         }
-
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        _amulet.metadata.upgradable = true;
         if (_equipable.element == GameObjects.Element.VOID) {
             _amulet.elementalStats.ElementalDef.VOID_DEF = _amulet.generatedStatBonus.M_DEF;
             _amulet.elementalStats.ElementalAtk.VOID_ATK = _amulet.generatedStatBonus.M_ATK;
@@ -219,30 +220,24 @@ contract CodexAmulets is InitNavigator {
         if (_equipable.prefixId > 0 && _equipable.suffixId == 0) return applyPrefix(_prefix, _amulet);
         if (_equipable.prefixId == 0 && _equipable.suffixId > 0) return applySuffix(_suffix, _amulet);
         if (_equipable.prefixId > 0 && _equipable.suffixId > 0) return applyPrefixAndSuffix(_prefix, _suffix, _amulet);
-
         return _amulet;
     }
 
     function CopperAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 1;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Copper Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
-
         _amulet.requirement.level = 1;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
-
         _amulet.statBonus = amuletStats(0);
         _amulet.generatedStatBonus = amuletGenStats(0);
     }
 
     function TinAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 2;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Tin Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 5;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -253,10 +248,9 @@ contract CodexAmulets is InitNavigator {
 
     function IronAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 3;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Iron Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 10;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -267,10 +261,9 @@ contract CodexAmulets is InitNavigator {
 
     function SilverAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 4;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Silver Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 15;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -281,10 +274,9 @@ contract CodexAmulets is InitNavigator {
 
     function GoldAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 5;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Gold Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 20;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -295,10 +287,9 @@ contract CodexAmulets is InitNavigator {
 
     function AmberAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 6;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Amber Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 25;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -309,10 +300,9 @@ contract CodexAmulets is InitNavigator {
 
     function PearlAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 7;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Pearl Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 30;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -323,10 +313,9 @@ contract CodexAmulets is InitNavigator {
 
     function AmethystAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 8;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Amethyst Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 35;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -337,10 +326,9 @@ contract CodexAmulets is InitNavigator {
 
     function CoralAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 9;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Coral Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 40;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -351,10 +339,9 @@ contract CodexAmulets is InitNavigator {
 
     function RubyAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 10;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Ruby Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 45;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -365,10 +352,9 @@ contract CodexAmulets is InitNavigator {
 
     function ShinyRubyAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 11;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Shiny Ruby Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 50;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -379,10 +365,9 @@ contract CodexAmulets is InitNavigator {
 
     function TopazAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 12;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Topaz Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 55;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -393,10 +378,9 @@ contract CodexAmulets is InitNavigator {
 
     function ShinyTopazAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 13;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Shiny Topaz Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 60;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -407,10 +391,9 @@ contract CodexAmulets is InitNavigator {
 
     function AzuriteAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 14;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Azurite Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 65;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -421,10 +404,9 @@ contract CodexAmulets is InitNavigator {
 
     function ShinyAzuriteAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 15;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Shiny Azurite Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 70;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -435,10 +417,9 @@ contract CodexAmulets is InitNavigator {
 
     function EmeraldAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 16;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Emerald Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 75;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -449,10 +430,9 @@ contract CodexAmulets is InitNavigator {
 
     function ShinyEmeraldAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 17;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Shiny Emerald Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 80;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -463,10 +443,9 @@ contract CodexAmulets is InitNavigator {
 
     function SapphireAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 18;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Sapphire Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 85;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -477,10 +456,9 @@ contract CodexAmulets is InitNavigator {
 
     function ShinySapphireAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 19;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Shiny Sapphire Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 90;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -491,10 +469,8 @@ contract CodexAmulets is InitNavigator {
 
     function DiamondAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 20;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Diamond Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 95;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
@@ -505,10 +481,9 @@ contract CodexAmulets is InitNavigator {
 
     function ShinyDiamondAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 21;
-        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.name = "Shiny Diamond Amulet";
         _amulet.metadata.description = "";
-        _amulet.metadata.upgradable = true;
+
 
         _amulet.requirement.level = 100;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});

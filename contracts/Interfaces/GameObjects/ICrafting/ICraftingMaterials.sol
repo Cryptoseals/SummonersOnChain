@@ -5,7 +5,8 @@ interface ICraftingMaterials {
     enum MaterialTypes {
         ORE,
         WOOD,
-        CLOTH
+        CLOTH,
+        GEMSTONE
     }
 
     enum CraftingMaterial {
@@ -39,7 +40,13 @@ interface ICraftingMaterials {
 
         BOLT_OF_JUTE, BOLT_OF_WOOL, BOLT_OF_COTTON, BOLT_OF_LINEN,
         BOLT_OF_SILK, BOLT_OF_HEMP, BOLT_OF_CASHMERE, BOLT_OF_VISCOSE,
-        BOLT_OF_LYOCELL, BOLT_OF_RAYON
+        BOLT_OF_LYOCELL, BOLT_OF_RAYON,
+
+        AMBER, PEARL, AMETHYST, CORAL, RUBY, TOPAZ,
+        AZURITE, EMERALD, SAPPHIRE, DIAMOND,
+
+        POLISHED_AMBER, POLISHED_PEARL, POLISHED_AMETHYST, POLISHED_CORAL, POLISHED_RUBY,
+        POLISHED_TOPAZ, POLISHED_AZURITE, POLISHED_EMERALD, POLISHED_SAPPHIRE, POLISHED_DIAMOND
     }
 
     struct ProcessingRecipe {

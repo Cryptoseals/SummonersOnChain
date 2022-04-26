@@ -14,48 +14,24 @@ contract CodexStaves is Initializable {
     uint[21] public BASE_CRITMULTI;
     uint[21] public BASE_ACCURACY;
 
-
-    function initialize() external initializer {
-        initializeINT();
-        initializeAGI();
-        initializeDEX();
-        initializeLUK();
-        initializeMATK();
-        initializeCRIT();
-        initializeCRITMULTI();
-        initializeACCURACY();
-    }
-
-    function initializeINT() public {
-        BASE_INT = [10, 48, 95, 143, 190, 238, 285, 333, 380, 428, 475, 523, 570, 618, 665, 713, 760, 808, 855, 903, 950];
-    }
-
-    function initializeAGI() public {
-        BASE_AGI = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
-    }
-
-    function initializeDEX() public {
-        BASE_DEX = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
-    }
-
-    function initializeLUK() public {
-        BASE_LUK = [2, 7, 14, 20, 27, 33, 40, 46, 53, 60, 66, 73, 79, 86, 92, 99, 105, 112, 119, 125, 132];
-    }
-
-    function initializeMATK() public {
-        BASE_MATK = [32, 39, 49, 61, 77, 97, 123, 150, 199, 253, 322, 410, 522, 665, 848, 1080, 1378, 1759, 2243, 2862, 3651];
-    }
-
-    function initializeCRIT() public {
-        BASE_CRIT = [7, 7, 7, 7, 7, 8, 9, 10, 12, 13, 14, 15, 17, 18, 19, 20, 22, 23, 24, 25, 27];
-    }
-
-    function initializeCRITMULTI() public {
-        BASE_CRITMULTI = [90, 98, 107, 116, 126, 138, 150, 164, 179, 197, 215, 236, 240, 240, 240, 240, 240, 240, 240, 240, 240];
-    }
-
-    function initializeACCURACY() public {
-        BASE_ACCURACY = [105, 122, 147, 178, 215, 261, 315, 382, 464, 563, 684, 831, 1009, 1226, 1491, 1813, 2205, 2681, 3261, 3966, 4825];
+    function initialize(
+        uint[21] memory _BASE_INT,
+        uint[21] memory _BASE_AGI,
+        uint[21] memory _BASE_DEX,
+        uint[21] memory _BASE_LUK,
+        uint[21] memory _BASE_MATK,
+        uint[21] memory _BASE_CRIT,
+        uint[21] memory _BASE_CRITMULTI,
+        uint[21] memory _BASE_ACCURACY
+    ) external initializer {
+        BASE_INT = _BASE_INT;
+        BASE_AGI = _BASE_AGI;
+        BASE_DEX = _BASE_DEX;
+        BASE_LUK = _BASE_LUK;
+        BASE_MATK = _BASE_MATK;
+        BASE_CRIT = _BASE_CRIT;
+        BASE_CRITMULTI = _BASE_CRITMULTI;
+        BASE_ACCURACY = _BASE_ACCURACY;
     }
 
     function weapon(uint id, uint tier) public view returns (GameObjects.Weapon memory) {
@@ -142,7 +118,7 @@ contract CodexStaves is Initializable {
 
 
         // bonuses here
-        _weapon.statBonus  = weaponStats(0);
+        _weapon.statBonus = weaponStats(0);
         _weapon.generatedStatBonus = weaponGenStats(0);
     }
 

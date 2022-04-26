@@ -5,68 +5,42 @@ pragma solidity ^0.8.0;
 contract CodexHelmetsLight is Initializable {
     uint[21] public BASE_STR;
     uint[21] public BASE_AGI;
-    uint[21] public BASE_INT;
     uint[21] public BASE_DEX;
     uint[21] public BASE_VIT;
+    uint[21] public BASE_INT;
     uint[21] public BASE_DEF;
     uint[21] public BASE_MDEF;
+    uint[21] public BASE_EDEF;
     uint[21] public BASE_HP;
     uint[21] public BASE_DODGE;
     uint[21] public BASE_ACCURACY;
 
 
-    function initialize() external initializer {
-        initializeSTR();
-        initializeAGI();
-        initializeDEX();
-        initializeVIT();
-        initializeDEF();
-        initializeMDEF();
-        initializeHP();
-        initializeDODGE();
-        initializeACCURACY();
+    function initialize(
+        uint[21] memory _BASE_STR,
+        uint[21] memory _BASE_AGI,
+        uint[21] memory _BASE_DEX,
+        uint[21] memory _BASE_VIT,
+        uint[21] memory _BASE_INT,
+        uint[21] memory _BASE_DEF,
+        uint[21] memory _BASE_MDEF,
+        uint[21] memory _BASE_EDEF,
+        uint[21] memory _BASE_HP,
+        uint[21] memory _BASE_DODGE,
+        uint[21] memory _BASE_ACCURACY
+    ) external initializer {
+        BASE_STR = _BASE_STR;
+        BASE_AGI = _BASE_AGI;
+        BASE_DEX = _BASE_DEX;
+        BASE_VIT = _BASE_VIT;
+        BASE_INT = _BASE_INT;
+        BASE_DEF = _BASE_DEF;
+        BASE_MDEF = _BASE_MDEF;
+        BASE_HP = _BASE_HP;
+        BASE_DODGE = _BASE_DODGE;
+        BASE_EDEF = _BASE_EDEF;
+        BASE_ACCURACY = _BASE_ACCURACY;
     }
-
-    function initializeSTR() public {
-        BASE_STR = [2, 7, 14, 21, 27, 34, 41, 48, 54, 61, 68, 75, 81, 88, 95, 102, 108, 115, 122, 129, 135];
-    }
-
-    function initializeAGI() public {
-        BASE_AGI = [1, 3, 6, 9, 11, 14, 17, 20, 22, 25, 28, 31, 33, 36, 39, 42, 44, 47, 50, 53, 55];
-    }
-
-    function initializeINT() public {
-        BASE_INT = [6, 28, 55, 83, 110, 137, 165, 192, 220, 247, 274, 302, 329, 357, 384, 411, 439, 466, 494, 521, 548];
-    }
-
-    function initializeDEX() public {
-        BASE_DEX = [2, 6, 11, 16, 21, 27, 32, 37, 42, 48, 53, 58, 63, 69, 74, 79, 84, 90, 95, 100, 105];
-    }
-
-    function initializeVIT() public {
-        BASE_VIT = [6, 27, 54, 81, 108, 135, 162, 189, 216, 243, 270, 297, 324, 351, 378, 405, 432, 459, 486, 513, 540];
-    }
-
-    function initializeDEF() public {
-        BASE_DEF = [17, 20, 24, 29, 34, 41, 49, 59, 72, 87, 105, 127, 154, 186, 226, 275, 334, 406, 493, 600, 729];
-    }
-
-    function initializeMDEF() public {
-        BASE_MDEF = [18, 21, 25, 30, 36, 43, 52, 63, 76, 92, 111, 134, 163, 197, 240, 291, 354, 430, 522, 635, 772];
-    }
-
-    function initializeHP() public {
-        BASE_HP = [50, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500, 3750, 4000, 4250, 4500, 4750, 5000];
-    }
-
-    function initializeDODGE() public {
-        BASE_DODGE = [53, 64, 81, 104, 132, 168, 214, 272, 347, 442, 564, 698, 918, 1171, 1494, 1906, 2433, 3104, 3962, 5056, 6452];
-    }
-
-    function initializeACCURACY() public {
-        BASE_ACCURACY = [29, 34, 41, 49, 59, 72, 87, 105, 128, 155, 188, 228, 277, 337, 409, 498, 605, 736, 895, 1088, 1324];
-    }
-
 
     function applyTier(GameObjects.Helmet memory _hat, uint tier, uint percentage) public view returns (GameObjects.Helmet memory){
         if (tier == 0) return _hat;

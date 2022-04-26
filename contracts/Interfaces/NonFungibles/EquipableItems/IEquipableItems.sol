@@ -5,7 +5,10 @@ pragma solidity ^0.8.0;
 interface IEquipableItems is IERC721 {
     function tier(uint id) external view returns (uint _tier);
 
-    function item(uint id) external view returns (GameObjects.ItemType _type, uint _itemId, uint _tier);
+    function item(uint256 id)
+    external
+    view
+    returns (GameObjects.ItemType _type, uint _itemId, uint256 _tier, uint _prefix, uint _prefixTier, uint _suffix, uint _suffixTier, GameObjects.Element _element);
 
     function tiers(uint[] memory ids) external view returns (uint[] memory);
 

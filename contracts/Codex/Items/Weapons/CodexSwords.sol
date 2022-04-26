@@ -13,42 +13,22 @@ contract CodexSwords is Initializable {
     uint[21] public BASE_CRITMULTI;
     uint[21] public BASE_ACCURACY;
 
-    function initialize() external initializer {
-        initializeSTR();
-        initializeAGI();
-        initializeDEX();
-        initializeATK();
-        initializeCRIT();
-        initializeCRITMULTI();
-        initializeACCURACY();
-    }
-
-    function initializeSTR() public {
-        BASE_STR = [10, 48, 95, 142, 189, 237, 284, 331, 378, 426, 473, 520, 567, 615, 662, 709, 756, 804, 851, 898, 945];
-    }
-
-    function initializeAGI() public {
-        BASE_AGI = [1, 3, 6, 9, 11, 14, 17, 20, 22, 25, 28, 31, 33, 36, 39, 42, 44, 47, 50, 53, 55];
-    }
-
-    function initializeDEX() public {
-        BASE_DEX = [2, 6, 11, 16, 21, 27, 32, 37, 42, 48, 53, 58, 63, 69, 74, 79, 84, 90, 95, 100, 105];
-    }
-
-    function initializeATK() public {
-        BASE_ATK = [44, 53, 67, 84, 106, 133, 169, 206, 273, 348, 442, 563, 717, 914, 1165, 1485, 1895, 2418, 3084, 3935, 5020];
-    }
-
-    function initializeCRIT() public {
-        BASE_CRIT = [3, 3, 3, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 12];
-    }
-
-    function initializeCRITMULTI() public {
-        BASE_CRITMULTI = [90, 98, 106, 115, 126, 138, 150, 165, 180, 196, 216, 237, 240, 240, 240, 240, 240, 240, 240, 240, 240];
-    }
-
-    function initializeACCURACY() public {
-        BASE_ACCURACY = [126, 146, 177, 214, 258, 313, 378, 459, 556, 676, 821, 997, 1211, 1472, 1790, 2176, 2646, 3217, 3913, 4760, 5790];
+    function initialize(
+        uint[21] memory _BASE_STR,
+        uint[21] memory _BASE_AGI,
+        uint[21] memory _BASE_DEX,
+        uint[21] memory _BASE_ATK,
+        uint[21] memory _BASE_CRIT,
+        uint[21] memory _BASE_CRITMULTI,
+        uint[21] memory _BASE_ACCURACY
+    ) external initializer {
+        BASE_STR = _BASE_STR;
+        BASE_AGI = _BASE_AGI;
+        BASE_DEX = _BASE_DEX;
+        BASE_ATK = _BASE_ATK;
+        BASE_CRIT = _BASE_CRIT;
+        BASE_CRITMULTI = _BASE_CRITMULTI;
+        BASE_ACCURACY = _BASE_ACCURACY;
     }
 
     function weapon(uint id, uint tier) public view returns (GameObjects.Weapon memory) {
@@ -547,7 +527,7 @@ contract CodexSwords is Initializable {
         return stats;
     }
 
-    function classRequirement () internal view returns(GameObjects.Class[] memory) {
+    function classRequirement() internal view returns (GameObjects.Class[] memory) {
         GameObjects.Class[] memory _reqClass = new GameObjects.Class[](4);
         _reqClass[0] = GameObjects.Class.Barbarian;
         _reqClass[1] = GameObjects.Class.Paladin;

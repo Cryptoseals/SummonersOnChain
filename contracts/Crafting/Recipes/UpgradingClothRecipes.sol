@@ -20,6 +20,8 @@ contract UpgradingClothRecipes {
             return BoltOfViscose(amount);
         } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_LYOCELL) {
             return BoltOfLyocell(amount);
+        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_RAYON) {
+            return BoltOfRayon(amount);
         }
     }
 

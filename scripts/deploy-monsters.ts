@@ -62,17 +62,7 @@ enum CONTRACT {
     CODEX_ENEMIES
 }
 
-enum Element {
-    PHYSICAL,
-    ARCANE,
-    FIRE,
-    COLD,
-    EARTH,
-    LIGHTNING,
-    DARK,
-    HOLY,
-    VOID
-}
+
 
 async function main() {
     let deployer: any = {

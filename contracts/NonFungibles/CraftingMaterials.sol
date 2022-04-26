@@ -40,6 +40,8 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
             _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.WOOD_PROCESSING_RECIPES)).recipe(targetMaterial, amount);
         } else if (materialType == ICraftingMaterials.MaterialTypes.CLOTH) {
             _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.CLOTH_PROCESSING_RECIPES)).recipe(targetMaterial, amount);
+        }  else if (materialType == ICraftingMaterials.MaterialTypes.GEMSTONE) {
+            _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.GEMSTONE_PROCESSING_RECIPES)).recipe(targetMaterial, amount);
         } else {
             revert("?");
         }
@@ -85,6 +87,10 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         ActiveProcessings[processId].startingDate += timeRequiredPerMaterial * amount;
         ActiveProcessings[processId].amount -= amount;
 
+        if(ActiveProcessings[processId].amount == 0) {
+            AccountsActiveProcessings[msg.sender].remove(processId);
+        }
+
         _mint(msg.sender, uint(ActiveProcessings[processId].rewardMaterial), amount, new bytes(0));
     }
 
@@ -97,6 +103,8 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
             _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.WOOD_UPGRADING_RECIPES)).upgradeRecipe(targetMaterial, amount);
         } else if (materialType == ICraftingMaterials.MaterialTypes.CLOTH) {
             _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.CLOTH_UPGRADING_RECIPES)).upgradeRecipe(targetMaterial, amount);
+        }  else if (materialType == ICraftingMaterials.MaterialTypes.GEMSTONE) {
+            _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.GEMSTONE_UPGRADING_RECIPES)).upgradeRecipe(targetMaterial, amount);
         } else {
             revert("?");
         }
