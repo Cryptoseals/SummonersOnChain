@@ -57,6 +57,7 @@ ERC721EnumerableUpgradeable
 
     function upgrade(uint256 id) external onlyGameContracts {
         // @TODO implement upgrade costs and burners.
+        require(tokenToEnchantmentLevel[id]+1 < 10, "exceeds");
         tokenToEnchantmentLevel[id]++;
     }
 
@@ -104,6 +105,27 @@ ERC721EnumerableUpgradeable
         _suffixTier = tokenSuffixTier[id];
     }
 
+    function items(uint256[] memory ids)
+    external
+    view
+    returns (GameObjects.ItemDTO[] memory)
+    {
+        GameObjects.ItemDTO[] memory _dtos = new GameObjects.ItemDTO[](ids.length);
+        for (uint i = 0; i < ids.length; i++) {
+            if (!_exists(ids[i])) revert InvalidItem("DOES NOT EXIST");
+            _dtos[i]._type = tokenToType[ids[i]];
+            _dtos[i]._itemId = tokenToItemId[ids[i]];
+            _dtos[i]._tier = tokenToEnchantmentLevel[ids[i]];
+            _dtos[i]._element = tokenElement[ids[i]];
+            _dtos[i]._prefix = tokenPrefix[ids[i]];
+            _dtos[i]._prefixTier = tokenPrefixTier[ids[i]];
+            _dtos[i]._suffix = tokenSuffix [ids[i]];
+            _dtos[i]._suffixTier = tokenSuffixTier[ids[i]];
+        }
+
+        return _dtos;
+    }
+
     function prefixAndSuffix(uint256 id)
     external
     view
@@ -128,7 +150,7 @@ ERC721EnumerableUpgradeable
     override
     returns (string memory tokenURI)
     {
-       // string memory name = itemName(tokenId);
+        // string memory name = itemName(tokenId);
 
         string[5] memory parts;
         parts[

@@ -60,9 +60,11 @@ export enum CONTRACTS {
     ORE_PROCESSING_RECIPES,
     WOOD_PROCESSING_RECIPES,
     CLOTH_PROCESSING_RECIPES,
+    GEMSTONE_PROCESSING_RECIPES,
     ORE_UPGRADING_RECIPES,
     WOOD_UPGRADING_RECIPES,
     CLOTH_UPGRADING_RECIPES,
+    GEMSTONE_UPGRADING_RECIPES,
     ARMOR_RECIPES,
     WEAPON_RECIPES,
     ELIXIR_RECIPES,
@@ -99,14 +101,18 @@ export enum Element {
 
 export const DeployedFileLocations = {
     navigator: "./scripts/deployed-contracts/navigator.json",
+    codex_prefix_and_suffixes: "./scripts/deployed-contracts/codex_prefix_and_suffix.json",
     codex_enemies: "./scripts/deployed-contracts/codex_enemies.json",
+    codex_weapons: "./scripts/deployed-contracts/codex_weapons.json",
     codex_armor: "./scripts/deployed-contracts/codex_armor.json",
     codex_amulets: "./scripts/deployed-contracts/codex_amulets.json",
     codex_rings: "./scripts/deployed-contracts/codex_rings.json",
     codex_earrings: "./scripts/deployed-contracts/codex_earrings.json",
     codex_belts: "./scripts/deployed-contracts/codex_belts.json",
-    non_fungible_items: "./scripts/deployed-contracts/non_fungible_items.json",
+    equipable_items: "./scripts/deployed-contracts/equipable_items.json",
     inventory: "./scripts/deployed-contracts/inventory.json",
     summoners: "./scripts/deployed-contracts/summoners.json",
-    calculator: "./scripts/deployed-contracts/summoners.json",
+    calculator: "./scripts/deployed-contracts/calculator.json",
+    crafting_materials: "./scripts/deployed-contracts/crafting_materials.json",
 }
+

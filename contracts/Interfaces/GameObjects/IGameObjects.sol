@@ -28,6 +28,16 @@ library GameObjects {
         SHIELD
     }
 
+    struct ItemDTO {
+        ItemType _type;
+        uint _itemId;
+        uint256 _tier;
+        uint _prefix;
+        uint _prefixTier;
+        uint _suffix;
+        uint _suffixTier;
+        Element _element;
+    }
     enum ItemType {
         WEAPON,
         OFFHAND,
