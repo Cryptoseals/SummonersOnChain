@@ -1,5 +1,5 @@
 import {ethers, upgrades} from "hardhat";
-import fs from "fs";
+import * as fs from "fs";
 import {CONTRACTS, DeployedFileLocations} from "./helpers/constants";
 
 const deployment_mode = process.env?.DEPLOYMENT_MODE || "dev-local"
