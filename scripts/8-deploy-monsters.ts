@@ -39,6 +39,7 @@ async function main() {
     await tx.wait(1)
     console.log("baseEnemyStats CRITM set.", baseEnemyStats.address)
     tx = await navigator.setGameContractsById(CONTRACTS.BASE_ENEMY_STATS, baseEnemyStats.address, true);
+    await tx.wait(1)
     console.log("base is set.", baseEnemyStats.address)
 
     let CodexEnemy = await ethers.getContractFactory("CodexEnemies");
@@ -47,6 +48,7 @@ async function main() {
     });
     console.log("codexEnemy deployed.", codexEnemy.address)
     tx = await navigator.setGameContractsById(CONTRACTS.CODEX_ENEMIES, codexEnemy.address, true);
+    await tx.wait(1)
     console.log("codex enemy is set.", codexEnemy.address)
 
 
@@ -54,46 +56,55 @@ async function main() {
     let earthMonsters = await upgrades.deployProxy(EarthMonsters, [navigator.address], {
         initializer: "initialize"
     });
+    await earthMonsters.deployed()
 
     let FireMonsters = await ethers.getContractFactory("CodexEnemiesFire");
     let fireMonsters = await upgrades.deployProxy(FireMonsters, [navigator.address], {
         initializer: "initialize"
     });
+    await fireMonsters.deployed()
     console.log("Fire monsters deployed.")
     let ColdMonsters = await ethers.getContractFactory("CodexEnemiesCold");
     let coldMonsters = await upgrades.deployProxy(ColdMonsters, [navigator.address], {
         initializer: "initialize"
     });
+    await coldMonsters.deployed()
     console.log("Cold monsters deployed.")
     let LightningMonsters = await ethers.getContractFactory("CodexEnemiesLightning");
     let lightningMonsters = await upgrades.deployProxy(LightningMonsters, [navigator.address], {
         initializer: "initialize"
     });
+    await lightningMonsters.deployed()
     console.log("Lightning monsters deployed.")
     let DarkMonsters = await ethers.getContractFactory("CodexEnemiesDark");
     let darkMonsters = await upgrades.deployProxy(DarkMonsters, [navigator.address], {
         initializer: "initialize"
     });
+    await darkMonsters.deployed()
     console.log("Dark monsters deployed.")
     let HolyMonsters = await ethers.getContractFactory("CodexEnemiesHoly");
     let holyMonsters = await upgrades.deployProxy(HolyMonsters, [navigator.address], {
         initializer: "initialize"
     });
+    await holyMonsters.deployed()
     console.log("Holy monsters deployed.")
     let VoidMonsters = await ethers.getContractFactory("CodexEnemiesVoid");
     let voidMonsters = await upgrades.deployProxy(VoidMonsters, [navigator.address], {
         initializer: "initialize"
     });
+    await voidMonsters.deployed()
     console.log("Void monsters deployed.")
     let PhysicalMonsters = await ethers.getContractFactory("CodexEnemiesPhysical");
     let physicalMonsters = await upgrades.deployProxy(PhysicalMonsters, [navigator.address], {
         initializer: "initialize"
     });
+    await physicalMonsters.deployed()
     console.log("Physical monsters deployed.")
     let ArcaneMonsters = await ethers.getContractFactory("CodexEnemiesArcane");
     let arcaneMonsters = await upgrades.deployProxy(ArcaneMonsters, [navigator.address], {
         initializer: "initialize"
     });
+    await arcaneMonsters.deployed()
     console.log("Arcane monsters deployed.")
 
     tx = await navigator.setGameContractsById(CONTRACTS.EARTH_ENEMY_CODEX, earthMonsters.address, true);

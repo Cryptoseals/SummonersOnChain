@@ -44,7 +44,7 @@ async function main() {
     await tx.wait(1)
     console.log("and set in navigator.")
 
-    fs.writeFileSync(DeployedFileLocations.codex_rings, JSON.stringify({
+    fs.writeFileSync(DeployedFileLocations.codex_earrings, JSON.stringify({
         CodexEarrings: codexEarrings.address,
     }), {});
 

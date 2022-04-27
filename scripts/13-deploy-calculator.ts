@@ -15,7 +15,7 @@ async function main() {
 
 
     let Calculator = await ethers.getContractFactory("Calculator")
-    let calculator = await upgrades.deployProxy(Calculator);
+    let calculator = await upgrades.deployProxy(Calculator, [navigator.address]);
     await calculator.deployed()
     console.log("Calculator deployed to:", calculator.address,)
     let tx = await navigator.setGameContractsById(CONTRACTS.CALCULATOR, calculator.address, true)

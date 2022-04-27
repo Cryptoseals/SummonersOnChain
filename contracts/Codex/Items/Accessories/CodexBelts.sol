@@ -51,7 +51,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         BASE_LUK = _BASE_LUK;
     }
 
-    function initializeCodex2(address _navigator,
+    function initializeCodex2(
         uint[21] memory _BASE_DEF,
         uint[21] memory _BASE_MDEF,
         uint[21] memory _BASE_EDEF,

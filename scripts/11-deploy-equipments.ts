@@ -24,7 +24,7 @@ async function main() {
     await tx.wait(1)
     console.log('set in contracts')
 
-    fs.writeFileSync(DeployedFileLocations.crafting_materials, JSON.stringify({
+    fs.writeFileSync(DeployedFileLocations.equipable_items, JSON.stringify({
         equipableItems: equipableItems.address,
     }), {});
 

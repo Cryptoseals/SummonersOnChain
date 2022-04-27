@@ -17,7 +17,6 @@ async function main() {
     let CodexRings = await ethers.getContractFactory("CodexRings")
     let codexRings = await upgrades.deployProxy(CodexRings, [navigator.address]);
     await codexRings.deployed()
-    await codexRings.initializeCodex(navigator.address);
     console.log("CodexRings deployed to:", codexRings.address,)
     let tx = await codexRings.initializeCodex1(
         Ring.BASE_STR,
