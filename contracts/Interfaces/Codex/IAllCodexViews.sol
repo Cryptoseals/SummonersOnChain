@@ -4,8 +4,6 @@ pragma solidity ^0.8.0;
 interface IAllCodexViews {
     function weapon(GameObjects.EquippedItemStruct memory) external pure returns (GameObjects.Weapon memory);
     function weaponCore(uint id) external pure returns (GameObjects.Weapon memory);
-    function offHand(GameObjects.EquippedItemStruct memory) external pure returns (GameObjects.OffHand memory);
-    function offHandCore(uint id) external pure returns (GameObjects.OffHand memory);
     function helmet(GameObjects.EquippedItemStruct memory) external pure returns (GameObjects.Helmet memory);
     function helmetCore(uint id) external pure returns (GameObjects.Helmet memory);
     function armor(GameObjects.EquippedItemStruct memory) external pure returns (GameObjects.Armor memory);

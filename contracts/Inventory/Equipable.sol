@@ -122,7 +122,7 @@ contract Equipable is Initializable, InitNavigator {
             DamageTypesOfSummoners[summoner] = _weapon.damageType;
 
         } else if (_type == GameObjects.ItemType.OFFHAND) {
-            GameObjects.OffHand memory _offHand = IAllCodexViews(contractAddress(INavigator.CONTRACT.OFF_HANDS_CODEX)).offHandCore(_itemId);
+            GameObjects.Weapon memory _offHand = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(_itemId);
             if (!canEquip(summoner, _offHand.requirement)) revert CannotEquip("You are too weak to equip this.");
             EquippedOffHands[summoner].tokenId = id;
             EquippedOffHands[summoner].prefixId = prefix;
@@ -359,9 +359,9 @@ contract Equipable is Initializable, InitNavigator {
             contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)
         ).weapon(EquippedWeapons[summoner]);
 
-        GameObjects.OffHand memory _offHand = IAllCodexViews(
-            contractAddress(INavigator.CONTRACT.OFF_HANDS_CODEX)
-        ).offHand(EquippedOffHands[summoner]);
+        GameObjects.Weapon memory _offHand = IAllCodexViews(
+            contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)
+        ).weapon(EquippedOffHands[summoner]);
 
         // TODO, add seal stat calculation
 

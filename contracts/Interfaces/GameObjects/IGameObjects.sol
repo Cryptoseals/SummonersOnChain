@@ -237,15 +237,6 @@ library GameObjects {
     }
 
 
-    struct OffHand {
-        ItemMetadata metadata;
-        ItemRequirement requirement;
-        Stats statBonus;
-        GeneratedStats generatedStatBonus;
-        ElementalStats elementalStats;
-
-    }
-
     struct Ring {
         ItemMetadata metadata;
         ItemRequirement requirement;

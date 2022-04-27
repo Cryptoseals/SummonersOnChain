@@ -1,7 +1,5 @@
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../Core/Common/Errors.sol";
-import "../Interfaces/GameObjects/IGameEntities.sol";
-import "../Interfaces/GameObjects/IGameObjects.sol";
 import "../Interfaces/Inventory/EquipableLibrary.sol";
 import "../Interfaces/Core/Constants/Constants.sol";
 import "../Interfaces/Core/Calculator/ICalculator.sol";
