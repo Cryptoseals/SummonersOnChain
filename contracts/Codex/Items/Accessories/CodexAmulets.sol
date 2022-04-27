@@ -181,6 +181,56 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         return _amulet;
     }
 
+    function amuletCore(uint itemId, uint itemTier) public view returns (GameObjects.Amulet memory) {
+        GameObjects.Amulet memory _amulet;
+        require(itemTier < 10, "tier");
+
+        if (itemId == 1) {
+            _amulet = applyTier(CopperAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 2) {
+            _amulet = applyTier(TinAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 3) {
+            _amulet = applyTier(IronAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 4) {
+            _amulet = applyTier(SilverAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 5) {
+            _amulet = applyTier(GoldAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 6) {
+            _amulet = applyTier(AmberAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 7) {
+            _amulet = applyTier(PearlAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 8) {
+            _amulet = applyTier(AmethystAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 9) {
+            _amulet = applyTier(CoralAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 10) {
+            _amulet = applyTier(RubyAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 11) {
+            _amulet = applyTier(ShinyRubyAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 12) {
+            _amulet = applyTier(TopazAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 13) {
+            _amulet = applyTier(ShinyTopazAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 14) {
+            _amulet = applyTier(AzuriteAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 15) {
+            _amulet = applyTier(ShinyAzuriteAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 16) {
+            _amulet = applyTier(EmeraldAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 17) {
+            _amulet = applyTier(ShinyEmeraldAmulet(itemTier), itemTier, 10);
+        } else if (itemId == 18) {
+            _amulet = applyTier(SapphireAmulet(itemTier), itemTier, 13);
+        } else if (itemId == 19) {
+            _amulet = applyTier(ShinySapphireAmulet(itemTier), itemTier, 13);
+        } else if (itemId == 20) {
+            _amulet = applyTier(DiamondAmulet(itemTier), itemTier, 13);
+        } else if (itemId == 21) {
+            _amulet = applyTier(ShinyDiamondAmulet(itemTier), itemTier, 13);
+        }
+        return _amulet;
+    }
+
     function CopperAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 1;
         _amulet.metadata.name = "Copper Amulet";

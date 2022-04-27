@@ -79,7 +79,7 @@ contract Attributes is Initializable, InitNavigator {
     }
 
     function stats(uint summoner) external view returns (GameObjects.Stats memory _stats) {
-        if (UsedPoints[summoner] < 1) revert AlreadyAllocated(summoner, "NOT ALLOCATED");
+//        if (UsedPoints[summoner] < 1) revert AlreadyAllocated(summoner, "NOT ALLOCATED");
         _stats = SummonerStats[summoner];
     }
 

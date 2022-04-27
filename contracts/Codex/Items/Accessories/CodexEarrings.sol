@@ -117,7 +117,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_earrings.elementalStats, (tier) * percentage);
         return _earrings;
     }
-
     function earrings(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Earring memory) {
         GameObjects.Earring memory _earrings;
         GameObjects.Prefix memory _prefix;
@@ -179,6 +178,57 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         if (_equipable.prefixId > 0 && _equipable.suffixId == 0) return applyPrefix(_prefix, _earrings);
         if (_equipable.prefixId == 0 && _equipable.suffixId > 0) return applySuffix(_suffix, _earrings);
         if (_equipable.prefixId > 0 && _equipable.suffixId > 0) return applyPrefixAndSuffix(_prefix, _suffix, _earrings);
+
+        return _earrings;
+    }
+
+    function earringsCore(uint itemId, uint itemTier) public view returns (GameObjects.Earring memory) {
+        GameObjects.Earring memory _earrings;
+        require(itemTier < 10, "tier");
+
+        if (itemId == 1) {
+            _earrings = applyTier(CopperEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 2) {
+            _earrings = applyTier(TinEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 3) {
+            _earrings = applyTier(IronEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 4) {
+            _earrings = applyTier(SilverEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 5) {
+            _earrings = applyTier(GoldEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 6) {
+            _earrings = applyTier(AmberEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 7) {
+            _earrings = applyTier(PearlEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 8) {
+            _earrings = applyTier(AmethystEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 9) {
+            _earrings = applyTier(CoralEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 10) {
+            _earrings = applyTier(RubyEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 11) {
+            _earrings = applyTier(ShinyRubyEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 12) {
+            _earrings = applyTier(TopazEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 13) {
+            _earrings = applyTier(ShinyTopazEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 14) {
+            _earrings = applyTier(AzuriteEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 15) {
+            _earrings = applyTier(ShinyAzuriteEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 16) {
+            _earrings = applyTier(EmeraldEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 17) {
+            _earrings = applyTier(ShinyEmeraldEarrings(itemTier), itemTier, 10);
+        } else if (itemId == 18) {
+            _earrings = applyTier(SapphireEarrings(itemTier), itemTier, 13);
+        } else if (itemId == 19) {
+            _earrings = applyTier(ShinySapphireEarrings(itemTier), itemTier, 13);
+        } else if (itemId == 20) {
+            _earrings = applyTier(DiamondEarrings(itemTier), itemTier, 13);
+        } else if (itemId == 21) {
+            _earrings = applyTier(ShinyDiamondEarrings(itemTier), itemTier, 13);
+        }
 
         return _earrings;
     }

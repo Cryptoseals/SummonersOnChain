@@ -111,7 +111,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         _belt.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_belt.elementalStats, (tier) * percentage);
         return _belt;
     }
-
     function belt(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Belt memory) {
         GameObjects.Belt memory _belt;
         GameObjects.Prefix memory _prefix;
@@ -172,6 +171,58 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         if (_equipable.prefixId > 0 && _equipable.suffixId == 0) return applyPrefix(_prefix, _belt);
         if (_equipable.prefixId == 0 && _equipable.suffixId > 0) return applySuffix(_suffix, _belt);
         if (_equipable.prefixId > 0 && _equipable.suffixId > 0) return applyPrefixAndSuffix(_prefix, _suffix, _belt);
+
+        return _belt;
+    }
+
+    function beltCore(uint itemId, uint itemTier) public view returns (GameObjects.Belt memory) {
+        GameObjects.Belt memory _belt;
+        require(itemTier < 10, "tier");
+
+
+        if (itemId == 1) {
+            _belt = applyTier(TatteredLeatherBelt(itemTier), itemTier, 10);
+        } else if (itemId == 2) {
+            _belt = applyTier(RaggedLeatherBelt(itemTier), itemTier, 10);
+        } else if (itemId == 3) {
+            _belt = applyTier(RawLeatherBelt(itemTier), itemTier, 10);
+        } else if (itemId == 4) {
+            _belt = applyTier(ThinLeatherBelt(itemTier), itemTier, 10);
+        } else if (itemId == 5) {
+            _belt = applyTier(CoarseLeatherBelt(itemTier), itemTier, 10);
+        } else if (itemId == 6) {
+            _belt = applyTier(RuggedLeatherBelt(itemTier), itemTier, 10);
+        } else if (itemId == 7) {
+            _belt = applyTier(ThickLeatherBelt(itemTier), itemTier, 10);
+        } else if (itemId == 8) {
+            _belt = applyTier(ReinforcedLeatherBelt(itemTier), itemTier, 10);
+        } else if (itemId == 9) {
+            _belt = applyTier(HardenedLeatherBelt(itemTier), itemTier, 10);
+        } else if (itemId == 10) {
+            _belt = applyTier(LordlyLeatherBelt(itemTier), itemTier, 10);
+        } else if (itemId == 11) {
+            _belt = applyTier(CopperEmblazonedBelt(itemTier), itemTier, 10);
+        } else if (itemId == 12) {
+            _belt = applyTier(TinEmblazonedBelt(itemTier), itemTier, 10);
+        } else if (itemId == 13) {
+            _belt = applyTier(IronEmblazonedBelt(itemTier), itemTier, 10);
+        } else if (itemId == 14) {
+            _belt = applyTier(SilverEmblazonedBelt(itemTier), itemTier, 10);
+        } else if (itemId == 15) {
+            _belt = applyTier(GoldEmblazonedBelt(itemTier), itemTier, 10);
+        } else if (itemId == 16) {
+            _belt = applyTier(PlatinumSealedBelt(itemTier), itemTier, 10);
+        } else if (itemId == 17) {
+            _belt = applyTier(MyhrilSealedBelt(itemTier), itemTier, 10);
+        } else if (itemId == 18) {
+            _belt = applyTier(OricalchumSealedBelt(itemTier), itemTier, 13);
+        } else if (itemId == 19) {
+            _belt = applyTier(ObsidianSealedBelt(itemTier), itemTier, 13);
+        } else if (itemId == 20) {
+            _belt = applyTier(LuminiteSealedBelt(itemTier), itemTier, 13);
+        } else if (itemId == 21) {
+            _belt = applyTier(EternalSealedBelt(itemTier), itemTier, 13);
+        }
 
         return _belt;
     }

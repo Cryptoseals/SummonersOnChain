@@ -21,6 +21,16 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
         __ERC721_init("Summoners on Chain Season 1", "SoC1");
     }
 
+    function mintSummoner(GameObjects.Class _class) external {
+        uint tokenId = totalSupply();
+        SummonerState[tokenId] = GameEntities.SummonerState.FREE;
+        SummonerClasses[tokenId] = _class;
+        SummonerMetadatas[tokenId].id = tokenId;
+        SummonerMetadatas[tokenId].summonedBy = msg.sender;
+        SummonerLevels[tokenId] = 1;
+        _mint(msg.sender, tokenId);
+    }
+
     function senderIsOwner(uint summonerId, address sender) external returns (bool) {
         return ownerOf(summonerId) == sender;
     }

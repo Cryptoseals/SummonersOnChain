@@ -29,7 +29,9 @@
     "deploy-fuji-11": "npx hardhat run scripts/11-deploy-equipments.ts --network fuji",
     "deploy-fuji-12": "npx hardhat run scripts/12-deploy-inventory.ts --network fuji",
     "deploy-fuji-13": "npx hardhat run scripts/13-deploy-calculator.ts --network fuji",
-    "deploy-fuji-14": "npx hardhat run scripts/14-deploy-crafting.ts --network fuji"
+    "deploy-fuji-14": "npx hardhat run scripts/14-deploy-crafting.ts --network fuji",
+    "deploy-fuji-15": "npx hardhat run scripts/15-deploy-summoners.ts --network fuji",
+    "deploy-fuji-16": "npx hardhat run scripts/16-deploy-attributes.ts --network fuji"
   },
   "engines": {
     "node": "16.14"

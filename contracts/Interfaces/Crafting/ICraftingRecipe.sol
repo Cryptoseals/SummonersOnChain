@@ -14,6 +14,6 @@ interface ICraftingRecipe {
         uint requiredGold;
         uint requiredEssence;
         uint requiredXP;
-        MaterialRequirement materialRequirements;
+        MaterialRequirement[] materialRequirements;
     }
 }

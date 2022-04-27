@@ -116,5 +116,6 @@ export const DeployedFileLocations = {
     crafting_materials: "./scripts/deployed-contracts/crafting_materials.json",
     inventory: "./scripts/deployed-contracts/inventory.json",
     crafting: "./scripts/deployed-contracts/crafting.json",
+    attributes: "./scripts/deployed-contracts/attributes.json",
 }
 

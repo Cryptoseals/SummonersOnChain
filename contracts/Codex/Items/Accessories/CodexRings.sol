@@ -186,6 +186,58 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
         return _ring;
     }
 
+    function ringCore(uint itemId, uint itemTier) public view returns (GameObjects.Ring memory) {
+        GameObjects.Ring memory _ring;
+        require(itemTier < 10, "tier");
+
+
+        if (itemId == 1) {
+            _ring = applyTier(CopperRing(itemTier), itemTier, 10);
+        } else if (itemId == 2) {
+            _ring = applyTier(TinRing(itemTier), itemTier, 10);
+        } else if (itemId == 3) {
+            _ring = applyTier(IronRing(itemTier), itemTier, 10);
+        } else if (itemId == 4) {
+            _ring = applyTier(SilverRing(itemTier), itemTier, 10);
+        } else if (itemId == 5) {
+            _ring = applyTier(GoldRing(itemTier), itemTier, 10);
+        } else if (itemId == 6) {
+            _ring = applyTier(AmberRing(itemTier), itemTier, 10);
+        } else if (itemId == 7) {
+            _ring = applyTier(PearlRing(itemTier), itemTier, 10);
+        } else if (itemId == 8) {
+            _ring = applyTier(AmethystRing(itemTier), itemTier, 10);
+        } else if (itemId == 9) {
+            _ring = applyTier(CoralRing(itemTier), itemTier, 10);
+        } else if (itemId == 10) {
+            _ring = applyTier(RubyRing(itemTier), itemTier, 10);
+        } else if (itemId == 11) {
+            _ring = applyTier(ShinyRubyRing(itemTier), itemTier, 10);
+        } else if (itemId == 12) {
+            _ring = applyTier(TopazRing(itemTier), itemTier, 10);
+        } else if (itemId == 13) {
+            _ring = applyTier(ShinyTopazRing(itemTier), itemTier, 10);
+        } else if (itemId == 14) {
+            _ring = applyTier(AzuriteRing(itemTier), itemTier, 10);
+        } else if (itemId == 15) {
+            _ring = applyTier(ShinyAzuriteRing(itemTier), itemTier, 10);
+        } else if (itemId == 16) {
+            _ring = applyTier(EmeraldRing(itemTier), itemTier, 10);
+        } else if (itemId == 17) {
+            _ring = applyTier(ShinyEmeraldRing(itemTier), itemTier, 10);
+        } else if (itemId == 18) {
+            _ring = applyTier(SapphireRing(itemTier), itemTier, 13);
+        } else if (itemId == 19) {
+            _ring = applyTier(ShinySapphireRing(itemTier), itemTier, 13);
+        } else if (itemId == 20) {
+            _ring = applyTier(DiamondRing(itemTier), itemTier, 13);
+        } else if (itemId == 21) {
+            _ring = applyTier(ShinyDiamondRing(itemTier), itemTier, 13);
+        }
+
+        return _ring;
+    }
+
     function CopperRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 1;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
