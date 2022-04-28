@@ -23,7 +23,7 @@ contract Attributes is Initializable, InitNavigator {
 
     function allocate(uint summoner, GameObjects.Stats memory _stats) external ensureNotPaused senderIsSummonerOwner(summoner) {
         if (Distributed[summoner] || UsedPoints[summoner] > 0) revert AlreadyAllocated(summoner, "ALREADY ALLOCATED");
-        if (_stats.STR == 0 || _stats.DEX == 0 || _stats.INT == 0 || _stats.AGI == 0 || _stats.VIT == 0 || _stats.LUCK == 0) revert StatZero("STAT CANNOT BE 0");
+        //if (_stats.STR == 0 || _stats.DEX == 0 || _stats.INT == 0 || _stats.AGI == 0 || _stats.VIT == 0 || _stats.LUCK == 0) revert StatZero("STAT CANNOT BE 0");
         if (_stats.STR > 10 || _stats.DEX > 10 || _stats.INT > 10 || _stats.AGI > 10 || _stats.VIT > 10 || _stats.LUCK > 10) revert StatOverflow("GT 10");
         Distributed[summoner] = true;
 

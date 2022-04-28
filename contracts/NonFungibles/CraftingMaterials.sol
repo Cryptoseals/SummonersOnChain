@@ -25,6 +25,10 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
     function mintMaterial(ICraftingMaterials.CraftingMaterial material, address to, uint amount) external onlyGameContracts {
         _mint(to, uint(material), amount, new bytes(0));
     }
+    // test purposes
+//    function mintDev(ICraftingMaterials.CraftingMaterial material, uint amount) external {
+//        _mint(msg.sender, uint(material), amount, new bytes(0));
+//    }
 
     function burnMaterial(address from, uint id, uint amount) external onlyGameContracts {
         _burn(from, uint(id), amount);
@@ -49,7 +53,7 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         _burn(msg.sender, uint(_recipe.requiredMaterial), _recipe.amount);
 
         ActiveProcessings[nextProcessId] = ICraftingMaterials.ProcessingProcess({
-        amount : _recipe.amount,
+        amount : amount,
         rewardMaterial : targetMaterial,
         when : block.timestamp + _recipe.requiredTime,
         who : msg.sender,

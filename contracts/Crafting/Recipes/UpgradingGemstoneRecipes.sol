@@ -1,7 +1,7 @@
 import "../../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
 pragma solidity ^0.8.0;
 
-contract UpgradingClothRecipes {
+contract UpgradingGemstoneRecipes {
 
     function upgradeRecipe (ICraftingMaterials.CraftingMaterial material, uint amount) external view returns(ICraftingMaterials.UpgradingRecipe memory _recipe){
         if (material == ICraftingMaterials.CraftingMaterial.POLISHED_PEARL) {

@@ -53,13 +53,17 @@ contract Equipable is Initializable, InitNavigator {
     }
 
     function canEquip(uint summoner, GameObjects.ItemRequirement memory _requirement) internal view returns (bool) {
-        ISummoners summonerContract = ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS));
-        IAttributes attributesContract = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES));
-        GameEntities.SummonerData memory _summoner = summonerContract.summonerData(summoner);
-        GameObjects.Stats memory _summonerStats = attributesContract.stats(summoner);
+        //        IAttributes attributesContract = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES));
+        GameEntities.SummonerData memory _summoner = ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).summonerData(summoner);
+        //        GameObjects.Stats memory _summonerStats = attributesContract.stats(summoner);
+        bool classOk;
+        for (uint i = 0; i < _requirement.classRequirement.length; i++) {
+            if(_summoner.class == _requirement.classRequirement[i]) classOk = true;
+        }
+        if(!classOk) revert("class");
         return _summoner.level >= _requirement.level &&
-        _summoner.state != GameEntities.SummonerState.IN_FIGHT &&
-        checkStats(_summonerStats, _requirement);
+        _summoner.state != GameEntities.SummonerState.IN_FIGHT;
+        //        checkStats(_summonerStats, _requirement);
     }
 
     function checkStats(GameObjects.Stats memory _stats, GameObjects.ItemRequirement memory _req) internal view returns (bool) {
