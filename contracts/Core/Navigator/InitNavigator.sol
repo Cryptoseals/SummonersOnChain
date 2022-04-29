@@ -56,4 +56,8 @@ contract InitNavigator is Initializable {
         require(Summoners.state(summoner) != GameEntities.SummonerState.IN_FIGHT, "IN_FIGHT");
         _;
     }
+
+    function increaseGlobalNonce () external onlyGameContracts {
+        Navigator.increaseGlobalNonce();
+    }
 }

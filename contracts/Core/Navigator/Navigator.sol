@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "../../Interfaces/Core/Navigator/INavigator.sol";
+import "./RewardNonce.sol";
 import "../Security/Guard.sol";
 
 
@@ -10,7 +11,7 @@ interface ERC721 {
     function ownerOf(uint256 tokenId) external view returns (address);
 }
 
-contract Navigator is Initializable, OwnableUpgradeable, Guard, INavigator {
+contract Navigator is Initializable, OwnableUpgradeable, Guard, INavigator, RewardNonce {
     ERC721 Seals;
 
     bool public _isPaused;
@@ -77,5 +78,13 @@ contract Navigator is Initializable, OwnableUpgradeable, Guard, INavigator {
             revert UnauthorizedSender(tx.origin, "Not a game contract");
         }
         _;
+    }
+
+    function increaseGlobalNonce () external override _onlyGameContracts {
+        _increaseGlobalNonce();
+    }
+
+    function getGlobalNonce() public view override returns(uint) {
+        return _getGlobalNonce();
     }
 }
