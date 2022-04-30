@@ -401,7 +401,7 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     // @notice VIEW UTILS
-    function getAllStats(uint summoner) internal view returns (GameObjects.Stats memory _stats_base, GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _generated_stats, GameObjects.ElementalStats memory _ele_stats, uint lvl) {
+    function getAllStats(uint summoner) public view returns (GameObjects.Stats memory _stats_base, GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _generated_stats, GameObjects.ElementalStats memory _ele_stats, uint lvl) {
 
         ISummoners summonersContract = ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS));
         //function getSummonerBattleStats(uint summoner) public view returns

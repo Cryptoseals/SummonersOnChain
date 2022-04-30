@@ -33,7 +33,8 @@
     "deploy-fuji-15": "npx hardhat run scripts/15-deploy-summoners.ts --network fuji",
     "deploy-fuji-16": "npx hardhat run scripts/16-deploy-attributes.ts --network fuji",
     "deploy-fuji-17": "npx hardhat run scripts/17-deploy-processing-and-upgrade-material.ts --network fuji",
-    "deploy-fuji-18": "npx hardhat run scripts/18-deploy-crafting-materials-nft-contract.ts --network fuji"
+    "deploy-fuji-18": "npx hardhat run scripts/18-deploy-crafting-materials-nft-contract.ts --network fuji",
+    "upgrade-fuji-1": "npx hardhat run scripts/upgrade-scripts/1-upgrade-inventory.ts --network fuji"
   },
   "engines": {
     "node": "16.14"

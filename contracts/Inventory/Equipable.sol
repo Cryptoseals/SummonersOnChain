@@ -48,6 +48,9 @@ contract Equipable is Initializable, InitNavigator {
     mapping(uint => GameObjects.Element) public DamageTypesOfSummoners;
     mapping(uint => GameObjects.SummonedCompanion) public SummonedCompanions;
 
+    mapping(uint => GameObjects.Elixir) public ActiveElixirs;
+    mapping(uint => GameObjects.Artifact) public ActiveArtifacts;
+
     function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
     }
@@ -419,6 +422,23 @@ contract Equipable is Initializable, InitNavigator {
 
 
     // views
+
+    function activeElixirs(uint summoner) external view returns (GameObjects.Stats memory _stats,GameObjects.GeneratedStats memory _gen_stats,GameObjects.ElementalStats memory _ele_stats) {
+        _stats = ActiveElixirs[summoner].statBonus;
+        _ele_stats = ActiveElixirs[summoner].elementalStats;
+        _gen_stats = ActiveElixirs[summoner].generatedStatBonus;
+    }
+
+    function activeArtifacts(uint summoner) external view returns (GameObjects.Stats memory _stats,GameObjects.GeneratedStats memory _gen_stats,GameObjects.ElementalStats memory _ele_stats) {
+        _stats = ActiveArtifacts[summoner].statBonus;
+        _ele_stats = ActiveArtifacts[summoner].elementalStats;
+        _gen_stats = ActiveArtifacts[summoner].generatedStatBonus;
+    }
+
+    function activeEffects(uint summoner) external view returns (GameObjects.Stats memory _stats,GameObjects.GeneratedStats memory _gen_stats,GameObjects.ElementalStats memory _ele_stats) {
+
+    }
+
 
     function getPreCalculatedStats(uint summoner) external view returns (GameObjects.Stats memory){
         return PreCalculatedEquipmentStats[summoner];
