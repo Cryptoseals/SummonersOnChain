@@ -81,55 +81,71 @@ contract Equipable is Initializable, InitNavigator {
 
     function equip(uint summoner, uint id) external ensureNotPaused
     senderIsSummonerOwner(summoner) {
+        address equips = contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS);
         // @warning check if owner
-        require(IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS)).ownerOf(id) == msg.sender, "not owned");
+        require(IEquipableItems(equips).ownerOf(id) == msg.sender, "not owned");
         // call NFT contract to get items tier and type.
-        (GameObjects.ItemType _type, uint _itemId, uint256 tier, uint prefix, uint prefixTier, uint suffix, uint suffixTier, GameObjects.Element element) = IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS)).item(id);
+        uint oldTokenToRefund = _handleEquip(summoner, id);
+        _escrowNFT(equips, id, msg.sender);
+        if (oldTokenToRefund > 0) {
+            _returnNFT(equips, msg.sender, id);
+        }
+        _applyCalculation(summoner);
+    }
 
+    function _handleEquip (uint summoner, uint id) internal returns(uint oldTokenToRefund) {
+        (GameObjects.ItemType _type, uint _itemId, uint256 tier, uint prefix, uint prefixTier, uint suffix, uint suffixTier, GameObjects.Element element) = IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS)).item(id);
         if (_type == GameObjects.ItemType.HELMET) {
+            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.HELMET].tokenId;
             GameObjects.Helmet memory _helmet = IAllCodexViews(contractAddress(INavigator.CONTRACT.HELMETS_CODEX)).helmetCore(_itemId, tier);
             if (!canEquip(summoner, _helmet.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, GameObjects.ItemType.HELMET, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
         } else if (_type == GameObjects.ItemType.ARMOR) {
+            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.ARMOR].tokenId;
             GameObjects.Armor memory _armor = IAllCodexViews(contractAddress(INavigator.CONTRACT.BODY_ARMORS_CODEX)).armorCore(_itemId, tier);
             if (!canEquip(summoner, _armor.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, GameObjects.ItemType.ARMOR, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
         } else if (_type == GameObjects.ItemType.WEAPON) {
+            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.WEAPON].tokenId;
             GameObjects.Weapon memory _weapon = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(_itemId, tier);
             if (!canEquip(summoner, _weapon.requirement)) revert CannotEquip("You are too weak to equip this.");
             DamageTypesOfSummoners[summoner] = _weapon.damageType;
-            _equipGear(summoner, id, GameObjects.ItemType.WEAPON, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
         } else if (_type == GameObjects.ItemType.OFFHAND) {
+            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.OFFHAND].tokenId;
             GameObjects.Weapon memory _offHand = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(_itemId, tier);
             if (!canEquip(summoner, _offHand.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, GameObjects.ItemType.OFFHAND, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
         } else if (_type == GameObjects.ItemType.BOOTS) {
+            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.BOOTS].tokenId;
             GameObjects.Boots memory _boots = IAllCodexViews(contractAddress(INavigator.CONTRACT.BOOTS_CODEX)).bootsCore(_itemId, tier);
             if (!canEquip(summoner, _boots.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, GameObjects.ItemType.BOOTS, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
         } else if (_type == GameObjects.ItemType.AMULET) {
+            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.AMULET].tokenId;
             GameObjects.Amulet memory _amulet = IAllCodexViews(contractAddress(INavigator.CONTRACT.AMULETS_CODEX)).amuletCore(_itemId, tier);
             if (!canEquip(summoner, _amulet.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, GameObjects.ItemType.AMULET, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
         } else if (_type == GameObjects.ItemType.RING) {
+            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.RING].tokenId;
             GameObjects.Ring memory _ring = IAllCodexViews(contractAddress(INavigator.CONTRACT.RINGS_CODEX)).ringCore(_itemId, tier);
             if (!canEquip(summoner, _ring.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, GameObjects.ItemType.RING, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
-        }
-        else if (_type == GameObjects.ItemType.EARRING) {
+            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+        } else if (_type == GameObjects.ItemType.EARRING) {
+            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.EARRING].tokenId;
             GameObjects.Earring memory _earring = IAllCodexViews(contractAddress(INavigator.CONTRACT.EARRINGS_CODEX)).earringCore(_itemId, tier);
             if (!canEquip(summoner, _earring.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, GameObjects.ItemType.EARRING, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
         } else if (_type == GameObjects.ItemType.BELT) {
+            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.BELT].tokenId;
             GameObjects.Belt memory _belt = IAllCodexViews(contractAddress(INavigator.CONTRACT.BELTS_CODEX)).beltCore(_itemId, tier);
             if (!canEquip(summoner, _belt.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, GameObjects.ItemType.BELT, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
         } else {
             revert InvalidItem("Not Implemented");
         }
-        _applyCalculation(summoner);
-        _escrowNFT(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS), id, msg.sender);
     }
+
     function _equipGear(uint summoner, uint id, GameObjects.ItemType _type, uint _itemId, uint256 tier, uint prefix, uint prefixTier, uint suffix, uint suffixTier, GameObjects.Element element) internal {
         EquippedGears[summoner][_type] = GameObjects.EquippedItemStruct({
         tokenId : id,
@@ -352,17 +368,17 @@ contract Equipable is Initializable, InitNavigator {
         }
 
 
-//        (
-//        GameObjects.Stats memory statsFromElixirs,
-//        GameObjects.GeneratedStats memory genFromElixirs,
-//        GameObjects.ElementalStats memory eleFromElixirs
-//        ) = activeElixirs(summoner);
-//        (
-//        GameObjects.Stats memory statsFromArtifacts,
-//        GameObjects.GeneratedStats memory genFromArtifacts,
-//        GameObjects.ElementalStats memory eleFromArtifacts
-//        ) = activeArtifacts(summoner);
-//
+        //        (
+        //        GameObjects.Stats memory statsFromElixirs,
+        //        GameObjects.GeneratedStats memory genFromElixirs,
+        //        GameObjects.ElementalStats memory eleFromElixirs
+        //        ) = activeElixirs(summoner);
+        //        (
+        //        GameObjects.Stats memory statsFromArtifacts,
+        //        GameObjects.GeneratedStats memory genFromArtifacts,
+        //        GameObjects.ElementalStats memory eleFromArtifacts
+        //        ) = activeArtifacts(summoner);
+        //
     }
 
     function getBattleStatsFromWeapons(uint summoner) public view returns (GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats) {
