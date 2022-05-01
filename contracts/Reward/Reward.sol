@@ -10,7 +10,6 @@ import "../Core/Common/Errors.sol";
 import "../Interfaces/Core/Constants/Constants.sol";
 import "../Interfaces/GameObjects/IGameRewards.sol";
 import "../Interfaces/NonFungibles/Common/IRewardNonFungible.sol";
-import "../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
 
 
 interface CraftingMaterialContract {

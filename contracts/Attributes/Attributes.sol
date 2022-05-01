@@ -86,6 +86,6 @@ contract Attributes is Initializable, InitNavigator {
     function totalPointsOfSummoner(uint summoner) public view returns (uint) {
         ISummoners Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
         uint level = Summoners.level(summoner);
-        return GameConstants.SUMMONER_INITIAL_STAT_POINTS + level * 10;
+        return GameConstants.SUMMONER_INITIAL_STAT_POINTS + (level - 1) * 10;
     }
 }
