@@ -12,7 +12,7 @@ contract WeaponRecipes is UpgradeableCodex {
     string constant public class = "WeaponRecipes";
     string constant public version = "0.0.1";
 
-    function recipe(uint itemId) public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function recipe(uint itemId) external view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         if (itemId > 0 && itemId < 22) {
             // Swords
             _recipe = IndividualRecipe(contractAddress(INavigator.CONTRACT.SWORD_RECIPES)).recipe(itemId);
