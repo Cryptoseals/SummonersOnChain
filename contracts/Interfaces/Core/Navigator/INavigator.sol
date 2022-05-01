@@ -71,6 +71,8 @@ interface INavigator {
         GEMSTONE_UPGRADING_RECIPES,
         ARMOR_RECIPES,
         WEAPON_RECIPES,
+        HELMET_RECIPES,
+        BOOTS_RECIPES,
         SWORD_RECIPES,
         DAGGER_RECIPES,
         SHIELD_RECIPES,

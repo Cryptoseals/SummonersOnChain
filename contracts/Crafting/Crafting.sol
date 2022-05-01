@@ -5,7 +5,6 @@ pragma solidity ^0.8.0;
 
 contract Crafting is Initializable, InitNavigator {
 
-
     function initialize(
         address _navigator
     ) external initializer {
