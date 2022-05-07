@@ -1,3 +1,4 @@
+import "../GameObjects/IGameObjects.sol";
 import "../GameObjects/ICrafting/ICraftingMaterials.sol";
 pragma solidity ^0.8.0;
 
@@ -15,5 +16,11 @@ interface ICraftingRecipe {
         uint requiredEssence;
         uint requiredXP;
         MaterialRequirement[] materialRequirements;
+        RequiredEquipment[] equipmentRequirements;
+    }
+
+    struct RequiredEquipment {
+        GameObjects.ItemType itemType;
+        uint id;
     }
 }

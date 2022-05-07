@@ -58,7 +58,7 @@ contract CodexFocuses is Initializable {
         } else if (id == 113) {
             return applyTier(EvergreenFlower(tier), tier, 5);
         } else if (id == 114) {
-            return applyTier(StarfallensStaff(tier), tier, 5);
+            return applyTier(StarfallensFocus(tier), tier, 5);
         } else if (id == 115) {
             return applyTier(BlessedDice(tier), tier, 5);
         } else if (id == 116) {
@@ -259,10 +259,10 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(7);
     }
 
-    function StarfallensStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function StarfallensFocus(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 9;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Starfallen's Staff";
+        _weapon.metadata.name = "Starfallen's Focus";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 40;
