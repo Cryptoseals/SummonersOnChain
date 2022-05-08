@@ -8,15 +8,15 @@ contract CodexAdventures {
     string constant public class = "Adventures";
     string constant public version = "0.0.1";
 
-    function adventure(uint _id, uint difficulty) public pure returns (IAdventure.AdventureArea memory) {
+    function adventure(uint _id, uint lvl) public pure returns (IAdventure.AdventureLevel memory) {
         if (_id == 1) {
-            return DummyAdventureArea(difficulty);
+            return DummyAdventureArea(lvl);
         }
 
         revert("invalid");
     }
 
-    function DummyAdventureArea(uint difficulty) public pure returns (IAdventure.AdventureArea memory _adventure) {
-
+    function DummyAdventureArea(uint lvl) public pure returns (IAdventure.AdventureLevel memory _adventureLvl) {
+        // return level depending on difficulty of 1-21
     }
 }

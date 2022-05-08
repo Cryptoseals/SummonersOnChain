@@ -57,7 +57,10 @@ contract InitNavigator is Initializable {
         _;
     }
 
-    function increaseGlobalNonce () external onlyGameContracts {
+    function increaseGlobalNonce () public onlyGameContracts {
         Navigator.increaseGlobalNonce();
+    }
+    function getGlobalNonce () public view onlyGameContracts returns(uint) {
+        return Navigator.getGlobalNonce();
     }
 }

@@ -72,7 +72,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -85,11 +85,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -106,7 +106,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -119,11 +119,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -139,7 +139,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         _enemy.MonsterMetadata.name = "Creature Of Night";
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -152,11 +152,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -173,7 +173,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -186,11 +186,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -207,7 +207,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -220,11 +220,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -240,7 +240,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         _enemy.MonsterMetadata.name = "Corrupted Wraith";
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -253,11 +253,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -274,7 +274,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -287,11 +287,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -308,7 +308,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -321,11 +321,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -342,7 +342,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -355,11 +355,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -376,7 +376,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -389,11 +389,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -409,7 +409,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         _enemy.MonsterMetadata.name = "Soulsmith";
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -422,11 +422,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -443,7 +443,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -456,11 +456,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -477,7 +477,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -490,11 +490,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -511,7 +511,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -524,11 +524,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -545,7 +545,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -558,11 +558,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -579,7 +579,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -592,11 +592,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -612,7 +612,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         _enemy.MonsterMetadata.name = "Corrupted Baphomet";
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -625,11 +625,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -646,7 +646,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -659,11 +659,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -680,7 +680,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -693,11 +693,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -713,7 +713,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         _enemy.MonsterMetadata.name = "Corrupted Wanderer";
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -726,11 +726,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -747,7 +747,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -760,11 +760,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
@@ -780,7 +780,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         _enemy.MonsterMetadata.name = "Deathbringer";
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.DARK, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -793,11 +793,11 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.DARK;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.DARK;
+        _enemy.damageType = GameObjects.Element.DARK;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.DARK;
         _enemy.EnemyElementalStats.ElementalAtk.DARK_ATK = baseStats.enemyATK(GameObjects.Element.DARK, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.DARK, lvl),

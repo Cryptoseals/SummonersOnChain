@@ -10,4 +10,5 @@ interface ISummoners is IERC721 {
     function state(uint id) external view returns (GameEntities.SummonerState _state);
     function summonerData(uint id) external view returns (GameEntities.SummonerData memory _data);
     function senderIsOwner(uint summoner, address _owner) external returns(bool);
+    function setSummonerState(uint summoner, GameEntities.SummonerState _state) external;
 }

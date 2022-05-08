@@ -12,7 +12,7 @@ interface IAdventure {
 
     struct AdventureArea {
         IGenericMetadata.Metadata Metadata;
-        AdventureLevel[] levels;
+//        AdventureLevel[] levels;
     }
 
     struct AdventureLevel {
@@ -20,6 +20,7 @@ interface IAdventure {
         AdventureMonster[] MonsterList;
 //        GameObjects.ItemRequirement Requirements;
         IGameRewards.Reward Rewards;
+        uint MonsterLevel;
     }
     
 }

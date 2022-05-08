@@ -106,7 +106,8 @@ interface INavigator {
         LIGHT_ARMOR_STATS,
         HEAVY_BOOTS_STATS,
         MEDIUM_BOOTS_STATS,
-        LIGHT_BOOTS_STATS
+        LIGHT_BOOTS_STATS,
+ADVENTURES
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;
@@ -128,5 +129,6 @@ interface INavigator {
     function extendGameTime(uint _end) external;
 
     function increaseGlobalNonce () external;
+
     function getGlobalNonce() external view returns(uint);
 }

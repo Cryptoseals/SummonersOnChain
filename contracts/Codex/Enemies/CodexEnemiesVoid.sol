@@ -74,7 +74,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -87,11 +87,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -107,7 +107,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -120,11 +120,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -140,7 +140,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -153,11 +153,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -173,7 +173,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -186,11 +186,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -205,7 +205,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -218,11 +218,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -237,7 +237,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -250,11 +250,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -269,7 +269,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -282,11 +282,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -302,7 +302,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -315,11 +315,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -335,7 +335,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -348,11 +348,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -368,7 +368,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -381,11 +381,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -401,7 +401,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -414,11 +414,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -434,7 +434,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -447,11 +447,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -467,7 +467,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -480,11 +480,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -500,7 +500,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -513,11 +513,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -532,7 +532,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -545,11 +545,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -565,7 +565,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -578,11 +578,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -598,7 +598,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -611,11 +611,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -630,7 +630,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -643,11 +643,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -663,7 +663,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -676,11 +676,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -696,7 +696,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -709,11 +709,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -728,7 +728,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -741,11 +741,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
@@ -760,7 +760,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.VOID, lvl),
         P_ATK : 0,
         M_ATK : 0,
@@ -773,11 +773,11 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         INFUSION : 0
         });
 
-        _enemy.damageType = IMonster.Element.VOID;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.VOID;
+        _enemy.damageType = GameObjects.Element.VOID;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.VOID;
         _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK = baseStats.enemyATK(GameObjects.Element.VOID, lvl);
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl),

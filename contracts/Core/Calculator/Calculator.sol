@@ -9,6 +9,7 @@ import "../../Inventory/EquipableUtils.sol";
 import "../../Interfaces/Inventory/IEquipable.sol";
 import "../../Interfaces/Inventory/IElixirAndArtifactSlots.sol";
 import "../../Interfaces/Summoners/ISummoners.sol";
+import "../../Interfaces/GameObjects/IMonster.sol";
 
 /*
             Generated stats
@@ -38,6 +39,40 @@ contract Calculator is Initializable, InitNavigator {
 
     function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
+    }
+
+
+    function PVEBattleStats(uint summoner,
+        IMonster.Monster memory monster) external view returns (GameObjects.BattleStats memory,
+        GameObjects.BattleStats memory) {
+        (
+        GameObjects.Stats memory _statsFromEquips1,
+        GameObjects.Stats memory _statsBase1,
+        GameObjects.GeneratedStats memory _genStatsFromEquips1,
+        GameObjects.ElementalStats memory _eleStatsFromEquips1,) = getAllStats(summoner);
+
+
+        return GetBattleStats(EquipableUtils.sumStats(_statsBase1, _statsFromEquips1),
+            _genStatsFromEquips1,
+            _eleStatsFromEquips1,
+            monster.EnemyStats,
+            monster.EnemyGeneratedStats,
+            monster.EnemyElementalStats);
+    }
+
+    function BattleStats(GameObjects.Stats memory _stats1,
+        GameObjects.GeneratedStats memory _gen_stats1,
+        GameObjects.ElementalStats memory _eleStats1,
+        GameObjects.Stats memory _stats2,
+        GameObjects.GeneratedStats memory _gen_stats2,
+        GameObjects.ElementalStats memory _eleStats2) external view returns (GameObjects.BattleStats memory,
+        GameObjects.BattleStats memory) {
+        return GetBattleStats(_stats1,
+            _gen_stats1,
+            _eleStats1,
+            _stats2,
+            _gen_stats2,
+            _eleStats2);
     }
 
     function VSBattleStats(uint summoner, uint summoner2) external view returns (

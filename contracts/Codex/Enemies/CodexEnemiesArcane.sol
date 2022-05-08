@@ -72,7 +72,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -86,10 +86,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -106,7 +106,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -120,10 +120,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -141,7 +141,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -155,10 +155,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -175,7 +175,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -189,10 +189,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -209,7 +209,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -223,10 +223,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -243,7 +243,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -257,10 +257,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -277,7 +277,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -291,10 +291,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -311,7 +311,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -325,10 +325,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -345,7 +345,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -359,10 +359,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -379,7 +379,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -393,10 +393,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -413,7 +413,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -427,10 +427,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -447,7 +447,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -461,10 +461,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -481,7 +481,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -495,10 +495,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -515,7 +515,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -529,10 +529,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -548,7 +548,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -562,10 +562,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -582,7 +582,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -596,10 +596,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -615,7 +615,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -629,10 +629,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -649,7 +649,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -663,10 +663,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -682,7 +682,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -696,10 +696,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -715,7 +715,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -729,10 +729,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -748,7 +748,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -762,10 +762,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
@@ -781,7 +781,7 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
-        _enemy.EnemyGeneratedStats = IMonster.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
         HP : baseStats.enemyHP(GameObjects.Element.ARCANE, lvl),
         P_ATK : 0,
         M_ATK : baseStats.enemyATK(GameObjects.Element.ARCANE, lvl),
@@ -795,10 +795,10 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         });
         _enemy.EnemyGeneratedStats.P_DEF -= (_enemy.EnemyGeneratedStats.P_DEF*10) / 100;
 
-        _enemy.damageType = IMonster.Element.ARCANE;
-        _enemy.EnemyElementalStats.SummonerDamageType = IMonster.Element.ARCANE;
+        _enemy.damageType = GameObjects.Element.ARCANE;
+        _enemy.EnemyElementalStats.SummonerDamageType = GameObjects.Element.ARCANE;
 
-        _enemy.EnemyElementalStats.ElementalDef = IMonster.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         COLD_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
         EARTH_DEF : baseStats.enemyEDEF(GameObjects.Element.ARCANE, lvl),
