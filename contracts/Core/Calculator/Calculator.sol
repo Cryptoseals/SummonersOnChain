@@ -49,15 +49,19 @@ contract Calculator is Initializable, InitNavigator {
         GameObjects.Stats memory _statsFromEquips1,
         GameObjects.Stats memory _statsBase1,
         GameObjects.GeneratedStats memory _genStatsFromEquips1,
-        GameObjects.ElementalStats memory _eleStatsFromEquips1,) = getAllStats(summoner);
+        GameObjects.ElementalStats memory _eleStatsFromEquips1, uint lvl) = getAllStats(summoner);
 
-
-        return GetBattleStats(EquipableUtils.sumStats(_statsBase1, _statsFromEquips1),
+        (GameObjects.BattleStats memory player,
+        GameObjects.BattleStats memory monster) = GetBattleStats(EquipableUtils.sumStats(_statsBase1, _statsFromEquips1),
             _genStatsFromEquips1,
             _eleStatsFromEquips1,
             monster.EnemyStats,
             monster.EnemyGeneratedStats,
             monster.EnemyElementalStats);
+
+        player.TOTAL_HP += lvl * 10;
+
+        return (player, monster);
     }
 
     function BattleStats(GameObjects.Stats memory _stats1,
@@ -177,9 +181,12 @@ contract Calculator is Initializable, InitNavigator {
             revert("ELEM ERROR2");
         }
 
-
+        _battleStats1.TOTAL_HP = HIT_POINTS(_gen_stats1.HP, _stats1.VIT);
+        _battleStats2.TOTAL_HP = HIT_POINTS(_gen_stats2.HP, _stats2.VIT);
         _battleStats1.CRIT_CHANCE = CRITICALWDecimals(_stats1.LUCK, _gen_stats1.CRIT);
         _battleStats2.CRIT_CHANCE = CRITICALWDecimals(_stats2.LUCK, _gen_stats2.CRIT);
+        _battleStats1.CRIT_MULTI = _gen_stats1.CRIT_MULTIPLIER;
+        _battleStats2.CRIT_MULTI = _gen_stats2.CRIT_MULTIPLIER;
 
         _battleStats1.DODGE_CHANCE = DODWDecimals(_stats1.AGI, _gen_stats1.DODGE);
         _battleStats2.DODGE_CHANCE = DODWDecimals(_stats2.AGI, _gen_stats2.DODGE);
@@ -345,25 +352,23 @@ contract Calculator is Initializable, InitNavigator {
     function HP(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
-        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,
-        uint lvl) = getAllStats(summoner);
-        return HIT_POINTS(_generatedStatsFromEquipments.HP, _summonerStats.VIT + _statsFromEquipments.VIT, lvl) / GameConstants.GAME_DECIMAL;
+        GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
+        return HIT_POINTS(_generatedStatsFromEquipments.HP, _summonerStats.VIT + _statsFromEquipments.VIT) / GameConstants.GAME_DECIMAL;
     }
 
     function HPWDecimals(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _summonerStats,
         GameObjects.Stats memory _statsFromEquipments,
         GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,
-        uint lvl) = getAllStats(summoner);
-        return HIT_POINTS(_generatedStatsFromEquipments.HP, _summonerStats.VIT + _statsFromEquipments.VIT, lvl);
+        ) = getAllStats(summoner);
+        return HIT_POINTS(_generatedStatsFromEquipments.HP, _summonerStats.VIT + _statsFromEquipments.VIT);
     }
 
-    function HIT_POINTS(uint HP, uint VIT, uint LVL) public pure returns (uint) {
+    function HIT_POINTS(uint HP, uint VIT) public pure returns (uint) {
         // equipTotalHP+(lvl*10)+(vit*10)
         uint HP_W_DECIMAL = HP * GameConstants.GAME_DECIMAL;
         uint VIT_W_DECIMAL = VIT * GameConstants.GAME_DECIMAL;
-        uint LVL_W_DECIMAL = LVL * GameConstants.GAME_DECIMAL;
-        return HP_W_DECIMAL + (LVL_W_DECIMAL * 10) + (VIT_W_DECIMAL * 4);
+        return HP_W_DECIMAL + (VIT_W_DECIMAL * 4);
     }
 
     function ACCURACY(uint summoner) public view returns (uint) {

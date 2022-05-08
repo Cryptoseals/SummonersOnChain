@@ -19,4 +19,6 @@ interface ICalculator {
     function PVEBattleStats(uint summoner, IMonster.Monster memory monster) external view returns
     (GameObjects.BattleStats memory,
         GameObjects.BattleStats memory);
+
+    function IsSuccessfulDiceRoll100(uint summoner, uint seed, uint chance) external view returns (bool);
 }

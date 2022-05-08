@@ -62,10 +62,12 @@ library GameObjects {
     }
 
     struct BattleStats {
+        uint TOTAL_HP;
         uint DPS;
         uint HIT_CHANCE;
         uint DODGE_CHANCE;
         uint CRIT_CHANCE;
+        uint CRIT_MULTI;
     }
 
     struct Stats {
