@@ -93,7 +93,7 @@ contract Equipable is Initializable, InitNavigator {
         _applyCalculation(summoner);
     }
 
-    function _handleEquip (uint summoner, uint id) internal returns(uint oldTokenToRefund) {
+    function _handleEquip(uint summoner, uint id) internal returns (uint oldTokenToRefund) {
         (GameObjects.ItemType _type, uint _itemId, uint256 tier, uint prefix, uint prefixTier, uint suffix, uint suffixTier, GameObjects.Element element) = IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS)).item(id);
         if (_type == GameObjects.ItemType.HELMET) {
             oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.HELMET].tokenId;
@@ -216,6 +216,14 @@ contract Equipable is Initializable, InitNavigator {
             _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, artifact.generatedStatBonus);
             _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, artifact.elementalStats);
         }
+    }
+
+    function activeEffects(uint summoner) public view returns (GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats){
+        (GameObjects.Stats memory _stats1, GameObjects.GeneratedStats memory _gen_stats1, GameObjects.ElementalStats memory _ele_stats1) = activeElixirs(summoner);
+        (GameObjects.Stats memory _stats2, GameObjects.GeneratedStats memory _gen_stats2, GameObjects.ElementalStats memory _ele_stats2) = activeElixirs(summoner);
+        _stats = EquipableUtils.sumStats(_stats1, _stats2);
+        _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats1, _gen_stats2);
+        _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats1, _ele_stats2);
     }
 
     // @notice equip pet
@@ -419,6 +427,10 @@ contract Equipable is Initializable, InitNavigator {
 
     function equipped(uint summoner, GameObjects.ItemType slot) external view returns (GameObjects.EquippedItemStruct memory){
         return EquippedGears[summoner][slot];
+    }
+
+    function getPreCalculated(uint summoner) external view returns (GameObjects.Stats memory, GameObjects.GeneratedStats memory, GameObjects.ElementalStats memory){
+        return (PreCalculatedEquipmentStats[summoner], PreCalculatedGeneratedEquipmentStats[summoner], PreCalculatedEquipmentElementalStats[summoner]);
     }
 
     function getPreCalculatedStats(uint summoner) external view returns (GameObjects.Stats memory){

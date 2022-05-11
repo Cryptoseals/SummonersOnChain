@@ -43,7 +43,7 @@ contract Calculator is Initializable, InitNavigator {
 
 
     function PVEBattleStats(uint summoner,
-        IMonster.Monster memory monster) external view returns (GameObjects.BattleStats memory,
+        IMonster.Monster memory _monster) external view returns (GameObjects.BattleStats memory,
         GameObjects.BattleStats memory) {
         (
         GameObjects.Stats memory _statsFromEquips1,
@@ -52,12 +52,13 @@ contract Calculator is Initializable, InitNavigator {
         GameObjects.ElementalStats memory _eleStatsFromEquips1, uint lvl) = getAllStats(summoner);
 
         (GameObjects.BattleStats memory player,
-        GameObjects.BattleStats memory monster) = GetBattleStats(EquipableUtils.sumStats(_statsBase1, _statsFromEquips1),
+        GameObjects.BattleStats memory monster) = GetBattleStats(
+            EquipableUtils.sumStats(_statsBase1, _statsFromEquips1),
             _genStatsFromEquips1,
             _eleStatsFromEquips1,
-            monster.EnemyStats,
-            monster.EnemyGeneratedStats,
-            monster.EnemyElementalStats);
+            _monster.EnemyStats,
+            _monster.EnemyGeneratedStats,
+            _monster.EnemyElementalStats);
 
         player.TOTAL_HP += lvl * 10;
 
@@ -180,23 +181,25 @@ contract Calculator is Initializable, InitNavigator {
         } else {
             revert("ELEM ERROR2");
         }
+        _battleStats1.DPS = _battleStats1.DPS  / GameConstants.GAME_DECIMAL;
+        _battleStats2.DPS = _battleStats2.DPS  / GameConstants.GAME_DECIMAL;
 
-        _battleStats1.TOTAL_HP = HIT_POINTS(_gen_stats1.HP, _stats1.VIT);
-        _battleStats2.TOTAL_HP = HIT_POINTS(_gen_stats2.HP, _stats2.VIT);
-        _battleStats1.CRIT_CHANCE = CRITICALWDecimals(_stats1.LUCK, _gen_stats1.CRIT);
-        _battleStats2.CRIT_CHANCE = CRITICALWDecimals(_stats2.LUCK, _gen_stats2.CRIT);
+        _battleStats1.TOTAL_HP = HIT_POINTS(_gen_stats1.HP, _stats1.VIT)  / GameConstants.GAME_DECIMAL;
+        _battleStats2.TOTAL_HP = HIT_POINTS(_gen_stats2.HP, _stats2.VIT)  / GameConstants.GAME_DECIMAL;
+        _battleStats1.CRIT_CHANCE = CRITICALWDecimals(_stats1.LUCK, _gen_stats1.CRIT)  / GameConstants.GAME_DECIMAL;
+        _battleStats2.CRIT_CHANCE = CRITICALWDecimals(_stats2.LUCK, _gen_stats2.CRIT)  / GameConstants.GAME_DECIMAL;
         _battleStats1.CRIT_MULTI = _gen_stats1.CRIT_MULTIPLIER;
         _battleStats2.CRIT_MULTI = _gen_stats2.CRIT_MULTIPLIER;
 
-        _battleStats1.DODGE_CHANCE = DODWDecimals(_stats1.AGI, _gen_stats1.DODGE);
-        _battleStats2.DODGE_CHANCE = DODWDecimals(_stats2.AGI, _gen_stats2.DODGE);
+        _battleStats1.DODGE_CHANCE = DODWDecimals(_stats1.AGI, _gen_stats1.DODGE) / GameConstants.GAME_DECIMAL;
+        _battleStats2.DODGE_CHANCE = DODWDecimals(_stats2.AGI, _gen_stats2.DODGE) / GameConstants.GAME_DECIMAL;
 
-        _battleStats1.HIT_CHANCE = HitChanceWDecimals(_gen_stats1.ACCURACY, _gen_stats2.DODGE);
-        _battleStats2.HIT_CHANCE = HitChanceWDecimals(_gen_stats2.ACCURACY, _gen_stats1.DODGE);
+        _battleStats1.HIT_CHANCE = HitChance(_gen_stats1.ACCURACY, _gen_stats2.DODGE);
+        _battleStats2.HIT_CHANCE = HitChance(_gen_stats2.ACCURACY, _gen_stats1.DODGE);
     }
 
     // generated value based calculations
-    function HitChance(uint ACC, uint DODGE) external pure returns (uint){
+    function HitChance(uint ACC, uint DODGE) public pure returns (uint){
         return HitChanceWDecimals(ACC, DODGE) / GameConstants.GAME_DECIMAL;
     }
 
@@ -257,21 +260,22 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     function DPSWDecimals(uint ATK, uint STAT, uint DEF, uint PEN) public pure returns (uint) {
+        if(ATK == 0) return 0;
+        if(DEF == 0) return ATK;
         // atk*stat / armor(reduce pen if exists)
-        uint256 DECIMAL = 0;
-        uint256 TEMP = DEF;
-        while (TEMP != 0) {TEMP >>= 8;
-            DECIMAL++;}
+//        uint256 DECIMAL = 0;
+//        uint256 TEMP = DEF;
+//        while (TEMP != 0) {TEMP >>= 8;
+//            DECIMAL++;}
 
-        int diff = int(DEF) - int(ATK);
-        uint ratio;
-
-        if (diff > 0) {
-            ratio = uint(DEF / ATK);
-        }
+//        int diff = int(DEF) - int(ATK);
+//        uint ratio;
+//
+//        if (diff > 0) {
+//            ratio = uint(DEF / ATK);
+//        }
         uint DEF_PENETRATED = DEF - (((DEF) * PEN) / 100);
-        uint FINAL_ATK;
-        FINAL_ATK = ATK * STAT / DEF_PENETRATED;
+        uint FINAL_ATK = ATK * STAT / DEF_PENETRATED;
         return FINAL_ATK;
     }
 
@@ -443,27 +447,40 @@ contract Calculator is Initializable, InitNavigator {
     // @notice VIEW UTILS
     function getAllStats(uint summoner) public view returns (GameObjects.Stats memory _stats_base, GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _generated_stats, GameObjects.ElementalStats memory _ele_stats, uint lvl) {
 
-        ISummoners summonersContract = ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS));
+
         //function getSummonerBattleStats(uint summoner) public view returns
         //(GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats)
         GameObjects.Stats memory _summonerStats = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(summoner);
 
         (GameObjects.Stats memory _stats_eq,
         GameObjects.GeneratedStats memory _gen_stats_eq,
-        GameObjects.ElementalStats memory _ele_stats_eq) = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY)).getSummonerBattleStats(summoner);
+        GameObjects.ElementalStats memory _ele_stats_eq) = precalculatedStats(summoner);
 
         (GameObjects.Stats memory _stats_fx,
         GameObjects.GeneratedStats memory _gen_stats_fx,
         GameObjects.ElementalStats memory _ele_stats_fx) = IElixirAndArtifactSlots(contractAddress(INavigator.CONTRACT.INVENTORY)).activeEffects(summoner);
 
-        lvl = summonersContract.level(summoner);
+        lvl = ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).level(summoner);
         _stats_base = _summonerStats;
         _stats = _stats_eq;
         _generated_stats = EquipableUtils.sumGeneratedStats(_gen_stats_eq, _gen_stats_fx);
         _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats_eq, _ele_stats_fx);
     }
 
-    function SummonerBaseStats(GameObjects.Class _class) public view returns (GameObjects.GeneratedStats memory) {
+    function precalculatedStats (uint summoner) public view returns(GameObjects.Stats memory _stats,
+        GameObjects.GeneratedStats memory _gen_stats,
+        GameObjects.ElementalStats memory _ele_stats_) {
+        (GameObjects.Stats memory _stats_eq,
+        GameObjects.GeneratedStats memory _gen_stats_eq,
+        GameObjects.ElementalStats memory _ele_stats_eq) = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY)).getPreCalculated(summoner);
+
+        GameObjects.GeneratedStats memory _base = SummonerBaseStats();
+        _gen_stats = EquipableUtils.sumGeneratedStats(_base, _gen_stats_eq);
+        _stats = _stats_eq;
+        _ele_stats_ = _ele_stats_eq;
+    }
+
+    function SummonerBaseStats() public view returns (GameObjects.GeneratedStats memory) {
         return GameObjects.GeneratedStats({HP : 10, P_ATK : 10, M_ATK : 10, P_DEF : 10, M_DEF : 10, ACCURACY : 10, DODGE : 10, CRIT : 1, CRIT_MULTIPLIER : 10, INFUSION : 0});
     }
 
