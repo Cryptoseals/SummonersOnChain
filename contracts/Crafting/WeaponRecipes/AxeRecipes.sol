@@ -37,6 +37,29 @@ contract AxeRecipes {
         material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD,
         amount : 5
         });
+        //enum ItemType {
+        //        WEAPON,
+        //        OFFHAND,
+        //        HELMET,
+        //        ARMOR,
+        //        BOOTS,
+        //        AMULET,
+        //        RING,
+        //        EARRING,
+        //        BELT,
+        //        ARTIFACT,
+        //        ELIXIR,
+        //        MOUNT,
+        //        FISHING_ROD,
+        //        MISC,
+        //        MISC2,
+        //        MISC3
+        //    }
+        _recipe.equipmentRequirements = new ICraftingRecipe.RequiredEquipment[](2);
+        _recipe.equipmentRequirements[0] = ICraftingRecipe.RequiredEquipment({
+            itemType: GameObjects.ItemType.WEAPON,
+            id: 1
+        });
     }
 
     function HandAxe() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {

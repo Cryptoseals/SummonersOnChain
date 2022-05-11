@@ -35,7 +35,7 @@ async function main() {
     await tx.wait(1)
     console.log('gold set in contracts')
 
-    fs.writeFileSync(DeployedFileLocations.codex_enemies, JSON.stringify({
+    fs.writeFileSync(DeployedFileLocations.fungibles, JSON.stringify({
         gold: gold.address,
         essence: essence.address
     }), {});

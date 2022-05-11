@@ -5,12 +5,11 @@ import "../Interfaces/Codex/ICodexAdventures.sol";
 import "../Interfaces/Codex/ICodexEnemies.sol";
 import "../Inventory/EquipableUtils.sol";
 import "../Interfaces/Codex/ICodexRandom.sol";
+import "../Interfaces/Reward/IReward.sol";
 
 pragma solidity ^0.8.0;
 
 contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
-    ICodexRandom RNG;
-    ICalculator calculator;
 
     uint battleNonce;
     mapping(uint => uint) public timer;
@@ -32,8 +31,6 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     function initialize(address _navigator) external initializer {
         __Ownable_init();
         initializeNavigator(_navigator);
-        RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
-        calculator = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR));
         COOLDOWN = 15 minutes;
     }
 
@@ -65,7 +62,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         });
 
         battleNonce++;
-        ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
+        ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
             summoner,
             GameEntities.SummonerState.IN_FIGHT
         );
@@ -76,13 +73,13 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         require(activeBattles[summoner].account == msg.sender, "no battle");
         delete activeBattles[summoner];
         timer[summoner] = block.timestamp + COOLDOWN * 4;
-        ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
+        ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
             summoner,
             GameEntities.SummonerState.FREE
         );
     }
 
-    function attack(uint summoner) external onlyGameContracts {
+    function attack(uint summoner, uint multiplier) external onlyGameContracts {
         AdventureBattle memory battle = activeBattles[summoner];
         (
         bool playerHits,
@@ -93,7 +90,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         // if monster dodges or player misses, skip atk, else roll crit chance
         if (playerHits) {
             if (!monsterDodges) {
-                uint damage = battle.playerStats.DPS;
+                uint damage = (battle.playerStats.DPS * multiplier) / 100;
 
                 (bool isCrit, uint _nonce) = getCritRoll(summoner, battle.playerStats.CRIT_CHANCE);
                 nonce = _nonce;
@@ -117,7 +114,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             }
         }
 
-        settleBattle(battle);
+        settleBattle(battle, nonce);
     }
 
 
@@ -126,13 +123,28 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             // win
 
             // TODO, roll rewards,
-
+            IAdventure.AdventureLevel memory _level =
+            ICodexAdventures(
+                contractAddress(INavigator.CONTRACT.ADVENTURES_CODEX)
+            ).adventure(battle.adventureArea, battle.adventureLevel);
+            IGameRewards.Reward memory rewardPool = _level.Rewards;
+            IReward(contractAddress(INavigator.CONTRACT.REWARDS)).reward(msg.sender, rewardPool, nonce);
             // end battle, cooldown
+            timer[battle.summoner] += block.timestamp + COOLDOWN;
+            ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
+                battle.summoner,
+                GameEntities.SummonerState.FREE
+            );
+        } else if(battle.monsterStats.TOTAL_HP == 0) {
+            // lose, end battle, cooldown
+            timer[battle.summoner] += block.timestamp + COOLDOWN;
+            ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
+                battle.summoner,
+                GameEntities.SummonerState.FREE
+            );
         }
 
-        if(battle.monsterStats.TOTAL_HP == 0) {
-            // lose, end battle, cooldown
-        }
+
     }
 
     function applyPlayerDamage(AdventureBattle memory battle, uint dmg) internal returns (AdventureBattle memory) {
@@ -155,16 +167,16 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
     function getHitRolls(uint summoner, AdventureBattle memory battle) internal view returns (bool, bool, bool, bool, uint nonce) {
         nonce = battleNonce;
-        bool playerHits = calculator.IsSuccessfulDiceRoll100(summoner, block.number + nonce, battle.playerStats.HIT_CHANCE);
+        bool playerHits = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR)).IsSuccessfulDiceRoll100(summoner, block.number + nonce, battle.playerStats.HIT_CHANCE);
         nonce++;
-        bool monsterDodges = calculator.IsSuccessfulDiceRoll100(summoner, block.number + nonce, battle.monsterStats.DODGE_CHANCE);
+        bool monsterDodges = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR)).IsSuccessfulDiceRoll100(summoner, block.number + nonce, battle.monsterStats.DODGE_CHANCE);
         nonce++;
 
         // if player dodges or monster misses, skip atk, else roll crit chance
 
-        bool monsterHits = calculator.IsSuccessfulDiceRoll100(summoner, block.number + nonce, battle.monsterStats.HIT_CHANCE);
+        bool monsterHits = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR)).IsSuccessfulDiceRoll100(summoner, block.number + nonce, battle.monsterStats.HIT_CHANCE);
         nonce++;
-        bool playerDodges = calculator.IsSuccessfulDiceRoll100(summoner, block.number + nonce, battle.playerStats.DODGE_CHANCE);
+        bool playerDodges = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR)).IsSuccessfulDiceRoll100(summoner, block.number + nonce, battle.playerStats.DODGE_CHANCE);
         nonce++;
 
         return (playerHits,
@@ -175,7 +187,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
     function getCritRoll(uint summoner, uint critChance) internal view returns (bool isCrit, uint nonce) {
         nonce = battleNonce;
-        isCrit = calculator.IsSuccessfulDiceRoll100(summoner, block.number + nonce, critChance);
+        isCrit = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR)).IsSuccessfulDiceRoll100(summoner, block.number + nonce, critChance);
         nonce++;
     }
 
@@ -184,13 +196,13 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
         IAdventure.AdventureLevel memory _level =
         ICodexAdventures(
-            contractAddress(INavigator.CONTRACT.ADVENTURES)
+            contractAddress(INavigator.CONTRACT.ADVENTURES_CODEX)
         ).adventure(adventureArea, adventureLevel);
         return pickMonster(_level);
     }
 
     function pickMonster(IAdventure.AdventureLevel memory _level) internal view returns (IMonster.Monster memory, IAdventure.AdventureMonster memory) {
-        uint monsterIdx = RNG.dn(
+        uint monsterIdx = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).dn(
             block.number + getGlobalNonce() + battleNonce,
             _level.MonsterList.length);
 
