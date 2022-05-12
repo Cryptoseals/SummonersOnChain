@@ -2,7 +2,7 @@ import "../Core/Navigator/InitNavigator.sol";
 
 pragma solidity ^0.8.0;
 
-interface Adventures {
+interface IAdventures {
     function attack(uint summoner, uint multiplier) external;
 }
 
@@ -15,6 +15,6 @@ contract AdventureControls is InitNavigator {
 
     function basicAttack(uint summoner) external ensureNotPaused
     senderIsSummonerOwner(summoner) {
-        Adventures(contractAddress(INavigator.CONTRACT.ADVENTURES)).attack(summoner, 100);
+        IAdventures(contractAddress(INavigator.CONTRACT.ADVENTURES)).attack(summoner, 100);
     }
 }

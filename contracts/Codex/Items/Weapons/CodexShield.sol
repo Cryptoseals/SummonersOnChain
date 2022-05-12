@@ -575,13 +575,14 @@ contract CodexShields is Initializable {
     }
 
     function classRequirement() internal view returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory classRequirement = new GameObjects.Class[](6);
+        GameObjects.Class[] memory classRequirement = new GameObjects.Class[](7);
         classRequirement[0] = GameObjects.Class.Barbarian;
         classRequirement[1] = GameObjects.Class.Paladin;
         classRequirement[2] = GameObjects.Class.Wizard;
         classRequirement[3] = GameObjects.Class.Priest;
         classRequirement[4] = GameObjects.Class.Engineer;
         classRequirement[5] = GameObjects.Class.Necromancer;
+        classRequirement[6] = GameObjects.Class.Ranger;
         return classRequirement;
     }
 }

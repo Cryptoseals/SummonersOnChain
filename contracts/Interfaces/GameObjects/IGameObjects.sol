@@ -54,7 +54,9 @@ library GameObjects {
         FISHING_ROD,
         MISC,
         MISC2,
-        MISC3
+        MISC3,
+        GENERAL_ACCESSORY,
+        PET, SEAL
     }
 
     enum StatsEnum {

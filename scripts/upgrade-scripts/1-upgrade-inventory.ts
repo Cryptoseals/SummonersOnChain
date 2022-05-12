@@ -15,13 +15,7 @@ async function main() {
     let equipable = await upgrades.upgradeProxy(deployedInventory.inventory,
         Equipable);
     await equipable.deployed();
-    // let tx = await navigator.setGameContractsById(CONTRACTS.INVENTORY,
-    //     equipable.address, true);
-    // await tx.wait(1)
-    //
-    // fs.writeFileSync(DeployedFileLocations.inventory, JSON.stringify({
-    //     inventory: equipable.address,
-    // }), {});
+
 
 }
 

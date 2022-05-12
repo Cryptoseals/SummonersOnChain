@@ -7,8 +7,6 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 pragma solidity ^0.8.0;
 
 contract CodexEarrings is InitNavigator, OwnableUpgradeable {
-    ICodexPrefixAndSuffix PrefixContract;
-    ICodexPrefixAndSuffix SuffixContract;
 
     string constant public index = "Codex";
     string constant public class = "Earrings";
@@ -33,8 +31,7 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
 
     function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
-        PrefixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.PREFIX_CODEX));
-        SuffixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.SUFFIX_CODEX));
+
         __Ownable_init();
     }
 
@@ -117,14 +114,15 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_earrings.elementalStats, (tier) * percentage);
         return _earrings;
     }
+
     function earrings(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Earring memory) {
         GameObjects.Earring memory _earrings;
         GameObjects.Prefix memory _prefix;
         GameObjects.Suffix memory _suffix;
         require(_equipable.itemTier < 10, "tier");
 
-        if (_equipable.prefixId > 0) _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
-        if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
+        if (_equipable.prefixId > 0) _prefix = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.PREFIX_CODEX)).prefix(_equipable.prefixId, _equipable.prefixTier);
+        if (_equipable.suffixId > 0) _suffix = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.SUFFIX_CODEX)).suffix(_equipable.suffixId, _equipable.suffixTier);
 
         if (_equipable.itemId == 1) {
             _earrings = applyTier(CopperEarrings(_equipable.itemTier), _equipable.itemTier, 10);

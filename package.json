@@ -40,7 +40,9 @@
     "deploy-fuji-22": "npx hardhat run scripts/22-deploy-adventure-battle.ts --network fuji",
     "deploy-fuji-23": "npx hardhat run scripts/23-deploy-rng.ts --network fuji",
     "deploy-fuji-24": "npx hardhat run scripts/24-deploy-adventure-controls.ts --network fuji",
-    "deploy-fuji-all": "yarn deploy-fuji-1 && yarn deploy-fuji-2 && yarn deploy-fuji-3 && yarn deploy-fuji-4 && yarn deploy-fuji-5 && yarn deploy-fuji-6 && yarn deploy-fuji-7 && yarn deploy-fuji-8 && yarn deploy-fuji-9 && yarn deploy-fuji-10 && yarn deploy-fuji-11 && yarn deploy-fuji-12 && yarn deploy-fuji-13 && yarn deploy-fuji-14 && yarn deploy-fuji-15 && yarn deploy-fuji-16 && yarn deploy-fuji-17 && yarn deploy-fuji-18 && yarn deploy-fuji-19 && yarn deploy-fuji-20 && yarn deploy-fuji-21 && yarn deploy-fuji-22 && yarn deploy-fuji-23 && yarn deploy-fuji-24",
+    "deploy-fuji-25": "npx hardhat run scripts/25-deploy-codex-armors.ts --network fuji",
+    "deploy-fuji-26": "npx hardhat run scripts/26-deploy-codex-armor-main.ts --network fuji",
+    "deploy-fuji-all": "yarn deploy-fuji-1 && yarn deploy-fuji-2 && yarn deploy-fuji-3 && yarn deploy-fuji-4 && yarn deploy-fuji-5 && yarn deploy-fuji-6 && yarn deploy-fuji-7 && yarn deploy-fuji-8 && yarn deploy-fuji-9 && yarn deploy-fuji-10 && yarn deploy-fuji-11 && yarn deploy-fuji-12 && yarn deploy-fuji-13 && yarn deploy-fuji-14 && yarn deploy-fuji-15 && yarn deploy-fuji-16 && yarn deploy-fuji-17 && yarn deploy-fuji-18 && yarn deploy-fuji-19 && yarn deploy-fuji-20 && yarn deploy-fuji-21 && yarn deploy-fuji-22 && yarn deploy-fuji-23 && yarn deploy-fuji-24 && yarn deploy-fuji-25 && yarn deploy-fuji-26",
     "upgrade-fuji-1": "npx hardhat run scripts/upgrade-scripts/1-upgrade-inventory.ts --network fuji"
   },
   "engines": {

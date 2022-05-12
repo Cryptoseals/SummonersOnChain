@@ -12,7 +12,7 @@ async function main() {
     const navigator = Navigator.attach(deployedNavigator.navigator)
 
     let AdventureControls = await ethers.getContractFactory("AdventureControls");
-    let adventureControls = await upgrades.deployProxy(AdventureControls)
+    let adventureControls = await upgrades.deployProxy(AdventureControls, [navigator.address])
 
     await adventureControls.deployed();
     let tx = await navigator.setGameContractsById(CONTRACTS.ADVENTURE_CONTROLS,

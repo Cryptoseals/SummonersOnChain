@@ -535,11 +535,12 @@ contract CodexFocuses is Initializable {
     }
 
     function classRequirement() internal view returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](4);
+        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](5);
         _reqClass[0] = GameObjects.Class.Wizard;
         _reqClass[1] = GameObjects.Class.Necromancer;
         _reqClass[2] = GameObjects.Class.Priest;
         _reqClass[3] = GameObjects.Class.Assassin;
+        _reqClass[4] = GameObjects.Class.Ranger;
         return _reqClass;
     }
 }

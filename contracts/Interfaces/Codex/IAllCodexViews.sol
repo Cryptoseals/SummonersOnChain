@@ -14,8 +14,8 @@ interface IAllCodexViews {
     function amuletCore(uint id, uint itemTier) external pure returns (GameObjects.Amulet memory);
     function ring(GameObjects.EquippedItemStruct memory) external pure returns (GameObjects.Ring memory);
     function ringCore(uint id, uint itemTier) external pure returns (GameObjects.Ring memory);
-    function earring(GameObjects.EquippedItemStruct memory) external view returns (GameObjects.Earring memory);
-    function earringCore(uint id, uint itemTier) external view returns (GameObjects.Earring memory);
+    function earrings(GameObjects.EquippedItemStruct memory) external view returns (GameObjects.Earring memory);
+    function earringsCore(uint id, uint itemTier) external view returns (GameObjects.Earring memory);
     function belt(GameObjects.EquippedItemStruct memory) external pure returns (GameObjects.Belt memory);
     function beltCore(uint id, uint itemTier) external pure returns (GameObjects.Belt memory);
     function mount(uint _id, uint _tier) external pure returns (GameObjects.Mount memory);

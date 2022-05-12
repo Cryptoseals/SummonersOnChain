@@ -59,14 +59,17 @@ ERC721EnumerableUpgradeable
         tokenToItemId[nextToken] = weaponId;
         _mint(to, nextToken);
         nextToken++;
+
         tokenToType[nextToken] = GameObjects.ItemType.OFFHAND;
         tokenToItemId[nextToken] = offhandId;
         _mint(to, nextToken);
         nextToken++;
+
         tokenToType[nextToken] = GameObjects.ItemType.HELMET;
         tokenToItemId[nextToken] = armorId;
         _mint(to, nextToken);
         nextToken++;
+
         tokenToType[nextToken] = GameObjects.ItemType.ARMOR;
         tokenToItemId[nextToken] = armorId;
         _mint(to, nextToken);

@@ -4,7 +4,6 @@ pragma solidity ^0.8.0;
 
 contract CodexHelmetsHeavy is Initializable {
     uint[21] public BASE_STR;
-    uint[21] public BASE_AGI;
     uint[21] public BASE_DEX;
     uint[21] public BASE_VIT;
     uint[21] public BASE_INT;
@@ -18,7 +17,6 @@ contract CodexHelmetsHeavy is Initializable {
 
     function initialize(
         uint[21] memory _BASE_STR,
-        uint[21] memory _BASE_AGI,
         uint[21] memory _BASE_DEX,
         uint[21] memory _BASE_VIT,
         uint[21] memory _BASE_INT,
@@ -30,7 +28,6 @@ contract CodexHelmetsHeavy is Initializable {
         uint[21] memory _BASE_ACCURACY
     ) external initializer {
         BASE_STR = _BASE_STR;
-        BASE_AGI = _BASE_AGI;
         BASE_DEX = _BASE_DEX;
         BASE_VIT = _BASE_VIT;
         BASE_INT = _BASE_INT;
@@ -556,7 +553,7 @@ contract CodexHelmetsHeavy is Initializable {
         GameObjects.Stats memory stats = GameObjects.Stats({
         STR : BASE_STR[index],
         DEX : BASE_DEX[index],
-        AGI : BASE_AGI[index],
+        AGI : 0,
         INT : BASE_INT[index],
         VIT : BASE_VIT[index],
         LUCK : 0});
