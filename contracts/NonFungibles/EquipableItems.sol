@@ -54,30 +54,27 @@ ERC721EnumerableUpgradeable
     function mintBeginnerSet(uint summoner, address to, GameObjects.Class _class) external onlyGameContracts {
         uint256 nextToken = totalSupply() + 1;
         (uint weaponId, uint armorId, uint offhandId) = getDefaultItems(_class);
+
         tokenToType[nextToken] = GameObjects.ItemType.WEAPON;
-        // e.g weapon
         tokenToItemId[nextToken] = weaponId;
-        // WEAPON id
+        _mint(to, nextToken);
         nextToken++;
         tokenToType[nextToken] = GameObjects.ItemType.OFFHAND;
-        // e.g weapon
         tokenToItemId[nextToken] = offhandId;
-        // OFFHAND id
+        _mint(to, nextToken);
         nextToken++;
         tokenToType[nextToken] = GameObjects.ItemType.HELMET;
-        // e.g weapon
         tokenToItemId[nextToken] = armorId;
-        // HELMET id
+        _mint(to, nextToken);
         nextToken++;
         tokenToType[nextToken] = GameObjects.ItemType.ARMOR;
-        // e.g weapon
         tokenToItemId[nextToken] = armorId;
-        // ARMOR id
+        _mint(to, nextToken);
         nextToken++;
         tokenToType[nextToken] = GameObjects.ItemType.BOOTS;
-        // e.g weapon
         tokenToItemId[nextToken] = armorId;
-        // BOOTS id
+        _mint(to, nextToken);
+
 
 
         // COMMON
@@ -85,18 +82,24 @@ ERC721EnumerableUpgradeable
         nextToken++;
         tokenToType[nextToken] = GameObjects.ItemType.AMULET;
         tokenToItemId[nextToken] = 1;
+        _mint(to, nextToken);
+
         // ring
         nextToken++;
         tokenToType[nextToken] = GameObjects.ItemType.RING;
         tokenToItemId[nextToken] = 1;
+        _mint(to, nextToken);
         // earring
         nextToken++;
         tokenToType[nextToken] = GameObjects.ItemType.EARRING;
         tokenToItemId[nextToken] = 1;
+        _mint(to, nextToken);
         // belt
         nextToken++;
         tokenToType[nextToken] = GameObjects.ItemType.BELT;
         tokenToItemId[nextToken] = 1;
+        _mint(to, nextToken);
+
     }
 
     function getDefaultItems(GameObjects.Class _class) internal view returns (uint weaponId, uint armorId, uint offhandId) {

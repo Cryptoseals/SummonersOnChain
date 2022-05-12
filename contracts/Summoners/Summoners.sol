@@ -6,7 +6,15 @@ import "../Core/Navigator/InitNavigator.sol";
 import "../Core/Common/Errors.sol";
 import "../Interfaces/Core/Constants/Constants.sol";
 
+
+
+
 pragma solidity ^0.8.0;
+
+
+interface Equipables {
+    function mintBeginnerSet(uint summoner, address to, GameObjects.Class _class) external;
+}
 
 contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     mapping(uint => GameEntities.SummonerMetadata) public SummonerMetadatas;
@@ -23,11 +31,14 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
 
     function mintSummoner(GameObjects.Class _class) external {
         uint tokenId = totalSupply();
+
         SummonerState[tokenId] = GameEntities.SummonerState.FREE;
         SummonerClasses[tokenId] = _class;
         SummonerMetadatas[tokenId].id = tokenId;
         SummonerMetadatas[tokenId].summonedBy = msg.sender;
         SummonerLevels[tokenId] = 1;
+
+        Equipables(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS)).mintBeginnerSet(tokenId, msg.sender, _class);
         _mint(msg.sender, tokenId);
     }
 

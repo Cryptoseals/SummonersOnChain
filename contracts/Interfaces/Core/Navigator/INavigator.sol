@@ -109,6 +109,7 @@ interface INavigator {
         LIGHT_BOOTS_STATS,
         ADVENTURES_CODEX,
         ADVENTURES,
+        ADVENTURE_CONTROLS,
         AREA_1,
         AREA_2,
         AREA_3,

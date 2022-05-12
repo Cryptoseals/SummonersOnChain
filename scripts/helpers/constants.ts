@@ -105,6 +105,7 @@ export enum CONTRACTS {
     LIGHT_BOOTS_STATS,
     ADVENTURES_CODEX,
     ADVENTURES,
+    ADVENTURE_CONTROLS,
     AREA_1,
     AREA_2,
     AREA_3,
@@ -146,8 +147,9 @@ export const DeployedFileLocations = {
     processing_and_upgrade: "./scripts/deployed-contracts/processing_and_upgrade.json",
     rewards: "./scripts/deployed-contracts/rewards.json",
     areas: "./scripts/deployed-contracts/areas.json",
-    codex_adventures: "./scripts/deployed-contracts/codex_dventures.json",
+    codex_adventures: "./scripts/deployed-contracts/codex_adventures.json",
     adventures: "./scripts/deployed-contracts/adventures.json",
+    adventure_controls: "./scripts/deployed-contracts/adventure_controls.json",
     random: "./scripts/deployed-contracts/random.json",
 }
 
