@@ -53,47 +53,47 @@ contract CodexHelmetsLight is Initializable {
     function helmet(uint id, uint tier) public view returns (GameObjects.Helmet memory) {
         require(tier < 10, "t");
 
-        if (id == 1) {
+        if (id == 43) {
             return applyTier(SoldiersHat(tier), tier, 1);
-        } else if (id == 2) {
+        } else if (id == 44) {
             return applyTier(ExecutionerHat(tier), tier, 1);
-        } else if (id == 3) {
+        } else if (id == 45) {
             return applyTier(KnightsHat(tier), tier, 1);
-        } else if (id == 4) {
+        } else if (id == 46) {
             return applyTier(DwarvenHat(tier), tier, 1);
-        } else if (id == 5) {
+        } else if (id == 47) {
             return applyTier(ScaleHat(tier), tier, 1);
-        } else if (id == 6) {
+        } else if (id == 48) {
             return applyTier(WingedHat(tier), tier, 2);
-        } else if (id == 7) {
+        } else if (id == 49) {
             return applyTier(DraconicHat(tier), tier, 2);
-        } else if (id == 8) {
+        } else if (id == 50) {
             return applyTier(ArgentHat(tier), tier, 2);
-        } else if (id == 9) {
+        } else if (id == 51) {
             return applyTier(GoldenHat(tier), tier, 3);
-        } else if (id == 10) {
+        } else if (id == 52) {
             return applyTier(MidassHat(tier), tier, 3);
-        } else if (id == 11) {
+        } else if (id == 53) {
             return applyTier(JuggernautHat(tier), tier, 4);
-        } else if (id == 12) {
+        } else if (id == 54) {
             return applyTier(ChosensHat(tier), tier, 4);
-        } else if (id == 13) {
+        } else if (id == 55) {
             return applyTier(TemplarHat(tier), tier, 5);
-        } else if (id == 14) {
+        } else if (id == 56) {
             return applyTier(VanguardHat(tier), tier, 6);
-        } else if (id == 15) {
+        } else if (id == 57) {
             return applyTier(VoidDwellerHat(tier), tier, 7);
-        } else if (id == 16) {
+        } else if (id == 58) {
             return applyTier(SunHat(tier), tier, 9);
-        } else if (id == 17) {
+        } else if (id == 59) {
             return applyTier(MoonHat(tier), tier, 11);
-        } else if (id == 18) {
+        } else if (id == 60) {
             return applyTier(DemonicHat(tier), tier, 13);
-        } else if (id == 19) {
+        } else if (id == 61) {
             return applyTier(AngelicHat(tier), tier, 15);
-        } else if (id == 20) {
+        } else if (id == 62) {
             return applyTier(CycleHat(tier), tier, 19);
-        } else if (id == 21) {
+        } else if (id == 63) {
             return applyTier(EternalHat(tier), tier, 10);
         }
 

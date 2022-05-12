@@ -51,13 +51,99 @@ ERC721EnumerableUpgradeable
         _mint(player, nextToken);
     }
 
+    function mintBeginnerSet(uint summoner, address to, GameObjects.Class _class) external onlyGameContracts {
+        uint256 nextToken = totalSupply() + 1;
+        (uint weaponId, uint armorId, uint offhandId) = getDefaultItems(_class);
+        tokenToType[nextToken] = GameObjects.ItemType.WEAPON;
+        // e.g weapon
+        tokenToItemId[nextToken] = weaponId;
+        // WEAPON id
+        nextToken++;
+        tokenToType[nextToken] = GameObjects.ItemType.OFFHAND;
+        // e.g weapon
+        tokenToItemId[nextToken] = offhandId;
+        // OFFHAND id
+        nextToken++;
+        tokenToType[nextToken] = GameObjects.ItemType.HELMET;
+        // e.g weapon
+        tokenToItemId[nextToken] = armorId;
+        // HELMET id
+        nextToken++;
+        tokenToType[nextToken] = GameObjects.ItemType.ARMOR;
+        // e.g weapon
+        tokenToItemId[nextToken] = armorId;
+        // ARMOR id
+        nextToken++;
+        tokenToType[nextToken] = GameObjects.ItemType.BOOTS;
+        // e.g weapon
+        tokenToItemId[nextToken] = armorId;
+        // BOOTS id
+
+
+        // COMMON
+        // amulet
+        nextToken++;
+        tokenToType[nextToken] = GameObjects.ItemType.AMULET;
+        tokenToItemId[nextToken] = 1;
+        // ring
+        nextToken++;
+        tokenToType[nextToken] = GameObjects.ItemType.RING;
+        tokenToItemId[nextToken] = 1;
+        // earring
+        nextToken++;
+        tokenToType[nextToken] = GameObjects.ItemType.EARRING;
+        tokenToItemId[nextToken] = 1;
+        // belt
+        nextToken++;
+        tokenToType[nextToken] = GameObjects.ItemType.BELT;
+        tokenToItemId[nextToken] = 1;
+    }
+
+    function getDefaultItems(GameObjects.Class _class) internal view returns (uint weaponId, uint armorId, uint offhandId) {
+        if (_class == GameObjects.Class.Barbarian) {
+            weaponId = 1;
+            armorId = 1;
+            offhandId = 127;
+            // shield
+        } else if (_class == GameObjects.Class.Paladin) {
+            weaponId = 1;
+            armorId = 1;
+            offhandId = 127;
+            // shield
+        } else if (_class == GameObjects.Class.Assassin) {
+            weaponId = 22;
+            armorId = 22;
+            offhandId = 106;
+        } else if (_class == GameObjects.Class.Wizard) {
+            weaponId = 85;
+            armorId = 43;
+            offhandId = 106;
+        } else if (_class == GameObjects.Class.Necromancer) {
+            weaponId = 64;
+            armorId = 43;
+            offhandId = 106;
+        } else if (_class == GameObjects.Class.Priest) {
+            weaponId = 85;
+            armorId = 43;
+            offhandId = 106;
+        } else if (_class == GameObjects.Class.Engineer) {
+            weaponId = 1;
+            armorId = 22;
+            offhandId = 106;
+        } else if (_class == GameObjects.Class.Ranger) {
+            weaponId = 43;
+            armorId = 22;
+            offhandId = 127;
+        }
+    }
+
     function burnItem(uint256 tokenId) external onlyGameContracts {
         _burn(tokenId);
     }
 
     function upgrade(uint256 id) external onlyGameContracts {
         // @TODO implement upgrade costs and burners.
-        require(tokenToEnchantmentLevel[id]+1 < 10, "exceeds");
+        require(tokenToEnchantmentLevel[id] + 1 < 10, "exceeds");
         tokenToEnchantmentLevel[id]++;
     }
 

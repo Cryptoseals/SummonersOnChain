@@ -47,47 +47,47 @@ contract CodexBootsMedium is Initializable {
     function boots(uint id, uint tier) public view returns (GameObjects.Boots memory) {
         require(tier < 10, "t");
 
-        if (id == 1) {
+        if (id ==  22) {
             return applyTier(SoldiersGreaves(tier), tier, 1);
-        } else if (id == 2) {
+        } else if (id ==  23) {
             return applyTier(ExecutionerGreaves(tier), tier, 1);
-        } else if (id == 3) {
+        } else if (id ==  24) {
             return applyTier(KnightsGreaves(tier), tier, 1);
-        } else if (id == 4) {
+        } else if (id ==  25) {
             return applyTier(DwarvenGreaves(tier), tier, 1);
-        } else if (id == 5) {
+        } else if (id ==  26) {
             return applyTier(ScaleGreaves(tier), tier, 1);
-        } else if (id == 6) {
+        } else if (id ==  27) {
             return applyTier(WingedGreaves(tier), tier, 2);
-        } else if (id == 7) {
+        } else if (id ==  28) {
             return applyTier(DraconicGreaves(tier), tier, 2);
-        } else if (id == 8) {
+        } else if (id ==  29) {
             return applyTier(ArgentGreaves(tier), tier, 2);
-        } else if (id == 9) {
+        } else if (id ==  30) {
             return applyTier(GoldenGreaves(tier), tier, 3);
-        } else if (id == 10) {
+        } else if (id ==  31) {
             return applyTier(MidassGreaves(tier), tier, 3);
-        } else if (id == 11) {
+        } else if (id ==  32) {
             return applyTier(JuggernautGreaves(tier), tier, 4);
-        } else if (id == 12) {
+        } else if (id ==  33) {
             return applyTier(ChosensGreaves(tier), tier, 4);
-        } else if (id == 13) {
+        } else if (id ==  34) {
             return applyTier(TemplarGreaves(tier), tier, 5);
-        } else if (id == 14) {
+        } else if (id ==  35) {
             return applyTier(VanguardGreaves(tier), tier, 6);
-        } else if (id == 15) {
+        } else if (id ==  36) {
             return applyTier(VoidDwellerGreaves(tier), tier, 7);
-        } else if (id == 16) {
+        } else if (id ==  37) {
             return applyTier(SunGreaves(tier), tier, 9);
-        } else if (id == 17) {
+        } else if (id ==  38) {
             return applyTier(MoonGreaves(tier), tier, 11);
-        } else if (id == 18) {
+        } else if (id ==  39) {
             return applyTier(DemonicGreaves(tier), tier, 13);
-        } else if (id == 19) {
+        } else if (id ==  40) {
             return applyTier(AngelicGreaves(tier), tier, 15);
-        } else if (id == 20) {
+        } else if (id ==  41) {
             return applyTier(CycleGreaves(tier), tier, 19);
-        } else if (id == 21) {
+        } else if (id ==  42) {
             return applyTier(EternalGreaves(tier), tier, 10);
         }
 
