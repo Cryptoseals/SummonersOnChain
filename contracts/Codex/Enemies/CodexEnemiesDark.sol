@@ -67,7 +67,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
     //101-125 DARK
     function HauntingShadow(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Haunting Shadow";
+//        _enemy.MonsterMetadata.name = "Haunting Shadow";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
@@ -102,7 +102,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function CorruptedMage(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Corrupted Mage";
+//        _enemy.MonsterMetadata.name = "Corrupted Mage";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
@@ -136,7 +136,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function CreatureOfNight(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Creature Of Night";
+//        _enemy.MonsterMetadata.name = "Creature Of Night";
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
         _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
@@ -169,7 +169,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function BackstreetVampire(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Backstreet Vampire";
+//        _enemy.MonsterMetadata.name = "Backstreet Vampire";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
@@ -203,7 +203,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function RestlessSpirit(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Restless Spirit";
+//        _enemy.MonsterMetadata.name = "Restless Spirit";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
@@ -237,7 +237,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function CorruptedWraith(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Corrupted Wraith";
+//        _enemy.MonsterMetadata.name = "Corrupted Wraith";
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
         _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
@@ -270,7 +270,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function CorruptedGoblen(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Corrupted Goblen";
+//        _enemy.MonsterMetadata.name = "Corrupted Goblen";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
@@ -304,7 +304,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function Succubus(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Succubus";
+//        _enemy.MonsterMetadata.name = "Succubus";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
@@ -338,7 +338,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function Archfiend(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Backstreet Vampire";
+//        _enemy.MonsterMetadata.name = "Backstreet Vampire";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
@@ -372,7 +372,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function ShadowNaga(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Shadow Naga";
+//        _enemy.MonsterMetadata.name = "Shadow Naga";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
@@ -406,7 +406,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function Soulsmith(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Soulsmith";
+//        _enemy.MonsterMetadata.name = "Soulsmith";
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
         _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
@@ -439,7 +439,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function Mimi(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Mimi";
+//        _enemy.MonsterMetadata.name = "Mimi";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
@@ -473,7 +473,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function Gigabat(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Gigabat";
+//        _enemy.MonsterMetadata.name = "Gigabat";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
@@ -507,7 +507,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function Bloodrainer(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Bloodrainer";
+//        _enemy.MonsterMetadata.name = "Bloodrainer";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
@@ -541,7 +541,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function CorruptedDepedus(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Corrupted Depedus";
+//        _enemy.MonsterMetadata.name = "Corrupted Depedus";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
@@ -575,7 +575,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function Cyberdark(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Cyberdark";
+//        _enemy.MonsterMetadata.name = "Cyberdark";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
@@ -609,7 +609,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function CorruptedBaphomet(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Corrupted Baphomet";
+//        _enemy.MonsterMetadata.name = "Corrupted Baphomet";
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
         _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
@@ -642,7 +642,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function CorruptedDarthys(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Corrupted Darthys";
+//        _enemy.MonsterMetadata.name = "Corrupted Darthys";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
@@ -676,7 +676,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function Darkgoyle(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Darkgoyle";
+//        _enemy.MonsterMetadata.name = "Darkgoyle";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
@@ -710,7 +710,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function CorruptedWanderer(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Corrupted Wanderer";
+//        _enemy.MonsterMetadata.name = "Corrupted Wanderer";
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
         _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
@@ -743,7 +743,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function Grenth(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Grenth";
+//        _enemy.MonsterMetadata.name = "Grenth";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
@@ -777,7 +777,7 @@ contract CodexEnemiesDark is Initializable, InitNavigator {
     }
 
     function Deathbringer(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Deathbringer";
+//        _enemy.MonsterMetadata.name = "Deathbringer";
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.DARK, lvl);
 
         _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({

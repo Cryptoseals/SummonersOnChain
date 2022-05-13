@@ -70,7 +70,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
     //126-150 HOLY
     function ShinyWorm(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Shiny Worm";
+//        _enemy.MonsterMetadata.name = "Shiny Worm";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
 
@@ -104,7 +104,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function DivineNeedle(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Divine Needle";
+//        _enemy.MonsterMetadata.name = "Divine Needle";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
@@ -139,7 +139,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function HolyElemental(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Holy Elemental";
+//        _enemy.MonsterMetadata.name = "Holy Elemental";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
 
@@ -173,7 +173,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function ProphetsChest(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Prophet's Chest";
+//        _enemy.MonsterMetadata.name = "Prophet's Chest";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
@@ -208,7 +208,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function PaladinofFalseGod(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Paladin of False God";
+//        _enemy.MonsterMetadata.name = "Paladin of False God";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
@@ -243,7 +243,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function CorruptedLuminousSoldier(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Corrupted Luminous Soldier";
+//        _enemy.MonsterMetadata.name = "Corrupted Luminous Soldier";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
 
@@ -277,7 +277,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function MisguidedCleric(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Misguided Cleric";
+//        _enemy.MonsterMetadata.name = "Misguided Cleric";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
@@ -312,7 +312,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function AncientHolyBook(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Ancient Holy Book";
+//        _enemy.MonsterMetadata.name = "Ancient Holy Book";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
@@ -347,7 +347,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function DivineCultist(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Divine Cultist";
+//        _enemy.MonsterMetadata.name = "Divine Cultist";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
 
@@ -381,7 +381,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function ShinyNaga(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Shiny Naga";
+//        _enemy.MonsterMetadata.name = "Shiny Naga";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
 
@@ -415,7 +415,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function CorruptedElkar(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Corrupted  Elkar";
+//        _enemy.MonsterMetadata.name = "Corrupted  Elkar";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
@@ -450,7 +450,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function PriestOfTheOrder(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Priest Of The Order";
+//        _enemy.MonsterMetadata.name = "Priest Of The Order";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
@@ -485,7 +485,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function DivineOrderGeneral(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Divine Order General";
+//        _enemy.MonsterMetadata.name = "Divine Order General";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
 
@@ -519,7 +519,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function CorruptedSentinel(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Corrupted Sentinel";
+//        _enemy.MonsterMetadata.name = "Corrupted Sentinel";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
@@ -554,7 +554,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function FallenAngel(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Fallen Angel";
+//        _enemy.MonsterMetadata.name = "Fallen Angel";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
@@ -589,7 +589,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function CorruptedPegasus(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Corrupted Pegasus";
+//        _enemy.MonsterMetadata.name = "Corrupted Pegasus";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
@@ -624,7 +624,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function HeavenFallenLion(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Heaven Fallen Lion";
+//        _enemy.MonsterMetadata.name = "Heaven Fallen Lion";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
@@ -659,7 +659,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function GaladusTheSunborn(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Galadus the Sunborn";
+//        _enemy.MonsterMetadata.name = "Galadus the Sunborn";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
@@ -694,7 +694,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function CorruptedLumenicia(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Corrupted Lumenicia";
+//        _enemy.MonsterMetadata.name = "Corrupted Lumenicia";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
@@ -729,7 +729,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function Andromedus(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Andromedus";
+//        _enemy.MonsterMetadata.name = "Andromedus";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
@@ -764,7 +764,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function CorruptedTemplar(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Corrupted Templar";
+//        _enemy.MonsterMetadata.name = "Corrupted Templar";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);
 
@@ -798,7 +798,7 @@ contract CodexEnemiesHoly is Initializable, InitNavigator {
     }
 
     function TheSunGod(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "The Sun God";
+//        _enemy.MonsterMetadata.name = "The Sun God";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.HOLY, lvl);

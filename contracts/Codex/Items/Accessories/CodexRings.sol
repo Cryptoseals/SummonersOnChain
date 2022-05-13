@@ -80,36 +80,57 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Ring memory _ring) public view returns (GameObjects.Ring memory) {
-        GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);
-        _ring.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_ring.generatedStatBonus, _genStatFromPreFixAndSuffix);
+
+        if (_pre.isPercentage) {
+            _ring.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_ring.generatedStatBonus, _pre.generatedStatBonus);
+            _ring.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_ring.elementalStats, _pre.elementalStats);
+        } else {
+            _ring.generatedStatBonus = EquipableUtils.sumGeneratedStats(_ring.generatedStatBonus, _pre.generatedStatBonus);
+            _ring.elementalStats = EquipableUtils.sumGeneratedElementalStats(_ring.elementalStats, _pre.elementalStats);
+        }
+
+        if (_suf.isPercentage) {
+            _ring.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_ring.generatedStatBonus, _suf.generatedStatBonus);
+            _ring.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_ring.elementalStats, _suf.elementalStats);
+        } else {
+            _ring.generatedStatBonus = EquipableUtils.sumGeneratedStats(_ring.generatedStatBonus, _suf.generatedStatBonus);
+            _ring.elementalStats = EquipableUtils.sumGeneratedElementalStats(_ring.elementalStats, _suf.elementalStats);
+        }
 
         _ring.statBonus = EquipableUtils.sumStats(_ring.statBonus, _pre.statBonus);
         _ring.statBonus = EquipableUtils.sumStats(_ring.statBonus, _suf.statBonus);
 
-        GameObjects.ElementalStats memory _eleStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedElementalStats(_pre.elementalStats, _suf.elementalStats);
-
-        _ring.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_ring.elementalStats, _eleStatFromPreFixAndSuffix);
-        _ring.metadata.name = string(abi.encodePacked(_pre.title, " ", _ring.metadata.name, " ", _suf.title));
+        //        _ring.metadata.name = string(abi.encodePacked(_pre.title, " ", _ring.metadata.name, " ", _suf.title));
         return _ring;
     }
 
     function applyPrefix(GameObjects.Prefix memory _pre, GameObjects.Ring memory _ring) public view returns (GameObjects.Ring memory) {
-        _ring.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_ring.generatedStatBonus, _pre.generatedStatBonus);
+        if (_pre.isPercentage) {
+            _ring.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_ring.generatedStatBonus, _pre.generatedStatBonus);
+            _ring.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_ring.elementalStats, _pre.elementalStats);
+        } else {
+            _ring.generatedStatBonus = EquipableUtils.sumGeneratedStats(_ring.generatedStatBonus, _pre.generatedStatBonus);
+            _ring.elementalStats = EquipableUtils.sumGeneratedElementalStats(_ring.elementalStats, _pre.elementalStats);
+        }
 
         _ring.statBonus = EquipableUtils.sumStats(_ring.statBonus, _pre.statBonus);
 
-        _ring.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_ring.elementalStats, _pre.elementalStats);
-        _ring.metadata.name = string(abi.encodePacked(_pre.title, " ", _ring.metadata.name));
+        //        _ring.metadata.name = string(abi.encodePacked(_pre.title, " ", _ring.metadata.name));
         return _ring;
     }
 
     function applySuffix(GameObjects.Suffix memory _suf, GameObjects.Ring memory _ring) public view returns (GameObjects.Ring memory) {
-        _ring.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_ring.generatedStatBonus, _suf.generatedStatBonus);
+        if (_suf.isPercentage) {
+            _ring.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_ring.generatedStatBonus, _suf.generatedStatBonus);
+            _ring.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_ring.elementalStats, _suf.elementalStats);
+        } else {
+            _ring.generatedStatBonus = EquipableUtils.sumGeneratedStats(_ring.generatedStatBonus, _suf.generatedStatBonus);
+            _ring.elementalStats = EquipableUtils.sumGeneratedElementalStats(_ring.elementalStats, _suf.elementalStats);
+        }
 
         _ring.statBonus = EquipableUtils.sumStats(_ring.statBonus, _suf.statBonus);
 
-        _ring.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_ring.elementalStats, _suf.elementalStats);
-        _ring.metadata.name = string(abi.encodePacked(_ring.metadata.name, " ", _suf.title));
+        //        _ring.metadata.name = string(abi.encodePacked(_ring.metadata.name, " ", _suf.title));
         return _ring;
     }
 
@@ -241,7 +262,7 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function CopperRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 1;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Copper Ring";
+        //        _ring.metadata.name = "Copper Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -250,12 +271,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(0);
         _ring.generatedStatBonus = ringGenStats(0);
+        _ring.elementalStats = ringEleStats(0);
     }
 
     function TinRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 2;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Tin Ring";
+        //        _ring.metadata.name = "Tin Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -264,12 +286,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(1);
         _ring.generatedStatBonus = ringGenStats(1);
+        _ring.elementalStats = ringEleStats(1);
     }
 
     function IronRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 3;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Iron Ring";
+        //        _ring.metadata.name = "Iron Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -278,12 +301,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(2);
         _ring.generatedStatBonus = ringGenStats(2);
+        _ring.elementalStats = ringEleStats(2);
     }
 
     function SilverRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 4;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Silver Ring";
+        //        _ring.metadata.name = "Silver Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -292,12 +316,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(3);
         _ring.generatedStatBonus = ringGenStats(3);
+        _ring.elementalStats = ringEleStats(3);
     }
 
     function GoldRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 5;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Gold Ring";
+        //        _ring.metadata.name = "Gold Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -306,12 +331,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(4);
         _ring.generatedStatBonus = ringGenStats(4);
+        _ring.elementalStats = ringEleStats(4);
     }
 
     function AmberRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 6;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Amber Ring";
+        //        _ring.metadata.name = "Amber Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -320,12 +346,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(5);
         _ring.generatedStatBonus = ringGenStats(5);
+        _ring.elementalStats = ringEleStats(5);
     }
 
     function PearlRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 7;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Pearl Ring";
+        //        _ring.metadata.name = "Pearl Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -334,12 +361,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(6);
         _ring.generatedStatBonus = ringGenStats(6);
+        _ring.elementalStats = ringEleStats(6);
     }
 
     function AmethystRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 8;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Amethyst Ring";
+        //        _ring.metadata.name = "Amethyst Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -348,12 +376,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(7);
         _ring.generatedStatBonus = ringGenStats(7);
+        _ring.elementalStats = ringEleStats(7);
     }
 
     function CoralRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 9;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Coral Ring";
+        //        _ring.metadata.name = "Coral Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -362,12 +391,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(8);
         _ring.generatedStatBonus = ringGenStats(8);
+        _ring.elementalStats = ringEleStats(8);
     }
 
     function RubyRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 10;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Ruby Ring";
+        //        _ring.metadata.name = "Ruby Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -376,12 +406,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(9);
         _ring.generatedStatBonus = ringGenStats(9);
+        _ring.elementalStats = ringEleStats(9);
     }
 
     function ShinyRubyRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 11;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Shiny Ruby Ring";
+        //        _ring.metadata.name = "Shiny Ruby Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -390,12 +421,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(10);
         _ring.generatedStatBonus = ringGenStats(10);
+        _ring.elementalStats = ringEleStats(10);
     }
 
     function TopazRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 12;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Topaz Ring";
+        //        _ring.metadata.name = "Topaz Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -404,12 +436,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(11);
         _ring.generatedStatBonus = ringGenStats(11);
+        _ring.elementalStats = ringEleStats(11);
     }
 
     function ShinyTopazRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 13;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Shiny Topaz Ring";
+        //        _ring.metadata.name = "Shiny Topaz Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -418,12 +451,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(12);
         _ring.generatedStatBonus = ringGenStats(12);
+        _ring.elementalStats = ringEleStats(12);
     }
 
     function AzuriteRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 14;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Azurite Ring";
+        //        _ring.metadata.name = "Azurite Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -432,12 +466,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(13);
         _ring.generatedStatBonus = ringGenStats(13);
+        _ring.elementalStats = ringEleStats(13);
     }
 
     function ShinyAzuriteRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 15;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Shiny Azurite Ring";
+        //        _ring.metadata.name = "Shiny Azurite Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -446,12 +481,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(14);
         _ring.generatedStatBonus = ringGenStats(14);
+        _ring.elementalStats = ringEleStats(14);
     }
 
     function EmeraldRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 16;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Emerald Ring";
+        //        _ring.metadata.name = "Emerald Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -460,12 +496,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(15);
         _ring.generatedStatBonus = ringGenStats(15);
+        _ring.elementalStats = ringEleStats(15);
     }
 
     function ShinyEmeraldRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 17;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Shiny Emerald Ring";
+        //        _ring.metadata.name = "Shiny Emerald Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -474,12 +511,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(16);
         _ring.generatedStatBonus = ringGenStats(16);
+        _ring.elementalStats = ringEleStats(16);
     }
 
     function SapphireRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 18;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Sapphire Ring";
+        //        _ring.metadata.name = "Sapphire Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -488,12 +526,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(17);
         _ring.generatedStatBonus = ringGenStats(17);
+        _ring.elementalStats = ringEleStats(17);
     }
 
     function ShinySapphireRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 19;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Shiny Sapphire Ring";
+        //        _ring.metadata.name = "Shiny Sapphire Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -502,12 +541,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(18);
         _ring.generatedStatBonus = ringGenStats(18);
+        _ring.elementalStats = ringEleStats(18);
     }
 
     function DiamondRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 20;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Diamond Ring";
+        //        _ring.metadata.name = "Diamond Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -516,12 +556,13 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(19);
         _ring.generatedStatBonus = ringGenStats(19);
+        _ring.elementalStats = ringEleStats(19);
     }
 
     function ShinyDiamondRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 21;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        _ring.metadata.name = "Shiny Diamond Ring";
+        //        _ring.metadata.name = "Shiny Diamond Ring";
         _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
@@ -530,6 +571,7 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = ringStats(20);
         _ring.generatedStatBonus = ringGenStats(20);
+        _ring.elementalStats = ringEleStats(20);
     }
 
 
@@ -568,5 +610,11 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
         INFUSION : 0
         });
         return stats;
+    }
+
+
+    function ringEleStats(uint index) internal view returns (GameObjects.ElementalStats memory _genStats) {
+        _genStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_EDEF[index], EARTH_DEF : BASE_EDEF[index], COLD_DEF : BASE_EDEF[index], LIGHTNING_DEF : BASE_EDEF[index], DARK_DEF : BASE_EDEF[index], HOLY_DEF : BASE_EDEF[index], VOID_DEF : 0});
+        _genStats.ElementalAtk = GameObjects.ElementalAtk({FIRE_ATK : BASE_MATK[index], EARTH_ATK : BASE_MATK[index], COLD_ATK : BASE_MATK[index], LIGHTNING_ATK : BASE_MATK[index], DARK_ATK : BASE_MATK[index], HOLY_ATK : BASE_MATK[index], VOID_ATK : 0});
     }
 }

@@ -27,6 +27,7 @@ async function main() {
             HArmor.BASE_AGI,
             HArmor.BASE_DEX,
             HArmor.BASE_VIT,
+            HArmor.BASE_INT,
             HArmor.BASE_DEF,
             HArmor.BASE_M_DEF,
             HArmor.BASE_ELE_DEF,
@@ -46,6 +47,7 @@ async function main() {
             MArmor.BASE_AGI,
             MArmor.BASE_DEX,
             MArmor.BASE_VIT,
+            MArmor.BASE_INT,
             MArmor.BASE_DEF,
             MArmor.BASE_M_DEF,
             MArmor.BASE_ELE_DEF,
@@ -107,7 +109,6 @@ async function main() {
     await codexHelmetsMedium.deployed()
 
 
-
     let CodexHelmetsLight = await ethers.getContractFactory("CodexHelmetsLight")
     let codexHelmetsLight = await upgrades.deployProxy(CodexHelmetsLight,
         [
@@ -126,7 +127,6 @@ async function main() {
     await codexHelmetsLight.deployed()
 
 
-
     let CodexBootsHeavy = await ethers.getContractFactory("CodexBootsHeavy")
     let codexBootsHeavy = await upgrades.deployProxy(CodexBootsHeavy,
         [
@@ -134,6 +134,7 @@ async function main() {
             HBoots.BASE_AGI,
             HBoots.BASE_DEX,
             HBoots.BASE_VIT,
+            HBoots.BASE_INT,
             HBoots.BASE_DEF,
             HBoots.BASE_M_DEF,
             HBoots.BASE_ELE_DEF,
@@ -143,7 +144,6 @@ async function main() {
     await codexBootsHeavy.deployed()
 
 
-
     let CodexBootsMedium = await ethers.getContractFactory("CodexBootsMedium")
     let codexBootsMedium = await upgrades.deployProxy(CodexBootsMedium,
         [
@@ -151,6 +151,7 @@ async function main() {
             MBoots.BASE_AGI,
             MBoots.BASE_DEX,
             MBoots.BASE_VIT,
+            MBoots.BASE_INT,
             MBoots.BASE_DEF,
             MBoots.BASE_M_DEF,
             MBoots.BASE_ELE_DEF,
@@ -158,7 +159,6 @@ async function main() {
             MBoots.BASE_DODGE
         ]);
     await codexBootsMedium.deployed()
-
 
 
     let CodexBootsLight = await ethers.getContractFactory("CodexBootsLight")
@@ -223,20 +223,13 @@ async function main() {
     console.log("and set in navigator.")
 
 
-
     console.log("codexBootsLight deployed to:", codexBootsLight.address,)
     tx = await navigator.setGameContractsById(CONTRACTS.LIGHT_BOOTS_STATS, codexBootsLight.address, true)
     await tx.wait(1)
     console.log("and set in navigator.")
 
 
-
-
-
-
-
-
-    fs.writeFileSync(DeployedFileLocations.codex_amulets, JSON.stringify({
+    fs.writeFileSync(DeployedFileLocations.codex_armor, JSON.stringify({
         codexArmorsHeavy: codexArmorsHeavy.address,
         codexArmorsMedium: codexArmorsMedium.address,
         codexArmorsLight: codexArmorsLight.address,

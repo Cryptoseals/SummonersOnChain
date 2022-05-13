@@ -60,38 +60,57 @@ contract CodexHelmets is UpgradeableCodex {
     }
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Helmet memory _helmet) public pure returns (GameObjects.Helmet memory) {
-        GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);
-        _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_helmet.generatedStatBonus, _genStatFromPreFixAndSuffix);
+        if (_pre.isPercentage) {
+            _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_helmet.generatedStatBonus, _pre.generatedStatBonus);
+            _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_helmet.elementalStats, _pre.elementalStats);
+        } else {
+            _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStats(_helmet.generatedStatBonus, _pre.generatedStatBonus);
+            _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStats(_helmet.elementalStats, _pre.elementalStats);
+        }
+
+        if (_suf.isPercentage) {
+            _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_helmet.generatedStatBonus, _suf.generatedStatBonus);
+            _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_helmet.elementalStats, _suf.elementalStats);
+        } else {
+            _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStats(_helmet.generatedStatBonus, _suf.generatedStatBonus);
+            _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStats(_helmet.elementalStats, _suf.elementalStats);
+        }
 
         _helmet.statBonus = EquipableUtils.sumStats(_helmet.statBonus, _pre.statBonus);
         _helmet.statBonus = EquipableUtils.sumStats(_helmet.statBonus, _suf.statBonus);
 
-        GameObjects.ElementalStats memory _eleStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedElementalStats(_pre.elementalStats, _suf.elementalStats);
-
-        _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_helmet.elementalStats, _eleStatFromPreFixAndSuffix);
-        _helmet.metadata.name = string(abi.encodePacked(_pre.title, " ", _helmet.metadata.name, " ", _suf.title));
+//        _helmet.metadata.name = string(abi.encodePacked(_pre.title, " ", _helmet.metadata.name, " ", _suf.title));
         return _helmet;
     }
 
     function applyPrefix(GameObjects.Prefix memory _pre, GameObjects.Helmet memory _helmet) public pure returns (GameObjects.Helmet memory) {
-        _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_helmet.generatedStatBonus, _pre.generatedStatBonus);
+        if (_pre.isPercentage) {
+            _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_helmet.generatedStatBonus, _pre.generatedStatBonus);
+            _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_helmet.elementalStats, _pre.elementalStats);
+        } else {
+            _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStats(_helmet.generatedStatBonus, _pre.generatedStatBonus);
+            _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStats(_helmet.elementalStats, _pre.elementalStats);
+        }
 
         _helmet.statBonus = EquipableUtils.sumStats(_helmet.statBonus, _pre.statBonus);
 
-
-        _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_helmet.elementalStats, _pre.elementalStats);
-        _helmet.metadata.name = string(abi.encodePacked(_pre.title, " ", _helmet.metadata.name));
+//        _helmet.metadata.name = string(abi.encodePacked(_pre.title, " ", _helmet.metadata.name));
         return _helmet;
     }
 
     function applySuffix(GameObjects.Suffix memory _suf, GameObjects.Helmet memory _helmet) public pure returns (GameObjects.Helmet memory) {
-        _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_helmet.generatedStatBonus, _suf.generatedStatBonus);
+
+        if (_suf.isPercentage) {
+            _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_helmet.generatedStatBonus, _suf.generatedStatBonus);
+            _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_helmet.elementalStats, _suf.elementalStats);
+        } else {
+            _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStats(_helmet.generatedStatBonus, _suf.generatedStatBonus);
+            _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStats(_helmet.elementalStats, _suf.elementalStats);
+        }
 
         _helmet.statBonus = EquipableUtils.sumStats(_helmet.statBonus, _suf.statBonus);
 
-
-        _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_helmet.elementalStats, _suf.elementalStats);
-        _helmet.metadata.name = string(abi.encodePacked(_helmet.metadata.name, " ", _suf.title));
+//        _helmet.metadata.name = string(abi.encodePacked(_helmet.metadata.name, " ", _suf.title));
         return _helmet;
     }
 

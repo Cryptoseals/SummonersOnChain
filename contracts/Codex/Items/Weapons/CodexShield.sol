@@ -95,7 +95,7 @@ contract CodexShields is Initializable {
     function SmallWoodenShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 1;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Small Wooden Shield";
+//        _weapon.metadata.name = "Small Wooden Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
 
@@ -120,15 +120,15 @@ contract CodexShields is Initializable {
 
 
         // bonuses here
-        _weapon.statBonus = weaponStats(1);
-        _weapon.generatedStatBonus = weaponGenStats(1);
-        _weapon.elementalStats.ElementalDef = weaponEle(1);
+        _weapon.statBonus = weaponStats(0);
+        _weapon.generatedStatBonus = weaponGenStats(0);
+        _weapon.elementalStats.ElementalDef = weaponEle(0);
     }
 
     function SmallCopperShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 2;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Small Copper Shield";
+//        _weapon.metadata.name = "Small Copper Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 5;
@@ -149,7 +149,7 @@ contract CodexShields is Initializable {
     function SmallBronzeShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 3;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Small Bronze Shield";
+//        _weapon.metadata.name = "Small Bronze Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 10;
@@ -170,7 +170,7 @@ contract CodexShields is Initializable {
     function MediumCopperShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 4;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Medium Copper Shield";
+//        _weapon.metadata.name = "Medium Copper Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 15;
@@ -191,7 +191,7 @@ contract CodexShields is Initializable {
     function MediumBronzeShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 5;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Medium Bronze Shield";
+//        _weapon.metadata.name = "Medium Bronze Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 20;
@@ -212,7 +212,7 @@ contract CodexShields is Initializable {
     function TitaniumShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 6;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Titanium Shield";
+//        _weapon.metadata.name = "Titanium Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 25;
@@ -233,7 +233,7 @@ contract CodexShields is Initializable {
     function ChitinShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 7;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Chitin Shield";
+//        _weapon.metadata.name = "Chitin Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 30;
@@ -254,7 +254,7 @@ contract CodexShields is Initializable {
     function ChromiumShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 8;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Chromium Shield";
+//        _weapon.metadata.name = "Chromium Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 35;
@@ -275,7 +275,7 @@ contract CodexShields is Initializable {
     function DarksteelShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 9;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Darksteel Shield";
+//        _weapon.metadata.name = "Darksteel Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 40;
@@ -296,7 +296,7 @@ contract CodexShields is Initializable {
     function TungstenShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 10;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Tungsten Shield";
+//        _weapon.metadata.name = "Tungsten Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 45;
@@ -317,7 +317,7 @@ contract CodexShields is Initializable {
     function Moonshield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 11;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Moonshield";
+//        _weapon.metadata.name = "Moonshield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 50;
@@ -338,7 +338,7 @@ contract CodexShields is Initializable {
     function Sunshield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 12;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Sunshield";
+//        _weapon.metadata.name = "Sunshield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 55;
@@ -359,7 +359,7 @@ contract CodexShields is Initializable {
     function CycleShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 13;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Cycle Shield";
+//        _weapon.metadata.name = "Cycle Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 60;
@@ -380,7 +380,7 @@ contract CodexShields is Initializable {
     function PhantasmalShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 14;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Phantasmal Shield";
+//        _weapon.metadata.name = "Phantasmal Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 65;
@@ -401,7 +401,7 @@ contract CodexShields is Initializable {
     function HolyPaladinsShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 15;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Holy Paladin's Shield";
+//        _weapon.metadata.name = "Holy Paladin's Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 70;
@@ -422,7 +422,7 @@ contract CodexShields is Initializable {
     function LuminousShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 16;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Luminous Shield";
+//        _weapon.metadata.name = "Luminous Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 75;
@@ -443,7 +443,7 @@ contract CodexShields is Initializable {
     function ShieldOfCalamity(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 17;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Shield of Calamity";
+//        _weapon.metadata.name = "Shield of Calamity";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 80;
@@ -464,7 +464,7 @@ contract CodexShields is Initializable {
     function Reflector(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 18;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Reflector";
+//        _weapon.metadata.name = "Reflector";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 85;
@@ -485,7 +485,7 @@ contract CodexShields is Initializable {
     function EssenceCapacitorShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 20;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Essence Capacitor Shield";
+//        _weapon.metadata.name = "Essence Capacitor Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 90;
@@ -505,7 +505,7 @@ contract CodexShields is Initializable {
     function AetherealShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 21;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "Aethereal Shield";
+//        _weapon.metadata.name = "Aethereal Shield";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 95;
@@ -525,7 +525,7 @@ contract CodexShields is Initializable {
     function TheProtector(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 22;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-        _weapon.metadata.name = "TheProtector";
+//        _weapon.metadata.name = "TheProtector";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 100;

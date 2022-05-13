@@ -69,7 +69,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
     //51-75 COLD
     function ColdElemental(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Cold Elemental";
+//        _enemy.MonsterMetadata.name = "Cold Elemental";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -105,7 +105,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function FrostWorm(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Frost Worm";
+//        _enemy.MonsterMetadata.name = "Frost Worm";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -141,7 +141,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function SeaQueen(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Seaqueen";
+//        _enemy.MonsterMetadata.name = "Seaqueen";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -177,7 +177,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function KingCrab(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "King Crab";
+//        _enemy.MonsterMetadata.name = "King Crab";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -213,7 +213,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function ArcticZombie(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Arctic Zombie";
+//        _enemy.MonsterMetadata.name = "Arctic Zombie";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -249,7 +249,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function IceGolem(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Ice Golem";
+//        _enemy.MonsterMetadata.name = "Ice Golem";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -285,7 +285,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function Sharakus(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Sharakus";
+//        _enemy.MonsterMetadata.name = "Sharakus";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -321,7 +321,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function EldritchGrowth(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Eldritch Growth";
+//        _enemy.MonsterMetadata.name = "Eldritch Growth";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -357,7 +357,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function WinterFey(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Winter Fey";
+//        _enemy.MonsterMetadata.name = "Winter Fey";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -393,7 +393,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function FrostNaga(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Frost Naga";
+//        _enemy.MonsterMetadata.name = "Frost Naga";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -429,7 +429,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function Leviathan(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Leviathan";
+//        _enemy.MonsterMetadata.name = "Leviathan";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -465,7 +465,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function Seafallen(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Seafallen";
+//        _enemy.MonsterMetadata.name = "Seafallen";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -501,7 +501,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function MarinerWarjack(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Mariner Warjack";
+//        _enemy.MonsterMetadata.name = "Mariner Warjack";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -537,7 +537,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function Frostopus(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Frostopus";
+//        _enemy.MonsterMetadata.name = "Frostopus";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -573,7 +573,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function SeaHarpy(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Sea Harpy";
+//        _enemy.MonsterMetadata.name = "Sea Harpy";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
 
@@ -608,7 +608,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function FrostAnomaly(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Frost Anomaly";
+//        _enemy.MonsterMetadata.name = "Frost Anomaly";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -644,7 +644,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function FrigidPrince(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Frigid Prince";
+//        _enemy.MonsterMetadata.name = "Frigid Prince";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -680,7 +680,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function MutantIceBlaster(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Mutant Ice Blaster";
+//        _enemy.MonsterMetadata.name = "Mutant Ice Blaster";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -716,7 +716,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function AbominableYeti(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Abominable Yeti";
+//        _enemy.MonsterMetadata.name = "Abominable Yeti";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -752,7 +752,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function Remorhaz(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Remorhaz";
+//        _enemy.MonsterMetadata.name = "Remorhaz";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -788,7 +788,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function FrozenQueen(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Frozen Queen";
+//        _enemy.MonsterMetadata.name = "Frozen Queen";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);
@@ -824,7 +824,7 @@ contract CodexEnemiesCold is Initializable, InitNavigator {
     }
 
     function AurilTheFrostmaiden(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Auril The Frostmaiden";
+//        _enemy.MonsterMetadata.name = "Auril The Frostmaiden";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.COLD, lvl);

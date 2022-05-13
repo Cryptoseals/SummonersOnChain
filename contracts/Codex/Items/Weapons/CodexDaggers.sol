@@ -94,7 +94,7 @@ contract CodexDaggers is Initializable {
     function BreadKnife(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 1;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Bread Knife";
+//        _weapon.metadata.name = "Bread Knife";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
 
@@ -126,7 +126,7 @@ contract CodexDaggers is Initializable {
     function SilverDagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 2;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Silver Dagger";
+//        _weapon.metadata.name = "Silver Dagger";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 5;
@@ -146,7 +146,7 @@ contract CodexDaggers is Initializable {
     function Twinkle(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 3;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Twinkle";
+//        _weapon.metadata.name = "Twinkle";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 10;
@@ -166,7 +166,7 @@ contract CodexDaggers is Initializable {
     function Razor(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 4;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Razor";
+//        _weapon.metadata.name = "Razor";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 15;
@@ -186,7 +186,7 @@ contract CodexDaggers is Initializable {
     function Quickblade(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 5;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Quickblade";
+//        _weapon.metadata.name = "Quickblade";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 20;
@@ -206,7 +206,7 @@ contract CodexDaggers is Initializable {
     function GoldenStiletto(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 6;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Golden Stiletto";
+//        _weapon.metadata.name = "Golden Stiletto";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 25;
@@ -226,7 +226,7 @@ contract CodexDaggers is Initializable {
     function ShadowsteelKris(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 7;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Shadowsteel Kris";
+//        _weapon.metadata.name = "Shadowsteel Kris";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 30;
@@ -246,7 +246,7 @@ contract CodexDaggers is Initializable {
     function PocketKiller(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 8;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Pocket Killer";
+//        _weapon.metadata.name = "Pocket Killer";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 35;
@@ -266,7 +266,7 @@ contract CodexDaggers is Initializable {
     function NightfallDagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 9;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Nightfall Dagger";
+//        _weapon.metadata.name = "Nightfall Dagger";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 40;
@@ -286,7 +286,7 @@ contract CodexDaggers is Initializable {
     function Voidslasher(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 10;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Voidslasher";
+//        _weapon.metadata.name = "Voidslasher";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 45;
@@ -306,7 +306,7 @@ contract CodexDaggers is Initializable {
     function DaggerOfMoonlight(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 11;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Dagger of Moonlight";
+//        _weapon.metadata.name = "Dagger of Moonlight";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 50;
@@ -326,7 +326,7 @@ contract CodexDaggers is Initializable {
     function DaggerOfSunlight(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 12;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Dagger of Sunlight";
+//        _weapon.metadata.name = "Dagger of Sunlight";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 55;
@@ -346,7 +346,7 @@ contract CodexDaggers is Initializable {
     function CycleDagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 13;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Cycle Dagger";
+//        _weapon.metadata.name = "Cycle Dagger";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 60;
@@ -366,7 +366,7 @@ contract CodexDaggers is Initializable {
     function PhantasmalDagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 14;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Phantasmal Dagger";
+//        _weapon.metadata.name = "Phantasmal Dagger";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 65;
@@ -386,7 +386,7 @@ contract CodexDaggers is Initializable {
     function DefilingRazor(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 15;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Defiling Razor";
+//        _weapon.metadata.name = "Defiling Razor";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 70;
@@ -406,7 +406,7 @@ contract CodexDaggers is Initializable {
     function DaggerOfTheSuccubus(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 16;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Dagger of the Succubus";
+//        _weapon.metadata.name = "Dagger of the Succubus";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 75;
@@ -426,7 +426,7 @@ contract CodexDaggers is Initializable {
     function Pyrodagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 17;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Pyrodagger";
+//        _weapon.metadata.name = "Pyrodagger";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 80;
@@ -446,7 +446,7 @@ contract CodexDaggers is Initializable {
     function PointOfZero(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 18;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Point Of Zero";
+//        _weapon.metadata.name = "Point Of Zero";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 85;
@@ -466,7 +466,7 @@ contract CodexDaggers is Initializable {
     function DaggerOfIncursion(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 20;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Dagger of Incursion";
+//        _weapon.metadata.name = "Dagger of Incursion";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 90;
@@ -486,7 +486,7 @@ contract CodexDaggers is Initializable {
     function Kingmaker(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 21;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Kingmaker";
+//        _weapon.metadata.name = "Kingmaker";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 95;
@@ -506,7 +506,7 @@ contract CodexDaggers is Initializable {
     function Blooddrainer(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 22;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Blooddrainer";
+//        _weapon.metadata.name = "Blooddrainer";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 100;

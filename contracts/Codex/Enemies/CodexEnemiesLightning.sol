@@ -68,7 +68,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
 
     //76-100 LIGHTNING
     function LightningElemental(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Lightning Elemental";
+//        _enemy.MonsterMetadata.name = "Lightning Elemental";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -103,7 +103,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function StormWorm(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Storm Worm";
+//        _enemy.MonsterMetadata.name = "Storm Worm";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -138,7 +138,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function ShockingNeedle(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Shocking Needle";
+//        _enemy.MonsterMetadata.name = "Shocking Needle";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -173,7 +173,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function Wolfury(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Wolfury";
+//        _enemy.MonsterMetadata.name = "Wolfury";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -208,7 +208,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function Shocksnake(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Shocksnake";
+//        _enemy.MonsterMetadata.name = "Shocksnake";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -243,7 +243,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function Voltarion(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Voltarion";
+//        _enemy.MonsterMetadata.name = "Voltarion";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -278,7 +278,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function HauntingStorm(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Haunting Storm";
+//        _enemy.MonsterMetadata.name = "Haunting Storm";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -313,7 +313,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function SparkyOgre(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Sparky Ogre";
+//        _enemy.MonsterMetadata.name = "Sparky Ogre";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
 
@@ -347,7 +347,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function ExaltedPylon(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Exalted Pilon";
+//        _enemy.MonsterMetadata.name = "Exalted Pilon";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -382,7 +382,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function StormNagaClan(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Storm Naga Clan";
+//        _enemy.MonsterMetadata.name = "Storm Naga Clan";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -417,7 +417,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function LightningSculpture(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Lightning Sculpture";
+//        _enemy.MonsterMetadata.name = "Lightning Sculpture";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -452,7 +452,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function WizardLizard(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Wizard Lizard";
+//        _enemy.MonsterMetadata.name = "Wizard Lizard";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -487,7 +487,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function GiantStormHawk(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Giant Storm Hawk";
+//        _enemy.MonsterMetadata.name = "Giant Storm Hawk";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
 
@@ -521,7 +521,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function Thundervolt(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Thundervolt";
+//        _enemy.MonsterMetadata.name = "Thundervolt";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -556,7 +556,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function Electra(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Electra";
+//        _enemy.MonsterMetadata.name = "Electra";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -591,7 +591,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function Stormveil(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Stormveil";
+//        _enemy.MonsterMetadata.name = "Stormveil";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
 
@@ -625,7 +625,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function Thornado(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Thornado";
+//        _enemy.MonsterMetadata.name = "Thornado";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -660,7 +660,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function Levin(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Levin";
+//        _enemy.MonsterMetadata.name = "Levin";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
 
@@ -694,7 +694,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function ThunderSerpent(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Thunder Serpent";
+//        _enemy.MonsterMetadata.name = "Thunder Serpent";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -729,7 +729,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function Voltvoid(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Voltvoid";
+//        _enemy.MonsterMetadata.name = "Voltvoid";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -764,7 +764,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function StormbonetheUndead(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Stormbone the Undead";
+//        _enemy.MonsterMetadata.name = "Stormbone the Undead";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
@@ -799,7 +799,7 @@ contract CodexEnemiesLightning is Initializable, InitNavigator {
     }
 
     function LightningBehemoth(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Lightning Behemoth";
+//        _enemy.MonsterMetadata.name = "Lightning Behemoth";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.LIGHTNING, lvl);
 

@@ -100,8 +100,8 @@ contract CodexBootsLight is Initializable {
     function SoldiersSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 1;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Soldier's Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Soldier's Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
 
         // requirements here
@@ -113,13 +113,13 @@ contract CodexBootsLight is Initializable {
         // }
         _grieves.requirement.classRequirement = classRequirement();
 
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
 
 
         // bonuses here
@@ -131,18 +131,18 @@ contract CodexBootsLight is Initializable {
     function ExecutionerSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 2;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Executioner's Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Executioner's Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 5;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(1);
         _grieves.generatedStatBonus = armorGenStats(1);
@@ -152,18 +152,18 @@ contract CodexBootsLight is Initializable {
     function KnightsSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 3;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Knight's Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Knight's Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 10;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(2);
         _grieves.generatedStatBonus = armorGenStats(2);
@@ -173,18 +173,18 @@ contract CodexBootsLight is Initializable {
     function DwarvenSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 4;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Dwarven Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Dwarven Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 15;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(3);
         _grieves.generatedStatBonus = armorGenStats(3);
@@ -194,18 +194,18 @@ contract CodexBootsLight is Initializable {
     function ScaleSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 5;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Scale Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Scale Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 20;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(4);
         _grieves.generatedStatBonus = armorGenStats(4);
@@ -215,18 +215,18 @@ contract CodexBootsLight is Initializable {
     function WingedSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 6;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Winged Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Winged Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 25;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(5);
         _grieves.generatedStatBonus = armorGenStats(5);
@@ -236,18 +236,18 @@ contract CodexBootsLight is Initializable {
     function DraconicSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 7;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Draconic Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Draconic Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 30;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(6);
         _grieves.generatedStatBonus = armorGenStats(6);
@@ -257,18 +257,18 @@ contract CodexBootsLight is Initializable {
     function ArgentSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 8;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Argent Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Argent Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 35;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(7);
         _grieves.generatedStatBonus = armorGenStats(7);
@@ -278,18 +278,18 @@ contract CodexBootsLight is Initializable {
     function GoldenSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 9;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Golden Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Golden Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 40;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(8);
         _grieves.generatedStatBonus = armorGenStats(8);
@@ -299,18 +299,18 @@ contract CodexBootsLight is Initializable {
     function MidassSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 10;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Midas's Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Midas's Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 45;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(9);
         _grieves.generatedStatBonus = armorGenStats(9);
@@ -320,18 +320,18 @@ contract CodexBootsLight is Initializable {
     function JuggernautSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 11;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Juggernaut Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Juggernaut Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 50;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(10);
         _grieves.generatedStatBonus = armorGenStats(10);
@@ -341,18 +341,18 @@ contract CodexBootsLight is Initializable {
     function ChosensSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 12;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Chosen's Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Chosen's Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 55;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(11);
         _grieves.generatedStatBonus = armorGenStats(11);
@@ -362,18 +362,18 @@ contract CodexBootsLight is Initializable {
     function TemplarSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 13;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Templar Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Templar Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 60;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(12);
         _grieves.generatedStatBonus = armorGenStats(12);
@@ -383,18 +383,18 @@ contract CodexBootsLight is Initializable {
     function VanguardSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 14;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Vanguard Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Vanguard Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 65;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(13);
         _grieves.generatedStatBonus = armorGenStats(13);
@@ -404,18 +404,18 @@ contract CodexBootsLight is Initializable {
     function VoidDwellerSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 15;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Void Dweller Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Void Dweller Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 70;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(14);
         _grieves.generatedStatBonus = armorGenStats(14);
@@ -425,18 +425,18 @@ contract CodexBootsLight is Initializable {
     function SunSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 16;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Sun Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Sun Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 75;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(15);
         _grieves.generatedStatBonus = armorGenStats(15);
@@ -446,18 +446,18 @@ contract CodexBootsLight is Initializable {
     function MoonSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 17;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Moon Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Moon Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 80;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(16);
         _grieves.generatedStatBonus = armorGenStats(16);
@@ -467,18 +467,18 @@ contract CodexBootsLight is Initializable {
     function DemonicSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 18;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Demonic Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Demonic Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 85;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(17);
         _grieves.generatedStatBonus = armorGenStats(17);
@@ -488,18 +488,18 @@ contract CodexBootsLight is Initializable {
     function AngelicSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 19;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Angelic Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Angelic Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 90;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(18);
         _grieves.generatedStatBonus = armorGenStats(18);
@@ -509,18 +509,18 @@ contract CodexBootsLight is Initializable {
     function CycleSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 20;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Cycle Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Cycle Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 95;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(19);
         _grieves.generatedStatBonus = armorGenStats(19);
@@ -530,18 +530,18 @@ contract CodexBootsLight is Initializable {
     function EternalSandals(uint tier) public view returns (GameObjects.Boots memory _grieves) {
         _grieves.metadata.id = 21;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _grieves.metadata.name = "Eternal Sandals";
-        _grieves.metadata.description = "";
+//        _grieves.metadata.name = "Eternal Sandals";
+//        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 100;
         _grieves.requirement.classRequirement = classRequirement();
-        _grieves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _grieves.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _grieves.statBonus = armorStats(20);
         _grieves.generatedStatBonus = armorGenStats(20);

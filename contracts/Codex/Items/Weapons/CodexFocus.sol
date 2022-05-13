@@ -98,7 +98,7 @@ contract CodexFocuses is Initializable {
     function WellShapedRock(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 1;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Well Shaped Rock";
+//        _weapon.metadata.name = "Well Shaped Rock";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
 
@@ -129,7 +129,7 @@ contract CodexFocuses is Initializable {
     function SilverCoin(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 2;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Silver Coin";
+//        _weapon.metadata.name = "Silver Coin";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 5;
@@ -148,7 +148,7 @@ contract CodexFocuses is Initializable {
     function ChannellingCrystal(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 3;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Channelling Crystal";
+//        _weapon.metadata.name = "Channelling Crystal";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 10;
@@ -167,7 +167,7 @@ contract CodexFocuses is Initializable {
     function IdolOfAberranth(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 4;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Idol Of Aberranth";
+//        _weapon.metadata.name = "Idol Of Aberranth";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 15;
@@ -186,7 +186,7 @@ contract CodexFocuses is Initializable {
     function WarlordTotem(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 5;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Warlord Totem";
+//        _weapon.metadata.name = "Warlord Totem";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 20;
@@ -205,7 +205,7 @@ contract CodexFocuses is Initializable {
     function BookOfPhilosopher(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 6;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Book of Philosopher";
+//        _weapon.metadata.name = "Book of Philosopher";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 25;
@@ -224,7 +224,7 @@ contract CodexFocuses is Initializable {
     function GoldenChain(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 7;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Golden Chain";
+//        _weapon.metadata.name = "Golden Chain";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 30;
@@ -243,7 +243,7 @@ contract CodexFocuses is Initializable {
     function EvergreenFlower(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 8;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Evergreen Flower";
+//        _weapon.metadata.name = "Evergreen Flower";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 35;
@@ -262,7 +262,7 @@ contract CodexFocuses is Initializable {
     function StarfallensFocus(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 9;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Starfallen's Focus";
+//        _weapon.metadata.name = "Starfallen's Focus";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 40;
@@ -281,7 +281,7 @@ contract CodexFocuses is Initializable {
     function BlessedDice(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 10;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Blessed Dice";
+//        _weapon.metadata.name = "Blessed Dice";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 45;
@@ -300,7 +300,7 @@ contract CodexFocuses is Initializable {
     function MoonstoneRelic(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 11;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Moonstone Relic";
+//        _weapon.metadata.name = "Moonstone Relic";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 50;
@@ -319,7 +319,7 @@ contract CodexFocuses is Initializable {
     function SunfireRelic(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 12;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Sunfire Relic";
+//        _weapon.metadata.name = "Sunfire Relic";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 55;
@@ -338,7 +338,7 @@ contract CodexFocuses is Initializable {
     function CycleRelic(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 13;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Cycle Relic";
+//        _weapon.metadata.name = "Cycle Relic";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 60;
@@ -357,7 +357,7 @@ contract CodexFocuses is Initializable {
     function PhantasmalRelic(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 14;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Phantasmal Relic";
+//        _weapon.metadata.name = "Phantasmal Relic";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 65;
@@ -376,7 +376,7 @@ contract CodexFocuses is Initializable {
     function AncientOrb(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 15;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Ancient Orb";
+//        _weapon.metadata.name = "Ancient Orb";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 70;
@@ -395,7 +395,7 @@ contract CodexFocuses is Initializable {
     function ScrollOfLuminous(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 16;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Scroll of Luminous";
+//        _weapon.metadata.name = "Scroll of Luminous";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 75;
@@ -414,7 +414,7 @@ contract CodexFocuses is Initializable {
     function HeavenfallenFeather(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 17;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Heavenfallen Feather";
+//        _weapon.metadata.name = "Heavenfallen Feather";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 80;
@@ -433,7 +433,7 @@ contract CodexFocuses is Initializable {
     function Godbringt(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 18;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Godbringt";
+//        _weapon.metadata.name = "Godbringt";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 85;
@@ -452,7 +452,7 @@ contract CodexFocuses is Initializable {
     function KeyOfTheExistence(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 20;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Key of the Existence";
+//        _weapon.metadata.name = "Key of the Existence";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 90;
@@ -471,7 +471,7 @@ contract CodexFocuses is Initializable {
     function MistguardRelic(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 21;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Mistguard Relic";
+//        _weapon.metadata.name = "Mistguard Relic";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 95;
@@ -490,7 +490,7 @@ contract CodexFocuses is Initializable {
     function Mistbringer(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 22;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Soultrapper";
+//        _weapon.metadata.name = "Soultrapper";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 100;

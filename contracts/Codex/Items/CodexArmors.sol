@@ -60,38 +60,56 @@ contract CodexArmors is UpgradeableCodex {
     }
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Armor memory _armor) public pure returns (GameObjects.Armor memory) {
-        GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);
-        _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_armor.generatedStatBonus, _genStatFromPreFixAndSuffix);
+        if (_pre.isPercentage) {
+            _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_armor.generatedStatBonus, _pre.generatedStatBonus);
+            _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_armor.elementalStats, _pre.elementalStats);
+        } else {
+            _armor.generatedStatBonus = EquipableUtils.sumGeneratedStats(_armor.generatedStatBonus, _pre.generatedStatBonus);
+            _armor.elementalStats = EquipableUtils.sumGeneratedElementalStats(_armor.elementalStats, _pre.elementalStats);
+        }
+
+        if (_suf.isPercentage) {
+            _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_armor.generatedStatBonus, _suf.generatedStatBonus);
+            _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_armor.elementalStats, _suf.elementalStats);
+        } else {
+            _armor.generatedStatBonus = EquipableUtils.sumGeneratedStats(_armor.generatedStatBonus, _suf.generatedStatBonus);
+            _armor.elementalStats = EquipableUtils.sumGeneratedElementalStats(_armor.elementalStats, _suf.elementalStats);
+        }
 
         _armor.statBonus = EquipableUtils.sumStats(_armor.statBonus, _pre.statBonus);
         _armor.statBonus = EquipableUtils.sumStats(_armor.statBonus, _suf.statBonus);
 
-        GameObjects.ElementalStats memory _eleStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedElementalStats(_pre.elementalStats, _suf.elementalStats);
-
-        _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_armor.elementalStats, _eleStatFromPreFixAndSuffix);
-        _armor.metadata.name = string(abi.encodePacked(_pre.title, " ", _armor.metadata.name, " ", _suf.title));
+//        _armor.metadata.name = string(abi.encodePacked(_pre.title, " ", _armor.metadata.name, " ", _suf.title));
         return _armor;
     }
 
     function applyPrefix(GameObjects.Prefix memory _pre, GameObjects.Armor memory _armor) public pure returns (GameObjects.Armor memory) {
-        _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_armor.generatedStatBonus, _pre.generatedStatBonus);
+        if (_pre.isPercentage) {
+            _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_armor.generatedStatBonus, _pre.generatedStatBonus);
+            _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_armor.elementalStats, _pre.elementalStats);
+        } else {
+            _armor.generatedStatBonus = EquipableUtils.sumGeneratedStats(_armor.generatedStatBonus, _pre.generatedStatBonus);
+            _armor.elementalStats = EquipableUtils.sumGeneratedElementalStats(_armor.elementalStats, _pre.elementalStats);
+        }
 
         _armor.statBonus = EquipableUtils.sumStats(_armor.statBonus, _pre.statBonus);
-
-
-        _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_armor.elementalStats, _pre.elementalStats);
-        _armor.metadata.name = string(abi.encodePacked(_pre.title, " ", _armor.metadata.name));
+//        _armor.metadata.name = string(abi.encodePacked(_pre.title, " ", _armor.metadata.name));
         return _armor;
     }
 
     function applySuffix(GameObjects.Suffix memory _suf, GameObjects.Armor memory _armor) public pure returns (GameObjects.Armor memory) {
-        _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_armor.generatedStatBonus, _suf.generatedStatBonus);
+        if (_suf.isPercentage) {
+            _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_armor.generatedStatBonus, _suf.generatedStatBonus);
+            _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_armor.elementalStats, _suf.elementalStats);
+        } else {
+            _armor.generatedStatBonus = EquipableUtils.sumGeneratedStats(_armor.generatedStatBonus, _suf.generatedStatBonus);
+            _armor.elementalStats = EquipableUtils.sumGeneratedElementalStats(_armor.elementalStats, _suf.elementalStats);
+        }
 
         _armor.statBonus = EquipableUtils.sumStats(_armor.statBonus, _suf.statBonus);
 
 
-        _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_armor.elementalStats, _suf.elementalStats);
-        _armor.metadata.name = string(abi.encodePacked(_armor.metadata.name, " ", _suf.title));
+//        _armor.metadata.name = string(abi.encodePacked(_armor.metadata.name, " ", _suf.title));
         return _armor;
     }
 

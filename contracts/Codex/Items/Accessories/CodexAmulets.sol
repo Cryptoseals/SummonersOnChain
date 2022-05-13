@@ -75,36 +75,54 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     }
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Amulet memory _amulet) public view returns (GameObjects.Amulet memory) {
-        GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);
-        _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_amulet.generatedStatBonus, _genStatFromPreFixAndSuffix);
+        if (_pre.isPercentage) {
+            _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_amulet.generatedStatBonus, _pre.generatedStatBonus);
+            _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_amulet.elementalStats, _pre.elementalStats);
+        } else {
+            _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStats(_amulet.generatedStatBonus, _pre.generatedStatBonus);
+            _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStats(_amulet.elementalStats, _pre.elementalStats);
+        }
 
+        if (_suf.isPercentage) {
+            _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_amulet.generatedStatBonus, _suf.generatedStatBonus);
+            _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_amulet.elementalStats, _suf.elementalStats);
+        } else {
+            _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStats(_amulet.generatedStatBonus, _suf.generatedStatBonus);
+            _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStats(_amulet.elementalStats, _suf.elementalStats);
+        }
         _amulet.statBonus = EquipableUtils.sumStats(_amulet.statBonus, _pre.statBonus);
         _amulet.statBonus = EquipableUtils.sumStats(_amulet.statBonus, _suf.statBonus);
 
-        GameObjects.ElementalStats memory _eleStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedElementalStats(_pre.elementalStats, _suf.elementalStats);
 
-        _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_amulet.elementalStats, _eleStatFromPreFixAndSuffix);
-        _amulet.metadata.name = string(abi.encodePacked(_pre.title, " ", _amulet.metadata.name, " ", _suf.title));
+        ////        _amulet.metadata.name = string(abi.encodePacked(_pre.title, " ", _amulet.metadata.name, " ", _suf.title));
         return _amulet;
     }
 
     function applyPrefix(GameObjects.Prefix memory _pre, GameObjects.Amulet memory _amulet) public view returns (GameObjects.Amulet memory) {
-        _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_amulet.generatedStatBonus, _pre.generatedStatBonus);
-
+        if (_pre.isPercentage) {
+            _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_amulet.generatedStatBonus, _pre.generatedStatBonus);
+            _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_amulet.elementalStats, _pre.elementalStats);
+        } else {
+            _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStats(_amulet.generatedStatBonus, _pre.generatedStatBonus);
+            _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStats(_amulet.elementalStats, _pre.elementalStats);
+        }
         _amulet.statBonus = EquipableUtils.sumStats(_amulet.statBonus, _pre.statBonus);
 
-        _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_amulet.elementalStats, _pre.elementalStats);
-        _amulet.metadata.name = string(abi.encodePacked(_pre.title, " ", _amulet.metadata.name));
+        //        _amulet.metadata.name = string(abi.encodePacked(_pre.title, " ", _amulet.metadata.name));
         return _amulet;
     }
 
     function applySuffix(GameObjects.Suffix memory _suf, GameObjects.Amulet memory _amulet) public view returns (GameObjects.Amulet memory) {
-        _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_amulet.generatedStatBonus, _suf.generatedStatBonus);
-
+        if (_suf.isPercentage) {
+            _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_amulet.generatedStatBonus, _suf.generatedStatBonus);
+            _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_amulet.elementalStats, _suf.elementalStats);
+        } else {
+            _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStats(_amulet.generatedStatBonus, _suf.generatedStatBonus);
+            _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStats(_amulet.elementalStats, _suf.elementalStats);
+        }
         _amulet.statBonus = EquipableUtils.sumStats(_amulet.statBonus, _suf.statBonus);
 
-        _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_amulet.elementalStats, _suf.elementalStats);
-        _amulet.metadata.name = string(abi.encodePacked(_amulet.metadata.name, " ", _suf.title));
+        //        _amulet.metadata.name = string(abi.encodePacked(_amulet.metadata.name, " ", _suf.title));
         return _amulet;
     }
 
@@ -233,17 +251,18 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
     function CopperAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 1;
-        _amulet.metadata.name = "Copper Amulet";
+        //        _amulet.metadata.name = "Copper Amulet";
         _amulet.metadata.description = "";
         _amulet.requirement.level = 1;
         _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
         _amulet.statBonus = amuletStats(0);
         _amulet.generatedStatBonus = amuletGenStats(0);
+        _amulet.elementalStats = amuletEleStats(0);
     }
 
     function TinAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 2;
-        _amulet.metadata.name = "Tin Amulet";
+        //        _amulet.metadata.name = "Tin Amulet";
         _amulet.metadata.description = "";
 
 
@@ -252,11 +271,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(1);
         _amulet.generatedStatBonus = amuletGenStats(1);
+        _amulet.elementalStats = amuletEleStats(1);
     }
 
     function IronAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 3;
-        _amulet.metadata.name = "Iron Amulet";
+        //        _amulet.metadata.name = "Iron Amulet";
         _amulet.metadata.description = "";
 
 
@@ -265,11 +285,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(2);
         _amulet.generatedStatBonus = amuletGenStats(2);
+        _amulet.elementalStats = amuletEleStats(2);
     }
 
     function SilverAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 4;
-        _amulet.metadata.name = "Silver Amulet";
+        //        _amulet.metadata.name = "Silver Amulet";
         _amulet.metadata.description = "";
 
 
@@ -278,11 +299,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(3);
         _amulet.generatedStatBonus = amuletGenStats(3);
+        _amulet.elementalStats = amuletEleStats(3);
     }
 
     function GoldAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 5;
-        _amulet.metadata.name = "Gold Amulet";
+        //        _amulet.metadata.name = "Gold Amulet";
         _amulet.metadata.description = "";
 
 
@@ -291,11 +313,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(4);
         _amulet.generatedStatBonus = amuletGenStats(4);
+        _amulet.elementalStats = amuletEleStats(4);
     }
 
     function AmberAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 6;
-        _amulet.metadata.name = "Amber Amulet";
+        //        _amulet.metadata.name = "Amber Amulet";
         _amulet.metadata.description = "";
 
 
@@ -304,11 +327,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(5);
         _amulet.generatedStatBonus = amuletGenStats(5);
+        _amulet.elementalStats = amuletEleStats(5);
     }
 
     function PearlAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 7;
-        _amulet.metadata.name = "Pearl Amulet";
+        //        _amulet.metadata.name = "Pearl Amulet";
         _amulet.metadata.description = "";
 
 
@@ -317,11 +341,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(6);
         _amulet.generatedStatBonus = amuletGenStats(6);
+        _amulet.elementalStats = amuletEleStats(6);
     }
 
     function AmethystAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 8;
-        _amulet.metadata.name = "Amethyst Amulet";
+        //        _amulet.metadata.name = "Amethyst Amulet";
         _amulet.metadata.description = "";
 
 
@@ -330,11 +355,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(7);
         _amulet.generatedStatBonus = amuletGenStats(7);
+        _amulet.elementalStats = amuletEleStats(7);
     }
 
     function CoralAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 9;
-        _amulet.metadata.name = "Coral Amulet";
+        //        _amulet.metadata.name = "Coral Amulet";
         _amulet.metadata.description = "";
 
 
@@ -343,11 +369,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(8);
         _amulet.generatedStatBonus = amuletGenStats(8);
+        _amulet.elementalStats = amuletEleStats(8);
     }
 
     function RubyAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 10;
-        _amulet.metadata.name = "Ruby Amulet";
+        //        _amulet.metadata.name = "Ruby Amulet";
         _amulet.metadata.description = "";
 
 
@@ -356,11 +383,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(9);
         _amulet.generatedStatBonus = amuletGenStats(9);
+        _amulet.elementalStats = amuletEleStats(9);
     }
 
     function ShinyRubyAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 11;
-        _amulet.metadata.name = "Shiny Ruby Amulet";
+        //        _amulet.metadata.name = "Shiny Ruby Amulet";
         _amulet.metadata.description = "";
 
 
@@ -369,11 +397,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(10);
         _amulet.generatedStatBonus = amuletGenStats(10);
+        _amulet.elementalStats = amuletEleStats(10);
     }
 
     function TopazAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 12;
-        _amulet.metadata.name = "Topaz Amulet";
+        //        _amulet.metadata.name = "Topaz Amulet";
         _amulet.metadata.description = "";
 
 
@@ -382,11 +411,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(11);
         _amulet.generatedStatBonus = amuletGenStats(11);
+        _amulet.elementalStats = amuletEleStats(11);
     }
 
     function ShinyTopazAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 13;
-        _amulet.metadata.name = "Shiny Topaz Amulet";
+        //        _amulet.metadata.name = "Shiny Topaz Amulet";
         _amulet.metadata.description = "";
 
 
@@ -395,11 +425,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(12);
         _amulet.generatedStatBonus = amuletGenStats(12);
+        _amulet.elementalStats = amuletEleStats(12);
     }
 
     function AzuriteAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 14;
-        _amulet.metadata.name = "Azurite Amulet";
+        //        _amulet.metadata.name = "Azurite Amulet";
         _amulet.metadata.description = "";
 
 
@@ -408,11 +439,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(13);
         _amulet.generatedStatBonus = amuletGenStats(13);
+        _amulet.elementalStats = amuletEleStats(13);
     }
 
     function ShinyAzuriteAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 15;
-        _amulet.metadata.name = "Shiny Azurite Amulet";
+        //        _amulet.metadata.name = "Shiny Azurite Amulet";
         _amulet.metadata.description = "";
 
 
@@ -421,11 +453,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(14);
         _amulet.generatedStatBonus = amuletGenStats(14);
+        _amulet.elementalStats = amuletEleStats(14);
     }
 
     function EmeraldAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 16;
-        _amulet.metadata.name = "Emerald Amulet";
+        //        _amulet.metadata.name = "Emerald Amulet";
         _amulet.metadata.description = "";
 
 
@@ -434,11 +467,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(15);
         _amulet.generatedStatBonus = amuletGenStats(15);
+        _amulet.elementalStats = amuletEleStats(15);
     }
 
     function ShinyEmeraldAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 17;
-        _amulet.metadata.name = "Shiny Emerald Amulet";
+        //        _amulet.metadata.name = "Shiny Emerald Amulet";
         _amulet.metadata.description = "";
 
 
@@ -447,11 +481,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(16);
         _amulet.generatedStatBonus = amuletGenStats(16);
+        _amulet.elementalStats = amuletEleStats(16);
     }
 
     function SapphireAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 18;
-        _amulet.metadata.name = "Sapphire Amulet";
+        //        _amulet.metadata.name = "Sapphire Amulet";
         _amulet.metadata.description = "";
 
 
@@ -460,11 +495,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(17);
         _amulet.generatedStatBonus = amuletGenStats(17);
+        _amulet.elementalStats = amuletEleStats(17);
     }
 
     function ShinySapphireAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 19;
-        _amulet.metadata.name = "Shiny Sapphire Amulet";
+        //        _amulet.metadata.name = "Shiny Sapphire Amulet";
         _amulet.metadata.description = "";
 
 
@@ -473,11 +509,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(18);
         _amulet.generatedStatBonus = amuletGenStats(18);
+        _amulet.elementalStats = amuletEleStats(18);
     }
 
     function DiamondAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 20;
-        _amulet.metadata.name = "Diamond Amulet";
+        //        _amulet.metadata.name = "Diamond Amulet";
         _amulet.metadata.description = "";
 
         _amulet.requirement.level = 95;
@@ -485,11 +522,12 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(19);
         _amulet.generatedStatBonus = amuletGenStats(19);
+        _amulet.elementalStats = amuletEleStats(19);
     }
 
     function ShinyDiamondAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 21;
-        _amulet.metadata.name = "Shiny Diamond Amulet";
+        //        _amulet.metadata.name = "Shiny Diamond Amulet";
         _amulet.metadata.description = "";
 
 
@@ -498,6 +536,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
         _amulet.statBonus = amuletStats(20);
         _amulet.generatedStatBonus = amuletGenStats(20);
+        _amulet.elementalStats = amuletEleStats(20);
     }
 
 
@@ -536,5 +575,10 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         INFUSION : 0
         });
         return stats;
+    }
+
+    function amuletEleStats(uint index) internal view returns (GameObjects.ElementalStats memory _genStats) {
+        _genStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_EDEF[index], EARTH_DEF : BASE_EDEF[index], COLD_DEF : BASE_EDEF[index], LIGHTNING_DEF : BASE_EDEF[index], DARK_DEF : BASE_EDEF[index], HOLY_DEF : BASE_EDEF[index], VOID_DEF : 0});
+        _genStats.ElementalAtk = GameObjects.ElementalAtk({FIRE_ATK : BASE_MATK[index], EARTH_ATK : BASE_MATK[index], COLD_ATK : BASE_MATK[index], LIGHTNING_ATK : BASE_MATK[index], DARK_ATK : BASE_MATK[index], HOLY_ATK : BASE_MATK[index], VOID_ATK : 0});
     }
 }

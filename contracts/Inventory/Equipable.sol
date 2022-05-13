@@ -141,7 +141,7 @@ contract Equipable is Initializable, InitNavigator {
         } else {
             revert InvalidItem("Not Implemented");
         }
-        _applyCalculation(summoner, _type);
+
     }
 
     function _equipGear(uint summoner, uint id, GameObjects.ItemType _type, uint _itemId, uint256 tier, uint prefix, uint prefixTier, uint suffix, uint suffixTier, GameObjects.Element element) internal {
@@ -154,6 +154,7 @@ contract Equipable is Initializable, InitNavigator {
         itemId : _itemId,
         itemTier : tier,
         element : element});
+//        _applyCalculation(summoner, _type);
     }
 
     function consumeElixir(uint summoner, uint slot, uint id) external senderIsSummonerOwner(summoner) notInFight(summoner) {
@@ -229,14 +230,14 @@ contract Equipable is Initializable, InitNavigator {
         SummonedCompanions[summoner].companionAddress = _contract;
         SummonedCompanions[summoner].companionId = id;
         _escrowNFT(_contract, id, msg.sender);
-        _applyCalculation(summoner, GameObjects.ItemType.PET);
+//        _applyCalculation(summoner, GameObjects.ItemType.PET);
     }
 
 
     function unequipSeal(uint summoner, uint id) external ensureNotPaused
     senderIsSummonerOwner(summoner) {
         delete EquippedSeals[summoner];
-        _applyCalculation(summoner, GameObjects.ItemType.SEAL);
+//        _applyCalculation(summoner, GameObjects.ItemType.SEAL);
     }
 
     function unequip(uint summoner, GameObjects.ItemType _type, uint id) external ensureNotPaused senderIsSummonerOwner(summoner) {
@@ -262,7 +263,7 @@ contract Equipable is Initializable, InitNavigator {
         } else {
             revert InvalidItem("Not Implemented");
         }
-        _applyCalculation(summoner, _type);
+//        _applyCalculation(summoner, _type);
         _returnNFT(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS), msg.sender, id);
     }
 
@@ -292,14 +293,11 @@ contract Equipable is Initializable, InitNavigator {
         GameObjects.ElementalStats memory eleFromJewelry
         ) = getBattleStatsFromJewelries(summoner);
 
-        _stats = EquipableUtils.sumStats(_stats, statsFromWeapon);
-        _stats = EquipableUtils.sumStats(_stats, statsFromArmor);
+        _stats = EquipableUtils.sumStats(statsFromArmor, statsFromWeapon);
         _stats = EquipableUtils.sumStats(_stats, statsFromJewelry);
-        _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, genFromWeapon);
-        _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, genFromArmor);
+        _gen_stats = EquipableUtils.sumGeneratedStats(genFromArmor, genFromWeapon);
         _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, genFromJewelry);
-        _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, eleFromWeapon);
-        _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, eleFromArmor);
+        _ele_stats = EquipableUtils.sumGeneratedElementalStats(eleFromArmor, eleFromWeapon);
         _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, eleFromJewelry);
     }
 
@@ -349,7 +347,7 @@ contract Equipable is Initializable, InitNavigator {
         if (EquippedGears[summoner][GameObjects.ItemType.RING].itemId != 0) {
             _ring = IAllCodexViews(
                 contractAddress(INavigator.CONTRACT.RINGS_CODEX)
-            ).ring(EquippedGears[summoner][GameObjects.ItemType.EARRING]);
+            ).ring(EquippedGears[summoner][GameObjects.ItemType.RING]);
             _stats = EquipableUtils.sumStats(_stats, _ring.statBonus);
             _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, _ring.generatedStatBonus);
             _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, _ring.elementalStats);
@@ -373,19 +371,6 @@ contract Equipable is Initializable, InitNavigator {
             _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, _belt.generatedStatBonus);
             _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, _belt.elementalStats);
         }
-
-
-        //        (
-        //        GameObjects.Stats memory statsFromElixirs,
-        //        GameObjects.GeneratedStats memory genFromElixirs,
-        //        GameObjects.ElementalStats memory eleFromElixirs
-        //        ) = activeElixirs(summoner);
-        //        (
-        //        GameObjects.Stats memory statsFromArtifacts,
-        //        GameObjects.GeneratedStats memory genFromArtifacts,
-        //        GameObjects.ElementalStats memory eleFromArtifacts
-        //        ) = activeArtifacts(summoner);
-        //
     }
 
     function getBattleStatsFromWeapons(uint summoner) public view returns (GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats) {
@@ -414,7 +399,7 @@ contract Equipable is Initializable, InitNavigator {
 
     function _applyCalculation(uint summoner, GameObjects.ItemType _type) internal returns (bool) {
 
-        if (_type == GameObjects.ItemType.WEAPON) {
+        if (_type == GameObjects.ItemType.WEAPON ||_type == GameObjects.ItemType.OFFHAND) {
             (GameObjects.Stats memory _stats,
             GameObjects.GeneratedStats memory _gen_stats,
             GameObjects.ElementalStats memory _ele_stats) = getBattleStatsFromWeapons(summoner);
@@ -433,6 +418,8 @@ contract Equipable is Initializable, InitNavigator {
             GameObjects.GeneratedStats memory _gen_stats,
             GameObjects.ElementalStats memory _ele_stats) = getBattleStatsFromJewelries(summoner);
             saveStats(summoner, GameObjects.ItemType.GENERAL_ACCESSORY, _stats, _gen_stats, _ele_stats);
+        } else {
+            revert("?!");
         }
 
 

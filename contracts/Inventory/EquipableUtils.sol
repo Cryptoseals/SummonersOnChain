@@ -25,6 +25,7 @@ library EquipableUtils {
     }
 
     function sumGeneratedStats(GameObjects.GeneratedStats memory _a, GameObjects.GeneratedStats memory _b) internal pure returns (GameObjects.GeneratedStats memory) {
+        _a.HP += _b.HP;
         _a.P_ATK += _b.P_ATK;
         _a.M_ATK += _b.M_ATK;
         _a.P_DEF += _b.P_DEF;
@@ -40,6 +41,7 @@ library EquipableUtils {
     function sumGeneratedStatsAsPercentage(
         GameObjects.GeneratedStats memory _a,
         GameObjects.GeneratedStats memory _b) internal pure returns (GameObjects.GeneratedStats memory) {
+        _a.HP += percentage(_a.HP, _b.HP);
         _a.P_ATK += percentage(_a.P_ATK, _b.P_ATK);
         _a.M_ATK += percentage(_a.M_ATK, _b.M_ATK);
         _a.P_DEF += percentage(_a.P_DEF, _b.P_DEF);
@@ -54,6 +56,7 @@ library EquipableUtils {
     function sumGeneratedStatsAsTier(
         GameObjects.GeneratedStats memory _a,
         uint tier) internal pure returns (GameObjects.GeneratedStats memory) {
+        _a.HP += percentage(_a.HP, tier);
         _a.P_ATK += percentage(_a.P_ATK, tier);
         _a.M_ATK += percentage(_a.M_ATK, tier);
         _a.P_DEF += percentage(_a.P_DEF, tier);

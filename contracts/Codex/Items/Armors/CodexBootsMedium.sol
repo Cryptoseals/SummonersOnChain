@@ -7,6 +7,7 @@ contract CodexBootsMedium is Initializable {
     uint[21] public BASE_AGI;
     uint[21] public BASE_DEX;
     uint[21] public BASE_VIT;
+    uint[21] public BASE_INT;
     uint[21] public BASE_DEF;
     uint[21] public BASE_MDEF;
     uint[21] public BASE_EDEF;
@@ -19,6 +20,7 @@ contract CodexBootsMedium is Initializable {
         uint[21] memory _BASE_AGI,
         uint[21] memory _BASE_DEX,
         uint[21] memory _BASE_VIT,
+        uint[21] memory _BASE_INT,
         uint[21] memory _BASE_DEF,
         uint[21] memory _BASE_MDEF,
         uint[21] memory _BASE_EDEF,
@@ -29,6 +31,7 @@ contract CodexBootsMedium is Initializable {
         BASE_AGI = _BASE_AGI;
         BASE_DEX = _BASE_DEX;
         BASE_VIT = _BASE_VIT;
+        BASE_INT = _BASE_INT;
         BASE_DEF = _BASE_DEF;
         BASE_MDEF = _BASE_MDEF;
         BASE_HP = _BASE_HP;
@@ -97,8 +100,8 @@ contract CodexBootsMedium is Initializable {
     function SoldiersGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 1;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Soldier's Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Soldier's Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
 
         // requirements here
@@ -128,8 +131,8 @@ contract CodexBootsMedium is Initializable {
     function ExecutionerGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 2;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Executioner's Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Executioner's Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 5;
         _greaves.requirement.classRequirement = classRequirement();
@@ -149,8 +152,8 @@ contract CodexBootsMedium is Initializable {
     function KnightsGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 3;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Knight's Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Knight's Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 10;
         _greaves.requirement.classRequirement = classRequirement();
@@ -170,8 +173,8 @@ contract CodexBootsMedium is Initializable {
     function DwarvenGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 4;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Dwarven Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Dwarven Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 15;
         _greaves.requirement.classRequirement = classRequirement();
@@ -191,8 +194,8 @@ contract CodexBootsMedium is Initializable {
     function ScaleGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 5;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Scale Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Scale Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 20;
         _greaves.requirement.classRequirement = classRequirement();
@@ -212,8 +215,8 @@ contract CodexBootsMedium is Initializable {
     function WingedGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 6;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Winged Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Winged Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 25;
         _greaves.requirement.classRequirement = classRequirement();
@@ -233,8 +236,8 @@ contract CodexBootsMedium is Initializable {
     function DraconicGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 7;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Draconic Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Draconic Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 30;
         _greaves.requirement.classRequirement = classRequirement();
@@ -254,8 +257,8 @@ contract CodexBootsMedium is Initializable {
     function ArgentGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 8;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Argent Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Argent Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 35;
         _greaves.requirement.classRequirement = classRequirement();
@@ -275,8 +278,8 @@ contract CodexBootsMedium is Initializable {
     function GoldenGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 9;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Golden Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Golden Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 40;
         _greaves.requirement.classRequirement = classRequirement();
@@ -296,8 +299,8 @@ contract CodexBootsMedium is Initializable {
     function MidassGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 10;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Midas's Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Midas's Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 45;
         _greaves.requirement.classRequirement = classRequirement();
@@ -317,8 +320,8 @@ contract CodexBootsMedium is Initializable {
     function JuggernautGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 11;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Juggernaut Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Juggernaut Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 50;
         _greaves.requirement.classRequirement = classRequirement();
@@ -338,8 +341,8 @@ contract CodexBootsMedium is Initializable {
     function ChosensGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 12;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Chosen's Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Chosen's Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 55;
         _greaves.requirement.classRequirement = classRequirement();
@@ -359,8 +362,8 @@ contract CodexBootsMedium is Initializable {
     function TemplarGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 13;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Templar Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Templar Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 60;
         _greaves.requirement.classRequirement = classRequirement();
@@ -380,8 +383,8 @@ contract CodexBootsMedium is Initializable {
     function VanguardGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 14;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Vanguard Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Vanguard Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 65;
         _greaves.requirement.classRequirement = classRequirement();
@@ -401,8 +404,8 @@ contract CodexBootsMedium is Initializable {
     function VoidDwellerGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 15;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Void Dweller Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Void Dweller Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 70;
         _greaves.requirement.classRequirement = classRequirement();
@@ -422,8 +425,8 @@ contract CodexBootsMedium is Initializable {
     function SunGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 16;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Sun Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Sun Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 75;
         _greaves.requirement.classRequirement = classRequirement();
@@ -443,8 +446,8 @@ contract CodexBootsMedium is Initializable {
     function MoonGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 17;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Moon Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Moon Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 80;
         _greaves.requirement.classRequirement = classRequirement();
@@ -464,8 +467,8 @@ contract CodexBootsMedium is Initializable {
     function DemonicGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 18;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Demonic Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Demonic Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 85;
         _greaves.requirement.classRequirement = classRequirement();
@@ -485,8 +488,8 @@ contract CodexBootsMedium is Initializable {
     function AngelicGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 19;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Angelic Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Angelic Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 90;
         _greaves.requirement.classRequirement = classRequirement();
@@ -506,8 +509,8 @@ contract CodexBootsMedium is Initializable {
     function CycleGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 20;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Cycle Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Cycle Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 95;
         _greaves.requirement.classRequirement = classRequirement();
@@ -527,8 +530,8 @@ contract CodexBootsMedium is Initializable {
     function EternalGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 21;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        _greaves.metadata.name = "Eternal Greaves";
-        _greaves.metadata.description = "";
+//        _greaves.metadata.name = "Eternal Greaves";
+//        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 100;
         _greaves.requirement.classRequirement = classRequirement();
@@ -550,7 +553,7 @@ contract CodexBootsMedium is Initializable {
         STR : BASE_STR[index],
         DEX : BASE_DEX[index],
         AGI : BASE_AGI[index],
-        INT : 0,
+        INT : BASE_INT[index],
         VIT : BASE_VIT[index],
         LUCK : 0});
         return stats;

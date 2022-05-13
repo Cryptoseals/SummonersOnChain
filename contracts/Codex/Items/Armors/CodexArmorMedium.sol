@@ -7,6 +7,7 @@ contract CodexArmorsMedium is Initializable {
     uint[21] public BASE_AGI;
     uint[21] public BASE_DEX;
     uint[21] public BASE_VIT;
+    uint[21] public BASE_INT;
     uint[21] public BASE_DEF;
     uint[21] public BASE_MDEF;
     uint[21] public BASE_EDEF;
@@ -19,7 +20,8 @@ contract CodexArmorsMedium is Initializable {
         uint[21] memory _BASE_AGI,
         uint[21] memory _BASE_DEX,
         uint[21] memory _BASE_VIT,
-        uint[21] memory _BASE_DEF,
+        uint[21] memory _BASE_INT,
+    uint[21] memory _BASE_DEF,
         uint[21] memory _BASE_MDEF,
         uint[21] memory _BASE_EDEF,
         uint[21] memory _BASE_HP,
@@ -29,6 +31,7 @@ contract CodexArmorsMedium is Initializable {
         BASE_AGI = _BASE_AGI;
         BASE_DEX = _BASE_DEX;
         BASE_VIT = _BASE_VIT;
+        BASE_INT = _BASE_INT;
         BASE_DEF = _BASE_DEF;
         BASE_MDEF = _BASE_MDEF;
         BASE_HP = _BASE_HP;
@@ -96,8 +99,8 @@ contract CodexArmorsMedium is Initializable {
     function SoldiersCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 1;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Soldier's Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Soldier's Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
 
         // requirements here
@@ -109,13 +112,13 @@ contract CodexArmorsMedium is Initializable {
         // }
         _armor.requirement.classRequirement = classRequirement();
 
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
 
 
         // bonuses here
@@ -127,18 +130,18 @@ contract CodexArmorsMedium is Initializable {
     function ExecutionerCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 2;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Executioner's Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Executioner's Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 5;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(1);
         _armor.generatedStatBonus = armorGenStats(1);
@@ -148,18 +151,18 @@ contract CodexArmorsMedium is Initializable {
     function KnightsCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 3;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Knight's Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Knight's Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 10;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(2);
         _armor.generatedStatBonus = armorGenStats(2);
@@ -169,18 +172,18 @@ contract CodexArmorsMedium is Initializable {
     function DwarvenCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 4;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Dwarven Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Dwarven Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 15;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(3);
         _armor.generatedStatBonus = armorGenStats(3);
@@ -190,18 +193,18 @@ contract CodexArmorsMedium is Initializable {
     function ScaleCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 5;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Scale Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Scale Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 20;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(4);
         _armor.generatedStatBonus = armorGenStats(4);
@@ -211,18 +214,18 @@ contract CodexArmorsMedium is Initializable {
     function WingedCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 6;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Winged Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Winged Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 25;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(5);
         _armor.generatedStatBonus = armorGenStats(5);
@@ -232,18 +235,18 @@ contract CodexArmorsMedium is Initializable {
     function DraconicCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 7;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Draconic Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Draconic Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 30;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(6);
         _armor.generatedStatBonus = armorGenStats(6);
@@ -253,18 +256,18 @@ contract CodexArmorsMedium is Initializable {
     function ArgentCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 8;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Argent Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Argent Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 35;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(7);
         _armor.generatedStatBonus = armorGenStats(7);
@@ -274,18 +277,18 @@ contract CodexArmorsMedium is Initializable {
     function GoldenCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 9;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Golden Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Golden Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 40;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(8);
         _armor.generatedStatBonus = armorGenStats(8);
@@ -295,18 +298,18 @@ contract CodexArmorsMedium is Initializable {
     function MidassCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 10;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Midas's Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Midas's Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 45;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(9);
         _armor.generatedStatBonus = armorGenStats(9);
@@ -316,18 +319,18 @@ contract CodexArmorsMedium is Initializable {
     function JuggernautCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 11;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Juggernaut Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Juggernaut Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 50;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(10);
         _armor.generatedStatBonus = armorGenStats(10);
@@ -337,18 +340,18 @@ contract CodexArmorsMedium is Initializable {
     function ChosensCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 12;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Chosen's Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Chosen's Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 55;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(11);
         _armor.generatedStatBonus = armorGenStats(11);
@@ -358,18 +361,18 @@ contract CodexArmorsMedium is Initializable {
     function TemplarCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 13;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Templar Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Templar Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 60;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(12);
         _armor.generatedStatBonus = armorGenStats(12);
@@ -379,18 +382,18 @@ contract CodexArmorsMedium is Initializable {
     function VanguardCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 14;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Vanguard Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Vanguard Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 65;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(13);
         _armor.generatedStatBonus = armorGenStats(13);
@@ -400,18 +403,18 @@ contract CodexArmorsMedium is Initializable {
     function VoidDwellerCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 15;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Void Dweller Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Void Dweller Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 70;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(14);
         _armor.generatedStatBonus = armorGenStats(14);
@@ -421,18 +424,18 @@ contract CodexArmorsMedium is Initializable {
     function SunCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 16;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Sun Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Sun Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 75;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(15);
         _armor.generatedStatBonus = armorGenStats(15);
@@ -442,18 +445,18 @@ contract CodexArmorsMedium is Initializable {
     function MoonCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 17;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Moon Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Moon Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 80;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(16);
         _armor.generatedStatBonus = armorGenStats(16);
@@ -463,18 +466,18 @@ contract CodexArmorsMedium is Initializable {
     function DemonicCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 18;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Demonic Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Demonic Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 85;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(17);
         _armor.generatedStatBonus = armorGenStats(17);
@@ -484,18 +487,18 @@ contract CodexArmorsMedium is Initializable {
     function AngelicCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 19;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Angelic Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Angelic Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 90;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(18);
         _armor.generatedStatBonus = armorGenStats(18);
@@ -505,18 +508,18 @@ contract CodexArmorsMedium is Initializable {
     function CycleCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 20;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Cycle Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Cycle Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 95;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(19);
         _armor.generatedStatBonus = armorGenStats(19);
@@ -526,18 +529,18 @@ contract CodexArmorsMedium is Initializable {
     function EternalCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 21;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        _armor.metadata.name = "Eternal Coat";
-        _armor.metadata.description = "";
+//        _armor.metadata.name = "Eternal Coat";
+//        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 100;
         _armor.requirement.classRequirement = classRequirement();
-        _armor.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _armor.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _armor.statBonus = armorStats(20);
         _armor.generatedStatBonus = armorGenStats(20);
@@ -549,7 +552,7 @@ contract CodexArmorsMedium is Initializable {
         STR : BASE_STR[index],
         DEX : BASE_DEX[index],
         AGI : BASE_AGI[index],
-        INT : 0,
+        INT : BASE_INT[index],
         VIT : BASE_VIT[index],
         LUCK : 0});
         return stats;

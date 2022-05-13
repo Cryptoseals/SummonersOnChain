@@ -94,7 +94,7 @@ contract CodexBows is Initializable {
     function SimpleBow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 1;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Simple Bow";
+//        _weapon.metadata.name = "Simple Bow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
 
@@ -126,7 +126,7 @@ contract CodexBows is Initializable {
     function Crossbow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 2;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Crossbow";
+//        _weapon.metadata.name = "Crossbow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 5;
@@ -145,7 +145,7 @@ contract CodexBows is Initializable {
     function GreatBow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 3;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Great Bow";
+//        _weapon.metadata.name = "Great Bow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 10;
@@ -164,7 +164,7 @@ contract CodexBows is Initializable {
     function SteelBow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 4;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Steel Bow";
+//        _weapon.metadata.name = "Steel Bow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 15;
@@ -183,7 +183,7 @@ contract CodexBows is Initializable {
     function RecurveCrossbow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 5;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Recurve Crossbow";
+//        _weapon.metadata.name = "Recurve Crossbow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 20;
@@ -202,7 +202,7 @@ contract CodexBows is Initializable {
     function TitaniumCrossbow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 6;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Titanium Crossbow";
+//        _weapon.metadata.name = "Titanium Crossbow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 25;
@@ -221,7 +221,7 @@ contract CodexBows is Initializable {
     function GoldenBow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 7;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Golden Bow";
+//        _weapon.metadata.name = "Golden Bow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 30;
@@ -240,7 +240,7 @@ contract CodexBows is Initializable {
     function VerdantBow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 8;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Verdant Bow";
+//        _weapon.metadata.name = "Verdant Bow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 35;
@@ -259,7 +259,7 @@ contract CodexBows is Initializable {
     function TemplarsCrossbow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 9;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Templar's Crossbow";
+//        _weapon.metadata.name = "Templar's Crossbow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 40;
@@ -278,7 +278,7 @@ contract CodexBows is Initializable {
     function ElvenBow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 10;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Elven Bow";
+//        _weapon.metadata.name = "Elven Bow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 45;
@@ -297,7 +297,7 @@ contract CodexBows is Initializable {
     function Moonbow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 11;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Moonbow";
+//        _weapon.metadata.name = "Moonbow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 50;
@@ -316,7 +316,7 @@ contract CodexBows is Initializable {
     function Sunbow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 12;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Dagger of Sunlight";
+//        _weapon.metadata.name = "Dagger of Sunlight";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 55;
@@ -335,7 +335,7 @@ contract CodexBows is Initializable {
     function CycleBow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 13;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Cycle Bow";
+//        _weapon.metadata.name = "Cycle Bow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 60;
@@ -354,7 +354,7 @@ contract CodexBows is Initializable {
     function PhantasmalBow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 14;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Phantasmal Bow";
+//        _weapon.metadata.name = "Phantasmal Bow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 65;
@@ -373,7 +373,7 @@ contract CodexBows is Initializable {
     function AncientBow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 15;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Ancient Bow";
+//        _weapon.metadata.name = "Ancient Bow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 70;
@@ -392,7 +392,7 @@ contract CodexBows is Initializable {
     function ObsidianCrossbow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 16;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Obsidian Crossbow";
+//        _weapon.metadata.name = "Obsidian Crossbow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 75;
@@ -411,7 +411,7 @@ contract CodexBows is Initializable {
     function Ghostbolt(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 17;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Ghostbolt";
+//        _weapon.metadata.name = "Ghostbolt";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 80;
@@ -430,7 +430,7 @@ contract CodexBows is Initializable {
     function SkeletalBolter(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 18;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Skeletal Bolter";
+//        _weapon.metadata.name = "Skeletal Bolter";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 85;
@@ -449,7 +449,7 @@ contract CodexBows is Initializable {
     function Astrarrow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 20;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Astrarrow";
+//        _weapon.metadata.name = "Astrarrow";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 90;
@@ -468,7 +468,7 @@ contract CodexBows is Initializable {
     function Comet(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 21;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Comet";
+//        _weapon.metadata.name = "Comet";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 95;
@@ -487,7 +487,7 @@ contract CodexBows is Initializable {
     function Deathwhisperer(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 22;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Deathwhisperer";
+//        _weapon.metadata.name = "Deathwhisperer";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 100;

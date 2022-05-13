@@ -35,7 +35,7 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         __Ownable_init();
     }
 
-    function initializeCodex1 (uint[21] memory _BASE_STR,
+    function initializeCodex1(uint[21] memory _BASE_STR,
         uint[21] memory _BASE_AGI,
         uint[21] memory _BASE_DEX,
         uint[21] memory _BASE_INT,
@@ -54,7 +54,7 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         BASE_MATK = _BASE_MATK;
     }
 
-    function initializeCodex2 (
+    function initializeCodex2(
         uint[21] memory _BASE_DEF,
         uint[21] memory _BASE_MDEF,
         uint[21] memory _BASE_EDEF,
@@ -74,35 +74,59 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     }
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Earring memory _earrings) public view returns (GameObjects.Earring memory) {
-        GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);
-        _earrings.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_earrings.generatedStatBonus, _genStatFromPreFixAndSuffix);
+
+        if (_pre.isPercentage) {
+            _earrings.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_earrings.generatedStatBonus, _pre.generatedStatBonus);
+            _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_earrings.elementalStats, _pre.elementalStats);
+        } else {
+            _earrings.generatedStatBonus = EquipableUtils.sumGeneratedStats(_earrings.generatedStatBonus, _pre.generatedStatBonus);
+            _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStats(_earrings.elementalStats, _pre.elementalStats);
+        }
+        if (_suf.isPercentage) {
+            _earrings.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_earrings.generatedStatBonus, _suf.generatedStatBonus);
+            _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_earrings.elementalStats, _suf.elementalStats);
+        } else {
+            _earrings.generatedStatBonus = EquipableUtils.sumGeneratedStats(_earrings.generatedStatBonus, _suf.generatedStatBonus);
+            _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStats(_earrings.elementalStats, _suf.elementalStats);
+        }
 
         _earrings.statBonus = EquipableUtils.sumStats(_earrings.statBonus, _pre.statBonus);
         _earrings.statBonus = EquipableUtils.sumStats(_earrings.statBonus, _suf.statBonus);
 
-        GameObjects.ElementalStats memory _eleStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedElementalStats(_pre.elementalStats, _suf.elementalStats);
-
-        _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_earrings.elementalStats, _eleStatFromPreFixAndSuffix);
         _earrings.metadata.name = string(abi.encodePacked(_pre.title, " ", _earrings.metadata.name, " ", _suf.title));
         return _earrings;
     }
 
     function applyPrefix(GameObjects.Prefix memory _pre, GameObjects.Earring memory _earrings) public view returns (GameObjects.Earring memory) {
-        _earrings.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_earrings.generatedStatBonus, _pre.generatedStatBonus);
+        if (_pre.isPercentage) {
+            _earrings.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_earrings.generatedStatBonus, _pre.generatedStatBonus);
+            _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_earrings.elementalStats, _pre.elementalStats);
+        } else {
+            _earrings.generatedStatBonus = EquipableUtils.sumGeneratedStats(_earrings.generatedStatBonus, _pre.generatedStatBonus);
+            _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStats(_earrings.elementalStats, _pre.elementalStats);
+        }
 
         _earrings.statBonus = EquipableUtils.sumStats(_earrings.statBonus, _pre.statBonus);
 
-        _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_earrings.elementalStats, _pre.elementalStats);
         _earrings.metadata.name = string(abi.encodePacked(_pre.title, " ", _earrings.metadata.name));
         return _earrings;
     }
 
     function applySuffix(GameObjects.Suffix memory _suf, GameObjects.Earring memory _earrings) public view returns (GameObjects.Earring memory) {
-        _earrings.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_earrings.generatedStatBonus, _suf.generatedStatBonus);
+        if (_suf.isPercentage) {
+            _earrings.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_earrings.generatedStatBonus, _suf.generatedStatBonus);
+        } else {
+            _earrings.generatedStatBonus = EquipableUtils.sumGeneratedStats(_earrings.generatedStatBonus, _suf.generatedStatBonus);
+        }
 
         _earrings.statBonus = EquipableUtils.sumStats(_earrings.statBonus, _suf.statBonus);
 
-        _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_earrings.elementalStats, _suf.elementalStats);
+        if (_suf.isPercentage) {
+            _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_earrings.elementalStats, _suf.elementalStats);
+        } else {
+            _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStats(_earrings.elementalStats, _suf.elementalStats);
+        }
+
         _earrings.metadata.name = string(abi.encodePacked(_earrings.metadata.name, " ", _suf.title));
         return _earrings;
     }
@@ -110,7 +134,7 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function applyTier(GameObjects.Earring memory _earrings, uint tier, uint percentage) public view returns (GameObjects.Earring memory){
         if (tier == 0) return _earrings;
         _earrings.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_earrings.generatedStatBonus, (tier) * percentage);
-        _earrings.elementalStats.ElementalDef = amuletEle(percentage);
+        _earrings.elementalStats.ElementalDef = earringEle(percentage);
         _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_earrings.elementalStats, (tier) * percentage);
         return _earrings;
     }
@@ -241,8 +265,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 1;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(0);
-        _earrings.generatedStatBonus = amuletGenStats(0);
+        _earrings.statBonus = earringStats(0);
+        _earrings.generatedStatBonus = earringGenStats(0);
+        _earrings.elementalStats = earringEleStats(0);
     }
 
     function TinEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -255,8 +280,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 5;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(1);
-        _earrings.generatedStatBonus = amuletGenStats(1);
+        _earrings.statBonus = earringStats(1);
+        _earrings.generatedStatBonus = earringGenStats(1);
+        _earrings.elementalStats = earringEleStats(1);
     }
 
     function IronEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -269,8 +295,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 10;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(2);
-        _earrings.generatedStatBonus = amuletGenStats(2);
+        _earrings.statBonus = earringStats(2);
+        _earrings.generatedStatBonus = earringGenStats(2);
+        _earrings.elementalStats = earringEleStats(2);
     }
 
     function SilverEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -283,8 +310,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 15;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(3);
-        _earrings.generatedStatBonus = amuletGenStats(3);
+        _earrings.statBonus = earringStats(3);
+        _earrings.generatedStatBonus = earringGenStats(3);
+        _earrings.elementalStats = earringEleStats(3);
     }
 
     function GoldEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -297,8 +325,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 20;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(4);
-        _earrings.generatedStatBonus = amuletGenStats(4);
+        _earrings.statBonus = earringStats(4);
+        _earrings.generatedStatBonus = earringGenStats(4);
+        _earrings.elementalStats = earringEleStats(4);
     }
 
     function AmberEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -311,8 +340,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 25;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(5);
-        _earrings.generatedStatBonus = amuletGenStats(5);
+        _earrings.statBonus = earringStats(5);
+        _earrings.generatedStatBonus = earringGenStats(5);
+        _earrings.elementalStats = earringEleStats(5);
     }
 
     function PearlEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -325,8 +355,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 30;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(6);
-        _earrings.generatedStatBonus = amuletGenStats(6);
+        _earrings.statBonus = earringStats(6);
+        _earrings.generatedStatBonus = earringGenStats(6);
+        _earrings.elementalStats = earringEleStats(6);
     }
 
     function AmethystEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -339,8 +370,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 35;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(7);
-        _earrings.generatedStatBonus = amuletGenStats(7);
+        _earrings.statBonus = earringStats(7);
+        _earrings.generatedStatBonus = earringGenStats(7);
+        _earrings.elementalStats = earringEleStats(7);
     }
 
     function CoralEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -353,8 +385,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 40;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(8);
-        _earrings.generatedStatBonus = amuletGenStats(8);
+        _earrings.statBonus = earringStats(8);
+        _earrings.generatedStatBonus = earringGenStats(8);
+        _earrings.elementalStats = earringEleStats(8);
     }
 
     function RubyEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -367,8 +400,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 45;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(9);
-        _earrings.generatedStatBonus = amuletGenStats(9);
+        _earrings.statBonus = earringStats(9);
+        _earrings.generatedStatBonus = earringGenStats(9);
+        _earrings.elementalStats = earringEleStats(9);
     }
 
     function ShinyRubyEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -381,8 +415,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 50;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(10);
-        _earrings.generatedStatBonus = amuletGenStats(10);
+        _earrings.statBonus = earringStats(10);
+        _earrings.generatedStatBonus = earringGenStats(10);
+        _earrings.elementalStats = earringEleStats(10);
     }
 
     function TopazEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -395,8 +430,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 55;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(11);
-        _earrings.generatedStatBonus = amuletGenStats(11);
+        _earrings.statBonus = earringStats(11);
+        _earrings.generatedStatBonus = earringGenStats(11);
+        _earrings.elementalStats = earringEleStats(11);
     }
 
     function ShinyTopazEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -409,8 +445,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 60;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(12);
-        _earrings.generatedStatBonus = amuletGenStats(12);
+        _earrings.statBonus = earringStats(12);
+        _earrings.generatedStatBonus = earringGenStats(12);
+        _earrings.elementalStats = earringEleStats(12);
     }
 
     function AzuriteEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -423,8 +460,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 65;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(13);
-        _earrings.generatedStatBonus = amuletGenStats(13);
+        _earrings.statBonus = earringStats(13);
+        _earrings.generatedStatBonus = earringGenStats(13);
+        _earrings.elementalStats = earringEleStats(13);
     }
 
     function ShinyAzuriteEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -437,8 +475,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 70;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(14);
-        _earrings.generatedStatBonus = amuletGenStats(14);
+        _earrings.statBonus = earringStats(14);
+        _earrings.generatedStatBonus = earringGenStats(14);
+        _earrings.elementalStats = earringEleStats(14);
     }
 
     function EmeraldEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -451,8 +490,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 75;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(15);
-        _earrings.generatedStatBonus = amuletGenStats(15);
+        _earrings.statBonus = earringStats(15);
+        _earrings.generatedStatBonus = earringGenStats(15);
+        _earrings.elementalStats = earringEleStats(15);
     }
 
     function ShinyEmeraldEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -465,8 +505,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 80;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(16);
-        _earrings.generatedStatBonus = amuletGenStats(16);
+        _earrings.statBonus = earringStats(16);
+        _earrings.generatedStatBonus = earringGenStats(16);
+        _earrings.elementalStats = earringEleStats(16);
     }
 
     function SapphireEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -479,8 +520,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 85;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(17);
-        _earrings.generatedStatBonus = amuletGenStats(17);
+        _earrings.statBonus = earringStats(17);
+        _earrings.generatedStatBonus = earringGenStats(17);
+        _earrings.elementalStats = earringEleStats(17);
     }
 
     function ShinySapphireEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -493,8 +535,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 90;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(18);
-        _earrings.generatedStatBonus = amuletGenStats(18);
+        _earrings.statBonus = earringStats(18);
+        _earrings.generatedStatBonus = earringGenStats(18);
+        _earrings.elementalStats = earringEleStats(18);
     }
 
     function DiamondEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -507,8 +550,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 95;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(19);
-        _earrings.generatedStatBonus = amuletGenStats(19);
+        _earrings.statBonus = earringStats(19);
+        _earrings.generatedStatBonus = earringGenStats(19);
+        _earrings.elementalStats = earringEleStats(19);
     }
 
     function ShinyDiamondEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
@@ -521,12 +565,13 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.requirement.level = 100;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
-        _earrings.statBonus = amuletStats(20);
-        _earrings.generatedStatBonus = amuletGenStats(20);
+        _earrings.statBonus = earringStats(20);
+        _earrings.generatedStatBonus = earringGenStats(20);
+        _earrings.elementalStats = earringEleStats(20);
     }
 
 
-    function amuletStats(uint index) internal view returns (GameObjects.Stats memory) {
+    function earringStats(uint index) internal view returns (GameObjects.Stats memory) {
         GameObjects.Stats memory stats = GameObjects.Stats({
         STR : BASE_STR[index],
         DEX : BASE_DEX[index],
@@ -537,17 +582,17 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         return stats;
     }
 
-    function amuletEleD(uint index) internal view returns (GameObjects.ElementalAtk memory) {
+    function earringEleD(uint index) internal view returns (GameObjects.ElementalAtk memory) {
         GameObjects.ElementalAtk memory stats = GameObjects.ElementalAtk({FIRE_ATK : BASE_MATK[index], EARTH_ATK : BASE_MATK[index], COLD_ATK : BASE_MATK[index], LIGHTNING_ATK : BASE_MATK[index], DARK_ATK : BASE_MATK[index], HOLY_ATK : BASE_MATK[index], VOID_ATK : 0});
         return stats;
     }
 
-    function amuletEle(uint index) internal view returns (GameObjects.ElementalDef memory) {
+    function earringEle(uint index) internal view returns (GameObjects.ElementalDef memory) {
         GameObjects.ElementalDef memory stats = GameObjects.ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
         return stats;
     }
 
-    function amuletGenStats(uint index) internal view returns (GameObjects.GeneratedStats memory) {
+    function earringGenStats(uint index) internal view returns (GameObjects.GeneratedStats memory) {
         GameObjects.GeneratedStats memory stats = GameObjects.GeneratedStats({
         HP : BASE_HP[index],
         P_ATK : BASE_ATK[index],
@@ -561,5 +606,10 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         INFUSION : 0
         });
         return stats;
+    }
+
+    function earringEleStats(uint index) internal view returns (GameObjects.ElementalStats memory _genStats) {
+        _genStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_EDEF[index], EARTH_DEF : BASE_EDEF[index], COLD_DEF : BASE_EDEF[index], LIGHTNING_DEF : BASE_EDEF[index], DARK_DEF : BASE_EDEF[index], HOLY_DEF : BASE_EDEF[index], VOID_DEF : 0});
+        _genStats.ElementalAtk = GameObjects.ElementalAtk({FIRE_ATK : BASE_MATK[index], EARTH_ATK : BASE_MATK[index], COLD_ATK : BASE_MATK[index], LIGHTNING_ATK : BASE_MATK[index], DARK_ATK : BASE_MATK[index], HOLY_ATK : BASE_MATK[index], VOID_ATK : 0});
     }
 }

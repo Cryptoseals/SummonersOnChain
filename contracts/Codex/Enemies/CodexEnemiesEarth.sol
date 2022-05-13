@@ -67,7 +67,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
     //1-25 Earth
     function EarthElemental(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Earth Elemental";
+//        _enemy.MonsterMetadata.name = "Earth Elemental";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
@@ -102,7 +102,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function Ysoki(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Ysoki";
+//        _enemy.MonsterMetadata.name = "Ysoki";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -136,7 +136,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function Viper(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Viper";
+//        _enemy.MonsterMetadata.name = "Viper";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -170,7 +170,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function Naga(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Naga";
+//        _enemy.MonsterMetadata.name = "Naga";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -204,7 +204,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function Zombie(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Zombie";
+//        _enemy.MonsterMetadata.name = "Zombie";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -238,7 +238,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function Golem(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Golem";
+//        _enemy.MonsterMetadata.name = "Golem";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -272,7 +272,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function Ogre(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Ogre";
+//        _enemy.MonsterMetadata.name = "Ogre";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -306,7 +306,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function Ape(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Ape";
+//        _enemy.MonsterMetadata.name = "Ape";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -340,7 +340,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function JungleTendril(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Jungle Tendril";
+//        _enemy.MonsterMetadata.name = "Jungle Tendril";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -374,7 +374,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function GiantWorm(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Giant Worm";
+//        _enemy.MonsterMetadata.name = "Giant Worm";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -408,7 +408,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function NightmareWine(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Nightmare Wine";
+//        _enemy.MonsterMetadata.name = "Nightmare Wine";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -442,7 +442,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function Athach(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Athach";
+//        _enemy.MonsterMetadata.name = "Athach";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -476,7 +476,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function GraveKeeper(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Grave Keeper";
+//        _enemy.MonsterMetadata.name = "Grave Keeper";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -510,7 +510,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function Arrowhawk(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Arrowhawk";
+//        _enemy.MonsterMetadata.name = "Arrowhawk";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -544,7 +544,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function Shai(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Shai";
+//        _enemy.MonsterMetadata.name = "Shai";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -578,7 +578,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function Basilisk(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Basilisk";
+//        _enemy.MonsterMetadata.name = "Basilisk";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -612,7 +612,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function LamiaQueen(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Lamia Queen";
+//        _enemy.MonsterMetadata.name = "Lamia Queen";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -646,7 +646,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function CentaurChampion(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Centaur Champion";
+//        _enemy.MonsterMetadata.name = "Centaur Champion";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -680,7 +680,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function JungleTroll(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Jungle Troll";
+//        _enemy.MonsterMetadata.name = "Jungle Troll";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -714,7 +714,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function Koranok(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Koranok";
+//        _enemy.MonsterMetadata.name = "Koranok";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -748,7 +748,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function Ankheg(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Ankheg";
+//        _enemy.MonsterMetadata.name = "Ankheg";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 
@@ -782,7 +782,7 @@ contract CodexEnemiesEarth is Initializable, InitNavigator {
     }
 
     function Melandriel(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        _enemy.MonsterMetadata.name = "Melandriel";
+//        _enemy.MonsterMetadata.name = "Melandriel";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.EARTH, lvl);
 

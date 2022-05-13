@@ -67,7 +67,6 @@ library GameObjects {
         uint TOTAL_HP;
         uint DPS;
         uint HIT_CHANCE;
-        uint DODGE_CHANCE;
         uint CRIT_CHANCE;
         uint CRIT_MULTI;
     }
@@ -153,6 +152,7 @@ library GameObjects {
         GeneratedStats generatedStatBonus;
         ElementalStats elementalStats;
         uint difficulty;
+        bool isPercentage;
     }
 
     struct Suffix {
@@ -161,6 +161,7 @@ library GameObjects {
         GeneratedStats generatedStatBonus;
         ElementalStats elementalStats;
         uint difficulty;
+        bool isPercentage;
     }
 
     struct EquippedItemStruct {

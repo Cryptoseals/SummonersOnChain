@@ -92,7 +92,7 @@ contract CodexAxes is Initializable {
     function WoodenAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 1;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Wooden Axe";
+//        _weapon.metadata.name = "Wooden Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
 
@@ -124,7 +124,7 @@ contract CodexAxes is Initializable {
     function StoneAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 2;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Stone Axe";
+//        _weapon.metadata.name = "Stone Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 5;
@@ -143,7 +143,7 @@ contract CodexAxes is Initializable {
     function FlintAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 3;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Flint Axe";
+//        _weapon.metadata.name = "Flint Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 10;
@@ -162,7 +162,7 @@ contract CodexAxes is Initializable {
     function SteelAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 4;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Steel Axe";
+//        _weapon.metadata.name = "Steel Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 15;
@@ -181,7 +181,7 @@ contract CodexAxes is Initializable {
     function BerserkersAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 5;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Berserker's Axe";
+//        _weapon.metadata.name = "Berserker's Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 20;
@@ -200,7 +200,7 @@ contract CodexAxes is Initializable {
     function SkullAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 6;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Skull Axe";
+//        _weapon.metadata.name = "Skull Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 25;
@@ -219,7 +219,7 @@ contract CodexAxes is Initializable {
     function EmeraldAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 7;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Emerald Axe";
+//        _weapon.metadata.name = "Emerald Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 30;
@@ -238,7 +238,7 @@ contract CodexAxes is Initializable {
     function VerdantAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 8;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Verdant Axe";
+//        _weapon.metadata.name = "Verdant Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 35;
@@ -257,7 +257,7 @@ contract CodexAxes is Initializable {
     function TitaniumAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 9;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Titanium Axe";
+//        _weapon.metadata.name = "Titanium Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 40;
@@ -276,7 +276,7 @@ contract CodexAxes is Initializable {
     function CrescentAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 10;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Crescent Axe";
+//        _weapon.metadata.name = "Crescent Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 45;
@@ -295,7 +295,7 @@ contract CodexAxes is Initializable {
     function AxeOfMoonlight(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 11;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Axe of Moonlight";
+//        _weapon.metadata.name = "Axe of Moonlight";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 50;
@@ -314,7 +314,7 @@ contract CodexAxes is Initializable {
     function AxeOfSunlight(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 12;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Axe of Sunlight";
+//        _weapon.metadata.name = "Axe of Sunlight";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 55;
@@ -333,7 +333,7 @@ contract CodexAxes is Initializable {
     function CycleAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 13;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Cycle Axe";
+//        _weapon.metadata.name = "Cycle Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 60;
@@ -352,7 +352,7 @@ contract CodexAxes is Initializable {
     function PhantasmalAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 14;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Phantasmal Axe";
+//        _weapon.metadata.name = "Phantasmal Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 65;
@@ -371,7 +371,7 @@ contract CodexAxes is Initializable {
     function WarlordsAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 15;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Warlord's Axe";
+//        _weapon.metadata.name = "Warlord's Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 70;
@@ -390,7 +390,7 @@ contract CodexAxes is Initializable {
     function LuminescentAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 16;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Luminescent Axe";
+//        _weapon.metadata.name = "Luminescent Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 75;
@@ -409,7 +409,7 @@ contract CodexAxes is Initializable {
     function EldersAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 17;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Elder's Axe";
+//        _weapon.metadata.name = "Elder's Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 80;
@@ -428,7 +428,7 @@ contract CodexAxes is Initializable {
     function FallenOrdersAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 18;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Fallen Order's Axe";
+//        _weapon.metadata.name = "Fallen Order's Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 85;
@@ -447,7 +447,7 @@ contract CodexAxes is Initializable {
     function IncursionAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 20;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Incursion Axe";
+//        _weapon.metadata.name = "Incursion Axe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 90;
@@ -466,7 +466,7 @@ contract CodexAxes is Initializable {
     function TotemicAxe(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 21;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "TotemicAxe";
+//        _weapon.metadata.name = "TotemicAxe";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 95;
@@ -485,7 +485,7 @@ contract CodexAxes is Initializable {
     function Blooddrinker(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 22;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Blooddrinker";
+//        _weapon.metadata.name = "Blooddrinker";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 100;

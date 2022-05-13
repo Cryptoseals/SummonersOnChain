@@ -101,8 +101,8 @@ contract CodexHelmetsHeavy is Initializable {
     function SoldiersHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 1;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Soldier's Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Soldier's Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
 
         // requirements here
@@ -114,13 +114,13 @@ contract CodexHelmetsHeavy is Initializable {
         // }
         _helmet.requirement.classRequirement = classRequirement();
 
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
 
 
         // bonuses here
@@ -132,18 +132,18 @@ contract CodexHelmetsHeavy is Initializable {
     function ExecutionerHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 2;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Executioner's Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Executioner's Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 5;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(1);
         _helmet.generatedStatBonus = helmetGenStats(1);
@@ -153,18 +153,18 @@ contract CodexHelmetsHeavy is Initializable {
     function KnightsHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 3;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Knight's Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Knight's Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 10;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(2);
         _helmet.generatedStatBonus = helmetGenStats(2);
@@ -174,18 +174,18 @@ contract CodexHelmetsHeavy is Initializable {
     function DwarvenHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 4;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Dwarven Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Dwarven Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 15;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(3);
         _helmet.generatedStatBonus = helmetGenStats(3);
@@ -195,18 +195,18 @@ contract CodexHelmetsHeavy is Initializable {
     function ScaleHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 5;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Scale Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Scale Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 20;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(4);
         _helmet.generatedStatBonus = helmetGenStats(4);
@@ -216,18 +216,18 @@ contract CodexHelmetsHeavy is Initializable {
     function WingedHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 6;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Winged Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Winged Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 25;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(5);
         _helmet.generatedStatBonus = helmetGenStats(5);
@@ -237,18 +237,18 @@ contract CodexHelmetsHeavy is Initializable {
     function DraconicHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 7;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Draconic Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Draconic Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 30;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(6);
         _helmet.generatedStatBonus = helmetGenStats(6);
@@ -258,18 +258,18 @@ contract CodexHelmetsHeavy is Initializable {
     function ArgentHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 8;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Argent Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Argent Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 35;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(7);
         _helmet.generatedStatBonus = helmetGenStats(7);
@@ -279,18 +279,18 @@ contract CodexHelmetsHeavy is Initializable {
     function GoldenHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 9;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Golden Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Golden Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 40;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(8);
         _helmet.generatedStatBonus = helmetGenStats(8);
@@ -300,18 +300,18 @@ contract CodexHelmetsHeavy is Initializable {
     function MidassHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 10;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Midas's Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Midas's Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 45;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(9);
         _helmet.generatedStatBonus = helmetGenStats(9);
@@ -321,18 +321,18 @@ contract CodexHelmetsHeavy is Initializable {
     function JuggernautHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 11;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Juggernaut Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Juggernaut Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 50;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(10);
         _helmet.generatedStatBonus = helmetGenStats(10);
@@ -342,18 +342,18 @@ contract CodexHelmetsHeavy is Initializable {
     function ChosensHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 12;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Chosen's Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Chosen's Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 55;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(11);
         _helmet.generatedStatBonus = helmetGenStats(11);
@@ -363,18 +363,18 @@ contract CodexHelmetsHeavy is Initializable {
     function TemplarHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 13;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Templar Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Templar Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 60;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(12);
         _helmet.generatedStatBonus = helmetGenStats(12);
@@ -384,18 +384,18 @@ contract CodexHelmetsHeavy is Initializable {
     function VanguardHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 14;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Vanguard Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Vanguard Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 65;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(13);
         _helmet.generatedStatBonus = helmetGenStats(13);
@@ -405,18 +405,18 @@ contract CodexHelmetsHeavy is Initializable {
     function VoidDwellerHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 15;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Void Dweller Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Void Dweller Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 70;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(14);
         _helmet.generatedStatBonus = helmetGenStats(14);
@@ -426,18 +426,18 @@ contract CodexHelmetsHeavy is Initializable {
     function SunHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 16;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Sun Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Sun Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 75;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(15);
         _helmet.generatedStatBonus = helmetGenStats(15);
@@ -447,18 +447,18 @@ contract CodexHelmetsHeavy is Initializable {
     function MoonHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 17;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Moon Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Moon Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 80;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(16);
         _helmet.generatedStatBonus = helmetGenStats(16);
@@ -468,18 +468,18 @@ contract CodexHelmetsHeavy is Initializable {
     function DemonicHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 18;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Demonic Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Demonic Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 85;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(17);
         _helmet.generatedStatBonus = helmetGenStats(17);
@@ -489,18 +489,18 @@ contract CodexHelmetsHeavy is Initializable {
     function AngelicHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 19;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Angelic Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Angelic Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 90;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(18);
         _helmet.generatedStatBonus = helmetGenStats(18);
@@ -510,18 +510,18 @@ contract CodexHelmetsHeavy is Initializable {
     function CycleHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 20;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Cycle Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Cycle Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 95;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(19);
         _helmet.generatedStatBonus = helmetGenStats(19);
@@ -531,18 +531,18 @@ contract CodexHelmetsHeavy is Initializable {
     function EternalHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 21;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        _helmet.metadata.name = "Eternal Helmet";
-        _helmet.metadata.description = "";
+//        _helmet.metadata.name = "Eternal Helmet";
+//        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 100;
         _helmet.requirement.classRequirement = classRequirement();
-        _helmet.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _helmet.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         // bonuses here
         _helmet.statBonus = helmetStats(20);
         _helmet.generatedStatBonus = helmetGenStats(20);

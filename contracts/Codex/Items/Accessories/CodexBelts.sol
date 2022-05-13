@@ -69,38 +69,56 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
 
 
     function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Belt memory _belt) public view returns (GameObjects.Belt memory) {
-        GameObjects.GeneratedStats memory _genStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedStats(_pre.generatedStatBonus, _suf.generatedStatBonus);
-        _belt.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_belt.generatedStatBonus, _genStatFromPreFixAndSuffix);
+        if (_pre.isPercentage) {
+            _belt.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_belt.generatedStatBonus, _pre.generatedStatBonus);
+            _belt.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_belt.elementalStats, _pre.elementalStats);
+        } else {
+            _belt.generatedStatBonus = EquipableUtils.sumGeneratedStats(_belt.generatedStatBonus, _pre.generatedStatBonus);
+            _belt.elementalStats = EquipableUtils.sumGeneratedElementalStats(_belt.elementalStats, _pre.elementalStats);
+        }
 
+        if (_suf.isPercentage) {
+            _belt.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_belt.generatedStatBonus, _suf.generatedStatBonus);
+            _belt.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_belt.elementalStats, _suf.elementalStats);
+        } else {
+            _belt.generatedStatBonus = EquipableUtils.sumGeneratedStats(_belt.generatedStatBonus, _suf.generatedStatBonus);
+            _belt.elementalStats = EquipableUtils.sumGeneratedElementalStats(_belt.elementalStats, _suf.elementalStats);
+        }
         _belt.statBonus = EquipableUtils.sumStats(_belt.statBonus, _pre.statBonus);
         _belt.statBonus = EquipableUtils.sumStats(_belt.statBonus, _suf.statBonus);
 
-        GameObjects.ElementalStats memory _eleStatFromPreFixAndSuffix = EquipableUtils.sumGeneratedElementalStats(_pre.elementalStats, _suf.elementalStats);
 
-        _belt.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_belt.elementalStats, _eleStatFromPreFixAndSuffix);
-        _belt.metadata.name = string(abi.encodePacked(_pre.title, " ", _belt.metadata.name, " ", _suf.title));
+        //        _belt.metadata.name = string(abi.encodePacked(_pre.title, " ", _belt.metadata.name, " ", _suf.title));
         return _belt;
     }
 
     function applyPrefix(GameObjects.Prefix memory _pre, GameObjects.Belt memory _belt) public view returns (GameObjects.Belt memory) {
-        _belt.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_belt.generatedStatBonus, _pre.generatedStatBonus);
+        if (_pre.isPercentage) {
+            _belt.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_belt.generatedStatBonus, _pre.generatedStatBonus);
+            _belt.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_belt.elementalStats, _pre.elementalStats);
+        } else {
+            _belt.generatedStatBonus = EquipableUtils.sumGeneratedStats(_belt.generatedStatBonus, _pre.generatedStatBonus);
+            _belt.elementalStats = EquipableUtils.sumGeneratedElementalStats(_belt.elementalStats, _pre.elementalStats);
+        }
 
         _belt.statBonus = EquipableUtils.sumStats(_belt.statBonus, _pre.statBonus);
 
 
-        _belt.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_belt.elementalStats, _pre.elementalStats);
-        _belt.metadata.name = string(abi.encodePacked(_pre.title, " ", _belt.metadata.name));
+        //        _belt.metadata.name = string(abi.encodePacked(_pre.title, " ", _belt.metadata.name));
         return _belt;
     }
 
     function applySuffix(GameObjects.Suffix memory _suf, GameObjects.Belt memory _belt) public view returns (GameObjects.Belt memory) {
-        _belt.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_belt.generatedStatBonus, _suf.generatedStatBonus);
+        if (_suf.isPercentage) {
+            _belt.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_belt.generatedStatBonus, _suf.generatedStatBonus);
+            _belt.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_belt.elementalStats, _suf.elementalStats);
+        } else {
+            _belt.generatedStatBonus = EquipableUtils.sumGeneratedStats(_belt.generatedStatBonus, _suf.generatedStatBonus);
+            _belt.elementalStats = EquipableUtils.sumGeneratedElementalStats(_belt.elementalStats, _suf.elementalStats);
+        }
 
         _belt.statBonus = EquipableUtils.sumStats(_belt.statBonus, _suf.statBonus);
-
-
-        _belt.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_belt.elementalStats, _suf.elementalStats);
-        _belt.metadata.name = string(abi.encodePacked(_belt.metadata.name, " ", _suf.title));
+        //        _belt.metadata.name = string(abi.encodePacked(_belt.metadata.name, " ", _suf.title));
         return _belt;
     }
 
@@ -111,6 +129,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         _belt.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_belt.elementalStats, (tier) * percentage);
         return _belt;
     }
+
     function belt(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Belt memory) {
         GameObjects.Belt memory _belt;
         GameObjects.Prefix memory _prefix;
@@ -230,7 +249,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function TatteredLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 1;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Tattered Leather Belt";
+        //        _belt.metadata.name = "Tattered Leather Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -245,7 +264,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function RaggedLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 2;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Ragged Leather Belt";
+        //        _belt.metadata.name = "Ragged Leather Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -259,7 +278,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function RawLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 3;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Raw Leather Belt";
+        //        _belt.metadata.name = "Raw Leather Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -273,7 +292,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function ThinLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 4;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Thin Leather Belt";
+        //        _belt.metadata.name = "Thin Leather Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -287,7 +306,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function CoarseLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 5;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Coarse Leather Belt";
+        //        _belt.metadata.name = "Coarse Leather Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -301,7 +320,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function RuggedLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 6;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Rugged Leather Belt";
+        //        _belt.metadata.name = "Rugged Leather Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -315,7 +334,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function ThickLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 7;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Thick Leather Belt";
+        //        _belt.metadata.name = "Thick Leather Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -329,7 +348,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function ReinforcedLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 8;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Reinforced Leather Belt";
+        //        _belt.metadata.name = "Reinforced Leather Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -343,7 +362,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function HardenedLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 9;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Hardened Leather Belt";
+        //        _belt.metadata.name = "Hardened Leather Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -357,7 +376,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function LordlyLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 10;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Lordly Leather Belt";
+        //        _belt.metadata.name = "Lordly Leather Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -371,7 +390,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function CopperEmblazonedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 11;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Copper Emblazoned Belt";
+        //        _belt.metadata.name = "Copper Emblazoned Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -385,7 +404,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function TinEmblazonedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 12;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Tin Emblazoned Belt";
+        //        _belt.metadata.name = "Tin Emblazoned Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -399,7 +418,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function IronEmblazonedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 13;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Iron Emblazoned Belt";
+        //        _belt.metadata.name = "Iron Emblazoned Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -413,7 +432,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function SilverEmblazonedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 14;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Silver Emblazoned Belt";
+        //        _belt.metadata.name = "Silver Emblazoned Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -427,7 +446,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function GoldEmblazonedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 15;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Gold Emblazoned Belt";
+        //        _belt.metadata.name = "Gold Emblazoned Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -441,7 +460,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function PlatinumSealedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 16;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Platinum Sealed Belt";
+        //        _belt.metadata.name = "Platinum Sealed Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -455,7 +474,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function MyhrilSealedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 17;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Mythril Sealed Belt";
+        //        _belt.metadata.name = "Mythril Sealed Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -469,7 +488,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function OricalchumSealedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 18;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Oricalchum Sealed Belt";
+        //        _belt.metadata.name = "Oricalchum Sealed Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -483,7 +502,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function ObsidianSealedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 19;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Obsidian Sealed Belt";
+        //        _belt.metadata.name = "Obsidian Sealed Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -497,7 +516,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function LuminiteSealedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 20;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Luminite Sealed Belt";
+        //        _belt.metadata.name = "Luminite Sealed Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -511,7 +530,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function EternalSealedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 21;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        _belt.metadata.name = "Eternal Sealed Belt";
+        //        _belt.metadata.name = "Eternal Sealed Belt";
         _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
@@ -553,5 +572,10 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         INFUSION : 0
         });
         return stats;
+    }
+
+    function beltEleStats(uint index) internal view returns (GameObjects.ElementalStats memory _genStats) {
+        _genStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_EDEF[index], EARTH_DEF : BASE_EDEF[index], COLD_DEF : BASE_EDEF[index], LIGHTNING_DEF : BASE_EDEF[index], DARK_DEF : BASE_EDEF[index], HOLY_DEF : BASE_EDEF[index], VOID_DEF : 0});
+
     }
 }

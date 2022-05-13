@@ -132,6 +132,7 @@ export const DeployedFileLocations = {
     codex_enemies: "./scripts/deployed-contracts/codex_enemies.json",
     codex_weapons: "./scripts/deployed-contracts/codex_weapons.json",
     codex_armor: "./scripts/deployed-contracts/codex_armor.json",
+    codex_armor_main: "./scripts/deployed-contracts/codex_armor_main.json",
     codex_amulets: "./scripts/deployed-contracts/codex_amulets.json",
     codex_rings: "./scripts/deployed-contracts/codex_rings.json",
     codex_earrings: "./scripts/deployed-contracts/codex_earrings.json",

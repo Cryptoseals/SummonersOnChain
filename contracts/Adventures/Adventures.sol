@@ -31,7 +31,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     function initialize(address _navigator) external initializer {
         __Ownable_init();
         initializeNavigator(_navigator);
-        COOLDOWN = 15 minutes;
+        COOLDOWN = 1 minutes;
     }
 
     function setCooldown(uint _minutes) external onlyOwner {
@@ -83,35 +83,29 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         AdventureBattle memory battle = activeBattles[summoner];
         (
         bool playerHits,
-        bool monsterDodges,
         bool monsterHits,
-        bool playerDodges,
         uint nonce) = getHitRolls(summoner, battle);
         // if monster dodges or player misses, skip atk, else roll crit chance
         if (playerHits) {
-            if (!monsterDodges) {
-                uint damage = (battle.playerStats.DPS * multiplier) / 100;
+            uint damage = (battle.playerStats.DPS * multiplier) / 100;
 
-                (bool isCrit, uint _nonce) = getCritRoll(summoner, battle.playerStats.CRIT_CHANCE);
-                nonce = _nonce;
-                if (isCrit) {
-                    damage = (damage * battle.playerStats.CRIT_MULTI) * 100;
-                }
-                battle = applyPlayerDamage(battle, damage);
+            (bool isCrit, uint _nonce) = getCritRoll(summoner, battle.playerStats.CRIT_CHANCE);
+            nonce = _nonce;
+            if (isCrit) {
+                damage = (damage * battle.playerStats.CRIT_MULTI) * 100;
             }
+            battle = applyPlayerDamage(battle, damage);
         }
 
         if (monsterHits) {
-            if (!playerDodges) {
-                uint damage = battle.monsterStats.DPS;
-                (bool isCrit, uint _nonce) = getCritRoll(battle.monster.monsterId + block.number,
-                    battle.monsterStats.CRIT_CHANCE);
-                nonce = _nonce;
-                if (isCrit) {
-                    damage = (damage * battle.playerStats.CRIT_MULTI) * 100;
-                }
-                battle = applyMonsterDamage(battle, damage);
+            uint damage = battle.monsterStats.DPS;
+            (bool isCrit, uint _nonce) = getCritRoll(battle.monster.monsterId + block.number,
+                battle.monsterStats.CRIT_CHANCE);
+            nonce = _nonce;
+            if (isCrit) {
+                damage = (damage * battle.playerStats.CRIT_MULTI) * 100;
             }
+            battle = applyMonsterDamage(battle, damage);
         }
 
         settleBattle(battle, nonce);
@@ -165,24 +159,19 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         return battle;
     }
 
-    function getHitRolls(uint summoner, AdventureBattle memory battle) internal view returns (bool, bool, bool, bool, uint nonce) {
+    function getHitRolls(uint summoner, AdventureBattle memory battle) internal view returns (bool, bool, uint nonce) {
         nonce = battleNonce;
         bool playerHits = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR)).IsSuccessfulDiceRoll100(summoner, block.number + nonce, battle.playerStats.HIT_CHANCE);
-        nonce++;
-        bool monsterDodges = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR)).IsSuccessfulDiceRoll100(summoner, block.number + nonce, battle.monsterStats.DODGE_CHANCE);
         nonce++;
 
         // if player dodges or monster misses, skip atk, else roll crit chance
 
         bool monsterHits = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR)).IsSuccessfulDiceRoll100(summoner, block.number + nonce, battle.monsterStats.HIT_CHANCE);
         nonce++;
-        bool playerDodges = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR)).IsSuccessfulDiceRoll100(summoner, block.number + nonce, battle.playerStats.DODGE_CHANCE);
-        nonce++;
 
         return (playerHits,
-        monsterDodges,
         monsterHits,
-        playerDodges, nonce);
+        nonce);
     }
 
     function getCritRoll(uint summoner, uint critChance) internal view returns (bool isCrit, uint nonce) {
