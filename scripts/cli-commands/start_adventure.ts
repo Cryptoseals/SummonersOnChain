@@ -16,8 +16,10 @@ async function main() {
     const deployedAdventures = JSON.parse(fs.readFileSync(DeployedFileLocations.adventures, 'utf-8'))
     let adventures = await ethers.getContractAt("Adventures", deployedAdventures.adventures)
     let tx
+        // tx = await adventures.flee(0)
     // tx = await adventures.startBattle(0, 1, 1)
     // await tx.wait(1)
+    console.log(await adventures.timer(0))
     console.log(await adventures.activeBattles(0))
 }
 

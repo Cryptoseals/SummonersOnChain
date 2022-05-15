@@ -11,7 +11,7 @@ contract CodexShields is Initializable {
     uint[21] public BASE_HP;
     uint[21] public BASE_MDEF;
     uint[21] public BASE_PDEF;
-    uint[21] public BASE_ACCURACY;
+//    uint[21] public BASE_ACCURACY;
     uint[21] public BASE_DODGE;
 
     function initialize(
@@ -21,7 +21,7 @@ contract CodexShields is Initializable {
         uint[21] memory _BASE_HP,
         uint[21] memory _BASE_MDEF,
         uint[21] memory _BASE_PDEF,
-        uint[21] memory _BASE_ACCURACY,
+//        uint[21] memory _BASE_ACCURACY,
         uint[21] memory _BASE_DODGE
     ) external initializer {
         BASE_STR = _BASE_STR;
@@ -30,7 +30,7 @@ contract CodexShields is Initializable {
         BASE_HP = _BASE_HP;
         BASE_MDEF = _BASE_MDEF;
         BASE_PDEF = _BASE_PDEF;
-        BASE_ACCURACY = _BASE_ACCURACY;
+//        BASE_ACCURACY = _BASE_ACCURACY;
         BASE_DODGE = _BASE_DODGE;
     }
 
@@ -565,7 +565,7 @@ contract CodexShields is Initializable {
         M_ATK : 0,
         P_DEF : BASE_PDEF[index],
         M_DEF : BASE_MDEF[index],
-        ACCURACY : BASE_ACCURACY[index],
+        ACCURACY : 0, //BASE_ACCURACY[index],
         DODGE : BASE_DODGE[index],
         CRIT : 0,
         CRIT_MULTIPLIER : 0,

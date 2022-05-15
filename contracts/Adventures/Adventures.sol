@@ -43,7 +43,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         uint adventureLevel) external ensureNotPaused
     senderIsSummonerOwner(summoner) notInFight(summoner) {
         require(timer[summoner] < block.timestamp, "early");
-        timer[summoner] += block.timestamp + COOLDOWN;
+        timer[summoner] = block.timestamp + COOLDOWN;
         (IMonster.Monster memory _monster, IAdventure.AdventureMonster memory _advMonster) = getMonster(adventureArea, adventureLevel);
 
         (
@@ -87,35 +87,60 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         uint nonce) = getHitRolls(summoner, battle);
         // if monster dodges or player misses, skip atk, else roll crit chance
         if (playerHits) {
-            uint damage = (battle.playerStats.DPS * multiplier) / 100;
+            (bool isCrit, uint roll) = getCritRoll(summoner, battle.playerStats.CRIT_CHANCE, nonce);
+            emit Roll(roll);
+            uint damage = isCrit
+            ?
+            (battle.playerStats.DPS * multiplier) / 100 +
+            (battle.playerStats.DPS * battle.playerStats.CRIT_MULTI) / 100
+            :
+            (battle.playerStats.DPS * multiplier) / 100;
 
-            (bool isCrit, uint _nonce) = getCritRoll(summoner, battle.playerStats.CRIT_CHANCE);
-            nonce = _nonce;
-            if (isCrit) {
-                damage = (damage * battle.playerStats.CRIT_MULTI) * 100;
+            nonce++;
+
+            if (damage >= battle.monsterStats.TOTAL_HP) {
+                battle.monsterStats.TOTAL_HP = 0;
+            } else {
+                battle.monsterStats.TOTAL_HP -= damage;
             }
-            battle = applyPlayerDamage(battle, damage);
         }
 
         if (monsterHits) {
-            uint damage = battle.monsterStats.DPS;
-            (bool isCrit, uint _nonce) = getCritRoll(battle.monster.monsterId + block.number,
-                battle.monsterStats.CRIT_CHANCE);
-            nonce = _nonce;
-            if (isCrit) {
-                damage = (damage * battle.playerStats.CRIT_MULTI) * 100;
-            }
-            battle = applyMonsterDamage(battle, damage);
-        }
+            (bool isCrit, uint roll) = getCritRoll(battle.monster.monsterId + block.number,
+                battle.monsterStats.CRIT_CHANCE, nonce);
+            emit Roll(roll);
 
+            uint damage = isCrit
+            ?
+            (battle.monsterStats.DPS * multiplier) / 100 +
+            (battle.monsterStats.DPS * battle.monsterStats.CRIT_MULTI) / 100
+            :
+            (battle.monsterStats.DPS * multiplier) / 100;
+            nonce++;
+
+            if (damage >= battle.playerStats.TOTAL_HP) {
+                battle.playerStats.TOTAL_HP = 0;
+            } else {
+                battle.playerStats.TOTAL_HP -= damage;
+            }
+        }
         settleBattle(battle, nonce);
     }
 
 
-    function settleBattle (AdventureBattle memory battle, uint nonce) internal {
-        if(battle.playerStats.TOTAL_HP == 0) {
-            // win
+    function settleBattle(AdventureBattle memory battle, uint nonce) internal {
+        if (battle.playerStats.TOTAL_HP == 0) {
 
+            // lose, end battle, cooldown
+            timer[battle.summoner] = block.timestamp + COOLDOWN;
+            delete activeBattles[battle.summoner];
+            ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
+                battle.summoner,
+                GameEntities.SummonerState.FREE
+            );
+        } else if (battle.monsterStats.TOTAL_HP == 0) {
+
+            // win
             // TODO, roll rewards,
             IAdventure.AdventureLevel memory _level =
             ICodexAdventures(
@@ -123,61 +148,49 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             ).adventure(battle.adventureArea, battle.adventureLevel);
             IGameRewards.Reward memory rewardPool = _level.Rewards;
             IReward(contractAddress(INavigator.CONTRACT.REWARDS)).reward(msg.sender, rewardPool, nonce);
+            nonce++;
             // end battle, cooldown
-            timer[battle.summoner] += block.timestamp + COOLDOWN;
+            timer[battle.summoner] = block.timestamp + COOLDOWN;
             ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
                 battle.summoner,
                 GameEntities.SummonerState.FREE
             );
-        } else if(battle.monsterStats.TOTAL_HP == 0) {
-            // lose, end battle, cooldown
-            timer[battle.summoner] += block.timestamp + COOLDOWN;
-            ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
-                battle.summoner,
-                GameEntities.SummonerState.FREE
-            );
-        }
+            delete activeBattles[battle.summoner];
 
 
-    }
-
-    function applyPlayerDamage(AdventureBattle memory battle, uint dmg) internal returns (AdventureBattle memory) {
-        if (dmg > battle.monsterStats.TOTAL_HP) {
-            battle.monsterStats.TOTAL_HP = 0;
         } else {
-            battle.monsterStats.TOTAL_HP -= dmg;
+            battleNonce = nonce;
+            activeBattles[battle.summoner].monsterStats = battle.monsterStats;
+            activeBattles[battle.summoner].playerStats = battle.playerStats;
         }
-        return battle;
     }
 
-    function applyMonsterDamage(AdventureBattle memory battle, uint dmg) internal returns (AdventureBattle memory) {
-        if (dmg > battle.monsterStats.TOTAL_HP) {
-            battle.playerStats.TOTAL_HP = 0;
-        } else {
-            battle.playerStats.TOTAL_HP -= dmg;
-        }
-        return battle;
-    }
 
-    function getHitRolls(uint summoner, AdventureBattle memory battle) internal view returns (bool, bool, uint nonce) {
+
+
+    event Roll(uint roll);
+
+    function getHitRolls(uint summoner, AdventureBattle memory battle) internal returns (bool, bool, uint nonce) {
         nonce = battleNonce;
-        bool playerHits = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR)).IsSuccessfulDiceRoll100(summoner, block.number + nonce, battle.playerStats.HIT_CHANCE);
+        ICodexRandom RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
         nonce++;
+        uint roll1 = RNG.d100(1 + summoner + nonce);
+        emit Roll(roll1);
 
         // if player dodges or monster misses, skip atk, else roll crit chance
 
-        bool monsterHits = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR)).IsSuccessfulDiceRoll100(summoner, block.number + nonce, battle.monsterStats.HIT_CHANCE);
+        uint roll2 = RNG.d100(1 + battle.monster.monsterId + nonce);
         nonce++;
-
-        return (playerHits,
-        monsterHits,
+        emit Roll(roll2);
+        return (roll1 <= battle.playerStats.HIT_CHANCE,
+        roll2 <= battle.monsterStats.HIT_CHANCE,
         nonce);
     }
 
-    function getCritRoll(uint summoner, uint critChance) internal view returns (bool isCrit, uint nonce) {
-        nonce = battleNonce;
-        isCrit = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR)).IsSuccessfulDiceRoll100(summoner, block.number + nonce, critChance);
-        nonce++;
+    function getCritRoll(uint summoner, uint critChance, uint nonce) internal returns (bool, uint) {
+        ICodexRandom RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
+        uint roll = RNG.d100(nonce);
+        return (critChance <= roll, roll);
     }
 
     function getMonster(uint adventureArea,

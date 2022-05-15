@@ -16,9 +16,11 @@ async function main() {
     const deployedAdventureControls = JSON.parse(fs.readFileSync(DeployedFileLocations.adventure_controls, 'utf-8'))
     let adventures = await ethers.getContractAt("AdventureControls", deployedAdventureControls.adventureControls)
     let tx
-    tx = await adventures.basicAttack(0)
+    tx = await adventures.basicAttack(0, {
+        gasLimit: 500000
+    })
     await tx.wait(1)
-    console.log(await adventures.activeBattles(0))
+    // console.log(await adventures.activeBattles(0))
 }
 
 main();

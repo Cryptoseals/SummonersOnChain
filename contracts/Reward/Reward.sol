@@ -37,7 +37,7 @@ contract Reward is InitNavigator {
         uint globalNonce = Navigator.getGlobalNonce();
         uint roll = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).dn(globalNonce + block.number + optionalNonce + nonce, max - min);
         _increaseGlobalNonce();
-        uint wODecimals = roll / 1e18;
+        uint wODecimals = roll - (roll % 1e18);
         IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD)).rewardToken(to, wODecimals + min);
         nonce++;
     }

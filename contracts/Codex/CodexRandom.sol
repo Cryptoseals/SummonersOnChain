@@ -47,7 +47,7 @@ contract CodexRandom {
             string(
                 abi.encodePacked(
                     block.timestamp,
-                    blockhash(block.number - 1),
+                    gasleft(),
                     _input,
                     msg.sender
                 )

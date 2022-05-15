@@ -20,5 +20,5 @@ interface ICalculator {
     (GameObjects.BattleStats memory,
         GameObjects.BattleStats memory);
 
-    function IsSuccessfulDiceRoll100(uint summoner, uint seed, uint chance) external view returns (bool);
+//    function IsSuccessfulDiceRoll100(uint summoner, uint seed, uint chance) external view returns (bool,uint);
 }

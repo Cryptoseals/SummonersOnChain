@@ -141,7 +141,7 @@ async function main() {
         Shields.BASE_HP,
         Shields.BASE_DEF,
         Shields.BASE_M_DEF,
-        Shields.BASE_ACC,
+        // Shields.BASE_ACC,
         Shields.BASE_DODGE,
     ], {
         initializer: "initialize"

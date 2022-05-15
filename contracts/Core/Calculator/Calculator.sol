@@ -211,47 +211,15 @@ contract Calculator is Initializable, InitNavigator {
         return chance;
     }
 
-
-    // @param _dns, N of dice, n=20 means d20
-    function BatchRollN(uint summoner, uint[] calldata _seeds, uint[] calldata _chances, uint[] calldata _dns) external view returns (bool[] memory) {
-        bool[] memory results = new bool[](_chances.length);
-        for (uint i = 0; i < _seeds.length; i++) {
-            results[i] = IsSuccessfulDiceRollN(summoner, _seeds[i], _chances[i], _dns[i]);
-        }
-        return results;
-    }
-
-    function BatchRoll100(uint summoner, uint[] calldata _seeds, uint[] calldata _chances) external view returns (bool[] memory) {
-        bool[] memory results = new bool[](_chances.length);
-        for (uint i = 0; i < _seeds.length; i++) {
-            results[i] = IsSuccessfulDiceRoll100(summoner, _seeds[i], _chances[i]);
-        }
-        return results;
-    }
-
-    // chance based calculations
-    function IsSuccessfulDiceRoll100(uint summoner, uint seed, uint chance) public view returns (bool) {
-        uint CHANCE_W_DEC = chance * GameConstants.E18;
-        ICodexRandom RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
-        uint _seed = uint(keccak256(abi.encodePacked(msg.sender, block.number, summoner, seed)));
-        uint rollE18 = GameConstants.HUNDRED - (RNG.d100(_seed) * GameConstants.E18);
-        /* @notice */
-        /* example: assume crit chance = 10, use rolled 80, 100-80=20, 20 <= 10, false*/
-        /* example2: assume crit chance = 20, use rolled 80, 100-80=20, 20 <= 20, true*/
-        return rollE18 <= CHANCE_W_DEC;
-    }
-
-    // chance based calculations
-    function IsSuccessfulDiceRollN(uint summoner, uint seed, uint chance, uint dice) public view returns (bool) {
-        uint CHANCE_W_DEC = chance * GameConstants.E18;
-        ICodexRandom RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
-        uint _seed = uint(keccak256(abi.encodePacked(msg.sender, block.number, summoner, seed)));
-        uint rollE18 = (dice * GameConstants.E18) - (RNG.dn(_seed, dice) * GameConstants.E18);
-        /* @notice */
-        /* example: assume crit chance = 10, use rolled 80, 100-80=20, 20 <= 10, false*/
-        /* example2: assume crit chance = 20, use rolled 80, 100-80=20, 20 <= 20, true*/
-        return rollE18 <= CHANCE_W_DEC;
-    }
+//    // chance based calculations
+//    function IsSuccessfulDiceRoll100(uint summoner, uint seed, uint chance) public view returns (bool, uint) {
+//        ICodexRandom RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
+//        uint roll = RNG.d100(seed);
+//        /* @notice */
+//        /* example: assume crit chance = 10, use rolled 80, 100-80=20, 20 <= 10, false*/
+//        /* example2: assume crit chance = 20, use rolled 80, 100-80=20, 20 <= 20, true*/
+//        return (roll <= chance, roll);
+//    }
 
     // STAT RELATED CALCULATIONS
     function DPS(uint ATK, uint STAT, uint DEF, uint PEN) external pure returns (uint){
