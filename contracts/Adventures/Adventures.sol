@@ -147,7 +147,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
                 contractAddress(INavigator.CONTRACT.ADVENTURES_CODEX)
             ).adventure(battle.adventureArea, battle.adventureLevel);
             IGameRewards.Reward memory rewardPool = _level.Rewards;
-            IReward(contractAddress(INavigator.CONTRACT.REWARDS)).reward(msg.sender, rewardPool, nonce);
+            IReward(contractAddress(INavigator.CONTRACT.REWARDS)).reward(battle.account, rewardPool, nonce);
             nonce++;
             // end battle, cooldown
             timer[battle.summoner] = block.timestamp + COOLDOWN;
@@ -156,6 +156,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
                 GameEntities.SummonerState.FREE
             );
             delete activeBattles[battle.summoner];
+            battleNonce = nonce;
 
 
         } else {
@@ -205,7 +206,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
     function pickMonster(IAdventure.AdventureLevel memory _level) internal view returns (IMonster.Monster memory, IAdventure.AdventureMonster memory) {
         uint monsterIdx = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).dn(
-            block.number + getGlobalNonce() + battleNonce,
+            block.number + battleNonce,
             _level.MonsterList.length);
 
         IAdventure.AdventureMonster memory _adventureMonster = _level.MonsterList[monsterIdx];

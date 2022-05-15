@@ -57,10 +57,4 @@ contract InitNavigator is Initializable {
         _;
     }
 
-    function increaseGlobalNonce () public {
-        Navigator.increaseGlobalNonce();
-    }
-    function getGlobalNonce () public view returns(uint) {
-        return Navigator.getGlobalNonce();
-    }
 }

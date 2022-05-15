@@ -135,8 +135,4 @@ interface INavigator {
     function onlyGameContracts() external returns (bool);
 
     function extendGameTime(uint _end) external;
-
-    function increaseGlobalNonce() external;
-
-    function getGlobalNonce() external view returns (uint);
 }

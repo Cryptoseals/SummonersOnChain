@@ -12,6 +12,12 @@ async function main() {
     const deployedNavigator = JSON.parse(fs.readFileSync(DeployedFileLocations.navigator, 'utf-8'))
     const Navigator = await ethers.getContractFactory("Navigator");
     const navigator = Navigator.attach(deployedNavigator.navigator)
+    const deployedAdventures = JSON.parse(fs.readFileSync(DeployedFileLocations.adventures, 'utf-8'))
+    let adventuresMain = await ethers.getContractAt("Adventures", deployedAdventures.adventures)
+    console.log("before")
+    console.log(await adventuresMain.activeBattles(0))
+
+
 
     const deployedAdventureControls = JSON.parse(fs.readFileSync(DeployedFileLocations.adventure_controls, 'utf-8'))
     let adventures = await ethers.getContractAt("AdventureControls", deployedAdventureControls.adventureControls)
@@ -21,6 +27,10 @@ async function main() {
     })
     await tx.wait(1)
     // console.log(await adventures.activeBattles(0))
+
+    console.log("after")
+    console.log(await adventuresMain.activeBattles(0))
+
 }
 
 main();

@@ -11,7 +11,7 @@ interface ERC721 {
     function ownerOf(uint256 tokenId) external view returns (address);
 }
 
-contract Navigator is Initializable, OwnableUpgradeable, Guard, INavigator, RewardNonce {
+contract Navigator is Initializable, OwnableUpgradeable, Guard, INavigator {
     ERC721 Seals;
 
     bool public _isPaused;
@@ -78,13 +78,5 @@ contract Navigator is Initializable, OwnableUpgradeable, Guard, INavigator, Rewa
             revert UnauthorizedSender(tx.origin, "Not a game contract");
         }
         _;
-    }
-
-    function increaseGlobalNonce () external override _onlyGameContracts {
-        _increaseGlobalNonce();
-    }
-
-    function getGlobalNonce() public view override returns(uint) {
-        return _getGlobalNonce();
     }
 }

@@ -15,12 +15,17 @@ contract CodexArea3 {
     }
 
     function Dummy1() public view returns (IAdventure.AdventureLevel memory _level) {
-        _level.Metadata.name = "y Sub-Area 1";
+//        _level.Metadata.name = "y Sub-Area 1";
+        _level.MonsterLevel = 1;
 
         // defining loot pool boolean values
         _level.Rewards.pool.yieldsGold = true;
         _level.Rewards.rewards.goldRewards.minAmount = 5e18;
-        _level.Rewards.rewards.goldRewards.minAmount = 10e18;
+        _level.Rewards.rewards.goldRewards.maxAmount = 10e18;
+        // defining loot pool boolean values
+        _level.Rewards.pool.yieldsEssence = true;
+        _level.Rewards.rewards.essenceRewards.minAmount = 5e18;
+        _level.Rewards.rewards.essenceRewards.maxAmount = 10e18;
 
         // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](1);

@@ -17,18 +17,15 @@ OwnableUpgradeable, IFungibleInGameToken, InitNavigator {
         __Ownable_init();
     }
 
-    function rewardToken(address _account, uint256 _amount) external override {
-        if (!Navigator.isGameContract(msg.sender)) revert UnauthorizedSender(msg.sender, "NOT A GAME CONTRACT");
+    function rewardToken(address _account, uint256 _amount) external onlyGameContracts override {
         _mint(_account, _amount);
     }
 
-    function burnToken(address _account, uint256 _amount) external override {
-        if (!Navigator.isGameContract(msg.sender)) revert UnauthorizedSender(msg.sender, "NOT A GAME CONTRACT");
+    function burnToken(address _account, uint256 _amount) external onlyGameContracts override {
         _burn(_account, _amount);
     }
 
-    function spendToken(address _account, address _to, uint256 _amount) external override {
-        if (!Navigator.isGameContract(msg.sender)) revert UnauthorizedSender(msg.sender, "NOT A GAME CONTRACT");
+    function spendToken(address _account, address _to, uint256 _amount) external onlyGameContracts override {
         _transfer(_account, _to, _amount);
     }
 }

@@ -11,10 +11,10 @@ interface IAdventure {
         uint monsterId;
     }
 
-    struct AdventureArea {
-        IGenericMetadata.Metadata Metadata;
-//        AdventureLevel[] levels;
-    }
+//    struct AdventureArea {
+////        IGenericMetadata.Metadata Metadata;
+////        AdventureLevel[] levels;
+//    }
 
     struct AdventureLevel {
         IGenericMetadata.Metadata Metadata;
