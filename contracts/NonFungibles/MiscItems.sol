@@ -18,10 +18,9 @@ contract MiscItems is Initializable, OwnableUpgradeable, InitNavigator, ERC1155U
     }
 
     function rewardMiscItem(address to, uint id, uint amount) external onlyGameContracts {
-        if (id < 1) revert InvalidItem("invalid item");
-        GameObjects.MiscItem memory item = ICodexMisc(contractAddress(INavigator.CONTRACT.MISC_CODEX)).item(id);
-
+//        if (id < 1) revert InvalidItem("invalid item");
         _mint(to, id, amount, new bytes(0));
+
     }
 
     function burnMiscItem(address from, uint id, uint amount) external onlyGameContracts {

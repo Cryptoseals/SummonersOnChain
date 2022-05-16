@@ -152,5 +152,7 @@ export const DeployedFileLocations = {
     adventures: "./scripts/deployed-contracts/adventures.json",
     adventure_controls: "./scripts/deployed-contracts/adventure_controls.json",
     random: "./scripts/deployed-contracts/random.json",
+    misc_codex: "./scripts/deployed-contracts/misc_codex.json",
+    misc_items: "./scripts/deployed-contracts/misc_items.json",
 }
 

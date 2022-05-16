@@ -26,45 +26,61 @@ contract Reward is InitNavigator {
         initializeNavigator(_navigator);
     }
 
-    function reward(address to, IGameRewards.Reward memory _reward, uint optionalNonce) external onlyGameContracts {
-        if (_reward.pool.yieldsGold) rewardGold(to, _reward.rewards.goldRewards.minAmount, _reward.rewards.goldRewards.maxAmount, optionalNonce);
-        if (_reward.pool.yieldsEssence) rewardEssence(to, _reward.rewards.essenceRewards.minAmount, _reward.rewards.essenceRewards.maxAmount, optionalNonce);
-        if (_reward.pool.yieldsMiscItem) rewardMiscItem(to, _reward.rewards.miscItemRewards.miscType, _reward.rewards.miscItemRewards.minAmount, _reward.rewards.miscItemRewards.maxAmount, optionalNonce);
-        if (_reward.pool.yieldsCraftingMaterial) rewardCraftingMaterial(to, _reward.rewards.craftingMaterialRewards.materialIds, _reward.rewards.craftingMaterialRewards.min, _reward.rewards.craftingMaterialRewards.max, optionalNonce);
+    function reward(address to, IGameRewards.Reward memory _reward, IGameRewards.CurrencyRewards memory _currencyRewards, uint optionalNonce) external onlyGameContracts {
+        if (_currencyRewards.yieldsGold) rewardGold(to, _currencyRewards, optionalNonce);
+        if (_currencyRewards.yieldsEssence) rewardEssence(to, _currencyRewards, optionalNonce + 2);
+//        if (_reward.pool.yieldsMiscItem) rewardMiscItem(to, _reward.rewards.miscItemRewards, optionalNonce + 4);
+        if (_currencyRewards.yieldsCraftingMaterial) rewardCraftingMaterial(to, _currencyRewards.craftingMaterialRewards, optionalNonce + 5);
     }
 
-    function rewardGold(address to, uint min, uint max, uint optionalNonce) internal {
-        //        uint globalNonce = Navigator.getGlobalNonce();
-        uint roll = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).dn(block.number + optionalNonce + nonce, max - min);
-        //        increaseGlobalNonce();
-        uint wODecimals = roll - (roll % 1e18);
-        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD)).rewardToken(to, wODecimals + min);
+    function rewardGold(address to, IGameRewards.CurrencyRewards memory _reward, uint optionalNonce) internal {
+        uint roll = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).dn(block.number + optionalNonce + nonce, _reward.goldRewards.maxAmount - _reward.goldRewards.minAmount);
+        uint wODecimals = roll - (roll % 1e17);
+        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD)).rewardToken(to, wODecimals + _reward.goldRewards.minAmount);
         nonce++;
     }
 
-    function rewardEssence(address to, uint min, uint max, uint optionalNonce) internal {
-        //        uint globalNonce = Navigator.getGlobalNonce();
-        uint roll = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).dn(block.number + optionalNonce + nonce, max - min);
-        //        increaseGlobalNonce();
-        uint wODecimals = roll / 1e18;
-        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE)).rewardToken(to, wODecimals + min);
+    function rewardEssence(address to, IGameRewards.CurrencyRewards memory _reward, uint optionalNonce) internal {
+        uint roll = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).dn(block.number + optionalNonce + nonce,
+            _reward.essenceRewards.maxAmount - _reward.essenceRewards.minAmount);
+        uint wODecimals = roll - (roll % 1e17);
+        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE)).rewardToken(to, wODecimals + _reward.essenceRewards.minAmount);
         nonce++;
     }
 
-    function rewardMiscItem(address to, uint itemId, uint min, uint max, uint optionalNonce) internal {
-        //        uint globalNonce = Navigator.getGlobalNonce();
-        uint roll = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).dn(block.number + optionalNonce + nonce, max - min);
-        //        increaseGlobalNonce();
-        IRewardNonFungible(contractAddress(INavigator.CONTRACT.MISC_ITEMS)).rewardMiscItem(to, itemId, roll + min);
+    function rewardMiscItem(address to, IGameRewards.MiscItemRewards memory _miscRewards, uint optionalNonce) internal {
+        //         roll chance to drop
+        uint dropRoll = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).d100(block.number + optionalNonce + nonce);
+        if (dropRoll <= _miscRewards.chanceToDrop) {
+            uint pick = ICodexRandom(
+                contractAddress(INavigator.CONTRACT.RANDOM_CODEX)
+            ).dn(block.number + optionalNonce + 1, _miscRewards.rewards.length);
+
+            uint amount = ICodexRandom(
+                contractAddress(INavigator.CONTRACT.RANDOM_CODEX)
+            ).dn(block.number + optionalNonce + 2, _miscRewards.rewards[pick].maxAmount - _miscRewards.rewards[pick].minAmount);
+
+            IRewardNonFungible(contractAddress(INavigator.CONTRACT.MISC_ITEMS)).rewardMiscItem(
+                to,
+                _miscRewards.rewards[pick].miscType,
+                amount + _miscRewards.rewards[pick].minAmount
+            );
+        }
+        nonce++;
     }
 
-    function rewardCraftingMaterial(address to, ICraftingMaterials.CraftingMaterial[] memory itemIds, uint[] memory mins, uint[] memory maxs, uint optionalNonce) internal {
-        //        uint globalNonce = Navigator.getGlobalNonce();
-        uint itemTypeRoll = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).dn(uint256(uint160(msg.sender)) + optionalNonce + block.number + itemIds.length + nonce, itemIds.length);
-        ICraftingMaterials.CraftingMaterial itemType = itemIds[itemTypeRoll];
-        uint roll = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).dn(block.number + uint(itemType) + nonce + 1, maxs[itemTypeRoll] - mins[itemTypeRoll]);
-        //        increaseGlobalNonce();
-        CraftingMaterialContract(contractAddress(INavigator.CONTRACT.CRAFTING_MATERIALS)).mintMaterial(itemType, msg.sender, roll + mins[itemTypeRoll]);
+    function rewardCraftingMaterial(address to, IGameRewards.CraftingMaterialRewards memory reward, uint optionalNonce) internal {
+        for (uint i = 0; i < reward.materialIds.length; i++) {
+            uint roll = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).dn(block.number + optionalNonce + 10 + i + nonce,
+                reward.max[i] - reward.min[i]
+            );
+            CraftingMaterialContract(
+                contractAddress(
+                    INavigator.CONTRACT.CRAFTING_MATERIALS
+                )
+            ).mintMaterial(reward.materialIds[i], msg.sender, roll + reward.min[i]);
+            nonce++;
+        }
     }
 
 

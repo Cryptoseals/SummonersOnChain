@@ -42,7 +42,9 @@ contract Navigator is Initializable, OwnableUpgradeable, Guard, INavigator {
     }
 
     function getContractAddress(INavigator.CONTRACT _contractId) external override view returns (address){
-        return CONTRACTS[uint(_contractId)];
+        address con = CONTRACTS[uint(_contractId)];
+        require(con != address(0), "unknown");
+        return con;
     }
 
     function isGameContract(address _address) external override view returns (bool) {

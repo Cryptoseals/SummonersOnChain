@@ -19,13 +19,13 @@ contract CodexArea4 {
         _level.MonsterLevel = 1;
 
         // defining loot pool boolean values
-        _level.Rewards.pool.yieldsGold = true;
-        _level.Rewards.rewards.goldRewards.minAmount = 5e18;
-        _level.Rewards.rewards.goldRewards.maxAmount = 10e18;
+        _level.CurrencyRewards.yieldsGold = true;
+        _level.CurrencyRewards.goldRewards.minAmount = 1e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 5e18;
         // defining loot pool boolean values
-        _level.Rewards.pool.yieldsEssence = true;
-        _level.Rewards.rewards.essenceRewards.minAmount = 5e18;
-        _level.Rewards.rewards.essenceRewards.maxAmount = 10e18;
+        _level.CurrencyRewards.yieldsEssence = true;
+        _level.CurrencyRewards.essenceRewards.minAmount = 5e18;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 10e18;
 
         // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](1);

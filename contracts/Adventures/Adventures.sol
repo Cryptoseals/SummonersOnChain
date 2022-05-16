@@ -12,10 +12,12 @@ pragma solidity ^0.8.0;
 contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
     uint battleNonce;
+    uint battleId;
     mapping(uint => uint) public timer;
     uint public COOLDOWN;
 
     struct AdventureBattle {
+        uint battleId;
         address account;
         uint summoner;
         uint adventureArea;
@@ -53,6 +55,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
         activeBattles[summoner] = AdventureBattle({
         account : msg.sender,
+        battleId: battleId,
         summoner : summoner,
         adventureArea : adventureArea,
         adventureLevel : adventureLevel,
@@ -62,6 +65,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         });
 
         battleNonce++;
+        battleId++;
         ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
             summoner,
             GameEntities.SummonerState.IN_FIGHT
@@ -80,6 +84,8 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     }
 
     function attack(uint summoner, uint multiplier) external onlyGameContracts {
+        require(activeBattles[summoner].account != address(0), "no battle");
+
         AdventureBattle memory battle = activeBattles[summoner];
         (
         bool playerHits,
@@ -147,7 +153,12 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
                 contractAddress(INavigator.CONTRACT.ADVENTURES_CODEX)
             ).adventure(battle.adventureArea, battle.adventureLevel);
             IGameRewards.Reward memory rewardPool = _level.Rewards;
-            IReward(contractAddress(INavigator.CONTRACT.REWARDS)).reward(battle.account, rewardPool, nonce);
+            IReward(contractAddress(INavigator.CONTRACT.REWARDS)).reward(
+                battle.account,
+                _level.Rewards,
+                _level.CurrencyRewards,
+                nonce);
+
             nonce++;
             // end battle, cooldown
             timer[battle.summoner] = block.timestamp + COOLDOWN;
@@ -156,17 +167,12 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
                 GameEntities.SummonerState.FREE
             );
             delete activeBattles[battle.summoner];
-            battleNonce = nonce;
-
-
         } else {
-            battleNonce = nonce;
             activeBattles[battle.summoner].monsterStats = battle.monsterStats;
             activeBattles[battle.summoner].playerStats = battle.playerStats;
         }
+        battleNonce = nonce;
     }
-
-
 
 
     event Roll(uint roll);

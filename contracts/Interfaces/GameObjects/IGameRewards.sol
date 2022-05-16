@@ -1,3 +1,4 @@
+import "./IGameObjects.sol";
 import "./ICrafting/ICraftingMaterials.sol";
 pragma solidity ^0.8.0;
 
@@ -11,15 +12,7 @@ interface IGameRewards {
     struct RewardPool {
         bool yieldsArtifact;
         bool yieldsElixir;
-        bool yieldsEquipableItem;
         bool yieldsMiscItem;
-        bool yieldsGold;
-        bool yieldsEssence;
-        bool yieldsMount;
-        bool yieldsChest;
-        bool yieldsPet;
-        bool yieldsFish;
-        bool yieldsCraftingMaterial;
     }
 
     struct Rewards {
@@ -27,6 +20,12 @@ interface IGameRewards {
         ElixirRewards elixirRewards;
         EquipableItemRewards equipableItemRewards;
         MiscItemRewards miscItemRewards;
+    }
+
+    struct CurrencyRewards {
+        bool yieldsGold;
+        bool yieldsEssence;
+        bool yieldsCraftingMaterial;
         GoldRewards goldRewards;
         EssenceRewards essenceRewards;
         CraftingMaterialRewards craftingMaterialRewards;
@@ -55,15 +54,25 @@ interface IGameRewards {
     }
 
     struct EquipableItemRewards {
-        uint[] equipableType;
-        uint[][] equipableIds;
-        uint[] equipableTiers;
-        uint minRewardTier;
-        uint maxRewardTier;
-        uint[] tierChances;
+        EquipableItemReward[] rewards;
+        uint[] weights;
+        uint totalWeight;
+        uint chanceToDrop;
+    }
+
+    struct EquipableItemReward {
+        GameObjects.ItemType equipableType;
+        uint equipableId;
+        uint maxTierDrop;
+        uint[] weights;
     }
 
     struct MiscItemRewards {
+        MiscItemReward[] rewards;
+        uint chanceToDrop;
+    }
+
+    struct MiscItemReward {
         uint miscType;
         uint minAmount;
         uint maxAmount;

@@ -17,10 +17,11 @@ interface IAdventure {
 //    }
 
     struct AdventureLevel {
-        IGenericMetadata.Metadata Metadata;
+//        IGenericMetadata.Metadata Metadata;
         AdventureMonster[] MonsterList;
 //        GameObjects.ItemRequirement Requirements;
         IGameRewards.Reward Rewards;
+        IGameRewards.CurrencyRewards CurrencyRewards;
         uint MonsterLevel;
     }
     
