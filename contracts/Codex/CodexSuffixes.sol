@@ -167,7 +167,7 @@ contract CodexSuffixes {
     }
 
     function none() public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "";
+//        _suffix.title = "";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -212,7 +212,7 @@ contract CodexSuffixes {
         });
     }
     function OfSolarion(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Solarion";
+//        _suffix.title = "of Solarion";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -257,7 +257,7 @@ contract CodexSuffixes {
         });
     }
     function OfTemplar(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Templar";
+//        _suffix.title = "of Templar";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -302,7 +302,7 @@ contract CodexSuffixes {
         });
     }
     function OfPhoenix(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Phoenix";
+//        _suffix.title = "of Phoenix";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -347,7 +347,7 @@ contract CodexSuffixes {
         });
     }
     function OfCelestion(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Celestion";
+//        _suffix.title = "of Celestion";
         _suffix.difficulty = 4;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -392,7 +392,7 @@ contract CodexSuffixes {
         });
     }
     function OfBaphomet(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Baphomet";
+//        _suffix.title = "of Baphomet";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -437,7 +437,7 @@ contract CodexSuffixes {
         });
     }
     function OfSujin(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Sujin";
+//        _suffix.title = "of Sujin";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -482,7 +482,7 @@ contract CodexSuffixes {
         });
     }
     function OfSentinel(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Sentinel";
+//        _suffix.title = "of Sentinel";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -527,7 +527,7 @@ contract CodexSuffixes {
         });
     }
     function OfVerdant(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Verdant";
+//        _suffix.title = "of Verdant";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -572,7 +572,7 @@ contract CodexSuffixes {
         });
     }
     function OfWatcher(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Watcher";
+//        _suffix.title = "of Watcher";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -617,7 +617,7 @@ contract CodexSuffixes {
         });
     }
     function OfDeathbringer(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Deathbringer";
+//        _suffix.title = "of Deathbringer";
         _suffix.difficulty = 4;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -662,7 +662,7 @@ contract CodexSuffixes {
         });
     }
     function OfWraith(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Wraith";
+//        _suffix.title = "of Wraith";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -707,7 +707,7 @@ contract CodexSuffixes {
         });
     }
     function OfSpellcaster(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Spellcaster";
+//        _suffix.title = "of Spellcaster";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -752,7 +752,7 @@ contract CodexSuffixes {
         });
     }
     function OfLuminous(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Luminous";
+//        _suffix.title = "of Luminous";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -797,7 +797,7 @@ contract CodexSuffixes {
         });
     }
     function OfFallen(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Fallen";
+//        _suffix.title = "of Fallen";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -842,7 +842,7 @@ contract CodexSuffixes {
         });
     }
     function OfGreedy(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Greedy";
+//        _suffix.title = "of Greedy";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -887,7 +887,7 @@ contract CodexSuffixes {
         });
     }
     function OfBlacksmith(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Blacksmith";
+//        _suffix.title = "of Blacksmith";
         _suffix.difficulty = 3;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -932,7 +932,7 @@ contract CodexSuffixes {
         });
     }
     function OfSun(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Sun";
+//        _suffix.title = "of Sun";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -977,7 +977,7 @@ contract CodexSuffixes {
         });
     }
     function OfMoon(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Moon";
+//        _suffix.title = "of Moon";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1022,7 +1022,7 @@ contract CodexSuffixes {
         });
     }
     function OfStorm(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Storm";
+//        _suffix.title = "of Storm";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1067,7 +1067,7 @@ contract CodexSuffixes {
         });
     }
     function OfGladiator(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Gladiator";
+//        _suffix.title = "of Gladiator";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1112,7 +1112,7 @@ contract CodexSuffixes {
         });
     }
     function OfVoidheart(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Voidheart";
+//        _suffix.title = "of Voidheart";
         _suffix.difficulty = 5;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1157,7 +1157,7 @@ contract CodexSuffixes {
         });
     }
     function OfTroll(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Troll";
+//        _suffix.title = "of Troll";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : baseStr() * _tier,
@@ -1202,7 +1202,7 @@ contract CodexSuffixes {
         });
     }
     function OfWarmonger(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Warmonger";
+//        _suffix.title = "of Warmonger";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : baseStr() * _tier,
@@ -1247,7 +1247,7 @@ contract CodexSuffixes {
         });
     }
     function OfAssassin(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Assassin";
+//        _suffix.title = "of Assassin";
         _suffix.difficulty = 3;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1292,7 +1292,7 @@ contract CodexSuffixes {
         });
     }
     function OfDeath(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Death";
+//        _suffix.title = "of Death";
         _suffix.difficulty = 3;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1337,7 +1337,7 @@ contract CodexSuffixes {
         });
     }
     function OfAcrobat(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Acrobat";
+//        _suffix.title = "of Acrobat";
         _suffix.difficulty = 3;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1382,7 +1382,7 @@ contract CodexSuffixes {
         });
     }
     function OfShadow(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Shadow";
+//        _suffix.title = "of Shadow";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1427,7 +1427,7 @@ contract CodexSuffixes {
         });
     }
     function OfConcentration(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Concentration";
+//        _suffix.title = "of Concentration";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1472,7 +1472,7 @@ contract CodexSuffixes {
         });
     }
     function OfGuardian(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Guardian";
+//        _suffix.title = "of Guardian";
         _suffix.difficulty = 3;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1517,7 +1517,7 @@ contract CodexSuffixes {
         });
     }
     function OfSavage(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Savage";
+//        _suffix.title = "of Savage";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1562,7 +1562,7 @@ contract CodexSuffixes {
         });
     }
     function OfCultist(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Cultist";
+//        _suffix.title = "of Cultist";
         _suffix.difficulty = 3;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1607,7 +1607,7 @@ contract CodexSuffixes {
         });
     }
     function OfFaith(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Faith";
+//        _suffix.title = "of Faith";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1652,7 +1652,7 @@ contract CodexSuffixes {
         });
     }
     function OfWanderer(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Wanderer";
+//        _suffix.title = "of Wanderer";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1697,7 +1697,7 @@ contract CodexSuffixes {
         });
     }
     function OfRoots(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Roots";
+//        _suffix.title = "of Roots";
         _suffix.difficulty = 3;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1742,7 +1742,7 @@ contract CodexSuffixes {
         });
     }
     function OfOrder(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Order";
+//        _suffix.title = "of Order";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1787,7 +1787,7 @@ contract CodexSuffixes {
         });
     }
     function OfSeal(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Seal";
+//        _suffix.title = "of Seal";
         _suffix.difficulty = 4;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1832,7 +1832,7 @@ contract CodexSuffixes {
         });
     }
     function OfResistance(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Resistance";
+//        _suffix.title = "of Resistance";
         _suffix.difficulty = 3;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1877,7 +1877,7 @@ contract CodexSuffixes {
         });
     }
     function OfFortitude(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Fortitude";
+//        _suffix.title = "of Fortitude";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1922,7 +1922,7 @@ contract CodexSuffixes {
         });
     }
     function OfRunes(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Runes";
+//        _suffix.title = "of Runes";
         _suffix.difficulty = 3;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1967,7 +1967,7 @@ contract CodexSuffixes {
         });
     }
     function OfMalevolence(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Malevolence";
+//        _suffix.title = "of Malevolence";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -2012,7 +2012,7 @@ contract CodexSuffixes {
         });
     }
     function OfEclipse(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Eclipse";
+//        _suffix.title = "of Eclipse";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -2057,7 +2057,7 @@ contract CodexSuffixes {
         });
     }
     function OfImmortal(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Immortal";
+//        _suffix.title = "of Immortal";
         _suffix.difficulty = 3;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -2102,7 +2102,7 @@ contract CodexSuffixes {
         });
     }
     function OfSanctity(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Sanctity";
+//        _suffix.title = "of Sanctity";
         _suffix.difficulty = 2;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -2147,7 +2147,7 @@ contract CodexSuffixes {
         });
     }
     function OfWisdom(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
-        _suffix.title = "of Wisdom";
+//        _suffix.title = "of Wisdom";
         _suffix.difficulty = 1;
         _suffix.statBonus = GameObjects.Stats({
         STR : 0,

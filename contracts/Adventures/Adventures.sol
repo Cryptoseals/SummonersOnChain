@@ -10,7 +10,7 @@ import "../Interfaces/Reward/IReward.sol";
 pragma solidity ^0.8.0;
 
 contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
-
+    ICodexRandom RNG;
     uint battleNonce;
     uint battleId;
     mapping(uint => uint) public timer;
@@ -22,6 +22,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         uint summoner;
         uint adventureArea;
         uint adventureLevel;
+        bool isActive;
         IAdventure.AdventureMonster monster;
         GameObjects.BattleStats playerStats;
         GameObjects.BattleStats monsterStats;
@@ -33,7 +34,9 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     function initialize(address _navigator) external initializer {
         __Ownable_init();
         initializeNavigator(_navigator);
-        COOLDOWN = 1 minutes;
+        RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
+
+        //        COOLDOWN = 1 minutes;
     }
 
     function setCooldown(uint _minutes) external onlyOwner {
@@ -55,13 +58,14 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
         activeBattles[summoner] = AdventureBattle({
         account : msg.sender,
-        battleId: battleId,
+        battleId : battleId,
         summoner : summoner,
         adventureArea : adventureArea,
         adventureLevel : adventureLevel,
         monster : _advMonster,
         playerStats : _summonerStats,
-        monsterStats : _monsterStats
+        monsterStats : _monsterStats,
+        isActive : true
         });
 
         battleNonce++;
@@ -72,9 +76,8 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         );
     }
 
-    function flee(uint summoner) external ensureNotPaused
-    senderIsSummonerOwner(summoner) {
-        require(activeBattles[summoner].account == msg.sender, "no battle");
+    function flee(uint summoner) external onlyGameContracts {
+        require(activeBattles[summoner].account != address(0));
         delete activeBattles[summoner];
         timer[summoner] = block.timestamp + COOLDOWN * 4;
         ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
@@ -87,6 +90,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         require(activeBattles[summoner].account != address(0), "no battle");
 
         AdventureBattle memory battle = activeBattles[summoner];
+        require(battle.monsterStats.TOTAL_HP > 0 && battle.playerStats.TOTAL_HP > 0, "dead");
         (
         bool playerHits,
         bool monsterHits,
@@ -130,22 +134,24 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
                 battle.playerStats.TOTAL_HP -= damage;
             }
         }
-        settleBattle(battle, nonce);
+        activeBattles[summoner].monsterStats = battle.monsterStats;
+        activeBattles[summoner].playerStats = battle.playerStats;
+        battleNonce = nonce + 1;
     }
 
 
-    function settleBattle(AdventureBattle memory battle, uint nonce) internal {
+    function settleBattle(uint summoner) external onlyGameContracts {
+        AdventureBattle memory battle = activeBattles[summoner];
+        require(battle.isActive, "finalized");
+        uint nonce = battleNonce;
         if (battle.playerStats.TOTAL_HP == 0) {
-
             // lose, end battle, cooldown
             timer[battle.summoner] = block.timestamp + COOLDOWN;
-            delete activeBattles[battle.summoner];
             ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
                 battle.summoner,
                 GameEntities.SummonerState.FREE
             );
         } else if (battle.monsterStats.TOTAL_HP == 0) {
-
             // win
             // TODO, roll rewards,
             IAdventure.AdventureLevel memory _level =
@@ -162,15 +168,19 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             nonce++;
             // end battle, cooldown
             timer[battle.summoner] = block.timestamp + COOLDOWN;
+            //            ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
+            //                battle.summoner,
+            //                GameEntities.SummonerState.FREE
+            //            );
+            //            delete activeBattles[battle.summoner];
             ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
                 battle.summoner,
                 GameEntities.SummonerState.FREE
             );
-            delete activeBattles[battle.summoner];
         } else {
-            activeBattles[battle.summoner].monsterStats = battle.monsterStats;
-            activeBattles[battle.summoner].playerStats = battle.playerStats;
+            revert("on going");
         }
+        delete activeBattles[battle.summoner];
         battleNonce = nonce;
     }
 
@@ -179,7 +189,6 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
     function getHitRolls(uint summoner, AdventureBattle memory battle) internal returns (bool, bool, uint nonce) {
         nonce = battleNonce;
-        ICodexRandom RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
         nonce++;
         uint roll1 = RNG.d100(1 + summoner + nonce);
         emit Roll(roll1);
@@ -195,7 +204,6 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     }
 
     function getCritRoll(uint summoner, uint critChance, uint nonce) internal returns (bool, uint) {
-        ICodexRandom RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
         uint roll = RNG.d100(nonce);
         return (critChance <= roll, roll);
     }
@@ -211,7 +219,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     }
 
     function pickMonster(IAdventure.AdventureLevel memory _level) internal view returns (IMonster.Monster memory, IAdventure.AdventureMonster memory) {
-        uint monsterIdx = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).dn(
+        uint monsterIdx = RNG.dn(
             block.number + battleNonce,
             _level.MonsterList.length);
 

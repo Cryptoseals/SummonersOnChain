@@ -28,13 +28,13 @@ interface IGameRewards {
         bool yieldsCraftingMaterial;
         GoldRewards goldRewards;
         EssenceRewards essenceRewards;
-        CraftingMaterialRewards craftingMaterialRewards;
+        CraftingMaterialReward[] materials;
     }
 
-    struct CraftingMaterialRewards {
-        ICraftingMaterials.CraftingMaterial[] materialIds;
-        uint[] min;
-        uint[] max;
+    struct CraftingMaterialReward {
+        ICraftingMaterials.CraftingMaterial material;
+        uint min;
+        uint max;
     }
 
     struct ArtifactRewards {

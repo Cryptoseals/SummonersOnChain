@@ -48,7 +48,7 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
 
 
     function levelUp(uint id) external {
-        if (!(ownerOf(id) == msg.sender)) revert UnauthorizedSender(msg.sender, "NOT OWNED");
+        require((ownerOf(id) == msg.sender), "unauth");
         _levelUp(id);
     }
 
@@ -65,15 +65,15 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     }
 
 
-    function setSummonerState(uint summoner, GameEntities.SummonerState _state) public onlyGameContracts {
+    function setSummonerState(uint summoner, GameEntities.SummonerState _state) external onlyGameContracts {
         SummonerState[summoner] = _state;
     }
 
-    function rewardXP(uint summoner, uint xp) public onlyGameContracts {
+    function rewardXP(uint summoner, uint xp) external onlyGameContracts {
         SummonerEXP[summoner] += xp;
     }
 
-    function spendXP(uint summoner, uint xp) public onlyGameContracts {
+    function spendXP(uint summoner, uint xp) external onlyGameContracts {
         _spendXP(summoner, xp);
     }
 

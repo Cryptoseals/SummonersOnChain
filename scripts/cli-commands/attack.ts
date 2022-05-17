@@ -25,11 +25,13 @@ async function main() {
     tx = await adventures.basicAttack(0, {
         gasLimit: 500000
     })
-    await tx.wait(1)
+    await tx.wait(2)
     // console.log(await adventures.activeBattles(0))
 
     console.log("after")
-    console.log(await adventuresMain.activeBattles(0))
+    const battle = await adventuresMain.activeBattles(0)
+    console.log(battle)
+    console.log(parseInt(battle?.monsterStats?.TOTAL_HP || "error"))
 
 }
 

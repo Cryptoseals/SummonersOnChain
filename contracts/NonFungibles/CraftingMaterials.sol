@@ -23,6 +23,7 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
     }
 
     function mintMaterial(ICraftingMaterials.CraftingMaterial material, address to, uint amount) external onlyGameContracts {
+        require(amount > 0, "0");
         _mint(to, uint(material), amount, new bytes(0));
     }
     // test purposes
@@ -31,6 +32,7 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
 //    }
 
     function burnMaterial(address from, uint id, uint amount) external onlyGameContracts {
+        require(amount > 0, "0");
         _burn(from, uint(id), amount);
     }
 

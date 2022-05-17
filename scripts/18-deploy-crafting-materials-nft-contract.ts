@@ -10,27 +10,27 @@ import {CONTRACTS, DeployedFileLocations} from './helpers/constants'
 
 async function main() {
 
-    const deployedNavigator = JSON.parse(fs.readFileSync(DeployedFileLocations.navigator, 'utf-8'))
-    const Navigator = await ethers.getContractFactory("Navigator");
-    const navigator = Navigator.attach(deployedNavigator.navigator)
-
-
-    let CraftingMaterials = await ethers.getContractFactory("CraftingMaterials")
-    let craftingMaterials = await upgrades.deployProxy(CraftingMaterials, [
-        navigator.address,
-        "https://play.cryptoseals.art/api/crafting-mats/"
-    ]);
-    await craftingMaterials.deployed()
-    console.log("craftingMaterials deployed to:", craftingMaterials.address,)
-    let tx = await navigator.setGameContractsById(CONTRACTS.CRAFTING_MATERIALS, craftingMaterials.address, true)
-    await tx.wait(1)
-    console.log("and set in navigator.")
-
-
-    fs.writeFileSync(DeployedFileLocations.crafting_materials, JSON.stringify({
-        crafting_materials: craftingMaterials.address,
-    }))
-    console.log({craftingMaterials: craftingMaterials.address})
+    // const deployedNavigator = JSON.parse(fs.readFileSync(DeployedFileLocations.navigator, 'utf-8'))
+    // const Navigator = await ethers.getContractFactory("Navigator");
+    // const navigator = Navigator.attach(deployedNavigator.navigator)
+    //
+    //
+    // let CraftingMaterials = await ethers.getContractFactory("CraftingMaterials")
+    // let craftingMaterials = await upgrades.deployProxy(CraftingMaterials, [
+    //     navigator.address,
+    //     "https://play.cryptoseals.art/api/crafting-mats/"
+    // ]);
+    // await craftingMaterials.deployed()
+    // console.log("craftingMaterials deployed to:", craftingMaterials.address,)
+    // let tx = await navigator.setGameContractsById(CONTRACTS.CRAFTING_MATERIALS, craftingMaterials.address, true)
+    // await tx.wait(1)
+    // console.log("and set in navigator.")
+    //
+    //
+    // fs.writeFileSync(DeployedFileLocations.crafting_materials, JSON.stringify({
+    //     crafting_materials: craftingMaterials.address,
+    // }))
+    // console.log({craftingMaterials: craftingMaterials.address})
 
 }
 

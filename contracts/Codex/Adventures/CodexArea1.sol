@@ -27,28 +27,25 @@ contract CodexArea1 {
         _level.CurrencyRewards.essenceRewards.minAmount = 5e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 10e18;
         // crafting mats
-        _level.CurrencyRewards.craftingMaterialRewards.materialIds = new ICraftingMaterials.CraftingMaterial[](3);
+        _level.CurrencyRewards.yieldsCraftingMaterial = true;
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
         // example:
-        _level.CurrencyRewards.craftingMaterialRewards.materialIds[0] = ICraftingMaterials.CraftingMaterial.COPPER;
-        _level.CurrencyRewards.craftingMaterialRewards.materialIds[1] = ICraftingMaterials.CraftingMaterial.SILVER;
-        _level.CurrencyRewards.craftingMaterialRewards.materialIds[2] = ICraftingMaterials.CraftingMaterial.IRON;
-
-        _level.CurrencyRewards.craftingMaterialRewards.min = new uint[](3);
-        _level.CurrencyRewards.craftingMaterialRewards.min[0] = 1;
-        _level.CurrencyRewards.craftingMaterialRewards.min[1] = 1;
-        _level.CurrencyRewards.craftingMaterialRewards.min[2] = 5;
-
-
-        _level.CurrencyRewards.craftingMaterialRewards.max = new uint[](3);
-        _level.CurrencyRewards.craftingMaterialRewards.max[0] = 10;
-        _level.CurrencyRewards.craftingMaterialRewards.max[1] = 10;
-        _level.CurrencyRewards.craftingMaterialRewards.max[2] = 15;
+        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.COPPER,
+        min : 1,
+        max : 5
+        });
+        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.IRON,
+        min : 1,
+        max : 5
+        });
 
 
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 0,
+        miscType : 1,
         minAmount : 1,
         maxAmount : 3
         });

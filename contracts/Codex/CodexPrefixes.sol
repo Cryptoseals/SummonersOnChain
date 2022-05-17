@@ -166,7 +166,7 @@ contract CodexPrefixes {
 
 
     function none() public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "";
+//        _prefix.title = "";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -215,7 +215,7 @@ contract CodexPrefixes {
         });
     }
     function Berserkers(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Berserker's";
+//        _prefix.title = "Berserker's";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : baseStr() * _tier,
@@ -264,7 +264,7 @@ contract CodexPrefixes {
         });
     }
     function Wizards(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Wizard's";
+//        _prefix.title = "Wizard's";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -313,7 +313,7 @@ contract CodexPrefixes {
         });
     }
     function Elementalists(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Elementalist's";
+//        _prefix.title = "Elementalist's";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -362,7 +362,7 @@ contract CodexPrefixes {
         });
     }
     function Ferocious(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Ferocious";
+//        _prefix.title = "Ferocious";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -411,7 +411,7 @@ contract CodexPrefixes {
         });
     }
     function Wicked(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Wicked";
+//        _prefix.title = "Wicked";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : baseStr() * _tier,
@@ -460,7 +460,7 @@ contract CodexPrefixes {
         });
     }
     function Sharpshooter(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Sharpshooter";
+//        _prefix.title = "Sharpshooter";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -509,7 +509,7 @@ contract CodexPrefixes {
         });
     }
     function Skirmishing(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Skirmishing";
+//        _prefix.title = "Skirmishing";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -558,7 +558,7 @@ contract CodexPrefixes {
         });
     }
     function Defiant(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Defiant";
+//        _prefix.title = "Defiant";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -607,7 +607,7 @@ contract CodexPrefixes {
         });
     }
     function Merciless(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Merciless";
+//        _prefix.title = "Merciless";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -656,7 +656,7 @@ contract CodexPrefixes {
         });
     }
     function Fiery(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Fiery";
+//        _prefix.title = "Fiery";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -705,7 +705,7 @@ contract CodexPrefixes {
         });
     }
     function Thunderous(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Thunderous";
+//        _prefix.title = "Thunderous";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -754,7 +754,7 @@ contract CodexPrefixes {
         });
     }
     function Holy(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Holy";
+//        _prefix.title = "Holy";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -803,7 +803,7 @@ contract CodexPrefixes {
         });
     }
     function Frozen(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Frozen";
+//        _prefix.title = "Frozen";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -852,7 +852,7 @@ contract CodexPrefixes {
         });
     }
     function Natural(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Natural";
+//        _prefix.title = "Natural";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -901,7 +901,7 @@ contract CodexPrefixes {
         });
     }
     function Sacred(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Sacred";
+//        _prefix.title = "Sacred";
         _prefix.difficulty = 3;
         _prefix.statBonus = GameObjects.Stats({
         STR : baseStr() * _tier,
@@ -950,7 +950,7 @@ contract CodexPrefixes {
         });
     }
     function Eternal(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Eternal";
+//        _prefix.title = "Eternal";
         _prefix.difficulty = 5;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -999,7 +999,7 @@ contract CodexPrefixes {
         });
     }
     function Devastating(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Devastating ";
+//        _prefix.title = "Devastating ";
         _prefix.difficulty = 3;
         _prefix.statBonus = GameObjects.Stats({
         STR : baseStr() * _tier,
@@ -1048,7 +1048,7 @@ contract CodexPrefixes {
         });
     }
     function Forged(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Forged";
+//        _prefix.title = "Forged";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : baseStr() * _tier,
@@ -1097,7 +1097,7 @@ contract CodexPrefixes {
         });
     }
     function Mystical(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Mystical";
+//        _prefix.title = "Mystical";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1146,7 +1146,7 @@ contract CodexPrefixes {
         });
     }
     function Clever(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Clever";
+//        _prefix.title = "Clever";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1195,7 +1195,7 @@ contract CodexPrefixes {
         });
     }
     function Enormous(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Enormous";
+//        _prefix.title = "Enormous";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1244,7 +1244,7 @@ contract CodexPrefixes {
         });
     }
     function Ethereal(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Ethereal";
+//        _prefix.title = "Ethereal";
         _prefix.difficulty = 3;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1293,7 +1293,7 @@ contract CodexPrefixes {
         });
     }
     function Vengeful(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Vengeful";
+//        _prefix.title = "Vengeful";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1342,7 +1342,7 @@ contract CodexPrefixes {
         });
     }
     function Divine(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Divine";
+//        _prefix.title = "Divine";
         _prefix.difficulty = 3;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1391,7 +1391,7 @@ contract CodexPrefixes {
         });
     }
     function Elusive(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Elusive";
+//        _prefix.title = "Elusive";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1440,7 +1440,7 @@ contract CodexPrefixes {
         });
     }
     function Protective(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Protective";
+//        _prefix.title = "Protective";
         _prefix.difficulty = 3;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1489,7 +1489,7 @@ contract CodexPrefixes {
         });
     }
     function Pristine(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Pristine";
+//        _prefix.title = "Pristine";
         _prefix.difficulty = 3;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1538,7 +1538,7 @@ contract CodexPrefixes {
         });
     }
     function Glacial(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Glacial";
+//        _prefix.title = "Glacial";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1587,7 +1587,7 @@ contract CodexPrefixes {
         });
     }
     function Rugged(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Rugged";
+//        _prefix.title = "Rugged";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1636,7 +1636,7 @@ contract CodexPrefixes {
         });
     }
     function Ruthless(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Ruthless";
+//        _prefix.title = "Ruthless";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : baseStr() * _tier,
@@ -1685,7 +1685,7 @@ contract CodexPrefixes {
         });
     }
     function Lurid(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Lurid";
+//        _prefix.title = "Lurid";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1734,7 +1734,7 @@ contract CodexPrefixes {
         });
     }
     function Pastoral(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Pastoral";
+//        _prefix.title = "Pastoral";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1783,7 +1783,7 @@ contract CodexPrefixes {
         });
     }
     function Supreme(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Supreme";
+//        _prefix.title = "Supreme";
         _prefix.difficulty = 3;
         _prefix.statBonus = GameObjects.Stats({
         STR : baseStr() * _tier,
@@ -1832,7 +1832,7 @@ contract CodexPrefixes {
         });
     }
     function Banishing(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Banishing";
+//        _prefix.title = "Banishing";
         _prefix.difficulty = 3;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1881,7 +1881,7 @@ contract CodexPrefixes {
         });
     }
     function Shapened(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Shapened";
+//        _prefix.title = "Shapened";
         _prefix.difficulty = 1;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1930,7 +1930,7 @@ contract CodexPrefixes {
         });
     }
     function Obsidian(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Obsidian";
+//        _prefix.title = "Obsidian";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -1979,7 +1979,7 @@ contract CodexPrefixes {
         });
     }
     function Devoted(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Devoted";
+//        _prefix.title = "Devoted";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -2028,7 +2028,7 @@ contract CodexPrefixes {
         });
     }
     function Revival(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Revival";
+//        _prefix.title = "Revival";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -2077,7 +2077,7 @@ contract CodexPrefixes {
         });
     }
     function Damned(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Damned";
+//        _prefix.title = "Damned";
         _prefix.difficulty = 3;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -2126,7 +2126,7 @@ contract CodexPrefixes {
         });
     }
     function Unholy(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Unholy";
+//        _prefix.title = "Unholy";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -2175,7 +2175,7 @@ contract CodexPrefixes {
         });
     }
     function Smoky(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Smoky";
+//        _prefix.title = "Smoky";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -2224,7 +2224,7 @@ contract CodexPrefixes {
         });
     }
     function Shardy(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Shardy";
+//        _prefix.title = "Shardy";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
@@ -2273,7 +2273,7 @@ contract CodexPrefixes {
         });
     }
     function Shiny(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
-        _prefix.title = "Shiny";
+//        _prefix.title = "Shiny";
         _prefix.difficulty = 2;
         _prefix.statBonus = GameObjects.Stats({
         STR : 0,
