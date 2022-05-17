@@ -56,52 +56,52 @@ contract CodexHelmetsLight is Initializable {
         if (id == 43) {
             return applyTier(SoldiersHat(tier), tier, 1);
         } else if (id == 44) {
-            return applyTier(ExecutionerHat(tier), tier, 1);
+            return applyTier(PriestsHat(tier), tier, 1);
         } else if (id == 45) {
-            return applyTier(KnightsHat(tier), tier, 1);
+            return applyTier(FaithHat(tier), tier, 1);
         } else if (id == 46) {
-            return applyTier(DwarvenHat(tier), tier, 1);
+            return applyTier(TraineesHat(tier), tier, 1);
         } else if (id == 47) {
-            return applyTier(ScaleHat(tier), tier, 1);
+            return applyTier(MagiciansHat(tier), tier, 1);
         } else if (id == 48) {
-            return applyTier(WingedHat(tier), tier, 2);
+            return applyTier(SealedMask(tier), tier, 2);
         } else if (id == 49) {
-            return applyTier(DraconicHat(tier), tier, 2);
+            return applyTier(GateKeepersMask(tier), tier, 2);
         } else if (id == 50) {
-            return applyTier(ArgentHat(tier), tier, 2);
+            return applyTier(ElementalistsMask(tier), tier, 2);
         } else if (id == 51) {
-            return applyTier(GoldenHat(tier), tier, 3);
+            return applyTier(AlchemistsMask(tier), tier, 3);
         } else if (id == 52) {
-            return applyTier(MidassHat(tier), tier, 3);
+            return applyTier(ArchmagesMask(tier), tier, 3);
         } else if (id == 53) {
-            return applyTier(JuggernautHat(tier), tier, 4);
+            return applyTier(ElvenCirclet(tier), tier, 4);
         } else if (id == 54) {
-            return applyTier(ChosensHat(tier), tier, 4);
+            return applyTier(ChosensCirclet(tier), tier, 4);
         } else if (id == 55) {
-            return applyTier(TemplarHat(tier), tier, 5);
+            return applyTier(ProphetsCirclet(tier), tier, 5);
         } else if (id == 56) {
-            return applyTier(VanguardHat(tier), tier, 6);
+            return applyTier(EldersCirclet(tier), tier, 6);
         } else if (id == 57) {
-            return applyTier(VoidDwellerHat(tier), tier, 7);
+            return applyTier(AncientCirclet(tier), tier, 7);
         } else if (id == 58) {
-            return applyTier(SunHat(tier), tier, 9);
+            return applyTier(MoonCirclet(tier), tier, 9);
         } else if (id == 59) {
-            return applyTier(MoonHat(tier), tier, 11);
+            return applyTier(SunCirclet(tier), tier, 11);
         } else if (id == 60) {
-            return applyTier(DemonicHat(tier), tier, 13);
+            return applyTier(CycleCirclet(tier), tier, 13);
         } else if (id == 61) {
-            return applyTier(AngelicHat(tier), tier, 15);
+            return applyTier(DemonicCrown(tier), tier, 15);
         } else if (id == 62) {
-            return applyTier(CycleHat(tier), tier, 19);
+            return applyTier(AngelicCrown(tier), tier, 19);
         } else if (id == 63) {
-            return applyTier(EternalHat(tier), tier, 10);
+            return applyTier(EternalCrown(tier), tier, 10);
         }
 
         revert("?hm");
     }
 
     function SoldiersHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 1;
+        _hat.metadata.id = 43;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Soldier's Hat";
 //        _hat.metadata.description = "";
@@ -131,13 +131,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(0);
     }
 
-    function ExecutionerHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 2;
+    function PriestsHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 44;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Executioner's Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 5;
+        _hat.requirement.level = 3;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -152,13 +152,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(1);
     }
 
-    function KnightsHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 3;
+    function FaithHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 45;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Knight's Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 10;
+        _hat.requirement.level = 8;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -173,13 +173,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(2);
     }
 
-    function DwarvenHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 4;
+    function TraineesHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 46;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Dwarven Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 15;
+        _hat.requirement.level = 13;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -194,13 +194,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(3);
     }
 
-    function ScaleHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 5;
+    function MagiciansHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 47;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Scale Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 20;
+        _hat.requirement.level = 18;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -215,13 +215,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(4);
     }
 
-    function WingedHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 6;
+    function SealedMask(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 48;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Winged Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 25;
+        _hat.requirement.level = 23;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -236,13 +236,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(5);
     }
 
-    function DraconicHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 7;
+    function GateKeepersMask(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 49;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Draconic Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 30;
+        _hat.requirement.level = 28;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -257,13 +257,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(6);
     }
 
-    function ArgentHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 8;
+    function ElementalistsMask(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 50;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Argent Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 35;
+        _hat.requirement.level = 33;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -278,13 +278,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(7);
     }
 
-    function GoldenHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 9;
+    function AlchemistsMask(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 51;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Golden Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 40;
+        _hat.requirement.level = 38;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -299,13 +299,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(8);
     }
 
-    function MidassHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 10;
+    function ArchmagesMask(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 52;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Midas's Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 45;
+        _hat.requirement.level = 43;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -320,13 +320,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(9);
     }
 
-    function JuggernautHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 11;
+    function ElvenCirclet(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 53;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Juggernaut Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 50;
+        _hat.requirement.level = 48;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -341,13 +341,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(10);
     }
 
-    function ChosensHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 12;
+    function ChosensCirclet(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 54;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Chosen's Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 55;
+        _hat.requirement.level = 53;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -362,13 +362,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(11);
     }
 
-    function TemplarHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 13;
+    function ProphetsCirclet(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 55;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Templar Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 60;
+        _hat.requirement.level = 58;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -383,13 +383,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(12);
     }
 
-    function VanguardHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 14;
+    function EldersCirclet(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 56;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Vanguard Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 65;
+        _hat.requirement.level = 63;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -404,13 +404,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(13);
     }
 
-    function VoidDwellerHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 15;
+    function AncientCirclet(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 57;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Void Dweller Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 70;
+        _hat.requirement.level = 68;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -425,13 +425,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(14);
     }
 
-    function SunHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 16;
+    function MoonCirclet(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 58;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Sun Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 75;
+        _hat.requirement.level = 73;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -446,13 +446,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(15);
     }
 
-    function MoonHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 17;
+    function SunCirclet(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 59;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Moon Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 80;
+        _hat.requirement.level = 78;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -467,13 +467,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(16);
     }
 
-    function DemonicHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 18;
+    function CycleCirclet(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 60;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Demonic Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 85;
+        _hat.requirement.level = 83;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -488,13 +488,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(17);
     }
 
-    function AngelicHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 19;
+    function DemonicCrown(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 61;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Angelic Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 90;
+        _hat.requirement.level = 88;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -509,13 +509,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(18);
     }
 
-    function CycleHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 20;
+    function AngelicCrown(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 62;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Cycle Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 95;
+        _hat.requirement.level = 93;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,
@@ -530,13 +530,13 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(19);
     }
 
-    function EternalHat(uint tier) public view returns (GameObjects.Helmet memory _hat) {
-        _hat.metadata.id = 21;
+    function EternalCrown(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+        _hat.metadata.id = 63;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Eternal Hat";
 //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
-        _hat.requirement.level = 100;
+        _hat.requirement.level = 98;
         _hat.requirement.classRequirement = classRequirement();
 //        _hat.requirement.statRequirement = GameObjects.Stats({
 //        STR : 0,

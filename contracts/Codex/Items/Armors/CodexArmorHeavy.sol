@@ -64,15 +64,15 @@ contract CodexArmorsHeavy is Initializable {
         } else if (id == 6) {
             return applyTier(WingedArmor(tier), tier, 2);
         } else if (id == 7) {
-            return applyTier(DraconicArmor(tier), tier, 2);
+            return applyTier(JuggernautArmor(tier), tier, 2);
         } else if (id == 8) {
-            return applyTier(ArgentArmor(tier), tier, 2);
+            return applyTier(DraconicArmor(tier), tier, 2);
         } else if (id == 9) {
-            return applyTier(GoldenArmor(tier), tier, 3);
+            return applyTier(DragonsilverArmor(tier), tier, 3);
         } else if (id == 10) {
-            return applyTier(MidassArmor(tier), tier, 3);
+            return applyTier(GoldenArmor(tier), tier, 3);
         } else if (id == 11) {
-            return applyTier(JuggernautArmor(tier), tier, 4);
+            return applyTier(MidassArmor(tier), tier, 4);
         } else if (id == 12) {
             return applyTier(ChosensArmor(tier), tier, 4);
         } else if (id == 13) {
@@ -132,7 +132,7 @@ contract CodexArmorsHeavy is Initializable {
     function ExecutionerArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 2;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Executioner's Armor";
+//        _armor.metadata.name = "Executioner Armor";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 5;
@@ -234,10 +234,10 @@ contract CodexArmorsHeavy is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(5);
     }
 
-    function DraconicArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function JuggernautArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 7;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Draconic Armor";
+//        _armor.metadata.name = "Juggernaut Armor";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 30;
@@ -255,10 +255,10 @@ contract CodexArmorsHeavy is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(6);
     }
 
-    function ArgentArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function DraconicArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 8;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Argent Armor";
+//        _armor.metadata.name = "Draconic Armor";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 35;
@@ -276,10 +276,10 @@ contract CodexArmorsHeavy is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(7);
     }
 
-    function GoldenArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function DragonsilverArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 9;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Golden Armor";
+//        _armor.metadata.name = "Dragonsilver Armor";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 40;
@@ -297,10 +297,10 @@ contract CodexArmorsHeavy is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(8);
     }
 
-    function MidassArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function GoldenArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 10;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Midas's Armor";
+//        _armor.metadata.name = "Golden Armor";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 45;
@@ -318,10 +318,10 @@ contract CodexArmorsHeavy is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(9);
     }
 
-    function JuggernautArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function MidassArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 11;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Juggernaut Armor";
+//        _armor.metadata.name = "Midas's Armor";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 50;

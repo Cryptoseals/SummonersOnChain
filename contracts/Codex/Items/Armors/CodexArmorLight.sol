@@ -52,45 +52,45 @@ contract CodexArmorsLight is Initializable {
         require(tier < 10, "t");
 
         if (id == 43) {
-            return applyTier(SoldiersRobe(tier), tier, 1);
+            return applyTier(SoldiersTunic(tier), tier, 1);
         } else if (id == 44) {
-            return applyTier(ExecutionerRobe(tier), tier, 1);
+            return applyTier(PriestsTunic(tier), tier, 1);
         } else if (id == 45) {
-            return applyTier(KnightsRobe(tier), tier, 1);
+            return applyTier(FaithTunic(tier), tier, 1);
         } else if (id == 46) {
-            return applyTier(DwarvenRobe(tier), tier, 1);
+            return applyTier(TraineesTunic(tier), tier, 1);
         } else if (id == 47) {
-            return applyTier(ScaleRobe(tier), tier, 1);
+            return applyTier(MagiciansShirt(tier), tier, 1);
         } else if (id == 48) {
-            return applyTier(WingedRobe(tier), tier, 2);
+            return applyTier(SealedShirt(tier), tier, 2);
         } else if (id == 49) {
-            return applyTier(DraconicRobe(tier), tier, 2);
+            return applyTier(GateKeepersShirt(tier), tier, 2);
         } else if (id == 50) {
-            return applyTier(ArgentRobe(tier), tier, 2);
+            return applyTier(ElementalistsShirt(tier), tier, 2);
         } else if (id == 51) {
-            return applyTier(GoldenRobe(tier), tier, 3);
+            return applyTier(AlcemistsJacket(tier), tier, 3);
         } else if (id == 52) {
-            return applyTier(MidassRobe(tier), tier, 3);
+            return applyTier(ArchmagesJacket(tier), tier, 3);
         } else if (id == 53) {
-            return applyTier(JuggernautRobe(tier), tier, 4);
+            return applyTier(ElvenJacket(tier), tier, 4);
         } else if (id == 54) {
-            return applyTier(ChosensRobe(tier), tier, 4);
+            return applyTier(ChosensJacket(tier), tier, 4);
         } else if (id == 55) {
-            return applyTier(TemplarRobe(tier), tier, 5);
+            return applyTier(ProphetsJacket(tier), tier, 5);
         } else if (id == 56) {
-            return applyTier(VanguardRobe(tier), tier, 6);
+            return applyTier(EldersJacket(tier), tier, 6);
         } else if (id == 57) {
-            return applyTier(VoidDwellerRobe(tier), tier, 7);
+            return applyTier(AncientCuirass(tier), tier, 7);
         } else if (id == 58) {
-            return applyTier(SunRobe(tier), tier, 9);
+            return applyTier(MoonCuirass(tier), tier, 9);
         } else if (id == 59) {
-            return applyTier(MoonRobe(tier), tier, 11);
+            return applyTier(SunCuirass(tier), tier, 11);
         } else if (id == 60) {
-            return applyTier(DemonicRobe(tier), tier, 13);
+            return applyTier(CycleCuirass(tier), tier, 13);
         } else if (id == 61) {
-            return applyTier(AngelicRobe(tier), tier, 15);
+            return applyTier(DemonicRobe(tier), tier, 15);
         } else if (id == 62) {
-            return applyTier(CycleRobe(tier), tier, 19);
+            return applyTier(AngelicRobe(tier), tier, 19);
         } else if (id == 63) {
             return applyTier(EternalRobe(tier), tier, 20);
         }
@@ -98,10 +98,10 @@ contract CodexArmorsLight is Initializable {
         revert("?hm");
     }
 
-    function SoldiersRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 1;
+    function SoldiersTunic(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 43;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Soldier's Robe";
+//        _armor.metadata.name = "Soldier's Tunic";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
 
@@ -129,10 +129,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(0);
     }
 
-    function ExecutionerRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 2;
+    function PriestsTunic(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 44;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Executioner's Robe";
+//        _armor.metadata.name = "Priest's Tunic";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 5;
@@ -150,10 +150,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(1);
     }
 
-    function KnightsRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 3;
+    function FaithTunic(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 45;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Knight's Robe";
+//        _armor.metadata.name = "Faith Tunic";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 10;
@@ -171,10 +171,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(2);
     }
 
-    function DwarvenRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 4;
+    function TraineesTunic(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 46;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Dwarven Robe";
+//        _armor.metadata.name = "Trainee's Tunic";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 15;
@@ -192,10 +192,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(3);
     }
 
-    function ScaleRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 5;
+    function MagiciansShirt(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 47;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Scale Robe";
+//        _armor.metadata.name = "Trainee's Tunic";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 20;
@@ -213,10 +213,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(4);
     }
 
-    function WingedRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 6;
+    function SealedShirt(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 48;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Winged Robe";
+//        _armor.metadata.name = "Sealed Shirt";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 25;
@@ -234,10 +234,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(5);
     }
 
-    function DraconicRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 7;
+    function GateKeepersShirt(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 49;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Draconic Robe";
+//        _armor.metadata.name = "Gate Keeper's Shirt";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 30;
@@ -255,10 +255,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(6);
     }
 
-    function ArgentRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 8;
+    function ElementalistsShirt(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 50;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Argent Robe";
+//        _armor.metadata.name = "Elementalist's Shirt";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 35;
@@ -276,10 +276,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(7);
     }
 
-    function GoldenRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 9;
+    function AlcemistsJacket(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 51;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Golden Robe";
+//        _armor.metadata.name = "Alchemist's Shirt";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 40;
@@ -297,10 +297,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(8);
     }
 
-    function MidassRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 10;
+    function ArchmagesJacket(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 52;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Midas's Robe";
+//        _armor.metadata.name = "Archmage's Jacket";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 45;
@@ -318,10 +318,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(9);
     }
 
-    function JuggernautRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 11;
+    function ElvenJacket(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 53;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Juggernaut Robe";
+//        _armor.metadata.name = "Elven Jacket";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 50;
@@ -339,10 +339,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(10);
     }
 
-    function ChosensRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 12;
+    function ChosensJacket(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 54;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Chosen's Robe";
+//        _armor.metadata.name = "Chosen's Jacket";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 55;
@@ -360,10 +360,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(11);
     }
 
-    function TemplarRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 13;
+    function ProphetsJacket(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 55;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Templar Robe";
+//        _armor.metadata.name = "Prophet's Jacket";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 60;
@@ -381,10 +381,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(12);
     }
 
-    function VanguardRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 14;
+    function EldersJacket(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 56;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Vanguard Robe";
+//        _armor.metadata.name = "Elder's Jacket";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 65;
@@ -402,10 +402,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(13);
     }
 
-    function VoidDwellerRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 15;
+    function AncientCuirass(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 57;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Void Dweller Robe";
+//        _armor.metadata.name = "Ancient Cuirass";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 70;
@@ -423,10 +423,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(14);
     }
 
-    function SunRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 16;
+    function MoonCuirass(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 58;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Sun Robe";
+//        _armor.metadata.name = "Moon Cuirass";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 75;
@@ -444,10 +444,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(15);
     }
 
-    function MoonRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 17;
+    function SunCuirass(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 59;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Moon Robe";
+//        _armor.metadata.name = "Sun Cuirass";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 80;
@@ -465,10 +465,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(16);
     }
 
-    function DemonicRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 18;
+    function CycleCuirass(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 60;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Demonic Robe";
+//        _armor.metadata.name = "Cycle Cuirass";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 85;
@@ -486,10 +486,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(17);
     }
 
-    function AngelicRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 19;
+    function DemonicRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 61;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Angelic Robe";
+//        _armor.metadata.name = "Demonic Robe";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 90;
@@ -507,10 +507,10 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(18);
     }
 
-    function CycleRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 20;
+    function AngelicRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 62;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Cycle Robe";
+//        _armor.metadata.name = "Angelic Robe";
 //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 95;
@@ -529,7 +529,7 @@ contract CodexArmorsLight is Initializable {
     }
 
     function EternalRobe(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 21;
+        _armor.metadata.id = 63;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Eternal Robe";
 //        _armor.metadata.description = "";

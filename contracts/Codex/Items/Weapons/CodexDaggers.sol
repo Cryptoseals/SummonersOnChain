@@ -40,19 +40,19 @@ contract CodexDaggers is Initializable {
         if (id == 22) {
             return applyTier(BreadKnife(tier), tier, 4);
         } else if (id == 23) {
-            return applyTier(SilverDagger(tier), tier, 5);
-        } else if (id == 24) {
             return applyTier(Twinkle(tier), tier, 5);
-        } else if (id == 25) {
+        } else if (id == 24) {
             return applyTier(Razor(tier), tier, 5);
-        } else if (id == 26) {
+        } else if (id == 25) {
             return applyTier(Quickblade(tier), tier, 5);
-        } else if (id == 27) {
-            return applyTier(GoldenStiletto(tier), tier, 5);
-        } else if (id == 28) {
-            return applyTier(ShadowsteelKris(tier), tier, 5);
-        } else if (id == 29) {
+        } else if (id == 26) {
             return applyTier(PocketKiller(tier), tier, 5);
+        } else if (id == 27) {
+            return applyTier(SilverDagger(tier), tier, 5);
+        } else if (id == 28) {
+            return applyTier(GoldenStiletto(tier), tier, 5);
+        } else if (id == 29) {
+            return applyTier(VerdantKris(tier), tier, 5);
         } else if (id == 30) {
             return applyTier(NightfallDagger(tier), tier, 5);
         } else if (id == 31) {
@@ -92,10 +92,10 @@ contract CodexDaggers is Initializable {
     }
 
     function BreadKnife(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 1;
+        _weapon.metadata.id = 22;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Bread Knife";
-        _weapon.metadata.description = "";
+       // _weapon.metadata.name = "Bread Knife";
+       // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
 
         // requirements here
@@ -108,13 +108,13 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.classRequirement = classRequirement();
 
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+       // _weapon.requirement.statRequirement = GameObjects.Stats({
+       // STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
 
 
         // bonuses here
@@ -123,402 +123,402 @@ contract CodexDaggers is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(0);
     }
 
-    function SilverDagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 2;
+    function Twinkle(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+        _weapon.metadata.id = 23;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Silver Dagger";
-        _weapon.metadata.description = "";
+      //  _weapon.metadata.name = "Twinkle";
+      //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 5;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+       // _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(1);
         _weapon.generatedStatBonus = weaponGenStats(1);
     }
 
-    function Twinkle(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 3;
+    function Razor(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+        _weapon.metadata.id = 24;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Twinkle";
-        _weapon.metadata.description = "";
+      //  _weapon.metadata.name = "Razor";
+      //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 10;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+       // VIT : 0,
+       // LUCK : 0});
         _weapon.statBonus = weaponStats(2);
         _weapon.generatedStatBonus = weaponGenStats(2);
     }
 
-    function Razor(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 4;
+    function Quickblade(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+        _weapon.metadata.id = 25;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Razor";
-        _weapon.metadata.description = "";
+      //  _weapon.metadata.name = "Quickblade";
+      //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 15;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(3);
         _weapon.generatedStatBonus = weaponGenStats(3);
     }
 
-    function Quickblade(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 5;
+    function PocketKiller(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+        _weapon.metadata.id = 26;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Quickblade";
-        _weapon.metadata.description = "";
+      //  _weapon.metadata.name = "Pocket Killer";
+      //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 20;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : BASE_LUCK[4]});
+       // _weapon.requirement.statRequirement = GameObjects.Stats({
+       // STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : BASE_LUCK[4]});
         _weapon.statBonus = weaponStats(4);
         _weapon.generatedStatBonus = weaponGenStats(4);
     }
 
-    function GoldenStiletto(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 6;
+    function SilverDagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+        _weapon.metadata.id = 27;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Golden Stiletto";
-        _weapon.metadata.description = "";
+      //  _weapon.metadata.name = "Silver Dagger";
+      //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 25;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+       // _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+     //   LUCK : 0});
         _weapon.statBonus = weaponStats(5);
         _weapon.generatedStatBonus = weaponGenStats(5);
     }
 
-    function ShadowsteelKris(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 7;
+    function GoldenStiletto(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+        _weapon.metadata.id = 28;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Shadowsteel Kris";
-        _weapon.metadata.description = "";
+      //  _weapon.metadata.name = "Golden Stiletto";
+      //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 30;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(6);
         _weapon.generatedStatBonus = weaponGenStats(6);
     }
 
-    function PocketKiller(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 8;
+    function VerdantKris(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+        _weapon.metadata.id = 29;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Pocket Killer";
-        _weapon.metadata.description = "";
+      //  _weapon.metadata.name = "Verdant Kris";
+      //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 35;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+       // _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+       // DEX : 0,
+       // AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(7);
         _weapon.generatedStatBonus = weaponGenStats(7);
     }
 
     function NightfallDagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 9;
+        _weapon.metadata.id = 30;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Nightfall Dagger";
-        _weapon.metadata.description = "";
+      //  _weapon.metadata.name = "Nightfall Dagger";
+      //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 40;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(8);
         _weapon.generatedStatBonus = weaponGenStats(8);
     }
 
     function Voidslasher(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 10;
+        _weapon.metadata.id = 31;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Voidslasher";
-        _weapon.metadata.description = "";
+      //  _weapon.metadata.name = "Voidslasher";
+      //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 45;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+     //   VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(9);
         _weapon.generatedStatBonus = weaponGenStats(9);
     }
 
     function DaggerOfMoonlight(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 11;
+        _weapon.metadata.id = 32;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Dagger of Moonlight";
-        _weapon.metadata.description = "";
+     //   _weapon.metadata.name = "Dagger of Moonlight";
+     //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 50;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(10);
         _weapon.generatedStatBonus = weaponGenStats(10);
     }
 
     function DaggerOfSunlight(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 12;
+        _weapon.metadata.id = 33;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Dagger of Sunlight";
-        _weapon.metadata.description = "";
+     //   _weapon.metadata.name = "Dagger of Sunlight";
+     //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 55;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+        //_weapon.requirement.statRequirement = GameObjects.Stats({
+       // STR : 0,
+       // DEX : 0,
+       // AGI : 0,
+       // INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(11);
         _weapon.generatedStatBonus = weaponGenStats(11);
     }
 
     function CycleDagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 13;
+        _weapon.metadata.id = 34;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Cycle Dagger";
-        _weapon.metadata.description = "";
+      //  _weapon.metadata.name = "Cycle Dagger";
+      //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 60;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(12);
         _weapon.generatedStatBonus = weaponGenStats(12);
     }
 
     function PhantasmalDagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 14;
+        _weapon.metadata.id = 35;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Phantasmal Dagger";
-        _weapon.metadata.description = "";
+      //  _weapon.metadata.name = "Phantasmal Dagger";
+      //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 65;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(13);
         _weapon.generatedStatBonus = weaponGenStats(13);
     }
 
     function DefilingRazor(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 15;
+        _weapon.metadata.id = 36;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Defiling Razor";
-        _weapon.metadata.description = "";
+     //   _weapon.metadata.name = "Defiling Razor";
+     //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 70;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(14);
         _weapon.generatedStatBonus = weaponGenStats(14);
     }
 
     function DaggerOfTheSuccubus(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 16;
+        _weapon.metadata.id = 37;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Dagger of the Succubus";
-        _weapon.metadata.description = "";
+     //   _weapon.metadata.name = "Dagger of the Succubus";
+     //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 75;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+     //   INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(15);
         _weapon.generatedStatBonus = weaponGenStats(15);
     }
 
     function Pyrodagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 17;
+        _weapon.metadata.id = 38;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Pyrodagger";
-        _weapon.metadata.description = "";
+     //   _weapon.metadata.name = "Pyrodagger";
+     //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 80;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+     //   AGI : 0,
+      //  INT : 0,
+     //   VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(16);
         _weapon.generatedStatBonus = weaponGenStats(16);
     }
 
     function PointOfZero(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 18;
+        _weapon.metadata.id = 39;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Point Of Zero";
-        _weapon.metadata.description = "";
+      //  _weapon.metadata.name = "Point Of Zero";
+      //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 85;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+     //   _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+     //   DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(17);
         _weapon.generatedStatBonus = weaponGenStats(17);
     }
 
     function DaggerOfIncursion(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 20;
+        _weapon.metadata.id = 40;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Dagger of Incursion";
-        _weapon.metadata.description = "";
+     //   _weapon.metadata.name = "Dagger of Incursion";
+     //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 90;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+       // _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(18);
         _weapon.generatedStatBonus = weaponGenStats(18);
     }
 
     function Kingmaker(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 21;
+        _weapon.metadata.id = 41;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Kingmaker";
-        _weapon.metadata.description = "";
+      //  _weapon.metadata.name = "Kingmaker";
+      //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 95;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+       // AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         _weapon.statBonus = weaponStats(19);
         _weapon.generatedStatBonus = weaponGenStats(19);
     }
 
     function Blooddrainer(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 22;
+        _weapon.metadata.id = 42;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Blooddrainer";
-        _weapon.metadata.description = "";
+       // _weapon.metadata.name = "Blooddrainer";
+       // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 100;
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _weapon.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+     //   VIT : 0,
+     //   LUCK : 0});
         _weapon.statBonus = weaponStats(20);
         _weapon.generatedStatBonus = weaponGenStats(20);
     }

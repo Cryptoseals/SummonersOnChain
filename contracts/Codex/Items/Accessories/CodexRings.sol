@@ -152,47 +152,47 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
         if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
 
         if (_equipable.itemId == 1) {
-            _ring = applyTier(CopperRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(FrailRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 2) {
-            _ring = applyTier(TinRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(AntiqueRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 3) {
-            _ring = applyTier(IronRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(PurgeRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 4) {
-            _ring = applyTier(SilverRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(BarbedRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 5) {
-            _ring = applyTier(GoldRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(ReflectiveRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 6) {
-            _ring = applyTier(AmberRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(StormForgedRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 7) {
-            _ring = applyTier(PearlRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(VerdantRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 8) {
-            _ring = applyTier(AmethystRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(ShadowfallRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 9) {
-            _ring = applyTier(CoralRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(MalignantRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 10) {
-            _ring = applyTier(RubyRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(SealedRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 11) {
-            _ring = applyTier(ShinyRubyRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(TemplarRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 12) {
-            _ring = applyTier(TopazRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(ChannelerRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 13) {
-            _ring = applyTier(ShinyTopazRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(ChosensRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 14) {
-            _ring = applyTier(AzuriteRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(AstraRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 15) {
-            _ring = applyTier(ShinyAzuriteRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(SoulbinderRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 16) {
-            _ring = applyTier(EmeraldRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(SunRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 17) {
-            _ring = applyTier(ShinyEmeraldRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(MoonRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 18) {
-            _ring = applyTier(SapphireRing(_equipable.itemTier), _equipable.itemTier, 13);
+            _ring = applyTier(CycleRing(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 19) {
-            _ring = applyTier(ShinySapphireRing(_equipable.itemTier), _equipable.itemTier, 13);
+            _ring = applyTier(InfernalRing(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 20) {
-            _ring = applyTier(DiamondRing(_equipable.itemTier), _equipable.itemTier, 13);
+            _ring = applyTier(DivineRing(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 21) {
-            _ring = applyTier(ShinyDiamondRing(_equipable.itemTier), _equipable.itemTier, 13);
+            _ring = applyTier(EternalRing(_equipable.itemTier), _equipable.itemTier, 13);
         }
 
         if (_equipable.element == GameObjects.Element.VOID) {
@@ -213,361 +213,361 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
 
         if (itemId == 1) {
-            _ring = applyTier(CopperRing(itemTier), itemTier, 10);
+            _ring = applyTier(FrailRing(itemTier), itemTier, 10);
         } else if (itemId == 2) {
-            _ring = applyTier(TinRing(itemTier), itemTier, 10);
+            _ring = applyTier(AntiqueRing(itemTier), itemTier, 10);
         } else if (itemId == 3) {
-            _ring = applyTier(IronRing(itemTier), itemTier, 10);
+            _ring = applyTier(PurgeRing(itemTier), itemTier, 10);
         } else if (itemId == 4) {
-            _ring = applyTier(SilverRing(itemTier), itemTier, 10);
+            _ring = applyTier(BarbedRing(itemTier), itemTier, 10);
         } else if (itemId == 5) {
-            _ring = applyTier(GoldRing(itemTier), itemTier, 10);
+            _ring = applyTier(ReflectiveRing(itemTier), itemTier, 10);
         } else if (itemId == 6) {
-            _ring = applyTier(AmberRing(itemTier), itemTier, 10);
+            _ring = applyTier(StormForgedRing(itemTier), itemTier, 10);
         } else if (itemId == 7) {
-            _ring = applyTier(PearlRing(itemTier), itemTier, 10);
+            _ring = applyTier(VerdantRing(itemTier), itemTier, 10);
         } else if (itemId == 8) {
-            _ring = applyTier(AmethystRing(itemTier), itemTier, 10);
+            _ring = applyTier(ShadowfallRing(itemTier), itemTier, 10);
         } else if (itemId == 9) {
-            _ring = applyTier(CoralRing(itemTier), itemTier, 10);
+            _ring = applyTier(MalignantRing(itemTier), itemTier, 10);
         } else if (itemId == 10) {
-            _ring = applyTier(RubyRing(itemTier), itemTier, 10);
+            _ring = applyTier(SealedRing(itemTier), itemTier, 10);
         } else if (itemId == 11) {
-            _ring = applyTier(ShinyRubyRing(itemTier), itemTier, 10);
+            _ring = applyTier(TemplarRing(itemTier), itemTier, 10);
         } else if (itemId == 12) {
-            _ring = applyTier(TopazRing(itemTier), itemTier, 10);
+            _ring = applyTier(ChannelerRing(itemTier), itemTier, 10);
         } else if (itemId == 13) {
-            _ring = applyTier(ShinyTopazRing(itemTier), itemTier, 10);
+            _ring = applyTier(ChosensRing(itemTier), itemTier, 10);
         } else if (itemId == 14) {
-            _ring = applyTier(AzuriteRing(itemTier), itemTier, 10);
+            _ring = applyTier(AstraRing(itemTier), itemTier, 10);
         } else if (itemId == 15) {
-            _ring = applyTier(ShinyAzuriteRing(itemTier), itemTier, 10);
+            _ring = applyTier(SoulbinderRing(itemTier), itemTier, 10);
         } else if (itemId == 16) {
-            _ring = applyTier(EmeraldRing(itemTier), itemTier, 10);
+            _ring = applyTier(SunRing(itemTier), itemTier, 10);
         } else if (itemId == 17) {
-            _ring = applyTier(ShinyEmeraldRing(itemTier), itemTier, 10);
+            _ring = applyTier(MoonRing(itemTier), itemTier, 10);
         } else if (itemId == 18) {
-            _ring = applyTier(SapphireRing(itemTier), itemTier, 13);
+            _ring = applyTier(CycleRing(itemTier), itemTier, 13);
         } else if (itemId == 19) {
-            _ring = applyTier(ShinySapphireRing(itemTier), itemTier, 13);
+            _ring = applyTier(InfernalRing(itemTier), itemTier, 13);
         } else if (itemId == 20) {
-            _ring = applyTier(DiamondRing(itemTier), itemTier, 13);
+            _ring = applyTier(DivineRing(itemTier), itemTier, 13);
         } else if (itemId == 21) {
-            _ring = applyTier(ShinyDiamondRing(itemTier), itemTier, 13);
+            _ring = applyTier(EternalRing(itemTier), itemTier, 13);
         }
 
         return _ring;
     }
 
-    function CopperRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function FrailRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 1;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Copper Ring";
-        _ring.metadata.description = "";
+        // _ring.metadata.name = "Frail Ring";
+        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 1;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        // _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(0);
         _ring.generatedStatBonus = ringGenStats(0);
         _ring.elementalStats = ringEleStats(0);
     }
 
-    function TinRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function AntiqueRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 2;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Tin Ring";
-        _ring.metadata.description = "";
+        // _ring.metadata.name = "Antique Ring";
+        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 5;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 6;
+        //  _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(1);
         _ring.generatedStatBonus = ringGenStats(1);
         _ring.elementalStats = ringEleStats(1);
     }
 
-    function IronRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function PurgeRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 3;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Iron Ring";
-        _ring.metadata.description = "";
+        // _ring.metadata.name = "Purge Ringg";
+        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 10;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 11;
+        //  _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(2);
         _ring.generatedStatBonus = ringGenStats(2);
         _ring.elementalStats = ringEleStats(2);
     }
 
-    function SilverRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function BarbedRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 4;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Silver Ring";
-        _ring.metadata.description = "";
+        // _ring.metadata.name = "Barbed Ring";
+        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 15;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 16;
+        // _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(3);
         _ring.generatedStatBonus = ringGenStats(3);
         _ring.elementalStats = ringEleStats(3);
     }
 
-    function GoldRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function ReflectiveRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 5;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Gold Ring";
-        _ring.metadata.description = "";
+        // _ring.metadata.name = "Reflective Ring";
+        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 20;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 21;
+        // _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(4);
         _ring.generatedStatBonus = ringGenStats(4);
         _ring.elementalStats = ringEleStats(4);
     }
 
-    function AmberRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function StormForgedRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 6;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Amber Ring";
-        _ring.metadata.description = "";
+        //  _ring.metadata.name = "Storm Forged Ring";
+        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 25;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 26;
+        // _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(5);
         _ring.generatedStatBonus = ringGenStats(5);
         _ring.elementalStats = ringEleStats(5);
     }
 
-    function PearlRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function VerdantRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 7;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Pearl Ring";
-        _ring.metadata.description = "";
+        //  _ring.metadata.name = "Verdant Ring";
+        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 30;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 31;
+        //  _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(6);
         _ring.generatedStatBonus = ringGenStats(6);
         _ring.elementalStats = ringEleStats(6);
     }
 
-    function AmethystRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function ShadowfallRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 8;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Amethyst Ring";
-        _ring.metadata.description = "";
+        //  _ring.metadata.name = "Shadowfall Ring";
+        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 35;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 36;
+        // _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(7);
         _ring.generatedStatBonus = ringGenStats(7);
         _ring.elementalStats = ringEleStats(7);
     }
 
-    function CoralRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function MalignantRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 9;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Coral Ring";
-        _ring.metadata.description = "";
+        //  _ring.metadata.name = "Malignant Ring";
+        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 40;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 41;
+        //  _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(8);
         _ring.generatedStatBonus = ringGenStats(8);
         _ring.elementalStats = ringEleStats(8);
     }
 
-    function RubyRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function SealedRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 10;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Ruby Ring";
-        _ring.metadata.description = "";
+        //  _ring.metadata.name = "Sealed Ring";
+        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 45;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 46;
+        //  _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(9);
         _ring.generatedStatBonus = ringGenStats(9);
         _ring.elementalStats = ringEleStats(9);
     }
 
-    function ShinyRubyRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function TemplarRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 11;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Shiny Ruby Ring";
-        _ring.metadata.description = "";
+        //  _ring.metadata.name = "Templar Ring";
+        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 50;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 51;
+        // _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(10);
         _ring.generatedStatBonus = ringGenStats(10);
         _ring.elementalStats = ringEleStats(10);
     }
 
-    function TopazRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function ChannelerRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 12;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Topaz Ring";
-        _ring.metadata.description = "";
+        //  _ring.metadata.name = "Channeler Ring";
+        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 55;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 56;
+        // _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(11);
         _ring.generatedStatBonus = ringGenStats(11);
         _ring.elementalStats = ringEleStats(11);
     }
 
-    function ShinyTopazRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function ChosensRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 13;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Shiny Topaz Ring";
-        _ring.metadata.description = "";
+        //  _ring.metadata.name = "Choosen's Ring";
+        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 60;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 61;
+        //  _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(12);
         _ring.generatedStatBonus = ringGenStats(12);
         _ring.elementalStats = ringEleStats(12);
     }
 
-    function AzuriteRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function AstraRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 14;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Azurite Ring";
-        _ring.metadata.description = "";
+        //  _ring.metadata.name = "Astra Ring";
+        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 65;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 66;
+        //  _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(13);
         _ring.generatedStatBonus = ringGenStats(13);
         _ring.elementalStats = ringEleStats(13);
     }
 
-    function ShinyAzuriteRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function SoulbinderRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 15;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Shiny Azurite Ring";
-        _ring.metadata.description = "";
+        // _ring.metadata.name = "Soulbinder Ring";
+        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 70;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 71;
+        //  _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(14);
         _ring.generatedStatBonus = ringGenStats(14);
         _ring.elementalStats = ringEleStats(14);
     }
 
-    function EmeraldRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function SunRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 16;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Emerald Ring";
-        _ring.metadata.description = "";
+        // _ring.metadata.name = "Sun Ring";
+        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 75;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 76;
+        //  _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(15);
         _ring.generatedStatBonus = ringGenStats(15);
         _ring.elementalStats = ringEleStats(15);
     }
 
-    function ShinyEmeraldRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function MoonRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 17;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Shiny Emerald Ring";
-        _ring.metadata.description = "";
+        //  _ring.metadata.name = "Moon Ring";
+        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 80;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 81;
+        //  _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(16);
         _ring.generatedStatBonus = ringGenStats(16);
         _ring.elementalStats = ringEleStats(16);
     }
 
-    function SapphireRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function CycleRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 18;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Sapphire Ring";
-        _ring.metadata.description = "";
+        //  _ring.metadata.name = "Cycle Ring";
+        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 85;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 86;
+        //  _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(17);
         _ring.generatedStatBonus = ringGenStats(17);
         _ring.elementalStats = ringEleStats(17);
     }
 
-    function ShinySapphireRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function InfernalRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 19;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Shiny Sapphire Ring";
-        _ring.metadata.description = "";
+        // _ring.metadata.name = "Infernal Ring";
+        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 90;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 91;
+        //  _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(18);
         _ring.generatedStatBonus = ringGenStats(18);
         _ring.elementalStats = ringEleStats(18);
     }
 
-    function DiamondRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function DivineRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 20;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Diamond Ring";
-        _ring.metadata.description = "";
+        // _ring.metadata.name = "Divine Ring";
+        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
-        _ring.requirement.level = 95;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _ring.requirement.level = 96;
+        //   _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(19);
         _ring.generatedStatBonus = ringGenStats(19);
         _ring.elementalStats = ringEleStats(19);
     }
 
-    function ShinyDiamondRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function EternalRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 21;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //        _ring.metadata.name = "Shiny Diamond Ring";
-        _ring.metadata.description = "";
+        // _ring.metadata.name = "Eternal Ring";
+        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 100;
-        _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _ring.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _ring.statBonus = ringStats(20);
         _ring.generatedStatBonus = ringGenStats(20);

@@ -144,47 +144,47 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
 
         if (_equipable.itemId == 1) {
-            _amulet = applyTier(CopperAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(FrailAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 2) {
-            _amulet = applyTier(TinAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(AntiqueAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 3) {
-            _amulet = applyTier(IronAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(PurgeAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 4) {
-            _amulet = applyTier(SilverAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(BarbedAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 5) {
-            _amulet = applyTier(GoldAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(ReflectiveAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 6) {
-            _amulet = applyTier(AmberAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(StormForgedAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 7) {
-            _amulet = applyTier(PearlAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(VerdantAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 8) {
-            _amulet = applyTier(AmethystAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(ShadowfallAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 9) {
-            _amulet = applyTier(CoralAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(MalignantAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 10) {
-            _amulet = applyTier(RubyAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(SealedAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 11) {
-            _amulet = applyTier(ShinyRubyAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(TemplarAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 12) {
-            _amulet = applyTier(TopazAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(ChannelerAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 13) {
-            _amulet = applyTier(ShinyTopazAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(ChosensAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 14) {
-            _amulet = applyTier(AzuriteAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(AstraAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 15) {
-            _amulet = applyTier(ShinyAzuriteAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(SoulbinderAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 16) {
-            _amulet = applyTier(EmeraldAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(SunAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 17) {
-            _amulet = applyTier(ShinyEmeraldAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(MoonAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 18) {
-            _amulet = applyTier(SapphireAmulet(_equipable.itemTier), _equipable.itemTier, 13);
+            _amulet = applyTier(CycleAmulet(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 19) {
-            _amulet = applyTier(ShinySapphireAmulet(_equipable.itemTier), _equipable.itemTier, 13);
+            _amulet = applyTier(InfernalAmulet(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 20) {
-            _amulet = applyTier(DiamondAmulet(_equipable.itemTier), _equipable.itemTier, 13);
+            _amulet = applyTier(DivineAmulet(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 21) {
-            _amulet = applyTier(ShinyDiamondAmulet(_equipable.itemTier), _equipable.itemTier, 13);
+            _amulet = applyTier(EternalAmulet(_equipable.itemTier), _equipable.itemTier, 13);
         }
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         _amulet.metadata.upgradable = true;
@@ -204,335 +204,360 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         require(itemTier < 10, "tier");
 
         if (itemId == 1) {
-            _amulet = applyTier(CopperAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(FrailAmulet(itemTier), itemTier, 10);
         } else if (itemId == 2) {
-            _amulet = applyTier(TinAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(AntiqueAmulet(itemTier), itemTier, 10);
         } else if (itemId == 3) {
-            _amulet = applyTier(IronAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(PurgeAmulet(itemTier), itemTier, 10);
         } else if (itemId == 4) {
-            _amulet = applyTier(SilverAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(BarbedAmulet(itemTier), itemTier, 10);
         } else if (itemId == 5) {
-            _amulet = applyTier(GoldAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(ReflectiveAmulet(itemTier), itemTier, 10);
         } else if (itemId == 6) {
-            _amulet = applyTier(AmberAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(StormForgedAmulet(itemTier), itemTier, 10);
         } else if (itemId == 7) {
-            _amulet = applyTier(PearlAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(VerdantAmulet(itemTier), itemTier, 10);
         } else if (itemId == 8) {
-            _amulet = applyTier(AmethystAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(ShadowfallAmulet(itemTier), itemTier, 10);
         } else if (itemId == 9) {
-            _amulet = applyTier(CoralAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(MalignantAmulet(itemTier), itemTier, 10);
         } else if (itemId == 10) {
-            _amulet = applyTier(RubyAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(SealedAmulet(itemTier), itemTier, 10);
         } else if (itemId == 11) {
-            _amulet = applyTier(ShinyRubyAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(TemplarAmulet(itemTier), itemTier, 10);
         } else if (itemId == 12) {
-            _amulet = applyTier(TopazAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(ChannelerAmulet(itemTier), itemTier, 10);
         } else if (itemId == 13) {
-            _amulet = applyTier(ShinyTopazAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(ChosensAmulet(itemTier), itemTier, 10);
         } else if (itemId == 14) {
-            _amulet = applyTier(AzuriteAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(AstraAmulet(itemTier), itemTier, 10);
         } else if (itemId == 15) {
-            _amulet = applyTier(ShinyAzuriteAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(SoulbinderAmulet(itemTier), itemTier, 10);
         } else if (itemId == 16) {
-            _amulet = applyTier(EmeraldAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(SunAmulet(itemTier), itemTier, 10);
         } else if (itemId == 17) {
-            _amulet = applyTier(ShinyEmeraldAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(MoonAmulet(itemTier), itemTier, 10);
         } else if (itemId == 18) {
-            _amulet = applyTier(SapphireAmulet(itemTier), itemTier, 13);
+            _amulet = applyTier(CycleAmulet(itemTier), itemTier, 13);
         } else if (itemId == 19) {
-            _amulet = applyTier(ShinySapphireAmulet(itemTier), itemTier, 13);
+            _amulet = applyTier(InfernalAmulet(itemTier), itemTier, 13);
         } else if (itemId == 20) {
-            _amulet = applyTier(DiamondAmulet(itemTier), itemTier, 13);
+            _amulet = applyTier(DivineAmulet(itemTier), itemTier, 13);
         } else if (itemId == 21) {
-            _amulet = applyTier(ShinyDiamondAmulet(itemTier), itemTier, 13);
+            _amulet = applyTier(EternalAmulet(itemTier), itemTier, 13);
         }
         return _amulet;
     }
 
-    function CopperAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function FrailAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 1;
-        //        _amulet.metadata.name = "Copper Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        //_amulet.metadata.name = "Frail Amulet";
+        //_amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
+
         _amulet.requirement.level = 1;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+
         _amulet.statBonus = amuletStats(0);
         _amulet.generatedStatBonus = amuletGenStats(0);
         _amulet.elementalStats = amuletEleStats(0);
     }
 
-    function TinAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function AntiqueAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 2;
-        //        _amulet.metadata.name = "Tin Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        //  _amulet.metadata.name = "Antique Amulet";
+        //  _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 5;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 7;
+        //  _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(1);
         _amulet.generatedStatBonus = amuletGenStats(1);
         _amulet.elementalStats = amuletEleStats(1);
     }
 
-    function IronAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function PurgeAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 3;
-        //        _amulet.metadata.name = "Iron Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        //  _amulet.metadata.name = "Purge Amulet";
+        //  _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 10;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 12;
+        //  _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(2);
         _amulet.generatedStatBonus = amuletGenStats(2);
         _amulet.elementalStats = amuletEleStats(2);
     }
 
-    function SilverAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function BarbedAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 4;
-        //        _amulet.metadata.name = "Silver Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        //  _amulet.metadata.name = "Barbed Amulet";
+        //  _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 15;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 17;
+        //  _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(3);
         _amulet.generatedStatBonus = amuletGenStats(3);
         _amulet.elementalStats = amuletEleStats(3);
     }
 
-    function GoldAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function ReflectiveAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 5;
-        //        _amulet.metadata.name = "Gold Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        //  _amulet.metadata.name = "Reflective Amulet";
+        //  _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 20;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 22;
+        //  _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(4);
         _amulet.generatedStatBonus = amuletGenStats(4);
         _amulet.elementalStats = amuletEleStats(4);
     }
 
-    function AmberAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function StormForgedAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 6;
-        //        _amulet.metadata.name = "Amber Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        //  _amulet.metadata.name = "Storm Forged Amulet";
+        //  _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 25;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 27;
+        //  _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(5);
         _amulet.generatedStatBonus = amuletGenStats(5);
         _amulet.elementalStats = amuletEleStats(5);
     }
 
-    function PearlAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function VerdantAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 7;
-        //        _amulet.metadata.name = "Pearl Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        //  _amulet.metadata.name = "Verdant Amulet";
+        //  _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 30;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 32;
+        //  _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(6);
         _amulet.generatedStatBonus = amuletGenStats(6);
         _amulet.elementalStats = amuletEleStats(6);
     }
 
-    function AmethystAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function ShadowfallAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 8;
-        //        _amulet.metadata.name = "Amethyst Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        //  _amulet.metadata.name = "Shadowfall Amulet";
+        //  _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 35;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 37;
+        // _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(7);
         _amulet.generatedStatBonus = amuletGenStats(7);
         _amulet.elementalStats = amuletEleStats(7);
     }
 
-    function CoralAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function MalignantAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 9;
-        //        _amulet.metadata.name = "Coral Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        // _amulet.metadata.name = "Malignant Amulet";
+        // _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 40;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 42;
+        //  _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(8);
         _amulet.generatedStatBonus = amuletGenStats(8);
         _amulet.elementalStats = amuletEleStats(8);
     }
 
-    function RubyAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function SealedAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 10;
-        //        _amulet.metadata.name = "Ruby Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        //  _amulet.metadata.name = "Sealed Amulet";
+        //  _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 45;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 47;
+        //  _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(9);
         _amulet.generatedStatBonus = amuletGenStats(9);
         _amulet.elementalStats = amuletEleStats(9);
     }
 
-    function ShinyRubyAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function TemplarAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 11;
-        //        _amulet.metadata.name = "Shiny Ruby Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        //   _amulet.metadata.name = "Templar Amulet";
+        //   _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 50;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 52;
+        //   _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(10);
         _amulet.generatedStatBonus = amuletGenStats(10);
         _amulet.elementalStats = amuletEleStats(10);
     }
 
-    function TopazAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function ChannelerAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 12;
-        //        _amulet.metadata.name = "Topaz Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        //  _amulet.metadata.name = "Channeler Amulet";
+        //  _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 55;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 57;
+        //  _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(11);
         _amulet.generatedStatBonus = amuletGenStats(11);
         _amulet.elementalStats = amuletEleStats(11);
     }
 
-    function ShinyTopazAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function ChosensAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 13;
-        //        _amulet.metadata.name = "Shiny Topaz Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        //  _amulet.metadata.name = "Chosen's Amulet";
+        //  _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 60;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 62;
+        //  _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(12);
         _amulet.generatedStatBonus = amuletGenStats(12);
         _amulet.elementalStats = amuletEleStats(12);
     }
 
-    function AzuriteAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function AstraAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 14;
-        //        _amulet.metadata.name = "Azurite Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        //  _amulet.metadata.name = "Astra Amulet";
+        //  _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 65;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 67;
+        // _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(13);
         _amulet.generatedStatBonus = amuletGenStats(13);
         _amulet.elementalStats = amuletEleStats(13);
     }
 
-    function ShinyAzuriteAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function SoulbinderAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 15;
-        //        _amulet.metadata.name = "Shiny Azurite Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        // _amulet.metadata.name = "Soulbinder Amulet";
+        // _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 70;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 72;
+        // _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(14);
         _amulet.generatedStatBonus = amuletGenStats(14);
         _amulet.elementalStats = amuletEleStats(14);
     }
 
-    function EmeraldAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function SunAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 16;
-        //        _amulet.metadata.name = "Emerald Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        // _amulet.metadata.name = "Sun Amulet";
+        // _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 75;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 77;
+        //   _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(15);
         _amulet.generatedStatBonus = amuletGenStats(15);
         _amulet.elementalStats = amuletEleStats(15);
     }
 
-    function ShinyEmeraldAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function MoonAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 17;
-        //        _amulet.metadata.name = "Shiny Emerald Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        //  _amulet.metadata.name = "Moon Amulet";
+        //  _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 80;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 82;
+        //  _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(16);
         _amulet.generatedStatBonus = amuletGenStats(16);
         _amulet.elementalStats = amuletEleStats(16);
     }
 
-    function SapphireAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function CycleAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 18;
-        //        _amulet.metadata.name = "Sapphire Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        // _amulet.metadata.name = "Cycle Amulet";
+        // _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 85;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 87;
+        //  _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(17);
         _amulet.generatedStatBonus = amuletGenStats(17);
         _amulet.elementalStats = amuletEleStats(17);
     }
 
-    function ShinySapphireAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function InfernalAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 19;
-        //        _amulet.metadata.name = "Shiny Sapphire Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        // _amulet.metadata.name = "Infernal Amulet";
+        // _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-
-        _amulet.requirement.level = 90;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 92;
+        // _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(18);
         _amulet.generatedStatBonus = amuletGenStats(18);
         _amulet.elementalStats = amuletEleStats(18);
     }
 
-    function DiamondAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function DivineAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 20;
-        //        _amulet.metadata.name = "Diamond Amulet";
-        _amulet.metadata.description = "";
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        // _amulet.metadata.name = "Diamond Amulet";
+        // _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
-        _amulet.requirement.level = 95;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _amulet.requirement.level = 97;
+        // _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(19);
         _amulet.generatedStatBonus = amuletGenStats(19);
         _amulet.elementalStats = amuletEleStats(19);
     }
 
-    function ShinyDiamondAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function EternalAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 21;
-        //        _amulet.metadata.name = "Shiny Diamond Amulet";
-        _amulet.metadata.description = "";
-
+        _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
+        // _amulet.metadata.name = "Eternal Amulet";
+        // _amulet.metadata.description = "";
+        _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 100;
-        _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        // _amulet.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _amulet.statBonus = amuletStats(20);
         _amulet.generatedStatBonus = amuletGenStats(20);

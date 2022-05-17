@@ -149,47 +149,47 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         if (_equipable.suffixId > 0) _suffix = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.SUFFIX_CODEX)).suffix(_equipable.suffixId, _equipable.suffixTier);
 
         if (_equipable.itemId == 1) {
-            _earrings = applyTier(CopperEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(FrailEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 2) {
-            _earrings = applyTier(TinEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(AntiqueEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 3) {
-            _earrings = applyTier(IronEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(PurgeEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 4) {
-            _earrings = applyTier(SilverEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(BarbedEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 5) {
-            _earrings = applyTier(GoldEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(ReflectiveEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 6) {
-            _earrings = applyTier(AmberEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(StormForgedEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 7) {
-            _earrings = applyTier(PearlEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(VerdantEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 8) {
-            _earrings = applyTier(AmethystEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(ShadowfallEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 9) {
-            _earrings = applyTier(CoralEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(MalignantEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 10) {
-            _earrings = applyTier(RubyEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(SealedEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 11) {
-            _earrings = applyTier(ShinyRubyEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(TemplarEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 12) {
-            _earrings = applyTier(TopazEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(ChannelerEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 13) {
-            _earrings = applyTier(ShinyTopazEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(ChosensEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 14) {
-            _earrings = applyTier(AzuriteEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(AstraEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 15) {
-            _earrings = applyTier(ShinyAzuriteEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(SoulbinderEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 16) {
-            _earrings = applyTier(EmeraldEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(SunEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 17) {
-            _earrings = applyTier(ShinyEmeraldEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(MoonEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 18) {
-            _earrings = applyTier(SapphireEarrings(_equipable.itemTier), _equipable.itemTier, 13);
+            _earrings = applyTier(CycleEarrings(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 19) {
-            _earrings = applyTier(ShinySapphireEarrings(_equipable.itemTier), _equipable.itemTier, 13);
+            _earrings = applyTier(InfernalEarrings(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 20) {
-            _earrings = applyTier(DiamondEarrings(_equipable.itemTier), _equipable.itemTier, 13);
+            _earrings = applyTier(DivineEarrings(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 21) {
-            _earrings = applyTier(ShinyDiamondEarrings(_equipable.itemTier), _equipable.itemTier, 13);
+            _earrings = applyTier(EternalEarrings(_equipable.itemTier), _equipable.itemTier, 13);
         }
 
         if (_equipable.element == GameObjects.Element.VOID) {
@@ -209,362 +209,362 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         require(itemTier < 10, "tier");
 
         if (itemId == 1) {
-            _earrings = applyTier(CopperEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(FrailEarrings(itemTier), itemTier, 10);
         } else if (itemId == 2) {
-            _earrings = applyTier(TinEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(AntiqueEarrings(itemTier), itemTier, 10);
         } else if (itemId == 3) {
-            _earrings = applyTier(IronEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(PurgeEarrings(itemTier), itemTier, 10);
         } else if (itemId == 4) {
-            _earrings = applyTier(SilverEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(BarbedEarrings(itemTier), itemTier, 10);
         } else if (itemId == 5) {
-            _earrings = applyTier(GoldEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(ReflectiveEarrings(itemTier), itemTier, 10);
         } else if (itemId == 6) {
-            _earrings = applyTier(AmberEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(StormForgedEarrings(itemTier), itemTier, 10);
         } else if (itemId == 7) {
-            _earrings = applyTier(PearlEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(VerdantEarrings(itemTier), itemTier, 10);
         } else if (itemId == 8) {
-            _earrings = applyTier(AmethystEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(ShadowfallEarrings(itemTier), itemTier, 10);
         } else if (itemId == 9) {
-            _earrings = applyTier(CoralEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(MalignantEarrings(itemTier), itemTier, 10);
         } else if (itemId == 10) {
-            _earrings = applyTier(RubyEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(SealedEarrings(itemTier), itemTier, 10);
         } else if (itemId == 11) {
-            _earrings = applyTier(ShinyRubyEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(TemplarEarrings(itemTier), itemTier, 10);
         } else if (itemId == 12) {
-            _earrings = applyTier(TopazEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(ChannelerEarrings(itemTier), itemTier, 10);
         } else if (itemId == 13) {
-            _earrings = applyTier(ShinyTopazEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(ChosensEarrings(itemTier), itemTier, 10);
         } else if (itemId == 14) {
-            _earrings = applyTier(AzuriteEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(AstraEarrings(itemTier), itemTier, 10);
         } else if (itemId == 15) {
-            _earrings = applyTier(ShinyAzuriteEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(SoulbinderEarrings(itemTier), itemTier, 10);
         } else if (itemId == 16) {
-            _earrings = applyTier(EmeraldEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(SunEarrings(itemTier), itemTier, 10);
         } else if (itemId == 17) {
-            _earrings = applyTier(ShinyEmeraldEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(MoonEarrings(itemTier), itemTier, 10);
         } else if (itemId == 18) {
-            _earrings = applyTier(SapphireEarrings(itemTier), itemTier, 13);
+            _earrings = applyTier(CycleEarrings(itemTier), itemTier, 13);
         } else if (itemId == 19) {
-            _earrings = applyTier(ShinySapphireEarrings(itemTier), itemTier, 13);
+            _earrings = applyTier(InfernalEarrings(itemTier), itemTier, 13);
         } else if (itemId == 20) {
-            _earrings = applyTier(DiamondEarrings(itemTier), itemTier, 13);
+            _earrings = applyTier(DivineEarrings(itemTier), itemTier, 13);
         } else if (itemId == 21) {
-            _earrings = applyTier(ShinyDiamondEarrings(itemTier), itemTier, 13);
+            _earrings = applyTier(EternalEarrings(itemTier), itemTier, 13);
         }
 
         return _earrings;
     }
 
-    function CopperEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function FrailEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 1;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Copper Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Frail Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 1;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(0);
         _earrings.generatedStatBonus = earringGenStats(0);
         _earrings.elementalStats = earringEleStats(0);
     }
 
-    function TinEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function AntiqueEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 2;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Tin Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Antique Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 5;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 6;
+        //  _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(1);
         _earrings.generatedStatBonus = earringGenStats(1);
         _earrings.elementalStats = earringEleStats(1);
     }
 
-    function IronEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function PurgeEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 3;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Iron Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Purge Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 10;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 11;
+        //  _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(2);
         _earrings.generatedStatBonus = earringGenStats(2);
         _earrings.elementalStats = earringEleStats(2);
     }
 
-    function SilverEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function BarbedEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 4;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Silver Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Barbed Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 15;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 16;
+        //   _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(3);
         _earrings.generatedStatBonus = earringGenStats(3);
         _earrings.elementalStats = earringEleStats(3);
     }
 
-    function GoldEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function ReflectiveEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 5;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Gold Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Reflective Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 20;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 21;
+        //   _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(4);
         _earrings.generatedStatBonus = earringGenStats(4);
         _earrings.elementalStats = earringEleStats(4);
     }
 
-    function AmberEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function StormForgedEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 6;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Amber Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Storm Forged Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 25;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 26;
+        //  _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(5);
         _earrings.generatedStatBonus = earringGenStats(5);
         _earrings.elementalStats = earringEleStats(5);
     }
 
-    function PearlEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function VerdantEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 7;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Pearl Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Verdant Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 30;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 31;
+        //  _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(6);
         _earrings.generatedStatBonus = earringGenStats(6);
         _earrings.elementalStats = earringEleStats(6);
     }
 
-    function AmethystEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function ShadowfallEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 8;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Amethyst Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Shadowfall Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 35;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 36;
+        //  _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(7);
         _earrings.generatedStatBonus = earringGenStats(7);
         _earrings.elementalStats = earringEleStats(7);
     }
 
-    function CoralEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function MalignantEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 9;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Coral Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Malignant Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 40;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 41;
+        //  _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(8);
         _earrings.generatedStatBonus = earringGenStats(8);
         _earrings.elementalStats = earringEleStats(8);
     }
 
-    function RubyEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function SealedEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 10;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Ruby Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Sealed Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 45;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 46;
+        //  _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(9);
         _earrings.generatedStatBonus = earringGenStats(9);
         _earrings.elementalStats = earringEleStats(9);
     }
 
-    function ShinyRubyEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function TemplarEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 11;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Shiny Ruby Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Templar Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 50;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 51;
+        //   _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(10);
         _earrings.generatedStatBonus = earringGenStats(10);
         _earrings.elementalStats = earringEleStats(10);
     }
 
-    function TopazEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function ChannelerEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 12;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Topaz Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Channeler Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 55;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 56;
+        //  _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(11);
         _earrings.generatedStatBonus = earringGenStats(11);
         _earrings.elementalStats = earringEleStats(11);
     }
 
-    function ShinyTopazEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function ChosensEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 13;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Shiny Topaz Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Chosen's Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 60;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 61;
+        //  _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(12);
         _earrings.generatedStatBonus = earringGenStats(12);
         _earrings.elementalStats = earringEleStats(12);
     }
 
-    function AzuriteEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function AstraEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 14;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Azurite Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Astra Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 65;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 66;
+        //  _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(13);
         _earrings.generatedStatBonus = earringGenStats(13);
         _earrings.elementalStats = earringEleStats(13);
     }
 
-    function ShinyAzuriteEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function SoulbinderEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 15;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Shiny Azurite Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Soulbinder Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 70;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 71;
+        //  _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(14);
         _earrings.generatedStatBonus = earringGenStats(14);
         _earrings.elementalStats = earringEleStats(14);
     }
 
-    function EmeraldEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function SunEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 16;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Emerald Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Sun Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 75;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 76;
+        //  _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(15);
         _earrings.generatedStatBonus = earringGenStats(15);
         _earrings.elementalStats = earringEleStats(15);
     }
 
-    function ShinyEmeraldEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function MoonEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 17;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Shiny Emerald Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Moon Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 80;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 81;
+        // _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(16);
         _earrings.generatedStatBonus = earringGenStats(16);
         _earrings.elementalStats = earringEleStats(16);
     }
 
-    function SapphireEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function CycleEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 18;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Sapphire Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Cycle Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 85;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 86;
+        // _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(17);
         _earrings.generatedStatBonus = earringGenStats(17);
         _earrings.elementalStats = earringEleStats(17);
     }
 
-    function ShinySapphireEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function InfernalEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 19;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Shiny Sapphire Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Infernal Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 90;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 91;
+        //  _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(18);
         _earrings.generatedStatBonus = earringGenStats(18);
         _earrings.elementalStats = earringEleStats(18);
     }
 
-    function DiamondEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function DivineEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 20;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Diamond Earrings";
-        _earrings.metadata.description = "";
+        //  _earrings.metadata.name = "Divine Earrings";
+        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
-        _earrings.requirement.level = 95;
-        _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _earrings.requirement.level = 96;
+        // _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _earrings.statBonus = earringStats(19);
         _earrings.generatedStatBonus = earringGenStats(19);
         _earrings.elementalStats = earringEleStats(19);
     }
 
-    function ShinyDiamondEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function EternalEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 21;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        _earrings.metadata.name = "Shiny Diamond Earrings";
-        _earrings.metadata.description = "";
+        // _earrings.metadata.name = "Eternal Earrings";
+        // _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 100;
         _earrings.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
-
+        //
         _earrings.statBonus = earringStats(20);
         _earrings.generatedStatBonus = earringGenStats(20);
         _earrings.elementalStats = earringEleStats(20);

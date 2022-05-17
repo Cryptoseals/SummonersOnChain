@@ -140,47 +140,47 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
 
         if (_equipable.itemId == 1) {
-            _belt = applyTier(TatteredLeatherBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(FrailBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 2) {
-            _belt = applyTier(RaggedLeatherBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(AntiqueBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 3) {
-            _belt = applyTier(RawLeatherBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(PurgeBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 4) {
-            _belt = applyTier(ThinLeatherBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(BarbedBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 5) {
-            _belt = applyTier(CoarseLeatherBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(ReflectiveBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 6) {
-            _belt = applyTier(RuggedLeatherBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(StormForgedBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 7) {
-            _belt = applyTier(ThickLeatherBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(VerdantBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 8) {
-            _belt = applyTier(ReinforcedLeatherBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(ShadowfallBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 9) {
-            _belt = applyTier(HardenedLeatherBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(MalignantBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 10) {
-            _belt = applyTier(LordlyLeatherBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(SealedBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 11) {
-            _belt = applyTier(CopperEmblazonedBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(TemplarBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 12) {
-            _belt = applyTier(TinEmblazonedBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(ChannelerBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 13) {
-            _belt = applyTier(IronEmblazonedBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(ChosensBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 14) {
-            _belt = applyTier(SilverEmblazonedBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(AstraBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 15) {
-            _belt = applyTier(GoldEmblazonedBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(SoulbinderBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 16) {
-            _belt = applyTier(PlatinumSealedBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(SunBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 17) {
-            _belt = applyTier(MyhrilSealedBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(MoonBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 18) {
-            _belt = applyTier(OricalchumSealedBelt(_equipable.itemTier), _equipable.itemTier, 13);
+            _belt = applyTier(CycleBelt(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 19) {
-            _belt = applyTier(ObsidianSealedBelt(_equipable.itemTier), _equipable.itemTier, 13);
+            _belt = applyTier(InfernalBelt(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 20) {
-            _belt = applyTier(LuminiteSealedBelt(_equipable.itemTier), _equipable.itemTier, 13);
+            _belt = applyTier(DivineBelt(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 21) {
-            _belt = applyTier(EternalSealedBelt(_equipable.itemTier), _equipable.itemTier, 13);
+            _belt = applyTier(EternalBelt(_equipable.itemTier), _equipable.itemTier, 13);
         }
 
         if (_equipable.element == GameObjects.Element.VOID) {
@@ -200,345 +200,366 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
 
 
         if (itemId == 1) {
-            _belt = applyTier(TatteredLeatherBelt(itemTier), itemTier, 10);
+            _belt = applyTier(FrailBelt(itemTier), itemTier, 10);
         } else if (itemId == 2) {
-            _belt = applyTier(RaggedLeatherBelt(itemTier), itemTier, 10);
+            _belt = applyTier(AntiqueBelt(itemTier), itemTier, 10);
         } else if (itemId == 3) {
-            _belt = applyTier(RawLeatherBelt(itemTier), itemTier, 10);
+            _belt = applyTier(PurgeBelt(itemTier), itemTier, 10);
         } else if (itemId == 4) {
-            _belt = applyTier(ThinLeatherBelt(itemTier), itemTier, 10);
+            _belt = applyTier(BarbedBelt(itemTier), itemTier, 10);
         } else if (itemId == 5) {
-            _belt = applyTier(CoarseLeatherBelt(itemTier), itemTier, 10);
+            _belt = applyTier(ReflectiveBelt(itemTier), itemTier, 10);
         } else if (itemId == 6) {
-            _belt = applyTier(RuggedLeatherBelt(itemTier), itemTier, 10);
+            _belt = applyTier(StormForgedBelt(itemTier), itemTier, 10);
         } else if (itemId == 7) {
-            _belt = applyTier(ThickLeatherBelt(itemTier), itemTier, 10);
+            _belt = applyTier(VerdantBelt(itemTier), itemTier, 10);
         } else if (itemId == 8) {
-            _belt = applyTier(ReinforcedLeatherBelt(itemTier), itemTier, 10);
+            _belt = applyTier(ShadowfallBelt(itemTier), itemTier, 10);
         } else if (itemId == 9) {
-            _belt = applyTier(HardenedLeatherBelt(itemTier), itemTier, 10);
+            _belt = applyTier(MalignantBelt(itemTier), itemTier, 10);
         } else if (itemId == 10) {
-            _belt = applyTier(LordlyLeatherBelt(itemTier), itemTier, 10);
+            _belt = applyTier(SealedBelt(itemTier), itemTier, 10);
         } else if (itemId == 11) {
-            _belt = applyTier(CopperEmblazonedBelt(itemTier), itemTier, 10);
+            _belt = applyTier(TemplarBelt(itemTier), itemTier, 10);
         } else if (itemId == 12) {
-            _belt = applyTier(TinEmblazonedBelt(itemTier), itemTier, 10);
+            _belt = applyTier(ChannelerBelt(itemTier), itemTier, 10);
         } else if (itemId == 13) {
-            _belt = applyTier(IronEmblazonedBelt(itemTier), itemTier, 10);
+            _belt = applyTier(ChosensBelt(itemTier), itemTier, 10);
         } else if (itemId == 14) {
-            _belt = applyTier(SilverEmblazonedBelt(itemTier), itemTier, 10);
+            _belt = applyTier(AstraBelt(itemTier), itemTier, 10);
         } else if (itemId == 15) {
-            _belt = applyTier(GoldEmblazonedBelt(itemTier), itemTier, 10);
+            _belt = applyTier(SoulbinderBelt(itemTier), itemTier, 10);
         } else if (itemId == 16) {
-            _belt = applyTier(PlatinumSealedBelt(itemTier), itemTier, 10);
+            _belt = applyTier(SunBelt(itemTier), itemTier, 10);
         } else if (itemId == 17) {
-            _belt = applyTier(MyhrilSealedBelt(itemTier), itemTier, 10);
+            _belt = applyTier(MoonBelt(itemTier), itemTier, 10);
         } else if (itemId == 18) {
-            _belt = applyTier(OricalchumSealedBelt(itemTier), itemTier, 13);
+            _belt = applyTier(CycleBelt(itemTier), itemTier, 13);
         } else if (itemId == 19) {
-            _belt = applyTier(ObsidianSealedBelt(itemTier), itemTier, 13);
+            _belt = applyTier(InfernalBelt(itemTier), itemTier, 13);
         } else if (itemId == 20) {
-            _belt = applyTier(LuminiteSealedBelt(itemTier), itemTier, 13);
+            _belt = applyTier(DivineBelt(itemTier), itemTier, 13);
         } else if (itemId == 21) {
-            _belt = applyTier(EternalSealedBelt(itemTier), itemTier, 13);
+            _belt = applyTier(EternalBelt(itemTier), itemTier, 13);
         }
 
         return _belt;
     }
 
-    function TatteredLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function FrailBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 1;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Tattered Leather Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Frail Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 1;
         _belt.requirement.classRequirement = new GameObjects.Class[](0);
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        // _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(0);
         _belt.generatedStatBonus = beltGenStats(0);
+        _belt.elementalStats = beltEleStats(0);
     }
 
-    function RaggedLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function AntiqueBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 2;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Ragged Leather Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Antique Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 5;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 7;
+        // _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(1);
         _belt.generatedStatBonus = beltGenStats(1);
+        _belt.elementalStats = beltEleStats(1);
     }
 
-    function RawLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function PurgeBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 3;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Raw Leather Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Purge Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 10;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 12;
+        // _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(2);
         _belt.generatedStatBonus = beltGenStats(2);
+        _belt.elementalStats = beltEleStats(2);
     }
 
-    function ThinLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function BarbedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 4;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Thin Leather Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Barbed Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 15;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 17;
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(3);
         _belt.generatedStatBonus = beltGenStats(3);
+        _belt.elementalStats = beltEleStats(3);
     }
 
-    function CoarseLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function ReflectiveBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 5;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Coarse Leather Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Reflective Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 20;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 22;
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(4);
         _belt.generatedStatBonus = beltGenStats(4);
+        _belt.elementalStats = beltEleStats(4);
     }
 
-    function RuggedLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function StormForgedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 6;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Rugged Leather Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Storm Forged Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 25;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 27;
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(5);
         _belt.generatedStatBonus = beltGenStats(5);
+        _belt.elementalStats = beltEleStats(5);
     }
 
-    function ThickLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function VerdantBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 7;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Thick Leather Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Verdant Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 30;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 32;
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(6);
         _belt.generatedStatBonus = beltGenStats(6);
+        _belt.elementalStats = beltEleStats(6);
     }
 
-    function ReinforcedLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function ShadowfallBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 8;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Reinforced Leather Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Shadowfall Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 35;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 37;
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(7);
         _belt.generatedStatBonus = beltGenStats(7);
+        _belt.elementalStats = beltEleStats(7);
     }
 
-    function HardenedLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function MalignantBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 9;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Hardened Leather Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Malignant Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 40;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 42;
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(8);
         _belt.generatedStatBonus = beltGenStats(8);
+        _belt.elementalStats = beltEleStats(8);
     }
 
-    function LordlyLeatherBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function SealedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 10;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Lordly Leather Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Sealed Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 45;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 47;
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(9);
         _belt.generatedStatBonus = beltGenStats(9);
+        _belt.elementalStats = beltEleStats(9);
     }
 
-    function CopperEmblazonedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function TemplarBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 11;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Copper Emblazoned Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Templar Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 50;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 52;
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(10);
         _belt.generatedStatBonus = beltGenStats(10);
+        _belt.elementalStats = beltEleStats(10);
     }
 
-    function TinEmblazonedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function ChannelerBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 12;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Tin Emblazoned Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Channeler Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 55;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 57;
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(11);
         _belt.generatedStatBonus = beltGenStats(11);
+        _belt.elementalStats = beltEleStats(11);
     }
 
-    function IronEmblazonedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function ChosensBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 13;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Iron Emblazoned Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Chosen's Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 60;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 62;
+        // _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(12);
         _belt.generatedStatBonus = beltGenStats(12);
+        _belt.elementalStats = beltEleStats(12);
     }
 
-    function SilverEmblazonedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function AstraBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 14;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Silver Emblazoned Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Astra Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 65;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 67;
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(13);
         _belt.generatedStatBonus = beltGenStats(13);
+        _belt.elementalStats = beltEleStats(13);
     }
 
-    function GoldEmblazonedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function SoulbinderBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 15;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Gold Emblazoned Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Soulbinder Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 70;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 72;
+        // _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(14);
         _belt.generatedStatBonus = beltGenStats(14);
+        _belt.elementalStats = beltEleStats(14);
     }
 
-    function PlatinumSealedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function SunBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 16;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Platinum Sealed Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Sun Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 75;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 77;
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(15);
         _belt.generatedStatBonus = beltGenStats(15);
+        _belt.elementalStats = beltEleStats(15);
     }
 
-    function MyhrilSealedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function MoonBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 17;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Mythril Sealed Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Moon Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 80;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 82;
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(16);
         _belt.generatedStatBonus = beltGenStats(16);
+        _belt.elementalStats = beltEleStats(16);
     }
 
-    function OricalchumSealedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function CycleBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 18;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Oricalchum Sealed Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Cycle Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 85;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 87;
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(17);
         _belt.generatedStatBonus = beltGenStats(17);
+        _belt.elementalStats = beltEleStats(17);
     }
 
-    function ObsidianSealedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function InfernalBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 19;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Obsidian Sealed Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Infernal Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 90;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 92;
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(18);
         _belt.generatedStatBonus = beltGenStats(18);
+        _belt.elementalStats = beltEleStats(18);
     }
 
-    function LuminiteSealedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function DivineBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 20;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Luminite Sealed Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Divine Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
-        _belt.requirement.level = 95;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.level = 97;
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(19);
         _belt.generatedStatBonus = beltGenStats(19);
+        _belt.elementalStats = beltEleStats(19);
     }
 
-    function EternalSealedBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function EternalBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 21;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //        _belt.metadata.name = "Eternal Sealed Belt";
-        _belt.metadata.description = "";
+        //  _belt.metadata.name = "Eternal Belt";
+        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 100;
-        _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(20);
         _belt.generatedStatBonus = beltGenStats(20);
+        _belt.elementalStats = beltEleStats(20);
     }
 
 

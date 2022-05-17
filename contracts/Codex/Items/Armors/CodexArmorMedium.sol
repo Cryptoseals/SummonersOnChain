@@ -50,54 +50,54 @@ contract CodexArmorsMedium is Initializable {
         require(tier < 10, "t");
 
         if (id == 22) {
-            return applyTier(SoldiersCoat(tier), tier, 1);
+            return applyTier(SoldiersTunic(tier), tier, 1);
         } else if (id == 23) {
-            return applyTier(ExecutionerCoat(tier), tier, 1);
+            return applyTier(ExecutionersTunic(tier), tier, 1);
         } else if (id == 24) {
-            return applyTier(KnightsCoat(tier), tier, 1);
+            return applyTier(HuntersShirt(tier), tier, 1);
         } else if (id == 25) {
-            return applyTier(DwarvenCoat(tier), tier, 1);
+            return applyTier(RangerShirt(tier), tier, 1);
         } else if (id == 26) {
-            return applyTier(ScaleCoat(tier), tier, 1);
+            return applyTier(MercenaryCoat(tier), tier, 1);
         } else if (id == 27) {
-            return applyTier(WingedCoat(tier), tier, 2);
+            return applyTier(NobleCoat(tier), tier, 2);
         } else if (id == 28) {
-            return applyTier(DraconicCoat(tier), tier, 2);
+            return applyTier(BloodstainedCoat(tier), tier, 2);
         } else if (id == 29) {
-            return applyTier(ArgentCoat(tier), tier, 2);
+            return applyTier(CoatOfDusk(tier), tier, 2);
         } else if (id == 30) {
-            return applyTier(GoldenCoat(tier), tier, 3);
+            return applyTier(ShadowLongcoat(tier), tier, 3);
         } else if (id == 31) {
-            return applyTier(MidassCoat(tier), tier, 3);
+            return applyTier(HeadmastersLongcoat(tier), tier, 3);
         } else if (id == 32) {
-            return applyTier(JuggernautCoat(tier), tier, 4);
+            return applyTier(ElvenLongcoat(tier), tier, 4);
         } else if (id == 33) {
-            return applyTier(ChosensCoat(tier), tier, 4);
+            return applyTier(ChosensLongcoat(tier), tier, 4);
         } else if (id == 34) {
-            return applyTier(TemplarCoat(tier), tier, 5);
+            return applyTier(ProphetsLongcoat(tier), tier, 5);
         } else if (id == 35) {
-            return applyTier(VanguardCoat(tier), tier, 6);
+            return applyTier(EldersLongcoat(tier), tier, 6);
         } else if (id == 36) {
-            return applyTier(VoidDwellerCoat(tier), tier, 7);
+            return applyTier(AncientLongcoat(tier), tier, 7);
         } else if (id == 37) {
-            return applyTier(SunCoat(tier), tier, 9);
+            return applyTier(MoonLongcoat(tier), tier, 9);
         } else if (id == 38) {
-            return applyTier(MoonCoat(tier), tier, 11);
+            return applyTier(SunLongcoat(tier), tier, 11);
         } else if (id == 39) {
-            return applyTier(DemonicCoat(tier), tier, 13);
+            return applyTier(CycleLongcoat(tier), tier, 13);
         } else if (id == 40) {
-            return applyTier(AngelicCoat(tier), tier, 15);
+            return applyTier(DemonicSuit(tier), tier, 15);
         } else if (id == 41) {
-            return applyTier(CycleCoat(tier), tier, 19);
+            return applyTier(AngelicSuit(tier), tier, 19);
         } else if (id == 42) {
-            return applyTier(EternalCoat(tier), tier, 20);
+            return applyTier(EternalSuit(tier), tier, 20);
         }
 
         revert("?hm");
     }
 
-    function SoldiersCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 1;
+    function SoldiersTunic(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 22;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Soldier's Coat";
 //        _armor.metadata.description = "";
@@ -127,8 +127,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(0);
     }
 
-    function ExecutionerCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 2;
+    function ExecutionersTunic(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 23;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Executioner's Coat";
 //        _armor.metadata.description = "";
@@ -148,8 +148,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(1);
     }
 
-    function KnightsCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 3;
+    function HuntersShirt(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 24;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Knight's Coat";
 //        _armor.metadata.description = "";
@@ -169,8 +169,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(2);
     }
 
-    function DwarvenCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 4;
+    function RangerShirt(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 25;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Dwarven Coat";
 //        _armor.metadata.description = "";
@@ -190,8 +190,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(3);
     }
 
-    function ScaleCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 5;
+    function MercenaryCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 26;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Scale Coat";
 //        _armor.metadata.description = "";
@@ -211,8 +211,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(4);
     }
 
-    function WingedCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 6;
+    function NobleCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 27;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Winged Coat";
 //        _armor.metadata.description = "";
@@ -232,8 +232,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(5);
     }
 
-    function DraconicCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 7;
+    function BloodstainedCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 28;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Draconic Coat";
 //        _armor.metadata.description = "";
@@ -253,8 +253,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(6);
     }
 
-    function ArgentCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 8;
+    function CoatOfDusk(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 29;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Argent Coat";
 //        _armor.metadata.description = "";
@@ -274,8 +274,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(7);
     }
 
-    function GoldenCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 9;
+    function ShadowLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 30;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Golden Coat";
 //        _armor.metadata.description = "";
@@ -295,8 +295,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(8);
     }
 
-    function MidassCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 10;
+    function HeadmastersLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 31;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Midas's Coat";
 //        _armor.metadata.description = "";
@@ -316,8 +316,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(9);
     }
 
-    function JuggernautCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 11;
+    function ElvenLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 32;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Juggernaut Coat";
 //        _armor.metadata.description = "";
@@ -337,8 +337,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(10);
     }
 
-    function ChosensCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 12;
+    function ChosensLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 33;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Chosen's Coat";
 //        _armor.metadata.description = "";
@@ -358,8 +358,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(11);
     }
 
-    function TemplarCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 13;
+    function ProphetsLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 34;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Templar Coat";
 //        _armor.metadata.description = "";
@@ -379,8 +379,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(12);
     }
 
-    function VanguardCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 14;
+    function EldersLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 35;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Vanguard Coat";
 //        _armor.metadata.description = "";
@@ -400,8 +400,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(13);
     }
 
-    function VoidDwellerCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 15;
+    function AncientLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 36;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Void Dweller Coat";
 //        _armor.metadata.description = "";
@@ -421,8 +421,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(14);
     }
 
-    function SunCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 16;
+    function MoonLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 37;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Sun Coat";
 //        _armor.metadata.description = "";
@@ -442,8 +442,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(15);
     }
 
-    function MoonCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 17;
+    function SunLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 38;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Moon Coat";
 //        _armor.metadata.description = "";
@@ -463,8 +463,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(16);
     }
 
-    function DemonicCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 18;
+    function CycleLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 39;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Demonic Coat";
 //        _armor.metadata.description = "";
@@ -484,8 +484,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(17);
     }
 
-    function AngelicCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 19;
+    function DemonicSuit(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 40;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Angelic Coat";
 //        _armor.metadata.description = "";
@@ -505,8 +505,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(18);
     }
 
-    function CycleCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 20;
+    function AngelicSuit(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 41;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Cycle Coat";
 //        _armor.metadata.description = "";
@@ -526,8 +526,8 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(19);
     }
 
-    function EternalCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
-        _armor.metadata.id = 21;
+    function EternalSuit(uint tier) public view returns (GameObjects.Armor memory _armor) {
+        _armor.metadata.id = 42;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Eternal Coat";
 //        _armor.metadata.description = "";

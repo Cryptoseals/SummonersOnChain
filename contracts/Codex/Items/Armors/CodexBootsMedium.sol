@@ -51,45 +51,45 @@ contract CodexBootsMedium is Initializable {
         require(tier < 10, "t");
 
         if (id ==  22) {
-            return applyTier(SoldiersGreaves(tier), tier, 1);
+            return applyTier(SoldiersSandals(tier), tier, 1);
         } else if (id ==  23) {
-            return applyTier(ExecutionerGreaves(tier), tier, 1);
+            return applyTier(ExecutionersSandals(tier), tier, 1);
         } else if (id ==  24) {
-            return applyTier(KnightsGreaves(tier), tier, 1);
+            return applyTier(HuntersSandals(tier), tier, 1);
         } else if (id ==  25) {
-            return applyTier(DwarvenGreaves(tier), tier, 1);
+            return applyTier(RangerSandals(tier), tier, 1);
         } else if (id ==  26) {
-            return applyTier(ScaleGreaves(tier), tier, 1);
+            return applyTier(MercenaryShoes(tier), tier, 1);
         } else if (id ==  27) {
-            return applyTier(WingedGreaves(tier), tier, 2);
+            return applyTier(NobleShoes(tier), tier, 2);
         } else if (id ==  28) {
-            return applyTier(DraconicGreaves(tier), tier, 2);
+            return applyTier(BloodstainedShoes(tier), tier, 2);
         } else if (id ==  29) {
-            return applyTier(ArgentGreaves(tier), tier, 2);
+            return applyTier(ShoesOfDusk(tier), tier, 2);
         } else if (id ==  30) {
-            return applyTier(GoldenGreaves(tier), tier, 3);
+            return applyTier(ShadowBoots(tier), tier, 3);
         } else if (id ==  31) {
-            return applyTier(MidassGreaves(tier), tier, 3);
+            return applyTier(HeadmastersBoots(tier), tier, 3);
         } else if (id ==  32) {
-            return applyTier(JuggernautGreaves(tier), tier, 4);
+            return applyTier(ElvenBoots(tier), tier, 4);
         } else if (id ==  33) {
-            return applyTier(ChosensGreaves(tier), tier, 4);
+            return applyTier(ChosensBoots(tier), tier, 4);
         } else if (id ==  34) {
-            return applyTier(TemplarGreaves(tier), tier, 5);
+            return applyTier(ProphetsBoots(tier), tier, 5);
         } else if (id ==  35) {
-            return applyTier(VanguardGreaves(tier), tier, 6);
+            return applyTier(EldersBoots(tier), tier, 6);
         } else if (id ==  36) {
-            return applyTier(VoidDwellerGreaves(tier), tier, 7);
+            return applyTier(AncientShoes(tier), tier, 7);
         } else if (id ==  37) {
-            return applyTier(SunGreaves(tier), tier, 9);
+            return applyTier(MoonShoes(tier), tier, 9);
         } else if (id ==  38) {
-            return applyTier(MoonGreaves(tier), tier, 11);
+            return applyTier(SunShoes(tier), tier, 11);
         } else if (id ==  39) {
-            return applyTier(DemonicGreaves(tier), tier, 13);
+            return applyTier(CycleShoes(tier), tier, 13);
         } else if (id ==  40) {
-            return applyTier(AngelicGreaves(tier), tier, 15);
+            return applyTier(DemonicGreaves(tier), tier, 15);
         } else if (id ==  41) {
-            return applyTier(CycleGreaves(tier), tier, 19);
+            return applyTier(AngelicGreaves(tier), tier, 19);
         } else if (id ==  42) {
             return applyTier(EternalGreaves(tier), tier, 10);
         }
@@ -97,8 +97,8 @@ contract CodexBootsMedium is Initializable {
         revert("?hm");
     }
 
-    function SoldiersGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 1;
+    function SoldiersSandals(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 22;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Soldier's Greaves";
 //        _greaves.metadata.description = "";
@@ -113,13 +113,13 @@ contract CodexBootsMedium is Initializable {
         // }
         _greaves.requirement.classRequirement = classRequirement();
 
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _greaves.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
 
 
         // bonuses here
@@ -128,399 +128,399 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(0);
     }
 
-    function ExecutionerGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 2;
+    function ExecutionersSandals(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 23;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Executioner's Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 5;
+        _greaves.requirement.level = 3;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+    //    _greaves.requirement.statRequirement = GameObjects.Stats({
+    //    STR : 0,
+     //   DEX : 0,
+     //   AGI : 0,
+     //   INT : 0,
+     //   VIT : 0,
+     //   LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(1);
         _greaves.generatedStatBonus = armorGenStats(1);
         _greaves.elementalStats.ElementalDef = armorEle(1);
     }
 
-    function KnightsGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 3;
+    function HuntersSandals(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 24;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Knight's Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 10;
+        _greaves.requirement.level = 8;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+     //   _greaves.requirement.statRequirement = GameObjects.Stats({
+     //   STR : 0,
+     //   DEX : 0,
+     //   AGI : 0,
+     //   INT : 0,
+     //   VIT : 0,
+     //   LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(2);
         _greaves.generatedStatBonus = armorGenStats(2);
         _greaves.elementalStats.ElementalDef = armorEle(2);
     }
 
-    function DwarvenGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 4;
+    function RangerSandals(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 25;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Dwarven Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 15;
+        _greaves.requirement.level = 13;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _greaves.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+     //   AGI : 0,
+     //   INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(3);
         _greaves.generatedStatBonus = armorGenStats(3);
         _greaves.elementalStats.ElementalDef = armorEle(3);
     }
 
-    function ScaleGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 5;
+    function MercenaryShoes(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 26;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Scale Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 20;
+        _greaves.requirement.level = 18;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+       // _greaves.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+     //   LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(4);
         _greaves.generatedStatBonus = armorGenStats(4);
         _greaves.elementalStats.ElementalDef = armorEle(4);
     }
 
-    function WingedGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 6;
+    function NobleShoes(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 27;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Winged Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 25;
+        _greaves.requirement.level = 23;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+     //   _greaves.requirement.statRequirement = GameObjects.Stats({
+     //   STR : 0,
+      //  DEX : 0,
+     //   AGI : 0,
+     //   INT : 0,
+     //   VIT : 0,
+     //   LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(5);
         _greaves.generatedStatBonus = armorGenStats(5);
         _greaves.elementalStats.ElementalDef = armorEle(5);
     }
 
-    function DraconicGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 7;
+    function BloodstainedShoes(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 28;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Draconic Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 30;
+        _greaves.requirement.level = 28;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _greaves.requirement.statRequirement = GameObjects.Stats({
+     //   STR : 0,
+     //   DEX : 0,
+     //   AGI : 0,
+     //   INT : 0,
+     //   VIT : 0,
+    //    LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(6);
         _greaves.generatedStatBonus = armorGenStats(6);
         _greaves.elementalStats.ElementalDef = armorEle(6);
     }
 
-    function ArgentGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 8;
+    function ShoesOfDusk(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 29;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Argent Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 35;
+        _greaves.requirement.level = 33;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _greaves.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+     //   LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(7);
         _greaves.generatedStatBonus = armorGenStats(7);
         _greaves.elementalStats.ElementalDef = armorEle(7);
     }
 
-    function GoldenGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 9;
+    function ShadowBoots(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 30;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Golden Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 40;
+        _greaves.requirement.level = 38;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _greaves.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(8);
         _greaves.generatedStatBonus = armorGenStats(8);
         _greaves.elementalStats.ElementalDef = armorEle(8);
     }
 
-    function MidassGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 10;
+    function HeadmastersBoots(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 31;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Midas's Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 45;
+        _greaves.requirement.level = 43;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _greaves.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(9);
         _greaves.generatedStatBonus = armorGenStats(9);
         _greaves.elementalStats.ElementalDef = armorEle(9);
     }
 
-    function JuggernautGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 11;
+    function ElvenBoots(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 32;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Juggernaut Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 50;
+        _greaves.requirement.level = 48;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+      //  _greaves.requirement.statRequirement = GameObjects.Stats({
+      //  STR : 0,
+      //  DEX : 0,
+      //  AGI : 0,
+      //  INT : 0,
+      //  VIT : 0,
+      //  LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(10);
         _greaves.generatedStatBonus = armorGenStats(10);
         _greaves.elementalStats.ElementalDef = armorEle(10);
     }
 
-    function ChosensGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 12;
+    function ChosensBoots(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 33;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Chosen's Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 55;
+        _greaves.requirement.level = 53;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+     //   _greaves.requirement.statRequirement = GameObjects.Stats({
+     //   STR : 0,
+     //   DEX : 0,
+     //   AGI : 0,
+     //   INT : 0,
+     //   VIT : 0,
+    //    LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(11);
         _greaves.generatedStatBonus = armorGenStats(11);
         _greaves.elementalStats.ElementalDef = armorEle(11);
     }
 
-    function TemplarGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 13;
+    function ProphetsBoots(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 34;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Templar Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 60;
+        _greaves.requirement.level = 58;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+     //   _greaves.requirement.statRequirement = GameObjects.Stats({
+     //   STR : 0,
+     //   DEX : 0,
+     //   AGI : 0,
+     //   INT : 0,
+     //   VIT : 0,
+     //   LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(12);
         _greaves.generatedStatBonus = armorGenStats(12);
         _greaves.elementalStats.ElementalDef = armorEle(12);
     }
 
-    function VanguardGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 14;
+    function EldersBoots(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 35;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Vanguard Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 65;
+        _greaves.requirement.level = 63;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+     //   _greaves.requirement.statRequirement = GameObjects.Stats({
+     //   STR : 0,
+     //   DEX : 0,
+     //   AGI : 0,
+     //   INT : 0,
+     //   VIT : 0,
+     //   LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(13);
         _greaves.generatedStatBonus = armorGenStats(13);
         _greaves.elementalStats.ElementalDef = armorEle(13);
     }
 
-    function VoidDwellerGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 15;
+    function AncientShoes(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 36;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Void Dweller Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 70;
+        _greaves.requirement.level = 68;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+     //   _greaves.requirement.statRequirement = GameObjects.Stats({
+     //   STR : 0,
+     //   DEX : 0,
+     //   AGI : 0,
+     //   INT : 0,
+     //   VIT : 0,
+     //   LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(14);
         _greaves.generatedStatBonus = armorGenStats(14);
         _greaves.elementalStats.ElementalDef = armorEle(14);
     }
 
-    function SunGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 16;
+    function MoonShoes(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 37;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Sun Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 75;
+        _greaves.requirement.level = 73;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+     //   _greaves.requirement.statRequirement = GameObjects.Stats({
+     //   STR : 0,
+     //   DEX : 0,
+     //   AGI : 0,
+     //   INT : 0,
+     //   VIT : 0,
+     //   LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(15);
         _greaves.generatedStatBonus = armorGenStats(15);
         _greaves.elementalStats.ElementalDef = armorEle(15);
     }
 
-    function MoonGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 17;
+    function SunShoes(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 38;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Moon Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 80;
+        _greaves.requirement.level = 78;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+     //   _greaves.requirement.statRequirement = GameObjects.Stats({
+     //   STR : 0,
+     //   DEX : 0,
+     //   AGI : 0,
+     //   INT : 0,
+     //   VIT : 0,
+     //   LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(16);
         _greaves.generatedStatBonus = armorGenStats(16);
         _greaves.elementalStats.ElementalDef = armorEle(16);
     }
 
-    function DemonicGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 18;
+    function CycleShoes(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 39;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Demonic Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 85;
+        _greaves.requirement.level = 83;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+     //   _greaves.requirement.statRequirement = GameObjects.Stats({
+     //   STR : 0,
+     //   DEX : 0,
+     //   AGI : 0,
+     //   INT : 0,
+     //   VIT : 0,
+     //   LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(17);
         _greaves.generatedStatBonus = armorGenStats(17);
         _greaves.elementalStats.ElementalDef = armorEle(17);
     }
 
-    function AngelicGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 19;
+    function DemonicGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 40;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Angelic Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 90;
+        _greaves.requirement.level = 88;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+     //   _greaves.requirement.statRequirement = GameObjects.Stats({
+    //    STR : 0,
+    //    DEX : 0,
+    //    AGI : 0,
+    //    INT : 0,
+    //    VIT : 0,
+    //    LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(18);
         _greaves.generatedStatBonus = armorGenStats(18);
         _greaves.elementalStats.ElementalDef = armorEle(18);
     }
 
-    function CycleGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 20;
+    function AngelicGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+        _greaves.metadata.id = 41;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Cycle Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 95;
+        _greaves.requirement.level = 93;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+    //    _greaves.requirement.statRequirement = GameObjects.Stats({
+    //    STR : 0,
+    //    DEX : 0,
+    //    AGI : 0,
+    //    INT : 0,
+    //    VIT : 0,
+    //    LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(19);
         _greaves.generatedStatBonus = armorGenStats(19);
@@ -528,20 +528,20 @@ contract CodexBootsMedium is Initializable {
     }
 
     function EternalGreaves(uint tier) public view returns (GameObjects.Boots memory _greaves) {
-        _greaves.metadata.id = 21;
+        _greaves.metadata.id = 42;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Eternal Greaves";
 //        _greaves.metadata.description = "";
         _greaves.metadata.upgradable = true;
-        _greaves.requirement.level = 100;
+        _greaves.requirement.level = 98;
         _greaves.requirement.classRequirement = classRequirement();
-        _greaves.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+    //    _greaves.requirement.statRequirement = GameObjects.Stats({
+     //   STR : 0,
+    //    DEX : 0,
+    //    AGI : 0,
+    //    INT : 0,
+    //    VIT : 0,
+    //    LUCK : 0});
         // bonuses here
         _greaves.statBonus = armorStats(20);
         _greaves.generatedStatBonus = armorGenStats(20);
