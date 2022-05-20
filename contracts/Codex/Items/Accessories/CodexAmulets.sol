@@ -174,9 +174,9 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         } else if (_equipable.itemId == 15) {
             _amulet = applyTier(SoulbinderAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 16) {
-            _amulet = applyTier(SunAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(MoonlightAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 17) {
-            _amulet = applyTier(MoonAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(SunlightAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 18) {
             _amulet = applyTier(CycleAmulet(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 19) {
@@ -234,9 +234,9 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         } else if (itemId == 15) {
             _amulet = applyTier(SoulbinderAmulet(itemTier), itemTier, 10);
         } else if (itemId == 16) {
-            _amulet = applyTier(SunAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(MoonlightAmulet(itemTier), itemTier, 10);
         } else if (itemId == 17) {
-            _amulet = applyTier(MoonAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(SunlightAmulet(itemTier), itemTier, 10);
         } else if (itemId == 18) {
             _amulet = applyTier(CycleAmulet(itemTier), itemTier, 13);
         } else if (itemId == 19) {
@@ -474,7 +474,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(14);
     }
 
-    function SunAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function MoonlightAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 16;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         // _amulet.metadata.name = "Sun Amulet";
@@ -489,7 +489,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(15);
     }
 
-    function MoonAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function SunlightAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
         _amulet.metadata.id = 17;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         //  _amulet.metadata.name = "Moon Amulet";

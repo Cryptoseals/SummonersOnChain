@@ -5,16 +5,16 @@ contract ShieldRecipes {
     function recipe(uint id) external view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         if (id == 127) return SmallWoodenShield();
         else if (id == 128) return SmallCopperShield();
-        else if (id == 129) return SmallTinShield();
-        else if (id == 130) return MediumCopperShield();
+        else if (id == 129) return MediumCopperShield();
+        else if (id == 130) return SmallTinShield();
         else if (id == 131) return MediumTinShield();
         else if (id == 132) return SilverShield();
-        else if (id == 133) return GoldShield();
+        else if (id == 133) return GoldenShield();
         else if (id == 134) return MythrilShield();
         else if (id == 135) return DarksteelShield();
         else if (id == 136) return OricalchumShield();
-        else if (id == 137) return Moonshield();
-        else if (id == 138) return Sunshield();
+        else if (id == 137) return MoonlightShield();
+        else if (id == 138) return SunlightShield();
         else if (id == 139) return CycleShield();
         else if (id == 140) return PhantasmalShield();
         else if (id == 141) return HolyPaladinsShield();
@@ -32,11 +32,16 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.COPPER,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD,
-        amount : 5
+        amount : 10
         });
     }
 
@@ -48,39 +53,17 @@ contract ShieldRecipes {
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.COPPER_INGOT,
-        amount : 3
+        amount : 6
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK,
-        amount : 5
+        amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER,
-        amount : 2
-        });
-    }
-
-    function SmallTinShield() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
         amount : 3
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK,
-        amount : 5
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER,
-        amount : 2
         });
     }
 
@@ -88,21 +71,53 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.COPPER_INGOT,
+        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
         amount : 3
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD_PLANK,
-        amount : 5
+        amount : 6
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER,
-        amount : 2
+        amount : 3
+        });
+    }
+
+    function SmallTinShield() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER,
+        amount : 3
         });
     }
 
@@ -110,21 +125,26 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
+        material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
         amount : 3
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD_PLANK,
-        amount : 5
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD_PLANK,
+        amount : 6
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER,
-        amount : 2
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
+        amount : 3
         });
     }
 
@@ -132,43 +152,53 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD_PLANK,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
+        amount : 3
+        });
+    }
+
+    function GoldenShield() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
         amount : 3
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.HARD_WOOD_PLANK,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.AGED_WOOD_PLANK,
-        amount : 5
+        amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
-        amount : 2
-        });
-    }
-
-    function GoldShield() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER,
         amount : 3
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD_PLANK,
-        amount : 5
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
-        amount : 2
         });
     }
 
@@ -176,21 +206,26 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
-        amount : 5
+        material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
+        amount : 6
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.HARD_WOOD_PLANK,
-        amount : 8
+        amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD_PLANK,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER,
-        amount : 2
+        amount : 3
         });
     }
 
@@ -198,21 +233,26 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
-        amount : 5
+        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
+        amount : 3
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD_PLANK,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.HARD_WOOD_PLANK,
-        amount : 8
+        amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
-        amount : 2
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER,
+        amount : 3
         });
     }
 
@@ -220,25 +260,57 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
-        amount : 5
+        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
+        amount : 6
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD_PLANK,
-        amount : 8
+        amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.HARD_WOOD_PLANK,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER,
-        amount : 2
+        amount : 3
         });
     }
 
-    function Moonshield() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function MoonlightShield() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
+        amount : 3
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD_PLANK,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER,
+        amount : 3
+        });
+    }
+
+    function SunlightShield() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
@@ -246,37 +318,20 @@ contract ShieldRecipes {
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
-        amount : 7
+        amount : 6
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD_PLANK,
-        amount : 10
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER,
-        amount : 3
-        });
-    }
-
-    function Sunshield() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
-        amount : 7
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD_PLANK,
-        amount : 10
+        amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD_PLANK,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER,
         amount : 3
         });
@@ -286,21 +341,37 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
-        amount : 7
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD_PLANK,
-        amount : 10
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER,
         amount : 3
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD_PLANK,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER,
+        amount : 3
+        });
+
+        _recipe.equipmentRequirements = new ICraftingRecipe.RequiredEquipment[](2);
+        _recipe.equipmentRequirements[0] = ICraftingRecipe.RequiredEquipment({
+            itemType: GameObjects.ItemType.WEAPON,
+            id: 137
+        });
+
+        _recipe.equipmentRequirements[1] = ICraftingRecipe.RequiredEquipment({
+            itemType: GameObjects.ItemType.WEAPON,
+            id: 138
         });
     }
 
@@ -308,19 +379,24 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
-        amount : 7
+        amount : 6
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD_PLANK,
-        amount : 10
+        amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD_PLANK,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER,
         amount : 3
         });
@@ -330,21 +406,26 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
-        amount : 9
+        amount : 3
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD_PLANK,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD_PLANK,
         amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER,
-        amount : 4
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
+        amount : 3
         });
     }
 
@@ -352,21 +433,26 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
-        amount : 9
+        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
+        amount : 6
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD_PLANK,
         amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD_PLANK,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
-        amount : 4
+        amount : 3
         });
     }
 
@@ -374,21 +460,26 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
-        amount : 9
+        amount : 3
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD_PLANK,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD_PLANK,
         amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
-        amount : 4
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER,
+        amount : 3
         });
     }
 
@@ -396,21 +487,26 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
-        amount : 10
+        amount : 6
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD_PLANK,
-        amount : 15
+        amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD_PLANK,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER,
-        amount : 5
+        amount : 3
         });
     }
 
@@ -418,21 +514,26 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
-        amount : 11
+        amount : 3
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD_PLANK,
-        amount : 18
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER,
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SNAKEWOOD_PLANK,
         amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
+        amount : 3
         });
     }
 
@@ -440,21 +541,26 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](4);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
-        amount : 13
+        amount : 6
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.SNAKEWOOD_PLANK,
-        amount : 20
+        amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD_PLANK,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
-        amount : 7
+        amount : 3
         });
     }
 
@@ -462,21 +568,66 @@ contract ShieldRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](12);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
-        amount : 13
+        amount : 6
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.SNAKEWOOD_PLANK,
-        amount : 25
+        amount : 20
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[4] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[5] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.HARD_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[6] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[7] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[8] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[9] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[10] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD_PLANK,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[11] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
-        amount : 7
+        amount : 4
         });
     }
 

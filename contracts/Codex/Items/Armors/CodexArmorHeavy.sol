@@ -82,15 +82,15 @@ contract CodexArmorsHeavy is Initializable {
         } else if (id == 15) {
             return applyTier(VoidDwellerArmor(tier), tier, 7);
         } else if (id == 16) {
-            return applyTier(SunArmor(tier), tier, 9);
+            return applyTier(MoonlightArmor(tier), tier, 9);
         } else if (id == 17) {
-            return applyTier(MoonArmor(tier), tier, 11);
+            return applyTier(SunlightArmor(tier), tier, 11);
         } else if (id == 18) {
-            return applyTier(DemonicArmor(tier), tier, 13);
+            return applyTier(CycleArmor(tier), tier, 13);
         } else if (id == 19) {
-            return applyTier(AngelicArmor(tier), tier, 15);
+            return applyTier(DemonicArmor(tier), tier, 15);
         } else if (id == 20) {
-            return applyTier(CycleArmor(tier), tier, 19);
+            return applyTier(AngelicArmor(tier), tier, 19);
         } else if (id == 21) {
             return applyTier(EternalArmor(tier), tier, 20);
         }
@@ -423,7 +423,7 @@ contract CodexArmorsHeavy is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(14);
     }
 
-    function SunArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function MoonlightArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 16;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Sun Armor";
@@ -444,7 +444,7 @@ contract CodexArmorsHeavy is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(15);
     }
 
-    function MoonArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function SunlightArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 17;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Moon Armor";
@@ -465,7 +465,7 @@ contract CodexArmorsHeavy is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(16);
     }
 
-    function DemonicArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function CycleArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 18;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Demonic Armor";
@@ -486,7 +486,7 @@ contract CodexArmorsHeavy is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(17);
     }
 
-    function AngelicArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function DemonicArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 19;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Angelic Armor";
@@ -507,7 +507,7 @@ contract CodexArmorsHeavy is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(18);
     }
 
-    function CycleArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function AngelicArmor(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 20;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Cycle Armor";

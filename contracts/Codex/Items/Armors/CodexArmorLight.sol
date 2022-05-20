@@ -82,9 +82,9 @@ contract CodexArmorsLight is Initializable {
         } else if (id == 57) {
             return applyTier(AncientCuirass(tier), tier, 7);
         } else if (id == 58) {
-            return applyTier(MoonCuirass(tier), tier, 9);
+            return applyTier(MoonlightCuirass(tier), tier, 9);
         } else if (id == 59) {
-            return applyTier(SunCuirass(tier), tier, 11);
+            return applyTier(SunlightCuirass(tier), tier, 11);
         } else if (id == 60) {
             return applyTier(CycleCuirass(tier), tier, 13);
         } else if (id == 61) {
@@ -423,7 +423,7 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(14);
     }
 
-    function MoonCuirass(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function MoonlightCuirass(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 58;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Moon Cuirass";
@@ -444,7 +444,7 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(15);
     }
 
-    function SunCuirass(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function SunlightCuirass(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 59;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Sun Cuirass";

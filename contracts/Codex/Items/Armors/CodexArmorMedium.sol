@@ -80,9 +80,9 @@ contract CodexArmorsMedium is Initializable {
         } else if (id == 36) {
             return applyTier(AncientLongcoat(tier), tier, 7);
         } else if (id == 37) {
-            return applyTier(MoonLongcoat(tier), tier, 9);
+            return applyTier(MoonlightLongcoat(tier), tier, 9);
         } else if (id == 38) {
-            return applyTier(SunLongcoat(tier), tier, 11);
+            return applyTier(SunlightLongcoat(tier), tier, 11);
         } else if (id == 39) {
             return applyTier(CycleLongcoat(tier), tier, 13);
         } else if (id == 40) {
@@ -421,7 +421,7 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(14);
     }
 
-    function MoonLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function MoonlightLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 37;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Sun Coat";
@@ -442,7 +442,7 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(15);
     }
 
-    function SunLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function SunlightLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
         _armor.metadata.id = 38;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
 //        _armor.metadata.name = "Moon Coat";

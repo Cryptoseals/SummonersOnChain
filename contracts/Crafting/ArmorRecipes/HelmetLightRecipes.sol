@@ -3,27 +3,27 @@ pragma solidity ^0.8.0;
 
 contract HelmetLightRecipes {
     function recipe(uint id) external view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        if(id == 1) return SoldiersHat();
-        else if (id == 2) return ExecutionersHat();
-        else if (id == 3) return KnightsHat();
-        else if (id == 4) return DwarvenHat();
-        else if (id == 5) return ScaleHat();
-        else if (id == 6) return WingedHat();
-        else if (id == 7) return JuggernautHat();
-        else if (id == 8) return DraconicHat();
-        else if (id == 9) return DragonsilverHat();
-        else if (id == 10) return GoldenHat();
-        else if (id == 10) return MidassHat();
-        else if (id == 12) return ChosensHat();
-        else if (id == 13) return TemplarHat();
-        else if (id == 14) return VanguardHat();
-        else if (id == 15) return VoidDwellerHat();
-        else if (id == 16) return MoonHat();
-        else if (id == 17) return SunHat();
-        else if (id == 18) return DemonicHat();
-        else if (id == 19) return AngelicHat();
-        else if (id == 20) return CycleHat();
-        else if (id == 21) return EternalHat();
+        if(id == 43) return SoldiersHat();
+        else if (id == 44) return PriestsHat();
+        else if (id == 45) return FaithHat();
+        else if (id == 46) return TraineesHat();
+        else if (id == 47) return MagiciansHat();
+        else if (id == 48) return SealedMask();
+        else if (id == 49) return GateKeepersMask();
+        else if (id == 50) return ElementalistsMask();
+        else if (id == 51) return AlchemistsMask();
+        else if (id == 52) return ArchmagesMask();
+        else if (id == 53) return ElvenCirclet();
+        else if (id == 54) return ChosensCirclet();
+        else if (id == 55) return ProphetsCirclet();
+        else if (id == 56) return EldersCirclet();
+        else if (id == 57) return AncientCirclet();
+        else if (id == 58) return MoonlightCirclet();
+        else if (id == 59) return SunlightCirclet();
+        else if (id == 60) return CycleCirclet();
+        else if (id == 61) return DemonicCrown();
+        else if (id == 62) return AngelicCrown();
+        else if (id == 63) return EternalCrown();
         
     }
 
@@ -35,249 +35,393 @@ contract HelmetLightRecipes {
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.JUTE,
+        amount : 20
+        });
+    }
+
+    function PriestsHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_JUTE,
+        amount : 17
+        });
+    }
+
+    function FaithHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_WOOL,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_JUTE,
+        amount : 10
+        });
+    }
+
+    function TraineesHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_WOOL,
+        amount : 17
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_JUTE,
         amount : 5
         });
     }
 
-    function ExecutionersHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function MagiciansHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_JUTE,
-        amount : 8
-        });
-    }
-
-    function KnightsHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_JUTE,
-        amount : 8
-        });
-    }
-
-    function DwarvenHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_WOOL,
-        amount : 8
-        });
-    }
-
-    function ScaleHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_WOOL,
-        amount : 8
-        });
-    }
-
-    function WingedHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_COTTON,
-        amount : 8
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_WOOL,
+        amount : 10
         });
     }
 
-    function JuggernautHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function SealedMask() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_COTTON,
-        amount : 8
+        amount : 17
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_WOOL,
+        amount : 5
         });
     }
 
-    function DraconicHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function GateKeepersMask() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_LINEN,
-        amount : 13
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_COTTON,
+        amount : 10
         });
     }
 
-    function DragonsilverHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function ElementalistsMask() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_LINEN,
-        amount : 13
+        amount : 17
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_COTTON,
+        amount : 5
         });
     }
 
-    function GoldenHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function AlchemistsMask() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_SILK,
-        amount : 15
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_LINEN,
+        amount : 10
         });
     }
 
-    function MidassHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function ArchmagesMask() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_SILK,
         amount : 17
         });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_LINEN,
+        amount : 5
+        });
     }
 
-    function ChosensHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function ElvenCirclet() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_HEMP,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_SILK,
+        amount : 10
+        });
+    }
+
+    function ChosensCirclet() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_HEMP,
         amount : 17
         });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_SILK,
+        amount : 5
+        });
     }
 
-    function TemplarHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function ProphetsCirclet() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_CASHMERE,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_HEMP,
-        amount : 17
+        amount : 10
         });
     }
 
-    function VanguardHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function EldersCirclet() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_CASHMERE,
         amount : 17
         });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_HEMP,
+        amount : 5
+        });
     }
 
-    function VoidDwellerHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function AncientCirclet() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_VISCOSE,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_CASHMERE,
-        amount : 21
-        }); 
-    }
-
-    function MoonHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_VISCOSE,
-        amount : 21
+        amount : 10
         });
     }
 
-    function SunHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function MoonlightCirclet() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_VISCOSE,
-        amount : 21
+        amount : 17
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_CASHMERE,
+        amount : 5
         });
     }
 
-    function DemonicHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function SunlightCirclet() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_LYOCELL,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_VISCOSE,
+        amount : 10
+        });
+    }
+
+    function CycleCirclet() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_LYOCELL,
+        amount : 17
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_VISCOSE,
+        amount : 5
+        });
+
+        _recipe.equipmentRequirements = new ICraftingRecipe.RequiredEquipment[](2);
+        _recipe.equipmentRequirements[0] = ICraftingRecipe.RequiredEquipment({
+            itemType: GameObjects.ItemType.HELMET,
+            id: 58
+        });
+
+        _recipe.equipmentRequirements[1] = ICraftingRecipe.RequiredEquipment({
+            itemType: GameObjects.ItemType.HELMET,
+            id: 59
+        });
+    }
+
+    function DemonicCrown() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_RAYON,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_LYOCELL,
+        amount : 10
+        });
+    }
+
+    function AngelicCrown() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_RAYON,
+        amount : 17
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_LYOCELL,
+        amount : 5
+        });
+    }
+
+    function EternalCrown() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](10);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_RAYON,
         amount : 25
         });
-    }
 
-    function AngelicHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_JUTE,
+        amount : 10
+        });
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_WOOL,
+        amount : 10
+        });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_COTTON,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[4] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_LINEN,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[5] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_SILK,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[6] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_HEMP,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[7] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_CASHMERE,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[8] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_VISCOSE,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[9] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_LYOCELL,
-        amount : 29
+        amount : 10
         });
     }
-
-    function CycleHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_RAYON,
-        amount : 35
-        });
-        
-    }
-
-    function EternalHat() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_RAYON,
-        amount : 40
-        });
-    }
-
 }

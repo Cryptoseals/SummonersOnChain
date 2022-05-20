@@ -84,9 +84,9 @@ contract CodexHelmetsLight is Initializable {
         } else if (id == 57) {
             return applyTier(AncientCirclet(tier), tier, 7);
         } else if (id == 58) {
-            return applyTier(MoonCirclet(tier), tier, 9);
+            return applyTier(MoonlightCirclet(tier), tier, 9);
         } else if (id == 59) {
-            return applyTier(SunCirclet(tier), tier, 11);
+            return applyTier(SunlightCirclet(tier), tier, 11);
         } else if (id == 60) {
             return applyTier(CycleCirclet(tier), tier, 13);
         } else if (id == 61) {
@@ -425,7 +425,7 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(14);
     }
 
-    function MoonCirclet(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+    function MoonlightCirclet(uint tier) public view returns (GameObjects.Helmet memory _hat) {
         _hat.metadata.id = 58;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Sun Hat";
@@ -446,7 +446,7 @@ contract CodexHelmetsLight is Initializable {
         _hat.elementalStats.ElementalDef = helmetEle(15);
     }
 
-    function SunCirclet(uint tier) public view returns (GameObjects.Helmet memory _hat) {
+    function SunlightCirclet(uint tier) public view returns (GameObjects.Helmet memory _hat) {
         _hat.metadata.id = 59;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _hat.metadata.name = "Moon Hat";

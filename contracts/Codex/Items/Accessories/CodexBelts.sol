@@ -170,9 +170,9 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         } else if (_equipable.itemId == 15) {
             _belt = applyTier(SoulbinderBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 16) {
-            _belt = applyTier(SunBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(MoonlightBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 17) {
-            _belt = applyTier(MoonBelt(_equipable.itemTier), _equipable.itemTier, 10);
+            _belt = applyTier(SunlightBelt(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 18) {
             _belt = applyTier(CycleBelt(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 19) {
@@ -230,9 +230,9 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         } else if (itemId == 15) {
             _belt = applyTier(SoulbinderBelt(itemTier), itemTier, 10);
         } else if (itemId == 16) {
-            _belt = applyTier(SunBelt(itemTier), itemTier, 10);
+            _belt = applyTier(MoonlightBelt(itemTier), itemTier, 10);
         } else if (itemId == 17) {
-            _belt = applyTier(MoonBelt(itemTier), itemTier, 10);
+            _belt = applyTier(SunlightBelt(itemTier), itemTier, 10);
         } else if (itemId == 18) {
             _belt = applyTier(CycleBelt(itemTier), itemTier, 13);
         } else if (itemId == 19) {
@@ -472,7 +472,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         _belt.elementalStats = beltEleStats(14);
     }
 
-    function SunBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function MoonlightBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 16;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
         //  _belt.metadata.name = "Sun Belt";
@@ -487,7 +487,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         _belt.elementalStats = beltEleStats(15);
     }
 
-    function MoonBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
+    function SunlightBelt(uint tier) public view returns (GameObjects.Belt memory _belt) {
         _belt.metadata.id = 17;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
         //  _belt.metadata.name = "Moon Belt";

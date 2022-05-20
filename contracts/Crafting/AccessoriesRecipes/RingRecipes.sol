@@ -3,366 +3,531 @@ pragma solidity ^0.8.0;
 
 contract RingRecipes {
     function recipe(uint id) external view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        if(id == 1) return DeformedRing();
-        else if (id == 2) return CopperRing();
-        else if (id == 3) return TinRing();
-        else if (id == 4) return IronRing();
-        else if (id == 5) return SilverRing();
-        else if (id == 6) return GoldRing();
-        else if (id == 7) return AmberRing();
-        else if (id == 8) return PearlRing();
-        else if (id == 9) return AmethystRing();
-        else if (id == 10) return CoralRing();
-        else if (id == 11) return RubyRing();
-        else if (id == 12) return TopazRing();
-        else if (id == 13) return ShinyTopazRing();
-        else if (id == 14) return AzuriteRing();
-        else if (id == 15) return ShinyAzuriteRing();
-        else if (id == 16) return EmeraldRing();
-        else if (id == 17) return ShinyEmeraldRing();
-        else if (id == 18) return SapphireRing();
-        else if (id == 19) return ShinySapphireRing();
-        else if (id == 20) return DiamondRing();
-        else if (id == 21) return ShinyDiamondRing();
+        if(id == 1) return FrailRing();
+        else if (id == 2) return AntiqueRing();
+        else if (id == 3) return PurgeRing();
+        else if (id == 4) return BarbedRing();
+        else if (id == 5) return ReflectiveRing();
+        else if (id == 6) return StormForgedRing();
+        else if (id == 7) return VerdantRing();
+        else if (id == 8) return ShadowfallRing();
+        else if (id == 9) return MalignantRing();
+        else if (id == 10) return SealedRing();
+        else if (id == 11) return TemplarRing();
+        else if (id == 12) return ChannelerRing();
+        else if (id == 13) return ChosensRing();
+        else if (id == 14) return AstraRing();
+        else if (id == 15) return SoulbinderRing();
+        else if (id == 16) return MoonlightRing();
+        else if (id == 17) return SunlightRing();
+        else if (id == 18) return CycleRing();
+        else if (id == 19) return InfernalRing();
+        else if (id == 20) return DivineRing();
+        else if (id == 21) return EternalRing();
         revert(".rg");
 
     }
-
-    function DeformedRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+ 
+    function FrailRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.COPPER,
-        amount : 5
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMBER,
+        amount : 10
         });
     }
 
-    function CopperRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function AntiqueRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.COPPER_INGOT,
-        amount : 12
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMBER,
+        amount : 14
         });
     }
 
-    function TinRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function PurgeRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
-        amount : 12
+        amount : 7
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PEARL,
+        amount : 7
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMBER,
+        amount : 14
         });
     }
 
-    function IronRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function BarbedRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PEARL,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMBER,
+        amount : 7
+        });
+    }
+
+    function ReflectiveRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
-        amount : 12
+        amount : 7
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
+        amount : 7
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PEARL,
+        amount : 14
         });
     }
 
-    function SilverRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function StormForgedRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PEARL,
+        amount : 7
+        });
+    }
+
+    function VerdantRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
-        amount : 12
+        amount : 7
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.CORAL,
+        amount : 7
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
+        amount : 14
         });
     }
 
-    function GoldRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function ShadowfallRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.CORAL,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
+        amount : 7
+        });
+    }
+
+    function MalignantRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
-        amount : 12
+        amount : 7
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.RUBY,
+        amount : 7
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.CORAL,
+        amount : 14
         });
     }
 
-    function AmberRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function SealedRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.RUBY,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.CORAL,
+        amount : 7
+        });
+    }
+
+    function TemplarRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
-        amount : 9
+        amount : 7
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AMBER,
-        amount : 6
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
+        amount : 7
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.RUBY,
+        amount : 14
         });
     }
 
-    function PearlRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function ChannelerRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.RUBY,
+        amount : 7
+        });
+    }
+
+    function ChosensRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
-        amount : 9
+        amount : 7
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PEARL,
-        amount : 6
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AZURITE,
+        amount : 7
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
+        amount : 14
         });
     }
 
-    function AmethystRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function AstraRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AZURITE,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
+        amount : 7
+        });
+    }
+
+    function SoulbinderRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
-        amount : 9
+        amount : 7
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
-        amount : 6
-        });
-    }
-
-    function CoralRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
-        amount : 15
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.EMERALD,
+        amount : 7
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER,
-        amount : 6
-        });
-    }
-
-    function RubyRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
-        amount : 15
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER,
-        amount : 6
-        });
-    }
-
-    function TopazRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.COPPER_INGOT,
-        amount : 15
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
-        amount : 6
-        });
-    }
-
-    function ShinyTopazRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
-        amount : 15
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
-        amount : 6
-        });
-    }
-
-    function AzuriteRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
-        amount : 20
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER,
-        amount : 8
-        });
-    }
-
-    function ShinyAzuriteRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
-        amount : 20
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.AZURITE,
-        amount : 8
-        });        
+        amount : 14
+        });      
     }
 
-    function EmeraldRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function MoonlightRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
-        amount : 20
+        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
+        amount : 10
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.EMERALD,
-        amount : 8
+        amount : 14
         });
 
-        
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AZURITE,
+        amount : 7
+        });      
     }
 
-    function ShinyEmeraldRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function SunlightRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
-        amount : 20
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.EMERALD,
-        amount : 12
-        });
-
-        
-    }
-
-    function SapphireRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.MYTHRIL,
-        amount : 20
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
-        amount : 12
-        });
-
-        
-    }
-
-    function ShinySapphireRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
-        amount : 23
+        amount : 7
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
-        amount : 18
+        amount : 7
         });
 
-        
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.EMERALD,
+        amount : 14
+        });
     }
 
-    function DiamondRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function CycleRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
-        amount : 32
+        amount : 10
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
-        amount : 18
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.EMERALD,
+        amount : 7});
+
+        _recipe.equipmentRequirements = new ICraftingRecipe.RequiredEquipment[](2);
+
+        _recipe.equipmentRequirements[0] = ICraftingRecipe.RequiredEquipment({
+            itemType: GameObjects.ItemType.RING,
+            id: 16
+        });
+        _recipe.equipmentRequirements[1] = ICraftingRecipe.RequiredEquipment({
+            itemType: GameObjects.ItemType.RING,
+            id: 17
         });
 
     }
 
-    function ShinyDiamondRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function InfernalRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
-        amount : 40
+        amount : 7
         });
 
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.DIAMOND,
+        amount : 7
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
+        amount : 14
+        });
+    }
+
+    function DivineRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.DIAMOND,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
+        amount : 7
+        });
+    }
+
+    function EternalRing() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](11);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
+        amount : 15
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.DIAMOND,
         amount : 20
         });
 
-        
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMBER,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PEARL,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[4] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[5] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.CORAL,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[6] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.RUBY,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[7] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[8] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AZURITE,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[9] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.EMERALD,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[10] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
+        amount : 14
+        });
     }
 }

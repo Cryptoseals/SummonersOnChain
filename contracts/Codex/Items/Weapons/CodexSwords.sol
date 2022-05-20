@@ -59,7 +59,7 @@ contract CodexSwords is Initializable {
         } else if (id == 12) {
             return applyTier(SwordOfSunlight(tier), tier, 5);
         } else if (id == 13) {
-            return applyTier(Cycle(tier), tier, 5);
+            return applyTier(CycleSword(tier), tier, 5);
         } else if (id == 14) {
             return applyTier(PhantasmalSword(tier), tier, 5);
         } else if (id == 15) {
@@ -329,10 +329,10 @@ contract CodexSwords is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(11);
     }
 
-    function Cycle(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function CycleSword(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 13;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        _weapon.metadata.name = "Cycle";
+        _weapon.metadata.name = "CycleSword";
         _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 60;

@@ -58,9 +58,9 @@ contract CodexBows is Initializable {
         } else if (id == 52) {
             return applyTier(ElvenBow(tier), tier, 5);
         } else if (id == 53) {
-            return applyTier(Moonbow(tier), tier, 5);
+            return applyTier(Moonlightbow(tier), tier, 5);
         } else if (id == 54) {
-            return applyTier(Sunbow(tier), tier, 5);
+            return applyTier(Sunlightbow(tier), tier, 5);
         } else if (id == 55) {
             return applyTier(CycleBow(tier), tier, 5);
         } else if (id == 56) {
@@ -294,10 +294,10 @@ contract CodexBows is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(9);
     }
 
-    function Moonbow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function Moonlightbow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 53;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-     //   _weapon.metadata.name = "Moonbow";
+     //   _weapon.metadata.name = "Moonlightbow";
      //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 50;
@@ -313,10 +313,10 @@ contract CodexBows is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(10);
     }
 
-    function Sunbow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function Sunlightbow(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 54;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-     //   _weapon.metadata.name = "Sunbow";
+     //   _weapon.metadata.name = "Sunlightbow";
      //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 55;

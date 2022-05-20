@@ -80,15 +80,15 @@ contract CodexBootsHeavy is Initializable {
         } else if (id == 15) {
             return applyTier(VoidDwellerBoots(tier), tier, 7);
         } else if (id == 16) {
-            return applyTier(SunBoots(tier), tier, 9);
+            return applyTier(MoonlightBoots(tier), tier, 9);
         } else if (id == 17) {
-            return applyTier(MoonBoots(tier), tier, 11);
+            return applyTier(SunlightBoots(tier), tier, 11);
         } else if (id == 18) {
-            return applyTier(DemonicBoots(tier), tier, 13);
+            return applyTier(CycleBoots(tier), tier, 13);
         } else if (id == 19) {
-            return applyTier(AngelicBoots(tier), tier, 15);
+            return applyTier(DemonicBoots(tier), tier, 15);
         } else if (id == 20) {
-            return applyTier(CycleBoots(tier), tier, 19);
+            return applyTier(AngelicBoots(tier), tier, 19);
         } else if (id == 21) {
             return applyTier(EternalBoots(tier), tier, 10);
         }
@@ -421,7 +421,7 @@ contract CodexBootsHeavy is Initializable {
         _boots.elementalStats.ElementalDef = bootEle(14);
     }
 
-    function SunBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function MoonlightBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
         _boots.metadata.id = 16;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
       //  _boots.metadata.name = "Sun Boots";
@@ -442,7 +442,7 @@ contract CodexBootsHeavy is Initializable {
         _boots.elementalStats.ElementalDef = bootEle(15);
     }
 
-    function MoonBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function SunlightBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
         _boots.metadata.id = 17;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
       //  _boots.metadata.name = "Moon Boots";
@@ -463,7 +463,7 @@ contract CodexBootsHeavy is Initializable {
         _boots.elementalStats.ElementalDef = bootEle(16);
     }
 
-    function DemonicBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function CycleBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
         _boots.metadata.id = 18;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
       //  _boots.metadata.name = "Demonic Boots";
@@ -484,7 +484,7 @@ contract CodexBootsHeavy is Initializable {
         _boots.elementalStats.ElementalDef = bootEle(17);
     }
 
-    function AngelicBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function DemonicBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
         _boots.metadata.id = 19;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
       //  _boots.metadata.name = "Angelic Boots";
@@ -505,7 +505,7 @@ contract CodexBootsHeavy is Initializable {
         _boots.elementalStats.ElementalDef = bootEle(18);
     }
 
-    function CycleBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function AngelicBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
         _boots.metadata.id = 20;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
        // _boots.metadata.name = "Cycle Boots";

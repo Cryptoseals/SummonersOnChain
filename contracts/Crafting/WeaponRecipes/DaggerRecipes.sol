@@ -15,8 +15,8 @@ contract DaggerRecipes {
         else if (id ==  31) return Voidslasher();
         else if (id ==  32) return DaggerOfMoonlight();
         else if (id ==  33) return DaggerOfSunlight();
-        else if (id ==  34) return Cycle();
-        else if (id ==  35) return Phantasmal();
+        else if (id ==  34) return CycleDagger();
+        else if (id ==  35) return PhantasmalDagger();
         else if (id ==  36) return DefilingRazor();
         else if (id ==  37) return DaggerOfTheSuccubus();
         else if (id ==  38) return Pyrodagger();
@@ -34,8 +34,13 @@ contract DaggerRecipes {
         _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.COPPER,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD,
-        amount : 5
+        amount : 10
         });
     }
 
@@ -47,12 +52,12 @@ contract DaggerRecipes {
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.COPPER_INGOT,
-        amount : 7
+        amount : 22
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK,
-        amount : 3
+        amount : 13
         });
     }
 
@@ -60,16 +65,21 @@ contract DaggerRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
-        amount : 8
+        amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK,
-        amount : 7
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.COPPER_INGOT,
+        amount : 22
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD_PLANK,
+        amount : 8
         });
     }
 
@@ -77,16 +87,21 @@ contract DaggerRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
-        amount : 8
+        amount : 22
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.COPPER_INGOT,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD_PLANK,
-        amount : 7
+        amount : 13
         });
     }
 
@@ -94,16 +109,21 @@ contract DaggerRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
-        amount : 8
+        amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD_PLANK,
-        amount : 7
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
+        amount : 22
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD_PLANK,
+        amount : 8
         });
     }
 
@@ -111,16 +131,21 @@ contract DaggerRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
-        amount : 8
+        material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
+        amount : 22
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.AGED_WOOD_PLANK,
-        amount : 7
+        amount : 13
         });
     }
 
@@ -128,16 +153,21 @@ contract DaggerRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
-        amount : 8
+        material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
+        amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD_PLANK,
-        amount : 7
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
+        amount : 22
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.HARD_WOOD_PLANK,
+        amount : 8
         });
     }
 
@@ -149,17 +179,17 @@ contract DaggerRecipes {
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
-        amount : 13
+        amount : 22
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.HARD_WOOD_PLANK,
-        amount : 7
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PEARL,
-        amount : 5
+        amount : 13
         });
     }
 
@@ -170,18 +200,18 @@ contract DaggerRecipes {
         _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
-        amount : 18
+        amount : 22
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.HARD_WOOD_PLANK,
-        amount : 7
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
-        amount : 5
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD_PLANK,
+        amount : 8
         });
     }
 
@@ -192,18 +222,18 @@ contract DaggerRecipes {
         _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
-        amount : 18
+        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
+        amount : 22
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD_PLANK,
-        amount : 7
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.RUBY,
-        amount : 5
+        amount : 13
         });
     }
 
@@ -215,17 +245,17 @@ contract DaggerRecipes {
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
-        amount : 18
+        amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD_PLANK,
-        amount : 7
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
+        amount : 22
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
-        amount : 5
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD_PLANK,
+        amount : 8
         });
     }
 
@@ -236,44 +266,22 @@ contract DaggerRecipes {
         _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
+        amount : 22
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
-        amount : 18
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD_PLANK,
-        amount : 7
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AMBER,
-        amount : 5
-        });
-    }
-
-    function Cycle() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
-        amount : 18
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD_PLANK,
         amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.CORAL,
-        amount : 5
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD_PLANK,
+        amount : 13
         });
     }
 
-    function Phantasmal() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function CycleDagger() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
@@ -281,17 +289,50 @@ contract DaggerRecipes {
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
-        amount : 18
+        amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
+        amount : 22
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD_PLANK,
+        amount : 8
+        });
+
+        _recipe.equipmentRequirements = new ICraftingRecipe.RequiredEquipment[](2);
+        _recipe.equipmentRequirements[0] = ICraftingRecipe.RequiredEquipment({
+            itemType: GameObjects.ItemType.WEAPON,
+            id: 32
+        });
+
+        _recipe.equipmentRequirements[1] = ICraftingRecipe.RequiredEquipment({
+            itemType: GameObjects.ItemType.WEAPON,
+            id: 33
+        });
+    }
+
+    function PhantasmalDagger() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
+        amount : 22
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
         amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
-        amount : 5
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD_PLANK,
+        amount : 13
         });
     }
 
@@ -303,17 +344,17 @@ contract DaggerRecipes {
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
-        amount : 18
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD_PLANK,
         amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PEARL,
-        amount : 5
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
+        amount : 22
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD_PLANK,
+        amount : 8
         });
     }
 
@@ -325,17 +366,17 @@ contract DaggerRecipes {
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
-        amount : 18
+        amount : 22
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD_PLANK,
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
         amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
-        amount : 5
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD_PLANK,
+        amount : 13
         });
     }
 
@@ -347,17 +388,17 @@ contract DaggerRecipes {
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
-        amount : 18
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD_PLANK,
         amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.RUBY,
-        amount : 10
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
+        amount : 22
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD_PLANK,
+        amount : 8
         });
     }
 
@@ -369,17 +410,17 @@ contract DaggerRecipes {
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
-        amount : 18
+        amount : 22
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD_PLANK,
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
         amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AZURITE,
-        amount : 10
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD_PLANK,
+        amount : 13
         });
     }
 
@@ -391,17 +432,17 @@ contract DaggerRecipes {
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
-        amount : 18
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD_PLANK,
         amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PEARL,
-        amount : 10
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
+        amount : 22
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SNAKEWOOD_PLANK,
+        amount : 8
         });
     }
 
@@ -413,17 +454,17 @@ contract DaggerRecipes {
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
-        amount : 20
+        amount : 22
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.SNAKEWOOD_PLANK,
-        amount : 15
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
-        amount : 10
+        amount : 13
         });
     }
 
@@ -435,17 +476,57 @@ contract DaggerRecipes {
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
-        amount : 30
+        amount : 25
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.COPPER_INGOT,
+        amount : 25
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
+        amount : 25
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
+        amount : 25
+        });
+
+        _recipe.materialRequirements[4] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
+        amount : 25
+        });
+
+        _recipe.materialRequirements[5] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
+        amount : 25
+        });
+
+        _recipe.materialRequirements[6] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
+        amount : 25
+        });
+
+        _recipe.materialRequirements[7] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
+        amount : 25
+        });
+
+        _recipe.materialRequirements[8] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
+        amount : 25
+        });
+
+        _recipe.materialRequirements[9] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
+        amount : 25
+        });
+
+        _recipe.materialRequirements[10] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.SNAKEWOOD_PLANK,
         amount : 20
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.DIAMOND,
-        amount : 10
         });
     }
 

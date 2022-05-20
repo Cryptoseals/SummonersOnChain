@@ -85,9 +85,9 @@ contract CodexHelmetsMedium is Initializable {
         } else if (id == 36) {
             return applyTier(AncientMask(tier), tier, 7);
         } else if (id == 37) {
-            return applyTier(MoonHood(tier), tier, 9);
+            return applyTier(MoonlightHood(tier), tier, 9);
         } else if (id == 38) {
-            return applyTier(SunHood(tier), tier, 11);
+            return applyTier(SunlightHood(tier), tier, 11);
         } else if (id == 39) {
             return applyTier(CycleHood(tier), tier, 13);
         } else if (id == 40) {
@@ -426,7 +426,7 @@ contract CodexHelmetsMedium is Initializable {
         _helmet.elementalStats.ElementalDef = hoodieEle(14);
     }
 
-    function MoonHood(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
+    function MoonlightHood(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 37;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _helmet.metadata.name = "Sun Hoodie";
@@ -447,7 +447,7 @@ contract CodexHelmetsMedium is Initializable {
         _helmet.elementalStats.ElementalDef = hoodieEle(15);
     }
 
-    function SunHood(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
+    function SunlightHood(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 38;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _helmet.metadata.name = "Moon Hoodie";

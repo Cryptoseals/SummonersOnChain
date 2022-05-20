@@ -182,9 +182,9 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
         } else if (_equipable.itemId == 15) {
             _ring = applyTier(SoulbinderRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 16) {
-            _ring = applyTier(SunRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(MoonlightRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 17) {
-            _ring = applyTier(MoonRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(SunlightRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 18) {
             _ring = applyTier(CycleRing(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 19) {
@@ -243,9 +243,9 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
         } else if (itemId == 15) {
             _ring = applyTier(SoulbinderRing(itemTier), itemTier, 10);
         } else if (itemId == 16) {
-            _ring = applyTier(SunRing(itemTier), itemTier, 10);
+            _ring = applyTier(MoonlightRing(itemTier), itemTier, 10);
         } else if (itemId == 17) {
-            _ring = applyTier(MoonRing(itemTier), itemTier, 10);
+            _ring = applyTier(SunlightRing(itemTier), itemTier, 10);
         } else if (itemId == 18) {
             _ring = applyTier(CycleRing(itemTier), itemTier, 13);
         } else if (itemId == 19) {
@@ -484,7 +484,7 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
         _ring.elementalStats = ringEleStats(14);
     }
 
-    function SunRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function MoonlightRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 16;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
         // _ring.metadata.name = "Sun Ring";
@@ -499,7 +499,7 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
         _ring.elementalStats = ringEleStats(15);
     }
 
-    function MoonRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
+    function SunlightRing(uint tier) public view returns (GameObjects.Ring memory _ring) {
         _ring.metadata.id = 17;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
         //  _ring.metadata.name = "Moon Ring";

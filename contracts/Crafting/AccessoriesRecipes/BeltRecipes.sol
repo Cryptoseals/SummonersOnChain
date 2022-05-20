@@ -3,347 +3,530 @@ pragma solidity ^0.8.0;
 
 contract BeltRecipes {
     function recipe(uint id) external view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        if(id == 1) return TatteredLeatherBelt();
-        else if (id == 2) return RaggedLeatherBelt();
-        else if (id == 3) return RawLeatherBelt();
-        else if (id == 4) return ThinLeatherBelt();
-        else if (id == 5) return CoarseLeatherBelt();
-        else if (id == 6) return RuggedLeatherBelt();
-        else if (id == 7) return ThickLeatherBelt();
-        else if (id == 8) return ReinforcedLeatherBelt();
-        else if (id == 9) return HardenedLeatherBelt();
-        else if (id == 10) return LordlyLeatherBelt();
-        else if (id == 11) return CopperEmblazonedBelt();
-        else if (id == 12) return TinEmblazonedBelt();
-        else if (id == 13) return IronEmblazonedBelt();
-        else if (id == 14) return SilverEmblazonedBelt();
-        else if (id == 15) return GoldEmblazonedBelt();
-        else if (id == 16) return PlatinumSealedBelt();
-        else if (id == 17) return MyhrilSealedBelt();
-        else if (id == 18) return OricalchumSealedBelt();
-        else if (id == 19) return ObsidianSealedBelt();
-        else if (id == 20) return LuminiteSealedBelt();
-        else if (id == 21) return EternalSealedBelt();
+        if(id == 1) return DeformedBelt();
+        else if (id == 2) return AntiqueBelt();
+        else if (id == 3) return PurgeBelt();
+        else if (id == 4) return BarbedBelt();
+        else if (id == 5) return ReflectiveBelt();
+        else if (id == 6) return StormForgedBelt();
+        else if (id == 7) return VerdantBelt();
+        else if (id == 8) return ShadowfallBelt();
+        else if (id == 9) return MalignantBelt();
+        else if (id == 10) return SealedBelt();
+        else if (id == 11) return TemplarBelt();
+        else if (id == 12) return ChannelerBelt();
+        else if (id == 13) return ChosensBelt();
+        else if (id == 14) return AstraBelt();
+        else if (id == 15) return SoulbinderBelt();
+        else if (id == 16) return MoonlightBelt();
+        else if (id == 17) return SunlightBelt();
+        else if (id == 18) return CycleBelt();
+        else if (id == 19) return InfernalBelt();
+        else if (id == 20) return DivineBelt();
+        else if (id == 21) return EternalBelt();
         revert(".b");
-
     }
 
-    function TatteredLeatherBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function DeformedBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.TATTERED_LEATHER,
-        amount : 5
+        amount : 10
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMBER,
+        amount : 10
         });
     }
 
-    function RaggedLeatherBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER,
-        amount : 7
-        });
-    }
-
-    function RawLeatherBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
-        amount : 12
-        });
-    }
-
-    function ThinLeatherBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER,
-        amount : 12
-        });
-    }
-
-    function CoarseLeatherBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER,
-        amount : 12
-        });
-    }
-
-    function RuggedLeatherBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER,
-        amount : 12
-        });
-    }
-
-    function ThickLeatherBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER,
-        amount : 15
-        });
-    }
-
-    function ReinforcedLeatherBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
-        amount : 15
-        });
-    }
-
-    function HardenedLeatherBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER,
-        amount : 15
-        });
-    }
-
-    function LordlyLeatherBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
-        amount : 15
-        });
-    }
-
-    function CopperEmblazonedBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function AntiqueBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
         _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.COPPER_INGOT,
-        amount : 6
-        });
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER,
-        amount : 15
+        amount : 12
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMBER,
+        amount : 9
         });
     }
 
-    function TinEmblazonedBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function PurgeBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
-        amount : 6
-        });
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER,
-        amount : 15
-        });
-    }
-
-    function IronEmblazonedBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
         amount : 6
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
-        amount : 15
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PEARL,
+        amount : 6
         });
     }
 
-    function SilverEmblazonedBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function BarbedBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
-        amount : 8
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER,
+        amount : 12
         });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PEARL,
+        amount : 9
+        });
+    }
+
+    function ReflectiveBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
+        amount : 6
+        });
+    }
+
+    function StormForgedBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PEARL,
+        amount : 9
+        });
+    }
+
+    function VerdantBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER,
-        amount : 20
+        amount : 6
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
+        amount : 6
         });
     }
 
-    function GoldEmblazonedBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function ShadowfallBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
-        amount : 8
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER,
+        amount : 12
         });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
+        amount : 9
+        });
+    }
+
+    function MalignantBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER,
-        amount : 20
-        });        
+        amount : 6
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.CORAL,
+        amount : 6
+        });
     }
 
-    function PlatinumSealedBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function SealedBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
-        amount : 8
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER,
+        amount : 12
         });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.CORAL,
+        amount : 9
+        });
+    }
+
+    function TemplarBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER,
-        amount : 20
+        amount : 6
         });
 
-        
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.RUBY,
+        amount : 6
+        });
     }
 
-    function MyhrilSealedBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function ChannelerBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER,
         amount : 12
         });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.RUBY,
+        amount : 9
+        });
+    }
+
+    function ChosensBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER,
-        amount : 20
+        amount : 6
         });
 
-        
-    }
-
-    function OricalchumSealedBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER,
         amount : 12
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
-        amount : 20
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
+        amount : 6
         });
-
-        
     }
 
-    function ObsidianSealedBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function AstraBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
-        amount : 18
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER,
+        amount : 12
         });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
+        amount : 9
+        });
+    }
+
+    function SoulbinderBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AZURITE,
+        amount : 6
+        });      
+    }
+
+    function MoonlightBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AZURITE,
+        amount : 9
+        });      
+    }
+
+    function SunlightBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER,
-        amount : 23
+        amount : 6
         });
 
-        
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.EMERALD,
+        amount : 6
+        });
     }
 
-    function LuminiteSealedBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function CycleBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.EMERALD,
+        amount : 9
+        });
+
+        _recipe.equipmentRequirements = new ICraftingRecipe.RequiredEquipment[](2);
+
+        _recipe.equipmentRequirements[0] = ICraftingRecipe.RequiredEquipment({
+            itemType: GameObjects.ItemType.BELT,
+            id: 16
+        });
+        _recipe.equipmentRequirements[1] = ICraftingRecipe.RequiredEquipment({
+            itemType: GameObjects.ItemType.BELT,
+            id: 17
+        });
+    }
+
+    function InfernalBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
+        amount : 6
+        });
+    }
+
+    function DivineBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
+        amount : 12
+        });
+
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER,
+        amount : 6
+        });
+
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
+        amount : 9
+        });
+    }
+
+    function EternalBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        _recipe.requiredGold = 50;
+        _recipe.requiredEssence = 5;
+
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](11);
+
+        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
         amount : 18
         });
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
-        amount : 32
+        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.TATTERED_LEATHER,
+        amount : 8
         });
 
+        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER,
+        amount : 8
+        });
+
+        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
+        amount : 8
+        });
+
+        _recipe.materialRequirements[4] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER,
+        amount : 8
+        });
+
+        _recipe.materialRequirements[5] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER,
+        amount : 8
+        });
+
+        _recipe.materialRequirements[6] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER,
+        amount : 8
+        });
+
+        _recipe.materialRequirements[7] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER,
+        amount : 8
+        });
+
+        _recipe.materialRequirements[8] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
+        amount : 8
+        });
+
+        _recipe.materialRequirements[9] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER,
+        amount : 8
+        });
+
+        _recipe.materialRequirements[10] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.DIAMOND,
+        amount : 16
+        });
     }
-
-    function EternalSealedBelt() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        _recipe.requiredGold = 50;
-        _recipe.requiredEssence = 5;
-
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
-        amount : 20
-        });
-
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
-        amount : 40
-        });
-
-        
-    }
-
 }

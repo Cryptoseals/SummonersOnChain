@@ -81,9 +81,9 @@ contract CodexBootsMedium is Initializable {
         } else if (id ==  36) {
             return applyTier(AncientShoes(tier), tier, 7);
         } else if (id ==  37) {
-            return applyTier(MoonShoes(tier), tier, 9);
+            return applyTier(MoonlightShoes(tier), tier, 9);
         } else if (id ==  38) {
-            return applyTier(SunShoes(tier), tier, 11);
+            return applyTier(SunlightShoes(tier), tier, 11);
         } else if (id ==  39) {
             return applyTier(CycleShoes(tier), tier, 13);
         } else if (id ==  40) {
@@ -422,7 +422,7 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(14);
     }
 
-    function MoonShoes(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+    function MoonlightShoes(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 37;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Sun Greaves";
@@ -443,7 +443,7 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(15);
     }
 
-    function SunShoes(uint tier) public view returns (GameObjects.Boots memory _greaves) {
+    function SunlightShoes(uint tier) public view returns (GameObjects.Boots memory _greaves) {
         _greaves.metadata.id = 38;
         _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
 //        _greaves.metadata.name = "Moon Greaves";

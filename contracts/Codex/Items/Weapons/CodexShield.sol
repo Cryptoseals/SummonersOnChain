@@ -59,9 +59,9 @@ contract CodexShields is Initializable {
         } else if (id == 136) {
             return applyTier(OricalchumShield(tier), tier, 5);
         } else if (id == 137) {
-            return applyTier(Moonshield(tier), tier, 5);
+            return applyTier(MoonlightShield(tier), tier, 5);
         } else if (id == 138) {
-            return applyTier(Sunshield(tier), tier, 5);
+            return applyTier(SunlightShield(tier), tier, 5);
         } else if (id == 139) {
             return applyTier(CycleShield(tier), tier, 5);
         } else if (id == 140) {
@@ -314,10 +314,10 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(9);
     }
 
-    function Moonshield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function MoonlightShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 137;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Moonshield";
+      //  _weapon.metadata.name = "Moonlightshield";
       //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 49;
@@ -335,10 +335,10 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(10);
     }
 
-    function Sunshield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function SunlightShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 138;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Sunshield";
+      //  _weapon.metadata.name = "Sunlightshield";
       //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 54;

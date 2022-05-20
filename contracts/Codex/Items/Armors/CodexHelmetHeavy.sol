@@ -82,15 +82,15 @@ contract CodexHelmetsHeavy is Initializable {
         } else if (id == 15) {
             return applyTier(VoidDwellerHelmet(tier), tier, 7);
         } else if (id == 16) {
-            return applyTier(SunHelmet(tier), tier, 9);
+            return applyTier(MoonlightHelmet(tier), tier, 9);
         } else if (id == 17) {
-            return applyTier(MoonHelmet(tier), tier, 11);
+            return applyTier(SunlightHelmet(tier), tier, 11);
         } else if (id == 18) {
-            return applyTier(DemonicHelmet(tier), tier, 13);
+            return applyTier(CycleHelmet(tier), tier, 13);
         } else if (id == 19) {
-            return applyTier(AngelicHelmet(tier), tier, 15);
+            return applyTier(DemonicHelmet(tier), tier, 15);
         } else if (id == 20) {
-            return applyTier(CycleHelmet(tier), tier, 19);
+            return applyTier(AngelicHelmet(tier), tier, 19);
         } else if (id == 21) {
             return applyTier(EternalHelmet(tier), tier, 10);
         }
@@ -423,7 +423,7 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(14);
     }
 
-    function SunHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
+    function MoonlightHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 16;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _helmet.metadata.name = "Sun Helmet";
@@ -444,7 +444,7 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(15);
     }
 
-    function MoonHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
+    function SunlightHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 17;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _helmet.metadata.name = "Moon Helmet";
@@ -465,7 +465,7 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(16);
     }
 
-    function DemonicHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
+    function CycleHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 18;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _helmet.metadata.name = "Demonic Helmet";
@@ -486,7 +486,7 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(17);
     }
 
-    function AngelicHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
+    function DemonicHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 19;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _helmet.metadata.name = "Angelic Helmet";
@@ -507,7 +507,7 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(18);
     }
 
-    function CycleHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
+    function AngelicHelmet(uint tier) public view returns (GameObjects.Helmet memory _helmet) {
         _helmet.metadata.id = 20;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
 //        _helmet.metadata.name = "Cycle Helmet";

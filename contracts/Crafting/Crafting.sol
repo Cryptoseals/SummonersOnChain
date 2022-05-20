@@ -24,7 +24,7 @@ contract Crafting is Initializable, InitNavigator {
         GameObjects.ItemType _type,
         uint id
     ) external {
-        require(validateId(_type, id), "invalid type or id");
+        validateId(_type, id);
         burnRecipeItems(_type, id);
         uint prefix;
         uint prefixTier;
@@ -53,8 +53,17 @@ contract Crafting is Initializable, InitNavigator {
             _recipe = Recipes(contractAddress(INavigator.CONTRACT.BOOTS_RECIPES)).recipe(id);
         } else if (_type == GameObjects.ItemType.WEAPON) {
             _recipe = Recipes(contractAddress(INavigator.CONTRACT.WEAPON_RECIPES)).recipe(id);
+        }  else if (_type == GameObjects.ItemType.AMULET) {
+            _recipe = Recipes(contractAddress(INavigator.CONTRACT.AMULET_RECIPES)).recipe(id);
+        } else if (_type == GameObjects.ItemType.RING) {
+            _recipe = Recipes(contractAddress(INavigator.CONTRACT.RING_RECIPES)).recipe(id);
+        }  else if (_type == GameObjects.ItemType.EARRING) {
+            _recipe = Recipes(contractAddress(INavigator.CONTRACT.EARRING_RECIPES)).recipe(id);
+        }  else if (_type == GameObjects.ItemType.BELT) {
+            _recipe = Recipes(contractAddress(INavigator.CONTRACT.BELT_RECIPES)).recipe(id);
         } else {
-            revert("n.i.y.");
+            // not implemented yet.
+            revert("niy");
         }
         ICraftingMaterialsToken craftingMaterialContract = ICraftingMaterialsToken(contractAddress(INavigator.CONTRACT.CRAFTING_MATERIALS));
         for (uint i = 0; i < _recipe.materialRequirements.length; i++) {
@@ -66,9 +75,10 @@ contract Crafting is Initializable, InitNavigator {
         }
 
         IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD)).burnToken(msg.sender, _recipe.requiredGold);
+        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE)).burnToken(msg.sender, _recipe.requiredEssence);
     }
 
-    function validateId(GameObjects.ItemType _type, uint id) internal view returns (bool) {
+    function validateId(GameObjects.ItemType _type, uint id) internal view {
         // check if id is valid
         if (
             _type == GameObjects.ItemType.HELMET ||
@@ -79,7 +89,7 @@ contract Crafting is Initializable, InitNavigator {
         } else if (_type == GameObjects.ItemType.WEAPON) {
             require((id > 0 && id < 106), "invalid w");
         } else if (_type == GameObjects.ItemType.OFFHAND) {
-            require((id > 105 && id < 148), "invalid of");
+            require((id > 105 && id < 148), "invalid o");
         } else if (
             _type == GameObjects.ItemType.AMULET ||
             _type == GameObjects.ItemType.RING ||
@@ -88,8 +98,7 @@ contract Crafting is Initializable, InitNavigator {
         ) {
             require((id > 0 && id < 22), "invalid acc");
         } else {
-            revert("not implemented");
+            revert("niy");
         }
-        return true;
     }
 }

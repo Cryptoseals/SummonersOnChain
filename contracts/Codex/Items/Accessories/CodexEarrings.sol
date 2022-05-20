@@ -179,9 +179,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         } else if (_equipable.itemId == 15) {
             _earrings = applyTier(SoulbinderEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 16) {
-            _earrings = applyTier(SunEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(MoonlightEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 17) {
-            _earrings = applyTier(MoonEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(SunlightEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 18) {
             _earrings = applyTier(CycleEarrings(_equipable.itemTier), _equipable.itemTier, 13);
         } else if (_equipable.itemId == 19) {
@@ -239,9 +239,9 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         } else if (itemId == 15) {
             _earrings = applyTier(SoulbinderEarrings(itemTier), itemTier, 10);
         } else if (itemId == 16) {
-            _earrings = applyTier(SunEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(MoonlightEarrings(itemTier), itemTier, 10);
         } else if (itemId == 17) {
-            _earrings = applyTier(MoonEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(SunlightEarrings(itemTier), itemTier, 10);
         } else if (itemId == 18) {
             _earrings = applyTier(CycleEarrings(itemTier), itemTier, 13);
         } else if (itemId == 19) {
@@ -480,7 +480,7 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.elementalStats = earringEleStats(14);
     }
 
-    function SunEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function MoonlightEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 16;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
         //  _earrings.metadata.name = "Sun Earrings";
@@ -495,7 +495,7 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.elementalStats = earringEleStats(15);
     }
 
-    function MoonEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
+    function SunlightEarrings(uint tier) public view returns (GameObjects.Earring memory _earrings) {
         _earrings.metadata.id = 17;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
         //  _earrings.metadata.name = "Moon Earrings";
