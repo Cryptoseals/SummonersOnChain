@@ -1,7 +1,7 @@
 import "../../Interfaces/Crafting/ICraftingRecipe.sol";
 pragma solidity ^0.8.0;
 
-contract LightRecipes {
+contract ArmorLightRecipes {
     function recipe(uint id) external view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         if (id == 43) return SoldiersTunic();
         else if (id == 44) return PriestsTunic();
