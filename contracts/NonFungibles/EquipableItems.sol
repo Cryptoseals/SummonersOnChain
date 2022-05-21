@@ -291,4 +291,14 @@ ERC721EnumerableUpgradeable
 
         return output;
     }
+
+    function tokensOfOwner(address _owner) public view returns (uint[] memory) {
+        uint[] memory _tokensOfOwner = new uint[](balanceOf(_owner));
+        uint i;
+
+        for (i = 0; i < _tokensOfOwner.length; i++) {
+            _tokensOfOwner[i] = tokenOfOwnerByIndex(_owner, i);
+        }
+        return (_tokensOfOwner);
+    }
 }

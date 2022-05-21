@@ -77,16 +77,16 @@ async function main() {
     // console.log("IRON_INGOT:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.IRON_INGOT)))
     // console.log("GOLD_INGOT:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.GOLD_INGOT)))
     // //
-    console.log("COPPER:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.COPPER)))
-    console.log("COPPER_INGOT:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.COPPER_INGOT)))
-    console.log("GREEN_WOOD:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.GREEN_WOOD)))
-    console.log("GREEN_WOOD:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.GREEN_WOOD)))
-
-    // tx = await mats.mintMaterial(CraftingMaterial.COPPER_INGOT, deployer, 100)
+    // console.log("ELDER_WOOD_PLANK:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.ELDER_WOOD_PLANK)))
+    // console.log("RED_OAK_WOOD_PLANK:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.RED_OAK_WOOD_PLANK)))
+    //
+    // tx = await mats.mintMaterial(CraftingMaterial.RED_OAK_WOOD_PLANK, deployer, 20)
     // await tx.wait(1)
-    // tx = await mats.mintMaterial(CraftingMaterial.GREEN_WOOD, deployer, 100)
+    // tx = await mats.mintMaterial(CraftingMaterial.PETRIFIED_WOOD_PLANK, deployer, 20)
     // await tx.wait(1)
 
+    console.log("RED_OAK_WOOD_PLANK:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.RED_OAK_WOOD_PLANK)))
+    console.log("PETRIFIED_WOOD_PLANK:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.PETRIFIED_WOOD_PLANK)))
 
     // let activeProcesses: any[] = await mats.activeProcessingsOfUser(deployer);
     // activeProcesses = activeProcesses.map((a: any) => parseInt(a));
@@ -108,8 +108,13 @@ async function main() {
     const deployedCrafting = JSON.parse(fs.readFileSync(DeployedFileLocations.crafting, 'utf-8'))
     let crafting = await ethers.getContractAt("Crafting", deployedCrafting.crafting)
 
-    tx = await crafting.craft(0, 1)
-    await tx.wait(1);
+    const deployedEquipables = JSON.parse(fs.readFileSync(DeployedFileLocations.equipable_items, 'utf-8'))
+    let eqs = await ethers.getContractAt("EquipableItems", deployedEquipables.equipableItems)
+
+    console.log(await eqs.item(10))
+
+    // tx = await crafting.craft(0, 95)
+    // await tx.wait(1);
 
 }
 

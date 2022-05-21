@@ -129,4 +129,13 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
     function tokenURI(uint256 id) public view returns (string memory) {
         return string(abi.encodePacked(uri(id), id.toString()));
     }
+
+    function materialsOf(address account, uint[] memory ids) external view returns(uint[] memory) {
+        uint[] memory result = new uint[](ids.length);
+        uint i = 0;
+        for (i; i < ids.length; i++) {
+            result[i] = balanceOf(account, ids[i]);
+        }
+        return result;
+    }
 }

@@ -154,7 +154,6 @@ contract Equipable is Initializable, InitNavigator {
         itemId : _itemId,
         itemTier : tier,
         element : element});
-//        _applyCalculation(summoner, _type);
     }
 
     function consumeElixir(uint summoner, uint slot, uint id) external senderIsSummonerOwner(summoner) notInFight(summoner) {
@@ -230,41 +229,50 @@ contract Equipable is Initializable, InitNavigator {
         SummonedCompanions[summoner].companionAddress = _contract;
         SummonedCompanions[summoner].companionId = id;
         _escrowNFT(_contract, id, msg.sender);
-//        _applyCalculation(summoner, GameObjects.ItemType.PET);
     }
 
 
     function unequipSeal(uint summoner, uint id) external ensureNotPaused
     senderIsSummonerOwner(summoner) {
         delete EquippedSeals[summoner];
-//        _applyCalculation(summoner, GameObjects.ItemType.SEAL);
     }
 
     function unequip(uint summoner, GameObjects.ItemType _type, uint id) external ensureNotPaused senderIsSummonerOwner(summoner) {
+        uint id;
         if (_type == GameObjects.ItemType.WEAPON) {
+            id = EquippedGears[summoner][GameObjects.ItemType.WEAPON].tokenId;
             delete EquippedGears[summoner][GameObjects.ItemType.WEAPON];
             DamageTypesOfSummoners[summoner] = GameObjects.Element.PHYSICAL;
         } else if (_type == GameObjects.ItemType.OFFHAND) {
+            id = EquippedGears[summoner][GameObjects.ItemType.OFFHAND].tokenId;
             delete EquippedGears[summoner][GameObjects.ItemType.OFFHAND];
         } else if (_type == GameObjects.ItemType.HELMET) {
+            id = EquippedGears[summoner][GameObjects.ItemType.HELMET].tokenId;
             delete EquippedGears[summoner][GameObjects.ItemType.HELMET];
         } else if (_type == GameObjects.ItemType.ARMOR) {
+            id = EquippedGears[summoner][GameObjects.ItemType.ARMOR].tokenId;
             delete EquippedGears[summoner][GameObjects.ItemType.ARMOR];
         } else if (_type == GameObjects.ItemType.BOOTS) {
+            id = EquippedGears[summoner][GameObjects.ItemType.BOOTS].tokenId;
             delete EquippedGears[summoner][GameObjects.ItemType.BOOTS];
         } else if (_type == GameObjects.ItemType.AMULET) {
+            id = EquippedGears[summoner][GameObjects.ItemType.AMULET].tokenId;
             delete EquippedGears[summoner][GameObjects.ItemType.AMULET];
         } else if (_type == GameObjects.ItemType.RING) {
+            id = EquippedGears[summoner][GameObjects.ItemType.RING].tokenId;
             delete EquippedGears[summoner][GameObjects.ItemType.RING];
         } else if (_type == GameObjects.ItemType.EARRING) {
+            id = EquippedGears[summoner][GameObjects.ItemType.EARRING].tokenId;
             delete EquippedGears[summoner][GameObjects.ItemType.EARRING];
         } else if (_type == GameObjects.ItemType.BELT) {
+            id = EquippedGears[summoner][GameObjects.ItemType.BELT].tokenId;
             delete EquippedGears[summoner][GameObjects.ItemType.BELT];
         } else {
             revert InvalidItem("Not Implemented");
         }
-//        _applyCalculation(summoner, _type);
-        _returnNFT(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS), msg.sender, id);
+        if(id>0){
+            _returnNFT(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS), msg.sender, id);
+        }
     }
 
 
@@ -396,99 +404,8 @@ contract Equipable is Initializable, InitNavigator {
         // TODO, add seal stat calculation
     }
 
-
-    function _applyCalculation(uint summoner, GameObjects.ItemType _type) internal returns (bool) {
-
-        if (_type == GameObjects.ItemType.WEAPON ||_type == GameObjects.ItemType.OFFHAND) {
-            (GameObjects.Stats memory _stats,
-            GameObjects.GeneratedStats memory _gen_stats,
-            GameObjects.ElementalStats memory _ele_stats) = getBattleStatsFromWeapons(summoner);
-            saveStats(summoner, _type, _stats, _gen_stats, _ele_stats);
-        } else if (_type == GameObjects.ItemType.ARMOR || _type == GameObjects.ItemType.HELMET || _type == GameObjects.ItemType.BOOTS) {
-            (GameObjects.Stats memory _stats,
-            GameObjects.GeneratedStats memory _gen_stats,
-            GameObjects.ElementalStats memory _ele_stats) = getBattleStatsFromArmors(summoner);
-            saveStats(summoner, GameObjects.ItemType.ARMOR, _stats, _gen_stats, _ele_stats);
-        } else if (
-            _type == GameObjects.ItemType.AMULET ||
-            _type == GameObjects.ItemType.EARRING ||
-            _type == GameObjects.ItemType.RING ||
-            _type == GameObjects.ItemType.BELT) {
-            (GameObjects.Stats memory _stats,
-            GameObjects.GeneratedStats memory _gen_stats,
-            GameObjects.ElementalStats memory _ele_stats) = getBattleStatsFromJewelries(summoner);
-            saveStats(summoner, GameObjects.ItemType.GENERAL_ACCESSORY, _stats, _gen_stats, _ele_stats);
-        } else {
-            revert("?!");
-        }
-
-
-        return true;
-    }
-
-    function saveStats(uint summoner, GameObjects.ItemType _type, GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats) internal {
-        PreCalculatedEquipmentStats[summoner][_type] = _stats;
-        PreCalculatedGeneratedEquipmentStats[summoner][_type] = _gen_stats;
-        PreCalculatedEquipmentElementalStats[summoner][_type] = _ele_stats;
-    }
-
-
     function equipped(uint summoner, GameObjects.ItemType slot) external view returns (GameObjects.EquippedItemStruct memory){
         return EquippedGears[summoner][slot];
-    }
-
-    function getPreCalculated(uint summoner) external view returns (GameObjects.Stats memory, GameObjects.GeneratedStats memory, GameObjects.ElementalStats memory){
-        return (precalculatedStats(summoner),
-        precalculatedGenStats(summoner),
-        precalculatedEleStats(summoner));
-    }
-
-    function precalculatedStats(uint summoner) internal view returns (
-        GameObjects.Stats memory _stats
-    ) {
-        _stats = EquipableUtils.sumStats(
-            PreCalculatedEquipmentStats[summoner][GameObjects.ItemType.GENERAL_ACCESSORY],
-            PreCalculatedEquipmentStats[summoner][GameObjects.ItemType.ARMOR]
-        );
-        _stats = EquipableUtils.sumStats(
-            _stats,
-            PreCalculatedEquipmentStats[summoner][GameObjects.ItemType.WEAPON]
-        );
-    }
-
-    function precalculatedGenStats(uint summoner) internal view returns (
-        GameObjects.GeneratedStats memory _gen_stats
-    ) {
-        _gen_stats = EquipableUtils.sumGeneratedStats(
-            PreCalculatedGeneratedEquipmentStats[summoner][GameObjects.ItemType.GENERAL_ACCESSORY],
-            PreCalculatedGeneratedEquipmentStats[summoner][GameObjects.ItemType.ARMOR]
-        );
-        _gen_stats = EquipableUtils.sumGeneratedStats(
-            _gen_stats,
-            PreCalculatedGeneratedEquipmentStats[summoner][GameObjects.ItemType.WEAPON]
-        );
-    }
-
-    function precalculatedEleStats(uint summoner) internal view returns (
-        GameObjects.ElementalStats memory _ele_stats
-    ) {
-        _ele_stats = EquipableUtils.sumGeneratedElementalStats(
-            PreCalculatedEquipmentElementalStats[summoner][GameObjects.ItemType.GENERAL_ACCESSORY],
-            PreCalculatedEquipmentElementalStats[summoner][GameObjects.ItemType.ARMOR]
-        );
-        _ele_stats = EquipableUtils.sumGeneratedElementalStats(
-            _ele_stats,
-            PreCalculatedEquipmentElementalStats[summoner][GameObjects.ItemType.WEAPON]
-        );
-    }
-
-
-    function getPreCalculatedStats(uint summoner) external view returns (GameObjects.Stats memory){
-        return precalculatedStats(summoner);
-    }
-
-    function getPreCalculatedGeneratedStats(uint summoner) external view returns (GameObjects.GeneratedStats memory){
-        return precalculatedGenStats(summoner);
     }
 
     function _escrowNFT(address _erc721, uint _token, address from) internal {

@@ -4,12 +4,11 @@
     "clean-contracts": "rimraf .openzeppelin/unknown-*.json && rimraf artifacts/ && rimraf cache/",
     "hh-start-clean": "yarn clean-contracts && npx hardhat node",
     "compile": "yarn clean-contracts && npx hardhat compile",
-    "av-deploy-hardhat": "yarn clean-contracts && npx hardhat run scripts/deploy.js --network avash_hardhat",
+    "av-deploy-hardhat": "yarn clean-contracts && npx hardhat run scripts/deploy.js --network hardhat",
     "av-fund-dev": "ts-node scripts/fund_c_chain.ts",
     "av-mint-dev": "yarn clean-contracts && npx hardhat run scripts/deploy-tokens.js --network avash_dev",
     "av-deploy-dev": "yarn clean-contracts && npx hardhat run scripts/deploy.js --network avash_dev",
     "av-prepare-upgrade-dev": "npx hardhat run scripts/prepare-upgrade.js --network avash_dev",
-    "av-deploy-hardhat": "yarn clean-contracts && npx hardhat run scripts/deploy.js --network hardhat",
     "av-prepare-upgrade-hardhat": "npx hardhat run scripts/prepare-upgrade.js --network hardhat",
     "av-verify-hardhat": "npx hardhat verify --network hardhat",
     "av-deploy-prod": "yarn clean-contracts && npx hardhat run scripts/deploy.js --network prod",
@@ -102,7 +101,8 @@
     "fuji-balances": "npx hardhat run scripts/cli-commands/balances.ts --network fuji",
     "fuji-flee": "npx hardhat run scripts/cli-commands/flee.ts --network fuji",
     "fuji-settle": "npx hardhat run scripts/cli-commands/settle.ts --network fuji",
-    "fuji-process": "npx hardhat run scripts/cli-commands/process.ts --network fuji"
+    "fuji-process": "npx hardhat run scripts/cli-commands/process.ts --network fuji",
+    "solana-compile": "solang --target solana ./contracts"
   },
   "engines": {
     "node": "16.14"
