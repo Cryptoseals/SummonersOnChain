@@ -20,6 +20,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         uint battleId;
         address account;
         uint summoner;
+        uint summonerLeveL;
         uint adventureArea;
         uint adventureLevel;
         bool isActive;
@@ -49,7 +50,8 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     senderIsSummonerOwner(summoner) notInFight(summoner) {
         require(timer[summoner] < block.timestamp, "early");
         timer[summoner] = block.timestamp + COOLDOWN;
-        (IMonster.Monster memory _monster, IAdventure.AdventureMonster memory _advMonster) = getMonster(adventureArea, adventureLevel);
+        uint lvl = ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).level(summoner);
+        (IMonster.Monster memory _monster, IAdventure.AdventureMonster memory _advMonster) = getMonster(adventureArea, adventureLevel, lvl);
 
         (
         GameObjects.BattleStats memory _summonerStats,
@@ -60,6 +62,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         account : msg.sender,
         battleId : battleId,
         summoner : summoner,
+        summonerLeveL: lvl,
         adventureArea : adventureArea,
         adventureLevel : adventureLevel,
         monster : _advMonster,
@@ -146,11 +149,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         uint nonce = battleNonce;
         if (battle.playerStats.TOTAL_HP == 0) {
             // lose, end battle, cooldown
-            timer[battle.summoner] = block.timestamp + COOLDOWN;
-            ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
-                battle.summoner,
-                GameEntities.SummonerState.FREE
-            );
+            timer[battle.summoner] = block.timestamp + (COOLDOWN * 2);
         } else if (battle.monsterStats.TOTAL_HP == 0) {
             // win
             // TODO, roll rewards,
@@ -159,6 +158,12 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
                 contractAddress(INavigator.CONTRACT.ADVENTURES_CODEX)
             ).adventure(battle.adventureArea, battle.adventureLevel);
             IGameRewards.Reward memory rewardPool = _level.Rewards;
+
+            if(battle.monster.level > _level.MonsterLevel) {
+                uint diff = battle.monster.level - _level.MonsterLevel;
+                rewardPool.bonus = diff > 10 ? 200 : 100 + (diff * 10);
+            }
+
             IReward(contractAddress(INavigator.CONTRACT.REWARDS)).reward(
                 battle.account,
                 _level.Rewards,
@@ -168,18 +173,13 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             nonce++;
             // end battle, cooldown
             timer[battle.summoner] = block.timestamp + COOLDOWN;
-            //            ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
-            //                battle.summoner,
-            //                GameEntities.SummonerState.FREE
-            //            );
-            //            delete activeBattles[battle.summoner];
-            ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
-                battle.summoner,
-                GameEntities.SummonerState.FREE
-            );
         } else {
             revert("on going");
         }
+        ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
+            battle.summoner,
+            GameEntities.SummonerState.FREE
+        );
         delete activeBattles[battle.summoner];
         battleNonce = nonce;
     }
@@ -209,27 +209,34 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     }
 
     function getMonster(uint adventureArea,
-        uint adventureLevel) internal view returns (IMonster.Monster memory, IAdventure.AdventureMonster memory) {
+        uint adventureLevel, uint summonerLvl) internal view returns (IMonster.Monster memory, IAdventure.AdventureMonster memory) {
 
         IAdventure.AdventureLevel memory _level =
         ICodexAdventures(
             contractAddress(INavigator.CONTRACT.ADVENTURES_CODEX)
         ).adventure(adventureArea, adventureLevel);
-        return pickMonster(_level);
+        require(summonerLvl >= _level.MonsterLevel, "low lvl");
+        return pickMonster(_level, summonerLvl);
     }
 
-    function pickMonster(IAdventure.AdventureLevel memory _level) internal view returns (IMonster.Monster memory, IAdventure.AdventureMonster memory) {
+    function pickMonster(IAdventure.AdventureLevel memory _level, uint summonerLvl) internal view returns (IMonster.Monster memory, IAdventure.AdventureMonster memory) {
         uint monsterIdx = RNG.dn(
             block.number + battleNonce,
             _level.MonsterList.length);
 
         IAdventure.AdventureMonster memory _adventureMonster = _level.MonsterList[monsterIdx];
+        _adventureMonster.level = summonerLvl >= _level.MonsterLevel ? summonerLvl : _level.MonsterLevel;
         IMonster.Monster memory monster = ICodexEnemies(
             contractAddress(INavigator.CONTRACT.CODEX_ENEMIES)).enemy(
             _adventureMonster.element,
             _adventureMonster.monsterId,
-            _level.MonsterLevel
+            _adventureMonster.level
         );
+        if (_level.Difficulty > 100) {
+            monster.EnemyStats = EquipableUtils.sumStatsAsTier(monster.EnemyStats, _level.Difficulty);
+            monster.EnemyGeneratedStats = EquipableUtils.sumGeneratedStatsAsTier(monster.EnemyGeneratedStats, _level.Difficulty);
+            monster.EnemyElementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(monster.EnemyElementalStats, _level.Difficulty);
+        }
         return (monster, _adventureMonster);
     }
 

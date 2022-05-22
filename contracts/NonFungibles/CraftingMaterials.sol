@@ -27,9 +27,9 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         _mint(to, uint(material), amount, new bytes(0));
     }
     // test purposes
-//    function mintDev(ICraftingMaterials.CraftingMaterial material, uint amount) external {
-//        _mint(msg.sender, uint(material), amount, new bytes(0));
-//    }
+    //    function mintDev(ICraftingMaterials.CraftingMaterial material, uint amount) external {
+    //        _mint(msg.sender, uint(material), amount, new bytes(0));
+    //    }
 
     function burnMaterial(address from, uint id, uint amount) external onlyGameContracts {
         require(amount > 0, "0");
@@ -46,7 +46,7 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
             _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.WOOD_PROCESSING_RECIPES)).recipe(targetMaterial, amount);
         } else if (materialType == ICraftingMaterials.MaterialTypes.CLOTH) {
             _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.CLOTH_PROCESSING_RECIPES)).recipe(targetMaterial, amount);
-        }  else if (materialType == ICraftingMaterials.MaterialTypes.GEMSTONE) {
+        } else if (materialType == ICraftingMaterials.MaterialTypes.GEMSTONE) {
             _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.GEMSTONE_PROCESSING_RECIPES)).recipe(targetMaterial, amount);
         } else {
             revert("?");
@@ -93,7 +93,7 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         ActiveProcessings[processId].startingDate += timeRequiredPerMaterial * amount;
         ActiveProcessings[processId].amount -= amount;
 
-        if(ActiveProcessings[processId].amount == 0) {
+        if (ActiveProcessings[processId].amount == 0) {
             AccountsActiveProcessings[msg.sender].remove(processId);
         }
 
@@ -109,7 +109,7 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
             _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.WOOD_UPGRADING_RECIPES)).upgradeRecipe(targetMaterial, amount);
         } else if (materialType == ICraftingMaterials.MaterialTypes.CLOTH) {
             _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.CLOTH_UPGRADING_RECIPES)).upgradeRecipe(targetMaterial, amount);
-        }  else if (materialType == ICraftingMaterials.MaterialTypes.GEMSTONE) {
+        } else if (materialType == ICraftingMaterials.MaterialTypes.GEMSTONE) {
             _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.GEMSTONE_UPGRADING_RECIPES)).upgradeRecipe(targetMaterial, amount);
         } else {
             revert("?");
@@ -118,8 +118,18 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         _mint(msg.sender, uint(targetMaterial), amount, new bytes(0));
     }
 
-    function activeProcessingsOfUser(address account) external view returns (uint[] memory _result) {
+    function activeProcessingIdsOfUser(address account) external view returns (uint[] memory _result) {
         return AccountsActiveProcessings[account].values();
+    }
+
+    function activeProcessingsOfUser(address account) external view returns (ICraftingMaterials.ProcessingProcess[] memory) {
+        uint[] memory processes = AccountsActiveProcessings[account].values();
+        ICraftingMaterials.ProcessingProcess[] memory _result = new ICraftingMaterials.ProcessingProcess[](processes.length);
+        uint i;
+        for (i; i < processes.length; i++) {
+            _result[i] = ActiveProcessings[processes[i]];
+        }
+        return _result;
     }
 
     function setURI(string memory __uri) external onlyOwner {
@@ -130,7 +140,7 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         return string(abi.encodePacked(uri(id), id.toString()));
     }
 
-    function materialsOf(address account, uint[] memory ids) external view returns(uint[] memory) {
+    function materialsOf(address account, uint[] memory ids) external view returns (uint[] memory) {
         uint[] memory result = new uint[](ids.length);
         uint i = 0;
         for (i; i < ids.length; i++) {

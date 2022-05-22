@@ -31,7 +31,8 @@ contract CodexArea5 {
         _level.MonsterList = new IAdventure.AdventureMonster[](1);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
         element : GameObjects.Element.PHYSICAL,
-        monsterId: 1
+        monsterId: 1,
+        level : 1
         });
     }
 }

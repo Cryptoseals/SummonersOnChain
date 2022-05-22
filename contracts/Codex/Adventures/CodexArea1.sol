@@ -18,14 +18,18 @@ contract CodexArea1 {
         //        _level.Metadata.name = "Dark Forest Sub-Area 1";
         _level.MonsterLevel = 1;
 
-        // defining loot pool boolean values
+        //        _level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
+
+        // defining loot pool boolean values for gold
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 1e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 5e18;
-        // defining loot pool boolean values
+
+        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 5e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 10e18;
+
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
@@ -42,6 +46,7 @@ contract CodexArea1 {
         });
 
 
+        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -51,12 +56,12 @@ contract CodexArea1 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-
         // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](1);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
         element : GameObjects.Element.PHYSICAL,
-        monsterId : 1
+        monsterId : 1,
+        level : 1
         });
     }
 }

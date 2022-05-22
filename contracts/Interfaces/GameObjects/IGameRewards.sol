@@ -7,6 +7,7 @@ interface IGameRewards {
     struct Reward {
         RewardPool pool;
         Rewards rewards;
+        uint bonus;
     }
 
     struct RewardPool {

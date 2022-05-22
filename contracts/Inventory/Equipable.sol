@@ -270,7 +270,7 @@ contract Equipable is Initializable, InitNavigator {
         } else {
             revert InvalidItem("Not Implemented");
         }
-        if(id>0){
+        if (id > 0) {
             _returnNFT(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS), msg.sender, id);
         }
     }
@@ -404,8 +404,13 @@ contract Equipable is Initializable, InitNavigator {
         // TODO, add seal stat calculation
     }
 
-    function equipped(uint summoner, GameObjects.ItemType slot) external view returns (GameObjects.EquippedItemStruct memory){
-        return EquippedGears[summoner][slot];
+    function equipped(uint summoner, GameObjects.ItemType[] calldata slots) external view returns (GameObjects.EquippedItemStruct[] memory){
+        GameObjects.EquippedItemStruct[] memory results = new GameObjects.EquippedItemStruct[](slots.length);
+        uint i;
+        for (i ; i < slots.length; i++) {
+            results[i] = EquippedGears[summoner][slots[i]];
+        }
+        return results;
     }
 
     function _escrowNFT(address _erc721, uint _token, address from) internal {
