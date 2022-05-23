@@ -107,6 +107,18 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
         });
         return _data;
     }
+    function summonerDatas(uint[] memory ids) external view returns (GameEntities.SummonerData[] memory) {
+        GameEntities.SummonerData[] memory _data = new GameEntities.SummonerData[](ids.length);
+        for (uint i = 0; i < ids.length; i++) {
+            _data[i] = GameEntities.SummonerData({
+            level : SummonerLevels[ids[i]],
+            class : SummonerClasses[ids[i]],
+            state : SummonerState[ids[i]],
+            EXP : SummonerEXP[ids[i]]
+            });
+        }
+        return _data;
+    }
 
     function tokensOfOwner(address _owner) public view returns (uint[] memory) {
         uint[] memory _tokensOfOwner = new uint[](balanceOf(_owner));

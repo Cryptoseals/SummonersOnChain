@@ -62,7 +62,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         account : msg.sender,
         battleId : battleId,
         summoner : summoner,
-        summonerLeveL: lvl,
+        summonerLeveL : lvl,
         adventureArea : adventureArea,
         adventureLevel : adventureLevel,
         monster : _advMonster,
@@ -149,23 +149,25 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         uint nonce = battleNonce;
         if (battle.playerStats.TOTAL_HP == 0) {
             // lose, end battle, cooldown
+            IReward(contractAddress(INavigator.CONTRACT.REWARDS)).halfRewardXP(summoner, battle.monster.level);
             timer[battle.summoner] = block.timestamp + (COOLDOWN * 2);
         } else if (battle.monsterStats.TOTAL_HP == 0) {
             // win
-            // TODO, roll rewards,
             IAdventure.AdventureLevel memory _level =
             ICodexAdventures(
                 contractAddress(INavigator.CONTRACT.ADVENTURES_CODEX)
             ).adventure(battle.adventureArea, battle.adventureLevel);
             IGameRewards.Reward memory rewardPool = _level.Rewards;
 
-            if(battle.monster.level > _level.MonsterLevel) {
+            if (battle.monster.level > _level.MonsterLevel) {
                 uint diff = battle.monster.level - _level.MonsterLevel;
                 rewardPool.bonus = diff > 10 ? 200 : 100 + (diff * 10);
             }
 
             IReward(contractAddress(INavigator.CONTRACT.REWARDS)).reward(
                 battle.account,
+                summoner,
+                battle.monster.level,
                 _level.Rewards,
                 _level.CurrencyRewards,
                 nonce);
@@ -225,7 +227,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             _level.MonsterList.length);
 
         IAdventure.AdventureMonster memory _adventureMonster = _level.MonsterList[monsterIdx];
-        _adventureMonster.level = summonerLvl >= _level.MonsterLevel ? summonerLvl : _level.MonsterLevel;
+        _adventureMonster.level = summonerLvl > _level.MonsterLevel+5 ? summonerLvl-3 : _level.MonsterLevel;
         IMonster.Monster memory monster = ICodexEnemies(
             contractAddress(INavigator.CONTRACT.CODEX_ENEMIES)).enemy(
             _adventureMonster.element,

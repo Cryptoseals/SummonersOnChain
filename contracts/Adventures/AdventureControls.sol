@@ -23,6 +23,7 @@ contract AdventureControls is InitNavigator {
     senderIsSummonerOwner(summoner) {
         IAdventures(contractAddress(INavigator.CONTRACT.ADVENTURES)).settleBattle(summoner);
     }
+
     function flee(uint summoner) external ensureNotPaused
     senderIsSummonerOwner(summoner) {
         IAdventures(contractAddress(INavigator.CONTRACT.ADVENTURES)).flee(summoner);
