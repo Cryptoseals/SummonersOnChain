@@ -34,27 +34,21 @@ contract CodexArea11 {
     }
 
     function ElementalHall1() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 1";
         _level.MonsterLevel = 1;
 
         _level.Difficulty = 150; 
-        // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 38e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 55e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 4e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 6e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
 
-        // example:
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
         material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD,
         min : 12,
@@ -85,7 +79,6 @@ contract CodexArea11 {
         max : 18
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -95,7 +88,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -148,22 +140,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall2() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 2";
         _level.MonsterLevel = 5;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 75e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 110e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 8e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 11e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -196,7 +183,6 @@ contract CodexArea11 {
         max : 8
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -206,7 +192,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -259,22 +244,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall3() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 3";
         _level.MonsterLevel = 10;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 150e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 220e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 15e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 22e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -307,7 +287,6 @@ contract CodexArea11 {
         max : 17
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -317,7 +296,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -370,22 +348,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall4() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 4";
         _level.MonsterLevel = 15;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 300e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 440e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 30e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 44e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -418,7 +391,6 @@ contract CodexArea11 {
         max : 8
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -428,7 +400,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -481,22 +452,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall5() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 5";
         _level.MonsterLevel = 20;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 600e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 880e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 60e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 88e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -529,7 +495,6 @@ contract CodexArea11 {
         max : 15
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -539,7 +504,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -592,22 +556,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall6() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 6";
         _level.MonsterLevel = 25;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 1200e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 1760e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 120e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 176e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -640,7 +599,6 @@ contract CodexArea11 {
         max : 8
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -650,7 +608,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -703,22 +660,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall7() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 7";
         _level.MonsterLevel = 30;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 2400e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 3520e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 240e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 352e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -751,7 +703,6 @@ contract CodexArea11 {
         max : 15
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -761,7 +712,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -814,22 +764,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall8() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 8";
         _level.MonsterLevel = 35;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 4800e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 7040e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 480e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 704e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -862,7 +807,6 @@ contract CodexArea11 {
         max : 7
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -872,7 +816,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -925,22 +868,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall9() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 9";
         _level.MonsterLevel = 40;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 9600e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 14080e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 960e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 1408e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -973,7 +911,6 @@ contract CodexArea11 {
         max : 11
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -983,7 +920,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -1036,22 +972,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall10() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 10";
         _level.MonsterLevel = 45;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 19200e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 28160e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 1920e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 2816e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -1084,7 +1015,6 @@ contract CodexArea11 {
         max : 7
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -1094,7 +1024,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -1147,22 +1076,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall11() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 11";
         _level.MonsterLevel = 50;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 38400e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 56320e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 3840e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 5632e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -1195,7 +1119,6 @@ contract CodexArea11 {
         max : 11
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -1205,7 +1128,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -1258,22 +1180,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall12() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 12";
         _level.MonsterLevel = 55;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 76400e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 112640e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 7640e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 11264e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -1306,7 +1223,6 @@ contract CodexArea11 {
         max : 7
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -1316,7 +1232,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -1369,22 +1284,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall13() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 13";
         _level.MonsterLevel = 60;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 153600e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 225280e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 15360e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 22528e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -1417,7 +1327,6 @@ contract CodexArea11 {
         max : 10
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -1427,7 +1336,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -1480,22 +1388,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall14() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 14";
         _level.MonsterLevel = 65;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 307200e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 450560e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 30720e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 45056e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -1528,7 +1431,6 @@ contract CodexArea11 {
         max : 6
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -1538,7 +1440,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -1591,22 +1492,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall15() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 15";
         _level.MonsterLevel = 70;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 614400e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 901120e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 61440e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 90112e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -1639,7 +1535,6 @@ contract CodexArea11 {
         max : 9
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -1649,7 +1544,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -1702,22 +1596,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall16() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 16";
         _level.MonsterLevel = 75;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 1228800e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 1802240e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 122880e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 180224e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -1750,7 +1639,6 @@ contract CodexArea11 {
         max : 5
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -1760,7 +1648,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -1813,22 +1700,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall17() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 17";
         _level.MonsterLevel = 80;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 2457600e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 3607780e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 245760e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 360778e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -1861,7 +1743,6 @@ contract CodexArea11 {
         max : 8
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -1871,7 +1752,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -1924,22 +1804,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall18() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 18";
         _level.MonsterLevel = 85;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 4915200e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 7208960e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 491520e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 720896e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -1972,7 +1847,6 @@ contract CodexArea11 {
         max : 5
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -1982,7 +1856,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -2035,22 +1908,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall19() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 19";
         _level.MonsterLevel = 90;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 9830400e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 14417920e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 983040e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 1441792e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -2083,7 +1951,6 @@ contract CodexArea11 {
         max : 7
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -2093,7 +1960,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
@@ -2146,22 +2012,17 @@ contract CodexArea11 {
     }
 
     function ElementalHall20() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Elemental Hall Sub-Area 20";
         _level.MonsterLevel = 95;
 
-        //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
 
-        // defining loot pool boolean values for SILK
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 19660800e18;
         _level.CurrencyRewards.goldRewards.maxAmount = 28835840e18;
 
-        // defining loot pool boolean values for essence
         _level.CurrencyRewards.yieldsEssence = true;
         _level.CurrencyRewards.essenceRewards.minAmount = 1966080e18;
         _level.CurrencyRewards.essenceRewards.maxAmount = 2883584e18;
 
-        // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](5);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
@@ -2194,7 +2055,6 @@ contract CodexArea11 {
         max : 9
         });
 
-        // misc item reward
         _level.Rewards.pool.yieldsMiscItem = true;
         _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
         _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
@@ -2204,7 +2064,6 @@ contract CodexArea11 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](8);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
