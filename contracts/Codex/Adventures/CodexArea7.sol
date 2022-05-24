@@ -43,7 +43,6 @@ contract CodexArea7 {
 
     function Emberlands1() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 1;
-
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
@@ -107,7 +106,7 @@ contract CodexArea7 {
 
     function Emberlands2() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 5;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 75e18;
@@ -181,7 +180,7 @@ contract CodexArea7 {
 
     function Emberlands3() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 10;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 150e18;
@@ -255,7 +254,7 @@ contract CodexArea7 {
 
     function Emberlands4() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 15;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 300e18;
@@ -329,7 +328,7 @@ contract CodexArea7 {
 
     function Emberlands5() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 20;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 600e18;
@@ -403,7 +402,7 @@ contract CodexArea7 {
 
     function Emberlands6() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 25;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 1200e18;
@@ -477,7 +476,7 @@ contract CodexArea7 {
 
     function Emberlands7() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 30;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 2400e18;
@@ -551,7 +550,7 @@ contract CodexArea7 {
 
     function Emberlands8() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 35;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 4800e18;
@@ -625,7 +624,7 @@ contract CodexArea7 {
 
     function Emberlands9() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 40;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 9600e18;
@@ -699,7 +698,7 @@ contract CodexArea7 {
 
     function Emberlands10() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 45;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 19200e18;
@@ -773,7 +772,7 @@ contract CodexArea7 {
 
     function Emberlands11() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 50;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 38400e18;
@@ -847,7 +846,7 @@ contract CodexArea7 {
 
     function Emberlands12() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 55;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 76400e18;
@@ -921,7 +920,7 @@ contract CodexArea7 {
 
     function Emberlands13() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 60;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 153600e18;
@@ -995,7 +994,7 @@ contract CodexArea7 {
 
     function Emberlands14() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 65;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 307200e18;
@@ -1069,7 +1068,7 @@ contract CodexArea7 {
 
     function Emberlands15() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 70;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 614400e18;
@@ -1143,7 +1142,7 @@ contract CodexArea7 {
 
     function Emberlands16() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 75;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 1228800e18;
@@ -1217,7 +1216,7 @@ contract CodexArea7 {
 
     function Emberlands17() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 80;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 2457600e18;
@@ -1291,7 +1290,7 @@ contract CodexArea7 {
 
     function Emberlands18() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 85;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 4915200e18;
@@ -1365,7 +1364,7 @@ contract CodexArea7 {
 
     function Emberlands19() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 90;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 9830400e18;
@@ -1439,7 +1438,7 @@ contract CodexArea7 {
 
     function Emberlands20() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 95;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 19660800e18;

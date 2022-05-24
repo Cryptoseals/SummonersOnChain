@@ -43,7 +43,6 @@ contract CodexArea6 {
 
     function Mistlands1() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 1;
-
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
@@ -107,7 +106,7 @@ contract CodexArea6 {
 
     function Mistlands2() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 5;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 75e18;
@@ -181,7 +180,7 @@ contract CodexArea6 {
 
     function Mistlands3() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 10;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 150e18;
@@ -255,7 +254,7 @@ contract CodexArea6 {
 
     function Mistlands4() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 15;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 300e18;
@@ -329,7 +328,7 @@ contract CodexArea6 {
 
     function Mistlands5() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 20;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 600e18;
@@ -403,6 +402,7 @@ contract CodexArea6 {
 
     function Mistlands6() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 25;
+        _level.Difficulty = 100;
 
 
         _level.CurrencyRewards.yieldsGold = true;
@@ -477,7 +477,7 @@ contract CodexArea6 {
 
     function Mistlands7() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 30;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 2400e18;
@@ -551,7 +551,7 @@ contract CodexArea6 {
 
     function Mistlands8() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 35;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 4800e18;
@@ -625,7 +625,7 @@ contract CodexArea6 {
 
     function Mistlands9() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 40;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 9600e18;
@@ -699,7 +699,7 @@ contract CodexArea6 {
 
     function Mistlands10() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 45;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 19200e18;
@@ -773,7 +773,7 @@ contract CodexArea6 {
 
     function Mistlands11() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 50;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 38400e18;
@@ -847,7 +847,7 @@ contract CodexArea6 {
 
     function Mistlands12() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 55;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 76400e18;
@@ -921,7 +921,7 @@ contract CodexArea6 {
 
     function Mistlands13() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 60;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 153600e18;
@@ -995,7 +995,7 @@ contract CodexArea6 {
 
     function Mistlands14() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 65;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 307200e18;
@@ -1069,7 +1069,7 @@ contract CodexArea6 {
 
     function Mistlands15() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 70;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 614400e18;
@@ -1143,7 +1143,7 @@ contract CodexArea6 {
 
     function Mistlands16() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 75;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 1228800e18;
@@ -1217,7 +1217,7 @@ contract CodexArea6 {
 
     function Mistlands17() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 80;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 2457600e18;
@@ -1291,7 +1291,7 @@ contract CodexArea6 {
 
     function Mistlands18() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 85;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 4915200e18;
@@ -1365,7 +1365,7 @@ contract CodexArea6 {
 
     function Mistlands19() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 90;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 9830400e18;
@@ -1439,7 +1439,7 @@ contract CodexArea6 {
 
     function Mistlands20() public view returns (IAdventure.AdventureLevel memory _level) {
         _level.MonsterLevel = 95;
-
+        _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
         _level.CurrencyRewards.goldRewards.minAmount = 19660800e18;
