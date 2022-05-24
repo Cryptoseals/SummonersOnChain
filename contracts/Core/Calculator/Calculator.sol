@@ -414,9 +414,9 @@ contract Calculator is Initializable, InitNavigator {
         return GameObjects.GeneratedStats({HP : 10, P_ATK : 10, M_ATK : 10, P_DEF : 10, M_DEF : 10, ACCURACY : 10, DODGE : 10, CRIT : 0, CRIT_MULTIPLIER : 0, INFUSION : 0});
     }
 
-    function CostOfStat(uint skill) public view returns (uint) {
+    function CostOfStat(uint lvl) public view returns (uint) {
         //1+target_skill_point/10
-        return skill == 0 ? 0 : 1 + (skill / 10);
+        return lvl == 0 ? 0 : 1 + (lvl / 10);
     }
 
     function SumOfStatSetCost(GameObjects.Stats memory stats) external view returns (uint) {

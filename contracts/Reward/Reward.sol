@@ -25,11 +25,11 @@ contract Reward is InitNavigator {
         expRewardsByLevel = exps;
     }
 
-    function reward(address to, uint summoner, uint level, IGameRewards.Reward memory _reward, uint multiplier, IGameRewards.CurrencyRewards memory _currencyRewards, uint optionalNonce) external onlyGameContracts {
-        if (_currencyRewards.yieldsGold) rewardGold(to, _currencyRewards, multiplier, optionalNonce);
-        if (_currencyRewards.yieldsEssence) rewardEssence(to, _currencyRewards, multiplier, optionalNonce + 2);
-        if (_reward.pool.yieldsMiscItem) rewardMiscItem(to, _reward.rewards.miscItemRewards, multiplier, optionalNonce + 4);
-        if (_currencyRewards.yieldsCraftingMaterial) rewardCraftingMaterial(to, _currencyRewards.materials, multiplier, optionalNonce + 5);
+    function reward(address to, uint summoner, uint level, IGameRewards.Reward memory _reward, IGameRewards.CurrencyRewards memory _currencyRewards, uint optionalNonce) external onlyGameContracts {
+        if (_currencyRewards.yieldsGold) rewardGold(to, _currencyRewards, _reward.bonus, optionalNonce);
+        if (_currencyRewards.yieldsEssence) rewardEssence(to, _currencyRewards, _reward.bonus, optionalNonce + 2);
+        if (_reward.pool.yieldsMiscItem) rewardMiscItem(to, _reward.rewards.miscItemRewards, _reward.bonus, optionalNonce + 4);
+        if (_currencyRewards.yieldsCraftingMaterial) rewardCraftingMaterial(to, _currencyRewards.materials, _reward.bonus, optionalNonce + 5);
         rewardXP(summoner, level);
     }
 

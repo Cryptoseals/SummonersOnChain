@@ -2,39 +2,39 @@ import "../../Interfaces/GameObjects/IMonster.sol";
 import "../../Interfaces/GameObjects/IAdventure.sol";
 pragma solidity ^0.8.0;
 
-contract CodexArea4 {
+contract CodexArea6 {
     string constant public index = "Codex";
-    string constant public class = "Area4";
+    string constant public class = "Area6";
     string constant public version = "0.0.1";
 
     function adventureLevel(uint level) public view returns (IAdventure.AdventureLevel memory) {
 
-        if (level == 1) {return AshenDominion1();}
-        else if (level == 2) {return AshenDominion2();}
-        else if (level == 3) {return AshenDominion3();}
-        else if (level == 4) {return AshenDominion4();}
-        else if (level == 5) {return AshenDominion5();}
-        else if (level == 6) {return AshenDominion6();}
-        else if (level == 7) {return AshenDominion7();}
-        else if (level == 8) {return AshenDominion8();}
-        else if (level == 9) {return AshenDominion9();}
-        else if (level == 10) {return AshenDominion10();}
-        else if (level == 11) {return AshenDominion11();}
-        else if (level == 12) {return AshenDominion12();}
-        else if (level == 13) {return AshenDominion13();}
-        else if (level == 14) {return AshenDominion14();}
-        else if (level == 15) {return AshenDominion15();}
-        else if (level == 16) {return AshenDominion16();}
-        else if (level == 17) {return AshenDominion17();}
-        else if (level == 18) {return AshenDominion18();}
-        else if (level == 19) {return AshenDominion19();}
-        else if (level == 20) {return AshenDominion20();}
+        if (level == 1) {return Mistlands1();}
+        else if (level == 2) {return Mistlands2();}
+        else if (level == 3) {return Mistlands3();}
+        else if (level == 4) {return Mistlands4();}
+        else if (level == 5) {return Mistlands5();}
+        else if (level == 6) {return Mistlands6();}
+        else if (level == 7) {return Mistlands7();}
+        else if (level == 8) {return Mistlands8();}
+        else if (level == 9) {return Mistlands9();}
+        else if (level == 10) {return Mistlands10();}
+        else if (level == 11) {return Mistlands11();}
+        else if (level == 12) {return Mistlands12();}
+        else if (level == 13) {return Mistlands13();}
+        else if (level == 14) {return Mistlands14();}
+        else if (level == 15) {return Mistlands15();}
+        else if (level == 16) {return Mistlands16();}
+        else if (level == 17) {return Mistlands17();}
+        else if (level == 18) {return Mistlands18();}
+        else if (level == 19) {return Mistlands19();}
+        else if (level == 20) {return Mistlands20();}
 
         revert("invalid");
     }
 
-    function AshenDominion1() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 1";
+    function Mistlands1() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 1";
         _level.MonsterLevel = 1;
 
         _level.Difficulty = 100; 
@@ -52,13 +52,19 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](1);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
 
         // example:
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.JUTE,
-        min : 15,
-        max : 22
+        material : ICraftingMaterials.CraftingMaterial.AMBER,
+        min : 6,
+        max : 9
+        });
+
+        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.COPPER,
+        min : 12,
+        max : 18
         });
 
         // misc item reward
@@ -72,22 +78,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 1,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 2,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 1,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 2,
         level: 1
         });
     }
 
-    function AshenDominion2() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 2";
+    function Mistlands2() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 2";
         _level.MonsterLevel = 5;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -104,18 +123,29 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        // example:
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.WOOL,
-        min : 9,
-        max : 13
+        material : ICraftingMaterials.CraftingMaterial.PEARL,
+        min : 3,
+        max : 5
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.JUTE,
-        min : 5,
-        max : 7
+        material : ICraftingMaterials.CraftingMaterial.AMBER,
+        min : 4,
+        max : 6
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.TIN,
+        min : 6,
+        max : 9
+        });
+
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.COPPER,
+        min : 7,
+        max : 10
         });
 
         // misc item reward
@@ -129,22 +159,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 2,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 3,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 2,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 3,
         level: 1
         });
     }
 
-    function AshenDominion3() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 3";
+    function Mistlands3() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 3";
         _level.MonsterLevel = 10;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -161,17 +204,29 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.WOOL,
-        min : 13,
-        max : 19
+        material : ICraftingMaterials.CraftingMaterial.PEARL,
+        min : 6,
+        max : 9
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.JUTE,
-        min : 5,
-        max : 7
+        material : ICraftingMaterials.CraftingMaterial.AMBER,
+        min : 3,
+        max : 4
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.TIN,
+        min : 9,
+        max : 14
+        });
+
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.COPPER,
+        min : 3,
+        max : 5
         });
 
         // misc item reward
@@ -185,22 +240,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 3,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 4,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 3,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 4,
         level: 1
         });
     }
 
-    function AshenDominion4() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 4";
+    function Mistlands4() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 4";
         _level.MonsterLevel = 15;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -217,17 +285,29 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.COTTON,
-        min : 9,
-        max : 14
+        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
+        min : 3,
+        max : 5
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.WOOL,
-        min : 8,
-        max : 11
+        material : ICraftingMaterials.CraftingMaterial.PEARL,
+        min : 4,
+        max : 6
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.IRON,
+        min : 6,
+        max : 8
+        });
+
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.TIN,
+        min : 6,
+        max : 8
         });
 
         // misc item reward
@@ -241,22 +321,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 4,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 5,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 4,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 5,
         level: 1
         });
     }
 
-    function AshenDominion5() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 5";
+    function Mistlands5() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 5";
         _level.MonsterLevel = 20;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -273,17 +366,29 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.COTTON,
-        min : 11,
-        max : 16
+        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
+        min : 6,
+        max : 8
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.WOOL,
-        min : 5,
-        max : 7
+        material : ICraftingMaterials.CraftingMaterial.PEARL,
+        min : 3,
+        max : 4
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.IRON,
+        min : 9,
+        max : 13
+        });
+
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.TIN,
+        min : 4,
+        max : 6
         });
 
         // misc item reward
@@ -297,22 +402,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 5,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 6,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 5,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 6,
         level: 1
         });
     }
 
-    function AshenDominion6() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 6";
+    function Mistlands6() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 6";
         _level.MonsterLevel = 25;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -329,15 +447,27 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.LINEN,
-        min : 7,
-        max : 10
+        material : ICraftingMaterials.CraftingMaterial.CORAL,
+        min : 3,
+        max : 5
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.COTTON,
+        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
+        min : 4,
+        max : 6
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.SILVER,
+        min : 6,
+        max : 8
+        });
+        
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.IRON,
         min : 6,
         max : 9
         });
@@ -354,21 +484,34 @@ contract CodexArea4 {
 
         // defining monsters in this area
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 6,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 7,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 6,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 7,
         level: 1
         });
     }
 
-    function AshenDominion7() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 7";
+    function Mistlands7() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 7";
         _level.MonsterLevel = 30;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -385,17 +528,29 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.LINEN,
-        min : 11,
-        max : 16
+        material : ICraftingMaterials.CraftingMaterial.CORAL,
+        min : 6,
+        max : 8
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.COTTON,
-        min : 4,
-        max : 6
+        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
+        min : 3,
+        max : 4
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.SILVER,
+        min : 9,
+        max : 13
+        });
+        
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.IRON,
+        min : 3,
+        max : 5
         });
 
         // misc item reward
@@ -409,22 +564,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 7,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 8,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 7,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 8,
         level: 1
         });
     }
 
-    function AshenDominion8() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 8";
+    function Mistlands8() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 8";
         _level.MonsterLevel = 35;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -441,15 +609,27 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.SILK,
-        min : 7,
-        max : 10
+        material : ICraftingMaterials.CraftingMaterial.RUBY,
+        min : 3,
+        max : 5
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.LINEN,
+        material : ICraftingMaterials.CraftingMaterial.CORAL,
+        min : 4,
+        max : 6
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.GOLD,
+        min : 6,
+        max : 8
+        });
+
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.SILVER,
         min : 6,
         max : 9
         });
@@ -465,22 +645,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 8,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 9,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 8,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 9,
         level: 1
         });
     }
 
-    function AshenDominion9() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 9";
+    function Mistlands9() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 9";
         _level.MonsterLevel = 40;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -497,17 +690,29 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.SILK,
-        min : 9,
-        max : 13
+        material : ICraftingMaterials.CraftingMaterial.RUBY,
+        min : 4,
+        max : 6
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.LINEN,
-        min : 4,
-        max : 6
+        material : ICraftingMaterials.CraftingMaterial.CORAL,
+        min : 3,
+        max : 4
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.GOLD,
+        min : 6,
+        max : 9
+        });
+
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.SILVER,
+        min : 3,
+        max : 4
         });
 
         // misc item reward
@@ -521,22 +726,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 9,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 10,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 9,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 10,
         level: 1
         });
     }
 
-    function AshenDominion10() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 10";
+    function Mistlands10() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 10";
         _level.MonsterLevel = 45;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -553,17 +771,29 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.HEMP,
-        min : 6,
-        max : 9
+        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
+        min : 3,
+        max : 4
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.SILK,
-        min : 6,
-        max : 8
+        material : ICraftingMaterials.CraftingMaterial.RUBY,
+        min : 3,
+        max : 5
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.PLATINUM,
+        min : 4,
+        max : 6
+        });
+
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.GOLD,
+        min : 5,
+        max : 7
         });
 
         // misc item reward
@@ -577,22 +807,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 10,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 11,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 10,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 11,
         level: 1
         });
     }
 
-    function AshenDominion11() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 11";
+    function Mistlands11() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 11";
         _level.MonsterLevel = 50;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -609,17 +852,29 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.HEMP,
-        min : 9,
-        max : 13
+        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
+        min : 4,
+        max : 6
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.SILK,
+        material : ICraftingMaterials.CraftingMaterial.RUBY,
+        min : 2,
+        max : 3
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.PLATINUM,
+        min : 7,
+        max : 10
+        });
+        
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.GOLD,
         min : 3,
-        max : 5
+        max : 4
         });
 
         // misc item reward
@@ -633,22 +888,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 11,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 12,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 11,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 12,
         level: 1
         });
     }
 
-    function AshenDominion12() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 12";
+    function Mistlands12() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 12";
         _level.MonsterLevel = 55;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -665,17 +933,29 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.CASHMERE,
-        min : 6,
-        max : 9
+        material : ICraftingMaterials.CraftingMaterial.AZURITE,
+        min : 3,
+        max : 4
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.HEMP,
-        min : 6,
-        max : 8
+        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
+        min : 3,
+        max : 5
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.MYTHRIL,
+        min : 4,
+        max : 6
+        });
+        
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.PLATINUM,
+        min : 5,
+        max : 7
         });
 
         // misc item reward
@@ -689,22 +969,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 12,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 13,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 12,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 13,
         level: 1
         });
     }
 
-    function AshenDominion13() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 13";
+    function Mistlands13() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 13";
         _level.MonsterLevel = 60;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -721,17 +1014,29 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.CASHMERE,
-        min : 8,
-        max : 11
+        material : ICraftingMaterials.CraftingMaterial.AZURITE,
+        min : 4,
+        max : 6
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.HEMP,
+        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
+        min : 2,
+        max : 3
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.MYTHRIL,
+        min : 6,
+        max : 9
+        });
+        
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.PLATINUM,
         min : 3,
-        max : 5
+        max : 4
         });
 
         // misc item reward
@@ -745,22 +1050,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 13,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 14,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 13,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 14,
         level: 1
         });
     }
 
-    function AshenDominion14() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 14";
+    function Mistlands14() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 14";
         _level.MonsterLevel = 65;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -777,17 +1095,29 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.VISCOSE,
-        min : 5,
-        max : 7
+        material : ICraftingMaterials.CraftingMaterial.EMERALD,
+        min : 3,
+        max : 4
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.CASHMERE,
-        min : 5,
-        max : 7
+        material : ICraftingMaterials.CraftingMaterial.AZURITE,
+        min : 3,
+        max : 4
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM,
+        min : 4,
+        max : 6
+        });
+        
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.MYTHRIL,
+        min : 4,
+        max : 6
         });
 
         // misc item reward
@@ -801,22 +1131,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 14,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 15,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 14,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 15,
         level: 1
         });
     }
 
-    function AshenDominion15() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 15";
+    function Mistlands15() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 15";
         _level.MonsterLevel = 70;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -833,17 +1176,29 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.VISCOSE,
-        min : 8,
-        max : 11
+        material : ICraftingMaterials.CraftingMaterial.EMERALD,
+        min : 3,
+        max : 5
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.CASHMERE,
-        min : 3,
-        max : 4
+        material : ICraftingMaterials.CraftingMaterial.AZURITE,
+        min : 2,
+        max : 3
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM,
+        min : 6,
+        max : 8
+        });
+        
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.MYTHRIL,
+        min : 2,
+        max : 3
         });
 
         // misc item reward
@@ -857,22 +1212,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 15,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 16,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 15,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 16,
         level: 1
         });
     }
 
-    function AshenDominion16() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 16";
+    function Mistlands16() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 16";
         _level.MonsterLevel = 75;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -889,15 +1257,27 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.LYOCELL,
-        min : 5,
-        max : 7
+        material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
+        min : 2,
+        max : 3
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.VISCOSE,
+        material : ICraftingMaterials.CraftingMaterial.EMERALD,
+        min : 3,
+        max : 4
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN,
+        min : 3,
+        max : 5
+        });
+        
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM,
         min : 4,
         max : 6
         });
@@ -913,22 +1293,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 16,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 17,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 16,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 17,
         level: 1
         });
     }
 
-    function AshenDominion17() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 17";
+    function Mistlands17() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 17";
         _level.MonsterLevel = 80;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -945,17 +1338,29 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.LYOCELL,
-        min : 6,
-        max : 9
+        material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
+        min : 3,
+        max : 5
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.VISCOSE,
-        min : 3,
-        max : 4
+        material : ICraftingMaterials.CraftingMaterial.EMERALD,
+        min : 2,
+        max : 3
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN,
+        min : 5,
+        max : 7
+        });
+        
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM,
+        min : 2,
+        max : 3
         });
 
         // misc item reward
@@ -969,22 +1374,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 17,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 18,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 17,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 18,
         level: 1
         });
     }
 
-    function AshenDominion18() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 18";
+    function Mistlands18() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 18";
         _level.MonsterLevel = 85;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -1001,15 +1419,27 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RAYON,
-        min : 4,
-        max : 6
+        material : ICraftingMaterials.CraftingMaterial.DIAMOND,
+        min : 2,
+        max : 3
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.LYOCELL,
+        material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
+        min : 3,
+        max : 4
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.LUMINITE,
+        min : 3,
+        max : 5
+        });
+        
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN,
         min : 3,
         max : 5
         });
@@ -1025,22 +1455,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 18,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 19,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 18,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 19,
         level: 1
         });
     }
 
-    function AshenDominion19() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 19";
+    function Mistlands19() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 19";
         _level.MonsterLevel = 90;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -1057,17 +1500,29 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RAYON,
-        min : 6,
-        max : 8
+        material : ICraftingMaterials.CraftingMaterial.DIAMOND,
+        min : 3,
+        max : 4
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.LYOCELL,
-        min : 3,
-        max : 4
+        material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
+        min : 1,
+        max : 2
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.LUMINITE,
+        min : 4,
+        max : 6
+        });
+        
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN,
+        min : 2,
+        max : 3
         });
 
         // misc item reward
@@ -1081,22 +1536,35 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 19,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 20,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 19,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 20,
         level: 1
         });
     }
 
-    function AshenDominion20() public view returns (IAdventure.AdventureLevel memory _level) {
-        //        _level.Metadata.name = "Ashen Dominion Sub-Area 20";
+    function Mistlands20() public view returns (IAdventure.AdventureLevel memory _level) {
+        //        _level.Metadata.name = "Mistlands Sub-Area 20";
         _level.MonsterLevel = 95;
 
         //_level.Difficulty = 0; // 0-100 is same. 101 means 1% boost to stats. 200 means 2x monster stats.
@@ -1113,15 +1581,27 @@ contract CodexArea4 {
 
         // crafting mats
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
         _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RAYON,
-        min : 7,
-        max : 10
+        material : ICraftingMaterials.CraftingMaterial.DIAMOND,
+        min : 3,
+        max : 5
         });
 
         _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.LYOCELL,
+        material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
+        min : 2,
+        max : 3
+        });
+
+        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.LUMINITE,
+        min : 6,
+        max : 8
+        });
+        
+        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
+        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN,
         min : 3,
         max : 5
         });
@@ -1137,15 +1617,28 @@ contract CodexArea4 {
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
         // defining monsters in this area
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
         monsterId : 20,
         level: 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : GameObjects.Element.VOID,
+        monsterId : 21,
+        level: 1
+        });
+
+        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
+        monsterId : 20,
+        level: 1
+        });
+
+        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        element : GameObjects.Element.ARCANE,
         monsterId : 21,
         level: 1
         });

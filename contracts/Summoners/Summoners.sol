@@ -107,6 +107,7 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
         });
         return _data;
     }
+
     function summonerDatas(uint[] memory ids) external view returns (GameEntities.SummonerData[] memory) {
         GameEntities.SummonerData[] memory _data = new GameEntities.SummonerData[](ids.length);
         for (uint i = 0; i < ids.length; i++) {
@@ -118,6 +119,24 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
             });
         }
         return _data;
+    }
+
+    function summonerFullDetails(uint id)
+    external view returns (
+        GameEntities.SummonerData memory _data,
+        GameEntities.SummonerMetadata memory _metadata,
+        GameEntities.SummonerState _state,
+        GameObjects.Stats memory _stats,
+        GameObjects.GeneratedStats memory _gen_stats,
+        GameObjects.ElementalStats memory _ele_stats
+    ){
+        _data.level = SummonerLevels[id];
+        _data.class = SummonerClasses[id];
+        _data.state = SummonerState[id];
+        _data.EXP = SummonerEXP[id];
+
+        _metadata.summonerName;
+
     }
 
     function tokensOfOwner(address _owner) public view returns (uint[] memory) {
