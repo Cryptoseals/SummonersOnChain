@@ -2,7 +2,7 @@ import "../../Interfaces/GameObjects/IMonster.sol";
 import "../../Interfaces/GameObjects/IAdventure.sol";
 pragma solidity ^0.8.0;
 
-contract CodexArea6 {
+contract CodexArea10 {
     string constant public index = "Codex";
     string constant public class = "Area10";
     string constant public version = "0.0.1";
