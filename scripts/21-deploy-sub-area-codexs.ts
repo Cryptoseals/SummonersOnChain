@@ -1,4 +1,3 @@
-
 // We require the Hardhat Runtime Environment explicitly here. This is optional
 // but useful for running the script in a standalone fashion through `node <script>`.
 //
@@ -62,12 +61,73 @@ async function main() {
     console.log(codexArea5.address)
 
 
+    let CodexArea6 = await ethers.getContractFactory("CodexArea6")
+    let codexArea6 = await upgrades.deployProxy(CodexArea6);
+    await codexArea6.deployed()
+    console.log("codexArea6 deployed to:", codexArea6.address,)
+    tx = await navigator.setGameContractsById(CONTRACTS.AREA_6, codexArea6.address, true)
+    await tx.wait(1)
+    console.log("and set in navigator.")
+    console.log(codexArea6.address)
+
+    let CodexArea7 = await ethers.getContractFactory("CodexArea7")
+    let codexArea7 = await upgrades.deployProxy(CodexArea7);
+    await codexArea7.deployed()
+    console.log("codexArea7 deployed to:", codexArea7.address,)
+    tx = await navigator.setGameContractsById(CONTRACTS.AREA_7, codexArea7.address, true)
+    await tx.wait(1)
+    console.log("and set in navigator.")
+    console.log(codexArea7.address)
+
+    let CodexArea8 = await ethers.getContractFactory("CodexArea8")
+    let codexArea8 = await upgrades.deployProxy(CodexArea8);
+    await codexArea8.deployed()
+    console.log("codexArea8 deployed to:", codexArea8.address,)
+    tx = await navigator.setGameContractsById(CONTRACTS.AREA_8, codexArea8.address, true)
+    await tx.wait(1)
+    console.log("and set in navigator.")
+    console.log(codexArea8.address)
+
+    let CodexArea9 = await ethers.getContractFactory("CodexArea9")
+    let codexArea9 = await upgrades.deployProxy(CodexArea9);
+    await codexArea9.deployed()
+    console.log("codexArea9 deployed to:", codexArea9.address,)
+    tx = await navigator.setGameContractsById(CONTRACTS.AREA_9, codexArea9.address, true)
+    await tx.wait(1)
+    console.log("and set in navigator.")
+    console.log(codexArea9.address)
+
+    let CodexArea10 = await ethers.getContractFactory("CodexArea10")
+    let codexArea10 = await upgrades.deployProxy(CodexArea10);
+    await codexArea10.deployed()
+    console.log("codexArea10 deployed to:", codexArea10.address,)
+    tx = await navigator.setGameContractsById(CONTRACTS.AREA_10, codexArea10.address, true)
+    await tx.wait(1)
+    console.log("and set in navigator.")
+    console.log(codexArea10.address)
+
+    let CodexArea11 = await ethers.getContractFactory("CodexArea11")
+    let codexArea11 = await upgrades.deployProxy(CodexArea11);
+    await codexArea11.deployed()
+    console.log("codexArea11 deployed to:", codexArea11.address,)
+    tx = await navigator.setGameContractsById(CONTRACTS.AREA_11, codexArea11.address, true)
+    await tx.wait(1)
+    console.log("and set in navigator.")
+    console.log(codexArea11.address)
+
+
     fs.writeFileSync(DeployedFileLocations.areas, JSON.stringify({
         codexArea1: codexArea1.address,
         codexArea2: codexArea2.address,
         codexArea3: codexArea3.address,
         codexArea4: codexArea4.address,
         codexArea5: codexArea5.address,
+        codexArea6: codexArea6.address,
+        codexArea7: codexArea7.address,
+        codexArea8: codexArea8.address,
+        codexArea9: codexArea9.address,
+        codexArea10: codexArea10.address,
+        codexArea11: codexArea11.address,
     }))
 
 }

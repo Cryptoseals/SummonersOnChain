@@ -119,6 +119,17 @@ interface INavigator {
         AREA_3,
         AREA_4,
         AREA_5,
+        AREA_6,
+        AREA_7,
+        AREA_8,
+        AREA_9,
+        AREA_10,
+        AREA_11,
+        AREA_12,
+        AREA_13,
+        AREA_14,
+        AREA_15,
+        AREA_16,
         REWARDS
     }
 

@@ -13,17 +13,31 @@ contract CodexAdventures is InitNavigator {
         initializeNavigator(_navigator);
     }
 
+
+
     function adventure(uint _id, uint lvl) public view returns (IAdventure.AdventureLevel memory) {
         if (_id == 1) {
             return Area1(lvl);
-        }  else if (_id == 2) {
+        } else if (_id == 2) {
             return Area2(lvl);
-        }  else if (_id == 3) {
+        } else if (_id == 3) {
             return Area3(lvl);
-        }  else if (_id == 4) {
+        } else if (_id == 4) {
             return Area4(lvl);
-        }  else if (_id == 5) {
+        } else if (_id == 5) {
             return Area5(lvl);
+        } else if (_id == 6) {
+            return Area6(lvl);
+        } else if (_id == 7) {
+            return Area7(lvl);
+        } else if (_id == 8) {
+            return Area8(lvl);
+        } else if (_id == 9) {
+            return Area9(lvl);
+        } else if (_id == 10) {
+            return Area10(lvl);
+        } else if (_id == 11) {
+            return Area11(lvl);
         }
 
         revert("invalid");
@@ -47,5 +61,29 @@ contract CodexAdventures is InitNavigator {
 
     function Area5(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
         return IAdventure(contractAddress(INavigator.CONTRACT.AREA_5)).adventureLevel(lvl);
+    }
+
+    function Area6(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+        return IAdventure(contractAddress(INavigator.CONTRACT.AREA_6)).adventureLevel(lvl);
+    }
+
+    function Area7(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+        return IAdventure(contractAddress(INavigator.CONTRACT.AREA_7)).adventureLevel(lvl);
+    }
+
+    function Area8(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+        return IAdventure(contractAddress(INavigator.CONTRACT.AREA_8)).adventureLevel(lvl);
+    }
+
+    function Area9(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+        return IAdventure(contractAddress(INavigator.CONTRACT.AREA_9)).adventureLevel(lvl);
+    }
+
+    function Area10(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+        return IAdventure(contractAddress(INavigator.CONTRACT.AREA_10)).adventureLevel(lvl);
+    }
+
+    function Area11(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+        return IAdventure(contractAddress(INavigator.CONTRACT.AREA_11)).adventureLevel(lvl);
     }
 }
