@@ -5,8 +5,16 @@ import "../../Interfaces/Codex/IBaseEnemyStats.sol";
 
 pragma solidity ^0.8.0;
 
-contract CodexEnemiesVoid is Initializable, InitNavigator  {
+contract CodexEnemiesVoid is Initializable, InitNavigator {
     IBaseEnemyStats baseStats;
+
+    function getAllMonsters() external view returns (IMonster.Monster[] memory){
+        IMonster.Monster[] memory result = new IMonster.Monster[](22);
+        for (uint i = 1; i < 23; i++) {
+            result[i - 1] = enemy(i, 1);
+        }
+        return result;
+    }
 
     function enemy(uint256 _id, uint lvl)
     public
@@ -69,7 +77,7 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
 
     //151-175 VOID
     function TheMatter1(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "The Matter";
+        //        _enemy.MonsterMetadata.name = "The Matter";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
@@ -101,8 +109,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function TheMatter2(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "The Matter";
+        //        _enemy.MonsterMetadata.name = "The Matter";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
@@ -134,8 +143,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function TheMatter3(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "The Matter";
+        //        _enemy.MonsterMetadata.name = "The Matter";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
@@ -167,8 +177,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function TheMatter4(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "The Matter";
+        //        _enemy.MonsterMetadata.name = "The Matter";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
@@ -200,8 +211,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function TheMatter5(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "The Matter";
+        //        _enemy.MonsterMetadata.name = "The Matter";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
@@ -232,8 +244,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function Celestion1(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Celestion";
+        //        _enemy.MonsterMetadata.name = "Celestion";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
@@ -264,8 +277,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function Celestion2(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Celestion";
+        //        _enemy.MonsterMetadata.name = "Celestion";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
@@ -296,8 +310,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function Celestion3(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Celestion";
+        //        _enemy.MonsterMetadata.name = "Celestion";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
@@ -329,8 +344,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function Celestion4(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Celestion";
+        //        _enemy.MonsterMetadata.name = "Celestion";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
@@ -362,8 +378,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function Celestion5(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Celestion";
+        //        _enemy.MonsterMetadata.name = "Celestion";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
@@ -395,8 +412,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function Celestion6(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Celestion";
+        //        _enemy.MonsterMetadata.name = "Celestion";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
@@ -428,8 +446,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function Invincia1(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Invincia1";
+        //        _enemy.MonsterMetadata.name = "Invincia1";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
@@ -461,8 +480,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function Invincia2(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Invincia1";
+        //        _enemy.MonsterMetadata.name = "Invincia1";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
@@ -494,8 +514,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function Invincia3(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Invincia1";
+        //        _enemy.MonsterMetadata.name = "Invincia1";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
@@ -527,8 +548,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function Invincia4(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Invincia1";
+        //        _enemy.MonsterMetadata.name = "Invincia1";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
@@ -559,8 +581,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function Invincia5(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Invincia1";
+        //        _enemy.MonsterMetadata.name = "Invincia1";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
@@ -592,8 +615,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function Invincia6(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Invincia1";
+        //        _enemy.MonsterMetadata.name = "Invincia1";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
@@ -625,8 +649,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function InfinitumAeternum1(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Infinitum Aeternum";
+        //        _enemy.MonsterMetadata.name = "Infinitum Aeternum";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
@@ -657,8 +682,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function InfinitumAeternum2(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Infinitum Aeternum";
+        //        _enemy.MonsterMetadata.name = "Infinitum Aeternum";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
@@ -690,8 +716,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function InfinitumAeternum3(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Infinitum Aeternum";
+        //        _enemy.MonsterMetadata.name = "Infinitum Aeternum";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
@@ -723,8 +750,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function InfinitumAeternum4(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Infinitum Aeternum";
+        //        _enemy.MonsterMetadata.name = "Infinitum Aeternum";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 
@@ -755,8 +783,9 @@ contract CodexEnemiesVoid is Initializable, InitNavigator  {
         VOID_DEF : baseStats.enemyEDEF(GameObjects.Element.VOID, lvl)
         });
     }
+
     function InfinitumAeternum5(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Infinitum Aeternum";
+        //        _enemy.MonsterMetadata.name = "Infinitum Aeternum";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.VOID, lvl);
 

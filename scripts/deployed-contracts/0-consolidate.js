@@ -7,7 +7,8 @@ jsonsInDir.forEach((file) => {
     const fileData = fs.readFileSync(path.join('./', file));
     const json = JSON.parse(fileData.toString());
     contracts = {
-        ...contracts, ...json
+        ...contracts,
+        ...json
     }
 });
 

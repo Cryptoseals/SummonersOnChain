@@ -7,6 +7,14 @@ pragma solidity ^0.8.0;
 contract CodexEnemiesArcane is Initializable, InitNavigator {
     IBaseEnemyStats baseStats;
 
+    function getAllMonsters() external view returns (IMonster.Monster[] memory){
+        IMonster.Monster[] memory result = new IMonster.Monster[](22);
+        for (uint i = 1; i < 23; i++) {
+            result[i-1] = enemy(i, 1);
+        }
+        return result;
+    }
+
     function enemy(uint256 _id, uint lvl)
     public
     view

@@ -7,6 +7,7 @@
 import {ethers, upgrades} from "hardhat";
 import * as fs from 'fs'
 import {CONTRACTS, DeployedFileLocations} from './helpers/constants'
+import {XPRewards} from "./helpers/Rewards/XP";
 
 async function main() {
 
@@ -17,7 +18,8 @@ async function main() {
 
     let Rewards = await ethers.getContractFactory("Reward")
     let rewards = await upgrades.deployProxy(Rewards, [
-        navigator.address
+        navigator.address,
+        XPRewards
     ]);
     await rewards.deployed()
     console.log("rewards deployed to:", rewards.address,)

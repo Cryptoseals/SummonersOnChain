@@ -13,8 +13,6 @@ contract CodexAdventures is InitNavigator {
         initializeNavigator(_navigator);
     }
 
-
-
     function adventure(uint _id, uint lvl) public view returns (IAdventure.AdventureLevel memory) {
         if (_id == 1) {
             return Area1(lvl);
