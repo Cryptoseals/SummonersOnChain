@@ -134,6 +134,14 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         return _amulet;
     }
 
+    function allAmulet() external view returns (GameObjects.Amulet[] memory){
+        GameObjects.Amulet[] memory result = new GameObjects.Amulet[](23);
+        for (uint i = 1; i < 23; i++) {
+            result[i - 1] = amuletCore(i, 1);
+        }
+        return result;
+    }
+
     function amulet(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Amulet memory) {
         GameObjects.Amulet memory _amulet;
         GameObjects.Prefix memory _prefix;

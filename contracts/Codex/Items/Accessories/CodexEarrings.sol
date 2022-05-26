@@ -139,6 +139,14 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         return _earrings;
     }
 
+    function allEarrings() external view returns (GameObjects.Earring[] memory){
+        GameObjects.Earring[] memory result = new GameObjects.Earring[](23);
+        for (uint i = 1; i < 23; i++) {
+            result[i - 1] = earringsCore(i, 1);
+        }
+        return result;
+    }
+
     function earrings(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Earring memory) {
         GameObjects.Earring memory _earrings;
         GameObjects.Prefix memory _prefix;

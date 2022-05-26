@@ -5,7 +5,7 @@ import "../../Interfaces/Codex/IBaseEnemyStats.sol";
 
 pragma solidity ^0.8.0;
 
-contract CodexEnemiesPhysical is Initializable, InitNavigator {
+contract CodexEnemiesPhysical is InitNavigator {
     IBaseEnemyStats baseStats;
 
     function getAllMonsters() external view returns (IMonster.Monster[] memory){
@@ -75,7 +75,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function Pickpocket(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Pickpocket";
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
 
@@ -108,7 +107,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function GangMember(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Gang Member";
 
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
@@ -142,7 +140,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function Bandit(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Bandit";
 
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
@@ -176,7 +173,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function Spearman(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Spearman";
 
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
@@ -210,7 +206,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function Hunter(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Hunter";
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
 
@@ -243,7 +238,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function GangLeader(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Gang Leader";
 
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
@@ -277,7 +271,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function EvilLumberjack(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Evil Lumberjack";
 
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
@@ -311,7 +304,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function BanditGeneral(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Bandit General";
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
 
@@ -344,7 +336,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function Racketeer(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Racketeer";
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
 
@@ -377,7 +368,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function ThiefMasterClan(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Thief Master Clan";
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
 
@@ -410,7 +400,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function Sharpshooter(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Sharpshooter";
 
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
@@ -444,7 +433,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function Ranger(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Ranger";
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
 
@@ -477,7 +465,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function CaveTroll(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Cave Troll";
 
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
@@ -511,7 +498,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function BehemothPython(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Behemoth Python";
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
 
@@ -544,7 +530,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function FleshDevourer(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Flesh Devourer";
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
 
@@ -577,7 +562,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function ScarlettSoldier(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Scarlett Soldier";
 
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
@@ -611,7 +595,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function AssassinOfTheOrder(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Assassin of the Order";
 
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
@@ -645,7 +628,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function SyndicateAssassin(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Syndicate Assassin";
 
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
@@ -679,7 +661,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function Gatekeeper(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Gatekeeper";
 
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
@@ -713,7 +694,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function Ashbringer(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Ashbringer";
 
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
@@ -747,7 +727,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function ScarlettGeneral(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Scarlett General";
 
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);
@@ -781,7 +760,6 @@ contract CodexEnemiesPhysical is Initializable, InitNavigator {
     }
 
     function FeudalLordGodrig(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Feudal Lord Godrig";
 
 
         _enemy.EnemyStats.STR = baseStats.enemySTAT(GameObjects.Element.PHYSICAL, lvl);

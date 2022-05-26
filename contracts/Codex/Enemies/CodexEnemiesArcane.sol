@@ -4,8 +4,8 @@ import "../../Interfaces/GameObjects/IMonster.sol";
 import "../../Interfaces/Codex/IBaseEnemyStats.sol";
 pragma solidity ^0.8.0;
 
-contract CodexEnemiesArcane is Initializable, InitNavigator {
-    IBaseEnemyStats baseStats;
+contract CodexEnemiesArcane is InitNavigator {
+    IBaseEnemyStats public baseStats;
 
     function getAllMonsters() external view returns (IMonster.Monster[] memory){
         IMonster.Monster[] memory result = new IMonster.Monster[](22);
@@ -73,9 +73,11 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
         baseStats = IBaseEnemyStats(contractAddress(INavigator.CONTRACT.BASE_ENEMY_STATS));
     }
 
-    // ARCANEs
+    function initBaseStats() external {
+        baseStats = IBaseEnemyStats(contractAddress(INavigator.CONTRACT.BASE_ENEMY_STATS));
+    }
+
     function WizardApprentice(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Wizard Apprentice";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
@@ -109,7 +111,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function Hag(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Hag";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
@@ -143,7 +144,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function Witch(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Witch";
 
 
 
@@ -178,7 +178,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function Imp(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Imp";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
@@ -212,7 +211,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function EvilWizard(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Evil Wizard";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
@@ -246,7 +244,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function Arcanist(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Arcanist";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
@@ -280,7 +277,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function ArcaneMist(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Arcane Mist";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
@@ -314,7 +310,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function DeathKnight(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Death Knight";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
@@ -348,7 +343,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function Fiend(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Fiend";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
@@ -382,7 +376,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function MummyKnight(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Mummy Knight";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
@@ -416,7 +409,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function AberrantsAncientBook(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Aberrant's Ancient Book";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
@@ -450,7 +442,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function StarSpawns(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Star Spawns";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
@@ -484,7 +475,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function ArcaneWyvern(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Arcane Wyvern";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
@@ -518,7 +508,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function AncientRune(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Ancient Rune";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
@@ -552,7 +541,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function MummyLord(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Mummy Lord";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
@@ -585,7 +573,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function EternalWatcher(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Eternal Watcher";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
@@ -619,7 +606,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function CorruptedWisp(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Corrupted Wisp";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
@@ -652,7 +638,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function MasterArcanist(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Master Arcanist";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
@@ -686,7 +671,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function ArcaneLich(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Arcane Lich";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
@@ -719,7 +703,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function Soulstealer(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Soulstealer";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
@@ -752,7 +735,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function SpellWarden(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Spell Warden";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 
@@ -785,7 +767,6 @@ contract CodexEnemiesArcane is Initializable, InitNavigator {
     }
 
     function EyeOfCosmos(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-//        _enemy.MonsterMetadata.name = "Eye of Cosmos";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.ARCANE, lvl);
 

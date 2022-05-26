@@ -130,6 +130,14 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         return _belt;
     }
 
+    function allBelt() external view returns (GameObjects.Belt[] memory){
+        GameObjects.Belt[] memory result = new GameObjects.Belt[](23);
+        for (uint i = 1; i < 23; i++) {
+            result[i - 1] = beltCore(i, 1);
+        }
+        return result;
+    }
+
     function belt(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Belt memory) {
         GameObjects.Belt memory _belt;
         GameObjects.Prefix memory _prefix;

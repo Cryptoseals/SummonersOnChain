@@ -447,7 +447,7 @@ contract CodexArea9 {
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
+        _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
         element : GameObjects.Element.COLD,

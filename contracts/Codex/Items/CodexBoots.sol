@@ -12,6 +12,14 @@ contract CodexBoots is UpgradeableCodex {
     string constant public class = "Boots";
     string constant public version = "0.0.1";
 
+    function allBoots() external view returns (GameObjects.Boots[] memory){
+        GameObjects.Boots[] memory result = new GameObjects.Boots[](64);
+        for (uint i = 1; i < 64; i++) {
+            result[i - 1] = bootsCore(i, 1);
+        }
+        return result;
+    }
+
     function boots(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Boots memory) {
         GameObjects.Boots memory _boots;
         GameObjects.Prefix memory _prefix;

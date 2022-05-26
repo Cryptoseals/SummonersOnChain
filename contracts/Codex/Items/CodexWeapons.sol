@@ -22,6 +22,14 @@ contract CodexWeapons is UpgradeableCodex {
     string constant public class = "Weapons";
     string constant public version = "0.0.1";
 
+    function allWeapons() external view returns (GameObjects.Weapon[] memory){
+        GameObjects.Weapon[] memory result = new GameObjects.Weapon[](148);
+        for (uint i = 1; i < 148; i++) {
+            result[i - 1] = weaponCore(i, 1);
+        }
+        return result;
+    }
+
     function weapon(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Weapon memory) {
         GameObjects.Weapon memory _weapon;
         GameObjects.Prefix memory _prefix;

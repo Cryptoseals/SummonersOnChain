@@ -12,6 +12,14 @@ contract CodexArmors is UpgradeableCodex {
     string constant public class = "BodyArmors";
     string constant public version = "0.0.1";
 
+    function allArmor() external view returns (GameObjects.Armor[] memory){
+        GameObjects.Armor[] memory result = new GameObjects.Armor[](64);
+        for (uint i = 1; i < 64; i++) {
+            result[i - 1] = armorCore(i, 1);
+        }
+        return result;
+    }
+
     function armor(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Armor memory) {
         GameObjects.Armor memory _armor;
         GameObjects.Prefix memory _prefix;

@@ -186,7 +186,7 @@ async function main() {
     console.log("and set in navigator.")
 
     console.log("codexArmorsMedium deployed to:", codexArmorsMedium.address,)
-    tx = await navigator.setGameContractsById(CONTRACTS.MEDIUM_ARMOR_RECIPES, codexArmorsMedium.address, true)
+    tx = await navigator.setGameContractsById(CONTRACTS.MEDIUM_ARMOR_STATS, codexArmorsMedium.address, true)
     await tx.wait(1)
     console.log("and set in navigator.")
 

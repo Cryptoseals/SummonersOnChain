@@ -12,6 +12,15 @@ contract CodexHelmets is UpgradeableCodex {
     string constant public class = "Helmets";
     string constant public version = "0.0.1";
 
+
+    function allHelmets() external view returns (GameObjects.Helmet[] memory){
+        GameObjects.Helmet[] memory result = new GameObjects.Helmet[](64);
+        for (uint i = 1; i < 64; i++) {
+            result[i - 1] = helmetCore(i, 1);
+        }
+        return result;
+    }
+
     function helmet(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Helmet memory) {
         GameObjects.Helmet memory _helmet;
         GameObjects.Prefix memory _prefix;

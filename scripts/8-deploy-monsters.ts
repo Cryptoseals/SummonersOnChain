@@ -36,7 +36,7 @@ async function main() {
     await tx.wait(1)
     console.log("baseEnemyStats CRIT set.", baseEnemyStats.address)
     tx = await baseEnemyStats.initializeCRITMULT();
-    await tx.wait(1)
+    await tx.wait(2)
     console.log("baseEnemyStats CRITM set.", baseEnemyStats.address)
     tx = await navigator.setGameContractsById(CONTRACTS.BASE_ENEMY_STATS, baseEnemyStats.address, true);
     await tx.wait(1)
@@ -138,17 +138,17 @@ async function main() {
 
 
     fs.writeFileSync(DeployedFileLocations.codex_enemies, JSON.stringify({
-        EnemyMainCodex: codexEnemy.address,
-        PhysicalMonstersCodex: physicalMonsters.address,
-        FireMonstersCodex: fireMonsters.address,
-        ColdMonstersCodex: coldMonsters.address,
-        LightningMonstersCodex: lightningMonsters.address,
-        EarthMonstersCodex: earthMonsters.address,
-        DarkMonstersCodex: darkMonsters.address,
-        HolyMonstersCodex: holyMonsters.address,
-        ArcaneMonstersCodex: arcaneMonsters.address,
-        VoidMonstersCodex: voidMonsters.address,
-        BaseStats: baseEnemyStats.address
+        enemyMainCodex: codexEnemy.address,
+        physicalMonstersCodex: physicalMonsters.address,
+        fireMonstersCodex: fireMonsters.address,
+        coldMonstersCodex: coldMonsters.address,
+        lightningMonstersCodex: lightningMonsters.address,
+        earthMonstersCodex: earthMonsters.address,
+        darkMonstersCodex: darkMonsters.address,
+        holyMonstersCodex: holyMonsters.address,
+        arcaneMonstersCodex: arcaneMonsters.address,
+        voidMonstersCodex: voidMonsters.address,
+        baseStats: baseEnemyStats.address
     }), {});
 
 }

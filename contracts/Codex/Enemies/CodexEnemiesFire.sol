@@ -5,7 +5,7 @@ import "../../Interfaces/Codex/IBaseEnemyStats.sol";
 
 pragma solidity ^0.8.0;
 
-contract CodexEnemiesFire is Initializable, InitNavigator {
+contract CodexEnemiesFire is InitNavigator {
     IBaseEnemyStats baseStats;
 
     function getAllMonsters() external view returns (IMonster.Monster[] memory){
@@ -77,7 +77,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
     //26-50 FIRE
     function FireElemental(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Fire Elemental";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -112,7 +111,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function GiantLavaWorm(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Giant Lava Worm";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -147,7 +145,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function BurningNeedle(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Burning Needle";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -182,7 +179,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function LavaNaga(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Lava Naga";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -217,7 +213,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function InfernalZombie(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Infernal Zombie";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
 
@@ -251,7 +246,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function FlameGolem(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Flame Golem";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
 
@@ -285,7 +279,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function FlameSkull(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Flame Skull";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
 
@@ -319,7 +312,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function BurningApe(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Burning Ape";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
 
@@ -353,7 +345,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function LavaTendrils(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Lava Tendrils";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -388,7 +379,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function VolcanicShaman(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Volcanic Shaman";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
 
@@ -422,7 +412,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function FlameSculpture(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Flame Sculpture";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -457,7 +446,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function Spitfire(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Spitfire";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -492,7 +480,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function InfernalTroll(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Infernal Troll";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -527,7 +514,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function Vampfire(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Vampfire";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -562,7 +548,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function CorruptedMagmus(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Corrupted Magmus";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -597,7 +582,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function CorruptedLavekans(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Corrupted Lavekans";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -632,7 +616,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function CorruptedIgnis(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Corrupted Ignis";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -667,7 +650,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function CorruptedFiredactus(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Corrupted Firedactus";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -702,7 +684,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function CorruptedChargoyle(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Corrupted Chargoyle";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -737,7 +718,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function Ashfiend(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Ashfiend";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -772,7 +752,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function Heathorn(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Heathorn";
 
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
@@ -807,7 +786,6 @@ contract CodexEnemiesFire is Initializable, InitNavigator {
     }
 
     function Kai(uint lvl) public view returns (IMonster.Monster memory _enemy) {
-        //        _enemy.MonsterMetadata.name = "Kai";
 
         _enemy.EnemyStats.INT = baseStats.enemySTAT(GameObjects.Element.FIRE, lvl);
 
