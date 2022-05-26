@@ -112,13 +112,13 @@ contract CodexFocuses is Initializable {
         _weapon.requirement.classRequirement = classRequirement();
 
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
 
 
         // bonuses here
@@ -134,13 +134,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 4;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(1);
         _weapon.generatedStatBonus = weaponGenStats(1);
     }
@@ -153,13 +153,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 9;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(2);
         _weapon.generatedStatBonus = weaponGenStats(2);
     }
@@ -172,13 +172,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 14;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(3);
         _weapon.generatedStatBonus = weaponGenStats(3);
     }
@@ -191,13 +191,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 19;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(4);
         _weapon.generatedStatBonus = weaponGenStats(4);
     }
@@ -210,13 +210,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 24;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(5);
         _weapon.generatedStatBonus = weaponGenStats(5);
     }
@@ -229,13 +229,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 29;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(6);
         _weapon.generatedStatBonus = weaponGenStats(6);
     }
@@ -248,13 +248,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 34;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(7);
         _weapon.generatedStatBonus = weaponGenStats(7);
     }
@@ -267,13 +267,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 39;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(8);
         _weapon.generatedStatBonus = weaponGenStats(8);
     }
@@ -286,13 +286,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 44;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(9);
         _weapon.generatedStatBonus = weaponGenStats(9);
     }
@@ -305,13 +305,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 49;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(10);
         _weapon.generatedStatBonus = weaponGenStats(10);
     }
@@ -324,13 +324,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 54;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(11);
         _weapon.generatedStatBonus = weaponGenStats(11);
     }
@@ -343,13 +343,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 59;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(12);
         _weapon.generatedStatBonus = weaponGenStats(12);
     }
@@ -362,13 +362,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 64;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(13);
         _weapon.generatedStatBonus = weaponGenStats(13);
     }
@@ -381,13 +381,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 69;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(14);
         _weapon.generatedStatBonus = weaponGenStats(14);
     }
@@ -400,13 +400,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 74;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(15);
         _weapon.generatedStatBonus = weaponGenStats(15);
     }
@@ -419,13 +419,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 79;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(16);
         _weapon.generatedStatBonus = weaponGenStats(16);
     }
@@ -438,13 +438,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 84;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(17);
         _weapon.generatedStatBonus = weaponGenStats(17);
     }
@@ -457,13 +457,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 89;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(18);
         _weapon.generatedStatBonus = weaponGenStats(18);
     }
@@ -476,13 +476,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 94;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(19);
         _weapon.generatedStatBonus = weaponGenStats(19);
     }
@@ -495,13 +495,13 @@ contract CodexFocuses is Initializable {
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 99;
         _weapon.requirement.classRequirement = classRequirement();
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
         _weapon.statBonus = weaponStats(20);
         _weapon.generatedStatBonus = weaponGenStats(20);
     }

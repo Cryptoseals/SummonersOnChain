@@ -106,13 +106,13 @@ contract CodexAxes is Initializable {
         _weapon.requirement.classRequirement = classRequirement();
 
 
-        _weapon.requirement.statRequirement = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0});
+//        _weapon.requirement.statRequirement = GameObjects.Stats({
+//        STR : 0,
+//        DEX : 0,
+//        AGI : 0,
+//        INT : 0,
+//        VIT : 0,
+//        LUCK : 0});
 
 
         // bonuses here
