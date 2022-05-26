@@ -6,6 +6,10 @@ import "../../Interfaces/Codex/IBaseEnemyStats.sol";
 pragma solidity ^0.8.0;
 
 contract CodexEnemiesHoly is InitNavigator {
+    string constant public index = "Codex";
+    string constant public class = "EnemiesHoly";
+    string constant public version = "0.0.1";
+
     IBaseEnemyStats baseStats;
 
     function getAllMonsters() external view returns (IMonster.Monster[] memory){

@@ -15,6 +15,10 @@ interface ICodexEnemy_ {
 
 contract CodexEnemies is Initializable, InitNavigator {
 
+    string constant public index = "Codex";
+    string constant public class = "Enemies";
+    string constant public version = "0.0.1";
+
     function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
     }
