@@ -94,8 +94,8 @@ contract CodexStaves is Initializable {
     function WoodenStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 85;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Wooden Staff";
-     //   _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Wooden Staff";
+        //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
 
         // requirements here
@@ -108,13 +108,13 @@ contract CodexStaves is Initializable {
         _weapon.requirement.classRequirement = classRequirement();
 
 
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
 
 
         // bonuses here
@@ -125,18 +125,18 @@ contract CodexStaves is Initializable {
     function MarbleStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 86;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Marble Staff";
-      //  _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Marble Staff";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 5;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(1);
         _weapon.generatedStatBonus = weaponGenStats(1);
     }
@@ -144,18 +144,18 @@ contract CodexStaves is Initializable {
     function TotemicStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 87;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Totemic Staff";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Totemic Staff";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 10;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(2);
         _weapon.generatedStatBonus = weaponGenStats(2);
     }
@@ -163,18 +163,18 @@ contract CodexStaves is Initializable {
     function AuraStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 88;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Aura Staff";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Aura Staff";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 15;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(3);
         _weapon.generatedStatBonus = weaponGenStats(3);
     }
@@ -182,18 +182,18 @@ contract CodexStaves is Initializable {
     function BattleseenStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 89;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Battleseen Staff";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Battleseen Staff";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 20;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(4);
         _weapon.generatedStatBonus = weaponGenStats(4);
     }
@@ -201,18 +201,18 @@ contract CodexStaves is Initializable {
     function WizardStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 90;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Wizard Staff";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Wizard Staff";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 25;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(5);
         _weapon.generatedStatBonus = weaponGenStats(5);
     }
@@ -220,18 +220,18 @@ contract CodexStaves is Initializable {
     function RubyStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 91;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Ruby Staff";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Ruby Staff";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 30;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(6);
         _weapon.generatedStatBonus = weaponGenStats(6);
     }
@@ -239,18 +239,18 @@ contract CodexStaves is Initializable {
     function VerdantStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 92;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Verdant Staff";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Verdant Staff";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 35;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(7);
         _weapon.generatedStatBonus = weaponGenStats(7);
     }
@@ -258,18 +258,18 @@ contract CodexStaves is Initializable {
     function StarfallensStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 93;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Starfallen's Staff";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Starfallen's Staff";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 40;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(8);
         _weapon.generatedStatBonus = weaponGenStats(8);
     }
@@ -277,18 +277,18 @@ contract CodexStaves is Initializable {
     function Lightbringer(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 94;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Lightbringer";
-      //  _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Lightbringer";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 45;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(9);
         _weapon.generatedStatBonus = weaponGenStats(9);
     }
@@ -296,18 +296,18 @@ contract CodexStaves is Initializable {
     function StaffOfMoonlight(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 95;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Staff of Moonlight";
+        //        _weapon.metadata.name = "Staff of Moonlight";
         _weapon.metadata.description = "";
-      //  _weapon.metadata.upgradable = true;
+        //  _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 50;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(10);
         _weapon.generatedStatBonus = weaponGenStats(10);
     }
@@ -315,18 +315,18 @@ contract CodexStaves is Initializable {
     function StaffOfSunlight(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 96;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Staff of Sunlight";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Staff of Sunlight";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 55;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(11);
         _weapon.generatedStatBonus = weaponGenStats(11);
     }
@@ -334,18 +334,18 @@ contract CodexStaves is Initializable {
     function CycleStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 97;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Cycle Staff";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Cycle Staff";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 60;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(12);
         _weapon.generatedStatBonus = weaponGenStats(12);
     }
@@ -353,18 +353,18 @@ contract CodexStaves is Initializable {
     function PhantasmalStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 98;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Phantasmal Staff";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Phantasmal Staff";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 65;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(13);
         _weapon.generatedStatBonus = weaponGenStats(13);
     }
@@ -372,18 +372,18 @@ contract CodexStaves is Initializable {
     function WarlocksStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 99;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Warlock's Staff";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Warlock's Staff";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 70;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(14);
         _weapon.generatedStatBonus = weaponGenStats(14);
     }
@@ -391,18 +391,18 @@ contract CodexStaves is Initializable {
     function LuminescentStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 100;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Luminescent Staff";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Luminescent Staff";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 75;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(15);
         _weapon.generatedStatBonus = weaponGenStats(15);
     }
@@ -410,18 +410,18 @@ contract CodexStaves is Initializable {
     function AncientElementalistsStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 101;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Ancient Elementalist's Staff";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Ancient Elementalist's Staff";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 80;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(16);
         _weapon.generatedStatBonus = weaponGenStats(16);
     }
@@ -429,18 +429,18 @@ contract CodexStaves is Initializable {
     function Spellcatcher(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 102;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Spellcatcher";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Spellcatcher";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 85;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(17);
         _weapon.generatedStatBonus = weaponGenStats(17);
     }
@@ -448,18 +448,18 @@ contract CodexStaves is Initializable {
     function IncursionStaff(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 103;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Incursion Staff";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Incursion Staff";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 90;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(18);
         _weapon.generatedStatBonus = weaponGenStats(18);
     }
@@ -467,18 +467,18 @@ contract CodexStaves is Initializable {
     function EldersMark(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 104;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Elder's Mark";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Elder's Mark";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 95;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(19);
         _weapon.generatedStatBonus = weaponGenStats(19);
     }
@@ -486,18 +486,18 @@ contract CodexStaves is Initializable {
     function Soultrapper(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 105;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-//        _weapon.metadata.name = "Soultrapper";
-       // _weapon.metadata.description = "";
+        //        _weapon.metadata.name = "Soultrapper";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 100;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _weapon.requirement.statRequirement = GameObjects.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
         _weapon.statBonus = weaponStats(20);
         _weapon.generatedStatBonus = weaponGenStats(20);
     }

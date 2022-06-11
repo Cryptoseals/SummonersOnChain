@@ -130,7 +130,9 @@ interface INavigator {
         AREA_14,
         AREA_15,
         AREA_16,
-        REWARDS
+        REWARDS,
+        CHESTS,
+        WORLD_BOSS
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;

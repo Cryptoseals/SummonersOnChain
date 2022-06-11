@@ -11,7 +11,7 @@ contract CodexShields is Initializable {
     uint[21] public BASE_HP;
     uint[21] public BASE_MDEF;
     uint[21] public BASE_PDEF;
-//    uint[21] public BASE_ACCURACY;
+    //    uint[21] public BASE_ACCURACY;
     uint[21] public BASE_DODGE;
 
     function initialize(
@@ -21,7 +21,7 @@ contract CodexShields is Initializable {
         uint[21] memory _BASE_HP,
         uint[21] memory _BASE_MDEF,
         uint[21] memory _BASE_PDEF,
-//        uint[21] memory _BASE_ACCURACY,
+    //        uint[21] memory _BASE_ACCURACY,
         uint[21] memory _BASE_DODGE
     ) external initializer {
         BASE_STR = _BASE_STR;
@@ -30,7 +30,7 @@ contract CodexShields is Initializable {
         BASE_HP = _BASE_HP;
         BASE_MDEF = _BASE_MDEF;
         BASE_PDEF = _BASE_PDEF;
-//        BASE_ACCURACY = _BASE_ACCURACY;
+        //        BASE_ACCURACY = _BASE_ACCURACY;
         BASE_DODGE = _BASE_DODGE;
     }
 
@@ -95,8 +95,8 @@ contract CodexShields is Initializable {
     function SmallWoodenShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 127;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Small Wooden Shield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Small Wooden Shield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
 
         // requirements here
@@ -110,7 +110,7 @@ contract CodexShields is Initializable {
         _weapon.requirement.classRequirement = classRequirement();
 
 
-       // _weapon.requirement.statRequirement = GameObjects.Stats({
+        // _weapon.requirement.statRequirement = GameObjects.Stats({
         //STR : 0,
         //DEX : 0,
         //AGI : 0,
@@ -128,19 +128,19 @@ contract CodexShields is Initializable {
     function SmallCopperShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 128;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Small Copper Shield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Small Copper Shield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 4;
 
         _weapon.requirement.classRequirement = classRequirement();
-       // _weapon.requirement.statRequirement = GameObjects.Stats({
-       // STR : 0,
-       // DEX : 0,
-       // AGI : 0,
-      //  INT : 0,
-       // VIT : 0,
-       // LUCK : 0});
+        // _weapon.requirement.statRequirement = GameObjects.Stats({
+        // STR : 0,
+        // DEX : 0,
+        // AGI : 0,
+        //  INT : 0,
+        // VIT : 0,
+        // LUCK : 0});
         _weapon.statBonus = weaponStats(1);
         _weapon.generatedStatBonus = weaponGenStats(1);
         _weapon.elementalStats.ElementalDef = weaponEle(1);
@@ -149,19 +149,19 @@ contract CodexShields is Initializable {
     function MediumCopperShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 129;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Medium Copper Shield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Medium Copper Shield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 9;
 
         _weapon.requirement.classRequirement = classRequirement();
-       // _weapon.requirement.statRequirement = GameObjects.Stats({
-       // STR : 0,
-       // DEX : 0,
-       // AGI : 0,
-       // INT : 0,
-       // VIT : 0,
-       // LUCK : 0});
+        // _weapon.requirement.statRequirement = GameObjects.Stats({
+        // STR : 0,
+        // DEX : 0,
+        // AGI : 0,
+        // INT : 0,
+        // VIT : 0,
+        // LUCK : 0});
         _weapon.statBonus = weaponStats(2);
         _weapon.generatedStatBonus = weaponGenStats(2);
         _weapon.elementalStats.ElementalDef = weaponEle(2);
@@ -170,19 +170,19 @@ contract CodexShields is Initializable {
     function SmallTinShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 130;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Small Tin Shield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Small Tin Shield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 14;
 
         _weapon.requirement.classRequirement = classRequirement();
-      //  _weapon.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-     //   AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
+        //  _weapon.requirement.statRequirement = GameObjects.Stats({
+        //  STR : 0,
+        //  DEX : 0,
+        //   AGI : 0,
+        //  INT : 0,
+        //  VIT : 0,
+        //  LUCK : 0});
         _weapon.statBonus = weaponStats(3);
         _weapon.generatedStatBonus = weaponGenStats(3);
         _weapon.elementalStats.ElementalDef = weaponEle(3);
@@ -191,19 +191,19 @@ contract CodexShields is Initializable {
     function MediumTinShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 131;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Medium Tin Shield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Medium Tin Shield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 19;
 
         _weapon.requirement.classRequirement = classRequirement();
-     //   _weapon.requirement.statRequirement = GameObjects.Stats({
-     //   STR : 0,
-     //   DEX : 0,
-     //   AGI : 0,
-     //   INT : 0,
-     //   VIT : 0,
-     //   LUCK : 0});
+        //   _weapon.requirement.statRequirement = GameObjects.Stats({
+        //   STR : 0,
+        //   DEX : 0,
+        //   AGI : 0,
+        //   INT : 0,
+        //   VIT : 0,
+        //   LUCK : 0});
         _weapon.statBonus = weaponStats(4);
         _weapon.generatedStatBonus = weaponGenStats(4);
         _weapon.elementalStats.ElementalDef = weaponEle(4);
@@ -212,19 +212,19 @@ contract CodexShields is Initializable {
     function SilverShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 132;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-       // _weapon.metadata.name = "Silver Shield";
-      //  _weapon.metadata.description = "";
+        // _weapon.metadata.name = "Silver Shield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 24;
 
         _weapon.requirement.classRequirement = classRequirement();
-      //  _weapon.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-       // VIT : 0,
-       // LUCK : 0});
+        //  _weapon.requirement.statRequirement = GameObjects.Stats({
+        //  STR : 0,
+        //  DEX : 0,
+        //  AGI : 0,
+        //  INT : 0,
+        // VIT : 0,
+        // LUCK : 0});
         _weapon.statBonus = weaponStats(5);
         _weapon.generatedStatBonus = weaponGenStats(5);
         _weapon.elementalStats.ElementalDef = weaponEle(5);
@@ -233,19 +233,19 @@ contract CodexShields is Initializable {
     function GoldenShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 133;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Chitin Shield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Chitin Shield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 29;
 
         _weapon.requirement.classRequirement = classRequirement();
-      //  _weapon.requirement.statRequirement = GameObjects.Stats({
-       // STR : 0,
-      //  DEX : 0,
-     //   AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
+        //  _weapon.requirement.statRequirement = GameObjects.Stats({
+        // STR : 0,
+        //  DEX : 0,
+        //   AGI : 0,
+        //  INT : 0,
+        //  VIT : 0,
+        //  LUCK : 0});
         _weapon.statBonus = weaponStats(6);
         _weapon.generatedStatBonus = weaponGenStats(6);
         _weapon.elementalStats.ElementalDef = weaponEle(6);
@@ -254,19 +254,19 @@ contract CodexShields is Initializable {
     function MythrilShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 134;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Mythril Shield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Mythril Shield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 34;
 
         _weapon.requirement.classRequirement = classRequirement();
-       // _weapon.requirement.statRequirement = GameObjects.Stats({
-       // STR : 0,
-       // DEX : 0,
-       // AGI : 0,
-       // INT : 0,
-       // VIT : 0,
-       // LUCK : 0});
+        // _weapon.requirement.statRequirement = GameObjects.Stats({
+        // STR : 0,
+        // DEX : 0,
+        // AGI : 0,
+        // INT : 0,
+        // VIT : 0,
+        // LUCK : 0});
         _weapon.statBonus = weaponStats(7);
         _weapon.generatedStatBonus = weaponGenStats(7);
         _weapon.elementalStats.ElementalDef = weaponEle(7);
@@ -275,19 +275,19 @@ contract CodexShields is Initializable {
     function DarksteelShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 135;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-     //   _weapon.metadata.name = "Darksteel Shield";
-     //   _weapon.metadata.description = "";
+        //   _weapon.metadata.name = "Darksteel Shield";
+        //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 39;
 
         _weapon.requirement.classRequirement = classRequirement();
-      //  _weapon.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-       // INT : 0,
-      //  VIT : 0,
-       // LUCK : 0});
+        //  _weapon.requirement.statRequirement = GameObjects.Stats({
+        //  STR : 0,
+        //  DEX : 0,
+        //  AGI : 0,
+        // INT : 0,
+        //  VIT : 0,
+        // LUCK : 0});
         _weapon.statBonus = weaponStats(8);
         _weapon.generatedStatBonus = weaponGenStats(8);
         _weapon.elementalStats.ElementalDef = weaponEle(8);
@@ -296,19 +296,19 @@ contract CodexShields is Initializable {
     function OricalchumShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 136;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Oricalchum Shield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Oricalchum Shield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 44;
 
         _weapon.requirement.classRequirement = classRequirement();
-      //  _weapon.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
+        //  _weapon.requirement.statRequirement = GameObjects.Stats({
+        //  STR : 0,
+        //  DEX : 0,
+        //  AGI : 0,
+        //  INT : 0,
+        //  VIT : 0,
+        //  LUCK : 0});
         _weapon.statBonus = weaponStats(9);
         _weapon.generatedStatBonus = weaponGenStats(9);
         _weapon.elementalStats.ElementalDef = weaponEle(9);
@@ -317,19 +317,19 @@ contract CodexShields is Initializable {
     function MoonlightShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 137;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Moonlightshield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Moonlightshield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 49;
 
         _weapon.requirement.classRequirement = classRequirement();
-      //  _weapon.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
+        //  _weapon.requirement.statRequirement = GameObjects.Stats({
+        //  STR : 0,
+        //  DEX : 0,
+        //  AGI : 0,
+        //  INT : 0,
+        //  VIT : 0,
+        //  LUCK : 0});
         _weapon.statBonus = weaponStats(10);
         _weapon.generatedStatBonus = weaponGenStats(10);
         _weapon.elementalStats.ElementalDef = weaponEle(10);
@@ -338,19 +338,19 @@ contract CodexShields is Initializable {
     function SunlightShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 138;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Sunlightshield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Sunlightshield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 54;
 
         _weapon.requirement.classRequirement = classRequirement();
-      //  _weapon.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-     //   AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
+        //  _weapon.requirement.statRequirement = GameObjects.Stats({
+        //  STR : 0,
+        //  DEX : 0,
+        //   AGI : 0,
+        //  INT : 0,
+        //  VIT : 0,
+        //  LUCK : 0});
         _weapon.statBonus = weaponStats(11);
         _weapon.generatedStatBonus = weaponGenStats(11);
         _weapon.elementalStats.ElementalDef = weaponEle(11);
@@ -359,19 +359,19 @@ contract CodexShields is Initializable {
     function CycleShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 139;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Cycle Shield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Cycle Shield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 59;
 
         _weapon.requirement.classRequirement = classRequirement();
-      //  _weapon.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-       // LUCK : 0});
+        //  _weapon.requirement.statRequirement = GameObjects.Stats({
+        //  STR : 0,
+        //  DEX : 0,
+        //  AGI : 0,
+        //  INT : 0,
+        //  VIT : 0,
+        // LUCK : 0});
         _weapon.statBonus = weaponStats(12);
         _weapon.generatedStatBonus = weaponGenStats(12);
         _weapon.elementalStats.ElementalDef = weaponEle(12);
@@ -380,19 +380,19 @@ contract CodexShields is Initializable {
     function PhantasmalShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 140;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Phantasmal Shield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Phantasmal Shield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 64;
 
         _weapon.requirement.classRequirement = classRequirement();
-      //  _weapon.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
+        //  _weapon.requirement.statRequirement = GameObjects.Stats({
+        //  STR : 0,
+        //  DEX : 0,
+        //  AGI : 0,
+        //  INT : 0,
+        //  VIT : 0,
+        //  LUCK : 0});
         _weapon.statBonus = weaponStats(13);
         _weapon.generatedStatBonus = weaponGenStats(13);
         _weapon.elementalStats.ElementalDef = weaponEle(13);
@@ -401,19 +401,19 @@ contract CodexShields is Initializable {
     function HolyPaladinsShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 141;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Holy Paladin's Shield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Holy Paladin's Shield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 69;
 
         _weapon.requirement.classRequirement = classRequirement();
-      //  _weapon.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-       // DEX : 0,
-       // AGI : 0,
-       // INT : 0,
-       // VIT : 0,
-       // LUCK : 0});
+        //  _weapon.requirement.statRequirement = GameObjects.Stats({
+        //  STR : 0,
+        // DEX : 0,
+        // AGI : 0,
+        // INT : 0,
+        // VIT : 0,
+        // LUCK : 0});
         _weapon.statBonus = weaponStats(14);
         _weapon.generatedStatBonus = weaponGenStats(14);
         _weapon.elementalStats.ElementalDef = weaponEle(14);
@@ -422,19 +422,19 @@ contract CodexShields is Initializable {
     function LuminousShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 142;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Luminous Shield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Luminous Shield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 74;
 
         _weapon.requirement.classRequirement = classRequirement();
-      //  _weapon.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
+        //  _weapon.requirement.statRequirement = GameObjects.Stats({
+        //  STR : 0,
+        //  DEX : 0,
+        //  AGI : 0,
+        //  INT : 0,
+        //  VIT : 0,
+        //  LUCK : 0});
         _weapon.statBonus = weaponStats(15);
         _weapon.generatedStatBonus = weaponGenStats(15);
         _weapon.elementalStats.ElementalDef = weaponEle(15);
@@ -443,19 +443,19 @@ contract CodexShields is Initializable {
     function ShieldOfCalamity(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 143;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Shield of Calamity";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Shield of Calamity";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 79;
 
         _weapon.requirement.classRequirement = classRequirement();
-       // _weapon.requirement.statRequirement = GameObjects.Stats({
-       // STR : 0,
-      //  DEX : 0,
-       // AGI : 0,
-       // INT : 0,
-       // VIT : 0,
-       // LUCK : 0});
+        // _weapon.requirement.statRequirement = GameObjects.Stats({
+        // STR : 0,
+        //  DEX : 0,
+        // AGI : 0,
+        // INT : 0,
+        // VIT : 0,
+        // LUCK : 0});
         _weapon.statBonus = weaponStats(16);
         _weapon.generatedStatBonus = weaponGenStats(16);
         _weapon.elementalStats.ElementalDef = weaponEle(16);
@@ -464,19 +464,19 @@ contract CodexShields is Initializable {
     function Reflector(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 144;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Reflector";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Reflector";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 84;
 
         _weapon.requirement.classRequirement = classRequirement();
-      //  _weapon.requirement.statRequirement = GameObjects.Stats({
-       // STR : 0,
-       // DEX : 0,
-       // AGI : 0,
-       // INT : 0,
-       // VIT : 0,
-       // LUCK : 0});
+        //  _weapon.requirement.statRequirement = GameObjects.Stats({
+        // STR : 0,
+        // DEX : 0,
+        // AGI : 0,
+        // INT : 0,
+        // VIT : 0,
+        // LUCK : 0});
         _weapon.statBonus = weaponStats(17);
         _weapon.generatedStatBonus = weaponGenStats(17);
         _weapon.elementalStats.ElementalDef = weaponEle(17);
@@ -485,18 +485,18 @@ contract CodexShields is Initializable {
     function EssenceCapacitorShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 145;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Essence Capacitor Shield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Essence Capacitor Shield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 89;
         _weapon.requirement.classRequirement = classRequirement();
-      //  _weapon.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
+        //  _weapon.requirement.statRequirement = GameObjects.Stats({
+        //  STR : 0,
+        //  DEX : 0,
+        //  AGI : 0,
+        //  INT : 0,
+        //  VIT : 0,
+        //  LUCK : 0});
         _weapon.statBonus = weaponStats(18);
         _weapon.generatedStatBonus = weaponGenStats(18);
         _weapon.elementalStats.ElementalDef = weaponEle(18);
@@ -505,18 +505,18 @@ contract CodexShields is Initializable {
     function AetherealShield(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 146;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-      //  _weapon.metadata.name = "Aethereal Shield";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Aethereal Shield";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 94;
         _weapon.requirement.classRequirement = classRequirement();
-      //  _weapon.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
+        //  _weapon.requirement.statRequirement = GameObjects.Stats({
+        //  STR : 0,
+        //  DEX : 0,
+        //  AGI : 0,
+        //  INT : 0,
+        //  VIT : 0,
+        //  LUCK : 0});
         _weapon.statBonus = weaponStats(19);
         _weapon.generatedStatBonus = weaponGenStats(19);
         _weapon.elementalStats.ElementalDef = weaponEle(19);
@@ -525,18 +525,18 @@ contract CodexShields is Initializable {
     function TheProtector(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 147;
         _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
-       // _weapon.metadata.name = "TheProtector";
-       // _weapon.metadata.description = "";
+        // _weapon.metadata.name = "TheProtector";
+        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 99;
         _weapon.requirement.classRequirement = classRequirement();
-      //  _weapon.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
+        //  _weapon.requirement.statRequirement = GameObjects.Stats({
+        //  STR : 0,
+        //  DEX : 0,
+        //  AGI : 0,
+        //  INT : 0,
+        //  VIT : 0,
+        //  LUCK : 0});
         _weapon.statBonus = weaponStats(20);
         _weapon.generatedStatBonus = weaponGenStats(20);
         _weapon.elementalStats.ElementalDef = weaponEle(20);

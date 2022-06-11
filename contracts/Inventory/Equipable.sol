@@ -237,7 +237,8 @@ contract Equipable is Initializable, InitNavigator {
         delete EquippedSeals[summoner];
     }
 
-    function unequip(uint summoner, GameObjects.ItemType _type) external ensureNotPaused senderIsSummonerOwner(summoner) {
+    function unequip(uint summoner, GameObjects.ItemType _type) external ensureNotPaused
+    senderIsSummonerOwner(summoner) {
         uint id;
         if (_type == GameObjects.ItemType.WEAPON) {
             id = EquippedGears[summoner][GameObjects.ItemType.WEAPON].tokenId;

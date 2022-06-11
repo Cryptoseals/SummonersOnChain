@@ -5,6 +5,8 @@ import "../Interfaces/GameObjects/IGameObjects.sol";
 import "../Core/Navigator/InitNavigator.sol";
 import "../Core/Common/Errors.sol";
 import "../Interfaces/Core/Constants/Constants.sol";
+import "../Interfaces/Attributes/IAttributes.sol";
+import "../Interfaces/Inventory/IEquipable.sol";
 
 
 
@@ -122,21 +124,29 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     }
 
     function summonerFullDetails(uint id)
-    external view returns (
+    public view returns (
         GameEntities.SummonerData memory _data,
         GameEntities.SummonerMetadata memory _metadata,
-        GameEntities.SummonerState _state,
-        GameObjects.Stats memory _stats,
-        GameObjects.GeneratedStats memory _gen_stats,
-        GameObjects.ElementalStats memory _ele_stats
+        GameObjects.Stats memory _base_stats,
+        GameObjects.Stats memory,
+        GameObjects.GeneratedStats memory,
+        GameObjects.ElementalStats memory
     ){
         _data.level = SummonerLevels[id];
         _data.class = SummonerClasses[id];
         _data.state = SummonerState[id];
         _data.EXP = SummonerEXP[id];
+        _base_stats = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(id);
 
-        _metadata.summonerName;
-
+        (
+        GameObjects.Stats memory _stats,
+        GameObjects.GeneratedStats memory _gen_stats,
+        GameObjects.ElementalStats memory _ele_stats
+        ) = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY)).getSummonerBattleStats(id);
+        return (
+        _data, _metadata, _base_stats,
+        _stats, _gen_stats, _ele_stats
+        );
     }
 
     function tokensOfOwner(address _owner) public view returns (uint[] memory) {

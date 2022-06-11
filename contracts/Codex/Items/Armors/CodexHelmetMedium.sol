@@ -586,9 +586,9 @@ contract CodexHelmetsMedium is Initializable {
 
     function classRequirement() internal view returns (GameObjects.Class[] memory) {
         GameObjects.Class[] memory _reqClass = new GameObjects.Class[](3);
-        _reqClass[0] = GameObjects.Class.Barbarian;
-        _reqClass[1] = GameObjects.Class.Paladin;
-        _reqClass[2] = GameObjects.Class.Necromancer;
+        _reqClass[0] = GameObjects.Class.Assassin;
+        _reqClass[1] = GameObjects.Class.Ranger;
+        _reqClass[2] = GameObjects.Class.Engineer;
         return _reqClass;
     }
 }

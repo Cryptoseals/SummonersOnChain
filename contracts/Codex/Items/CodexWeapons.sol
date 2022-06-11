@@ -100,7 +100,7 @@ contract CodexWeapons is UpgradeableCodex {
 
         } else if (_equipable.itemId > 63 && _equipable.itemId < 85) {
             // Axe
-            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.BOW_STATS)).weapon(_equipable.itemId, _equipable.itemTier);
+            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.AXE_STATS)).weapon(_equipable.itemId, _equipable.itemTier);
 
             if (_equipable.element == GameObjects.Element.FIRE) {
                 _weapon.elementalStats.ElementalAtk.FIRE_ATK = _weapon.generatedStatBonus.P_ATK;

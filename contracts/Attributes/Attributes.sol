@@ -82,6 +82,12 @@ contract Attributes is Initializable, InitNavigator {
 //        if (UsedPoints[summoner] < 1) revert AlreadyAllocated(summoner, "NOT ALLOCATED");
         _stats = SummonerStats[summoner];
     }
+    function statsOfSummoners(uint[] memory ids) external view returns (GameObjects.Stats memory _stats) {
+//        if (UsedPoints[summoner] < 1) revert AlreadyAllocated(summoner, "NOT ALLOCATED");
+        for (uint i = 0; i < ids.length; i++) {
+            _stats = SummonerStats[ids[i]];
+        }
+    }
 
     function totalPointsOfSummoner(uint summoner) public view returns (uint) {
         ISummoners Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
