@@ -582,10 +582,9 @@ contract CodexArmorsHeavy is Initializable {
     }
 
     function classRequirement() internal view returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](3);
+        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](2);
         _reqClass[0] = GameObjects.Class.Barbarian;
         _reqClass[1] = GameObjects.Class.Paladin;
-        _reqClass[2] = GameObjects.Class.Necromancer;
         return _reqClass;
     }
 }

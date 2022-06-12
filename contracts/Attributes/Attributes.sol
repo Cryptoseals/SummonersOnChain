@@ -33,7 +33,7 @@ contract Attributes is Initializable, InitNavigator {
         uint _usedPoints = calculator.SumOfStatSetCost(_stats);
 
         // check if exceeds initial points
-        require(GameConstants.SUMMONER_INITIAL_STAT_POINTS >= _usedPoints, "NOT ENOUGH POINTS");
+        require(GameConstants.SUMMONER_INITIAL_STAT_POINTS == _usedPoints, "?30");
         SummonerStats[summoner] = GameObjects.Stats({STR: _stats.STR*10, AGI: _stats.AGI*10, DEX: _stats.DEX*10, INT: _stats.INT*10, VIT:_stats.VIT*10, LUCK : _stats.LUCK*10});
         UsedPoints[summoner] = _usedPoints;
     }

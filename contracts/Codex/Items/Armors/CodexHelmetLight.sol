@@ -584,9 +584,10 @@ contract CodexHelmetsLight is Initializable {
     }
 
     function classRequirement() internal view returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](2);
+        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](3);
         _reqClass[0] = GameObjects.Class.Wizard;
         _reqClass[1] = GameObjects.Class.Priest;
+        _reqClass[2] = GameObjects.Class.Necromancer;
         return _reqClass;
     }
 }
