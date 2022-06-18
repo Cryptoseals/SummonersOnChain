@@ -192,7 +192,6 @@ contract Calculator is Initializable, InitNavigator {
         _battleStats2.HIT_CHANCE = HitChance(_gen_stats2.ACCURACY, _gen_stats1.DODGE);
 
 
-
     }
 
     // generated value based calculations
@@ -324,13 +323,13 @@ contract Calculator is Initializable, InitNavigator {
         _stats = EquipableUtils.sumStats(_summonerStats, _stats);
         _generated_stats = EquipableUtils.sumGeneratedStats(_gen_stats_eq, _gen_stats_fx);
         _generated_stats.HP += ((_stats.VIT / 15) * 4) + (lvl * 10);
-        //        _generated_stats.CRIT = CRITW(_generated_stats.CRIT, _stats.LUCK);
-        //        _generated_stats.ACCURACY = ACCU(_generated_stats.ACCURACY, _stats.DEX);
+        _generated_stats.CRIT = CRITW(_generated_stats.CRIT, _stats.LUCK);
+        _generated_stats.ACCURACY = ACCU(_generated_stats.ACCURACY, _stats.DEX);
+        _generated_stats.DODGE = DODGEWDecimals(_generated_stats.DODGE, _stats.AGI);
         //        _generated_stats.P_ATK = ATK(_generated_stats.P_ATK, _stats.STR);
         //        _generated_stats.M_ATK = ATK(_generated_stats.M_ATK, _stats.INT);
-        //        _generated_stats.P_DEF = DEFW(_generated_stats.P_DEF, _stats.VIT, lvl);
-        //        _generated_stats.M_DEF = DEFW(_generated_stats.M_DEF, _stats.INT, lvl);
-        //        _generated_stats.DODGE = DODGEWDecimals(_generated_stats.DODGE, _stats.AGI);
+        _generated_stats.P_DEF = DEFW(_generated_stats.P_DEF, _stats.VIT, lvl);
+        _generated_stats.M_DEF = DEFW(_generated_stats.M_DEF, _stats.INT, lvl);
         _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats_eq, _ele_stats_fx);
     }
 

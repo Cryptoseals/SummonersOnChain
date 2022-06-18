@@ -3,8 +3,9 @@ pragma solidity ^0.8.0;
 interface ICraftingMaterials {
 
     enum MaterialTypes {
-        ORE,
         WOOD,
+        ORE,
+        LEATHER,
         CLOTH,
         GEMSTONE
     }

@@ -44,6 +44,8 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
             _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.ORE_PROCESSING_RECIPES)).recipe(targetMaterial, amount);
         } else if (materialType == ICraftingMaterials.MaterialTypes.WOOD) {
             _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.WOOD_PROCESSING_RECIPES)).recipe(targetMaterial, amount);
+        } else if (materialType == ICraftingMaterials.MaterialTypes.LEATHER) {
+            _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.LEATHER_PROCESSING_RECIPES)).recipe(targetMaterial, amount);
         } else if (materialType == ICraftingMaterials.MaterialTypes.CLOTH) {
             _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.CLOTH_PROCESSING_RECIPES)).recipe(targetMaterial, amount);
         } else if (materialType == ICraftingMaterials.MaterialTypes.GEMSTONE) {

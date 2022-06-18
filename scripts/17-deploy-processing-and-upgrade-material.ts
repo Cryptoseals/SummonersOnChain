@@ -1,4 +1,3 @@
-
 // We require the Hardhat Runtime Environment explicitly here. This is optional
 // but useful for running the script in a standalone fashion through `node <script>`.
 //
@@ -40,6 +39,14 @@ async function main() {
     await tx.wait(1)
     console.log("and set in navigator.")
 
+    let ProcessingLeatherRecipes = await ethers.getContractFactory("ProcessingLeatherRecipes")
+    let processingLeatherRecipes = await upgrades.deployProxy(ProcessingLeatherRecipes);
+    await processingLeatherRecipes.deployed()
+    console.log("processingLeatherRecipes deployed to:", processingLeatherRecipes.address,)
+    tx = await navigator.setGameContractsById(CONTRACTS.LEATHER_PROCESSING_RECIPES, processingLeatherRecipes.address, true)
+    await tx.wait(1)
+    console.log("and set in navigator.")
+
     let ProcessingWoodRecipes = await ethers.getContractFactory("ProcessingWoodRecipes")
     let processingWoodRecipes = await upgrades.deployProxy(ProcessingWoodRecipes);
     await processingWoodRecipes.deployed()
@@ -71,6 +78,15 @@ async function main() {
     await upgradingOreRecipes.deployed()
     console.log("upgradingOreRecipes deployed to:", upgradingOreRecipes.address,)
     tx = await navigator.setGameContractsById(CONTRACTS.ORE_UPGRADING_RECIPES, upgradingOreRecipes.address, true)
+    await tx.wait(1)
+    console.log("and set in navigator.")
+
+
+    let UpgradingLeatherRecipes = await ethers.getContractFactory("UpgradingLeatherRecipes")
+    let upgradingLeatherRecipes = await upgrades.deployProxy(UpgradingLeatherRecipes);
+    await upgradingLeatherRecipes.deployed()
+    console.log("upgradingLeatherRecipes deployed to:", upgradingLeatherRecipes.address,)
+    tx = await navigator.setGameContractsById(CONTRACTS.LEATHER_UPGRADING_RECIPES, upgradingLeatherRecipes.address, true)
     await tx.wait(1)
     console.log("and set in navigator.")
 
