@@ -104,10 +104,12 @@ async function main() {
         processing_g: processingGemstoneRecipes.address,
         processing_w: processingWoodRecipes.address,
         processing_o: processingOreRecipes.address,
+        processing_l: processingLeatherRecipes.address,
         upgrading_c: upgradingClothRecipes.address,
         upgrading_g: upgradingGemstoneRecipes.address,
         upgrading_w: upgradingWoodRecipes.address,
         upgrading_o: upgradingOreRecipes.address,
+        upgrading_l: upgradingLeatherRecipes.address,
     }))
 
 }
