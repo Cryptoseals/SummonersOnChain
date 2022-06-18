@@ -6,7 +6,7 @@ typechain
 .idea
 data
 data/
-.openzeppelin/
+/.openzeppelin/
 scripts/deployed-contracts/
 
 #Hardhat files
@@ -16,3 +16,4 @@ typechain-types
 analysis
 last-deploy.json
 test/last-deploy.json
+/scripts/deployed-contracts/
