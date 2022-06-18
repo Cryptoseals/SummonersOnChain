@@ -6,6 +6,7 @@
 import {ethers, upgrades} from "hardhat";
 import * as fs from 'fs'
 import {CONTRACTS, DeployedFileLocations} from './helpers/constants'
+import {RequiredExp} from "./helpers/requiredExp";
 
 async function main() {
 
@@ -15,7 +16,7 @@ async function main() {
 
 
     let Summoners = await ethers.getContractFactory("Summoners")
-    let summoners = await upgrades.deployProxy(Summoners, [navigator.address]);
+    let summoners = await upgrades.deployProxy(Summoners, [navigator.address, RequiredExp]);
     await summoners.deployed()
     console.log("summoners deployed to:", summoners.address,)
     let tx = await navigator.setGameContractsById(CONTRACTS.SUMMONERS, summoners.address, true)

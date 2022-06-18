@@ -4,7 +4,9 @@ pragma solidity ^0.8.0;
 
 interface IAdventures {
     function attack(uint summoner, uint multiplier) external;
+
     function settleBattle(uint summoner) external;
+
     function flee(uint summoner) external;
 }
 

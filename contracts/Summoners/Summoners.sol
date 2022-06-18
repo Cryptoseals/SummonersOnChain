@@ -26,9 +26,13 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     mapping(uint => uint) public SummonerEXP;
     mapping(uint => uint) public SummonerLevels;
 
-    function initialize(address _navigator) external initializer {
+
+    uint[] public LevelToRequiredExp;
+
+    function initialize(address _navigator, uint[] memory exps) external initializer {
         initializeNavigator(_navigator);
         __ERC721_init("Summoners on Chain Season 1", "SoC1");
+        LevelToRequiredExp = exps;
     }
 
     function mintSummoner(GameObjects.Class _class) external {
@@ -59,10 +63,9 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     }
 
     function _levelUp(uint id) internal {
-        uint nextLevel = SummonerLevels[id] + 1;
-        uint requiredXP = nextLevel * GameConstants.XP_PER_LEVEL;
-        require(SummonerEXP[id] >= requiredXP, "NOT ENOUGH XP");
-        _spendXP(id, requiredXP);
+        require(SummonerLevels[id] <= 100, "max.");
+        require(SummonerEXP[id] >= LevelToRequiredExp[SummonerLevels[id]], "NOT ENOUGH XP");
+        _spendXP(id, LevelToRequiredExp[SummonerLevels[id]]);
         SummonerLevels[id]++;
     }
 

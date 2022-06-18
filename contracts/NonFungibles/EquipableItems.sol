@@ -53,10 +53,11 @@ ERC721EnumerableUpgradeable
 
     function mintBeginnerSet(uint summoner, address to, GameObjects.Class _class) external onlyGameContracts {
         uint256 nextToken = totalSupply() + 1;
-        (uint weaponId, uint armorId, uint offhandId) = getDefaultItems(_class);
+        (uint weaponId, uint armorId, uint offhandId, GameObjects.Element ele) = getDefaultItems(_class);
 
         tokenToType[nextToken] = GameObjects.ItemType.WEAPON;
         tokenToItemId[nextToken] = weaponId;
+        tokenElement[nextToken] = ele;
         _mint(to, nextToken);
         nextToken++;
 
@@ -77,7 +78,6 @@ ERC721EnumerableUpgradeable
         tokenToType[nextToken] = GameObjects.ItemType.BOOTS;
         tokenToItemId[nextToken] = armorId;
         _mint(to, nextToken);
-
 
 
         // COMMON
@@ -105,7 +105,7 @@ ERC721EnumerableUpgradeable
 
     }
 
-    function getDefaultItems(GameObjects.Class _class) internal view returns (uint weaponId, uint armorId, uint offhandId) {
+    function getDefaultItems(GameObjects.Class _class) internal view returns (uint weaponId, uint armorId, uint offhandId, GameObjects.Element _wEle) {
         if (_class == GameObjects.Class.Barbarian) {
             weaponId = 1;
             armorId = 1;
@@ -124,14 +124,17 @@ ERC721EnumerableUpgradeable
             weaponId = 85;
             armorId = 43;
             offhandId = 106;
+            _wEle = GameObjects.Element.ARCANE;
         } else if (_class == GameObjects.Class.Necromancer) {
             weaponId = 64;
             armorId = 43;
             offhandId = 106;
+            _wEle = GameObjects.Element.ARCANE;
         } else if (_class == GameObjects.Class.Priest) {
             weaponId = 85;
             armorId = 43;
             offhandId = 106;
+            _wEle = GameObjects.Element.ARCANE;
         } else if (_class == GameObjects.Class.Engineer) {
             weaponId = 1;
             armorId = 22;

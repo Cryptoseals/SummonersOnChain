@@ -34,7 +34,8 @@ contract Reward is InitNavigator {
     }
 
     function rewardGold(address to, IGameRewards.CurrencyRewards memory _reward, uint multiplier, uint optionalNonce) internal {
-        uint roll = RNG.dn(block.number + optionalNonce + nonce, _reward.goldRewards.maxAmount - _reward.goldRewards.minAmount);
+        uint roll = RNG.dn(block.number + optionalNonce + nonce,
+            _reward.goldRewards.maxAmount - _reward.goldRewards.minAmount);
         uint wODecimals = (roll - (roll % 1e17)) + _reward.goldRewards.minAmount;
         wODecimals = percentage(wODecimals, multiplier);
         IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD)).rewardToken(to, wODecimals);
@@ -58,34 +59,39 @@ contract Reward is InitNavigator {
 
             uint amount = RNG.dn(block.number + optionalNonce + 2, _miscRewards.rewards[pick].maxAmount - _miscRewards.rewards[pick].minAmount);
 
-            amount = percentage(amount, multiplier);
+            amount = percentage(amount + _miscRewards.rewards[pick].minAmount, multiplier);
 
             IRewardNonFungible(contractAddress(INavigator.CONTRACT.MISC_ITEMS)).rewardMiscItem(
                 to,
                 _miscRewards.rewards[pick].miscType,
-                amount + _miscRewards.rewards[pick].minAmount
+                amount
             );
         }
         nonce++;
     }
 
     function rewardCraftingMaterial(address to, IGameRewards.CraftingMaterialReward[] memory rewards, uint multiplier, uint optionalNonce) internal {
+
+        CraftingMaterialContract mats = CraftingMaterialContract(
+            contractAddress(
+                INavigator.CONTRACT.CRAFTING_MATERIALS
+            )
+        );
         for (uint i = 0; i < rewards.length; i++) {
             uint roll = RNG.dn(block.number + optionalNonce + 10 + i + nonce,
                 rewards[i].max - rewards[i].min
             );
             uint amount = roll + rewards[i].min;
             amount = percentage(amount, multiplier);
-            CraftingMaterialContract(
-                contractAddress(
-                    INavigator.CONTRACT.CRAFTING_MATERIALS
-                )
-            ).mintMaterial(rewards[i].material, to, amount);
+            if (amount > 0) {
+                mats.mintMaterial(rewards[i].material, to, amount);
+            }
             nonce++;
         }
     }
 
     function percentage(uint val, uint perc) internal pure returns (uint){
+        require(perc >= 100, "100%");
         return (val * perc) / 100;
     }
 

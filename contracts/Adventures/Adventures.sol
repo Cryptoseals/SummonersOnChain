@@ -20,7 +20,6 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         uint battleId;
         address account;
         uint summoner;
-        uint summonerLeveL;
         uint adventureArea;
         uint adventureLevel;
         bool isActive;
@@ -47,11 +46,15 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     function startBattle(uint summoner,
         uint adventureArea,
         uint adventureLevel) external ensureNotPaused
-    senderIsSummonerOwner(summoner) notInFight(summoner) {
+    senderIsSummonerOwner(summoner)
+    notInFight(summoner) {
         require(timer[summoner] < block.timestamp, "early");
         timer[summoner] = block.timestamp + COOLDOWN;
         uint lvl = ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).level(summoner);
-        (IMonster.Monster memory _monster, IAdventure.AdventureMonster memory _advMonster) = getMonster(adventureArea, adventureLevel, lvl);
+        (
+        IMonster.Monster memory _monster,
+        IAdventure.AdventureMonster memory _advMonster
+        ) = getMonster(adventureArea, adventureLevel, lvl);
 
         (
         GameObjects.BattleStats memory _summonerStats,
@@ -62,7 +65,6 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         account : msg.sender,
         battleId : battleId,
         summoner : summoner,
-        summonerLeveL : lvl,
         adventureArea : adventureArea,
         adventureLevel : adventureLevel,
         monster : _advMonster,
@@ -80,7 +82,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     }
 
     function flee(uint summoner) external onlyGameContracts {
-        require(activeBattles[summoner].account != address(0));
+        require(activeBattles[summoner].account != address(0), "h4x0r");
         delete activeBattles[summoner];
         timer[summoner] = block.timestamp + COOLDOWN * 4;
         ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
@@ -101,7 +103,6 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         // if monster dodges or player misses, skip atk, else roll crit chance
         if (playerHits) {
             (bool isCrit, uint roll) = getCritRoll(summoner, battle.playerStats.CRIT_CHANCE, nonce);
-            emit Roll(roll);
             uint damage = isCrit
             ?
             (battle.playerStats.DPS * multiplier) / 100 +
@@ -121,7 +122,6 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         if (monsterHits) {
             (bool isCrit, uint roll) = getCritRoll(battle.monster.monsterId + block.number,
                 battle.monsterStats.CRIT_CHANCE, nonce);
-            emit Roll(roll);
 
             uint damage = isCrit
             ?
@@ -142,7 +142,6 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         battleNonce = nonce + 1;
     }
 
-
     function settleBattle(uint summoner) external onlyGameContracts {
         AdventureBattle memory battle = activeBattles[summoner];
         require(battle.isActive, "finalized");
@@ -158,10 +157,11 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
                 contractAddress(INavigator.CONTRACT.ADVENTURES_CODEX)
             ).adventure(battle.adventureArea, battle.adventureLevel);
             IGameRewards.Reward memory rewardPool = _level.Rewards;
+            _level.Rewards.bonus = 100;
 
             if (battle.monster.level > _level.MonsterLevel) {
                 uint diff = battle.monster.level - _level.MonsterLevel;
-                rewardPool.bonus = diff > 10 ? 200 : 100 + (diff * 10);
+                _level.Rewards.bonus = diff > 10 ? 200 : (100 + (diff * 10));
             }
 
             IReward(contractAddress(INavigator.CONTRACT.REWARDS)).reward(
@@ -193,21 +193,20 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         nonce = battleNonce;
         nonce++;
         uint roll1 = RNG.d100(1 + summoner + nonce);
-        emit Roll(roll1);
 
         // if player dodges or monster misses, skip atk, else roll crit chance
 
         uint roll2 = RNG.d100(1 + battle.monster.monsterId + nonce);
         nonce++;
-        emit Roll(roll2);
-        return (roll1 <= battle.playerStats.HIT_CHANCE,
+        return (
+        roll1 <= battle.playerStats.HIT_CHANCE,
         roll2 <= battle.monsterStats.HIT_CHANCE,
         nonce);
     }
 
     function getCritRoll(uint summoner, uint critChance, uint nonce) internal returns (bool, uint) {
         uint roll = RNG.d100(nonce);
-        return (critChance <= roll, roll);
+        return (roll <= critChance, roll);
     }
 
     function getMonster(uint adventureArea,
@@ -227,7 +226,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             _level.MonsterList.length);
 
         IAdventure.AdventureMonster memory _adventureMonster = _level.MonsterList[monsterIdx];
-        _adventureMonster.level = summonerLvl > _level.MonsterLevel+5 ? summonerLvl-3 : _level.MonsterLevel;
+        _adventureMonster.level = summonerLvl > _level.MonsterLevel + 5 ? summonerLvl - 3 : _level.MonsterLevel;
         IMonster.Monster memory monster = ICodexEnemies(
             contractAddress(INavigator.CONTRACT.CODEX_ENEMIES)).enemy(
             _adventureMonster.element,

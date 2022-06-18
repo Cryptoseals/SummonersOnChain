@@ -48,7 +48,9 @@ contract Calculator is Initializable, InitNavigator {
         (
         GameObjects.Stats memory _statsBase1,
         GameObjects.GeneratedStats memory _genStatsFromEquips1,
-        GameObjects.ElementalStats memory _eleStatsFromEquips1, uint lvl) = getAllStats(summoner);
+        GameObjects.ElementalStats memory _eleStatsFromEquips1,
+        uint lvl
+        ) = getAllStats(summoner);
 
         (GameObjects.BattleStats memory player,
         GameObjects.BattleStats memory monster) = GetBattleStats(
@@ -178,9 +180,19 @@ contract Calculator is Initializable, InitNavigator {
         } else {
             revert("ELEM ERROR2");
         }
-
+        _battleStats1.CRIT_CHANCE = _gen_stats1.CRIT;
+        _battleStats1.CRIT_MULTI = _gen_stats1.CRIT_MULTIPLIER;
+        _battleStats1.TOTAL_HP = _gen_stats1.HP;
         _battleStats1.HIT_CHANCE = HitChance(_gen_stats1.ACCURACY, _gen_stats2.DODGE);
+
+
+        _battleStats2.CRIT_CHANCE = _gen_stats2.CRIT;
+        _battleStats2.CRIT_MULTI = _gen_stats2.CRIT_MULTIPLIER;
+        _battleStats2.TOTAL_HP = _gen_stats2.HP;
         _battleStats2.HIT_CHANCE = HitChance(_gen_stats2.ACCURACY, _gen_stats1.DODGE);
+
+
+
     }
 
     // generated value based calculations
@@ -217,18 +229,6 @@ contract Calculator is Initializable, InitNavigator {
     function DPSWDecimals(uint ATK, uint STAT, uint DEF, uint PEN) public pure returns (uint) {
         if (ATK == 0) return 0;
         if (DEF == 0) return ATK;
-        // atk*stat / armor(reduce pen if exists)
-        //        uint256 DECIMAL = 0;
-        //        uint256 TEMP = DEF;
-        //        while (TEMP != 0) {TEMP >>= 8;
-        //            DECIMAL++;}
-
-        //        int diff = int(DEF) - int(ATK);
-        //        uint ratio;
-        //
-        //        if (diff > 0) {
-        //            ratio = uint(DEF / ATK);
-        //        }
         uint DEF_PENETRATED = DEF - (((DEF) * PEN) / 100);
         uint FINAL_ATK = ATK * STAT / DEF_PENETRATED;
         return FINAL_ATK;
@@ -323,14 +323,14 @@ contract Calculator is Initializable, InitNavigator {
         _stats = EquipableUtils.sumStats(_stats_fx, _stats_eq);
         _stats = EquipableUtils.sumStats(_summonerStats, _stats);
         _generated_stats = EquipableUtils.sumGeneratedStats(_gen_stats_eq, _gen_stats_fx);
-        _generated_stats.HP += (_stats.VIT * 40) + (lvl * 10);
-//        _generated_stats.CRIT = CRITW(_generated_stats.CRIT, _stats.LUCK);
-//        _generated_stats.ACCURACY = ACCU(_generated_stats.ACCURACY, _stats.DEX);
-//        _generated_stats.P_ATK = ATK(_generated_stats.P_ATK, _stats.STR);
-//        _generated_stats.M_ATK = ATK(_generated_stats.M_ATK, _stats.INT);
-//        _generated_stats.P_DEF = DEFW(_generated_stats.P_DEF, _stats.VIT, lvl);
-//        _generated_stats.M_DEF = DEFW(_generated_stats.M_DEF, _stats.INT, lvl);
-//        _generated_stats.DODGE = DODGEWDecimals(_generated_stats.DODGE, _stats.AGI);
+        _generated_stats.HP += ((_stats.VIT / 15) * 4) + (lvl * 10);
+        //        _generated_stats.CRIT = CRITW(_generated_stats.CRIT, _stats.LUCK);
+        //        _generated_stats.ACCURACY = ACCU(_generated_stats.ACCURACY, _stats.DEX);
+        //        _generated_stats.P_ATK = ATK(_generated_stats.P_ATK, _stats.STR);
+        //        _generated_stats.M_ATK = ATK(_generated_stats.M_ATK, _stats.INT);
+        //        _generated_stats.P_DEF = DEFW(_generated_stats.P_DEF, _stats.VIT, lvl);
+        //        _generated_stats.M_DEF = DEFW(_generated_stats.M_DEF, _stats.INT, lvl);
+        //        _generated_stats.DODGE = DODGEWDecimals(_generated_stats.DODGE, _stats.AGI);
         _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats_eq, _ele_stats_fx);
     }
 

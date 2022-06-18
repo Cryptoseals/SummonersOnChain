@@ -126,6 +126,10 @@ contract CodexWeapons is UpgradeableCodex {
             _weapon.elementalStats.ElementalAtk.FIRE_ATK = _weapon.generatedStatBonus.M_ATK;
             _weapon.elementalStats.ElementalAtk.COLD_ATK = _weapon.generatedStatBonus.M_ATK;
             _weapon.elementalStats.ElementalAtk.LIGHTNING_ATK = _weapon.generatedStatBonus.M_ATK;
+            _weapon.elementalStats.ElementalAtk.EARTH_ATK = _weapon.generatedStatBonus.M_ATK;
+            _weapon.elementalStats.ElementalAtk.HOLY_ATK = _weapon.generatedStatBonus.M_ATK;
+            _weapon.elementalStats.ElementalAtk.DARK_ATK = _weapon.generatedStatBonus.M_ATK;
+
             if (_equipable.element == GameObjects.Element.VOID) {
                 _weapon.elementalStats.ElementalAtk.VOID_ATK = _weapon.generatedStatBonus.M_ATK;
             }
