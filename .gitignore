@@ -6,6 +6,7 @@ typechain
 .idea
 data
 data/
+.openzeppelin/
 
 #Hardhat files
 cache
