@@ -5,26 +5,28 @@ pragma solidity ^0.8.0;
 contract ProcessingLeatherRecipes {
 
     function recipe(ICraftingMaterials.CraftingMaterial material, uint amount) external view returns (ICraftingMaterials.ProcessingRecipe memory _recipe){
-        if (material == ICraftingMaterials.CraftingMaterial.TATTERED_LEATHER) {
+        if (material == ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER) {
             return ProcessedTatteredLeather(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.RAGGED_LEATHER) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER) {
             return ProcessedRaggedLeather(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.RAW_LEATHER) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER) {
             return ProcessedRawLeather(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.THIN_LEATHER) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER) {
             return ProcessedThinLeather(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.COARSE_LEATHER) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER) {
             return ProcessedCoarseLeather(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.RUGGED_LEATHER) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER) {
             return ProcessedRuggedLeather(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.THICK_LEATHER) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER) {
             return ProcessedThickLeather(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.REINFORCED_LEATHER) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER) {
             return ProcessedReinforcedLeather(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.HARDENED_LEATHER) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER) {
             return ProcessedHardenedLeather(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.LORDLY_LEATHER) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER) {
             return ProcessedLordlyLeather(amount);
+        } else {
+            revert("invalid");
         }
     }
 

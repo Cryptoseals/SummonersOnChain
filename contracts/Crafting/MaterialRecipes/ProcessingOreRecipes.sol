@@ -25,6 +25,8 @@ contract ProcessingOreRecipes {
             return ObsidianIngot(amount);
         } else if (material == ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT) {
             return LuminiteIngot(amount);
+        } else {
+            revert("invalid");
         }
 
         revert("?");

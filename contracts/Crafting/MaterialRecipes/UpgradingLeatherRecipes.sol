@@ -22,6 +22,8 @@ contract UpgradingLeatherRecipes {
             return ProcessedHardenedLeather(amount);
         } else if (material == ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER) {
             return ProcessedLordlyLeather(amount);
+        } else {
+            revert("invalid");
         }
     }
 

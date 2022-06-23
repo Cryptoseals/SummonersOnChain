@@ -196,7 +196,8 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
         // if player dodges or monster misses, skip atk, else roll crit chance
 
-        uint roll2 = RNG.d100(1 + battle.monster.monsterId + nonce);
+        nonce++;
+        uint roll2 = RNG.d100(1 + block.number + battle.monster.monsterId + nonce);
         nonce++;
         return (
         roll1 <= battle.playerStats.HIT_CHANCE,
@@ -216,7 +217,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         ICodexAdventures(
             contractAddress(INavigator.CONTRACT.ADVENTURES_CODEX)
         ).adventure(adventureArea, adventureLevel);
-        require(summonerLvl >= _level.MonsterLevel, "low lvl");
+        require(summonerLvl + 4 >= _level.MonsterLevel, "low lvl");
         return pickMonster(_level, summonerLvl);
     }
 

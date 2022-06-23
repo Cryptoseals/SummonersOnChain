@@ -25,6 +25,8 @@ contract ProcessingGemstoneRecipes {
             return POLISHED_SAPPHIRE(amount);
         } else if (material == ICraftingMaterials.CraftingMaterial.POLISHED_DIAMOND) {
             return POLISHED_DIAMOND(amount);
+        } else {
+            revert("invalid");
         }
 
         revert("?");

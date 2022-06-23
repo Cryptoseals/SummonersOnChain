@@ -271,10 +271,6 @@ contract Calculator is Initializable, InitNavigator {
         return DEF + (STAT / 20) + (LVL / 4);
     }
 
-    function HIT_POINTS(uint HP, uint VIT) public pure returns (uint) {
-        return HP + (VIT * 4);
-    }
-
     function ACCURACY(uint summoner) public view returns (uint) {
         (GameObjects.Stats memory _statsFromEquipments,
         GameObjects.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
@@ -331,6 +327,7 @@ contract Calculator is Initializable, InitNavigator {
         _generated_stats.P_DEF = DEFW(_generated_stats.P_DEF, _stats.VIT, lvl);
         _generated_stats.M_DEF = DEFW(_generated_stats.M_DEF, _stats.INT, lvl);
         _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats_eq, _ele_stats_fx);
+        _ele_stats.SummonerDamageType = _ele_stats_eq.SummonerDamageType;
     }
 
     function precalculatedStats(uint summoner) public view returns (GameObjects.Stats memory,
@@ -341,7 +338,7 @@ contract Calculator is Initializable, InitNavigator {
         GameObjects.ElementalStats memory _ele_stats_eq) = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY)).getSummonerBattleStats(summoner);
 
         GameObjects.GeneratedStats memory _base = SummonerBaseStats();
-        _gen_stats_eq = EquipableUtils.sumGeneratedStats(_base, _gen_stats_eq);
+        _gen_stats_eq = EquipableUtils.sumGeneratedStats(_gen_stats_eq, _base);
         return (_stats_eq, _gen_stats_eq, _ele_stats_eq);
     }
 
@@ -351,7 +348,7 @@ contract Calculator is Initializable, InitNavigator {
 
     function CostOfStat(uint lvl) public view returns (uint) {
         //1+target_skill_point/10
-        return lvl == 0 ? 0 : 1 + (lvl / 10);
+        return lvl == 0 ? 0 : 1 + (lvl / 14);
     }
 
     function SumOfStatSetCost(GameObjects.Stats memory stats) external view returns (uint) {

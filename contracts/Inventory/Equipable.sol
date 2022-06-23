@@ -106,7 +106,7 @@ contract Equipable is Initializable, InitNavigator {
             oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.WEAPON].tokenId;
             GameObjects.Weapon memory _weapon = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(_itemId, tier);
             if (!canEquip(summoner, _weapon.requirement)) revert CannotEquip("You are too weak to equip this.");
-            DamageTypesOfSummoners[summoner] = _weapon.damageType;
+            DamageTypesOfSummoners[summoner] = element;
             _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
         } else if (_type == GameObjects.ItemType.OFFHAND) {
             oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.OFFHAND].tokenId;
@@ -308,6 +308,7 @@ contract Equipable is Initializable, InitNavigator {
         _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, genFromJewelry);
         _ele_stats = EquipableUtils.sumGeneratedElementalStats(eleFromArmor, eleFromWeapon);
         _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, eleFromJewelry);
+        _ele_stats.SummonerDamageType = DamageTypesOfSummoners[summoner];
     }
 
     function getBattleStatsFromArmors(uint summoner) public view returns (GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats) {

@@ -21,6 +21,8 @@ contract UpgradingWoodRecipes {
             return EbonyWoodPlank(amount);
         } else if(material == ICraftingMaterials.CraftingMaterial.SNAKEWOOD_PLANK) {
             return SnakewoodPlank(amount);
+        } else {
+            revert("invalid");
         }
     }
 

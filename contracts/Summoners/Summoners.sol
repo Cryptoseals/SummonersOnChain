@@ -82,7 +82,7 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
         _spendXP(summoner, xp);
     }
 
-    function _spendXP(uint summoner, uint xp) internal onlyGameContracts {
+    function _spendXP(uint summoner, uint xp) internal {
         SummonerEXP[summoner] -= xp;
     }
 

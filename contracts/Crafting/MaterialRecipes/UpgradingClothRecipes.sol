@@ -22,6 +22,8 @@ contract UpgradingClothRecipes {
             return BoltOfLyocell(amount);
         } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_RAYON) {
             return BoltOfRayon(amount);
+        } else {
+            revert("invalid");
         }
     }
 

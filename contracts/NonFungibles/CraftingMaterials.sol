@@ -54,6 +54,7 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
             revert("?");
         }
 
+        require(_recipe.amount > 0 && _recipe.requiredTime > 0, "?rcp");
         _burn(msg.sender, uint(_recipe.requiredMaterial), _recipe.amount);
 
         ActiveProcessings[nextProcessId] = ICraftingMaterials.ProcessingProcess({

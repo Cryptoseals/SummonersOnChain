@@ -5,26 +5,28 @@ pragma solidity ^0.8.0;
 contract ProcessingClothRecipes {
 
     function recipe (ICraftingMaterials.CraftingMaterial material, uint amount) external view returns(ICraftingMaterials.ProcessingRecipe memory _recipe){
-        if(material == ICraftingMaterials.CraftingMaterial.JUTE) {
+        if(material == ICraftingMaterials.CraftingMaterial.BOLT_OF_JUTE) {
             return BoltOfJute(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.WOOL) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_WOOL) {
             return BoltOfWool(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.COTTON) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_COTTON) {
             return BoltOfCotton(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.LINEN) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_LINEN) {
             return BoltOfLinen(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.SILK) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_SILK) {
             return BoltOfSilk(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.HEMP) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_HEMP) {
             return BoltOfHemp(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.CASHMERE) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_CASHMERE) {
             return BoltOfCashmere(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.VISCOSE) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_VISCOSE) {
             return BoltOfViscose(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.LYOCELL) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_LYOCELL) {
             return BoltOfLyocell(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.RAYON) {
+        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_RAYON) {
             return BoltOfRayon(amount);
+        } else {
+            revert("invalid");
         }
     }
 
