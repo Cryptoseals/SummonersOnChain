@@ -98,8 +98,8 @@ contract CodexFocuses is Initializable {
     function WellShapedRock(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 106;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-      //  _weapon.metadata.name = "Well Shaped Rock";
-     //   _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Well Shaped Rock";
+        //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
 
         // requirements here
@@ -111,16 +111,6 @@ contract CodexFocuses is Initializable {
         // }
         _weapon.requirement.classRequirement = classRequirement();
 
-
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-
-
         // bonuses here
         _weapon.statBonus = weaponStats(0);
         _weapon.generatedStatBonus = weaponGenStats(0);
@@ -129,18 +119,12 @@ contract CodexFocuses is Initializable {
     function EvergreenFlower(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 107;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-      //  _weapon.metadata.name = "Evergreen Flower";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Evergreen Flower";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 4;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(1);
         _weapon.generatedStatBonus = weaponGenStats(1);
     }
@@ -148,18 +132,12 @@ contract CodexFocuses is Initializable {
     function IdolOfAberranth(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 108;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-      //  _weapon.metadata.name = "Idol Of Aberranth";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Idol Of Aberranth";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 9;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(2);
         _weapon.generatedStatBonus = weaponGenStats(2);
     }
@@ -167,18 +145,12 @@ contract CodexFocuses is Initializable {
     function WarlordTotem(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 109;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-     //   _weapon.metadata.name = "Warlord Totem";
-      //  _weapon.metadata.description = "";
+        //   _weapon.metadata.name = "Warlord Totem";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 14;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(3);
         _weapon.generatedStatBonus = weaponGenStats(3);
     }
@@ -186,18 +158,12 @@ contract CodexFocuses is Initializable {
     function BookOfPhilosopher(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 110;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-      //  _weapon.metadata.name = "Book of Philosopher";
-     //   _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Book of Philosopher";
+        //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 19;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(4);
         _weapon.generatedStatBonus = weaponGenStats(4);
     }
@@ -205,18 +171,12 @@ contract CodexFocuses is Initializable {
     function SilverCoin(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 111;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-     //   _weapon.metadata.name = "Silver Coin";
-     //   _weapon.metadata.description = "";
+        //   _weapon.metadata.name = "Silver Coin";
+        //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 24;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(5);
         _weapon.generatedStatBonus = weaponGenStats(5);
     }
@@ -224,18 +184,12 @@ contract CodexFocuses is Initializable {
     function GoldenChain(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 112;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-      //  _weapon.metadata.name = "Golden Chain";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Golden Chain";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 29;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(6);
         _weapon.generatedStatBonus = weaponGenStats(6);
     }
@@ -243,18 +197,12 @@ contract CodexFocuses is Initializable {
     function ChannellingCrystal(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 113;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-      //  _weapon.metadata.name = "Channelling Crystal";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Channelling Crystal";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 34;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(7);
         _weapon.generatedStatBonus = weaponGenStats(7);
     }
@@ -262,18 +210,12 @@ contract CodexFocuses is Initializable {
     function StarfallensFocus(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 114;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-      //  _weapon.metadata.name = "Starfallen's Focus";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Starfallen's Focus";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 39;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(8);
         _weapon.generatedStatBonus = weaponGenStats(8);
     }
@@ -281,18 +223,12 @@ contract CodexFocuses is Initializable {
     function BlessedDice(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 115;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-      //  _weapon.metadata.name = "Blessed Dice";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Blessed Dice";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 44;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(9);
         _weapon.generatedStatBonus = weaponGenStats(9);
     }
@@ -300,18 +236,12 @@ contract CodexFocuses is Initializable {
     function MoonstoneRelic(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 116;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-      //  _weapon.metadata.name = "Moonstone Relic";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Moonstone Relic";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 49;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(10);
         _weapon.generatedStatBonus = weaponGenStats(10);
     }
@@ -319,18 +249,12 @@ contract CodexFocuses is Initializable {
     function SunfireRelic(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 117;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-     //   _weapon.metadata.name = "Sunfire Relic";
-     //   _weapon.metadata.description = "";
+        //   _weapon.metadata.name = "Sunfire Relic";
+        //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 54;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(11);
         _weapon.generatedStatBonus = weaponGenStats(11);
     }
@@ -338,18 +262,12 @@ contract CodexFocuses is Initializable {
     function CycleRelic(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 118;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-     //   _weapon.metadata.name = "Cycle Relic";
-     //   _weapon.metadata.description = "";
+        //   _weapon.metadata.name = "Cycle Relic";
+        //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 59;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(12);
         _weapon.generatedStatBonus = weaponGenStats(12);
     }
@@ -357,18 +275,12 @@ contract CodexFocuses is Initializable {
     function PhantasmalRelic(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 119;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-     //   _weapon.metadata.name = "Phantasmal Relic";
-     //   _weapon.metadata.description = "";
+        //   _weapon.metadata.name = "Phantasmal Relic";
+        //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 64;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(13);
         _weapon.generatedStatBonus = weaponGenStats(13);
     }
@@ -376,18 +288,12 @@ contract CodexFocuses is Initializable {
     function AncientOrb(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 120;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-     //   _weapon.metadata.name = "Ancient Orb";
-     //   _weapon.metadata.description = "";
+        //   _weapon.metadata.name = "Ancient Orb";
+        //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 69;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(14);
         _weapon.generatedStatBonus = weaponGenStats(14);
     }
@@ -395,113 +301,77 @@ contract CodexFocuses is Initializable {
     function ScrollOfLuminous(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
         _weapon.metadata.id = 121;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-      //  _weapon.metadata.name = "Scroll of Luminous";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Scroll of Luminous";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 74;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(15);
         _weapon.generatedStatBonus = weaponGenStats(15);
     }
 
     function HeavenfallenFeather(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 123;
+        _weapon.metadata.id = 122;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-       // _weapon.metadata.name = "Heavenfallen Feather";
-      //  _weapon.metadata.description = "";
+        // _weapon.metadata.name = "Heavenfallen Feather";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 79;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(16);
         _weapon.generatedStatBonus = weaponGenStats(16);
     }
 
     function Godbringt(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 124;
+        _weapon.metadata.id = 123;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-      //  _weapon.metadata.name = "Godbringt";
-     //   _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Godbringt";
+        //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 84;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(17);
         _weapon.generatedStatBonus = weaponGenStats(17);
     }
 
     function KeyOfTheExistence(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 125;
+        _weapon.metadata.id = 124;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-      //  _weapon.metadata.name = "Key of the Existence";
-     //   _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Key of the Existence";
+        //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 89;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(18);
         _weapon.generatedStatBonus = weaponGenStats(18);
     }
 
     function MistguardRelic(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 126;
+        _weapon.metadata.id = 125;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-      //  _weapon.metadata.name = "Mistguard Relic";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Mistguard Relic";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 94;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(19);
         _weapon.generatedStatBonus = weaponGenStats(19);
     }
 
     function Mistbringer(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
-        _weapon.metadata.id = 127;
+        _weapon.metadata.id = 126;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-      //  _weapon.metadata.name = "Soultrapper";
-      //  _weapon.metadata.description = "";
+        //  _weapon.metadata.name = "Soultrapper";
+        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 99;
         _weapon.requirement.classRequirement = classRequirement();
-//        _weapon.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+
         _weapon.statBonus = weaponStats(20);
         _weapon.generatedStatBonus = weaponGenStats(20);
     }
