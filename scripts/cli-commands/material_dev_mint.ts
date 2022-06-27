@@ -14,6 +14,7 @@ enum MaterialTypes {
 
 }
 
+
 enum CraftingMaterial {
     COPPER, TIN, IRON, SILVER, GOLD, PLATINUM, MYTHRIL, ORICALCHUM,
     OBSIDIAN, LUMINITE,
@@ -63,8 +64,8 @@ async function main() {
     const navigator = Navigator.attach(deployedNavigator.navigator)
     let tx
     //
-    // tx = await navigator.setGameContractsById(CONTRACTS.JOB, deployer, true)
-    // await tx.wait(1)
+    tx = await navigator.setGameContractsById(CONTRACTS.JOB, deployer, true)
+    await tx.wait(1)
 
     const deployedMaterials = JSON.parse(fs.readFileSync(DeployedFileLocations.crafting_materials, 'utf-8'))
     let mats = await ethers.getContractAt("CraftingMaterials", deployedMaterials.craftingMaterials)
@@ -79,14 +80,15 @@ async function main() {
     // //
     // console.log("ELDER_WOOD_PLANK:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.ELDER_WOOD_PLANK)))
     // console.log("RED_OAK_WOOD_PLANK:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.RED_OAK_WOOD_PLANK)))
-    //
-    // tx = await mats.mintMaterial(CraftingMaterial.RED_OAK_WOOD_PLANK, deployer, 20)
-    // await tx.wait(1)
-    // tx = await mats.mintMaterial(CraftingMaterial.PETRIFIED_WOOD_PLANK, deployer, 20)
-    // await tx.wait(1)
 
-    console.log("RED_OAK_WOOD_PLANK:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.RED_OAK_WOOD_PLANK)))
-    console.log("PETRIFIED_WOOD_PLANK:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.PETRIFIED_WOOD_PLANK)))
+    let mintTo = "0xc5E5ec38de39c632f67EbF9795CD1d7D12331799"
+    tx = await mats.mintMaterial(CraftingMaterial.OBSIDIAN_INGOT, mintTo, 100)
+    await tx.wait(1)
+    tx = await mats.mintMaterial(CraftingMaterial.ORICALCHUM_INGOT, mintTo, 100)
+    await tx.wait(1)
+    tx = await mats.mintMaterial(CraftingMaterial.EBONY_WOOD_PLANK, mintTo, 100)
+    await tx.wait(1)
+
 
     // let activeProcesses: any[] = await mats.activeProcessingsOfUser(deployer);
     // activeProcesses = activeProcesses.map((a: any) => parseInt(a));
@@ -111,7 +113,7 @@ async function main() {
     const deployedEquipables = JSON.parse(fs.readFileSync(DeployedFileLocations.equipable_items, 'utf-8'))
     let eqs = await ethers.getContractAt("EquipableItems", deployedEquipables.equipableItems)
 
-    console.log(await eqs.item(10))
+    // console.log(await eqs.item(10))
 
     // tx = await crafting.craft(0, 95)
     // await tx.wait(1);

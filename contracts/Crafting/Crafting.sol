@@ -68,7 +68,7 @@ contract Crafting is Initializable, InitNavigator {
 
         ICraftingMaterialsToken craftingMaterialContract = ICraftingMaterialsToken(contractAddress(INavigator.CONTRACT.CRAFTING_MATERIALS));
         for (uint i = 0; i < _recipe.materialRequirements.length; i++) {
-            if (_recipe.materialRequirements[i].amount) {
+            if (_recipe.materialRequirements[i].amount > 0) {
                 craftingMaterialContract.burnMaterial(
                     msg.sender,
                     uint(_recipe.materialRequirements[i].material),

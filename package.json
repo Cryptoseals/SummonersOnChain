@@ -93,6 +93,7 @@
     "upgrade-fuji-10": "npx hardhat run scripts/upgrade-scripts/10-upgrade-crafting-materials.ts --network fuji",
     "upgrade-fuji-12": "npx hardhat run scripts/upgrade-scripts/12-upgrade-inventory.ts --network fuji",
     "upgrade-fuji-13": "npx hardhat run scripts/upgrade-scripts/13-upgrade-calculator.ts --network fuji",
+    "upgrade-fuji-14": "npx hardhat run scripts/upgrade-scripts/14-upgrade-crafting.ts --network fuji",
     "upgrade-fuji-15": "npx hardhat run scripts/upgrade-scripts/15-upgrade-summoners.ts --network fuji",
     "upgrade-fuji-16": "npx hardhat run scripts/upgrade-scripts/16-upgrade-attributes.ts --network fuji",
     "upgrade-fuji-19": "npx hardhat run scripts/upgrade-scripts/19-upgrade-rewards.ts --network fuji",
