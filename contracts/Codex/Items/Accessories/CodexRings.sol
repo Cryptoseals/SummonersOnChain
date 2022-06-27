@@ -143,8 +143,8 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     }
 
     function allRings() external view returns (GameObjects.Ring[] memory){
-        GameObjects.Ring[] memory result = new GameObjects.Ring[](23);
-        for (uint i = 1; i < 23; i++) {
+        GameObjects.Ring[] memory result = new GameObjects.Ring[](21);
+        for (uint i = 1; i < 22; i++) {
             result[i - 1] = ringCore(i, 1);
         }
         return result;

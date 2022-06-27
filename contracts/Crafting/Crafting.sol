@@ -4,7 +4,6 @@ import "../Interfaces/NonFungibles/EquipableItems/IEquipableItems.sol";
 import "../Interfaces/Crafting/ICraftingRecipe.sol";
 import "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
 import "../Interfaces/NonFungibles/CraftingMaterials/ICraftingMaterialsToken.sol";
-//import "../Interfaces/Summoners/ISummoners.sol";
 pragma solidity ^0.8.0;
 
 
@@ -22,7 +21,8 @@ contract Crafting is Initializable, InitNavigator {
 
     function craft(
         GameObjects.ItemType _type,
-        uint id
+        uint id,
+        uint[] memory coreIds
     ) external {
         validateId(_type, id);
         burnRecipeItems(_type, id);
@@ -53,29 +53,32 @@ contract Crafting is Initializable, InitNavigator {
             _recipe = Recipes(contractAddress(INavigator.CONTRACT.BOOTS_RECIPES)).recipe(id);
         } else if (_type == GameObjects.ItemType.WEAPON) {
             _recipe = Recipes(contractAddress(INavigator.CONTRACT.WEAPON_RECIPES)).recipe(id);
-        }  else if (_type == GameObjects.ItemType.AMULET) {
+        } else if (_type == GameObjects.ItemType.AMULET) {
             _recipe = Recipes(contractAddress(INavigator.CONTRACT.AMULET_RECIPES)).recipe(id);
         } else if (_type == GameObjects.ItemType.RING) {
             _recipe = Recipes(contractAddress(INavigator.CONTRACT.RING_RECIPES)).recipe(id);
-        }  else if (_type == GameObjects.ItemType.EARRING) {
+        } else if (_type == GameObjects.ItemType.EARRING) {
             _recipe = Recipes(contractAddress(INavigator.CONTRACT.EARRING_RECIPES)).recipe(id);
-        }  else if (_type == GameObjects.ItemType.BELT) {
+        } else if (_type == GameObjects.ItemType.BELT) {
             _recipe = Recipes(contractAddress(INavigator.CONTRACT.BELT_RECIPES)).recipe(id);
         } else {
             // not implemented yet.
             revert("niy");
         }
+
         ICraftingMaterialsToken craftingMaterialContract = ICraftingMaterialsToken(contractAddress(INavigator.CONTRACT.CRAFTING_MATERIALS));
         for (uint i = 0; i < _recipe.materialRequirements.length; i++) {
-            craftingMaterialContract.burnMaterial(
-                msg.sender,
-                uint(_recipe.materialRequirements[i].material),
-                _recipe.materialRequirements[i].amount
-            );
+            if (_recipe.materialRequirements[i].amount) {
+                craftingMaterialContract.burnMaterial(
+                    msg.sender,
+                    uint(_recipe.materialRequirements[i].material),
+                    _recipe.materialRequirements[i].amount
+                );
+            }
         }
 
-        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD)).burnToken(msg.sender, _recipe.requiredGold);
-        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE)).burnToken(msg.sender, _recipe.requiredEssence);
+        if (_recipe.requiredGold > 0) IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD)).burnToken(msg.sender, _recipe.requiredGold);
+        if (_recipe.requiredEssence > 0) IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE)).burnToken(msg.sender, _recipe.requiredEssence);
     }
 
     function validateId(GameObjects.ItemType _type, uint id) internal view {

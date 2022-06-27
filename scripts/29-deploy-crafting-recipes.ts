@@ -270,7 +270,32 @@ async function main() {
     console.log('set in contracts')
 
 
-    fs.writeFileSync(DeployedFileLocations.crafting_recipes, JSON.stringify({}), {});
+    fs.writeFileSync(DeployedFileLocations.crafting_recipes, JSON.stringify({
+        amuletRecipes: amuletRecipes.address,
+        ringRecipes: ringRecipes.address,
+        earringRecipes: earringRecipes.address,
+        beltRecipes: beltRecipes.address,
+        swordRecipes: swordRecipes.address,
+        axeRecipes: axeRecipes.address,
+        bowRecipes: bowRecipes.address,
+        daggerRecipes: daggerRecipes.address,
+        focusRecipes: focusRecipes.address,
+        shieldRecipes: shieldRecipes.address,
+        staffRecipes: staffRecipes.address,
+        weaponRecipes: weaponRecipes.address,
+        armorHeavyRecipes: armorHeavyRecipes.address,
+        armorMediumRecipes: armorMediumRecipes.address,
+        armorLightRecipes: armorLightRecipes.address,
+        armorRecipes: armorRecipes.address,
+        helmetHeavyRecipes: helmetHeavyRecipes.address,
+        helmetMediumRecipes: helmetMediumRecipes.address,
+        helmetLightRecipes: helmetLightRecipes.address,
+        helmetRecipes: helmetRecipes.address,
+        bootsHeavyRecipes: bootsHeavyRecipes.address,
+        bootsMediumRecipes: bootsMediumRecipes.address,
+        bootsLightRecipes: bootsLightRecipes.address,
+        bootsRecipes: bootsRecipes.address,
+    }), {});
 
 }
 
