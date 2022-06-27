@@ -47,9 +47,8 @@ For faster runs of your tests and scripts, consider skipping ts-node's type chec
 
 
 
-TREE:
-
-contracts
+#### FOLDER TREE
+<br/>
 ├── Adventures <br/>
 │   ├── AdventureControls.sol <br/>
 │   └── Adventures.sol <br/>
