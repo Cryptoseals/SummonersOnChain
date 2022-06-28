@@ -1,5 +1,5 @@
 import "../Interfaces/GameObjects/IGameObjects.sol";
-import "./Common/Rarity.sol";
+import {Rarity} from "./Common/Rarity.sol";
 
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.7;

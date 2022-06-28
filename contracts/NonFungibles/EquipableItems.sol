@@ -4,7 +4,7 @@ import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721Enumer
 import "../Core/Navigator/InitNavigator.sol";
 import "../Interfaces/GameObjects/IGameObjects.sol";
 import "../Interfaces/Codex/IAllCodexViews.sol";
-import "../Lib/Base64.sol";
+import {Base64} from "../Lib/Base64.sol";
 pragma solidity ^0.8.0;
 
 contract EquipableItems is

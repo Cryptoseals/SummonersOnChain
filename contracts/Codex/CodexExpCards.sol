@@ -1,5 +1,5 @@
-import "./Common/Rarity.sol";
-import "../Interfaces/NonFungibles/EXP/EXPCardLib.sol";
+import {Rarity} from "./Common/Rarity.sol";
+import {EXPCardLib} from "../Interfaces/NonFungibles/EXP/EXPCardLib.sol";
 
 // SPDX-License-Identifier: MIT
 
@@ -34,27 +34,27 @@ contract CodexExpCards is Rarity {
         revert("wrong");
     }
 
-    function ExpCard1 () public view returns(EXPCardLib.EXPCard memory _expCard) {
+    function ExpCard1() public view returns (EXPCardLib.EXPCard memory _expCard) {
         _expCard.id = 1;
         _expCard.xpReward = EXPCardLib.cardIdToExp(1);
     }
 
-    function ExpCard2 () public view returns(EXPCardLib.EXPCard memory _expCard) {
+    function ExpCard2() public view returns (EXPCardLib.EXPCard memory _expCard) {
         _expCard.id = 2;
         _expCard.xpReward = EXPCardLib.cardIdToExp(2);
     }
 
-    function ExpCard3 () public view returns(EXPCardLib.EXPCard memory _expCard) {
+    function ExpCard3() public view returns (EXPCardLib.EXPCard memory _expCard) {
         _expCard.id = 3;
         _expCard.xpReward = EXPCardLib.cardIdToExp(3);
     }
 
-    function ExpCard4 () public view returns(EXPCardLib.EXPCard memory _expCard) {
+    function ExpCard4() public view returns (EXPCardLib.EXPCard memory _expCard) {
         _expCard.id = 4;
         _expCard.xpReward = EXPCardLib.cardIdToExp(4);
     }
 
-    function ExpCard5 () public view returns(EXPCardLib.EXPCard memory _expCard) {
+    function ExpCard5() public view returns (EXPCardLib.EXPCard memory _expCard) {
         _expCard.id = 5;
         _expCard.xpReward = EXPCardLib.cardIdToExp(5);
     }

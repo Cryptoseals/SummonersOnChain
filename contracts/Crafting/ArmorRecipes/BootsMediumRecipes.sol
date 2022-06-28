@@ -1,4 +1,4 @@
-import "../../Interfaces/Crafting/ICraftingRecipe.sol";
+import {GameObjects, ICraftingRecipe, ICraftingMaterials} from "../../Interfaces/Crafting/ICraftingRecipe.sol";
 pragma solidity ^0.8.0;
 
 contract BootsMediumRecipes {

@@ -1,8 +1,8 @@
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../../Core/Common/Errors.sol";
-import "../../Interfaces/Core/Navigator/INavigator.sol";
-import "../../Interfaces/Summoners/ISummoners.sol";
-import "../../Interfaces/GameObjects/IGameEntities.sol";
+import {INavigator} from "../../Interfaces/Core/Navigator/INavigator.sol";
+import {ISummoners} from "../../Interfaces/Summoners/ISummoners.sol";
+import {GameEntities} from "../../Interfaces/GameObjects/IGameEntities.sol";
 
 pragma solidity ^0.8.0;
 

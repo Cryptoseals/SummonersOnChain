@@ -1,10 +1,11 @@
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import "../../Interfaces/Core/Navigator/INavigator.sol";
-import "./RewardNonce.sol";
-import "../Security/Guard.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import {INavigator} from "../../Interfaces/Core/Navigator/INavigator.sol";
+import {RewardNonce} from "./RewardNonce.sol";
+import {Guard} from "../Security/Guard.sol";
+import "../Common/Errors.sol";
 
 
 interface ERC721 {

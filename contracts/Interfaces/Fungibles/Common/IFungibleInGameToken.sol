@@ -1,6 +1,7 @@
 pragma solidity ^0.8.4;
 
-// @title FungibleInGameToken is the core interface of all in game tokens. It uses the ERC20 standard.
+// @title FungibleInGameToken
+// @notice is the core interface of all in game tokens. It uses the ERC20 standard.
 // @dev FungibleInGameToken is the core interface of all in game tokens. It uses the ERC20 standard.
 
 interface IFungibleInGameToken {

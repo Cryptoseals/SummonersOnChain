@@ -1,9 +1,10 @@
-import "../Core/Navigator/InitNavigator.sol";
-import "@openzeppelin/contracts/utils/Strings.sol";
-import "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/utils/structs/EnumerableSetUpgradeable.sol";
-import "../Interfaces/Crafting/Processing/IProcessingMaterialRecipes.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
+import {Strings}from "@openzeppelin/contracts/utils/Strings.sol";
+import {ERC1155Upgradeable}from "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
+import {OwnableUpgradeable}from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import {EnumerableSetUpgradeable}from "@openzeppelin/contracts-upgradeable/utils/structs/EnumerableSetUpgradeable.sol";
+import {IProcessingMaterialRecipes, ICraftingMaterials}from "../Interfaces/Crafting/Processing/IProcessingMaterialRecipes.sol";
 
 pragma solidity ^0.8.0;
 
@@ -27,9 +28,9 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         _mint(to, uint(material), amount, new bytes(0));
     }
     // test purposes
-        function mintDev(ICraftingMaterials.CraftingMaterial material, uint amount) external {
-            _mint(msg.sender, uint(material), amount, new bytes(0));
-        }
+    function mintDev(ICraftingMaterials.CraftingMaterial material, uint amount) external {
+        _mint(msg.sender, uint(material), amount, new bytes(0));
+    }
 
     function burnMaterial(address from, uint id, uint amount) external onlyGameContracts {
         require(amount > 0, "0");

@@ -1,17 +1,16 @@
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
-import "../Core/Navigator/InitNavigator.sol";
-import "../Interfaces/Core/Navigator/INavigator.sol";
-import "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import {ERC721EnumerableUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
+import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
+import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
 
 pragma solidity ^0.8.0;
 
 contract Names is
-    Initializable,
-    OwnableUpgradeable,
-    InitNavigator,
-    ERC721EnumerableUpgradeable
+Initializable,
+OwnableUpgradeable,
+InitNavigator,
+ERC721EnumerableUpgradeable
 {
     uint256 public constant GOLD_COST = 50e18;
     mapping(uint256 => uint256) internal SummonerToName;
@@ -20,6 +19,7 @@ contract Names is
     mapping(uint => string) public TokenToName;
 
     event ChangeName(uint summoner, uint nameId, string name);
+
     function initialize(
         address _navigator,
         string memory name,
@@ -30,11 +30,11 @@ contract Names is
     }
 
     function mintName(address player, string memory _name)
-        external
-        onlyGameContracts
+    external
+    onlyGameContracts
     {
         IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD))
-            .burnToken(player, GOLD_COST);
+        .burnToken(player, GOLD_COST);
         uint256 nextToken = totalSupply() + 1;
         require(NamesToToken[_name] != 0, "taken");
         NamesToToken[_name] = nextToken;
@@ -43,8 +43,8 @@ contract Names is
     }
 
     function setSummonerName(uint256 summoner, uint256 nameToken)
-        external
-        senderIsSummonerOwner(summoner)
+    external
+    senderIsSummonerOwner(summoner)
     {
         require(ownerOf(nameToken) == msg.sender, "must own");
         SummonerToName[summoner] = nameToken;
@@ -52,9 +52,9 @@ contract Names is
         emit ChangeName(summoner, nameToken, TokenToName[nameToken]);
     }
 
-    function nameOf(uint summoner) external view returns(string memory _name) {
+    function nameOf(uint summoner) external view returns (string memory _name) {
         uint token = SummonerToName[summoner];
-        if(ownerOfSummoner(summoner) == ownerOf(token)) {
+        if (ownerOfSummoner(summoner) == ownerOf(token)) {
             _name = TokenToName[token];
         }
     }

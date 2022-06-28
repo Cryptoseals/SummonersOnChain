@@ -1,4 +1,4 @@
-import "../../Interfaces/GameObjects/ISpell.sol";
+import {ISpell, GameObjects} from "../../Interfaces/GameObjects/ISpell.sol";
 pragma solidity ^0.8.0;
 
 contract CodexSpellsHoly {

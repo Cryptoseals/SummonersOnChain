@@ -1,5 +1,5 @@
-import "./../Common/UpgradeableCodex.sol";
-import "../../Inventory/EquipableUtils.sol";
+import {UpgradeableCodex, INavigator} from "./../Common/UpgradeableCodex.sol";
+import {EquipableUtils,GameObjects} from "../../Inventory/EquipableUtils.sol";
 pragma solidity ^0.8.0;
 
 

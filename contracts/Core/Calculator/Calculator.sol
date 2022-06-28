@@ -1,15 +1,14 @@
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "../../Interfaces/Core/Calculator/ICalculator.sol";
-import "../../Core/Navigator/InitNavigator.sol";
-import "../../Interfaces/Core/Navigator/INavigator.sol";
-import "../../Interfaces/Codex/ICodexRandom.sol";
-import "../../Interfaces/Attributes/IAttributes.sol";
-import "../../Interfaces/Core/Constants/Constants.sol";
-import "../../Inventory/EquipableUtils.sol";
-import "../../Interfaces/Inventory/IEquipable.sol";
-import "../../Interfaces/Inventory/IElixirAndArtifactSlots.sol";
-import "../../Interfaces/Summoners/ISummoners.sol";
-import "../../Interfaces/GameObjects/IMonster.sol";
+import {ICalculator} from "../../Interfaces/Core/Calculator/ICalculator.sol";
+import {InitNavigator, INavigator} from "../../Core/Navigator/InitNavigator.sol";
+import {ICodexRandom} from "../../Interfaces/Codex/ICodexRandom.sol";
+import {IAttributes} from "../../Interfaces/Attributes/IAttributes.sol";
+import {GameConstants} from "../../Interfaces/Core/Constants/Constants.sol";
+import {EquipableUtils, GameObjects} from "../../Inventory/EquipableUtils.sol";
+import {IEquipable} from "../../Interfaces/Inventory/IEquipable.sol";
+import {IElixirAndArtifactSlots} from "../../Interfaces/Inventory/IElixirAndArtifactSlots.sol";
+import {ISummoners} from "../../Interfaces/Summoners/ISummoners.sol";
+import {IMonster} from "../../Interfaces/GameObjects/IMonster.sol";
 
 /*
             Generated stats

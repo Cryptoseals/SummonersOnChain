@@ -46,7 +46,8 @@ contract CodexRandom {
         rand = _random(
             string(
                 abi.encodePacked(
-                    block.timestamp,
+                    block.number,
+                    uint160(address(this)),
                     gasleft(),
                     _input,
                     msg.sender

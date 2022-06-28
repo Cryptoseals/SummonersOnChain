@@ -1,9 +1,10 @@
-import "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import "@openzeppelin/contracts/utils/Strings.sol";
-import "../Core/Navigator/InitNavigator.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {ERC1155Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
+import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
+import {ICodexMisc} from "../Interfaces/Codex/ICodexMisc.sol";
 import "../Core/Common/Errors.sol";
-import "../Interfaces/Codex/ICodexMisc.sol";
 
 pragma solidity ^0.8.0;
 

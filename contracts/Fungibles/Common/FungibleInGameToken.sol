@@ -1,11 +1,10 @@
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
-import "../../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
-import "../../Core/Security/Guard.sol";
-import "../../Core/Navigator/InitNavigator.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import {ERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
+import {IFungibleInGameToken}from "../../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
+import {INavigator, InitNavigator} from "../../Core/Navigator/InitNavigator.sol";
 
 contract FungibleInGameToken is ERC20Upgradeable,
 OwnableUpgradeable, IFungibleInGameToken, InitNavigator {

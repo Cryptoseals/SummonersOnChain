@@ -1,5 +1,5 @@
-import "../../Interfaces/GameObjects/IMonster.sol";
-import "../../Interfaces/GameObjects/IAdventure.sol";
+import {IAdventure, GameObjects, IGameRewards, ICraftingMaterials} from "../../Interfaces/GameObjects/IAdventure.sol";
+import {IMonster} from "../../Interfaces/GameObjects/IMonster.sol";
 pragma solidity ^0.8.0;
 
 contract CodexArea11 {

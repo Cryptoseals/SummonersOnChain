@@ -1,8 +1,7 @@
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "../../../Interfaces/Codex/ICodexPrefixAndSuffix.sol";
-import "../../../Inventory/EquipableUtils.sol";
-import "../../../Core/Navigator/InitNavigator.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import {ICodexPrefixAndSuffix, GameObjects} from "../../../Interfaces/Codex/ICodexPrefixAndSuffix.sol";
+import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
+import {InitNavigator, INavigator} from "../../../Core/Navigator/InitNavigator.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 pragma solidity ^0.8.0;
 

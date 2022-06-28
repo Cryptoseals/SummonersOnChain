@@ -1,12 +1,11 @@
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import "../Core/Navigator/InitNavigator.sol";
-import "../Interfaces/Core/Calculator/ICalculator.sol";
-import "../Interfaces/Codex/ICodexAdventures.sol";
-import "../Interfaces/Codex/ICodexEnemies.sol";
-import "../Inventory/EquipableUtils.sol";
-import "../Interfaces/Codex/ICodexRandom.sol";
-import "../Interfaces/Reward/IReward.sol";
-
+import {InitNavigator, INavigator, GameEntities, ISummoners} from "../Core/Navigator/InitNavigator.sol";
+import {ICalculator} from "../Interfaces/Core/Calculator/ICalculator.sol";
+import {ICodexAdventures, IAdventure} from "../Interfaces/Codex/ICodexAdventures.sol";
+import {ICodexEnemies, IMonster} from "../Interfaces/Codex/ICodexEnemies.sol";
+import {EquipableUtils} from "../Inventory/EquipableUtils.sol";
+import {ICodexRandom} from "../Interfaces/Codex/ICodexRandom.sol";
+import {IReward, IGameRewards, GameObjects} from "../Interfaces/Reward/IReward.sol";
 pragma solidity ^0.8.0;
 
 contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {

@@ -1,5 +1,5 @@
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "../../Interfaces/GameObjects/IGameObjects.sol";
+import {GameObjects} from "../../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
@@ -54,6 +54,8 @@ contract BaseEnemyStats is Initializable {
         uint def = ENEMY_BASE_DEF[level - 1];
         if (element == GameObjects.Element.EARTH || element == GameObjects.Element.VOID) {
             def += (def * 10) / 100;
+        } else if (element == GameObjects.Element.ARCANE) {
+            def -= (def * 10) / 100;
         }
         return def;
     }
@@ -123,7 +125,7 @@ contract BaseEnemyStats is Initializable {
         require(level > 0 && level < 101, "lvl");
         uint atk = ENEMY_BASE_ATK[level - 1];
         if (element == GameObjects.Element.FIRE
-            || element == GameObjects.Element.ARCANE
+        || element == GameObjects.Element.ARCANE
             || element == GameObjects.Element.VOID) {
             atk += (atk * 10) / 100;
         }

@@ -1,14 +1,14 @@
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../Core/Common/Errors.sol";
-import "../Interfaces/Attributes/IAttributes.sol";
-import "../Interfaces/GameObjects/IGameEntities.sol";
-import "../Inventory/EquipableUtils.sol";
-import "../Interfaces/Codex/ICodexSpells.sol";
-import "../Interfaces/GameObjects/ISpell.sol";
-import "../Interfaces/Core/Constants/Constants.sol";
-import "../Interfaces/Core/Calculator/ICalculator.sol";
-import "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
-import "../Core/Navigator/InitNavigator.sol";
+import {IAttributes} from "../Interfaces/Attributes/IAttributes.sol";
+import {GameEntities, GameObjects} from "../Interfaces/GameObjects/IGameEntities.sol";
+import {EquipableUtils} from "../Inventory/EquipableUtils.sol";
+import {ICodexSpells} from "../Interfaces/Codex/ICodexSpells.sol";
+import {ISpell} from "../Interfaces/GameObjects/ISpell.sol";
+import {GameConstants} from "../Interfaces/Core/Constants/Constants.sol";
+import {ICalculator} from "../Interfaces/Core/Calculator/ICalculator.sol";
+import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
+import {InitNavigator, INavigator, ISummoners} from "../Core/Navigator/InitNavigator.sol";
 
 pragma solidity ^0.8.0;
 

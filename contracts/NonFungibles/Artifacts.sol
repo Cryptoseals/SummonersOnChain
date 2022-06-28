@@ -1,8 +1,10 @@
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
-import "../Core/Navigator/InitNavigator.sol";
-import "../Interfaces/GameObjects/IGameObjects.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import {ERC721EnumerableUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
+import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
+import {GameObjects} from "../Interfaces/GameObjects/IGameObjects.sol";
+import "../Core/Common/Errors.sol";
+
 pragma solidity ^0.8.0;
 
 contract Artifacts is Initializable, OwnableUpgradeable, InitNavigator, ERC721EnumerableUpgradeable {

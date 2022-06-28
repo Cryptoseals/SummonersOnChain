@@ -1,5 +1,5 @@
-import "../../Interfaces/GameObjects/IMonster.sol";
-import "../../Interfaces/GameObjects/IAdventure.sol";
+import {IAdventure, GameObjects, IGameRewards, ICraftingMaterials} from "../../Interfaces/GameObjects/IAdventure.sol";
+import {IMonster} from "../../Interfaces/GameObjects/IMonster.sol";
 pragma solidity ^0.8.0;
 
 contract CodexArea9 {
@@ -10,7 +10,7 @@ contract CodexArea9 {
     function getAllLevels() external view returns (IAdventure.AdventureLevel[] memory){
         IAdventure.AdventureLevel[] memory result = new IAdventure.AdventureLevel[](20);
         for (uint i = 1; i <= 20; i++) {
-            result[i-1] = adventureLevel(i);
+            result[i - 1] = adventureLevel(i);
         }
         return result;
     }

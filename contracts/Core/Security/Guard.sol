@@ -1,4 +1,4 @@
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../../Core/Common/Errors.sol";
 //import "../../Interfaces/Core/Security/IGuard.sol";
 
@@ -14,7 +14,8 @@ contract Guard is Initializable {
             gameContracts[_addresses[i]] = _value;
         }
     }
+
     function addOrRemoveGameContract(address _address, bool _value) internal {
-            gameContracts[_address] = _value;
+        gameContracts[_address] = _value;
     }
 }

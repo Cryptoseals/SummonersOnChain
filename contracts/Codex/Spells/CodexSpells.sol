@@ -1,6 +1,6 @@
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "../../Core/Navigator/InitNavigator.sol";
-import "../../Interfaces/GameObjects/ISpell.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {InitNavigator, INavigator} from "../../Core/Navigator/InitNavigator.sol";
+import {ISpell, GameObjects} from "../../Interfaces/GameObjects/ISpell.sol";
 pragma solidity ^0.8.0;
 
 interface SpellCodex {
@@ -60,9 +60,9 @@ contract CodexSpells is Initializable, InitNavigator {
     function spell(ISpell.SpellCategories _category, uint _id, uint _tier) public view returns (ISpell.Spell memory) {
         SpellCodex _contract;
         if (_category == ISpell.SpellCategories.PHYSICAL) {
-            _contract = SpellCodex(contractAddress(INavigator.CONTRACT.PHYSICAL_ENEMY_CODEX));
+            _contract = SpellCodex(contractAddress(INavigator.CONTRACT.PHYSICAL_SPELLS));
         } else if (_category == ISpell.SpellCategories.ARCANE) {
-            _contract = SpellCodex(contractAddress(INavigator.CONTRACT.ARCANE_ENEMY_CODEX));
+            _contract = SpellCodex(contractAddress(INavigator.CONTRACT.ARCANE_SPELLS));
         } else if (_category == ISpell.SpellCategories.FIRE) {
             _contract = SpellCodex(contractAddress(INavigator.CONTRACT.FIRE_SPELLS));
         } else if (_category == ISpell.SpellCategories.COLD) {

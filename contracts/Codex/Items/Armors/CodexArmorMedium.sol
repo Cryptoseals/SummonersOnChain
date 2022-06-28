@@ -1,7 +1,6 @@
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "../../../Inventory/EquipableUtils.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {GameObjects,EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
 pragma solidity ^0.8.0;
-
 contract CodexArmorsMedium is Initializable {
     uint[21] public BASE_STR;
     uint[21] public BASE_AGI;

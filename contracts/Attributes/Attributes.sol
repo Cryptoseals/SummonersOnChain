@@ -1,14 +1,14 @@
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../Core/Common/Errors.sol";
-import "../Interfaces/Inventory/EquipableLibrary.sol";
-import "../Interfaces/Core/Constants/Constants.sol";
-import "../Interfaces/Core/Calculator/ICalculator.sol";
-import "../Core/Navigator/InitNavigator.sol";
+import {EquipableLibrary} from "../Interfaces/Inventory/EquipableLibrary.sol";
+import {GameObjects} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {GameConstants} from "../Interfaces/Core/Constants/Constants.sol";
+import {ICalculator} from "../Interfaces/Core/Calculator/ICalculator.sol";
+import {InitNavigator,INavigator, ISummoners} from "../Core/Navigator/InitNavigator.sol";
 
 pragma solidity ^0.8.0;
 
 contract Attributes is Initializable, InitNavigator {
-    // @TODO change this to default stat, according to GDD
 
     // @dev maps each summoner to their allocated stats
     mapping(uint => GameObjects.Stats) public SummonerStats;

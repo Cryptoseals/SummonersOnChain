@@ -1,10 +1,9 @@
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
-import "../Core/Navigator/InitNavigator.sol";
-import "../Interfaces/GameObjects/IGameObjects.sol";
-import "../Interfaces/NonFungibles/EXP/EXPCardLib.sol";
-import "../Interfaces/Summoners/ISummoners.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import {ERC1155Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
+import {ISummoners, INavigator, InitNavigator} from "../Core/Navigator/InitNavigator.sol";
+import {GameObjects} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {EXPCardLib} from "../Interfaces/NonFungibles/EXP/EXPCardLib.sol";
 
 pragma solidity ^0.8.0;
 // @TODO implement card redeems and burns for summoners. but first define summoners contract.

@@ -1,4 +1,4 @@
-import "../Core/Navigator/InitNavigator.sol";
+import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
 
 pragma solidity ^0.8.0;
 

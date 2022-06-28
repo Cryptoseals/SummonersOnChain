@@ -1,5 +1,5 @@
-import "./../../Codex/Common/UpgradeableCodex.sol";
-import "../../Interfaces/Crafting/ICraftingRecipe.sol";
+import {INavigator,UpgradeableCodex} from "./../../Codex/Common/UpgradeableCodex.sol";
+import {ICraftingRecipe} from "../../Interfaces/Crafting/ICraftingRecipe.sol";
 pragma solidity ^0.8.0;
 
 

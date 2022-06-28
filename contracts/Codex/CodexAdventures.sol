@@ -1,6 +1,6 @@
 import "../Interfaces/GameObjects/IMonster.sol";
-import "../Interfaces/GameObjects/IAdventure.sol";
-import "../Core/Navigator/InitNavigator.sol";
+import {IAdventure} from "../Interfaces/GameObjects/IAdventure.sol";
+import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
 
 pragma solidity ^0.8.0;
 
