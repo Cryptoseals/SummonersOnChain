@@ -472,61 +472,106 @@ contract BeltRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](11);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](20);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
-        amount : 18
+        amount : 20
         });
 
         _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.TATTERED_LEATHER,
-        amount : 8
+        amount : 15
         });
 
         _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER,
-        amount : 8
+        amount : 15
         });
 
         _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
-        amount : 8
+        amount : 15
         });
 
         _recipe.materialRequirements[4] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER,
-        amount : 8
+        amount : 15
         });
 
         _recipe.materialRequirements[5] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER,
-        amount : 8
+        amount : 15
         });
 
         _recipe.materialRequirements[6] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER,
-        amount : 8
+        amount : 15
         });
 
         _recipe.materialRequirements[7] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER,
-        amount : 8
+        amount : 15
         });
 
         _recipe.materialRequirements[8] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
-        amount : 8
+        amount : 15
         });
 
         _recipe.materialRequirements[9] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER,
-        amount : 8
+        amount : 15
         });
 
         _recipe.materialRequirements[10] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMBER,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[11] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PEARL,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[12] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[13] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.CORAL,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[14] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.RUBY,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[15] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[16] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AZURITE,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[17] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.EMERALD,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[18] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
+        amount : 14
+        });
+
+        _recipe.materialRequirements[19] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.DIAMOND,
-        amount : 16
+        amount : 14
         });
     }
 }

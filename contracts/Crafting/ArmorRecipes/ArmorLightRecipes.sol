@@ -376,52 +376,52 @@ contract ArmorLightRecipes {
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_RAYON,
-        amount : 36
+        amount : 50
         });
 
         _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_JUTE,
-        amount : 20
+        amount : 33
         });
 
         _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_WOOL,
-        amount : 20
+        amount : 33
         });
 
         _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_COTTON,
-        amount : 20
+        amount : 33
         });
 
         _recipe.materialRequirements[4] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_LINEN,
-        amount : 20
+        amount : 33
         });
 
         _recipe.materialRequirements[5] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_SILK,
-        amount : 20
+        amount : 33
         });
 
         _recipe.materialRequirements[6] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_HEMP,
-        amount : 20
+        amount : 33
         });
 
         _recipe.materialRequirements[7] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_CASHMERE,
-        amount : 20
+        amount : 33
         });
 
         _recipe.materialRequirements[8] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_VISCOSE,
-        amount : 20
+        amount : 33
         });
 
         _recipe.materialRequirements[9] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_LYOCELL,
-        amount : 20
+        amount : 33
         });
     }
 }

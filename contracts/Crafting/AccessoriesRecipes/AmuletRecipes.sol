@@ -473,61 +473,106 @@ contract AmuletRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](11);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](20);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
-        amount : 16
+        material : ICraftingMaterials.CraftingMaterial.COPPER_INGOT,
+        amount : 14
         });
 
         _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.DIAMOND,
-        amount : 18
+        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
+        amount : 14
         });
 
         _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AMBER,
-        amount : 12
+        material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
+        amount : 14
         });
 
         _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PEARL,
-        amount : 12
+        material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
+        amount : 14
         });
 
         _recipe.materialRequirements[4] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
-        amount : 12
+        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
+        amount : 14
         });
 
         _recipe.materialRequirements[5] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.CORAL,
-        amount : 12
+        material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
+        amount : 14
         });
 
         _recipe.materialRequirements[6] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.RUBY,
-        amount : 12
+        material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
+        amount : 14
         });
 
         _recipe.materialRequirements[7] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
-        amount : 12
+        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
+        amount : 14
         });
 
         _recipe.materialRequirements[8] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AZURITE,
-        amount : 12
+        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
+        amount : 14
         });
 
         _recipe.materialRequirements[9] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.EMERALD,
-        amount : 12
+        material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
+        amount : 14
         });
 
         _recipe.materialRequirements[10] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.DIAMOND,
+        amount : 20
+        });
+
+        _recipe.materialRequirements[11] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMBER,
+        amount : 15
+        });
+
+        _recipe.materialRequirements[12] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PEARL,
+        amount : 15
+        });
+
+        _recipe.materialRequirements[13] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AMETHYST,
+        amount : 15
+        });
+
+        _recipe.materialRequirements[14] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.CORAL,
+        amount : 15
+        });
+
+        _recipe.materialRequirements[15] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.RUBY,
+        amount : 15
+        });
+
+        _recipe.materialRequirements[16] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.TOPAZ,
+        amount : 15
+        });
+
+        _recipe.materialRequirements[17] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.AZURITE,
+        amount : 15
+        });
+
+        _recipe.materialRequirements[18] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.EMERALD,
+        amount : 15
+        });
+
+        _recipe.materialRequirements[19] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.SAPPHIRE,
-        amount : 12
+        amount : 15
         });
     }
 }

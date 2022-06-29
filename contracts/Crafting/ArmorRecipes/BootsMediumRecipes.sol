@@ -472,7 +472,7 @@ contract BootsMediumRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](11);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](20);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
@@ -525,6 +525,51 @@ contract BootsMediumRecipes {
         });
 
         _recipe.materialRequirements[10] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_JUTE,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[11] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_WOOL,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[12] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_COTTON,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[13] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_LINEN,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[14] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_SILK,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[15] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_HEMP,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[16] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_CASHMERE,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[17] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_VISCOSE,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[18] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.BOLT_OF_LYOCELL,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[19] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.BOLT_OF_RAYON,
         amount : 10
         });

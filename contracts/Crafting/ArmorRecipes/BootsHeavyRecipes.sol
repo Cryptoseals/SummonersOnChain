@@ -472,7 +472,7 @@ contract BootsHeavyRecipes {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](11);
+        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](20);
 
         _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
@@ -525,8 +525,54 @@ contract BootsHeavyRecipes {
         });
 
         _recipe.materialRequirements[10] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[11] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[12] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[13] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[14] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[15] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[16] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[17] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[18] = ICraftingRecipe.MaterialRequirement({
+        material : ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER,
+        amount : 10
+        });
+
+        _recipe.materialRequirements[19] = ICraftingRecipe.MaterialRequirement({
         material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
         amount : 10
         });
+
     }
 }
