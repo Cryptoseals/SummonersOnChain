@@ -4,8 +4,16 @@ import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721Enumer
 import "../Core/Navigator/InitNavigator.sol";
 import "../Interfaces/GameObjects/IGameObjects.sol";
 import "../Interfaces/Codex/IAllCodexViews.sol";
+import {ICore} from "../Interfaces/GameObjects/ICore.sol";
 import {Base64} from "../Lib/Base64.sol";
+
 pragma solidity ^0.8.0;
+
+interface ICores {
+    function balanceOf(address account, uint256 id) external view returns (uint256);
+
+    function burnCore(address from, uint id, uint amount) external;
+}
 
 contract EquipableItems is
 Initializable,
@@ -156,6 +164,66 @@ ERC721EnumerableUpgradeable
         tokenToEnchantmentLevel[id]++;
     }
 
+    function enhance(uint256 tokenId, uint256 coreId) external {
+        require(ownerOf(tokenId) == msg.sender, "not owned");
+        // check balance
+        ICores coreContract = ICores(contractAddress(INavigator.CONTRACT.CORES));
+
+        uint bal = coreContract.balanceOf(msg.sender, coreId);
+        uint itemId = tokenToItemId[tokenId];
+
+        GameObjects.ItemType _type = tokenToType[tokenId];
+
+
+        // get core data.
+        ICore.Core memory core = IAllCodexViews(contractAddress(INavigator.CONTRACT.CORE_CODEX)).core(coreId);
+        // check requirements.
+        if (_type == GameObjects.ItemType.HELMET) {
+            GameObjects.Helmet memory _helmet = IAllCodexViews(contractAddress(INavigator.CONTRACT.HELMETS_CODEX)).helmetCore(itemId, 1);
+            require(_helmet.requirement.level >= core.minItemLvl, "lowlvl");
+        } else if (_type == GameObjects.ItemType.ARMOR) {
+            GameObjects.Armor memory _armor = IAllCodexViews(contractAddress(INavigator.CONTRACT.BODY_ARMORS_CODEX)).armorCore(itemId, 1);
+            require(_armor.requirement.level >= core.minItemLvl, "lowlvl");
+        } else if (_type == GameObjects.ItemType.WEAPON) {
+            GameObjects.Weapon memory _weapon = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(itemId, 1);
+            require(_weapon.requirement.level >= core.minItemLvl, "lowlvl");
+        } else if (_type == GameObjects.ItemType.OFFHAND) {
+            GameObjects.Weapon memory _offHand = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(itemId, 1);
+            require(_offHand.requirement.level >= core.minItemLvl, "lowlvl");
+        } else if (_type == GameObjects.ItemType.BOOTS) {
+            GameObjects.Boots memory _boots = IAllCodexViews(contractAddress(INavigator.CONTRACT.BOOTS_CODEX)).bootsCore(itemId, 1);
+            require(_boots.requirement.level >= core.minItemLvl, "lowlvl");
+        } else if (_type == GameObjects.ItemType.AMULET) {
+            GameObjects.Amulet memory _amulet = IAllCodexViews(contractAddress(INavigator.CONTRACT.AMULETS_CODEX)).amuletCore(itemId, 1);
+            require(_amulet.requirement.level >= core.minItemLvl, "lowlvl");
+        } else if (_type == GameObjects.ItemType.RING) {
+            GameObjects.Ring memory _ring = IAllCodexViews(contractAddress(INavigator.CONTRACT.RINGS_CODEX)).ringCore(itemId, 1);
+            require(_ring.requirement.level >= core.minItemLvl, "lowlvl");
+        } else if (_type == GameObjects.ItemType.EARRING) {
+            GameObjects.Earring memory _earring = IAllCodexViews(contractAddress(INavigator.CONTRACT.EARRINGS_CODEX)).earringsCore(itemId, 1);
+            require(_earring.requirement.level >= core.minItemLvl, "lowlvl");
+        } else if (_type == GameObjects.ItemType.BELT) {
+            GameObjects.Belt memory _belt = IAllCodexViews(contractAddress(INavigator.CONTRACT.BELTS_CODEX)).beltCore(itemId, 1);
+            require(_belt.requirement.level >= core.minItemLvl, "lowlvl");
+        } else {
+            revert InvalidItem("Not Implemented");
+        }
+        _enhance(tokenId, core.fx);
+        coreContract.burnCore(msg.sender, coreId, 1);
+    }
+
+    function _enhance(uint tokenId, ICore.Effect memory fx) internal {
+        if (fx.fxType == ICore.EffectType.OVERRIDE_PREFIX) {
+            tokenPrefix[fx.prefixToAdd];
+        } else if (fx.fxType == ICore.EffectType.OVERRIDE_SUFFIX) {
+            tokenPrefix[fx.suffixToAdd];
+        } else if (fx.fxType == ICore.EffectType.OVERRIDE_ELEMENT) {
+            tokenElement[tokenId] = fx.elementToAdd;
+        } else {
+            revert("critical.err");
+        }
+    }
+
     function tier(uint256 id) public view returns (uint256 _tier) {
         if (!_exists(id)) revert InvalidItem("DOES NOT EXIST");
         _tier = tokenToEnchantmentLevel[id];
@@ -175,7 +243,7 @@ ERC721EnumerableUpgradeable
     }
 
     function itemType(uint256 id)
-    external
+    public
     view
     returns (GameObjects.ItemType _type)
     {

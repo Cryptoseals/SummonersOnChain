@@ -1,4 +1,5 @@
 import "../GameObjects/IGameObjects.sol";
+import {ICore} from "../GameObjects/ICore.sol";
 pragma solidity ^0.8.0;
 
 interface IAllCodexViews {
@@ -28,5 +29,5 @@ interface IAllCodexViews {
     function prefixCore(uint _id, uint _tier) external pure returns (GameObjects.Prefix memory);
     function suffix(uint _id, uint _tier) external pure returns (GameObjects.Suffix memory);
     function suffixCore(uint _id, uint _tier) external pure returns (GameObjects.Suffix memory);
-
+    function core (uint id) external view returns(ICore.Core memory);
 }

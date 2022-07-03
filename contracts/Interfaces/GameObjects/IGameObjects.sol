@@ -56,7 +56,8 @@ library GameObjects {
         MISC2,
         MISC3,
         GENERAL_ACCESSORY,
-        PET, SEAL
+        PET,
+        SEAL
     }
 
     enum StatsEnum {

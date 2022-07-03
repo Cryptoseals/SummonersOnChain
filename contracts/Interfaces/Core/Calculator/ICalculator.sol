@@ -20,5 +20,10 @@ interface ICalculator {
     (GameObjects.BattleStats memory,
         GameObjects.BattleStats memory);
 
-//    function IsSuccessfulDiceRoll100(uint summoner, uint seed, uint chance) external view returns (bool,uint);
+    function PVEBattleStatsByElement(uint summoner, IMonster.Monster memory monster, GameObjects.Element element) external view returns
+    (GameObjects.BattleStats memory,
+        GameObjects.BattleStats memory);
+
+    function DPSWDecimals(uint ATK, uint STAT, uint DEF, uint PEN) external pure returns (uint);
+    //    function IsSuccessfulDiceRoll100(uint summoner, uint seed, uint chance) external view returns (bool,uint);
 }

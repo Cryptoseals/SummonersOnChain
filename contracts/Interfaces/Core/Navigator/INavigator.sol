@@ -26,6 +26,8 @@ interface INavigator {
         ELIXIRS_CODEX, //21
         MOUNTS_CODEX, //22
         RANDOM_CODEX, //23
+        CORE_CODEX,
+        CORES,
         CALCULATOR, // 24
         CRYPTO_SEAL, // 25
         ARTIFACT_AND_ELIXIR_SLOTS, // 26

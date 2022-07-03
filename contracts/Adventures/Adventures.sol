@@ -15,20 +15,9 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     mapping(uint => uint) public timer;
     uint public COOLDOWN;
 
-    struct AdventureBattle {
-        uint battleId;
-        address account;
-        uint summoner;
-        uint adventureArea;
-        uint adventureLevel;
-        bool isActive;
-        IAdventure.AdventureMonster monster;
-        GameObjects.BattleStats playerStats;
-        GameObjects.BattleStats monsterStats;
-    }
 
     // summoner -> battle
-    mapping(uint => AdventureBattle) public activeBattles;
+    mapping(uint => IAdventure.AdventureBattle) public activeBattles;
 
     function initialize(address _navigator) external initializer {
         __Ownable_init();
@@ -60,7 +49,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         GameObjects.BattleStats memory _monsterStats
         ) = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR)).PVEBattleStats(summoner, _monster);
 
-        activeBattles[summoner] = AdventureBattle({
+        activeBattles[summoner] = IAdventure.AdventureBattle({
         account : msg.sender,
         battleId : battleId,
         summoner : summoner,
@@ -90,11 +79,13 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         );
     }
 
-    function attack(uint summoner, uint multiplier) external onlyGameContracts {
+    function attack(uint summoner, uint multiplier, uint overrideDps) external onlyGameContracts {
         require(activeBattles[summoner].account != address(0), "no battle");
 
-        AdventureBattle memory battle = activeBattles[summoner];
+        IAdventure.AdventureBattle memory battle = activeBattles[summoner];
+        if (overrideDps > 0) battle.playerStats.DPS = overrideDps;
         require(battle.monsterStats.TOTAL_HP > 0 && battle.playerStats.TOTAL_HP > 0, "dead");
+
         (
         bool playerHits,
         bool monsterHits,
@@ -136,13 +127,16 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
                 battle.playerStats.TOTAL_HP -= damage;
             }
         }
+        if (overrideDps > 0) {
+            battle.playerStats.DPS = activeBattles[summoner].playerStats.DPS;
+        }
         activeBattles[summoner].monsterStats = battle.monsterStats;
         activeBattles[summoner].playerStats = battle.playerStats;
         battleNonce = nonce + 1;
     }
 
     function settleBattle(uint summoner) external onlyGameContracts {
-        AdventureBattle memory battle = activeBattles[summoner];
+        IAdventure.AdventureBattle memory battle = activeBattles[summoner];
         require(battle.isActive, "finalized");
         uint nonce = battleNonce;
         if (battle.playerStats.TOTAL_HP == 0) {
@@ -188,7 +182,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
     event Roll(uint roll);
 
-    function getHitRolls(uint summoner, AdventureBattle memory battle) internal returns (bool, bool, uint nonce) {
+    function getHitRolls(uint summoner, IAdventure.AdventureBattle memory battle) internal returns (bool, bool, uint nonce) {
         nonce = battleNonce;
         nonce++;
         uint roll1 = RNG.d100(1 + summoner + nonce);
@@ -239,6 +233,10 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             monster.EnemyElementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(monster.EnemyElementalStats, _level.Difficulty);
         }
         return (monster, _adventureMonster);
+    }
+
+    function activeBattle(uint summoner) external view returns (IAdventure.AdventureBattle memory){
+        return activeBattles[summoner];
     }
 
 }

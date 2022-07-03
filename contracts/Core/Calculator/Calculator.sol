@@ -41,7 +41,8 @@ contract Calculator is Initializable, InitNavigator {
     }
 
 
-    function PVEBattleStats(uint summoner,
+    function PVEBattleStats(
+        uint summoner,
         IMonster.Monster memory _monster) external view returns (GameObjects.BattleStats memory,
         GameObjects.BattleStats memory) {
         (
@@ -50,6 +51,32 @@ contract Calculator is Initializable, InitNavigator {
         GameObjects.ElementalStats memory _eleStatsFromEquips1,
         uint lvl
         ) = getAllStats(summoner);
+
+        (GameObjects.BattleStats memory player,
+        GameObjects.BattleStats memory monster) = GetBattleStats(
+            _statsBase1,
+            _genStatsFromEquips1,
+            _eleStatsFromEquips1,
+            _monster.EnemyStats,
+            _monster.EnemyGeneratedStats,
+            _monster.EnemyElementalStats);
+
+        //        player.TOTAL_HP += lvl * 10;
+
+        return (player, monster);
+    }
+
+    function PVEBattleStatsByElement(
+        uint summoner,
+        IMonster.Monster memory _monster, GameObjects.Element element) external view returns (GameObjects.BattleStats memory,
+        GameObjects.BattleStats memory) {
+        (
+        GameObjects.Stats memory _statsBase1,
+        GameObjects.GeneratedStats memory _genStatsFromEquips1,
+        GameObjects.ElementalStats memory _eleStatsFromEquips1,
+        uint lvl
+        ) = getAllStats(summoner);
+        _eleStatsFromEquips1.SummonerDamageType = element;
 
         (GameObjects.BattleStats memory player,
         GameObjects.BattleStats memory monster) = GetBattleStats(
