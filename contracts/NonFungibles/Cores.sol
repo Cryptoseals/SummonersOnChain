@@ -26,7 +26,7 @@ contract Cores is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgra
     }
 
     // test purposes
-    function mintDev(uint core, uint amount) external {
+    function mintDev(uint core, uint amount) external onlyOwner {
         _mint(msg.sender, uint(core), amount, new bytes(0));
     }
 

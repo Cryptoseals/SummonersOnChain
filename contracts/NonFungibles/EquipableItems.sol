@@ -168,12 +168,12 @@ ERC721EnumerableUpgradeable
         require(ownerOf(tokenId) == msg.sender, "not owned");
         // check balance
         ICores coreContract = ICores(contractAddress(INavigator.CONTRACT.CORES));
+        coreContract.burnCore(msg.sender, coreId, 1);
 
         uint bal = coreContract.balanceOf(msg.sender, coreId);
         uint itemId = tokenToItemId[tokenId];
 
         GameObjects.ItemType _type = tokenToType[tokenId];
-
 
         // get core data.
         ICore.Core memory core = IAllCodexViews(contractAddress(INavigator.CONTRACT.CORE_CODEX)).core(coreId);
@@ -209,7 +209,6 @@ ERC721EnumerableUpgradeable
             revert InvalidItem("Not Implemented");
         }
         _enhance(tokenId, core.fx);
-        coreContract.burnCore(msg.sender, coreId, 1);
     }
 
     function _enhance(uint tokenId, ICore.Effect memory fx) internal {

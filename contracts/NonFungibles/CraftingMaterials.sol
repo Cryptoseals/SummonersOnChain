@@ -28,7 +28,7 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         _mint(to, uint(material), amount, new bytes(0));
     }
     // test purposes
-    function mintDev(ICraftingMaterials.CraftingMaterial material, uint amount) external {
+    function mintDev(ICraftingMaterials.CraftingMaterial material, uint amount) external onlyOwner {
         _mint(msg.sender, uint(material), amount, new bytes(0));
     }
 
