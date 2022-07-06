@@ -17,7 +17,7 @@ contract Equipable is Initializable, InitNavigator {
         uint tokenId;
         uint elixirId;
         uint tier;
-        uint expirationTime;
+        uint turnLeft;
     }
 
     struct EquippedArtifact {
@@ -172,7 +172,7 @@ contract Equipable is Initializable, InitNavigator {
         elixirId : elixirId,
         tier : tier,
         tokenId : id,
-        expirationTime : block.timestamp + elixir.expirationTime
+        turnLeft : elixir.turnDuration
         });
     }
 
@@ -197,7 +197,7 @@ contract Equipable is Initializable, InitNavigator {
     function activeElixirs(uint summoner) public view returns (GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats){
         for (uint i = 1; i <= ELIXIR_SLOTS; i++) {
             ConsumedElixir memory _consumed = ElixirSlots[summoner][i];
-            if (_consumed.expirationTime < block.timestamp) continue;
+            if (_consumed.turnLeft == 0) continue;
 
             GameObjects.Elixir memory elixir = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX)).elixir(_consumed.elixirId, _consumed.tier);
             _stats = EquipableUtils.sumStats(_stats, elixir.statBonus);
@@ -409,7 +409,7 @@ contract Equipable is Initializable, InitNavigator {
     function equipped(uint summoner, GameObjects.ItemType[] calldata slots) external view returns (GameObjects.EquippedItemStruct[] memory){
         GameObjects.EquippedItemStruct[] memory results = new GameObjects.EquippedItemStruct[](slots.length);
         uint i;
-        for (i ; i < slots.length; i++) {
+        for (i; i < slots.length; i++) {
             results[i] = EquippedGears[summoner][slots[i]];
         }
         return results;

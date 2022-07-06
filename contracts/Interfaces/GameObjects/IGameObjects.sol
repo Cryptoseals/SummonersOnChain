@@ -191,12 +191,11 @@ library GameObjects {
     }
 
     struct Elixir {
-        ItemMetadata metadata;
-        ItemRequirement requirement;
+        //        ItemMetadata metadata;
         Stats statBonus;
         GeneratedStats generatedStatBonus;
         ElementalStats elementalStats;
-        uint expirationTime;
+        uint turnDuration;
     }
 
     struct ConsumedElixir {

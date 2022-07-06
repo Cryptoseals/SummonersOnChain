@@ -15,17 +15,28 @@ contract CodexElixirs {
     }
 
     function DummyElixir(uint tier) public pure returns (GameObjects.Elixir memory _elixir) {
-        _elixir.metadata.id = 1;
-        _elixir.metadata.baseType = GameObjects.ItemType.ELIXIR;
-        _elixir.metadata.name = "Dummy Elixir";
-        _elixir.metadata.description = "Dummy Elixir is best elixir";
-        _elixir.metadata.upgradable = true;
+        // value is percentage
+        _elixir.statBonus.STR = 5;
+        //        _elixir.statBonus.AGI = 5;
+        //        _elixir.statBonus.DEX = 5;
+        //        _elixir.statBonus.INT = 5;
+        //        _elixir.statBonus.VIT = 5;
+        //        _elixir.statBonus.LUCK = 5;
 
-        _elixir.requirement.level = 1;
-        _elixir.requirement.classRequirement = new GameObjects.Class[](0);
-        _elixir.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _elixir.generatedStatBonus.HP = 5;
+        //        _elixir.generatedStatBonus.P_DEF;
+        //        _elixir.generatedStatBonus.M_DEF;
+        //        _elixir.generatedStatBonus.P_ATK;
+        //        _elixir.generatedStatBonus.M_ATK;
+        //        _elixir.generatedStatBonus.CRIT;
+        //        _elixir.generatedStatBonus.CRIT_MULTIPLIER;
+        //        _elixir.generatedStatBonus.DODGE;
+        //        _elixir.generatedStatBonus.ACCURACY;
+        //        _elixir.generatedStatBonus.INFUSION;
 
-        _elixir.statBonus = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
-        _elixir.generatedStatBonus = GameObjects.GeneratedStats({HP : 1,P_ATK : 1, M_ATK : 1, P_DEF : 1, M_DEF : 1, ACCURACY : 1, DODGE : 1, CRIT : 1, CRIT_MULTIPLIER : 1, INFUSION: 0});
+        _elixir.elementalStats.ElementalAtk.DARK_ATK = 5;
+
+
+        _elixir.elementalStats.ElementalDef.DARK_DEF = 5;
     }
 }
