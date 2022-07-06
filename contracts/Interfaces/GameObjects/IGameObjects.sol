@@ -186,9 +186,16 @@ library GameObjects {
 
     struct ElixirBonusEffect {
         uint BonusEXPPercentage;
+        uint BonusEXPPercentagePerTier;
         uint BonusGoldPercentage;
+        uint BonusGoldPercentagePerTier;
         uint BonusEssencePercentage;
+        uint BonusEssencePercentagePerTier;
         uint BonusMaterialPercentage;
+        uint BonusMaterialPercentagePerTier;
+        uint StatBonusPerTier;
+        uint GenStatBonusPerTier;
+        uint EleStatBonusPerTier;
     }
 
     struct Elixir {
@@ -323,6 +330,8 @@ library GameObjects {
     struct ElixirRecipe {
         uint id;
         uint[] requiredMiscItemIDs;
+        uint requiredGold;
+        uint requiredEssence;
     }
 
 }

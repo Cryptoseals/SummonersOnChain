@@ -159,12 +159,16 @@ contract Equipable is Initializable, InitNavigator {
     function consumeElixir(uint summoner, uint slot, uint id) external senderIsSummonerOwner(summoner) notInFight(summoner) {
         require(slot > 0 && slot <= ELIXIR_SLOTS, "");
         // check ownership, remove previous effects and apply new
+        IElixirsAndArtifacts elixirContract = IElixirsAndArtifacts(contractAddress(INavigator.CONTRACT.ELIXIRS));
         require(
-            IERC721(contractAddress(INavigator.CONTRACT.ELIXIRS)).ownerOf(id) == msg.sender,
+            elixirContract.ownerOf(id) == msg.sender,
             "!"
         );
-        IElixirsAndArtifacts elixirContract = IElixirsAndArtifacts(contractAddress(INavigator.CONTRACT.ELIXIRS));
         uint elixirId = elixirContract.itemType(id);
+        for (uint i = 1; i <= ELIXIR_SLOTS;) {
+            require(elixirId != ElixirSlots[summoner][i].tokenId, "same");
+        unchecked {i++;}
+        }
         uint tier = elixirContract.tier(id);
         GameObjects.Elixir memory elixir = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX)).elixir(elixirId, tier);
         require(elixirContract.burnItem(id), "?!");
@@ -179,7 +183,7 @@ contract Equipable is Initializable, InitNavigator {
     function reduceElixirDuration(uint summoner) external onlyGameContracts {
         for (uint i = 1; i <= ELIXIR_SLOTS;) {
             if (ElixirSlots[summoner][i].turnLeft > 0) ElixirSlots[summoner][i].turnLeft -= 1;
-            unchecked {i++;}
+        unchecked {i++;}
         }
     }
 
@@ -222,10 +226,10 @@ contract Equipable is Initializable, InitNavigator {
             if (_consumed.turnLeft == 0) continue;
 
             GameObjects.Elixir memory elixir = elixircodex.elixir(_consumed.elixirId, _consumed.tier);
-            _fx.BonusEXPPercentage += elixir.bonus.BonusEXPPercentage;
-            _fx.BonusMaterialPercentage += elixir.bonus.BonusMaterialPercentage;
-            _fx.BonusEssencePercentage += elixir.bonus.BonusEssencePercentage;
-            _fx.BonusGoldPercentage += elixir.bonus.BonusGoldPercentage;
+            _fx.BonusEXPPercentage += elixir.bonus.BonusEXPPercentage + (_consumed.tier * elixir.bonus.BonusEXPPercentagePerTier);
+            _fx.BonusMaterialPercentage += elixir.bonus.BonusMaterialPercentage + (_consumed.tier * elixir.bonus.BonusMaterialPercentagePerTier);
+            _fx.BonusEssencePercentage += elixir.bonus.BonusEssencePercentage + (_consumed.tier * elixir.bonus.BonusEssencePercentagePerTier);
+            _fx.BonusGoldPercentage += elixir.bonus.BonusGoldPercentage + (_consumed.tier * elixir.bonus.BonusGoldPercentagePerTier);
         }
     }
 
