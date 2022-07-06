@@ -1,4 +1,4 @@
-import "../Interfaces/GameObjects/IGameObjects.sol";
+import {GameObjects} from "../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 

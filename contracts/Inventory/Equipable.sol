@@ -176,6 +176,13 @@ contract Equipable is Initializable, InitNavigator {
         });
     }
 
+    function reduceElixirDuration(uint summoner) external onlyGameContracts {
+        for (uint i = 1; i <= ELIXIR_SLOTS;) {
+            if (ElixirSlots[summoner][i].turnLeft > 0) ElixirSlots[summoner][i].turnLeft -= 1;
+            unchecked {i++;}
+        }
+    }
+
     function equipArtifact(uint summoner, uint slot, uint id) external senderIsSummonerOwner(summoner) notInFight(summoner) {
         require(slot > 0 && slot <= ARTIFACT_SLOTS, "");
         // check ownership, remove previous effects and apply new
@@ -194,7 +201,9 @@ contract Equipable is Initializable, InitNavigator {
         });
     }
 
-    function activeElixirs(uint summoner) public view returns (GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats){
+    function activeElixirs(uint summoner) public view returns (GameObjects.Stats memory _stats,
+        GameObjects.GeneratedStats memory _gen_stats,
+        GameObjects.ElementalStats memory _ele_stats){
         for (uint i = 1; i <= ELIXIR_SLOTS; i++) {
             ConsumedElixir memory _consumed = ElixirSlots[summoner][i];
             if (_consumed.turnLeft == 0) continue;
@@ -203,6 +212,20 @@ contract Equipable is Initializable, InitNavigator {
             _stats = EquipableUtils.sumStats(_stats, elixir.statBonus);
             _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, elixir.generatedStatBonus);
             _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, elixir.elementalStats);
+        }
+    }
+
+    function activeElixirBonusEffects(uint summoner) public view returns (GameObjects.ElixirBonusEffect memory _fx){
+        IAllCodexViews elixircodex = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX));
+        for (uint i = 1; i <= ELIXIR_SLOTS; i++) {
+            ConsumedElixir memory _consumed = ElixirSlots[summoner][i];
+            if (_consumed.turnLeft == 0) continue;
+
+            GameObjects.Elixir memory elixir = elixircodex.elixir(_consumed.elixirId, _consumed.tier);
+            _fx.BonusEXPPercentage += elixir.bonus.BonusEXPPercentage;
+            _fx.BonusMaterialPercentage += elixir.bonus.BonusMaterialPercentage;
+            _fx.BonusEssencePercentage += elixir.bonus.BonusEssencePercentage;
+            _fx.BonusGoldPercentage += elixir.bonus.BonusGoldPercentage;
         }
     }
 
