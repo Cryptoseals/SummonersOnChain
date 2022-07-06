@@ -184,10 +184,11 @@ library GameObjects {
         ElementalStats elementalStats;
     }
 
-    struct EquippedArtifact {
-        uint artifactType;
-        uint artifactTier;
-        uint tokenId;
+    struct ElixirBonusEffect {
+        uint BonusEXPPercentage;
+        uint BonusGoldPercentage;
+        uint BonusEssencePercentage;
+        uint BonusMaterialPercentage;
     }
 
     struct Elixir {
@@ -195,13 +196,8 @@ library GameObjects {
         Stats statBonus;
         GeneratedStats generatedStatBonus;
         ElementalStats elementalStats;
+        ElixirBonusEffect bonus;
         uint turnDuration;
-    }
-
-    struct ConsumedElixir {
-        uint elixirType;
-        uint elixirTier;
-        uint deadline;
     }
 
     struct Helmet {

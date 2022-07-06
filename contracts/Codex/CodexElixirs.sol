@@ -38,5 +38,10 @@ contract CodexElixirs {
 
 
         _elixir.elementalStats.ElementalDef.DARK_DEF = 5;
+
+        _elixir.bonus.BonusEXPPercentage = 5;
+        _elixir.bonus.BonusGoldPercentage = 5;
+        _elixir.bonus.BonusEssencePercentage = 5;
+        _elixir.bonus.BonusMaterialPercentage = 5;
     }
 }
