@@ -15,6 +15,15 @@ contract CodexEnemies is Initializable, InitNavigator {
 
     IBaseEnemyStats baseStats;
 
+
+    function getAllMonsters (GameObjects.Element ele, uint lvl) external view returns(IMonster.Monster[] memory){
+        IMonster.Monster[] memory result = new IMonster.Monster[](22);
+        for (uint i = 1; i < 22; i++) {
+            result[i - 1] = enemy(ele, i, lvl);
+        }
+        return result;
+    }
+
     function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
         baseStats = IBaseEnemyStats(contractAddress(INavigator.CONTRACT.BASE_ENEMY_STATS));
