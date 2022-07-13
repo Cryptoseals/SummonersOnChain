@@ -1,4 +1,4 @@
-import "../GameObjects/ISpell.sol";
+import {GameObjects, ISpell} from "../GameObjects/ISpell.sol";
 pragma solidity ^0.8.0;
 
 interface ICodexSpells {

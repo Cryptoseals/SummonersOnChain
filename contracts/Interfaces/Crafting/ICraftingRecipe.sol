@@ -1,5 +1,5 @@
-import "../GameObjects/IGameObjects.sol";
-import "../GameObjects/ICrafting/ICraftingMaterials.sol";
+import {GameObjects} from "../GameObjects/IGameObjects.sol";
+import {ICraftingMaterials} from "../GameObjects/ICrafting/ICraftingMaterials.sol";
 pragma solidity ^0.8.0;
 
 interface ICraftingRecipe {

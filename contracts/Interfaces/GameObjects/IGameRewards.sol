@@ -1,5 +1,5 @@
-import "./IGameObjects.sol";
-import "./ICrafting/ICraftingMaterials.sol";
+import {GameObjects} from "./IGameObjects.sol";
+import {ICraftingMaterials} from "./ICrafting/ICraftingMaterials.sol";
 pragma solidity ^0.8.0;
 
 interface IGameRewards {

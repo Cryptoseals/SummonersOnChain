@@ -1,9 +1,10 @@
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "../Core/Navigator/InitNavigator.sol";
-import "../Interfaces/NonFungibles/EquipableItems/IEquipableItems.sol";
-import "../Interfaces/Crafting/ICraftingRecipe.sol";
-import "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
-import "../Interfaces/NonFungibles/CraftingMaterials/ICraftingMaterialsToken.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {INavigator, InitNavigator} from "../Core/Navigator/InitNavigator.sol";
+import {GameObjects} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {IEquipableItems} from "../Interfaces/NonFungibles/EquipableItems/IEquipableItems.sol";
+import {ICraftingRecipe, ICraftingMaterials} from "../Interfaces/Crafting/ICraftingRecipe.sol";
+import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
+import {ICraftingMaterialsToken} from "../Interfaces/NonFungibles/CraftingMaterials/ICraftingMaterialsToken.sol";
 pragma solidity ^0.8.0;
 
 

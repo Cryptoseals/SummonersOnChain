@@ -1,6 +1,7 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {ERC721EnumerableUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
-import {GameObjects, GameEntities} from "../Interfaces/GameObjects/IGameEntities.sol";
+import {GameEntities} from "../Interfaces/GameObjects/IGameEntities.sol";
+import {GameObjects, GameObjects_Stats} from "../Interfaces/GameObjects/IGameEntities.sol";
 import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
 import "../Core/Common/Errors.sol";
 import {GameConstants} from "../Interfaces/Core/Constants/Constants.sol";
@@ -128,10 +129,10 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     public view returns (
         GameEntities.SummonerData memory _data,
         GameEntities.SummonerMetadata memory _metadata,
-        GameObjects.Stats memory _base_stats,
-        GameObjects.Stats memory,
-        GameObjects.GeneratedStats memory,
-        GameObjects.ElementalStats memory
+        GameObjects_Stats.Stats memory _base_stats,
+        GameObjects_Stats.Stats memory,
+        GameObjects_Stats.GeneratedStats memory,
+        GameObjects_Stats.ElementalStats memory
     ){
         _data.level = SummonerLevels[id];
         _data.class = SummonerClasses[id];
@@ -140,9 +141,9 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
         _base_stats = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(id);
 
         (
-        GameObjects.Stats memory _stats,
-        GameObjects.GeneratedStats memory _gen_stats,
-        GameObjects.ElementalStats memory _ele_stats
+        GameObjects_Stats.Stats memory _stats,
+        GameObjects_Stats.GeneratedStats memory _gen_stats,
+        GameObjects_Stats.ElementalStats memory _ele_stats
         ) = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY)).getSummonerBattleStats(id);
         return (
         _data, _metadata, _base_stats,

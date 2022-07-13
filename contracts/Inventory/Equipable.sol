@@ -1,10 +1,10 @@
-import "../Interfaces/Attributes/IAttributes.sol";
-import "../Interfaces/Codex/IAllCodexViews.sol";
-import "../Interfaces/NonFungibles/EquipableItems/IEquipableItems.sol";
-import "../Core/Navigator/InitNavigator.sol";
-import "./EquipableUtils.sol";
-import "../Interfaces/NonFungibles/ElixirsAndArtifacts/IElixirsAndArtifacts.sol";
-
+import {IAttributes} from "../Interfaces/Attributes/IAttributes.sol";
+import {IAllCodexViews} from "../Interfaces/Codex/IAllCodexViews.sol";
+import {IEquipableItems} from "../Interfaces/NonFungibles/EquipableItems/IEquipableItems.sol";
+import {InitNavigator, INavigator, Initializable, GameEntities, ISummoners} from "../Core/Navigator/InitNavigator.sol";
+import {GameObjects, GameObjects_Stats, GameObjects_Equipments, GameObjects_Elixir} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {IElixirsAndArtifacts} from "../Interfaces/NonFungibles/ElixirsAndArtifacts/IElixirsAndArtifacts.sol";
+import {EquipableUtils} from "./EquipableUtils.sol";
 
 
 pragma solidity ^0.8.0;
@@ -26,21 +26,16 @@ contract Equipable is Initializable, InitNavigator {
         uint tier;
     }
 
-    mapping(address => mapping(uint => bool)) public Escrow;
-
-
-
-
     // summoner -> item type / slot -> item struct
-    mapping(uint => mapping(GameObjects.ItemType => GameObjects.EquippedItemStruct)) public EquippedGears;
+    mapping(uint => mapping(GameObjects.ItemType => GameObjects_Equipments.EquippedItemStruct)) public EquippedGears;
 
     mapping(uint => uint) public EquippedSeals;
     // summoner -> slot -> precalculated
-    mapping(uint => mapping(GameObjects.ItemType => GameObjects.Stats)) public PreCalculatedEquipmentStats;
-    mapping(uint => mapping(GameObjects.ItemType => GameObjects.GeneratedStats)) public PreCalculatedGeneratedEquipmentStats;
-    mapping(uint => mapping(GameObjects.ItemType => GameObjects.ElementalStats)) public PreCalculatedEquipmentElementalStats;
+    mapping(uint => mapping(GameObjects.ItemType => GameObjects_Stats.Stats)) public PreCalculatedEquipmentStats;
+    mapping(uint => mapping(GameObjects.ItemType => GameObjects_Stats.GeneratedStats)) public PreCalculatedGeneratedEquipmentStats;
+    mapping(uint => mapping(GameObjects.ItemType => GameObjects_Stats.ElementalStats)) public PreCalculatedEquipmentElementalStats;
     mapping(uint => GameObjects.Element) public DamageTypesOfSummoners;
-    mapping(uint => GameObjects.SummonedCompanion) public SummonedCompanions;
+    mapping(uint => GameObjects_Equipments.SummonedCompanion) public SummonedCompanions;
 
     // summoner elixir slots. summoner id -> equipped
     mapping(uint => mapping(uint => ConsumedElixir)) public ElixirSlots;
@@ -53,10 +48,10 @@ contract Equipable is Initializable, InitNavigator {
         initializeNavigator(_navigator);
     }
 
-    function canEquip(uint summoner, GameObjects.ItemRequirement memory _requirement) internal view returns (bool) {
+    function canEquip(uint summoner, GameObjects_Equipments.ItemRequirement memory _requirement) internal view returns (bool) {
         //        IAttributes attributesContract = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES));
         GameEntities.SummonerData memory _summoner = ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).summonerData(summoner);
-        //        GameObjects.Stats memory _summonerStats = attributesContract.stats(summoner);
+        //        GameObjects_Stats.Stats memory _summonerStats = attributesContract.stats(summoner);
         bool classOk;
         if (_requirement.classRequirement.length > 0) {
             for (uint i = 0; i < _requirement.classRequirement.length; i++) {
@@ -90,62 +85,66 @@ contract Equipable is Initializable, InitNavigator {
         }
     }
 
+    function weak() internal pure {
+        revert("You are too weak to equip this.");
+    }
+
     function _handleEquip(uint summoner, uint id) internal returns (uint oldTokenToRefund) {
         (GameObjects.ItemType _type, uint _itemId, uint256 tier, uint prefix, uint prefixTier, uint suffix, uint suffixTier, GameObjects.Element element) = IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS)).item(id);
+
+        GameObjects_Equipments.EquipableItem memory _equipableItem;
+        GameObjects_Equipments.Weapon memory _equipableW;
+
         if (_type == GameObjects.ItemType.HELMET) {
             oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.HELMET].tokenId;
-            GameObjects.Helmet memory _helmet = IAllCodexViews(contractAddress(INavigator.CONTRACT.HELMETS_CODEX)).helmetCore(_itemId, tier);
-            if (!canEquip(summoner, _helmet.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.HELMETS_CODEX)).helmetCore(_itemId, tier);
+
         } else if (_type == GameObjects.ItemType.ARMOR) {
             oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.ARMOR].tokenId;
-            GameObjects.Armor memory _armor = IAllCodexViews(contractAddress(INavigator.CONTRACT.BODY_ARMORS_CODEX)).armorCore(_itemId, tier);
-            if (!canEquip(summoner, _armor.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            GameObjects_Equipments.EquipableItem memory _armor = IAllCodexViews(contractAddress(INavigator.CONTRACT.BODY_ARMORS_CODEX)).armorCore(_itemId, tier);
+
         } else if (_type == GameObjects.ItemType.WEAPON) {
             oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.WEAPON].tokenId;
-            GameObjects.Weapon memory _weapon = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(_itemId, tier);
-            if (!canEquip(summoner, _weapon.requirement)) revert CannotEquip("You are too weak to equip this.");
+            _equipableW = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(_itemId, tier);
             DamageTypesOfSummoners[summoner] = element;
-            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
         } else if (_type == GameObjects.ItemType.OFFHAND) {
             oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.OFFHAND].tokenId;
-            GameObjects.Weapon memory _offHand = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(_itemId, tier);
-            if (!canEquip(summoner, _offHand.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            _equipableW = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(_itemId, tier);
+
         } else if (_type == GameObjects.ItemType.BOOTS) {
             oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.BOOTS].tokenId;
-            GameObjects.Boots memory _boots = IAllCodexViews(contractAddress(INavigator.CONTRACT.BOOTS_CODEX)).bootsCore(_itemId, tier);
-            if (!canEquip(summoner, _boots.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.BOOTS_CODEX)).bootsCore(_itemId, tier);
+
         } else if (_type == GameObjects.ItemType.AMULET) {
             oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.AMULET].tokenId;
-            GameObjects.Amulet memory _amulet = IAllCodexViews(contractAddress(INavigator.CONTRACT.AMULETS_CODEX)).amuletCore(_itemId, tier);
-            if (!canEquip(summoner, _amulet.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.AMULETS_CODEX)).amuletCore(_itemId, tier);
+
         } else if (_type == GameObjects.ItemType.RING) {
             oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.RING].tokenId;
-            GameObjects.Ring memory _ring = IAllCodexViews(contractAddress(INavigator.CONTRACT.RINGS_CODEX)).ringCore(_itemId, tier);
-            if (!canEquip(summoner, _ring.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.RINGS_CODEX)).ringCore(_itemId, tier);
+
         } else if (_type == GameObjects.ItemType.EARRING) {
             oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.EARRING].tokenId;
-            GameObjects.Earring memory _earring = IAllCodexViews(contractAddress(INavigator.CONTRACT.EARRINGS_CODEX)).earringsCore(_itemId, tier);
-            if (!canEquip(summoner, _earring.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.EARRINGS_CODEX)).earringsCore(_itemId, tier);
+
         } else if (_type == GameObjects.ItemType.BELT) {
             oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.BELT].tokenId;
-            GameObjects.Belt memory _belt = IAllCodexViews(contractAddress(INavigator.CONTRACT.BELTS_CODEX)).beltCore(_itemId, tier);
-            if (!canEquip(summoner, _belt.requirement)) revert CannotEquip("You are too weak to equip this.");
-            _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
+            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.BELTS_CODEX)).beltCore(_itemId, tier);
+
         } else {
-            revert InvalidItem("Not Implemented");
+            revert("Not Implemented");
         }
 
+        if (_type == GameObjects.ItemType.WEAPON || _type == GameObjects.ItemType.OFFHAND) {
+            if (!canEquip(summoner, _equipableW.requirement)) weak();
+        } else {
+            if (!canEquip(summoner, _equipableItem.requirement)) weak();
+        }
+        _equipGear(summoner, id, _type, _itemId, tier, prefix, prefixTier, suffix, suffixTier, element);
     }
 
     function _equipGear(uint summoner, uint id, GameObjects.ItemType _type, uint _itemId, uint256 tier, uint prefix, uint prefixTier, uint suffix, uint suffixTier, GameObjects.Element element) internal {
-        EquippedGears[summoner][_type] = GameObjects.EquippedItemStruct({
+        EquippedGears[summoner][_type] = GameObjects_Equipments.EquippedItemStruct({
         tokenId : id,
         prefixId : prefix,
         suffixId : suffix,
@@ -170,7 +169,7 @@ contract Equipable is Initializable, InitNavigator {
         unchecked {i++;}
         }
         uint tier = elixirContract.tier(id);
-        GameObjects.Elixir memory elixir = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX)).elixir(elixirId, tier);
+        GameObjects_Elixir.Elixir memory elixir = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX)).elixir(elixirId, tier);
         require(elixirContract.burnItem(id), "?!");
         ElixirSlots[summoner][slot] = ConsumedElixir({
         elixirId : elixirId,
@@ -191,7 +190,7 @@ contract Equipable is Initializable, InitNavigator {
         require(slot > 0 && slot <= ARTIFACT_SLOTS, "");
         // check ownership, remove previous effects and apply new
         require(
-            IERC721(contractAddress(INavigator.CONTRACT.ARTIFACTS)).ownerOf(id) == msg.sender,
+            IEquipableItems(contractAddress(INavigator.CONTRACT.ARTIFACTS)).ownerOf(id) == msg.sender,
             "!"
         );
         IElixirsAndArtifacts artifactContract = IElixirsAndArtifacts(contractAddress(INavigator.CONTRACT.ARTIFACTS));
@@ -205,27 +204,27 @@ contract Equipable is Initializable, InitNavigator {
         });
     }
 
-    function activeElixirs(uint summoner) public view returns (GameObjects.Stats memory _stats,
-        GameObjects.GeneratedStats memory _gen_stats,
-        GameObjects.ElementalStats memory _ele_stats){
+    function activeElixirs(uint summoner) public view returns (GameObjects_Stats.Stats memory _stats,
+        GameObjects_Stats.GeneratedStats memory _gen_stats,
+        GameObjects_Stats.ElementalStats memory _ele_stats){
         for (uint i = 1; i <= ELIXIR_SLOTS; i++) {
             ConsumedElixir memory _consumed = ElixirSlots[summoner][i];
             if (_consumed.turnLeft == 0) continue;
 
-            GameObjects.Elixir memory elixir = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX)).elixir(_consumed.elixirId, _consumed.tier);
+            GameObjects_Elixir.Elixir memory elixir = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX)).elixir(_consumed.elixirId, _consumed.tier);
             _stats = EquipableUtils.sumStats(_stats, elixir.statBonus);
             _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, elixir.generatedStatBonus);
             _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, elixir.elementalStats);
         }
     }
 
-    function activeElixirBonusEffects(uint summoner) public view returns (GameObjects.ElixirBonusEffect memory _fx){
+    function activeElixirBonusEffects(uint summoner) public view returns (GameObjects_Elixir.ElixirBonusEffect memory _fx){
         IAllCodexViews elixircodex = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX));
         for (uint i = 1; i <= ELIXIR_SLOTS; i++) {
             ConsumedElixir memory _consumed = ElixirSlots[summoner][i];
             if (_consumed.turnLeft == 0) continue;
 
-            GameObjects.Elixir memory elixir = elixircodex.elixir(_consumed.elixirId, _consumed.tier);
+            GameObjects_Elixir.Elixir memory elixir = elixircodex.elixir(_consumed.elixirId, _consumed.tier);
             _fx.BonusEXPPercentage += elixir.bonus.BonusEXPPercentage + (_consumed.tier * elixir.bonus.BonusEXPPercentagePerTier);
             _fx.BonusMaterialPercentage += elixir.bonus.BonusMaterialPercentage + (_consumed.tier * elixir.bonus.BonusMaterialPercentagePerTier);
             _fx.BonusEssencePercentage += elixir.bonus.BonusEssencePercentage + (_consumed.tier * elixir.bonus.BonusEssencePercentagePerTier);
@@ -233,19 +232,19 @@ contract Equipable is Initializable, InitNavigator {
         }
     }
 
-    function activeArtifacts(uint summoner) public view returns (GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats){
+    function activeArtifacts(uint summoner) public view returns (GameObjects_Stats.Stats memory _stats, GameObjects_Stats.GeneratedStats memory _gen_stats, GameObjects_Stats.ElementalStats memory _ele_stats){
         for (uint i = 1; i <= ARTIFACT_SLOTS; i++) {
             EquippedArtifact memory _consumed = ArtifactSlots[summoner][i];
-            GameObjects.Artifact memory artifact = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX)).artifact(_consumed.artifactId, _consumed.tier);
+            GameObjects_Equipments.Artifact memory artifact = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX)).artifact(_consumed.artifactId, _consumed.tier);
             _stats = EquipableUtils.sumStats(_stats, artifact.statBonus);
             _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, artifact.generatedStatBonus);
             _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, artifact.elementalStats);
         }
     }
 
-    function activeEffects(uint summoner) public view returns (GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats){
-        (GameObjects.Stats memory _stats1, GameObjects.GeneratedStats memory _gen_stats1, GameObjects.ElementalStats memory _ele_stats1) = activeElixirs(summoner);
-        (GameObjects.Stats memory _stats2, GameObjects.GeneratedStats memory _gen_stats2, GameObjects.ElementalStats memory _ele_stats2) = activeElixirs(summoner);
+    function activeEffects(uint summoner) public view returns (GameObjects_Stats.Stats memory _stats, GameObjects_Stats.GeneratedStats memory _gen_stats, GameObjects_Stats.ElementalStats memory _ele_stats){
+        (GameObjects_Stats.Stats memory _stats1, GameObjects_Stats.GeneratedStats memory _gen_stats1, GameObjects_Stats.ElementalStats memory _ele_stats1) = activeElixirs(summoner);
+        (GameObjects_Stats.Stats memory _stats2, GameObjects_Stats.GeneratedStats memory _gen_stats2, GameObjects_Stats.ElementalStats memory _ele_stats2) = activeElixirs(summoner);
         _stats = EquipableUtils.sumStats(_stats1, _stats2);
         _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats1, _gen_stats2);
         _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats1, _ele_stats2);
@@ -296,7 +295,7 @@ contract Equipable is Initializable, InitNavigator {
             id = EquippedGears[summoner][GameObjects.ItemType.BELT].tokenId;
             delete EquippedGears[summoner][GameObjects.ItemType.BELT];
         } else {
-            revert InvalidItem("Not Implemented");
+            revert("Not Implemented");
         }
         if (id > 0) {
             _returnNFT(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS), msg.sender, id);
@@ -311,22 +310,22 @@ contract Equipable is Initializable, InitNavigator {
     }
 
 
-    function getSummonerBattleStats(uint summoner) public view returns (GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats) {
+    function getSummonerBattleStats(uint summoner) public view returns (GameObjects_Stats.Stats memory _stats, GameObjects_Stats.GeneratedStats memory _gen_stats, GameObjects_Stats.ElementalStats memory _ele_stats) {
 
         (
-        GameObjects.Stats memory statsFromWeapon,
-        GameObjects.GeneratedStats memory genFromWeapon,
-        GameObjects.ElementalStats memory eleFromWeapon
+        GameObjects_Stats.Stats memory statsFromWeapon,
+        GameObjects_Stats.GeneratedStats memory genFromWeapon,
+        GameObjects_Stats.ElementalStats memory eleFromWeapon
         ) = getBattleStatsFromWeapons(summoner);
         (
-        GameObjects.Stats memory statsFromArmor,
-        GameObjects.GeneratedStats memory genFromArmor,
-        GameObjects.ElementalStats memory eleFromArmor
+        GameObjects_Stats.Stats memory statsFromArmor,
+        GameObjects_Stats.GeneratedStats memory genFromArmor,
+        GameObjects_Stats.ElementalStats memory eleFromArmor
         ) = getBattleStatsFromArmors(summoner);
         (
-        GameObjects.Stats memory statsFromJewelry,
-        GameObjects.GeneratedStats memory genFromJewelry,
-        GameObjects.ElementalStats memory eleFromJewelry
+        GameObjects_Stats.Stats memory statsFromJewelry,
+        GameObjects_Stats.GeneratedStats memory genFromJewelry,
+        GameObjects_Stats.ElementalStats memory eleFromJewelry
         ) = getBattleStatsFromJewelries(summoner);
 
         _stats = EquipableUtils.sumStats(statsFromArmor, statsFromWeapon);
@@ -338,8 +337,8 @@ contract Equipable is Initializable, InitNavigator {
         _ele_stats.SummonerDamageType = DamageTypesOfSummoners[summoner];
     }
 
-    function getBattleStatsFromArmors(uint summoner) public view returns (GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats) {
-        GameObjects.Helmet memory _helmet;
+    function getBattleStatsFromArmors(uint summoner) public view returns (GameObjects_Stats.Stats memory _stats, GameObjects_Stats.GeneratedStats memory _gen_stats, GameObjects_Stats.ElementalStats memory _ele_stats) {
+        GameObjects_Equipments.EquipableItem memory _helmet;
         if (EquippedGears[summoner][GameObjects.ItemType.HELMET].itemId != 0) {
             _helmet = IAllCodexViews(
                 contractAddress(INavigator.CONTRACT.HELMETS_CODEX)
@@ -349,7 +348,7 @@ contract Equipable is Initializable, InitNavigator {
             _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, _helmet.elementalStats);
         }
 
-        GameObjects.Armor memory _armor;
+        GameObjects_Equipments.EquipableItem memory _armor;
         if (EquippedGears[summoner][GameObjects.ItemType.ARMOR].itemId != 0) {
             _armor = IAllCodexViews(
                 contractAddress(INavigator.CONTRACT.BODY_ARMORS_CODEX)
@@ -359,7 +358,7 @@ contract Equipable is Initializable, InitNavigator {
             _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, _armor.elementalStats);
         }
 
-        GameObjects.Boots memory _boots;
+        GameObjects_Equipments.EquipableItem memory _boots;
         if (EquippedGears[summoner][GameObjects.ItemType.BOOTS].itemId != 0) {
             _boots = IAllCodexViews(
                 contractAddress(INavigator.CONTRACT.BOOTS_CODEX)
@@ -370,8 +369,8 @@ contract Equipable is Initializable, InitNavigator {
         }
     }
 
-    function getBattleStatsFromJewelries(uint summoner) public view returns (GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats) {
-        GameObjects.Amulet memory _amulet;
+    function getBattleStatsFromJewelries(uint summoner) public view returns (GameObjects_Stats.Stats memory _stats, GameObjects_Stats.GeneratedStats memory _gen_stats, GameObjects_Stats.ElementalStats memory _ele_stats) {
+        GameObjects_Equipments.EquipableItem memory _amulet;
         if (EquippedGears[summoner][GameObjects.ItemType.AMULET].itemId != 0) {
             _amulet = IAllCodexViews(
                 contractAddress(INavigator.CONTRACT.AMULETS_CODEX)
@@ -380,7 +379,7 @@ contract Equipable is Initializable, InitNavigator {
             _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, _amulet.generatedStatBonus);
             _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, _amulet.elementalStats);
         }
-        GameObjects.Ring memory _ring;
+        GameObjects_Equipments.EquipableItem memory _ring;
         if (EquippedGears[summoner][GameObjects.ItemType.RING].itemId != 0) {
             _ring = IAllCodexViews(
                 contractAddress(INavigator.CONTRACT.RINGS_CODEX)
@@ -390,7 +389,7 @@ contract Equipable is Initializable, InitNavigator {
             _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, _ring.elementalStats);
         }
 
-        GameObjects.Earring memory _earring;
+        GameObjects_Equipments.EquipableItem memory _earring;
         if (EquippedGears[summoner][GameObjects.ItemType.EARRING].itemId != 0) {
             _earring = IAllCodexViews(
                 contractAddress(INavigator.CONTRACT.EARRINGS_CODEX)
@@ -399,7 +398,7 @@ contract Equipable is Initializable, InitNavigator {
             _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, _earring.generatedStatBonus);
             _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, _earring.elementalStats);
         }
-        GameObjects.Belt memory _belt;
+        GameObjects_Equipments.EquipableItem memory _belt;
         if (EquippedGears[summoner][GameObjects.ItemType.BELT].itemId != 0) {
             _belt = IAllCodexViews(
                 contractAddress(INavigator.CONTRACT.BELTS_CODEX)
@@ -410,8 +409,8 @@ contract Equipable is Initializable, InitNavigator {
         }
     }
 
-    function getBattleStatsFromWeapons(uint summoner) public view returns (GameObjects.Stats memory _stats, GameObjects.GeneratedStats memory _gen_stats, GameObjects.ElementalStats memory _ele_stats) {
-        GameObjects.Weapon memory _weapon;
+    function getBattleStatsFromWeapons(uint summoner) public view returns (GameObjects_Stats.Stats memory _stats, GameObjects_Stats.GeneratedStats memory _gen_stats, GameObjects_Stats.ElementalStats memory _ele_stats) {
+        GameObjects_Equipments.Weapon memory _weapon;
         if (EquippedGears[summoner][GameObjects.ItemType.WEAPON].itemId != 0) {
             _weapon = IAllCodexViews(
                 contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)
@@ -421,7 +420,7 @@ contract Equipable is Initializable, InitNavigator {
             _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, _weapon.elementalStats);
         }
 
-        GameObjects.Weapon memory _offHand;
+        GameObjects_Equipments.Weapon memory _offHand;
         if (EquippedGears[summoner][GameObjects.ItemType.OFFHAND].itemId != 0) {
             _offHand = IAllCodexViews(
                 contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)
@@ -433,8 +432,8 @@ contract Equipable is Initializable, InitNavigator {
         // TODO, add seal stat calculation
     }
 
-    function equipped(uint summoner, GameObjects.ItemType[] calldata slots) external view returns (GameObjects.EquippedItemStruct[] memory){
-        GameObjects.EquippedItemStruct[] memory results = new GameObjects.EquippedItemStruct[](slots.length);
+    function equipped(uint summoner, GameObjects.ItemType[] calldata slots) external view returns (GameObjects_Equipments.EquippedItemStruct[] memory){
+        GameObjects_Equipments.EquippedItemStruct[] memory results = new GameObjects_Equipments.EquippedItemStruct[](slots.length);
         uint i;
         for (i; i < slots.length; i++) {
             results[i] = EquippedGears[summoner][slots[i]];
@@ -443,11 +442,11 @@ contract Equipable is Initializable, InitNavigator {
     }
 
     function _escrowNFT(address _erc721, uint _token, address from) internal {
-        IERC721(_erc721).transferFrom(from, address(this), _token);
+        IEquipableItems(_erc721).transferFrom(from, address(this), _token);
     }
 
     function _returnNFT(address _erc721, address to, uint _token) internal {
-        IERC721(_erc721).transferFrom(address(this), to, _token);
+        IEquipableItems(_erc721).transferFrom(address(this), to, _token);
     }
 
     function onERC721Received(

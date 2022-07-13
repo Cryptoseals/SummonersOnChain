@@ -1,5 +1,5 @@
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "../../GameObjects/IGameObjects.sol";
+import {GameObjects,GameObjects_Equipments} from "../../GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 interface IEquipableItems is IERC721 {
@@ -13,7 +13,7 @@ interface IEquipableItems is IERC721 {
     function items(uint256[] memory ids)
     external
     view
-    returns (GameObjects.ItemDTO[] memory);
+    returns (GameObjects_Equipments.ItemDTO[] memory);
     function tiers(uint[] memory ids) external view returns (uint[] memory);
 
     function itemType(uint id) external view returns (GameObjects.ItemType _type);

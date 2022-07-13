@@ -1,5 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {GameObjects, EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
+import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
+import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexDaggers is Initializable {
@@ -33,7 +34,7 @@ contract CodexDaggers is Initializable {
         BASE_ACCURACY = _BASE_ACCURACY;
     }
 
-    function weapon(uint id, uint tier) public view returns (GameObjects.Weapon memory) {
+    function weapon(uint id, uint tier) public view returns (GameObjects_Equipments.Weapon memory) {
         require(tier < 10, "t");
 
         if (id == 22) {
@@ -83,14 +84,14 @@ contract CodexDaggers is Initializable {
         revert("?d");
     }
 
-    function applyTier(GameObjects.Weapon memory weapon, uint tier, uint percentage) public view returns (GameObjects.Weapon memory){
+    function applyTier(GameObjects_Equipments.Weapon memory weapon, uint tier, uint percentage) public view returns (GameObjects_Equipments.Weapon memory){
         if (tier == 0) return weapon;
         weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(weapon.generatedStatBonus, (tier) * percentage);
         weapon.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(weapon.elementalStats, (tier) * percentage);
         return weapon;
     }
 
-    function BreadKnife(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function BreadKnife(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 22;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         // _weapon.metadata.name = "Bread Knife";
@@ -107,22 +108,13 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.classRequirement = classRequirement();
 
 
-        // _weapon.requirement.statRequirement = GameObjects.Stats({
-        // STR : 0,
-        //  DEX : 0,
-        //  AGI : 0,
-        //  INT : 0,
-        //  VIT : 0,
-        //  LUCK : 0});
-
-
         // bonuses here
         _weapon.statBonus = weaponStats(0);
 
         _weapon.generatedStatBonus = weaponGenStats(0);
     }
 
-    function Twinkle(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function Twinkle(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 23;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Twinkle";
@@ -131,18 +123,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 5;
         _weapon.requirement.classRequirement = classRequirement();
 
-        // _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        //  DEX : 0,
-        //  AGI : 0,
-        //  INT : 0,
-        //  VIT : 0,
-        //  LUCK : 0});
         _weapon.statBonus = weaponStats(1);
         _weapon.generatedStatBonus = weaponGenStats(1);
     }
 
-    function Razor(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function Razor(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 24;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Razor";
@@ -151,18 +136,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 10;
         _weapon.requirement.classRequirement = classRequirement();
 
-        //  _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        //  DEX : 0,
-        //  AGI : 0,
-        //  INT : 0,
-        // VIT : 0,
-        // LUCK : 0});
         _weapon.statBonus = weaponStats(2);
         _weapon.generatedStatBonus = weaponGenStats(2);
     }
 
-    function Quickblade(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function Quickblade(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 25;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Quickblade";
@@ -171,18 +149,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 15;
         _weapon.requirement.classRequirement = classRequirement();
 
-        //  _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        //  DEX : 0,
-        //  AGI : 0,
-        //  INT : 0,
-        //  VIT : 0,
-        //  LUCK : 0});
         _weapon.statBonus = weaponStats(3);
         _weapon.generatedStatBonus = weaponGenStats(3);
     }
 
-    function PocketKiller(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function PocketKiller(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 26;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Pocket Killer";
@@ -191,18 +162,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 20;
         _weapon.requirement.classRequirement = classRequirement();
 
-        // _weapon.requirement.statRequirement = GameObjects.Stats({
-        // STR : 0,
-        //  DEX : 0,
-        //  AGI : 0,
-        //  INT : 0,
-        //  VIT : 0,
-        //  LUCK : BASE_LUCK[4]});
         _weapon.statBonus = weaponStats(4);
         _weapon.generatedStatBonus = weaponGenStats(4);
     }
 
-    function SilverDagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function SilverDagger(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 27;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Silver Dagger";
@@ -211,18 +175,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 25;
         _weapon.requirement.classRequirement = classRequirement();
 
-        // _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        //  DEX : 0,
-        //  AGI : 0,
-        //  INT : 0,
-        //  VIT : 0,
-        //   LUCK : 0});
         _weapon.statBonus = weaponStats(5);
         _weapon.generatedStatBonus = weaponGenStats(5);
     }
 
-    function GoldenStiletto(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function GoldenStiletto(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 28;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Golden Stiletto";
@@ -231,18 +188,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 30;
         _weapon.requirement.classRequirement = classRequirement();
 
-        //  _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        //  DEX : 0,
-        //  AGI : 0,
-        //  INT : 0,
-        //  VIT : 0,
-        //  LUCK : 0});
         _weapon.statBonus = weaponStats(6);
         _weapon.generatedStatBonus = weaponGenStats(6);
     }
 
-    function VerdantKris(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function VerdantKris(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 29;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Verdant Kris";
@@ -251,18 +201,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 35;
         _weapon.requirement.classRequirement = classRequirement();
 
-        // _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        // DEX : 0,
-        // AGI : 0,
-        //  INT : 0,
-        //  VIT : 0,
-        //  LUCK : 0});
         _weapon.statBonus = weaponStats(7);
         _weapon.generatedStatBonus = weaponGenStats(7);
     }
 
-    function NightfallDagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function NightfallDagger(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 30;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Nightfall Dagger";
@@ -271,18 +214,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 40;
         _weapon.requirement.classRequirement = classRequirement();
 
-        //  _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        //  DEX : 0,
-        //  AGI : 0,
-        //  INT : 0,
-        //  VIT : 0,
-        //  LUCK : 0});
         _weapon.statBonus = weaponStats(8);
         _weapon.generatedStatBonus = weaponGenStats(8);
     }
 
-    function Voidslasher(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function Voidslasher(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 31;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Voidslasher";
@@ -291,18 +227,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 45;
         _weapon.requirement.classRequirement = classRequirement();
 
-        //  _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        //  DEX : 0,
-        //  AGI : 0,
-        //  INT : 0,
-        //   VIT : 0,
-        //  LUCK : 0});
         _weapon.statBonus = weaponStats(9);
         _weapon.generatedStatBonus = weaponGenStats(9);
     }
 
-    function DaggerOfMoonlight(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function DaggerOfMoonlight(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 32;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //   _weapon.metadata.name = "Dagger of Moonlight";
@@ -311,18 +240,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 50;
         _weapon.requirement.classRequirement = classRequirement();
 
-        //  _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        //  DEX : 0,
-        //  AGI : 0,
-        //  INT : 0,
-        //  VIT : 0,
-        //  LUCK : 0});
         _weapon.statBonus = weaponStats(10);
         _weapon.generatedStatBonus = weaponGenStats(10);
     }
 
-    function DaggerOfSunlight(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function DaggerOfSunlight(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 33;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //   _weapon.metadata.name = "Dagger of Sunlight";
@@ -331,18 +253,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 55;
         _weapon.requirement.classRequirement = classRequirement();
 
-        //_weapon.requirement.statRequirement = GameObjects.Stats({
-        // STR : 0,
-        // DEX : 0,
-        // AGI : 0,
-        // INT : 0,
-        //  VIT : 0,
-        //  LUCK : 0});
         _weapon.statBonus = weaponStats(11);
         _weapon.generatedStatBonus = weaponGenStats(11);
     }
 
-    function CycleDagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function CycleDagger(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 34;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Cycle Dagger";
@@ -351,18 +266,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 60;
         _weapon.requirement.classRequirement = classRequirement();
 
-        //  _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        //  DEX : 0,
-        //  AGI : 0,
-        //  INT : 0,
-        //  VIT : 0,
-        //  LUCK : 0});
         _weapon.statBonus = weaponStats(12);
         _weapon.generatedStatBonus = weaponGenStats(12);
     }
 
-    function PhantasmalDagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function PhantasmalDagger(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 35;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Phantasmal Dagger";
@@ -371,18 +279,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 65;
         _weapon.requirement.classRequirement = classRequirement();
 
-        //  _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        //  DEX : 0,
-        //  AGI : 0,
-        //  INT : 0,
-        //  VIT : 0,
-        //  LUCK : 0});
         _weapon.statBonus = weaponStats(13);
         _weapon.generatedStatBonus = weaponGenStats(13);
     }
 
-    function DefilingRazor(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function DefilingRazor(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 36;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //   _weapon.metadata.name = "Defiling Razor";
@@ -391,18 +292,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 70;
         _weapon.requirement.classRequirement = classRequirement();
 
-        //  _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        //  DEX : 0,
-        //  AGI : 0,
-        //  INT : 0,
-        //  VIT : 0,
-        //  LUCK : 0});
         _weapon.statBonus = weaponStats(14);
         _weapon.generatedStatBonus = weaponGenStats(14);
     }
 
-    function DaggerOfTheSuccubus(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function DaggerOfTheSuccubus(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 37;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //   _weapon.metadata.name = "Dagger of the Succubus";
@@ -411,18 +305,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 75;
         _weapon.requirement.classRequirement = classRequirement();
 
-        //  _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        //  DEX : 0,
-        //  AGI : 0,
-        //   INT : 0,
-        //  VIT : 0,
-        //  LUCK : 0});
         _weapon.statBonus = weaponStats(15);
         _weapon.generatedStatBonus = weaponGenStats(15);
     }
 
-    function Pyrodagger(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function Pyrodagger(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 38;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //   _weapon.metadata.name = "Pyrodagger";
@@ -431,18 +318,12 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 80;
         _weapon.requirement.classRequirement = classRequirement();
 
-        //  _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        //  DEX : 0,
-        //   AGI : 0,
-        //  INT : 0,
-        //   VIT : 0,
-        //  LUCK : 0});
+
         _weapon.statBonus = weaponStats(16);
         _weapon.generatedStatBonus = weaponGenStats(16);
     }
 
-    function PointOfZero(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function PointOfZero(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 39;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Point Of Zero";
@@ -451,18 +332,11 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 85;
         _weapon.requirement.classRequirement = classRequirement();
 
-        //   _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        //   DEX : 0,
-        //  AGI : 0,
-        //  INT : 0,
-        //  VIT : 0,
-        //  LUCK : 0});
         _weapon.statBonus = weaponStats(17);
         _weapon.generatedStatBonus = weaponGenStats(17);
     }
 
-    function DaggerOfIncursion(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function DaggerOfIncursion(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 40;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //   _weapon.metadata.name = "Dagger of Incursion";
@@ -482,7 +356,7 @@ contract CodexDaggers is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(18);
     }
 
-    function Kingmaker(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function Kingmaker(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 41;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Kingmaker";
@@ -502,7 +376,7 @@ contract CodexDaggers is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(19);
     }
 
-    function Blooddrainer(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function Blooddrainer(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 42;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         // _weapon.metadata.name = "Blooddrainer";
@@ -511,19 +385,12 @@ contract CodexDaggers is Initializable {
         _weapon.requirement.level = 100;
         _weapon.requirement.classRequirement = classRequirement();
 
-        //  _weapon.requirement.statRequirement = GameObjects.Stats({
-        //  STR : 0,
-        //  DEX : 0,
-        //  AGI : 0,
-        //  INT : 0,
-        //   VIT : 0,
-        //   LUCK : 0});
         _weapon.statBonus = weaponStats(20);
         _weapon.generatedStatBonus = weaponGenStats(20);
     }
 
-    function weaponStats(uint index) internal view returns (GameObjects.Stats memory) {
-        GameObjects.Stats memory stats = GameObjects.Stats({
+    function weaponStats(uint index) internal view returns (GameObjects_Stats.Stats memory) {
+        GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
         STR : BASE_STR[index],
         DEX : BASE_DEX[index],
         AGI : BASE_AGI[index],
@@ -533,8 +400,8 @@ contract CodexDaggers is Initializable {
         return stats;
     }
 
-    function weaponGenStats(uint index) internal view returns (GameObjects.GeneratedStats memory) {
-        GameObjects.GeneratedStats memory stats = GameObjects.GeneratedStats({
+    function weaponGenStats(uint index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
+        GameObjects_Stats.GeneratedStats memory stats = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : BASE_ATK[index],
         M_ATK : BASE_ATK[index],

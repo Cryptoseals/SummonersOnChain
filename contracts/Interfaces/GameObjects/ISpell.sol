@@ -1,4 +1,4 @@
-import "./IGameObjects.sol";
+import {GameObjects, GameObjects_Stats} from "./IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 interface ISpell {
@@ -29,8 +29,8 @@ interface ISpell {
     struct SpellRequirements {
         uint level;
         uint levelRequirementPerTier; // if level is 3, and @param levelRequirementPerTier is 5, skill will require 3+5=8 level at level 2, and 3+10 at level 3;
-        GameObjects.Stats statRequirement;
-        GameObjects.Stats additionalStatRequirementsPerTier;
+        GameObjects_Stats.Stats statRequirement;
+        GameObjects_Stats.Stats additionalStatRequirementsPerTier;
         GameObjects.Class[] classRequirement;
         GameObjects.WeaponType requiredItem;
     }

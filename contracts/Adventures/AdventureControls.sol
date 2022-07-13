@@ -1,9 +1,9 @@
 import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
-import {ISpell, GameObjects} from "../Interfaces/GameObjects/ISpell.sol";
+import {ISpell} from "../Interfaces/GameObjects/ISpell.sol";
 import {IAdventure} from "../Interfaces/GameObjects/IAdventure.sol";
 import {ICalculator} from  "../Interfaces/Core/Calculator/ICalculator.sol";
 import {ICodexEnemies, IMonster} from "../Interfaces/Codex/ICodexEnemies.sol";
-
+import {GameObjects, GameObjects_Stats} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 interface IAdventures {
@@ -17,7 +17,6 @@ interface IAdventures {
 }
 
 contract AdventureControls is InitNavigator {
-
     function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
     }
@@ -48,7 +47,7 @@ contract AdventureControls is InitNavigator {
 
         // calculate the extra dps from spell atk of attacker and def from enemy stats
         (
-        GameObjects.BattleStats memory summ,
+        GameObjects_Stats.BattleStats memory summ,
         ) = calc.PVEBattleStatsByElement(summoner, monster, dummyEle);
 
         // TODO, override the spell mult (100)

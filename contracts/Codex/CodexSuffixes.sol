@@ -1,4 +1,4 @@
-import {GameObjects} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexSuffixes {
@@ -6,8 +6,8 @@ contract CodexSuffixes {
     string constant public class = "Suffixes";
     string constant public version = "0.0.1";
 
-    function allSuffix(uint tier) external view returns (GameObjects.Suffix[] memory){
-        GameObjects.Suffix[] memory result = new GameObjects.Suffix[](44);
+    function allSuffix(uint tier) external view returns (GameObjects_Equipments.Suffix[] memory){
+        GameObjects_Equipments.Suffix[] memory result = new GameObjects_Equipments.Suffix[](44);
         for (uint i = 0; i < 44; i++) {
             result[i] = suffix(i, tier);
         }
@@ -15,7 +15,7 @@ contract CodexSuffixes {
     }
 
     function suffix(uint _id,
-        uint _tier) public pure returns (GameObjects.Suffix memory) {
+        uint _tier) public pure returns (GameObjects_Equipments.Suffix memory) {
         require(_tier < 21, "?");
         if (_id == 0) {
             return none();
@@ -178,19 +178,19 @@ contract CodexSuffixes {
         return 3;
     }
 
-    function none() public pure returns (GameObjects.Suffix memory _suffix) {
+    function none() public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "";
         _suffix.difficulty = 1;
     }
 
-    function OfSolarion(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfSolarion(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Solarion";
         _suffix.difficulty = 1;
 
 
 
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : 0,
         EARTH_ATK : baseEleAtk() * _tier,
@@ -200,7 +200,7 @@ contract CodexSuffixes {
         VOID_ATK : 0
         });
 
-        _suffix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        _suffix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
         FIRE_DEF : 0,
         COLD_DEF : 0,
         EARTH_DEF : baseEleDef() * _tier,
@@ -211,14 +211,14 @@ contract CodexSuffixes {
         });
     }
 
-    function OfTemplar(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfTemplar(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Templar";
         _suffix.difficulty = 1;
 
 
 
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : 0,
         EARTH_ATK : 0,
@@ -228,7 +228,7 @@ contract CodexSuffixes {
         VOID_ATK : 0
         });
 
-        _suffix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        _suffix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
         FIRE_DEF : 0,
         COLD_DEF : 0,
         EARTH_DEF : 0,
@@ -239,14 +239,14 @@ contract CodexSuffixes {
         });
     }
 
-    function OfPhoenix(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfPhoenix(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Phoenix";
         _suffix.difficulty = 1;
 
 
 
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : baseEleAtk() * _tier,
         COLD_ATK : 0,
         EARTH_ATK : 0,
@@ -256,7 +256,7 @@ contract CodexSuffixes {
         VOID_ATK : 0
         });
 
-        _suffix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        _suffix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
         FIRE_DEF : baseEleDef() * _tier,
         COLD_DEF : 0,
         EARTH_DEF : 0,
@@ -267,14 +267,14 @@ contract CodexSuffixes {
         });
     }
 
-    function OfCelestion(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfCelestion(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Celestion";
         _suffix.difficulty = 4;
 
 
 
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : 0,
         EARTH_ATK : 0,
@@ -284,7 +284,7 @@ contract CodexSuffixes {
         VOID_ATK : baseEleAtk() * _tier
         });
 
-        _suffix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        _suffix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
         FIRE_DEF : 0,
         COLD_DEF : 0,
         EARTH_DEF : 0,
@@ -295,14 +295,14 @@ contract CodexSuffixes {
         });
     }
 
-    function OfBaphomet(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfBaphomet(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Baphomet";
         _suffix.difficulty = 1;
 
 
 
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : 0,
         EARTH_ATK : 0,
@@ -312,7 +312,7 @@ contract CodexSuffixes {
         VOID_ATK : 0
         });
 
-        _suffix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        _suffix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
         FIRE_DEF : 0,
         COLD_DEF : 0,
         EARTH_DEF : 0,
@@ -323,14 +323,14 @@ contract CodexSuffixes {
         });
     }
 
-    function OfSujin(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfSujin(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Sujin";
         _suffix.difficulty = 1;
 
 
 
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : baseEleAtk() * _tier,
         EARTH_ATK : 0,
@@ -340,7 +340,7 @@ contract CodexSuffixes {
         VOID_ATK : 0
         });
 
-        _suffix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        _suffix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
         FIRE_DEF : 0,
         COLD_DEF : baseEleDef() * _tier,
         EARTH_DEF : 0,
@@ -351,14 +351,14 @@ contract CodexSuffixes {
         });
     }
 
-    function OfSentinel(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfSentinel(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Sentinel";
         _suffix.difficulty = 1;
 
 
 
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : 0,
         EARTH_ATK : 0,
@@ -368,7 +368,7 @@ contract CodexSuffixes {
         VOID_ATK : 0
         });
 
-        _suffix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        _suffix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
         FIRE_DEF : 0,
         COLD_DEF : 0,
         EARTH_DEF : 0,
@@ -379,12 +379,12 @@ contract CodexSuffixes {
         });
     }
 
-    function OfVerdant(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfVerdant(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Verdant";
         _suffix.difficulty = 1;
 
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : baseAtk() * _tier,
@@ -402,10 +402,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfWatcher(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfWatcher(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Watcher";
         _suffix.difficulty = 1;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : 0,
         AGI : 0,
@@ -421,10 +421,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfDeathbringer(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfDeathbringer(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Deathbringer";
         _suffix.difficulty = 4;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : 0,
         AGI : 0,
@@ -433,7 +433,7 @@ contract CodexSuffixes {
         LUCK : baseLuck() * _tier
         });
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : 0,
@@ -451,12 +451,12 @@ contract CodexSuffixes {
 
     }
 
-    function OfWraith(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfWraith(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Wraith";
         _suffix.difficulty = 1;
 
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : 0,
@@ -474,10 +474,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfSpellcaster(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfSpellcaster(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Spellcaster";
         _suffix.difficulty = 2;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : 0,
         AGI : 0,
@@ -486,7 +486,7 @@ contract CodexSuffixes {
         LUCK : 0
         });
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : baseAtk() * _tier,
@@ -504,12 +504,12 @@ contract CodexSuffixes {
 
     }
 
-    function OfLuminous(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfLuminous(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Luminous";
         _suffix.difficulty = 1;
 
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : 0,
@@ -527,12 +527,12 @@ contract CodexSuffixes {
 
     }
 
-    function OfFallen(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfFallen(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Fallen";
         _suffix.difficulty = 2;
 
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : 0,
@@ -550,10 +550,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfGreedy(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfGreedy(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Greedy";
         _suffix.difficulty = 1;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : 0,
         AGI : 0,
@@ -569,10 +569,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfBlacksmith(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfBlacksmith(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Blacksmith";
         _suffix.difficulty = 3;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : 0,
         AGI : 0,
@@ -581,7 +581,7 @@ contract CodexSuffixes {
         LUCK : baseLuck() * _tier
         });
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : 0,
@@ -599,10 +599,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfSun(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfSun(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Sun";
         _suffix.difficulty = 2;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : 0,
         AGI : 0,
@@ -613,7 +613,7 @@ contract CodexSuffixes {
 
 
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : baseEleAtk() * _tier,
         COLD_ATK : 0,
         EARTH_ATK : 0,
@@ -626,10 +626,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfMoon(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfMoon(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Moon";
         _suffix.difficulty = 2;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : 0,
         AGI : 0,
@@ -640,7 +640,7 @@ contract CodexSuffixes {
 
 
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : baseEleAtk() * _tier,
         EARTH_ATK : 0,
@@ -653,10 +653,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfStorm(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfStorm(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Storm";
         _suffix.difficulty = 2;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : 0,
         AGI : 0,
@@ -667,7 +667,7 @@ contract CodexSuffixes {
 
 
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : 0,
         EARTH_ATK : 0,
@@ -680,12 +680,12 @@ contract CodexSuffixes {
 
     }
 
-    function OfGladiator(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfGladiator(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Gladiator";
         _suffix.difficulty = 2;
 
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : baseAtk() * _tier,
         M_ATK : 0,
@@ -703,14 +703,14 @@ contract CodexSuffixes {
 
     }
 
-    function OfVoidheart(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfVoidheart(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Voidheart";
         _suffix.difficulty = 5;
 
 
 
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : 0,
         EARTH_ATK : 0,
@@ -723,10 +723,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfTroll(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfTroll(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Troll";
         _suffix.difficulty = 1;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : baseStr() * _tier,
         DEX : 0,
         AGI : 0,
@@ -742,10 +742,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfWarmonger(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfWarmonger(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Warmonger";
         _suffix.difficulty = 2;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : baseStr() * _tier,
         DEX : baseDex() * _tier,
         AGI : 0,
@@ -754,7 +754,7 @@ contract CodexSuffixes {
         LUCK : 0
         });
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : baseAtk() * _tier,
         M_ATK : 0,
@@ -772,10 +772,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfAssassin(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfAssassin(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Assassin";
         _suffix.difficulty = 3;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : baseDex() * _tier,
         AGI : baseAgi() * _tier,
@@ -784,7 +784,7 @@ contract CodexSuffixes {
         LUCK : 0
         });
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : 0,
@@ -802,10 +802,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfDeath(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfDeath(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Death";
         _suffix.difficulty = 3;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : baseDex() * _tier,
         AGI : 0,
@@ -814,7 +814,7 @@ contract CodexSuffixes {
         LUCK : 0
         });
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : 0,
@@ -827,7 +827,7 @@ contract CodexSuffixes {
         INFUSION : 0
         });
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : 0,
         EARTH_ATK : 0,
@@ -840,10 +840,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfAcrobat(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfAcrobat(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Acrobat";
         _suffix.difficulty = 3;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : baseDex() * _tier,
         AGI : baseAgi() * _tier,
@@ -852,7 +852,7 @@ contract CodexSuffixes {
         LUCK : 0
         });
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : 0,
@@ -870,12 +870,12 @@ contract CodexSuffixes {
 
     }
 
-    function OfShadow(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfShadow(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Shadow";
         _suffix.difficulty = 2;
 
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : baseAtk() * _tier,
@@ -890,7 +890,7 @@ contract CodexSuffixes {
 
 
 
-        _suffix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        _suffix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
         FIRE_DEF : 0,
         COLD_DEF : 0,
         EARTH_DEF : 0,
@@ -901,10 +901,10 @@ contract CodexSuffixes {
         });
     }
 
-    function OfConcentration(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfConcentration(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Concentration";
         _suffix.difficulty = 2;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : 0,
         AGI : 0,
@@ -913,7 +913,7 @@ contract CodexSuffixes {
         LUCK : 0
         });
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : 0,
@@ -931,10 +931,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfGuardian(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfGuardian(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Guardian";
         _suffix.difficulty = 3;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : 0,
         AGI : 0,
@@ -943,7 +943,7 @@ contract CodexSuffixes {
         LUCK : 0
         });
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : baseHp() * _tier,
         P_ATK : 0,
         M_ATK : 0,
@@ -956,7 +956,7 @@ contract CodexSuffixes {
         INFUSION : 0
         });
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : 0,
         EARTH_ATK : 0,
@@ -969,12 +969,12 @@ contract CodexSuffixes {
 
     }
 
-    function OfSavage(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfSavage(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Savage";
         _suffix.difficulty = 2;
 
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : baseAtk() * _tier,
         M_ATK : baseAtk() * _tier,
@@ -992,12 +992,12 @@ contract CodexSuffixes {
 
     }
 
-    function OfCultist(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfCultist(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Cultist";
         _suffix.difficulty = 3;
 
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : baseAtk() * _tier,
@@ -1010,7 +1010,7 @@ contract CodexSuffixes {
         INFUSION : 0
         });
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : 0,
         EARTH_ATK : 0,
@@ -1023,10 +1023,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfFaith(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfFaith(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Faith";
         _suffix.difficulty = 2;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : 0,
         AGI : 0,
@@ -1037,7 +1037,7 @@ contract CodexSuffixes {
 
 
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : 0,
         EARTH_ATK : 0,
@@ -1050,10 +1050,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfWanderer(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfWanderer(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Wanderer";
         _suffix.difficulty = 1;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : baseDex() * _tier,
         AGI : 0,
@@ -1062,7 +1062,7 @@ contract CodexSuffixes {
         LUCK : 0
         });
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : 0,
@@ -1080,10 +1080,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfRoots(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfRoots(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Roots";
         _suffix.difficulty = 3;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : 0,
         AGI : baseAgi() * _tier,
@@ -1092,7 +1092,7 @@ contract CodexSuffixes {
         LUCK : 0
         });
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : baseAtk() * _tier,
         M_ATK : 0,
@@ -1105,7 +1105,7 @@ contract CodexSuffixes {
         INFUSION : 0
         });
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : 0,
         EARTH_ATK : baseEleAtk() * _tier,
@@ -1118,10 +1118,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfOrder(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfOrder(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Order";
         _suffix.difficulty = 2;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : 0,
         AGI : 0,
@@ -1130,7 +1130,7 @@ contract CodexSuffixes {
         LUCK : baseLuck() * _tier
         });
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : baseHp() * _tier,
         P_ATK : 0,
         M_ATK : 0,
@@ -1148,12 +1148,12 @@ contract CodexSuffixes {
 
     }
 
-    function OfSeal(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfSeal(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Seal";
         _suffix.difficulty = 4;
 
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : baseAtk() * _tier,
         M_ATK : baseAtk() * _tier,
@@ -1166,7 +1166,7 @@ contract CodexSuffixes {
         INFUSION : 0
         });
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : 0,
         EARTH_ATK : 0,
@@ -1179,7 +1179,7 @@ contract CodexSuffixes {
 
     }
 
-    function OfResistance(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfResistance(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Resistance";
         _suffix.difficulty = 3;
 
@@ -1188,7 +1188,7 @@ contract CodexSuffixes {
 
 
 
-        _suffix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        _suffix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
         FIRE_DEF : baseEleDef() * _tier,
         COLD_DEF : baseEleDef() * _tier,
         EARTH_DEF : baseEleDef() * _tier,
@@ -1199,12 +1199,12 @@ contract CodexSuffixes {
         });
     }
 
-    function OfFortitude(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfFortitude(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Fortitude";
         _suffix.difficulty = 2;
 
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : baseHp() * _tier,
         P_ATK : baseAtk() * _tier,
         M_ATK : 0,
@@ -1222,10 +1222,10 @@ contract CodexSuffixes {
 
     }
 
-    function OfRunes(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfRunes(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Runes";
         _suffix.difficulty = 3;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : baseDex() * _tier,
         AGI : 0,
@@ -1234,7 +1234,7 @@ contract CodexSuffixes {
         LUCK : 0
         });
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : baseHp() * _tier,
         P_ATK : 0,
         M_ATK : 0,
@@ -1252,12 +1252,12 @@ contract CodexSuffixes {
 
     }
 
-    function OfMalevolence(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfMalevolence(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Malevolence";
         _suffix.difficulty = 2;
 
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : baseAtk() * _tier,
@@ -1270,7 +1270,7 @@ contract CodexSuffixes {
         INFUSION : 0
         });
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : baseEleAtk() * _tier,
         COLD_ATK : 0,
         EARTH_ATK : 0,
@@ -1283,12 +1283,12 @@ contract CodexSuffixes {
 
     }
 
-    function OfEclipse(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfEclipse(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Eclipse";
         _suffix.difficulty = 2;
 
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : baseAtk() * _tier,
@@ -1301,7 +1301,7 @@ contract CodexSuffixes {
         INFUSION : 0
         });
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : baseEleAtk() * _tier,
         EARTH_ATK : 0,
@@ -1314,12 +1314,12 @@ contract CodexSuffixes {
 
     }
 
-    function OfImmortal(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfImmortal(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Immortal";
         _suffix.difficulty = 3;
 
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : baseHp() * _tier,
         P_ATK : 0,
         M_ATK : 0,
@@ -1337,14 +1337,14 @@ contract CodexSuffixes {
 
     }
 
-    function OfSanctity(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfSanctity(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Sanctity";
         _suffix.difficulty = 2;
 
 
 
 
-        _suffix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
+        _suffix.elementalStats.ElementalAtk = GameObjects_Stats.ElementalAtk({
         FIRE_ATK : 0,
         COLD_ATK : 0,
         EARTH_ATK : 0,
@@ -1354,7 +1354,7 @@ contract CodexSuffixes {
         VOID_ATK : 0
         });
 
-        _suffix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        _suffix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
         FIRE_DEF : 0,
         COLD_DEF : 0,
         EARTH_DEF : 0,
@@ -1365,10 +1365,10 @@ contract CodexSuffixes {
         });
     }
 
-    function OfWisdom(uint _tier) public pure returns (GameObjects.Suffix memory _suffix) {
+    function OfWisdom(uint _tier) public pure returns (GameObjects_Equipments.Suffix memory _suffix) {
         //        _suffix.title = "of Wisdom";
         _suffix.difficulty = 1;
-        _suffix.statBonus = GameObjects.Stats({
+        _suffix.statBonus = GameObjects_Stats.Stats({
         STR : 0,
         DEX : 0,
         AGI : 0,
@@ -1377,7 +1377,7 @@ contract CodexSuffixes {
         LUCK : 0
         });
 
-        _suffix.generatedStatBonus = GameObjects.GeneratedStats({
+        _suffix.generatedStatBonus = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : baseAtk() * _tier,

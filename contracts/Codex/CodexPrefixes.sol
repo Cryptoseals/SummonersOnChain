@@ -1,4 +1,4 @@
-import {GameObjects} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {GameObjects,GameObjects_Stats, GameObjects_Equipments} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexPrefixes {
@@ -7,15 +7,15 @@ contract CodexPrefixes {
     string constant public version = "0.0.1";
 
 
-    function allPrefix(uint tier) external view returns (GameObjects.Prefix[] memory){
-        GameObjects.Prefix[] memory result = new GameObjects.Prefix[](44);
+    function allPrefix(uint tier) external view returns (GameObjects_Equipments.Prefix[] memory){
+        GameObjects_Equipments.Prefix[] memory result = new GameObjects_Equipments.Prefix[](44);
         for (uint i = 0; i < 44; i++) {
             result[i] = prefix(i, tier);
         }
         return result;
     }
 
-    function prefix(uint _id, uint _tier) public pure returns (GameObjects.Prefix memory) {
+    function prefix(uint _id, uint _tier) public pure returns (GameObjects_Equipments.Prefix memory) {
         require(_tier < 21, "?");
         if (_id == 0) {
             return none();
@@ -175,794 +175,297 @@ contract CodexPrefixes {
     }
 
 
-    function none() public pure returns (GameObjects.Prefix memory _prefix) {
+    function none() public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "";
         _prefix.difficulty = 1;
 
 
-        // these are percentages.
-
-
     }
 
-    function Berserkers(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Berserkers(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Berserker's";
         _prefix.difficulty = 1;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : baseStr() * _tier,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0
-        });
+        _prefix.statBonus.STR = baseStr() * _tier;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : baseAtk() * _tier,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
+        _prefix.generatedStatBonus.P_ATK = baseAtk() * _tier;
 
 
     }
 
-    function Wizards(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Wizards(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Wizard's";
         _prefix.difficulty = 1;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : baseInt() * _tier,
-        VIT : 0,
-        LUCK : 0
-        });
+        _prefix.statBonus.INT = baseInt() * _tier;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : baseAtk() * _tier,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
+        _prefix.generatedStatBonus.M_ATK = baseAtk() * _tier;
 
 
     }
 
-    function Elementalists(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Elementalists(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Elementalist's";
         _prefix.difficulty = 1;
 
 
-        // these are percentages.
-
-
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : baseEleAtk() * _tier,
-        COLD_ATK : baseEleAtk() * _tier,
-        EARTH_ATK : baseEleAtk() * _tier,
-        LIGHTNING_ATK : baseEleAtk() * _tier,
-        DARK_ATK : baseEleAtk() * _tier,
-        HOLY_ATK : baseEleAtk() * _tier,
-        VOID_ATK : baseEleAtk() * _tier
-        });
+        _prefix.elementalStats.ElementalAtk.FIRE_ATK = baseEleAtk() * _tier;
+        _prefix.elementalStats.ElementalAtk.COLD_ATK = baseEleAtk() * _tier;
+        _prefix.elementalStats.ElementalAtk.EARTH_ATK = baseEleAtk() * _tier;
+        _prefix.elementalStats.ElementalAtk.LIGHTNING_ATK = baseEleAtk() * _tier;
+        _prefix.elementalStats.ElementalAtk.DARK_ATK = baseEleAtk() * _tier;
+        _prefix.elementalStats.ElementalAtk.HOLY_ATK = baseEleAtk() * _tier;
+        _prefix.elementalStats.ElementalAtk.VOID_ATK = baseEleAtk() * _tier;
 
     }
 
-    function Ferocious(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Ferocious(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Ferocious";
         _prefix.difficulty = 2;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : baseCritMulti() * _tier,
-        INFUSION : 0
-        });
+        _prefix.generatedStatBonus.CRIT_MULTIPLIER = baseCritMulti() * _tier;
 
 
     }
 
-    function Wicked(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Wicked(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Wicked";
         _prefix.difficulty = 1;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : baseStr() * _tier,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0
-        });
+        _prefix.statBonus.STR = baseStr() * _tier;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : baseAtk() * _tier,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
+        _prefix.generatedStatBonus.P_ATK = baseAtk() * _tier;
 
 
     }
 
-    function Sharpshooter(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Sharpshooter(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Sharpshooter";
         _prefix.difficulty = 2;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : baseAgi() * _tier,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0
-        });
+        _prefix.statBonus.AGI = baseAgi() * _tier;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : baseCrit() * _tier,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
+        _prefix.generatedStatBonus.CRIT = baseCrit() * _tier;
 
 
     }
 
-    function Skirmishing(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Skirmishing(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Skirmishing";
         _prefix.difficulty = 1;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : baseAtk() * _tier,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
+        _prefix.generatedStatBonus.M_ATK = baseAtk() * _tier;
 
 
     }
 
-    function Defiant(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Defiant(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Defiant";
         _prefix.difficulty = 1;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : baseDef() * _tier,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
-
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
-        FIRE_DEF : baseEleDef() * _tier,
-        COLD_DEF : 0,
-        EARTH_DEF : 0,
-        LIGHTNING_DEF : 0,
-        DARK_DEF : 0,
-        HOLY_DEF : 0,
-        VOID_DEF : 0
-        });
+        _prefix.generatedStatBonus.P_DEF = baseDef() * _tier;
+        _prefix.elementalStats.ElementalDef.FIRE_DEF = baseEleDef() * _tier;
     }
 
-    function Merciless(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Merciless(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Merciless";
         _prefix.difficulty = 1;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : baseDef() * _tier,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : baseEleAtk() * _tier,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : 0,
-        DARK_ATK : 0,
-        HOLY_ATK : 0,
-        VOID_ATK : 0
-        });
+        _prefix.generatedStatBonus.M_DEF = baseDef() * _tier;
+        _prefix.elementalStats.ElementalAtk.COLD_ATK = baseEleAtk() * _tier;
 
     }
 
-    function Fiery(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Fiery(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Fiery";
         _prefix.difficulty = 1;
 
 
-        // these are percentages.
+        _prefix.elementalStats.ElementalAtk.FIRE_ATK = baseEleAtk() * _tier;
 
-
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : baseEleAtk() * _tier,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : 0,
-        DARK_ATK : 0,
-        HOLY_ATK : 0,
-        VOID_ATK : 0
-        });
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
-        FIRE_DEF : baseEleDef() * _tier,
-        COLD_DEF : 0,
-        EARTH_DEF : 0,
-        LIGHTNING_DEF : 0,
-        DARK_DEF : 0,
-        HOLY_DEF : 0,
-        VOID_DEF : 0
-        });
+        _prefix.elementalStats.ElementalDef.FIRE_DEF = baseEleDef() * _tier;
     }
 
-    function Thunderous(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Thunderous(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Thunderous";
         _prefix.difficulty = 1;
 
 
-        // these are percentages.
+        _prefix.elementalStats.ElementalAtk.LIGHTNING_ATK = baseEleAtk() * _tier;
 
-
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : 0,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : baseEleAtk() * _tier,
-        DARK_ATK : 0,
-        HOLY_ATK : 0,
-        VOID_ATK : 0
-        });
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
-        FIRE_DEF : 0,
-        COLD_DEF : 0,
-        EARTH_DEF : 0,
-        LIGHTNING_DEF : baseEleDef() * _tier,
-        DARK_DEF : 0,
-        HOLY_DEF : 0,
-        VOID_DEF : 0
-        });
+        _prefix.elementalStats.ElementalDef.LIGHTNING_DEF = baseEleDef() * _tier;
     }
 
-    function Holy(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Holy(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Holy";
         _prefix.difficulty = 1;
 
 
-        // these are percentages.
+        _prefix.elementalStats.ElementalAtk.HOLY_ATK = baseEleAtk() * _tier;
 
-
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : 0,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : 0,
-        DARK_ATK : 0,
-        HOLY_ATK : baseEleAtk() * _tier,
-        VOID_ATK : 0
-        });
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
-        FIRE_DEF : 0,
-        COLD_DEF : 0,
-        EARTH_DEF : 0,
-        LIGHTNING_DEF : 0,
-        DARK_DEF : 0,
-        HOLY_DEF : baseEleDef() * _tier,
-        VOID_DEF : 0
-        });
+        _prefix.elementalStats.ElementalDef.HOLY_DEF = baseEleDef() * _tier;
     }
 
-    function Frozen(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Frozen(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Frozen";
         _prefix.difficulty = 1;
 
 
-        // these are percentages.
+        _prefix.elementalStats.ElementalAtk.COLD_ATK = baseEleAtk() * _tier;
 
-
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : baseEleAtk() * _tier,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : 0,
-        DARK_ATK : 0,
-        HOLY_ATK : 0,
-        VOID_ATK : 0
-        });
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
-        FIRE_DEF : 0,
-        COLD_DEF : baseEleDef() * _tier,
-        EARTH_DEF : 0,
-        LIGHTNING_DEF : 0,
-        DARK_DEF : 0,
-        HOLY_DEF : 0,
-        VOID_DEF : 0
-        });
+        _prefix.elementalStats.ElementalDef.COLD_DEF = baseEleDef() * _tier;
     }
 
-    function Natural(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Natural(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Natural";
         _prefix.difficulty = 2;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : baseInt() * _tier,
-        VIT : 0,
-        LUCK : 0
-        });
+        _prefix.statBonus.INT = baseInt() * _tier;
 
 
-        // these are percentages.
+        _prefix.elementalStats.ElementalAtk.EARTH_ATK = baseEleAtk() * _tier;
 
-
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : 0,
-        EARTH_ATK : baseEleAtk() * _tier,
-        LIGHTNING_ATK : 0,
-        DARK_ATK : 0,
-        HOLY_ATK : 0,
-        VOID_ATK : 0
-        });
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
-        FIRE_DEF : 0,
-        COLD_DEF : 0,
-        EARTH_DEF : baseEleDef() * _tier,
-        LIGHTNING_DEF : 0,
-        DARK_DEF : 0,
-        HOLY_DEF : 0,
-        VOID_DEF : 0
-        });
+        _prefix.elementalStats.ElementalDef.EARTH_DEF = baseEleDef() * _tier;
     }
 
-    function Sacred(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Sacred(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Sacred";
         _prefix.difficulty = 3;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : baseStr() * _tier,
-        DEX : baseDex() * _tier,
-        AGI : baseAgi() * _tier,
-        INT : baseInt() * _tier,
-        VIT : baseVit() * _tier,
-        LUCK : baseLuck() * _tier
-        });
-
-
-        // these are percentages.
+        _prefix.statBonus.STR = baseStr() * _tier;
+        _prefix.statBonus.DEX = baseDex() * _tier;
+        _prefix.statBonus.AGI = baseAgi() * _tier;
+        _prefix.statBonus.INT = baseInt() * _tier;
+        _prefix.statBonus.VIT = baseVit() * _tier;
+        _prefix.statBonus.LUCK = baseLuck() * _tier;
 
 
     }
 
-    function Eternal(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Eternal(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Eternal";
         _prefix.difficulty = 5;
 
 
-        // these are percentages.
+        _prefix.elementalStats.ElementalAtk.VOID_ATK = baseEleAtk() * _tier;
 
-
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : 0,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : 0,
-        DARK_ATK : 0,
-        HOLY_ATK : 0,
-        VOID_ATK : baseEleAtk() * _tier
-        });
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
-        FIRE_DEF : 0,
-        COLD_DEF : 0,
-        EARTH_DEF : 0,
-        LIGHTNING_DEF : 0,
-        DARK_DEF : 0,
-        HOLY_DEF : 0,
-        VOID_DEF : baseEleDef() * _tier
-        });
+        _prefix.elementalStats.ElementalDef.VOID_DEF = baseEleDef() * _tier;
     }
 
-    function Devastating(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Devastating(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Devastating ";
         _prefix.difficulty = 3;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : baseStr() * _tier,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : baseLuck() * _tier
-        });
+        _prefix.statBonus.STR = baseStr() * _tier;
+        _prefix.statBonus.LUCK = baseLuck() * _tier;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : baseCrit() * _tier,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
-
+        _prefix.generatedStatBonus.CRIT = baseCrit() * _tier;
 
     }
 
-    function Forged(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Forged(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Forged";
         _prefix.difficulty = 2;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : baseStr() * _tier,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0
-        });
+        _prefix.statBonus.STR = baseStr() * _tier;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : baseDef() * _tier,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
+        _prefix.generatedStatBonus.P_DEF = baseDef() * _tier;
 
 
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
-        FIRE_DEF : baseEleDef() * _tier,
-        COLD_DEF : 0,
-        EARTH_DEF : 0,
-        LIGHTNING_DEF : 0,
-        DARK_DEF : 0,
-        HOLY_DEF : 0,
-        VOID_DEF : 0
-        });
+        _prefix.elementalStats.ElementalDef.FIRE_DEF = baseEleDef() * _tier;
     }
 
-    function Mystical(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Mystical(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Mystical";
         _prefix.difficulty = 2;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : baseInt() * _tier,
-        VIT : 0,
-        LUCK : 0
-        });
+        _prefix.statBonus.INT = baseInt() * _tier;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : baseAtk() * _tier,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
+        _prefix.generatedStatBonus.M_ATK = baseAtk() * _tier;
 
 
     }
 
-    function Clever(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Clever(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Clever";
         _prefix.difficulty = 2;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : baseAgi() * _tier,
-        INT : baseInt() * _tier,
-        VIT : 0,
-        LUCK : 0
-        });
-
-
-        // these are percentages.
+        _prefix.statBonus.AGI = baseAgi() * _tier;
+        _prefix.statBonus.INT = baseInt() * _tier;
 
 
     }
 
-    function Enormous(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Enormous(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Enormous";
         _prefix.difficulty = 2;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : baseVit() * _tier,
-        LUCK : 0
-        });
+        _prefix.statBonus.VIT = baseVit() * _tier;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : baseHp() * _tier,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
+        _prefix.generatedStatBonus.HP = baseHp() * _tier;
 
 
     }
 
-    function Ethereal(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Ethereal(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Ethereal";
         _prefix.difficulty = 3;
 
 
-        // these are percentages.
+        _prefix.generatedStatBonus.P_ATK = baseAtk() * _tier;
 
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : baseAtk() * _tier,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
+        _prefix.elementalStats.ElementalAtk.DARK_ATK = baseEleAtk() * _tier;
 
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : 0,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : 0,
-        DARK_ATK : baseEleAtk() * _tier,
-        HOLY_ATK : 0,
-        VOID_ATK : 0
-        });
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
-        FIRE_DEF : 0,
-        COLD_DEF : 0,
-        EARTH_DEF : 0,
-        LIGHTNING_DEF : 0,
-        DARK_DEF : baseEleDef() * _tier,
-        HOLY_DEF : 0,
-        VOID_DEF : 0
-        });
+        _prefix.elementalStats.ElementalDef.DARK_DEF = baseEleDef() * _tier;
     }
 
-    function Vengeful(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Vengeful(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Vengeful";
         _prefix.difficulty = 2;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : baseAgi() * _tier,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0
-        });
+        _prefix.statBonus.AGI = baseAgi() * _tier;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : baseCrit() * _tier,
-        CRIT_MULTIPLIER : baseCritMulti() * _tier,
-        INFUSION : 0
-        });
+        _prefix.generatedStatBonus.CRIT = baseCrit() * _tier;
+        _prefix.generatedStatBonus.CRIT_MULTIPLIER = baseCritMulti() * _tier;
 
 
     }
 
-    function Divine(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Divine(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Divine";
         _prefix.difficulty = 3;
 
 
-        // these are percentages.
+        _prefix.generatedStatBonus.HP = baseHp() * _tier;
 
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : baseHp() * _tier,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
+        _prefix.elementalStats.ElementalAtk.HOLY_ATK = baseEleAtk() * _tier;
 
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : 0,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : 0,
-        DARK_ATK : 0,
-        HOLY_ATK : baseEleAtk() * _tier,
-        VOID_ATK : 0
-        });
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
-        FIRE_DEF : 0,
-        COLD_DEF : 0,
-        EARTH_DEF : 0,
-        LIGHTNING_DEF : 0,
-        DARK_DEF : baseEleDef() * _tier,
-        HOLY_DEF : 0,
-        VOID_DEF : 0
-        });
+        _prefix.elementalStats.ElementalDef.DARK_DEF = baseEleDef() * _tier;
     }
 
-    function Elusive(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Elusive(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Elusive";
         _prefix.difficulty = 2;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : baseDex() * _tier,
-        AGI : baseAgi() * _tier,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0
-        });
+        _prefix.statBonus.DEX = baseDex() * _tier;
+        _prefix.statBonus.AGI = baseAgi() * _tier;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : baseDodge() * _tier,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
+        _prefix.generatedStatBonus.DODGE = baseDodge() * _tier;
 
 
     }
 
-    function Protective(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Protective(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Protective";
         _prefix.difficulty = 3;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : baseDef() * _tier,
-        M_DEF : baseDef() * _tier,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
+        _prefix.generatedStatBonus.P_DEF = baseDef() * _tier;
+        _prefix.generatedStatBonus.M_DEF = baseDef() * _tier;
 
 
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        _prefix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
         FIRE_DEF : baseEleDef() * _tier,
         COLD_DEF : baseEleDef() * _tier,
         EARTH_DEF : baseEleDef() * _tier,
@@ -973,26 +476,13 @@ contract CodexPrefixes {
         });
     }
 
-    function Pristine(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Pristine(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Pristine";
         _prefix.difficulty = 3;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : baseLuck() * _tier
-        });
+        _prefix.statBonus.LUCK = baseLuck() * _tier;
 
 
-        // these are percentages.
-
-
-
-
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        _prefix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
         FIRE_DEF : baseEleDef() * _tier,
         COLD_DEF : baseEleDef() * _tier,
         EARTH_DEF : baseEleDef() * _tier,
@@ -1003,155 +493,60 @@ contract CodexPrefixes {
         });
     }
 
-    function Glacial(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Glacial(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Glacial";
         _prefix.difficulty = 1;
 
 
-        // these are percentages.
+        _prefix.elementalStats.ElementalAtk.COLD_ATK = baseEleAtk() * _tier;
 
-
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : baseEleAtk() * _tier,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : 0,
-        DARK_ATK : 0,
-        HOLY_ATK : 0,
-        VOID_ATK : 0
-        });
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
-        FIRE_DEF : baseEleDef() * _tier,
-        COLD_DEF : 0,
-        EARTH_DEF : 0,
-        LIGHTNING_DEF : 0,
-        DARK_DEF : 0,
-        HOLY_DEF : 0,
-        VOID_DEF : 0
-        });
+        _prefix.elementalStats.ElementalDef.FIRE_DEF = baseEleDef() * _tier;
     }
 
-    function Rugged(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Rugged(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Rugged";
         _prefix.difficulty = 2;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : baseLuck() * _tier
-        });
+        _prefix.statBonus.LUCK = baseLuck() * _tier;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : baseDodge() * _tier,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
-
-
+        _prefix.generatedStatBonus.DODGE = baseDodge() * _tier;
     }
 
-    function Ruthless(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Ruthless(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Ruthless";
         _prefix.difficulty = 1;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : baseStr() * _tier,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0
-        });
+        _prefix.statBonus.STR = baseStr() * _tier;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : baseAcc() * _tier,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
+        _prefix.generatedStatBonus.ACCURACY = baseAcc() * _tier;
 
 
     }
 
-    function Lurid(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Lurid(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Lurid";
         _prefix.difficulty = 1;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : baseAcc() * _tier,
-        DODGE : baseDodge() * _tier,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
+        _prefix.generatedStatBonus.ACCURACY = baseAcc() * _tier;
+        _prefix.generatedStatBonus.DODGE = baseDodge() * _tier;
 
 
     }
 
-    function Pastoral(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Pastoral(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Pastoral";
         _prefix.difficulty = 1;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : baseVit() * _tier,
-        LUCK : 0
-        });
+        _prefix.statBonus.VIT = baseVit() * _tier;
 
 
-        // these are percentages.
-
-
-
-
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
-        FIRE_DEF : 0,
-        COLD_DEF : 0,
-        EARTH_DEF : baseEleDef() * _tier,
-        LIGHTNING_DEF : 0,
-        DARK_DEF : 0,
-        HOLY_DEF : 0,
-        VOID_DEF : 0
-        });
+        _prefix.elementalStats.ElementalDef.EARTH_DEF = baseEleDef() * _tier;
     }
 
-    function Supreme(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Supreme(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Supreme";
         _prefix.difficulty = 3;
-        _prefix.statBonus = GameObjects.Stats({
+        _prefix.statBonus = GameObjects_Stats.Stats({
         STR : baseStr() * _tier,
         DEX : baseDex() * _tier,
         AGI : baseAgi() * _tier,
@@ -1161,13 +556,7 @@ contract CodexPrefixes {
         });
 
 
-        // these are percentages.
-
-
-
-
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        _prefix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
         FIRE_DEF : baseEleDef() * _tier,
         COLD_DEF : baseEleDef() * _tier,
         EARTH_DEF : baseEleDef() * _tier,
@@ -1178,208 +567,71 @@ contract CodexPrefixes {
         });
     }
 
-    function Banishing(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Banishing(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Banishing";
         _prefix.difficulty = 3;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : baseInt() * _tier,
-        VIT : 0,
-        LUCK : 0
-        });
+        _prefix.statBonus.INT = baseInt() * _tier;
 
 
-        // these are percentages.
+        _prefix.elementalStats.ElementalAtk.DARK_ATK = baseEleAtk() * _tier;
 
-
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : 0,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : 0,
-        DARK_ATK : baseEleAtk() * _tier,
-        HOLY_ATK : 0,
-        VOID_ATK : 0
-        });
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
-        FIRE_DEF : 0,
-        COLD_DEF : 0,
-        EARTH_DEF : 0,
-        LIGHTNING_DEF : baseEleDef() * _tier,
-        DARK_DEF : 0,
-        HOLY_DEF : 0,
-        VOID_DEF : 0
-        });
+        _prefix.elementalStats.ElementalDef.LIGHTNING_DEF = baseEleDef() * _tier;
     }
 
-    function Sharpened(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Sharpened(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Sharpened";
         _prefix.difficulty = 1;
 
 
-        // these are percentages.
-
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : baseAtk() * _tier,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : baseAcc() * _tier,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
-
-
+        _prefix.generatedStatBonus.P_ATK = baseAtk() * _tier;
+        _prefix.generatedStatBonus.ACCURACY = baseAcc() * _tier;
     }
 
-    function Obsidian(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Obsidian(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Obsidian";
         _prefix.difficulty = 2;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : baseAgi() * _tier,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0
-        });
-
-
-        // these are percentages.
-
-
-
-
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
-        FIRE_DEF : baseEleDef() * _tier,
-        COLD_DEF : 0,
-        EARTH_DEF : 0,
-        LIGHTNING_DEF : 0,
-        DARK_DEF : 0,
-        HOLY_DEF : 0,
-        VOID_DEF : 0
-        });
+        _prefix.statBonus.AGI = baseAgi() * _tier;
+        _prefix.elementalStats.ElementalDef.FIRE_DEF = baseEleDef() * _tier;
     }
 
-    function Devoted(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Devoted(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Devoted";
         _prefix.difficulty = 2;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : 0,
-        VIT : 0,
-        LUCK : baseLuck() * _tier
-        });
+        _prefix.statBonus.LUCK = baseLuck() * _tier;
 
 
-        // these are percentages.
-
-
-
-
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
-        FIRE_DEF : 0,
-        COLD_DEF : 0,
-        EARTH_DEF : 0,
-        LIGHTNING_DEF : 0,
-        DARK_DEF : 0,
-        HOLY_DEF : baseEleDef() * _tier,
-        VOID_DEF : 0
-        });
+        _prefix.elementalStats.ElementalDef.HOLY_DEF = baseEleDef() * _tier;
     }
 
-    function Revival(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Revival(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Revival";
         _prefix.difficulty = 2;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : baseAgi() * _tier,
-        INT : 0,
-        VIT : 0,
-        LUCK : 0
-        });
+        _prefix.statBonus.AGI = baseAgi() * _tier;
 
 
-        // these are percentages.
-
-
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : 0,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : 0,
-        DARK_ATK : 0,
-        HOLY_ATK : baseEleAtk() * _tier,
-        VOID_ATK : 0
-        });
+        _prefix.elementalStats.ElementalAtk.HOLY_ATK = baseEleAtk() * _tier;
 
     }
 
-    function Damned(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Damned(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Damned";
         _prefix.difficulty = 3;
 
 
-        // these are percentages.
+        _prefix.generatedStatBonus.CRIT_MULTIPLIER = baseCritMulti() * _tier;
 
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : baseCritMulti() * _tier,
-        INFUSION : 0
-        });
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : 0,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : 0,
-        DARK_ATK : baseEleAtk() * _tier,
-        HOLY_ATK : 0,
-        VOID_ATK : 0
-        });
+        _prefix.elementalStats.ElementalAtk.DARK_ATK = baseEleAtk() * _tier;
 
     }
 
-    function Unholy(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Unholy(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Unholy";
         _prefix.difficulty = 2;
 
 
-        // these are percentages.
+        _prefix.elementalStats.ElementalAtk.DARK_ATK = baseEleAtk() * _tier;
 
-
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : 0,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : 0,
-        DARK_ATK : baseEleAtk() * _tier,
-        HOLY_ATK : 0,
-        VOID_ATK : 0
-        });
-
-        _prefix.elementalStats.ElementalDef = GameObjects.ElementalDef({
+        _prefix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
         FIRE_DEF : 0,
         COLD_DEF : 0,
         EARTH_DEF : 0,
@@ -1390,107 +642,37 @@ contract CodexPrefixes {
         });
     }
 
-    function Smoky(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Smoky(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Smoky";
         _prefix.difficulty = 2;
 
 
-        // these are percentages.
+        _prefix.generatedStatBonus.DODGE = baseDodge() * _tier;
 
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : 0,
-        DODGE : baseDodge() * _tier,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : baseEleAtk() * _tier,
-        COLD_ATK : 0,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : 0,
-        DARK_ATK : 0,
-        HOLY_ATK : 0,
-        VOID_ATK : 0
-        });
+        _prefix.elementalStats.ElementalAtk.FIRE_ATK = baseEleAtk() * _tier;
 
     }
 
-    function Shardy(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Shardy(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Shardy";
         _prefix.difficulty = 2;
 
 
-        // these are percentages.
+        _prefix.generatedStatBonus.ACCURACY = baseAcc() * _tier;
 
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : baseAcc() * _tier,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : baseEleAtk() * _tier,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : 0,
-        DARK_ATK : 0,
-        HOLY_ATK : 0,
-        VOID_ATK : 0
-        });
+        _prefix.elementalStats.ElementalAtk.COLD_ATK = baseEleAtk() * _tier;
 
     }
 
-    function Shiny(uint _tier) public pure returns (GameObjects.Prefix memory _prefix) {
+    function Shiny(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
         //        _prefix.title = "Shiny";
         _prefix.difficulty = 2;
-        _prefix.statBonus = GameObjects.Stats({
-        STR : 0,
-        DEX : 0,
-        AGI : 0,
-        INT : baseInt() * _tier,
-        VIT : 0,
-        LUCK : 0
-        });
+        _prefix.statBonus.INT = baseInt() * _tier;
 
 
-        // these are percentages.
+        _prefix.generatedStatBonus.ACCURACY = baseAcc() * _tier;
 
-        _prefix.generatedStatBonus = GameObjects.GeneratedStats({
-        HP : 0,
-        P_ATK : 0,
-        M_ATK : 0,
-        P_DEF : 0,
-        M_DEF : 0,
-        ACCURACY : baseAcc() * _tier,
-        DODGE : 0,
-        CRIT : 0,
-        CRIT_MULTIPLIER : 0,
-        INFUSION : 0
-        });
-
-        _prefix.elementalStats.ElementalAtk = GameObjects.ElementalAtk({
-        FIRE_ATK : 0,
-        COLD_ATK : 0,
-        EARTH_ATK : 0,
-        LIGHTNING_ATK : baseEleAtk() * _tier,
-        DARK_ATK : 0,
-        HOLY_ATK : 0,
-        VOID_ATK : 0
-        });
+        _prefix.elementalStats.ElementalAtk.LIGHTNING_ATK = baseEleAtk() * _tier;
 
     }
 }

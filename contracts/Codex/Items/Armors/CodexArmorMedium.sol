@@ -1,6 +1,9 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {GameObjects,EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
+import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
+import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+
 pragma solidity ^0.8.0;
+
 contract CodexArmorsMedium is Initializable {
     uint[21] public BASE_STR;
     uint[21] public BASE_AGI;
@@ -20,7 +23,7 @@ contract CodexArmorsMedium is Initializable {
         uint[21] memory _BASE_DEX,
         uint[21] memory _BASE_VIT,
         uint[21] memory _BASE_INT,
-    uint[21] memory _BASE_DEF,
+        uint[21] memory _BASE_DEF,
         uint[21] memory _BASE_MDEF,
         uint[21] memory _BASE_EDEF,
         uint[21] memory _BASE_HP,
@@ -37,7 +40,8 @@ contract CodexArmorsMedium is Initializable {
         BASE_DODGE = _BASE_DODGE;
         BASE_EDEF = _BASE_EDEF;
     }
-    function applyTier(GameObjects.Armor memory _armor, uint tier, uint percentage) public view returns (GameObjects.Armor memory){
+
+    function applyTier(GameObjects_Equipments.EquipableItem memory _armor, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
         if (tier == 0) return _armor;
         _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_armor.generatedStatBonus, (tier) * percentage);
         _armor.elementalStats.ElementalDef = armorEle(percentage);
@@ -45,7 +49,7 @@ contract CodexArmorsMedium is Initializable {
         return _armor;
     }
 
-    function armor(uint id, uint tier) public view returns (GameObjects.Armor memory) {
+    function armor(uint id, uint tier) public view returns (GameObjects_Equipments.EquipableItem memory) {
         require(tier < 10, "t");
 
         if (id == 22) {
@@ -95,11 +99,11 @@ contract CodexArmorsMedium is Initializable {
         revert("?hm");
     }
 
-    function SoldiersTunic(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function SoldiersTunic(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 22;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Soldier's Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Soldier's Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
 
         // requirements here
@@ -111,13 +115,13 @@ contract CodexArmorsMedium is Initializable {
         // }
         _armor.requirement.classRequirement = classRequirement();
 
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
+        //        _armor.requirement.statRequirement = GameObjects_Stats.Stats({
+        //        STR : 0,
+        //        DEX : 0,
+        //        AGI : 0,
+        //        INT : 0,
+        //        VIT : 0,
+        //        LUCK : 0});
 
 
         // bonuses here
@@ -126,428 +130,288 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(0);
     }
 
-    function ExecutionersTunic(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function ExecutionersTunic(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 23;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Executioner's Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Executioner's Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 5;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(1);
         _armor.generatedStatBonus = armorGenStats(1);
         _armor.elementalStats.ElementalDef = armorEle(1);
     }
 
-    function HuntersShirt(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function HuntersShirt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 24;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Knight's Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Knight's Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 10;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(2);
         _armor.generatedStatBonus = armorGenStats(2);
         _armor.elementalStats.ElementalDef = armorEle(2);
     }
 
-    function RangerShirt(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function RangerShirt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 25;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Dwarven Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Dwarven Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 15;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(3);
         _armor.generatedStatBonus = armorGenStats(3);
         _armor.elementalStats.ElementalDef = armorEle(3);
     }
 
-    function MercenaryCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function MercenaryCoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 26;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Scale Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Scale Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 20;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(4);
         _armor.generatedStatBonus = armorGenStats(4);
         _armor.elementalStats.ElementalDef = armorEle(4);
     }
 
-    function NobleCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function NobleCoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 27;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Winged Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Winged Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 25;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(5);
         _armor.generatedStatBonus = armorGenStats(5);
         _armor.elementalStats.ElementalDef = armorEle(5);
     }
 
-    function BloodstainedCoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function BloodstainedCoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 28;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Draconic Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Draconic Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 30;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(6);
         _armor.generatedStatBonus = armorGenStats(6);
         _armor.elementalStats.ElementalDef = armorEle(6);
     }
 
-    function CoatOfDusk(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function CoatOfDusk(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 29;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Argent Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Argent Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 35;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(7);
         _armor.generatedStatBonus = armorGenStats(7);
         _armor.elementalStats.ElementalDef = armorEle(7);
     }
 
-    function ShadowLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function ShadowLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 30;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Golden Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Golden Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 40;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(8);
         _armor.generatedStatBonus = armorGenStats(8);
         _armor.elementalStats.ElementalDef = armorEle(8);
     }
 
-    function HeadmastersLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function HeadmastersLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 31;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Midas's Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Midas's Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 45;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(9);
         _armor.generatedStatBonus = armorGenStats(9);
         _armor.elementalStats.ElementalDef = armorEle(9);
     }
 
-    function ElvenLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function ElvenLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 32;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Juggernaut Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Juggernaut Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 50;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(10);
         _armor.generatedStatBonus = armorGenStats(10);
         _armor.elementalStats.ElementalDef = armorEle(10);
     }
 
-    function ChosensLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function ChosensLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 33;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Chosen's Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Chosen's Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 55;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(11);
         _armor.generatedStatBonus = armorGenStats(11);
         _armor.elementalStats.ElementalDef = armorEle(11);
     }
 
-    function ProphetsLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function ProphetsLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 34;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Templar Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Templar Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 60;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(12);
         _armor.generatedStatBonus = armorGenStats(12);
         _armor.elementalStats.ElementalDef = armorEle(12);
     }
 
-    function EldersLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function EldersLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 35;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Vanguard Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Vanguard Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 65;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(13);
         _armor.generatedStatBonus = armorGenStats(13);
         _armor.elementalStats.ElementalDef = armorEle(13);
     }
 
-    function AncientLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function AncientLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 36;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Void Dweller Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Void Dweller Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 70;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(14);
         _armor.generatedStatBonus = armorGenStats(14);
         _armor.elementalStats.ElementalDef = armorEle(14);
     }
 
-    function MoonlightLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function MoonlightLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 37;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Sun Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Sun Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 75;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(15);
         _armor.generatedStatBonus = armorGenStats(15);
         _armor.elementalStats.ElementalDef = armorEle(15);
     }
 
-    function SunlightLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function SunlightLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 38;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Moon Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Moon Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 80;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(16);
         _armor.generatedStatBonus = armorGenStats(16);
         _armor.elementalStats.ElementalDef = armorEle(16);
     }
 
-    function CycleLongcoat(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function CycleLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 39;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Demonic Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Demonic Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 85;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(17);
         _armor.generatedStatBonus = armorGenStats(17);
         _armor.elementalStats.ElementalDef = armorEle(17);
     }
 
-    function DemonicSuit(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function DemonicSuit(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 40;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Angelic Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Angelic Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 90;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(18);
         _armor.generatedStatBonus = armorGenStats(18);
         _armor.elementalStats.ElementalDef = armorEle(18);
     }
 
-    function AngelicSuit(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function AngelicSuit(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 41;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Cycle Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Cycle Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 95;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(19);
         _armor.generatedStatBonus = armorGenStats(19);
         _armor.elementalStats.ElementalDef = armorEle(19);
     }
 
-    function EternalSuit(uint tier) public view returns (GameObjects.Armor memory _armor) {
+    function EternalSuit(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 42;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-//        _armor.metadata.name = "Eternal Coat";
-//        _armor.metadata.description = "";
+        //        _armor.metadata.name = "Eternal Coat";
+        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 100;
         _armor.requirement.classRequirement = classRequirement();
-//        _armor.requirement.statRequirement = GameObjects.Stats({
-//        STR : 0,
-//        DEX : 0,
-//        AGI : 0,
-//        INT : 0,
-//        VIT : 0,
-//        LUCK : 0});
-        // bonuses here
+
         _armor.statBonus = armorStats(20);
         _armor.generatedStatBonus = armorGenStats(20);
         _armor.elementalStats.ElementalDef = armorEle(20);
     }
 
-    function armorStats(uint index) internal view returns (GameObjects.Stats memory) {
-        GameObjects.Stats memory stats = GameObjects.Stats({
+    function armorStats(uint index) internal view returns (GameObjects_Stats.Stats memory) {
+        GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
         STR : BASE_STR[index],
         DEX : BASE_DEX[index],
         AGI : BASE_AGI[index],
@@ -557,13 +421,13 @@ contract CodexArmorsMedium is Initializable {
         return stats;
     }
 
-    function armorEle(uint index) internal view returns (GameObjects.ElementalDef memory) {
-        GameObjects.ElementalDef memory stats = GameObjects.ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
+    function armorEle(uint index) internal view returns (GameObjects_Stats.ElementalDef memory) {
+        GameObjects_Stats.ElementalDef memory stats = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
         return stats;
     }
 
-    function armorGenStats(uint index) internal view returns (GameObjects.GeneratedStats memory) {
-        GameObjects.GeneratedStats memory stats = GameObjects.GeneratedStats({
+    function armorGenStats(uint index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
+        GameObjects_Stats.GeneratedStats memory stats = GameObjects_Stats.GeneratedStats({
         HP : BASE_HP[index],
         P_ATK : 0,
         M_ATK : 0,

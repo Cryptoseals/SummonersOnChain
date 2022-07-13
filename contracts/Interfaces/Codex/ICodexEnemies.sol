@@ -1,5 +1,5 @@
-import "../GameObjects/IGameObjects.sol";
-import "../GameObjects/IMonster.sol";
+import {GameObjects, GameObjects} from "../GameObjects/IGameObjects.sol";
+import {IMonster} from "../GameObjects/IMonster.sol";
 pragma solidity ^0.8.0;
 
 interface ICodexEnemies {

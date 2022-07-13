@@ -2,7 +2,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
 import "../Core/Navigator/InitNavigator.sol";
-import "../Interfaces/GameObjects/IGameObjects.sol";
+import {GameObjects, GameObjects_Equipments} from "../Interfaces/GameObjects/IGameObjects.sol";
 import "../Interfaces/Codex/IAllCodexViews.sol";
 import {ICore} from "../Interfaces/GameObjects/ICore.sol";
 import {Base64} from "../Lib/Base64.sol";
@@ -178,36 +178,36 @@ ERC721EnumerableUpgradeable
         // get core data.
         ICore.Core memory core = IAllCodexViews(contractAddress(INavigator.CONTRACT.CORE_CODEX)).core(coreId);
         // check requirements.
+        GameObjects_Equipments.EquipableItem memory _equipableItem;
+        GameObjects_Equipments.Weapon memory _equipableItemW;
         if (_type == GameObjects.ItemType.HELMET) {
-            GameObjects.Helmet memory _helmet = IAllCodexViews(contractAddress(INavigator.CONTRACT.HELMETS_CODEX)).helmetCore(itemId, 1);
-            require(_helmet.requirement.level >= core.minItemLvl, "lowlvl");
+            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.HELMETS_CODEX)).helmetCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.ARMOR) {
-            GameObjects.Armor memory _armor = IAllCodexViews(contractAddress(INavigator.CONTRACT.BODY_ARMORS_CODEX)).armorCore(itemId, 1);
-            require(_armor.requirement.level >= core.minItemLvl, "lowlvl");
+            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.BODY_ARMORS_CODEX)).armorCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.WEAPON) {
-            GameObjects.Weapon memory _weapon = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(itemId, 1);
-            require(_weapon.requirement.level >= core.minItemLvl, "lowlvl");
+            _equipableItemW = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.OFFHAND) {
-            GameObjects.Weapon memory _offHand = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(itemId, 1);
-            require(_offHand.requirement.level >= core.minItemLvl, "lowlvl");
+            _equipableItemW = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.BOOTS) {
-            GameObjects.Boots memory _boots = IAllCodexViews(contractAddress(INavigator.CONTRACT.BOOTS_CODEX)).bootsCore(itemId, 1);
-            require(_boots.requirement.level >= core.minItemLvl, "lowlvl");
+            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.BOOTS_CODEX)).bootsCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.AMULET) {
-            GameObjects.Amulet memory _amulet = IAllCodexViews(contractAddress(INavigator.CONTRACT.AMULETS_CODEX)).amuletCore(itemId, 1);
-            require(_amulet.requirement.level >= core.minItemLvl, "lowlvl");
+            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.AMULETS_CODEX)).amuletCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.RING) {
-            GameObjects.Ring memory _ring = IAllCodexViews(contractAddress(INavigator.CONTRACT.RINGS_CODEX)).ringCore(itemId, 1);
-            require(_ring.requirement.level >= core.minItemLvl, "lowlvl");
+            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.RINGS_CODEX)).ringCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.EARRING) {
-            GameObjects.Earring memory _earring = IAllCodexViews(contractAddress(INavigator.CONTRACT.EARRINGS_CODEX)).earringsCore(itemId, 1);
-            require(_earring.requirement.level >= core.minItemLvl, "lowlvl");
+            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.EARRINGS_CODEX)).earringsCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.BELT) {
-            GameObjects.Belt memory _belt = IAllCodexViews(contractAddress(INavigator.CONTRACT.BELTS_CODEX)).beltCore(itemId, 1);
-            require(_belt.requirement.level >= core.minItemLvl, "lowlvl");
+            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.BELTS_CODEX)).beltCore(itemId, 1);
         } else {
             revert InvalidItem("Not Implemented");
         }
+        if (_type == GameObjects.ItemType.WEAPON ||
+            _type == GameObjects.ItemType.OFFHAND) {
+            require(_equipableItemW.requirement.level >= core.minItemLvl, "lowlvl");
+        } else {
+            require(_equipableItem.requirement.level >= core.minItemLvl, "lowlvl");
+        }
+
         _enhance(tokenId, core.fx);
     }
 
@@ -270,9 +270,9 @@ ERC721EnumerableUpgradeable
     function items(uint256[] memory ids)
     external
     view
-    returns (GameObjects.ItemDTO[] memory)
+    returns (GameObjects_Equipments.ItemDTO[] memory)
     {
-        GameObjects.ItemDTO[] memory _dtos = new GameObjects.ItemDTO[](ids.length);
+        GameObjects_Equipments.ItemDTO[] memory _dtos = new GameObjects_Equipments.ItemDTO[](ids.length);
         for (uint i = 0; i < ids.length; i++) {
             if (!_exists(ids[i])) revert InvalidItem("DOES NOT EXIST");
             _dtos[i]._type = tokenToType[ids[i]];

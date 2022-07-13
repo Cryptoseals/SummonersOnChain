@@ -1,5 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {GameObjects, EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
+import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
+import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexFocuses is Initializable {
@@ -37,7 +38,7 @@ contract CodexFocuses is Initializable {
         BASE_DODGE = _BASE_DODGE;
     }
 
-    function weapon(uint id, uint tier) public view returns (GameObjects.Weapon memory) {
+    function weapon(uint id, uint tier) public view returns (GameObjects_Equipments.Weapon memory) {
         require(tier < 10, "t");
 
         if (id == 106) {
@@ -87,14 +88,14 @@ contract CodexFocuses is Initializable {
         revert("?f");
     }
 
-    function applyTier(GameObjects.Weapon memory weapon, uint tier, uint percentage) public view returns (GameObjects.Weapon memory){
+    function applyTier(GameObjects_Equipments.Weapon memory weapon, uint tier, uint percentage) public view returns (GameObjects_Equipments.Weapon memory){
         if (tier == 0) return weapon;
         weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(weapon.generatedStatBonus, (tier) * percentage);
         weapon.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(weapon.elementalStats, (tier) * percentage);
         return weapon;
     }
 
-    function WellShapedRock(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function WellShapedRock(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 106;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Well Shaped Rock";
@@ -115,7 +116,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(0);
     }
 
-    function EvergreenFlower(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function EvergreenFlower(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 107;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Evergreen Flower";
@@ -128,7 +129,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(1);
     }
 
-    function IdolOfAberranth(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function IdolOfAberranth(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 108;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Idol Of Aberranth";
@@ -141,7 +142,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(2);
     }
 
-    function WarlordTotem(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function WarlordTotem(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 109;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //   _weapon.metadata.name = "Warlord Totem";
@@ -154,7 +155,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(3);
     }
 
-    function BookOfPhilosopher(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function BookOfPhilosopher(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 110;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Book of Philosopher";
@@ -167,7 +168,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(4);
     }
 
-    function SilverCoin(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function SilverCoin(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 111;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //   _weapon.metadata.name = "Silver Coin";
@@ -180,7 +181,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(5);
     }
 
-    function GoldenChain(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function GoldenChain(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 112;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Golden Chain";
@@ -193,7 +194,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(6);
     }
 
-    function ChannellingCrystal(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function ChannellingCrystal(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 113;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Channelling Crystal";
@@ -206,7 +207,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(7);
     }
 
-    function StarfallensFocus(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function StarfallensFocus(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 114;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Starfallen's Focus";
@@ -219,7 +220,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(8);
     }
 
-    function BlessedDice(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function BlessedDice(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 115;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Blessed Dice";
@@ -232,7 +233,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(9);
     }
 
-    function MoonstoneRelic(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function MoonstoneRelic(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 116;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Moonstone Relic";
@@ -245,7 +246,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(10);
     }
 
-    function SunfireRelic(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function SunfireRelic(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 117;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //   _weapon.metadata.name = "Sunfire Relic";
@@ -258,7 +259,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(11);
     }
 
-    function CycleRelic(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function CycleRelic(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 118;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //   _weapon.metadata.name = "Cycle Relic";
@@ -271,7 +272,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(12);
     }
 
-    function PhantasmalRelic(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function PhantasmalRelic(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 119;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //   _weapon.metadata.name = "Phantasmal Relic";
@@ -284,7 +285,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(13);
     }
 
-    function AncientOrb(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function AncientOrb(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 120;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //   _weapon.metadata.name = "Ancient Orb";
@@ -297,7 +298,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(14);
     }
 
-    function ScrollOfLuminous(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function ScrollOfLuminous(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 121;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Scroll of Luminous";
@@ -310,7 +311,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(15);
     }
 
-    function HeavenfallenFeather(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function HeavenfallenFeather(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 122;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         // _weapon.metadata.name = "Heavenfallen Feather";
@@ -323,7 +324,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(16);
     }
 
-    function Godbringt(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function Godbringt(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 123;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Godbringt";
@@ -336,7 +337,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(17);
     }
 
-    function KeyOfTheExistence(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function KeyOfTheExistence(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 124;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Key of the Existence";
@@ -349,7 +350,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(18);
     }
 
-    function MistguardRelic(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function MistguardRelic(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 125;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Mistguard Relic";
@@ -362,7 +363,7 @@ contract CodexFocuses is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(19);
     }
 
-    function Mistbringer(uint tier) public view returns (GameObjects.Weapon memory _weapon) {
+    function Mistbringer(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 126;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
         //  _weapon.metadata.name = "Soultrapper";
@@ -376,8 +377,8 @@ contract CodexFocuses is Initializable {
     }
 
 
-    function weaponStats(uint index) internal view returns (GameObjects.Stats memory) {
-        GameObjects.Stats memory stats = GameObjects.Stats({
+    function weaponStats(uint index) internal view returns (GameObjects_Stats.Stats memory) {
+        GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
         STR : 0,
         DEX : BASE_DEX[index],
         AGI : BASE_AGI[index],
@@ -387,8 +388,8 @@ contract CodexFocuses is Initializable {
         return stats;
     }
 
-    function weaponGenStats(uint index) internal view returns (GameObjects.GeneratedStats memory) {
-        GameObjects.GeneratedStats memory stats = GameObjects.GeneratedStats({
+    function weaponGenStats(uint index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
+        GameObjects_Stats.GeneratedStats memory stats = GameObjects_Stats.GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : BASE_MATK[index],

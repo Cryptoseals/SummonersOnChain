@@ -1,4 +1,4 @@
-import "../GameObjects/IAdventure.sol";
+import {IAdventure} from "../GameObjects/IAdventure.sol";
 pragma solidity ^0.8.0;
 
 interface ICodexAdventures {

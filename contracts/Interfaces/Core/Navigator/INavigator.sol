@@ -23,6 +23,7 @@ interface INavigator {
         EARRINGS_CODEX, //18
         BELTS_CODEX, //19
         ARTIFACTS_CODEX, //20
+        ARTIFACT_PROPS_CODEX, //20
         ELIXIRS_CODEX, //21
         MOUNTS_CODEX, //22
         RANDOM_CODEX, //23

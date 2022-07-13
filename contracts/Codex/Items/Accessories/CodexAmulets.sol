@@ -1,7 +1,9 @@
-import {ICodexPrefixAndSuffix, GameObjects} from "../../../Interfaces/Codex/ICodexPrefixAndSuffix.sol";
-import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {InitNavigator, INavigator} from "../../../Core/Navigator/InitNavigator.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import {ICodexPrefixAndSuffix} from "../../../Interfaces/Codex/ICodexPrefixAndSuffix.sol";
+import {InitNavigator, INavigator} from "../../../Core/Navigator/InitNavigator.sol";
+import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
 
 pragma solidity ^0.8.0;
 
@@ -74,7 +76,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         BASE_ACC = _BASE_ACC;
     }
 
-    function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Amulet memory _amulet) public view returns (GameObjects.Amulet memory) {
+    function applyPrefixAndSuffix(GameObjects_Equipments.Prefix memory _pre, GameObjects_Equipments.Suffix memory _suf, GameObjects_Equipments.EquipableItem memory _amulet) public view returns (GameObjects_Equipments.EquipableItem memory) {
         if (_pre.isPercentage) {
             _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_amulet.generatedStatBonus, _pre.generatedStatBonus);
             _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_amulet.elementalStats, _pre.elementalStats);
@@ -98,7 +100,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         return _amulet;
     }
 
-    function applyPrefix(GameObjects.Prefix memory _pre, GameObjects.Amulet memory _amulet) public view returns (GameObjects.Amulet memory) {
+    function applyPrefix(GameObjects_Equipments.Prefix memory _pre, GameObjects_Equipments.EquipableItem memory _amulet) public view returns (GameObjects_Equipments.EquipableItem memory) {
         if (_pre.isPercentage) {
             _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_amulet.generatedStatBonus, _pre.generatedStatBonus);
             _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_amulet.elementalStats, _pre.elementalStats);
@@ -112,7 +114,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         return _amulet;
     }
 
-    function applySuffix(GameObjects.Suffix memory _suf, GameObjects.Amulet memory _amulet) public view returns (GameObjects.Amulet memory) {
+    function applySuffix(GameObjects_Equipments.Suffix memory _suf, GameObjects_Equipments.EquipableItem memory _amulet) public view returns (GameObjects_Equipments.EquipableItem memory) {
         if (_suf.isPercentage) {
             _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_amulet.generatedStatBonus, _suf.generatedStatBonus);
             _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_amulet.elementalStats, _suf.elementalStats);
@@ -126,7 +128,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         return _amulet;
     }
 
-    function applyTier(GameObjects.Amulet memory _amulet, uint tier, uint percentage) public view returns (GameObjects.Amulet memory){
+    function applyTier(GameObjects_Equipments.EquipableItem memory _amulet, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
         if (tier == 0) return _amulet;
         _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_amulet.generatedStatBonus, (tier) * percentage);
         _amulet.elementalStats.ElementalDef = amuletEle(percentage);
@@ -134,18 +136,18 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         return _amulet;
     }
 
-    function allAmulet() external view returns (GameObjects.Amulet[] memory){
-        GameObjects.Amulet[] memory result = new GameObjects.Amulet[](21);
+    function allAmulet() external view returns (GameObjects_Equipments.EquipableItem[] memory){
+        GameObjects_Equipments.EquipableItem[] memory result = new GameObjects_Equipments.EquipableItem[](21);
         for (uint i = 1; i < 22; i++) {
             result[i - 1] = amuletCore(i, 1);
         }
         return result;
     }
 
-    function amulet(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Amulet memory) {
-        GameObjects.Amulet memory _amulet;
-        GameObjects.Prefix memory _prefix;
-        GameObjects.Suffix memory _suffix;
+    function amulet(GameObjects_Equipments.EquippedItemStruct memory _equipable) public view returns (GameObjects_Equipments.EquipableItem memory) {
+        GameObjects_Equipments.EquipableItem memory _amulet;
+        GameObjects_Equipments.Prefix memory _prefix;
+        GameObjects_Equipments.Suffix memory _suffix;
         require(_equipable.itemTier < 10, "tier");
 
         if (_equipable.prefixId > 0) _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
@@ -207,8 +209,8 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         return _amulet;
     }
 
-    function amuletCore(uint itemId, uint itemTier) public view returns (GameObjects.Amulet memory) {
-        GameObjects.Amulet memory _amulet;
+    function amuletCore(uint itemId, uint itemTier) public view returns (GameObjects_Equipments.EquipableItem memory) {
+        GameObjects_Equipments.EquipableItem memory _amulet;
         require(itemTier < 10, "tier");
 
         if (itemId == 1) {
@@ -257,7 +259,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         return _amulet;
     }
 
-    function FrailAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function FrailAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 1;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         //_amulet.metadata.name = "Frail Amulet";
@@ -272,7 +274,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(0);
     }
 
-    function AntiqueAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function AntiqueAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 2;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         //  _amulet.metadata.name = "Antique Amulet";
@@ -287,7 +289,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(1);
     }
 
-    function PurgeAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function PurgeAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 3;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         //  _amulet.metadata.name = "Purge Amulet";
@@ -302,7 +304,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(2);
     }
 
-    function BarbedAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function BarbedAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 4;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         //  _amulet.metadata.name = "Barbed Amulet";
@@ -317,7 +319,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(3);
     }
 
-    function ReflectiveAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function ReflectiveAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 5;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         //  _amulet.metadata.name = "Reflective Amulet";
@@ -332,7 +334,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(4);
     }
 
-    function StormForgedAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function StormForgedAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 6;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         //  _amulet.metadata.name = "Storm Forged Amulet";
@@ -347,7 +349,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(5);
     }
 
-    function VerdantAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function VerdantAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 7;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         //  _amulet.metadata.name = "Verdant Amulet";
@@ -362,7 +364,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(6);
     }
 
-    function ShadowfallAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function ShadowfallAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 8;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         //  _amulet.metadata.name = "Shadowfall Amulet";
@@ -377,7 +379,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(7);
     }
 
-    function MalignantAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function MalignantAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 9;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         // _amulet.metadata.name = "Malignant Amulet";
@@ -392,7 +394,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(8);
     }
 
-    function SealedAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function SealedAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 10;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         //  _amulet.metadata.name = "Sealed Amulet";
@@ -407,7 +409,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(9);
     }
 
-    function TemplarAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function TemplarAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 11;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         //   _amulet.metadata.name = "Templar Amulet";
@@ -422,7 +424,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(10);
     }
 
-    function ChannelerAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function ChannelerAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 12;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         //  _amulet.metadata.name = "Channeler Amulet";
@@ -437,7 +439,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(11);
     }
 
-    function ChosensAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function ChosensAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 13;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         //  _amulet.metadata.name = "Chosen's Amulet";
@@ -452,7 +454,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(12);
     }
 
-    function AstraAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function AstraAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 14;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         //  _amulet.metadata.name = "Astra Amulet";
@@ -467,7 +469,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(13);
     }
 
-    function SoulbinderAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function SoulbinderAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 15;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         // _amulet.metadata.name = "Soulbinder Amulet";
@@ -482,7 +484,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(14);
     }
 
-    function MoonlightAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function MoonlightAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 16;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         // _amulet.metadata.name = "Sun Amulet";
@@ -497,7 +499,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(15);
     }
 
-    function SunlightAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function SunlightAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 17;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         //  _amulet.metadata.name = "Moon Amulet";
@@ -512,7 +514,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(16);
     }
 
-    function CycleAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function CycleAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 18;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         // _amulet.metadata.name = "Cycle Amulet";
@@ -527,7 +529,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(17);
     }
 
-    function InfernalAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function InfernalAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 19;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         // _amulet.metadata.name = "Infernal Amulet";
@@ -542,7 +544,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(18);
     }
 
-    function DivineAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function DivineAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 20;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         // _amulet.metadata.name = "Diamond Amulet";
@@ -557,7 +559,7 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.elementalStats = amuletEleStats(19);
     }
 
-    function EternalAmulet(uint tier) public view returns (GameObjects.Amulet memory _amulet) {
+    function EternalAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 21;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
         // _amulet.metadata.name = "Eternal Amulet";
@@ -573,8 +575,8 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     }
 
 
-    function amuletStats(uint index) internal view returns (GameObjects.Stats memory) {
-        GameObjects.Stats memory stats = GameObjects.Stats({
+    function amuletStats(uint index) internal view returns (GameObjects_Stats.Stats memory) {
+        GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
         STR : BASE_STR[index],
         DEX : BASE_DEX[index],
         AGI : BASE_AGI[index],
@@ -584,18 +586,18 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         return stats;
     }
 
-    function amuletEleD(uint index) internal view returns (GameObjects.ElementalAtk memory) {
-        GameObjects.ElementalAtk memory stats = GameObjects.ElementalAtk({FIRE_ATK : BASE_MATK[index], EARTH_ATK : BASE_MATK[index], COLD_ATK : BASE_MATK[index], LIGHTNING_ATK : BASE_MATK[index], DARK_ATK : BASE_MATK[index], HOLY_ATK : BASE_MATK[index], VOID_ATK : 0});
+    function amuletEleD(uint index) internal view returns (GameObjects_Stats.ElementalAtk memory) {
+        GameObjects_Stats.ElementalAtk memory stats = GameObjects_Stats.ElementalAtk({FIRE_ATK : BASE_MATK[index], EARTH_ATK : BASE_MATK[index], COLD_ATK : BASE_MATK[index], LIGHTNING_ATK : BASE_MATK[index], DARK_ATK : BASE_MATK[index], HOLY_ATK : BASE_MATK[index], VOID_ATK : 0});
         return stats;
     }
 
-    function amuletEle(uint index) internal view returns (GameObjects.ElementalDef memory) {
-        GameObjects.ElementalDef memory stats = GameObjects.ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
+    function amuletEle(uint index) internal view returns (GameObjects_Stats.ElementalDef memory) {
+        GameObjects_Stats.ElementalDef memory stats = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
         return stats;
     }
 
-    function amuletGenStats(uint index) internal view returns (GameObjects.GeneratedStats memory) {
-        GameObjects.GeneratedStats memory stats = GameObjects.GeneratedStats({
+    function amuletGenStats(uint index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
+        GameObjects_Stats.GeneratedStats memory stats = GameObjects_Stats.GeneratedStats({
         HP : BASE_HP[index],
         P_ATK : BASE_ATK[index],
         M_ATK : BASE_MATK[index],
@@ -610,8 +612,8 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         return stats;
     }
 
-    function amuletEleStats(uint index) internal view returns (GameObjects.ElementalStats memory _genStats) {
-        _genStats.ElementalDef = GameObjects.ElementalDef({FIRE_DEF : BASE_EDEF[index], EARTH_DEF : BASE_EDEF[index], COLD_DEF : BASE_EDEF[index], LIGHTNING_DEF : BASE_EDEF[index], DARK_DEF : BASE_EDEF[index], HOLY_DEF : BASE_EDEF[index], VOID_DEF : 0});
-        _genStats.ElementalAtk = GameObjects.ElementalAtk({FIRE_ATK : BASE_MATK[index], EARTH_ATK : BASE_MATK[index], COLD_ATK : BASE_MATK[index], LIGHTNING_ATK : BASE_MATK[index], DARK_ATK : BASE_MATK[index], HOLY_ATK : BASE_MATK[index], VOID_ATK : 0});
+    function amuletEleStats(uint index) internal view returns (GameObjects_Stats.ElementalStats memory _genStats) {
+        _genStats.ElementalDef = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_EDEF[index], EARTH_DEF : BASE_EDEF[index], COLD_DEF : BASE_EDEF[index], LIGHTNING_DEF : BASE_EDEF[index], DARK_DEF : BASE_EDEF[index], HOLY_DEF : BASE_EDEF[index], VOID_DEF : 0});
+        _genStats.ElementalAtk = GameObjects_Stats.ElementalAtk({FIRE_ATK : BASE_MATK[index], EARTH_ATK : BASE_MATK[index], COLD_ATK : BASE_MATK[index], LIGHTNING_ATK : BASE_MATK[index], DARK_ATK : BASE_MATK[index], HOLY_ATK : BASE_MATK[index], VOID_ATK : 0});
     }
 }

@@ -1,7 +1,8 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../Core/Common/Errors.sol";
 import {IAttributes} from "../Interfaces/Attributes/IAttributes.sol";
-import {GameEntities, GameObjects} from "../Interfaces/GameObjects/IGameEntities.sol";
+import {GameEntities} from "../Interfaces/GameObjects/IGameEntities.sol";
+import {GameObjects, GameObjects_Stats} from "../Interfaces/GameObjects/IGameEntities.sol";
 import {EquipableUtils} from "../Inventory/EquipableUtils.sol";
 import {ICodexSpells} from "../Interfaces/Codex/ICodexSpells.sol";
 import {ISpell} from "../Interfaces/GameObjects/ISpell.sol";
@@ -35,7 +36,7 @@ contract Spells is Initializable, InitNavigator {
         require(SummonerSpellLevels[_summoner][spellId] != 0, "not learnt");
         uint nextTier = SummonerSpellLevels[_summoner][spellId]+1;
         ISpell.Spell memory spell = ICodexSpells(contractAddress(INavigator.CONTRACT.SPELLS_CODEX)).spell(spellId, nextTier);
-        GameObjects.Stats memory summed = EquipableUtils.sumStats(spell.requirements.statRequirement, spell.requirements.additionalStatRequirementsPerTier);
+        GameObjects_Stats.Stats memory summed = EquipableUtils.sumStats(spell.requirements.statRequirement, spell.requirements.additionalStatRequirementsPerTier);
 
     }
 
@@ -44,8 +45,8 @@ contract Spells is Initializable, InitNavigator {
         return _validSpells[uint(cat)];
     }
 
-    function checkAttributes(uint summoner, GameObjects.Stats memory _spellAttr) internal view returns (bool) {
-        GameObjects.Stats memory _summonerAttr = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(summoner);
+    function checkAttributes(uint summoner, GameObjects_Stats.Stats memory _spellAttr) internal view returns (bool) {
+        GameObjects_Stats.Stats memory _summonerAttr = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(summoner);
         return _summonerAttr.STR >= _spellAttr.STR &&
         _summonerAttr.DEX >= _spellAttr.DEX &&
         _summonerAttr.INT >= _spellAttr.INT &&
@@ -69,8 +70,8 @@ contract Spells is Initializable, InitNavigator {
     }
 
     function checkAttributesUpgrade(uint summoner, uint tier,
-        GameObjects.Stats memory _spellAttr, GameObjects.Stats memory _perTier) internal view returns (bool) {
-        GameObjects.Stats memory _summonerAttr = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(summoner);
+        GameObjects_Stats.Stats memory _spellAttr, GameObjects_Stats.Stats memory _perTier) internal view returns (bool) {
+        GameObjects_Stats.Stats memory _summonerAttr = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(summoner);
 
         for (uint i = 1; i <= tier; i++) {
             _spellAttr = EquipableUtils.sumStats(_spellAttr, _perTier);

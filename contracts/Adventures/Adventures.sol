@@ -5,7 +5,8 @@ import {ICodexAdventures, IAdventure} from "../Interfaces/Codex/ICodexAdventures
 import {ICodexEnemies, IMonster} from "../Interfaces/Codex/ICodexEnemies.sol";
 import {EquipableUtils} from "../Inventory/EquipableUtils.sol";
 import {ICodexRandom} from "../Interfaces/Codex/ICodexRandom.sol";
-import {IReward, IGameRewards, GameObjects} from "../Interfaces/Reward/IReward.sol";
+import {IReward, IGameRewards} from "../Interfaces/Reward/IReward.sol";
+import {GameObjects_Stats} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
@@ -45,8 +46,8 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         ) = getMonster(adventureArea, adventureLevel, lvl);
 
         (
-        GameObjects.BattleStats memory _summonerStats,
-        GameObjects.BattleStats memory _monsterStats
+        GameObjects_Stats.BattleStats memory _summonerStats,
+        GameObjects_Stats.BattleStats memory _monsterStats
         ) = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR)).PVEBattleStats(summoner, _monster);
 
         activeBattles[summoner] = IAdventure.AdventureBattle({

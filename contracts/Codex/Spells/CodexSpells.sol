@@ -16,47 +16,6 @@ contract CodexSpells is Initializable, InitNavigator {
         initializeNavigator(_navigator);
     }
 
-    function classSpells(GameObjects.Class _class) external view returns(bool[11] memory) {
-        //Assassin: Physical, Dark, Arcane, Void
-        //Necromancer: Dark, Arcane, Cold, Void
-        //Priest: Lightning, Earth, Holy, Void
-        //Barbarian: Physical, Gadgets, Earth, Void
-        //Engineer: Physical, Lightning, Gadgets, Void
-        //Paladin: Physical, Fire, Holy, Void
-        //Wizard: Fire, Cold, Lightning, Arcane, Void
-        //Ranger: Physical, Gadgets, Ranged, Void
-
-        //Barbarian, Paladin, Assassin, Wizard, Necromancer, Priest, Engineer, Ranger
-
-        //          FIRE,  COLD,  EARTH,  LNG, ARCANE,PHYS, DARK, HOLY,  GADGET,VOID, RANGED
-
-        if(_class == GameObjects.Class.Barbarian) {
-            return [false, false, true, false, false, true, false, false, true, true, false];
-        }
-        if(_class == GameObjects.Class.Paladin) {
-            return [true, false, false, false, false, true, false, true, false, true, false];
-        }
-        if(_class == GameObjects.Class.Assassin) {
-            return [false, false, false, false, true, true, false, false, false, true, true];
-        }
-        if(_class == GameObjects.Class.Wizard) {
-            return [true, true, true, false, true, false, false, false, false, true, false];
-        }
-        if(_class == GameObjects.Class.Necromancer) {
-            return [false, true, false, false, true, false, true, false, false, true, false];
-        }
-        if(_class == GameObjects.Class.Priest) {
-            return [false, false, true, true, false, false, false, true, false, true, false];
-        }
-        if(_class == GameObjects.Class.Engineer) {
-            return [false, false, false, true, false, true, false, false, true, true, false];
-        }
-        if(_class == GameObjects.Class.Ranger) {
-            return [false, false, false, false, false, true, false, true, true, true, true];
-        }
-        revert();
-    }
-
     function spell(ISpell.SpellCategories _category, uint _id, uint _tier) public view returns (ISpell.Spell memory) {
         SpellCodex _contract;
         if (_category == ISpell.SpellCategories.PHYSICAL) {

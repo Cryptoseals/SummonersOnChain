@@ -1,5 +1,5 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {GameObjects} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {GameObjects, GameObjects_Stats} from "../../Interfaces/GameObjects/IGameObjects.sol";
 import {IMonster} from "../../Interfaces/GameObjects/IMonster.sol";
 import {InitNavigator, INavigator} from "../../Core/Navigator/InitNavigator.sol";
 import {IBaseEnemyStats} from "../../Interfaces/Codex/IBaseEnemyStats.sol";
@@ -29,7 +29,7 @@ contract CodexEnemies is Initializable, InitNavigator {
     view
     returns (IMonster.Monster memory _enemy)
     {
-        _enemy.EnemyGeneratedStats = GameObjects.GeneratedStats({
+        _enemy.EnemyGeneratedStats = GameObjects_Stats.GeneratedStats({
         HP : baseStats.enemyHP(ele, _lvl),
         P_ATK : ele == GameObjects.Element.PHYSICAL ? baseStats.enemyATK(ele, _lvl) : 0,
         M_ATK : ele != GameObjects.Element.PHYSICAL ? baseStats.enemyATK(ele, _lvl) : 0,
@@ -45,7 +45,7 @@ contract CodexEnemies is Initializable, InitNavigator {
         _enemy.damageType = ele;
         _enemy.EnemyElementalStats.SummonerDamageType = ele;
 
-        _enemy.EnemyElementalStats.ElementalDef = GameObjects.ElementalDef({
+        _enemy.EnemyElementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
         FIRE_DEF : baseStats.enemyEDEF(ele, _lvl),
         COLD_DEF : baseStats.enemyEDEF(ele, _lvl),
         EARTH_DEF : baseStats.enemyEDEF(ele, _lvl),

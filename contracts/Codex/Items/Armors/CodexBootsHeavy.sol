@@ -1,5 +1,7 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {GameObjects,EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
+import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
+import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+
 pragma solidity ^0.8.0;
 
 contract CodexBootsHeavy is Initializable {
@@ -38,7 +40,8 @@ contract CodexBootsHeavy is Initializable {
         BASE_DODGE = _BASE_DODGE;
         BASE_EDEF = _BASE_EDEF;
     }
-    function applyTier(GameObjects.Boots memory _boots, uint tier, uint percentage) public view returns (GameObjects.Boots memory){
+
+    function applyTier(GameObjects_Equipments.EquipableItem memory _boots, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
         if (tier == 0) return _boots;
         _boots.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_boots.generatedStatBonus, (tier) * percentage);
         _boots.elementalStats.ElementalDef = bootEle(percentage);
@@ -46,7 +49,7 @@ contract CodexBootsHeavy is Initializable {
         return _boots;
     }
 
-    function boots(uint id, uint tier) public view returns (GameObjects.Boots memory) {
+    function boots(uint id, uint tier) public view returns (GameObjects_Equipments.EquipableItem memory) {
         require(tier < 10, "t");
 
         if (id == 1) {
@@ -96,11 +99,11 @@ contract CodexBootsHeavy is Initializable {
         revert("?hm");
     }
 
-    function SoldiersBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function SoldiersBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 1;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-       // _boots.metadata.name = "Soldier's Boots";
-       // _boots.metadata.description = "";
+        // _boots.metadata.name = "Soldier's Boots";
+        // _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
 
         // requirements here
@@ -112,211 +115,142 @@ contract CodexBootsHeavy is Initializable {
         // }
         _boots.requirement.classRequirement = classRequirement();
 
-       // _boots.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
-
-
         // bonuses here
         _boots.statBonus = bootStats(0);
         _boots.generatedStatBonus = bootGenStats(0);
         _boots.elementalStats.ElementalDef = bootEle(0);
     }
- 
-    function ExecutionerBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+
+    function ExecutionerBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 2;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-      //  _boots.metadata.name = "Executioner's Boots";
-      //  _boots.metadata.description = "";
+        //  _boots.metadata.name = "Executioner's Boots";
+        //  _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 3;
         _boots.requirement.classRequirement = classRequirement();
-       // _boots.requirement.statRequirement = GameObjects.Stats({
-       // STR : 0,
-       // DEX : 0,
-       // AGI : 0,
-       // INT : 0,
-       // VIT : 0,
-       // LUCK : 0});
-        // bonuses here
+        // _boots.requirement.statRequirement = GameObjects.Stats({
+
         _boots.statBonus = bootStats(1);
         _boots.generatedStatBonus = bootGenStats(1);
         _boots.elementalStats.ElementalDef = bootEle(1);
     }
 
-    function KnightsBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function KnightsBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 3;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-     //   _boots.metadata.name = "Knight's Boots";
-     //   _boots.metadata.description = "";
+        //   _boots.metadata.name = "Knight's Boots";
+        //   _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 8;
         _boots.requirement.classRequirement = classRequirement();
-     //   _boots.requirement.statRequirement = GameObjects.Stats({
-     //   STR : 0,
-     //   DEX : 0,
-      //  AGI : 0,
-     //   INT : 0,
-     //   VIT : 0,
-     //   LUCK : 0});
-        // bonuses here
+        //   _boots.requirement.statRequirement = GameObjects.Stats({
+
         _boots.statBonus = bootStats(2);
         _boots.generatedStatBonus = bootGenStats(2);
         _boots.elementalStats.ElementalDef = bootEle(2);
     }
 
-    function DwarvenBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function DwarvenBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 4;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-      //  _boots.metadata.name = "Dwarven Boots";
-      //  _boots.metadata.description = "";
+        //  _boots.metadata.name = "Dwarven Boots";
+        //  _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 13;
         _boots.requirement.classRequirement = classRequirement();
-      //  _boots.requirement.statRequirement = GameObjects.Stats({
-       // STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
-        // bonuses here
+        //  _boots.requirement.statRequirement = GameObjects.Stats({
+
         _boots.statBonus = bootStats(3);
         _boots.generatedStatBonus = bootGenStats(3);
         _boots.elementalStats.ElementalDef = bootEle(3);
     }
 
-    function ScaleBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function ScaleBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 5;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-       // _boots.metadata.name = "Scale Boots";
-       // _boots.metadata.description = "";
+        // _boots.metadata.name = "Scale Boots";
+        // _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 18;
         _boots.requirement.classRequirement = classRequirement();
-     //   _boots.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-       // LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(4);
         _boots.generatedStatBonus = bootGenStats(4);
         _boots.elementalStats.ElementalDef = bootEle(4);
     }
 
-    function WingedBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function WingedBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 6;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-      //  _boots.metadata.name = "Winged Boots";
-      //  _boots.metadata.description = "";
+        //  _boots.metadata.name = "Winged Boots";
+        //  _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 23;
         _boots.requirement.classRequirement = classRequirement();
-       // _boots.requirement.statRequirement = GameObjects.Stats({
-       // STR : 0,
-       // DEX : 0,
-       // AGI : 0,
-       // INT : 0,
-       // VIT : 0,
-       // LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(5);
         _boots.generatedStatBonus = bootGenStats(5);
         _boots.elementalStats.ElementalDef = bootEle(5);
     }
 
-    function JuggernautBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function JuggernautBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 7;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-      //  _boots.metadata.name = "Juggernaut Boots";
-      //  _boots.metadata.description = "";
+        //  _boots.metadata.name = "Juggernaut Boots";
+        //  _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 28;
         _boots.requirement.classRequirement = classRequirement();
-      //  _boots.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(6);
         _boots.generatedStatBonus = bootGenStats(6);
         _boots.elementalStats.ElementalDef = bootEle(6);
     }
 
-    function DraconicBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function DraconicBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 8;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-      //  _boots.metadata.name = "Draconic Boots";
-      //  _boots.metadata.description = "";
+        //  _boots.metadata.name = "Draconic Boots";
+        //  _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 33;
         _boots.requirement.classRequirement = classRequirement();
-     //   _boots.requirement.statRequirement = GameObjects.Stats({
-     //   STR : 0,
-     //   DEX : 0,
-     //   AGI : 0,
-     //   INT : 0,
-     //   VIT : 0,
-     //   LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(7);
         _boots.generatedStatBonus = bootGenStats(7);
         _boots.elementalStats.ElementalDef = bootEle(7);
     }
 
-    function DragonsilverBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function DragonsilverBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 9;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-    //    _boots.metadata.name = "Dragonsilver Boots";
-    //    _boots.metadata.description = "";
+        //    _boots.metadata.name = "Dragonsilver Boots";
+        //    _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 38;
         _boots.requirement.classRequirement = classRequirement();
-      //  _boots.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(8);
         _boots.generatedStatBonus = bootGenStats(8);
         _boots.elementalStats.ElementalDef = bootEle(8);
     }
 
-    function GoldenBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function GoldenBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 10;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-       // _boots.metadata.name = "Golden Boots";
-       // _boots.metadata.description = "";
+        // _boots.metadata.name = "Golden Boots";
+        // _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 43;
         _boots.requirement.classRequirement = classRequirement();
-       // _boots.requirement.statRequirement = GameObjects.Stats({
-       // STR : 0,
-       // DEX : 0,
-        //AGI : 0,
-       // INT : 0,
-       // VIT : 0,
-      //  LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(9);
         _boots.generatedStatBonus = bootGenStats(9);
         _boots.elementalStats.ElementalDef = bootEle(9);
     }
 
-    function MidassBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function MidassBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 11;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
         ////_boots.metadata.name = "Midas's Boots";
@@ -324,20 +258,13 @@ contract CodexBootsHeavy is Initializable {
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 48;
         _boots.requirement.classRequirement = classRequirement();
-        //_boots.requirement.statRequirement = GameObjects.Stats({
-        //STR : 0,
-        //DEX : 0,
-        //AGI : 0,
-        //INT : 0,
-        //VIT : 0,
-        //LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(10);
         _boots.generatedStatBonus = bootGenStats(10);
         _boots.elementalStats.ElementalDef = bootEle(10);
     }
 
-    function ChosensBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function ChosensBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 12;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
         //_boots.metadata.name = "Chosen's Boots";
@@ -345,20 +272,13 @@ contract CodexBootsHeavy is Initializable {
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 53;
         _boots.requirement.classRequirement = classRequirement();
-        //_boots.requirement.statRequirement = GameObjects.Stats({
-        //STR : 0,
-        //DEX : 0,
-        //AGI : 0,
-        //INT : 0,
-        //VIT : 0,
-        //LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(11);
         _boots.generatedStatBonus = bootGenStats(11);
         _boots.elementalStats.ElementalDef = bootEle(11);
     }
 
-    function TemplarBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function TemplarBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 13;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
         //_boots.metadata.name = "Templar Boots";
@@ -366,20 +286,13 @@ contract CodexBootsHeavy is Initializable {
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 58;
         _boots.requirement.classRequirement = classRequirement();
-        //_boots.requirement.statRequirement = GameObjects.Stats({
-        //STR : 0,
-        //DEX : 0,
-        //AGI : 0,
-        //INT : 0,
-        //VIT : 0,
-        //LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(12);
         _boots.generatedStatBonus = bootGenStats(12);
         _boots.elementalStats.ElementalDef = bootEle(12);
     }
 
-    function VanguardBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function VanguardBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 14;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
         //_boots.metadata.name = "Vanguard Boots";
@@ -387,20 +300,13 @@ contract CodexBootsHeavy is Initializable {
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 63;
         _boots.requirement.classRequirement = classRequirement();
-        //_boots.requirement.statRequirement = GameObjects.Stats({
-        //STR : 0,
-        //DEX : 0,
-        //AGI : 0,
-        //INT : 0,
-        //VIT : 0,
-        //LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(13);
         _boots.generatedStatBonus = bootGenStats(13);
         _boots.elementalStats.ElementalDef = bootEle(13);
     }
 
-    function VoidDwellerBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function VoidDwellerBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 15;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
         //_boots.metadata.name = "Void Dweller Boots";
@@ -408,147 +314,99 @@ contract CodexBootsHeavy is Initializable {
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 68;
         _boots.requirement.classRequirement = classRequirement();
-        //_boots.requirement.statRequirement = GameObjects.Stats({
-        //STR : 0,
-        //DEX : 0,
-        //AGI : 0,
-      //  INT : 0,
-       // VIT : 0,
-      //  LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(14);
         _boots.generatedStatBonus = bootGenStats(14);
         _boots.elementalStats.ElementalDef = bootEle(14);
     }
 
-    function MoonlightBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function MoonlightBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 16;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-      //  _boots.metadata.name = "Sun Boots";
-       // _boots.metadata.description = "";
+        //  _boots.metadata.name = "Sun Boots";
+        // _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 73;
         _boots.requirement.classRequirement = classRequirement();
-        //_boots.requirement.statRequirement = GameObjects.Stats({
-        //STR : 0,
-        //DEX : 0,
-        //AGI : 0,
-        //INT : 0,
-        //VIT : 0,
-        //LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(15);
         _boots.generatedStatBonus = bootGenStats(15);
         _boots.elementalStats.ElementalDef = bootEle(15);
     }
 
-    function SunlightBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function SunlightBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 17;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-      //  _boots.metadata.name = "Moon Boots";
-      //  _boots.metadata.description = "";
+        //  _boots.metadata.name = "Moon Boots";
+        //  _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 78;
         _boots.requirement.classRequirement = classRequirement();
-      //  _boots.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(16);
         _boots.generatedStatBonus = bootGenStats(16);
         _boots.elementalStats.ElementalDef = bootEle(16);
     }
 
-    function CycleBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function CycleBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 18;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-      //  _boots.metadata.name = "Demonic Boots";
-       // _boots.metadata.description = "";
+        //  _boots.metadata.name = "Demonic Boots";
+        // _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 83;
         _boots.requirement.classRequirement = classRequirement();
-      //  _boots.requirement.statRequirement = GameObjects.Stats({
-     //   STR : 0,
-     //   DEX : 0,
-     //   AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(17);
         _boots.generatedStatBonus = bootGenStats(17);
         _boots.elementalStats.ElementalDef = bootEle(17);
     }
 
-    function DemonicBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function DemonicBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 19;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-      //  _boots.metadata.name = "Angelic Boots";
-      //  _boots.metadata.description = "";
+        //  _boots.metadata.name = "Angelic Boots";
+        //  _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 88;
         _boots.requirement.classRequirement = classRequirement();
-     //   _boots.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-     //   DEX : 0,
-     //   AGI : 0,
-     //   INT : 0,
-     //   VIT : 0,
-     //   LUCK : 0});
+
         // bonuses here
         _boots.statBonus = bootStats(18);
         _boots.generatedStatBonus = bootGenStats(18);
         _boots.elementalStats.ElementalDef = bootEle(18);
     }
 
-    function AngelicBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function AngelicBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 20;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-       // _boots.metadata.name = "Cycle Boots";
-       // _boots.metadata.description = "";
+        // _boots.metadata.name = "Cycle Boots";
+        // _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 93;
         _boots.requirement.classRequirement = classRequirement();
-      //  _boots.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-     //   AGI : 0,
-      //  INT : 0,
-      //  VIT : 0,
-      //  LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(19);
         _boots.generatedStatBonus = bootGenStats(19);
         _boots.elementalStats.ElementalDef = bootEle(19);
     }
 
-    function EternalBoots(uint tier) public view returns (GameObjects.Boots memory _boots) {
+    function EternalBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 21;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-     //   _boots.metadata.name = "Eternal Boots";
-     //   _boots.metadata.description = "";
+        //   _boots.metadata.name = "Eternal Boots";
+        //   _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 98;
         _boots.requirement.classRequirement = classRequirement();
-      //  _boots.requirement.statRequirement = GameObjects.Stats({
-      //  STR : 0,
-      //  DEX : 0,
-      //  AGI : 0,
-      //  INT : 0,
-     //   VIT : 0,
-     //   LUCK : 0});
-        // bonuses here
+
         _boots.statBonus = bootStats(20);
         _boots.generatedStatBonus = bootGenStats(20);
         _boots.elementalStats.ElementalDef = bootEle(20);
     }
 
-    function bootStats(uint index) internal view returns (GameObjects.Stats memory) {
-        GameObjects.Stats memory stats = GameObjects.Stats({
+    function bootStats(uint index) internal view returns (GameObjects_Stats.Stats memory) {
+        GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
         STR : BASE_STR[index],
         DEX : BASE_DEX[index],
         AGI : BASE_AGI[index],
@@ -558,13 +416,13 @@ contract CodexBootsHeavy is Initializable {
         return stats;
     }
 
-    function bootEle(uint index) internal view returns (GameObjects.ElementalDef memory) {
-        GameObjects.ElementalDef memory stats = GameObjects.ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
+    function bootEle(uint index) internal view returns (GameObjects_Stats.ElementalDef memory) {
+        GameObjects_Stats.ElementalDef memory stats = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
         return stats;
     }
 
-    function bootGenStats(uint index) internal view returns (GameObjects.GeneratedStats memory) {
-        GameObjects.GeneratedStats memory stats = GameObjects.GeneratedStats({
+    function bootGenStats(uint index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
+        GameObjects_Stats.GeneratedStats memory stats = GameObjects_Stats.GeneratedStats({
         HP : BASE_HP[index],
         P_ATK : 0,
         M_ATK : 0,

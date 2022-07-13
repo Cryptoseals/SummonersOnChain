@@ -1,9 +1,10 @@
 import {UpgradeableCodex, INavigator} from "./../Common/UpgradeableCodex.sol";
-import {EquipableUtils,GameObjects} from "../../Inventory/EquipableUtils.sol";
+import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {EquipableUtils} from "../../Inventory/EquipableUtils.sol";
 pragma solidity ^0.8.0;
 
 interface IndividualItems {
-    function weapon(uint id, uint tier) external view returns (GameObjects.Weapon memory);
+    function weapon(uint id, uint tier) external view returns (GameObjects_Equipments.Weapon memory);
 }
 
 contract CodexWeapons is UpgradeableCodex {
@@ -11,18 +12,18 @@ contract CodexWeapons is UpgradeableCodex {
     string constant public class = "Weapons";
     string constant public version = "0.0.1";
 
-    function allWeapons() external view returns (GameObjects.Weapon[] memory){
-        GameObjects.Weapon[] memory result = new GameObjects.Weapon[](148);
+    function allWeapons() external view returns (GameObjects_Equipments.Weapon[] memory){
+        GameObjects_Equipments.Weapon[] memory result = new GameObjects_Equipments.Weapon[](148);
         for (uint i = 1; i < 148; i++) {
             result[i - 1] = weaponCore(i, 1);
         }
         return result;
     }
 
-    function weapon(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Weapon memory) {
-        GameObjects.Weapon memory _weapon;
-        GameObjects.Prefix memory _prefix;
-        GameObjects.Suffix memory _suffix;
+    function weapon(GameObjects_Equipments.EquippedItemStruct memory _equipable) public view returns (GameObjects_Equipments.Weapon memory) {
+        GameObjects_Equipments.Weapon memory _weapon;
+        GameObjects_Equipments.Prefix memory _prefix;
+        GameObjects_Equipments.Suffix memory _suffix;
 
         if (_equipable.prefixId > 0) _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
@@ -160,8 +161,8 @@ contract CodexWeapons is UpgradeableCodex {
         return _weapon;
     }
 
-    function weaponCore(uint itemId, uint itemTier) public view returns (GameObjects.Weapon memory) {
-        GameObjects.Weapon memory _weapon;
+    function weaponCore(uint itemId, uint itemTier) public view returns (GameObjects_Equipments.Weapon memory) {
+        GameObjects_Equipments.Weapon memory _weapon;
         //        if (_equipable.prefixId > 0) _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         //        if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
 
@@ -193,7 +194,7 @@ contract CodexWeapons is UpgradeableCodex {
         return _weapon;
     }
 
-    function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Weapon memory _weapon) public pure returns (GameObjects.Weapon memory) {
+    function applyPrefixAndSuffix(GameObjects_Equipments.Prefix memory _pre, GameObjects_Equipments.Suffix memory _suf, GameObjects_Equipments.Weapon memory _weapon) public pure returns (GameObjects_Equipments.Weapon memory) {
         if (_pre.isPercentage) {
             _weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_weapon.generatedStatBonus, _pre.generatedStatBonus);
             _weapon.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_weapon.elementalStats, _pre.elementalStats);
@@ -217,7 +218,7 @@ contract CodexWeapons is UpgradeableCodex {
         return _weapon;
     }
 
-    function applyPrefix(GameObjects.Prefix memory _pre, GameObjects.Weapon memory _weapon) public pure returns (GameObjects.Weapon memory) {
+    function applyPrefix(GameObjects_Equipments.Prefix memory _pre, GameObjects_Equipments.Weapon memory _weapon) public pure returns (GameObjects_Equipments.Weapon memory) {
         if (_pre.isPercentage) {
             _weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_weapon.generatedStatBonus, _pre.generatedStatBonus);
             _weapon.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_weapon.elementalStats, _pre.elementalStats);
@@ -233,7 +234,7 @@ contract CodexWeapons is UpgradeableCodex {
         return _weapon;
     }
 
-    function applySuffix(GameObjects.Suffix memory _suf, GameObjects.Weapon memory _weapon) public pure returns (GameObjects.Weapon memory) {
+    function applySuffix(GameObjects_Equipments.Suffix memory _suf, GameObjects_Equipments.Weapon memory _weapon) public pure returns (GameObjects_Equipments.Weapon memory) {
         if (_suf.isPercentage) {
             _weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_weapon.generatedStatBonus, _suf.generatedStatBonus);
             _weapon.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_weapon.elementalStats, _suf.elementalStats);

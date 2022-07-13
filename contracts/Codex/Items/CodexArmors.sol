@@ -1,10 +1,12 @@
 import {UpgradeableCodex, INavigator} from "./../Common/UpgradeableCodex.sol";
-import {EquipableUtils,GameObjects} from "../../Inventory/EquipableUtils.sol";
+import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {EquipableUtils} from "../../Inventory/EquipableUtils.sol";
+
 pragma solidity ^0.8.0;
 
 
 interface IndividualItems {
-    function armor(uint id, uint tier) external view returns (GameObjects.Armor memory);
+    function armor(uint id, uint tier) external view returns (GameObjects_Equipments.EquipableItem memory);
 }
 
 contract CodexArmors is UpgradeableCodex {
@@ -12,18 +14,18 @@ contract CodexArmors is UpgradeableCodex {
     string constant public class = "BodyArmors";
     string constant public version = "0.0.1";
 
-    function allArmor() external view returns (GameObjects.Armor[] memory){
-        GameObjects.Armor[] memory result = new GameObjects.Armor[](64);
+    function allArmor() external view returns (GameObjects_Equipments.EquipableItem[] memory){
+        GameObjects_Equipments.EquipableItem[] memory result = new GameObjects_Equipments.EquipableItem[](64);
         for (uint i = 1; i < 64; i++) {
             result[i - 1] = armorCore(i, 1);
         }
         return result;
     }
 
-    function armor(GameObjects.EquippedItemStruct memory _equipable) public view returns (GameObjects.Armor memory) {
-        GameObjects.Armor memory _armor;
-        GameObjects.Prefix memory _prefix;
-        GameObjects.Suffix memory _suffix;
+    function armor(GameObjects_Equipments.EquippedItemStruct memory _equipable) public view returns (GameObjects_Equipments.EquipableItem memory) {
+        GameObjects_Equipments.EquipableItem memory _armor;
+        GameObjects_Equipments.Prefix memory _prefix;
+        GameObjects_Equipments.Suffix memory _suffix;
 
         if (_equipable.prefixId > 0) _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
@@ -46,8 +48,8 @@ contract CodexArmors is UpgradeableCodex {
         return _armor;
     }
 
-    function armorCore(uint itemId, uint itemTier) public view returns (GameObjects.Armor memory) {
-        GameObjects.Armor memory _armor;
+    function armorCore(uint itemId, uint itemTier) public view returns (GameObjects_Equipments.EquipableItem memory) {
+        GameObjects_Equipments.EquipableItem memory _armor;
         //        if (_equipable.prefixId > 0) _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         //        if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
 
@@ -67,7 +69,7 @@ contract CodexArmors is UpgradeableCodex {
         return _armor;
     }
 
-    function applyPrefixAndSuffix(GameObjects.Prefix memory _pre, GameObjects.Suffix memory _suf, GameObjects.Armor memory _armor) public pure returns (GameObjects.Armor memory) {
+    function applyPrefixAndSuffix(GameObjects_Equipments.Prefix memory _pre, GameObjects_Equipments.Suffix memory _suf, GameObjects_Equipments.EquipableItem memory _armor) public pure returns (GameObjects_Equipments.EquipableItem memory) {
         if (_pre.isPercentage) {
             _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_armor.generatedStatBonus, _pre.generatedStatBonus);
             _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_armor.elementalStats, _pre.elementalStats);
@@ -87,11 +89,11 @@ contract CodexArmors is UpgradeableCodex {
         _armor.statBonus = EquipableUtils.sumStats(_armor.statBonus, _pre.statBonus);
         _armor.statBonus = EquipableUtils.sumStats(_armor.statBonus, _suf.statBonus);
 
-//        _armor.metadata.name = string(abi.encodePacked(_pre.title, " ", _armor.metadata.name, " ", _suf.title));
+        //        _armor.metadata.name = string(abi.encodePacked(_pre.title, " ", _armor.metadata.name, " ", _suf.title));
         return _armor;
     }
 
-    function applyPrefix(GameObjects.Prefix memory _pre, GameObjects.Armor memory _armor) public pure returns (GameObjects.Armor memory) {
+    function applyPrefix(GameObjects_Equipments.Prefix memory _pre, GameObjects_Equipments.EquipableItem memory _armor) public pure returns (GameObjects_Equipments.EquipableItem memory) {
         if (_pre.isPercentage) {
             _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_armor.generatedStatBonus, _pre.generatedStatBonus);
             _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_armor.elementalStats, _pre.elementalStats);
@@ -101,11 +103,11 @@ contract CodexArmors is UpgradeableCodex {
         }
 
         _armor.statBonus = EquipableUtils.sumStats(_armor.statBonus, _pre.statBonus);
-//        _armor.metadata.name = string(abi.encodePacked(_pre.title, " ", _armor.metadata.name));
+        //        _armor.metadata.name = string(abi.encodePacked(_pre.title, " ", _armor.metadata.name));
         return _armor;
     }
 
-    function applySuffix(GameObjects.Suffix memory _suf, GameObjects.Armor memory _armor) public pure returns (GameObjects.Armor memory) {
+    function applySuffix(GameObjects_Equipments.Suffix memory _suf, GameObjects_Equipments.EquipableItem memory _armor) public pure returns (GameObjects_Equipments.EquipableItem memory) {
         if (_suf.isPercentage) {
             _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_armor.generatedStatBonus, _suf.generatedStatBonus);
             _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_armor.elementalStats, _suf.elementalStats);
@@ -117,7 +119,7 @@ contract CodexArmors is UpgradeableCodex {
         _armor.statBonus = EquipableUtils.sumStats(_armor.statBonus, _suf.statBonus);
 
 
-//        _armor.metadata.name = string(abi.encodePacked(_armor.metadata.name, " ", _suf.title));
+        //        _armor.metadata.name = string(abi.encodePacked(_armor.metadata.name, " ", _suf.title));
         return _armor;
     }
 
