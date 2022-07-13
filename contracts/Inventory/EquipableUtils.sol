@@ -25,6 +25,7 @@ library EquipableUtils {
     }
 
     function sumStatsWithNumber(GameObjects_Stats.Stats memory _a, uint num) internal pure returns (GameObjects_Stats.Stats memory) {
+        if(num == 0) return _a;
         _a.STR += (_a.STR + num);
         _a.AGI += (_a.AGI + num);
         _a.DEX += (_a.DEX + num);
@@ -59,6 +60,7 @@ library EquipableUtils {
     }
 
     function sumGeneratedStatsWithNumber(GameObjects_Stats.GeneratedStats memory _a, uint num) internal pure returns (GameObjects_Stats.GeneratedStats memory) {
+        if(num == 0) return _a;
         _a.HP += num;
         _a.P_ATK += num;
         _a.M_ATK += num;
@@ -162,6 +164,7 @@ library EquipableUtils {
     }
 
     function sumGeneratedElementalStatsWithNumber(GameObjects_Stats.ElementalStats memory _a, uint num) internal pure returns (GameObjects_Stats.ElementalStats memory) {
+        if(num == 0) return _a;
         _a.ElementalAtk.FIRE_ATK += (_a.ElementalAtk.FIRE_ATK + num);
         _a.ElementalAtk.COLD_ATK += (_a.ElementalAtk.COLD_ATK + num);
         _a.ElementalAtk.LIGHTNING_ATK += (_a.ElementalAtk.LIGHTNING_ATK + num);
