@@ -24,6 +24,16 @@ library EquipableUtils {
         return _a;
     }
 
+    function sumStatsWithNumber(GameObjects_Stats.Stats memory _a, uint num) internal pure returns (GameObjects_Stats.Stats memory) {
+        _a.STR += (_a.STR + num);
+        _a.AGI += (_a.AGI + num);
+        _a.DEX += (_a.DEX + num);
+        _a.INT += (_a.INT + num);
+        _a.VIT += (_a.VIT + num);
+        _a.LUCK += (_a.LUCK + num);
+        return _a;
+    }
+
     function sumStatsAsPercentage(GameObjects_Stats.Stats memory _a, GameObjects_Stats.Stats memory _b) internal pure returns (GameObjects_Stats.Stats memory) {
         _a.STR += percentage(_a.STR, _b.STR);
         _a.AGI += percentage(_a.AGI, _b.AGI);
@@ -45,6 +55,20 @@ library EquipableUtils {
         _a.CRIT += _b.CRIT;
         _a.CRIT_MULTIPLIER += _b.CRIT_MULTIPLIER;
         _a.INFUSION += _b.INFUSION;
+        return _a;
+    }
+
+    function sumGeneratedStatsWithNumber(GameObjects_Stats.GeneratedStats memory _a, uint num) internal pure returns (GameObjects_Stats.GeneratedStats memory) {
+        _a.HP += num;
+        _a.P_ATK += num;
+        _a.M_ATK += num;
+        _a.P_DEF += num;
+        _a.M_DEF += num;
+        _a.ACCURACY += num;
+        _a.DODGE += num;
+        _a.CRIT += num;
+        _a.CRIT_MULTIPLIER += num;
+        _a.INFUSION += num;
         return _a;
     }
 
@@ -134,6 +158,25 @@ library EquipableUtils {
         _a.ElementalDef.HOLY_DEF += percentage(_a.ElementalDef.HOLY_DEF, tier);
         _a.ElementalDef.DARK_DEF += percentage(_a.ElementalDef.DARK_DEF, tier);
         _a.ElementalDef.VOID_DEF += percentage(_a.ElementalDef.VOID_DEF, tier);
+        return _a;
+    }
+
+    function sumGeneratedElementalStatsWithNumber(GameObjects_Stats.ElementalStats memory _a, uint num) internal pure returns (GameObjects_Stats.ElementalStats memory) {
+        _a.ElementalAtk.FIRE_ATK += (_a.ElementalAtk.FIRE_ATK + num);
+        _a.ElementalAtk.COLD_ATK += (_a.ElementalAtk.COLD_ATK + num);
+        _a.ElementalAtk.LIGHTNING_ATK += (_a.ElementalAtk.LIGHTNING_ATK + num);
+        _a.ElementalAtk.EARTH_ATK += (_a.ElementalAtk.EARTH_ATK + num);
+        _a.ElementalAtk.HOLY_ATK += (_a.ElementalAtk.HOLY_ATK + num);
+        _a.ElementalAtk.DARK_ATK += (_a.ElementalAtk.DARK_ATK + num);
+        _a.ElementalAtk.VOID_ATK += (_a.ElementalAtk.VOID_ATK + num);
+
+        _a.ElementalDef.FIRE_DEF += (_a.ElementalDef.FIRE_DEF + num);
+        _a.ElementalDef.COLD_DEF += (_a.ElementalDef.COLD_DEF + num);
+        _a.ElementalDef.LIGHTNING_DEF += (_a.ElementalDef.LIGHTNING_DEF + num);
+        _a.ElementalDef.EARTH_DEF += (_a.ElementalDef.EARTH_DEF + num);
+        _a.ElementalDef.HOLY_DEF += (_a.ElementalDef.HOLY_DEF + num);
+        _a.ElementalDef.DARK_DEF += (_a.ElementalDef.DARK_DEF + num);
+        _a.ElementalDef.VOID_DEF += (_a.ElementalDef.VOID_DEF + num);
         return _a;
     }
 

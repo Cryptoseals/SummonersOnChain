@@ -204,6 +204,14 @@ contract Equipable is Initializable, InitNavigator {
             if (_consumed.turnLeft == 0) continue;
             elixir = elixircodex.elixir(_consumed.elixirId, _consumed.tier);
 
+            elixir.statBonus = EquipableUtils.sumStatsWithNumber(elixir.statBonus, _consumed.tier * elixir.bonus.StatBonusPerTier);
+            elixir.generatedStatBonus = EquipableUtils.sumGeneratedStatsWithNumber(elixir.generatedStatBonus, elixir.bonus.GenStatBonusPerTier * _consumed.tier);
+            elixir.elementalStats = EquipableUtils.sumGeneratedElementalStatsWithNumber(elixir.elementalStats, elixir.bonus.EleStatBonusPerTier * _consumed.tier);
+            elixir.bonus.BonusGoldPercentage += _consumed.tier * elixir.bonus.BonusGoldPercentagePerTier;
+            elixir.bonus.BonusEssencePercentage += _consumed.tier * elixir.bonus.BonusEssencePercentagePerTier;
+            elixir.bonus.BonusEXPPercentage += _consumed.tier * elixir.bonus.BonusEXPPercentagePerTier;
+            elixir.bonus.BonusMaterialPercentage += _consumed.tier * elixir.bonus.BonusMaterialPercentagePerTier;
+
             _stats = EquipableUtils.sumStats(_stats, elixir.statBonus);
             _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, elixir.generatedStatBonus);
             _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, elixir.elementalStats);
