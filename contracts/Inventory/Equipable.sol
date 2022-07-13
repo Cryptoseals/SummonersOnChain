@@ -87,43 +87,27 @@ contract Equipable is Initializable, InitNavigator {
 
         GameObjects_Equipments.EquipableItem memory _equipableItem;
         GameObjects_Equipments.Weapon memory _equipableW;
+        oldTokenToRefund = EquippedGears[summoner][_type].tokenId;
 
         if (_type == GameObjects.ItemType.HELMET) {
-            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.HELMET].tokenId;
             _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.HELMETS_CODEX)).helmetCore(_itemId, tier);
-
         } else if (_type == GameObjects.ItemType.ARMOR) {
-            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.ARMOR].tokenId;
-            GameObjects_Equipments.EquipableItem memory _armor = IAllCodexViews(contractAddress(INavigator.CONTRACT.BODY_ARMORS_CODEX)).armorCore(_itemId, tier);
-
+            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.BODY_ARMORS_CODEX)).armorCore(_itemId, tier);
         } else if (_type == GameObjects.ItemType.WEAPON) {
-            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.WEAPON].tokenId;
             _equipableW = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(_itemId, tier);
             DamageTypesOfSummoners[summoner] = element;
         } else if (_type == GameObjects.ItemType.OFFHAND) {
-            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.OFFHAND].tokenId;
             _equipableW = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(_itemId, tier);
-
         } else if (_type == GameObjects.ItemType.BOOTS) {
-            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.BOOTS].tokenId;
             _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.BOOTS_CODEX)).bootsCore(_itemId, tier);
-
         } else if (_type == GameObjects.ItemType.AMULET) {
-            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.AMULET].tokenId;
             _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.AMULETS_CODEX)).amuletCore(_itemId, tier);
-
         } else if (_type == GameObjects.ItemType.RING) {
-            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.RING].tokenId;
             _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.RINGS_CODEX)).ringCore(_itemId, tier);
-
         } else if (_type == GameObjects.ItemType.EARRING) {
-            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.EARRING].tokenId;
             _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.EARRINGS_CODEX)).earringsCore(_itemId, tier);
-
         } else if (_type == GameObjects.ItemType.BELT) {
-            oldTokenToRefund = EquippedGears[summoner][GameObjects.ItemType.BELT].tokenId;
             _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.BELTS_CODEX)).beltCore(_itemId, tier);
-
         } else {
             revert("Not Implemented");
         }
@@ -148,7 +132,7 @@ contract Equipable is Initializable, InitNavigator {
         element : element});
     }
 
-    // input encoded token id for elixir, e.g 10001
+    // @param "id" is encoded token id for elixir, e.g 10001 = elixir 1 tier 1
     function consumeElixir(uint summoner, uint slot, uint id) external senderIsSummonerOwner(summoner) notInFight(summoner) {
         require(slot > 0 && slot <= ELIXIR_SLOTS, "ms");
         // check ownership, remove previous effects and apply new
