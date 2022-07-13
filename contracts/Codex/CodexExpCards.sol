@@ -3,7 +3,7 @@ import {EXPCardLib} from "../Interfaces/NonFungibles/EXP/EXPCardLib.sol";
 
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.7;
+pragma solidity ^0.8.15;
 
 contract CodexExpCards is Rarity {
     string constant public index = "Codex";

@@ -7,7 +7,7 @@ import "../Inventory/EquipableUtils.sol";
 import "../Interfaces/Codex/ICodexRandom.sol";
 import "../Interfaces/Reward/IReward.sol";
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.15;
 
 contract WorldBoss is Initializable, InitNavigator, OwnableUpgradeable {
 

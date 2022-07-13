@@ -1,7 +1,7 @@
 import {GameObjects_Elixir} from "../GameObjects/IGameObjects.sol";
 
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.7;
+pragma solidity ^0.8.15;
 
 interface ICodexElixirRecipes {
 

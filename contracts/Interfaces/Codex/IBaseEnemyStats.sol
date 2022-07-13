@@ -1,5 +1,5 @@
 import {GameObjects} from "../GameObjects/IGameObjects.sol";
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.15;
 
 interface IBaseEnemyStats {
     function enemyEDEFbonus(GameObjects.Element element, uint level) external view returns(uint);

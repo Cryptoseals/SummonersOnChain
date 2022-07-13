@@ -6,7 +6,7 @@ import "../Interfaces/Reward/IReward.sol";
 import "../Interfaces/Codex/ICodexRandom.sol";
 import "../Interfaces/Codex/ICodexAdventures.sol";
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.15;
 
 contract Chests is
 Initializable,

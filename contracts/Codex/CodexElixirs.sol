@@ -1,10 +1,14 @@
-import  {GameObjects_Elixir} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {GameObjects_Elixir} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexElixirs {
     string constant public index = "Codex";
     string constant public class = "Elixirs";
     string constant public version = "0.0.1";
+
+    function elixirTurnDuration(uint _id, uint _tier) public pure returns (uint) {
+        return elixir(_id, _tier).turnDuration;
+    }
 
     function elixir(uint _id, uint _tier) public pure returns (GameObjects_Elixir.Elixir memory) {
         if (_id == 1) {
@@ -66,16 +70,16 @@ contract CodexElixirs {
     }
 
     function EldersPotion(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.bonus.BonusEXPPercentage = 10;
-        
+
         _elixir.bonus.BonusEXPPercentagePerTier = 2;
 
         _elixir.turnDuration = 2;
     }
 
     function TonicOfTranscendence(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.bonus.BonusEssencePercentage = 3;
 
         _elixir.bonus.BonusEssencePercentagePerTier = 2;
@@ -84,7 +88,7 @@ contract CodexElixirs {
     }
 
     function CraftsmansPotion(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.bonus.BonusMaterialPercentage = 5;
 
         _elixir.bonus.BonusMaterialPercentagePerTier = 3;
@@ -93,7 +97,7 @@ contract CodexElixirs {
     }
 
     function TonicOfAnger(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.statBonus.STR = 10;
 
         _elixir.bonus.StatBonusPerTier = 2;
@@ -102,7 +106,7 @@ contract CodexElixirs {
     }
 
     function PhialOfAgility(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.statBonus.AGI = 10;
 
         _elixir.bonus.StatBonusPerTier = 2;
@@ -111,7 +115,7 @@ contract CodexElixirs {
     }
 
     function PotionOfIronSkin(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.statBonus.VIT = 10;
 
         _elixir.bonus.StatBonusPerTier = 2;
@@ -120,7 +124,7 @@ contract CodexElixirs {
     }
 
     function ElixirOfSolutions(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.statBonus.INT = 10;
 
         _elixir.bonus.StatBonusPerTier = 2;
@@ -129,7 +133,7 @@ contract CodexElixirs {
     }
 
     function AthletesFlask(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.statBonus.DEX = 10;
 
         _elixir.bonus.StatBonusPerTier = 2;
@@ -138,7 +142,7 @@ contract CodexElixirs {
     }
 
     function PerfumeOfBlackwidow(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.statBonus.LUCK = 10;
 
         _elixir.bonus.StatBonusPerTier = 2;
@@ -147,11 +151,11 @@ contract CodexElixirs {
     }
 
     function VialOfMotherEarth(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.elementalStats.ElementalAtk.EARTH_ATK = 10;
-        
+
         _elixir.elementalStats.ElementalDef.EARTH_DEF = 10;
-        
+
 
         _elixir.bonus.EleStatBonusPerTier = 10;
 
@@ -160,10 +164,10 @@ contract CodexElixirs {
     }
 
     function PotionOfCharge(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.elementalStats.ElementalAtk.LIGHTNING_ATK = 10;
-        
-        _elixir.elementalStats.ElementalDef.LIGHTNING_DEF = 10;        
+
+        _elixir.elementalStats.ElementalDef.LIGHTNING_DEF = 10;
 
         _elixir.bonus.EleStatBonusPerTier = 10;
 
@@ -171,10 +175,10 @@ contract CodexElixirs {
     }
 
     function ElixirOfFrosty(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.elementalStats.ElementalAtk.COLD_ATK = 10;
-        
-        _elixir.elementalStats.ElementalDef.COLD_DEF = 10;        
+
+        _elixir.elementalStats.ElementalDef.COLD_DEF = 10;
 
         _elixir.bonus.EleStatBonusPerTier = 10;
 
@@ -182,66 +186,66 @@ contract CodexElixirs {
     }
 
     function DragonBreathPotion(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.elementalStats.ElementalAtk.FIRE_ATK = 10;
-        
+
         _elixir.elementalStats.ElementalDef.FIRE_DEF = 10;
-        
+
         _elixir.bonus.EleStatBonusPerTier = 10;
 
         _elixir.turnDuration = 2;
     }
 
     function VialOfSpirit(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.elementalStats.ElementalAtk.HOLY_ATK = 10;
-        
+
         _elixir.elementalStats.ElementalDef.HOLY_DEF = 10;
-        
+
         _elixir.bonus.EleStatBonusPerTier = 10;
 
         _elixir.turnDuration = 2;
     }
 
     function NightmareFlask(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.elementalStats.ElementalAtk.DARK_ATK = 10;
-        
+
         _elixir.elementalStats.ElementalDef.DARK_DEF = 10;
-        
+
         _elixir.bonus.EleStatBonusPerTier = 10;
 
         _elixir.turnDuration = 2;
     }
 
     function NihilityTonic(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.elementalStats.ElementalAtk.VOID_ATK = 10;
-        
+
         _elixir.elementalStats.ElementalDef.VOID_DEF = 10;
-        
+
         _elixir.bonus.EleStatBonusPerTier = 10;
 
         _elixir.turnDuration = 2;
     }
 
     function PhialOfGladiator(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.generatedStatBonus.P_ATK = 10;
-        
+
         _elixir.generatedStatBonus.P_DEF = 10;
-        
+
         _elixir.bonus.GenStatBonusPerTier = 10;
 
         _elixir.turnDuration = 2;
     }
 
     function PotionOfArchmage(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
-        
+
         _elixir.generatedStatBonus.M_ATK = 10;
-        
+
         _elixir.generatedStatBonus.M_DEF = 10;
-        
+
         _elixir.bonus.GenStatBonusPerTier = 10;
 
         _elixir.turnDuration = 2;

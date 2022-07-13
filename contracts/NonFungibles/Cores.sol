@@ -3,15 +3,11 @@ import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
 import {Strings}from "@openzeppelin/contracts/utils/Strings.sol";
 import {ERC1155Upgradeable}from "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
 import {OwnableUpgradeable}from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import {EnumerableSetUpgradeable}from "@openzeppelin/contracts-upgradeable/utils/structs/EnumerableSetUpgradeable.sol";
 import {CodexCores, ICore} from "../Codex/CodexCores.sol";
 pragma solidity ^0.8.0;
 
 contract Cores is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgradeable {
-    using EnumerableSetUpgradeable for EnumerableSetUpgradeable.UintSet;
     using Strings for uint256;
-
-    mapping(address => EnumerableSetUpgradeable.UintSet) AccountsActiveProcessings;
 
     function initialize(address _navigator, string memory uri) external initializer {
         initializeNavigator(_navigator);

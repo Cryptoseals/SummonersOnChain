@@ -27,7 +27,7 @@ contract Reward is InitNavigator {
     }
 
     function reward(address to, uint summoner, uint level, IGameRewards.Reward memory _reward, IGameRewards.CurrencyRewards memory _currencyRewards, uint optionalNonce) external onlyGameContracts {
-        GameObjects_Elixir.ElixirBonusEffect memory _fx = IElixirAndArtifactSlots(contractAddress(INavigator.CONTRACT.INVENTORY)).activeElixirBonusEffects(summoner);
+        (GameObjects_Elixir.ElixirBonusEffect memory _fx,,,) = IElixirAndArtifactSlots(contractAddress(INavigator.CONTRACT.INVENTORY)).activeElixirs(summoner);
 
         if (_currencyRewards.yieldsGold) rewardGold(to, _currencyRewards, _reward.bonus + _fx.BonusGoldPercentage, optionalNonce);
         if (_currencyRewards.yieldsEssence) rewardEssence(to, _currencyRewards, _reward.bonus + _fx.BonusEssencePercentage, optionalNonce + 2);

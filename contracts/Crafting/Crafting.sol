@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {INavigator, InitNavigator} from "../Core/Navigator/InitNavigator.sol";
-import {GameObjects} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {GameObjects, GameObjects_Elixir} from "../Interfaces/GameObjects/IGameObjects.sol";
 import {IEquipableItems} from "../Interfaces/NonFungibles/EquipableItems/IEquipableItems.sol";
 import {ICraftingRecipe, ICraftingMaterials} from "../Interfaces/Crafting/ICraftingRecipe.sol";
 import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
@@ -105,4 +105,28 @@ contract Crafting is Initializable, InitNavigator {
             revert("niy");
         }
     }
+
+
+    function craftArtifact() external {
+        // TODO get reqs, burn stuff etc.
+        CraftingArtifact(contractAddress(INavigator.CONTRACT.ARTIFACTS)).mintItem(msg.sender, 1);
+    }
+
+    function craftElixir(uint elixir, uint amount) external {
+        GameObjects_Elixir.ElixirRecipe memory recipe = CraftingElixir(contractAddress(INavigator.CONTRACT.ELIXIR_RECIPES)).recipe_by_id(elixir);
+        CraftingElixir(contractAddress(INavigator.CONTRACT.ARTIFACTS)).mintElixir(elixir, 1, msg.sender, amount);
+    }
+
+}
+
+
+interface CraftingArtifact {
+    function mintItem(address player, uint artifactTier) external;
+}
+
+
+interface CraftingElixir {
+    function recipe_by_id(uint _id) external pure returns (GameObjects_Elixir.ElixirRecipe memory _recipe);
+
+    function mintElixir(uint elixir_id, uint elixir_tier, address to, uint amount) external;
 }

@@ -1,6 +1,6 @@
 import {GameObjects_Equipments, GameObjects_Elixir} from "../GameObjects/IGameObjects.sol";
 import {ICore} from "../GameObjects/ICore.sol";
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.15;
 
 interface IAllCodexViews {
     function weapon(GameObjects_Equipments.EquippedItemStruct memory) external pure returns (GameObjects_Equipments.Weapon memory);
@@ -23,7 +23,8 @@ interface IAllCodexViews {
     function mountCore(uint _id, uint _tier) external pure returns (GameObjects_Equipments.Mount memory);
     function elixir(uint _id, uint _tier) external pure returns (GameObjects_Elixir.Elixir memory);
     function elixirCore(uint _id, uint _tier) external pure returns (GameObjects_Elixir.Elixir memory);
-    function artifact(uint _id, uint _tier) external pure returns (GameObjects_Equipments.Artifact memory);
+    function elixirTurnDuration(uint _id, uint _tier) external pure returns (uint);
+    function artifact(uint _id) external pure returns (GameObjects_Equipments.Artifact memory);
     function artifactCore(uint _id, uint _tier) external pure returns (GameObjects_Equipments.Artifact memory);
     function prefix(uint _id, uint _tier) external pure returns (GameObjects_Equipments.Prefix memory);
     function prefixCore(uint _id, uint _tier) external pure returns (GameObjects_Equipments.Prefix memory);

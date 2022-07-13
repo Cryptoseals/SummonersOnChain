@@ -24,6 +24,16 @@ library EquipableUtils {
         return _a;
     }
 
+    function sumStatsAsPercentage(GameObjects_Stats.Stats memory _a, GameObjects_Stats.Stats memory _b) internal pure returns (GameObjects_Stats.Stats memory) {
+        _a.STR += percentage(_a.STR, _b.STR);
+        _a.AGI += percentage(_a.AGI, _b.AGI);
+        _a.DEX += percentage(_a.DEX, _b.DEX);
+        _a.INT += percentage(_a.INT, _b.INT);
+        _a.VIT += percentage(_a.VIT, _b.VIT);
+        _a.LUCK += percentage(_a.LUCK, _b.VIT);
+        return _a;
+    }
+
     function sumGeneratedStats(GameObjects_Stats.GeneratedStats memory _a, GameObjects_Stats.GeneratedStats memory _b) internal pure returns (GameObjects_Stats.GeneratedStats memory) {
         _a.HP += _b.HP;
         _a.P_ATK += _b.P_ATK;
@@ -53,6 +63,7 @@ library EquipableUtils {
         _a.INFUSION += percentage(_a.INFUSION, _b.INFUSION);
         return _a;
     }
+
     function sumGeneratedStatsAsTier(
         GameObjects_Stats.GeneratedStats memory _a,
         uint tier) internal pure returns (GameObjects_Stats.GeneratedStats memory) {
@@ -128,7 +139,7 @@ library EquipableUtils {
 
 
     function percentage(uint val, uint percentage) internal pure returns (uint){
-        if(percentage == 0) return 0;
+        if (percentage == 0) return 0;
         return val * percentage / 100;
     }
 }

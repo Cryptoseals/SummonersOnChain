@@ -2,7 +2,7 @@ import {GameObjects, GameObjects_Equipments} from "../Interfaces/GameObjects/IGa
 import "./Common/Rarity.sol";
 
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.7;
+pragma solidity ^0.8.15;
 
 contract CodexMiscItems is Rarity {
     string constant public index = "Codex";
