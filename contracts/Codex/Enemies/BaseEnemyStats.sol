@@ -1,5 +1,5 @@
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {GameObjects} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {GameObjects, GameObjects_Stats} from "../../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
@@ -18,7 +18,7 @@ contract BaseEnemyStats is Initializable {
     uint[100] public ENEMY_BASE_CRIT_MULTI;
 
     function initializeDEF() external {
-        ENEMY_BASE_DEF = [834, 867, 901, 937, 974, 1012, 1052, 1094, 1137, 1182, 1229, 1278, 1329, 1382, 1437, 1494, 1553, 1615, 1679, 1746, 1815, 1887, 1962, 2040, 2121, 2205, 2293, 2384, 2479, 2578, 2681, 2788, 2899, 3014, 3134, 3259, 3389, 3524, 3664, 3810, 3962, 4120, 4284];
+        ENEMY_BASE_DEF = [100,104,108,112,116,120,124,128,133,138,143,148,153,159,165,171,177,184,191,198,205,213,221,229,238,247,256,266,276,287,298,309,321,333,346,359,373,387,402,418,434,451,469,487,506,526,547,568,590,613,637,662,688,715,743,772,802,834,867,901,937,974,1012,1052,1094,1137,1182,1229,1278,1329,1382,1437,1494,1553,1615,1679,1746,1815,1887,1962,2040,2121,2205,2293,2384,2479,2578,2681,2788,2899,3014,3134,3259,3389,3524,3664,3810,3962,4120,4284];
     }
 
     function initializeHP() external {
@@ -49,104 +49,99 @@ contract BaseEnemyStats is Initializable {
         ENEMY_BASE_CRIT_MULTI = [150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 220, 222, 224, 226, 228, 230, 232, 234, 236, 238, 240, 242, 244, 246, 248, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250];
     }
 
-    function enemyPDEF(GameObjects.Element element, uint level) external view returns (uint) {
+    function enemyDEF(GameObjects.Element element, uint level) external view returns (uint) {
         require(level > 0, "lvl");
         uint def = ENEMY_BASE_DEF[level - 1];
-        if (element == GameObjects.Element.EARTH || element == GameObjects.Element.VOID) {
-            def += (def * 10) / 100;
-        } else if (element == GameObjects.Element.ARCANE) {
-            def -= (def * 10) / 100;
-        }
-        return def;
-    }
-
-    function enemyEDEF(GameObjects.Element element, uint level) external view returns (uint) {
-        require(level > 0, "lvl");
-        uint def = ENEMY_BASE_DEF[level - 1];
-        if (element == GameObjects.Element.VOID) {
-            def += (def * 10) / 100;
-        }
-        return def;
-    }
-
-    function enemyEDEFbonus(GameObjects.Element element, uint level) external view returns (uint) {
-        require(level > 0, "lvl");
-        uint def = ENEMY_BASE_DEF[level - 1];
-        def += (def * 10) / 100;
-        return def;
-    }
-
-    function enemyMDEF(GameObjects.Element element, uint level) external view returns (uint) {
-        require(level > 0, "lvl");
-        uint def = ENEMY_BASE_DEF[level - 1];
-        if (element == GameObjects.Element.ARCANE || element == GameObjects.Element.VOID) {
-            def += (def * 10) / 100;
-        }
         return def;
     }
 
     function enemyHP(GameObjects.Element element, uint level) external view returns (uint) {
         require(level > 0, "lvl");
         uint hp = ENEMY_BASE_HP[level - 1];
-        if (element == GameObjects.Element.HOLY || element == GameObjects.Element.VOID) {
-            hp += (hp * 10) / 100;
-        }
         return hp;
     }
 
     function enemyACC(GameObjects.Element element, uint level) external view returns (uint) {
         require(level > 0 && level < 101, "lvl");
         uint acc = ENEMY_BASE_ACC[level - 1];
-        if (element == GameObjects.Element.DARK || element == GameObjects.Element.VOID) {
-            acc += (acc * 10) / 100;
-        }
         return acc;
     }
 
     function enemyDODGE(GameObjects.Element element, uint level) external view returns (uint) {
         require(level > 0 && level < 101, "lvl");
         uint dodge = ENEMY_BASE_DODGE[level - 1];
-        if (element == GameObjects.Element.LIGHTNING || element == GameObjects.Element.VOID) {
-            dodge += (dodge * 10) / 100;
-        }
         return dodge;
     }
 
     function enemySTAT(GameObjects.Element element, uint level) external view returns (uint) {
         require(level > 0 && level < 101, "lvl");
         uint stat = ENEMY_BASE_STAT[level - 1];
-        if (element == GameObjects.Element.VOID) {
-            stat += (stat * 10) / 100;
-        }
         return stat;
     }
 
     function enemyATK(GameObjects.Element element, uint level) external view returns (uint) {
         require(level > 0 && level < 101, "lvl");
         uint atk = ENEMY_BASE_ATK[level - 1];
-        if (element == GameObjects.Element.FIRE
-        || element == GameObjects.Element.ARCANE
-            || element == GameObjects.Element.VOID) {
-            atk += (atk * 10) / 100;
-        }
         return atk;
     }
 
     function enemyCRIT(GameObjects.Element element, uint level) external view returns (uint) {
         require(level > 0 && level < 101, "lvl");
         uint crit = ENEMY_BASE_CRIT[level - 1];
-        if (element == GameObjects.Element.COLD || element == GameObjects.Element.VOID) {
-            crit += (crit * 10) / 100;
-        }
         return crit;
     }
 
     function enemyCRIT_MULT(GameObjects.Element element, uint level) external view returns (uint) {
         require(level > 0 && level < 101, "lvl");
         uint crit = ENEMY_BASE_CRIT_MULTI[level - 1];
-        if (element == GameObjects.Element.PHYSICAL || element == GameObjects.Element.VOID) {
-            crit += (crit * 10) / 100;
-        }
         return crit;
+    }
+
+    function getStatSet(uint level) external view returns (GameObjects_Stats.Stats memory, GameObjects_Stats.GeneratedStats memory, GameObjects_Stats.ElementalStats memory ele_stats) {
+        require(level > 0, "0?");
+
+        GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
+        STR : ENEMY_BASE_STAT[level - 1],
+        AGI : ENEMY_BASE_STAT[level - 1],
+        INT : ENEMY_BASE_STAT[level - 1],
+        DEX : ENEMY_BASE_STAT[level - 1],
+        VIT : ENEMY_BASE_STAT[level - 1],
+        LUCK : ENEMY_BASE_STAT[level - 1]
+        });
+
+        GameObjects_Stats.GeneratedStats memory gen_stats = GameObjects_Stats.GeneratedStats({
+        HP : ENEMY_BASE_HP[level - 1],
+        P_ATK : ENEMY_BASE_ATK[level - 1],
+        M_ATK : ENEMY_BASE_ATK[level - 1],
+        P_DEF : ENEMY_BASE_DEF[level - 1],
+        M_DEF : ENEMY_BASE_DEF[level - 1],
+        ACCURACY : ENEMY_BASE_ACC[level - 1],
+        DODGE : ENEMY_BASE_DODGE[level - 1],
+        CRIT : ENEMY_BASE_CRIT[level - 1],
+        CRIT_MULTIPLIER : ENEMY_BASE_CRIT_MULTI[level - 1],
+        INFUSION : 0
+        });
+
+        ele_stats.ElementalAtk = GameObjects_Stats.ElementalAtk({
+        FIRE_ATK : ENEMY_BASE_ATK[level - 1],
+        COLD_ATK : ENEMY_BASE_ATK[level - 1],
+        EARTH_ATK : ENEMY_BASE_ATK[level - 1],
+        LIGHTNING_ATK : ENEMY_BASE_ATK[level - 1],
+        DARK_ATK : ENEMY_BASE_ATK[level - 1],
+        HOLY_ATK : ENEMY_BASE_ATK[level - 1],
+        VOID_ATK : ENEMY_BASE_ATK[level - 1]
+        });
+
+        ele_stats.ElementalDef = GameObjects_Stats.ElementalDef({
+        FIRE_DEF : ENEMY_BASE_DEF[level - 1],
+        COLD_DEF : ENEMY_BASE_DEF[level - 1],
+        EARTH_DEF : ENEMY_BASE_DEF[level - 1],
+        LIGHTNING_DEF : ENEMY_BASE_DEF[level - 1],
+        DARK_DEF : ENEMY_BASE_DEF[level - 1],
+        HOLY_DEF : ENEMY_BASE_DEF[level - 1],
+        VOID_DEF : ENEMY_BASE_DEF[level - 1]
+        });
+
+        return (stats, gen_stats, ele_stats);
     }
 }

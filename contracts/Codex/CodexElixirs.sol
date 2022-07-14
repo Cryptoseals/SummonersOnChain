@@ -18,63 +18,63 @@ contract CodexElixirs is InitNavigator, OwnableUpgradeable {
         return elixir(_id, _tier).turnDuration;
     }
 
-    function elixir(uint _id, uint _tier) public pure returns (GameObjects_Elixir.Elixir memory) {
+    function elixir(uint _id, uint _tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {
         if (_id == 1) {
-            return EldersPotion(_tier);
+            _elixir = EldersPotion(_tier);
         }
         else if (_id == 2) {
-            return TonicOfTranscendence(_tier);
+            _elixir = TonicOfTranscendence(_tier);
         }
         else if (_id == 3) {
-            return CraftsmansPotion(_tier);
+            _elixir = CraftsmansPotion(_tier);
         }
         else if (_id == 4) {
-            return TonicOfAnger(_tier);
+            _elixir = TonicOfAnger(_tier);
         }
         else if (_id == 5) {
-            return PhialOfAgility(_tier);
+            _elixir = PhialOfAgility(_tier);
         }
         else if (_id == 6) {
-            return PotionOfIronSkin(_tier);
+            _elixir = PotionOfIronSkin(_tier);
         }
         else if (_id == 7) {
-            return ElixirOfSolutions(_tier);
+            _elixir = ElixirOfSolutions(_tier);
         }
         else if (_id == 8) {
-            return AthletesFlask(_tier);
+            _elixir = AthletesFlask(_tier);
         }
         else if (_id == 9) {
-            return PerfumeOfBlackwidow(_tier);
+            _elixir = PerfumeOfBlackwidow(_tier);
         }
         else if (_id == 10) {
-            return VialOfMotherEarth(_tier);
+            _elixir = VialOfMotherEarth(_tier);
         }
         else if (_id == 11) {
-            return PotionOfCharge(_tier);
+            _elixir = PotionOfCharge(_tier);
         }
         else if (_id == 12) {
-            return ElixirOfFrosty(_tier);
+            _elixir = ElixirOfFrosty(_tier);
         }
         else if (_id == 13) {
-            return DragonBreathPotion(_tier);
+            _elixir = DragonBreathPotion(_tier);
         }
         else if (_id == 14) {
-            return VialOfSpirit(_tier);
+            _elixir = VialOfSpirit(_tier);
         }
         else if (_id == 15) {
-            return NightmareFlask(_tier);
+            _elixir = NightmareFlask(_tier);
         }
         else if (_id == 16) {
-            return NihilityTonic(_tier);
+            _elixir = NihilityTonic(_tier);
         }
         else if (_id == 17) {
-            return PhialOfGladiator(_tier);
+            _elixir = PhialOfGladiator(_tier);
         }
         else if (_id == 18) {
-            return PotionOfArchmage(_tier);
+            _elixir = PotionOfArchmage(_tier);
         }
 
-        revert("invalid");
+        //        revert("invalid");
     }
 
     function EldersPotion(uint tier) public pure returns (GameObjects_Elixir.Elixir memory _elixir) {

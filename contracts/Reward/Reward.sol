@@ -100,7 +100,7 @@ contract Reward is InitNavigator {
 
     function rewardXP(uint summoner, uint level, uint multiplier) internal {
         uint reward = expRewardsByLevel[level];
-        reward += percentage(reward, multiplier);
+        reward += percentage(reward, 100 + multiplier);
         ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).rewardXP(summoner, reward);
     }
 

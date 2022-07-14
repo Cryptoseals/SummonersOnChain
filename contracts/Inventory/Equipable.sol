@@ -180,6 +180,7 @@ contract Equipable is Initializable, InitNavigator {
         GameObjects_Stats.Stats memory _stats,
         GameObjects_Stats.GeneratedStats memory _gen_stats,
         GameObjects_Stats.ElementalStats memory _ele_stats){
+
         IAllCodexViews elixircodex = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX));
         GameObjects_Elixir.Elixir memory elixir;
         ConsumedElixir memory _consumed;
@@ -214,7 +215,7 @@ contract Equipable is Initializable, InitNavigator {
         IAllCodexViews artifactContract = IAllCodexViews(contractAddress(INavigator.CONTRACT.ARTIFACTS));
         for (uint i = 1; i <= ARTIFACT_SLOTS; i++) {
             uint _consumed = ArtifactSlots[summoner][i];
-            if(_consumed == 0) continue;
+            if (_consumed == 0) continue;
             artifact = artifactContract.artifact(_consumed);
             _stats = EquipableUtils.sumStats(_stats, artifact.statBonus);
             _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, artifact.generatedStatBonus);
@@ -304,9 +305,8 @@ contract Equipable is Initializable, InitNavigator {
         SummonedCompanions[summoner].companionId = id;
     }
 
-    // todo add elixir stats calculation;
-
-    function getSummonerBattleStats(uint summoner) public view returns (GameObjects_Stats.Stats memory,
+    function getSummonerBattleStats(uint summoner) public view returns (
+        GameObjects_Stats.Stats memory,
         GameObjects_Stats.GeneratedStats memory,
         GameObjects_Stats.ElementalStats memory) {
 

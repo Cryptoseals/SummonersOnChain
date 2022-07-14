@@ -71,7 +71,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     }
 
     function flee(uint summoner) external onlyGameContracts {
-        require(activeBattles[summoner].account != address(0), "h4x0r");
+        require(activeBattles[summoner].account != address(0) && activeBattles[summoner].isActive == true, "h4x0r");
         delete activeBattles[summoner];
         timer[summoner] = block.timestamp + COOLDOWN * 4;
         ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(

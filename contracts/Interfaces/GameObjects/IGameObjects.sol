@@ -1,4 +1,4 @@
-import "./IGenericMetadata.sol";
+//import "./IGenericMetadata.sol";
 pragma solidity ^0.8.0;
 
 library GameObjects_Stats {
