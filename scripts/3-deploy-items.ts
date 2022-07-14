@@ -175,7 +175,7 @@ async function main() {
     console.log("and set in navigator.")
 
     let Artifacts = await ethers.getContractFactory("Artifacts")
-    let artifacts = await upgrades.deployProxy(Artifacts, [navigator.address], {
+    let artifacts = await upgrades.deployProxy(Artifacts, [navigator.address, "SoC Season 1, ARTIFACTS", "S1AFX"], {
         initializer: "initialize"
     });
 
@@ -208,7 +208,7 @@ async function main() {
     console.log("and set in navigator.")
 
     let Elixirs = await ethers.getContractFactory("Elixirs")
-    let elixirs = await upgrades.deployProxy(Elixirs, [navigator.address], {
+    let elixirs = await upgrades.deployProxy(Elixirs, [navigator.address, "cryptoseals.art/s1/elixir/"], {
         initializer: "initialize"
     });
 
@@ -229,9 +229,9 @@ async function main() {
         CodexWeapons: codexWeapons.address,
         codexArtifactsProperties: codexArtifactsProperties.address,
         artifacts: artifacts.address,
-        codexElixirRecipes: codexElixirRecipes,
-        codexElixirs: codexElixirs,
-        elixirs: elixirs,
+        codexElixirRecipes: codexElixirRecipes.address,
+        codexElixirs: codexElixirs.address,
+        elixirs: elixirs.address,
     }), {});
 
     //fs.writeFileSync('./scripts/contracts.json', JSON.stringify(contracts))

@@ -1,10 +1,18 @@
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {GameObjects_Elixir} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {InitNavigator} from "../Core/Navigator/InitNavigator.sol";
 pragma solidity ^0.8.0;
 
-contract CodexElixirs {
+contract CodexElixirs is InitNavigator, OwnableUpgradeable {
     string constant public index = "Codex";
     string constant public class = "Elixirs";
     string constant public version = "0.0.1";
+
+    function initialize(address _navigator) external initializer {
+        initializeNavigator(_navigator);
+        __Ownable_init();
+    }
 
     function elixirTurnDuration(uint _id, uint _tier) public pure returns (uint) {
         return elixir(_id, _tier).turnDuration;

@@ -1,14 +1,21 @@
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {GameObjects_Elixir} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {InitNavigator} from "../Core/Navigator/InitNavigator.sol";
 import {Rarity} from "./Common/Rarity.sol";
 
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-contract CodexElixirRecipes is Rarity {
+contract CodexElixirRecipes is Rarity, InitNavigator, OwnableUpgradeable  {
     string constant public index = "Codex";
     string constant public class = "ElixirRecipes";
     string constant public version = "0.0.1";
 
+    function initialize(address _navigator) external initializer {
+        initializeNavigator(_navigator);
+        __Ownable_init();
+    }
     function getAllElixirs() external pure returns (GameObjects_Elixir.ElixirRecipe[] memory) {
         GameObjects_Elixir.ElixirRecipe[] memory result = new GameObjects_Elixir.ElixirRecipe[](15);
         for (uint i = 1; i <= 15; i++) {

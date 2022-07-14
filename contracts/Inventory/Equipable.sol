@@ -185,7 +185,7 @@ contract Equipable is Initializable, InitNavigator {
         ConsumedElixir memory _consumed;
         for (uint i = 1; i <= ELIXIR_SLOTS; i++) {
             _consumed = ElixirSlots[summoner][i];
-            if (_consumed.turnLeft == 0) continue;
+            if (_consumed.turnLeft == 0 || _consumed.elixirId == 0) continue;
             elixir = elixircodex.elixir(_consumed.elixirId, _consumed.tier);
 
             elixir.statBonus = EquipableUtils.sumStatsWithNumber(elixir.statBonus, _consumed.tier * elixir.bonus.StatBonusPerTier);
@@ -214,6 +214,7 @@ contract Equipable is Initializable, InitNavigator {
         IAllCodexViews artifactContract = IAllCodexViews(contractAddress(INavigator.CONTRACT.ARTIFACTS));
         for (uint i = 1; i <= ARTIFACT_SLOTS; i++) {
             uint _consumed = ArtifactSlots[summoner][i];
+            if(_consumed == 0) continue;
             artifact = artifactContract.artifact(_consumed);
             _stats = EquipableUtils.sumStats(_stats, artifact.statBonus);
             _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, artifact.generatedStatBonus);
