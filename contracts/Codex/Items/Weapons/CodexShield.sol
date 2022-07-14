@@ -104,9 +104,9 @@ contract CodexShields is Initializable {
 
         _weapon.requirement.classRequirement = classRequirement();
 
-        _weapon.statBonus = weaponStats(1);
-        _weapon.generatedStatBonus = weaponGenStats(1);
-        _weapon.elementalStats.ElementalDef = weaponEle(1);
+        _weapon.statBonus = weaponStats(0);
+        _weapon.generatedStatBonus = weaponGenStats(0);
+        _weapon.elementalStats.ElementalDef = weaponEle(0);
     }
 
     function SmallCopperShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {

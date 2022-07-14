@@ -207,13 +207,8 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     function HitChanceWDecimals(uint ACC, uint DODGE) public pure returns (uint) {
-        //(100+(dodge - accuracy))/100
-        int ACC_W_DECIMAL = int(ACC * GameConstants.GAME_DECIMAL);
-        int DODGE_W_DECIMAL = int(DODGE * GameConstants.GAME_DECIMAL);
-        int DIFF = (DODGE_W_DECIMAL - ACC_W_DECIMAL);
-        int X = int(GameConstants.HUNDRED) + DIFF;
-        uint chance = uint(int(GameConstants.HUNDRED) - (X / 100));
-        return chance;
+        if (DODGE > ACC + 100) return 0;
+        return (100 + ACC) - DODGE;
     }
 
     //    // chance based calculations
@@ -286,7 +281,7 @@ contract Calculator is Initializable, InitNavigator {
 
     function ACCU(uint ACC, uint DEX) public pure returns (uint) {
         // 1+(dex/40)
-        return ACC + 1 + (DEX / 40);
+        return ACC + 1 + (DEX / 10);
     }
 
     function CRIT(uint summoner) public view returns (uint) {

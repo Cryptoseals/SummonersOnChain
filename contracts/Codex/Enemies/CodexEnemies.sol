@@ -57,6 +57,7 @@ contract CodexEnemies is Initializable, InitNavigator {
             _enemy.EnemyStats.INT += percentage(_enemy.EnemyStats.INT, 10);
             _enemy.EnemyStats.VIT += percentage(_enemy.EnemyStats.VIT, 10);
             _enemy.EnemyStats.LUCK += percentage(_enemy.EnemyStats.LUCK, 10);
+
             _enemy.EnemyElementalStats.ElementalAtk.VOID_ATK += percentage(_enemy.EnemyStats.LUCK, 10);
             _enemy.EnemyElementalStats.ElementalDef.FIRE_DEF += percentage(_enemy.EnemyElementalStats.ElementalDef.FIRE_DEF, 10);
             _enemy.EnemyElementalStats.ElementalDef.COLD_DEF += percentage(_enemy.EnemyElementalStats.ElementalDef.COLD_DEF, 10);
@@ -74,7 +75,7 @@ contract CodexEnemies is Initializable, InitNavigator {
 
         // VOID & HOLY
         if (ele == GameObjects.Element.VOID || ele == GameObjects.Element.HOLY) {
-            _enemy.EnemyGeneratedStats.M_DEF += percentage(_enemy.EnemyGeneratedStats.HP, 10);
+            _enemy.EnemyGeneratedStats.HP += percentage(_enemy.EnemyGeneratedStats.HP, 10);
         }
 
         // VOID && COLD
