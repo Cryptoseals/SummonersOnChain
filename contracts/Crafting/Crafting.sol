@@ -114,11 +114,20 @@ contract Crafting is Initializable, InitNavigator {
 
     function craftElixir(uint elixir, uint amount) external {
         GameObjects_Elixir.ElixirRecipe memory recipe = CraftingElixir(contractAddress(INavigator.CONTRACT.ELIXIR_RECIPES)).recipe_by_id(elixir);
+        if (recipe.id == 0) revert("invalid");
+        for (uint i = 0; i < recipe.requiredMiscItemIDs.length; i++) {
+            IMiscItems(contractAddress(INavigator.CONTRACT.MISC_ITEMS)).burnMiscItem(msg.sender, recipe.requiredMiscItemIDs[i], 1);
+        }
+        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD)).burnToken(msg.sender, recipe.requiredGold);
+        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE)).burnToken(msg.sender, recipe.requiredEssence);
         CraftingElixir(contractAddress(INavigator.CONTRACT.ARTIFACTS)).mintElixir(elixir, 1, msg.sender, amount);
     }
 
 }
 
+interface IMiscItems {
+    function burnMiscItem(address from, uint id, uint amount) external;
+}
 
 interface CraftingArtifact {
     function mintItem(address player, uint artifactTier) external;

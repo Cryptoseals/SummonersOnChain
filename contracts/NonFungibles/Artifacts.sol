@@ -36,7 +36,7 @@ contract Artifacts is Initializable, OwnableUpgradeable, InitNavigator, ERC721En
         uint[] memory rolls = new uint[](3);
 
         for (uint i = 0; i < MAX_PROPS; i++) {
-            rolls[i] = rng.dn(nextToken + block.number + i, PROPS) + 1;
+            rolls[i] = rng.dn(nextToken + gasleft() + block.number + i, PROPS) + 1;
         }
 
         tokenToArtifactProps[nextToken] = rolls;

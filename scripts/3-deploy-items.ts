@@ -1,6 +1,6 @@
-import { ethers, upgrades } from "hardhat";
+import {ethers, upgrades} from "hardhat";
 import fs from "fs";
-import { CONTRACTS, DeployedFileLocations } from "./helpers/constants";
+import {CONTRACTS, DeployedFileLocations} from "./helpers/constants";
 import * as Axes from "./helpers/Weapon/CodexAxes";
 import * as Bows from "./helpers/Weapon/CodexBows";
 import * as Daggers from "./helpers/Weapon/CodexDaggers";
@@ -162,6 +162,62 @@ async function main() {
     await tx.wait(1)
     console.log("and set in navigator.")
 
+
+    let CodexArtifactsProperties = await ethers.getContractFactory("CodexArtifactsProperties")
+    let codexArtifactsProperties = await upgrades.deployProxy(CodexArtifactsProperties, [navigator.address], {
+        initializer: "initialize"
+    });
+
+    await codexArtifactsProperties.deployed()
+    console.log("codexArtifactsProperties deployed to:", codexArtifactsProperties.address,)
+    tx = await navigator.setGameContractsById(CONTRACTS.ARTIFACT_PROPS_CODEX, codexArtifactsProperties.address, true)
+    await tx.wait(1)
+    console.log("and set in navigator.")
+
+    let Artifacts = await ethers.getContractFactory("Artifacts")
+    let artifacts = await upgrades.deployProxy(Artifacts, [navigator.address], {
+        initializer: "initialize"
+    });
+
+    await artifacts.deployed()
+    console.log("artifacts deployed to:", artifacts.address,)
+    tx = await navigator.setGameContractsById(CONTRACTS.ARTIFACTS, artifacts.address, true)
+    await tx.wait(1)
+    console.log("and set in navigator.")
+
+    let CodexElixirRecipes = await ethers.getContractFactory("CodexElixirRecipes")
+    let codexElixirRecipes = await upgrades.deployProxy(CodexElixirRecipes, [navigator.address], {
+        initializer: "initialize"
+    });
+
+    await codexElixirRecipes.deployed()
+    console.log("codexElixirRecipes deployed to:", codexElixirRecipes.address,)
+    tx = await navigator.setGameContractsById(CONTRACTS.ELIXIR_RECIPES, codexElixirRecipes.address, true)
+    await tx.wait(1)
+    console.log("and set in navigator.")
+
+    let CodexElixirs = await ethers.getContractFactory("CodexElixirs")
+    let codexElixirs = await upgrades.deployProxy(CodexElixirs, [navigator.address], {
+        initializer: "initialize"
+    });
+
+    await codexElixirs.deployed()
+    console.log("codexElixirs deployed to:", codexElixirs.address,)
+    tx = await navigator.setGameContractsById(CONTRACTS.ELIXIRS_CODEX, codexElixirs.address, true)
+    await tx.wait(1)
+    console.log("and set in navigator.")
+
+    let Elixirs = await ethers.getContractFactory("Elixirs")
+    let elixirs = await upgrades.deployProxy(Elixirs, [navigator.address], {
+        initializer: "initialize"
+    });
+
+    await elixirs.deployed()
+    console.log("elixirs deployed to:", elixirs.address,)
+    tx = await navigator.setGameContractsById(CONTRACTS.ELIXIRS, elixirs.address, true)
+    await tx.wait(1)
+    console.log("and set in navigator.")
+
     fs.writeFileSync(DeployedFileLocations.codex_weapons, JSON.stringify({
         CodexStaves: codexStaves.address,
         CodexAxes: codexAxes.address,
@@ -171,6 +227,11 @@ async function main() {
         CodexBows: codexBows.address,
         CodexDaggers: codexDaggers.address,
         CodexWeapons: codexWeapons.address,
+        codexArtifactsProperties: codexArtifactsProperties.address,
+        artifacts: artifacts.address,
+        codexElixirRecipes: codexElixirRecipes,
+        codexElixirs: codexElixirs,
+        elixirs: elixirs,
     }), {});
 
     //fs.writeFileSync('./scripts/contracts.json', JSON.stringify(contracts))
