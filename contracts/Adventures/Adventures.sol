@@ -191,7 +191,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         // if player dodges or monster misses, skip atk, else roll crit chance
 
         nonce++;
-        uint roll2 = RNG.d100(1 + block.number + battle.monster.monsterId + nonce);
+        uint roll2 = RNG.d100(2 + summoner + block.number + battle.monster.monsterId + nonce);
         nonce++;
         return (
         roll1 <= battle.playerStats.HIT_CHANCE,
