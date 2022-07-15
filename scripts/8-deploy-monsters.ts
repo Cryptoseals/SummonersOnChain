@@ -23,9 +23,32 @@ async function main() {
     tx = await baseEnemyStats.initializeATK();
     await tx.wait(1)
     console.log("baseEnemyStats ATK set.", baseEnemyStats.address)
-    tx = await baseEnemyStats.initializeSTAT();
+
+    tx = await baseEnemyStats.initializeSTR();
     await tx.wait(1)
-    console.log("baseEnemyStats STAT set.", baseEnemyStats.address)
+    console.log("baseEnemyStats STR set.", baseEnemyStats.address)
+
+    tx = await baseEnemyStats.initializeAGI();
+    await tx.wait(1)
+    console.log("baseEnemyStats AGI set.", baseEnemyStats.address)
+
+    tx = await baseEnemyStats.initializeDEX();
+    await tx.wait(1)
+    console.log("baseEnemyStats DEX set.", baseEnemyStats.address)
+
+
+    tx = await baseEnemyStats.initializeINT();
+    await tx.wait(1)
+    console.log("baseEnemyStats INT set.", baseEnemyStats.address)
+
+    tx = await baseEnemyStats.initializeVIT();
+    await tx.wait(1)
+    console.log("baseEnemyStats VIT set.", baseEnemyStats.address)
+
+    tx = await baseEnemyStats.initializeLUCK();
+    await tx.wait(1)
+    console.log("baseEnemyStats LUCK set.", baseEnemyStats.address)
+    
     tx = await baseEnemyStats.initializeACC();
     await tx.wait(1)
     console.log("baseEnemyStats ACC set.", baseEnemyStats.address)
