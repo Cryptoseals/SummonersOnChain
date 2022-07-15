@@ -202,13 +202,18 @@ contract Calculator is Initializable, InitNavigator {
 
     // generated value based calculations
     function HitChance(uint ACC, uint DODGE) public pure returns (uint){
-        uint chance = HitChanceWDecimals(ACC, DODGE) / GameConstants.GAME_DECIMAL;
+        uint chance = HitChanceWDecimals(ACC, DODGE) / 1e16;
         return chance >= 100 ? 100 : chance < 20 ? 20 : chance;
     }
 
     function HitChanceWDecimals(uint ACC, uint DODGE) public pure returns (uint) {
-        if (DODGE > ACC + 100) return 0;
-        return (100 + ACC) - DODGE;
+        //((dodge - accuracy))/100
+        int ACC_W_DECIMAL = (int(ACC * GameConstants.GAME_DECIMAL));
+        int ACC_W_DECIMAL25 = (int(ACC * GameConstants.GAME_DECIMAL) * 125) / 100;
+        int DODGE_W_DECIMAL = (int(DODGE * GameConstants.GAME_DECIMAL) * 20) / 100;
+//        int DIFF = (DODGE_W_DECIMAL - ACC_W_DECIMAL);
+        int chance = ((ACC_W_DECIMAL25 * int(GameConstants.GAME_DECIMAL))  / (ACC_W_DECIMAL + DODGE_W_DECIMAL));
+        return uint(chance);
     }
 
     //    // chance based calculations
