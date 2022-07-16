@@ -25,13 +25,13 @@ library EquipableUtils {
     }
 
     function sumStatsWithNumber(GameObjects_Stats.Stats memory _a, uint num) internal pure returns (GameObjects_Stats.Stats memory) {
-        if(num == 0) return _a;
-        _a.STR += (_a.STR + num);
-        _a.AGI += (_a.AGI + num);
-        _a.DEX += (_a.DEX + num);
-        _a.INT += (_a.INT + num);
-        _a.VIT += (_a.VIT + num);
-        _a.LUCK += (_a.LUCK + num);
+        if (num == 0) return _a;
+        if (_a.STR > 0) _a.STR += (_a.STR + num);
+        if (_a.AGI > 0) _a.AGI += (_a.AGI + num);
+        if (_a.DEX > 0) _a.DEX += (_a.DEX + num);
+        if (_a.INT > 0) _a.INT += (_a.INT + num);
+        if (_a.VIT > 0) _a.VIT += (_a.VIT + num);
+        if (_a.LUCK > 0) _a.LUCK += (_a.LUCK + num);
         return _a;
     }
 
@@ -60,17 +60,17 @@ library EquipableUtils {
     }
 
     function sumGeneratedStatsWithNumber(GameObjects_Stats.GeneratedStats memory _a, uint num) internal pure returns (GameObjects_Stats.GeneratedStats memory) {
-        if(num == 0) return _a;
-        _a.HP += num;
-        _a.P_ATK += num;
-        _a.M_ATK += num;
-        _a.P_DEF += num;
-        _a.M_DEF += num;
-        _a.ACCURACY += num;
-        _a.DODGE += num;
-        _a.CRIT += num;
-        _a.CRIT_MULTIPLIER += num;
-        _a.INFUSION += num;
+        if (num == 0) return _a;
+        if (_a.HP > 0) _a.HP += num;
+        if (_a.P_ATK > 0) _a.P_ATK += num;
+        if (_a.M_ATK > 0) _a.M_ATK += num;
+        if (_a.P_DEF > 0) _a.P_DEF += num;
+        if (_a.M_DEF > 0) _a.M_DEF += num;
+        if (_a.ACCURACY > 0) _a.ACCURACY += num;
+        if (_a.DODGE > 0) _a.DODGE += num;
+        if (_a.CRIT > 0) _a.CRIT += num;
+        if (_a.CRIT_MULTIPLIER > 0) _a.CRIT_MULTIPLIER += num;
+        if (_a.INFUSION > 0) _a.INFUSION += num;
         return _a;
     }
 
@@ -164,22 +164,21 @@ library EquipableUtils {
     }
 
     function sumGeneratedElementalStatsWithNumber(GameObjects_Stats.ElementalStats memory _a, uint num) internal pure returns (GameObjects_Stats.ElementalStats memory) {
-        if(num == 0) return _a;
-        _a.ElementalAtk.FIRE_ATK += (_a.ElementalAtk.FIRE_ATK + num);
-        _a.ElementalAtk.COLD_ATK += (_a.ElementalAtk.COLD_ATK + num);
-        _a.ElementalAtk.LIGHTNING_ATK += (_a.ElementalAtk.LIGHTNING_ATK + num);
-        _a.ElementalAtk.EARTH_ATK += (_a.ElementalAtk.EARTH_ATK + num);
-        _a.ElementalAtk.HOLY_ATK += (_a.ElementalAtk.HOLY_ATK + num);
-        _a.ElementalAtk.DARK_ATK += (_a.ElementalAtk.DARK_ATK + num);
-        _a.ElementalAtk.VOID_ATK += (_a.ElementalAtk.VOID_ATK + num);
-
-        _a.ElementalDef.FIRE_DEF += (_a.ElementalDef.FIRE_DEF + num);
-        _a.ElementalDef.COLD_DEF += (_a.ElementalDef.COLD_DEF + num);
-        _a.ElementalDef.LIGHTNING_DEF += (_a.ElementalDef.LIGHTNING_DEF + num);
-        _a.ElementalDef.EARTH_DEF += (_a.ElementalDef.EARTH_DEF + num);
-        _a.ElementalDef.HOLY_DEF += (_a.ElementalDef.HOLY_DEF + num);
-        _a.ElementalDef.DARK_DEF += (_a.ElementalDef.DARK_DEF + num);
-        _a.ElementalDef.VOID_DEF += (_a.ElementalDef.VOID_DEF + num);
+        if (num == 0) return _a;
+        if (_a.ElementalAtk.FIRE_ATK > 0) _a.ElementalAtk.FIRE_ATK += (_a.ElementalAtk.FIRE_ATK + num);
+        if (_a.ElementalAtk.COLD_ATK > 0) _a.ElementalAtk.COLD_ATK += (_a.ElementalAtk.COLD_ATK + num);
+        if (_a.ElementalAtk.LIGHTNING_ATK > 0) _a.ElementalAtk.LIGHTNING_ATK += (_a.ElementalAtk.LIGHTNING_ATK + num);
+        if (_a.ElementalAtk.EARTH_ATK > 0) _a.ElementalAtk.EARTH_ATK += (_a.ElementalAtk.EARTH_ATK + num);
+        if (_a.ElementalAtk.HOLY_ATK > 0) _a.ElementalAtk.HOLY_ATK += (_a.ElementalAtk.HOLY_ATK + num);
+        if (_a.ElementalAtk.DARK_ATK > 0) _a.ElementalAtk.DARK_ATK += (_a.ElementalAtk.DARK_ATK + num);
+        if (_a.ElementalAtk.VOID_ATK > 0) _a.ElementalAtk.VOID_ATK += (_a.ElementalAtk.VOID_ATK + num);
+        if (_a.ElementalDef.FIRE_DEF > 0) _a.ElementalDef.FIRE_DEF += (_a.ElementalDef.FIRE_DEF + num);
+        if (_a.ElementalDef.COLD_DEF > 0) _a.ElementalDef.COLD_DEF += (_a.ElementalDef.COLD_DEF + num);
+        if (_a.ElementalDef.LIGHTNING_DEF > 0) _a.ElementalDef.LIGHTNING_DEF += (_a.ElementalDef.LIGHTNING_DEF + num);
+        if (_a.ElementalDef.EARTH_DEF > 0) _a.ElementalDef.EARTH_DEF += (_a.ElementalDef.EARTH_DEF + num);
+        if (_a.ElementalDef.HOLY_DEF > 0) _a.ElementalDef.HOLY_DEF += (_a.ElementalDef.HOLY_DEF + num);
+        if (_a.ElementalDef.DARK_DEF > 0) _a.ElementalDef.DARK_DEF += (_a.ElementalDef.DARK_DEF + num);
+        if (_a.ElementalDef.VOID_DEF > 0) _a.ElementalDef.VOID_DEF += (_a.ElementalDef.VOID_DEF + num);
         return _a;
     }
 

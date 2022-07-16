@@ -9,6 +9,10 @@ import {IReward, IGameRewards} from "../Interfaces/Reward/IReward.sol";
 import {GameObjects_Stats} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
+interface ElixirInventory {
+    function reduceElixirDuration(uint summoner) external;
+}
+
 contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     ICodexRandom RNG;
     uint battleNonce;
@@ -78,6 +82,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             summoner,
             GameEntities.SummonerState.FREE
         );
+        ElixirInventory(contractAddress(INavigator.CONTRACT.INVENTORY)).reduceElixirDuration(summoner);
     }
 
     function attack(uint summoner, uint multiplier, uint overrideDps) external onlyGameContracts {
@@ -101,7 +106,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             :
             (battle.playerStats.DPS * multiplier) / 100;
 
-            nonce++;
+            nonce += roll + 1;
 
             if (damage >= battle.monsterStats.TOTAL_HP) {
                 battle.monsterStats.TOTAL_HP = 0;
@@ -120,7 +125,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             (battle.monsterStats.DPS * battle.monsterStats.CRIT_MULTI) / 100
             :
             (battle.monsterStats.DPS * multiplier) / 100;
-            nonce++;
+            nonce += roll + 1;
 
             if (damage >= battle.playerStats.TOTAL_HP) {
                 battle.playerStats.TOTAL_HP = 0;
@@ -140,7 +145,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         IAdventure.AdventureBattle memory battle = activeBattles[summoner];
         require(battle.isActive, "finalized");
         uint nonce = battleNonce;
-        if (battle.playerStats.TOTAL_HP == 0) {
+        if (battle.playerStats.TOTAL_HP == 0 && battle.monsterStats.TOTAL_HP > 0) {
             // lose, end battle, cooldown
             IReward(contractAddress(INavigator.CONTRACT.REWARDS)).halfRewardXP(summoner, battle.monster.level);
             timer[battle.summoner] = block.timestamp + (COOLDOWN * 2);
@@ -172,12 +177,14 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         } else {
             revert("on going");
         }
+
         ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
             battle.summoner,
             GameEntities.SummonerState.FREE
         );
         delete activeBattles[battle.summoner];
         battleNonce = nonce;
+        ElixirInventory(contractAddress(INavigator.CONTRACT.INVENTORY)).reduceElixirDuration(summoner);
     }
 
 

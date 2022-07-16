@@ -144,7 +144,10 @@ contract Equipable is Initializable, InitNavigator {
         (uint elixirId, uint tier) = elixirContract.decodeElixir(id);
 
         for (uint i = 1; i <= ELIXIR_SLOTS;) {
-            require(elixirId != ElixirSlots[summoner][i].elixirId, "sm");
+            if (elixirId == ElixirSlots[summoner][i].elixirId) {
+                require(ElixirSlots[summoner][i].turnLeft == 0, "sm");
+            }
+
         unchecked {i++;}
         }
         uint turnDuration = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX)).elixirTurnDuration(elixirId, tier);
@@ -189,23 +192,28 @@ contract Equipable is Initializable, InitNavigator {
             if (_consumed.turnLeft == 0 || _consumed.elixirId == 0) continue;
             elixir = elixircodex.elixir(_consumed.elixirId, _consumed.tier);
 
-            elixir.statBonus = EquipableUtils.sumStatsWithNumber(elixir.statBonus, _consumed.tier * elixir.bonus.StatBonusPerTier);
-            elixir.generatedStatBonus = EquipableUtils.sumGeneratedStatsWithNumber(elixir.generatedStatBonus, elixir.bonus.GenStatBonusPerTier * _consumed.tier);
-            elixir.elementalStats = EquipableUtils.sumGeneratedElementalStatsWithNumber(elixir.elementalStats, elixir.bonus.EleStatBonusPerTier * _consumed.tier);
-            elixir.bonus.BonusGoldPercentage += _consumed.tier * elixir.bonus.BonusGoldPercentagePerTier;
-            elixir.bonus.BonusEssencePercentage += _consumed.tier * elixir.bonus.BonusEssencePercentagePerTier;
-            elixir.bonus.BonusEXPPercentage += _consumed.tier * elixir.bonus.BonusEXPPercentagePerTier;
-            elixir.bonus.BonusMaterialPercentage += _consumed.tier * elixir.bonus.BonusMaterialPercentagePerTier;
+            //            these are now precalculated in codex
+
+            //            elixir.statBonus = EquipableUtils.sumStatsWithNumber(elixir.statBonus, _consumed.tier * elixir.bonus.StatBonusPerTier);
+            //            elixir.generatedStatBonus = EquipableUtils.sumGeneratedStatsWithNumber(elixir.generatedStatBonus, elixir.bonus.GenStatBonusPerTier * _consumed.tier);
+            //            elixir.elementalStats = EquipableUtils.sumGeneratedElementalStatsWithNumber(elixir.elementalStats, elixir.bonus.EleStatBonusPerTier * _consumed.tier);
+            //            elixir.bonus.BonusGoldPercentage += _consumed.tier * elixir.bonus.BonusGoldPercentagePerTier;
+            //            elixir.bonus.BonusEssencePercentage += _consumed.tier * elixir.bonus.BonusEssencePercentagePerTier;
+            //            elixir.bonus.BonusEXPPercentage += _consumed.tier * elixir.bonus.BonusEXPPercentagePerTier;
+            //            elixir.bonus.BonusMaterialPercentage += _consumed.tier * elixir.bonus.BonusMaterialPercentagePerTier;
 
             _stats = EquipableUtils.sumStats(_stats, elixir.statBonus);
             _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, elixir.generatedStatBonus);
             _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, elixir.elementalStats);
 
-            _fx.BonusEXPPercentage += elixir.bonus.BonusEXPPercentage + (_consumed.tier * elixir.bonus.BonusEXPPercentagePerTier);
-            _fx.BonusMaterialPercentage += elixir.bonus.BonusMaterialPercentage + (_consumed.tier * elixir.bonus.BonusMaterialPercentagePerTier);
-            _fx.BonusEssencePercentage += elixir.bonus.BonusEssencePercentage + (_consumed.tier * elixir.bonus.BonusEssencePercentagePerTier);
-            _fx.BonusGoldPercentage += elixir.bonus.BonusGoldPercentage + (_consumed.tier * elixir.bonus.BonusGoldPercentagePerTier);
-
+            _fx.BonusEXPPercentage += elixir.bonus.BonusEXPPercentage;
+            //+ (_consumed.tier * elixir.bonus.BonusEXPPercentagePerTier);
+            _fx.BonusMaterialPercentage += elixir.bonus.BonusMaterialPercentage;
+            // + (_consumed.tier * elixir.bonus.BonusMaterialPercentagePerTier);
+            _fx.BonusEssencePercentage += elixir.bonus.BonusEssencePercentage;
+            // + (_consumed.tier * elixir.bonus.BonusEssencePercentagePerTier);
+            _fx.BonusGoldPercentage += elixir.bonus.BonusGoldPercentage;
+            // + (_consumed.tier * elixir.bonus.BonusGoldPercentagePerTier);
         }
     }
 

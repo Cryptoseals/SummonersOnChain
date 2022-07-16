@@ -67,8 +67,8 @@ async function main() {
     tx = await navigator.setGameContractsById(CONTRACTS.JOB, deployer, true)
     await tx.wait(1)
 
-    const deployedMaterials = JSON.parse(fs.readFileSync(DeployedFileLocations.crafting_materials, 'utf-8'))
-    let mats = await ethers.getContractAt("CraftingMaterials", deployedMaterials.craftingMaterials)
+    // const deployedMaterials = JSON.parse(fs.readFileSync(DeployedFileLocations.crafting_materials, 'utf-8'))
+    // let mats = await ethers.getContractAt("CraftingMaterials", deployedMaterials.craftingMaterials)
     // console.log("COPPER:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.COPPER)))
     // console.log("TIN:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.TIN)))
     // console.log("IRON:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.IRON)))
@@ -82,12 +82,12 @@ async function main() {
     // console.log("RED_OAK_WOOD_PLANK:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.RED_OAK_WOOD_PLANK)))
 
     let mintTo = "0xc5E5ec38de39c632f67EbF9795CD1d7D12331799"
-    tx = await mats.mintMaterial(CraftingMaterial.OBSIDIAN_INGOT, mintTo, 100)
-    await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.ORICALCHUM_INGOT, mintTo, 100)
-    await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.EBONY_WOOD_PLANK, mintTo, 100)
-    await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.OBSIDIAN_INGOT, mintTo, 100)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.ORICALCHUM_INGOT, mintTo, 100)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.EBONY_WOOD_PLANK, mintTo, 100)
+    // await tx.wait(1)
 
 
     // let activeProcesses: any[] = await mats.activeProcessingsOfUser(deployer);
@@ -117,6 +117,26 @@ async function main() {
 
     // tx = await crafting.craft(0, 95)
     // await tx.wait(1);
+
+
+    const deployedElixirs = JSON.parse(fs.readFileSync(DeployedFileLocations.elixirs, 'utf-8'))
+    let elixirs = await ethers.getContractAt("Elixirs", deployedElixirs.elixirs)
+    // tx = await elixirs.mintDev(10001, 10);
+    // await tx.wait(1);
+    // tx = await elixirs.mintDev(20003, 10);
+    // await tx.wait(1);
+    // tx = await elixirs.mintDev(40005, 10);
+    // await tx.wait(1);
+    // tx = await elixirs.mintDev(50005, 10);
+    // await tx.wait(1);
+    // tx = await elixirs.mintDev(60005, 10);
+    // await tx.wait(1);
+    // tx = await elixirs.mintDev(70005, 10);
+    // await tx.wait(1);
+    // console.log('minted')
+
+    tx = await elixirs.safeBatchTransferFrom(deployer, mintTo, [10001, 20003, 40005, 50005, 60005, 70005], [10, 10, 10,10,10,10], "0x00")
+    await tx.wait(1)
 
 }
 

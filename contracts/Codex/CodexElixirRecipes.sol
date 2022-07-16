@@ -79,6 +79,24 @@ contract CodexElixirRecipes is Rarity, InitNavigator, OwnableUpgradeable  {
         else if (_id == 18) {
             return PotionOfArchmage();
         }
+        else if (_id == 19) {
+            return PotionOfPrecision();
+        }
+        else if (_id == 20) {
+            return ExactionPotion();
+        }
+        else if (_id == 21) {
+            return MercilessFlask();
+        }
+        else if (_id == 22) {
+            return ElixirOfMobility();
+        }
+        else if (_id == 23) {
+            return TonicOfToughness();
+        }
+        else if (_id == 24) {
+            return PiercingTonic();
+        }
         revert("wrong");
     }
 
@@ -296,5 +314,77 @@ contract CodexElixirRecipes is Rarity, InitNavigator, OwnableUpgradeable  {
 
         _recipe.requiredGold = 220e18;
         _recipe.requiredEssence = 25e18;
+    }
+
+    function PotionOfPrecision() public pure returns (GameObjects_Elixir.ElixirRecipe memory _recipe) {
+        uint[] memory _requiredItems = new uint[](3);
+        _requiredItems[0] = 9;
+        _requiredItems[1] = 19;
+        _requiredItems[2] = 41;
+        _recipe.id = 19;
+        _recipe.requiredMiscItemIDs = _requiredItems;
+
+        _recipe.requiredGold = 175e18;
+        _recipe.requiredEssence = 17e18;
+    }
+
+    function ExactionPotion() public pure returns (GameObjects_Elixir.ElixirRecipe memory _recipe) {
+        uint[] memory _requiredItems = new uint[](3);
+        _requiredItems[0] = 23;
+        _requiredItems[1] = 37;
+        _requiredItems[2] = 55;
+        _recipe.id = 20;
+        _recipe.requiredMiscItemIDs = _requiredItems;
+
+        _recipe.requiredGold = 175e18;
+        _recipe.requiredEssence = 17e18;
+    }
+
+    function MercilessFlask() public pure returns (GameObjects_Elixir.ElixirRecipe memory _recipe) {
+        uint[] memory _requiredItems = new uint[](3);
+        _requiredItems[0] = 23;
+        _requiredItems[1] = 40;
+        _requiredItems[2] = 42;
+        _recipe.id = 21;
+        _recipe.requiredMiscItemIDs = _requiredItems;
+
+        _recipe.requiredGold = 175e18;
+        _recipe.requiredEssence = 17e18;
+    }
+
+    function ElixirOfMobility() public pure returns (GameObjects_Elixir.ElixirRecipe memory _recipe) {
+        uint[] memory _requiredItems = new uint[](3);
+        _requiredItems[0] = 38;
+        _requiredItems[1] = 46;
+        _requiredItems[2] = 60;
+        _recipe.id = 22;
+        _recipe.requiredMiscItemIDs = _requiredItems;
+
+        _recipe.requiredGold = 175e18;
+        _recipe.requiredEssence = 17e18;
+    }
+
+    function TonicOfToughness() public pure returns (GameObjects_Elixir.ElixirRecipe memory _recipe) {
+        uint[] memory _requiredItems = new uint[](3);
+        _requiredItems[0] = 17;
+        _requiredItems[1] = 36;
+        _requiredItems[2] = 58;
+        _recipe.id = 23;
+        _recipe.requiredMiscItemIDs = _requiredItems;
+
+        _recipe.requiredGold = 175e18;
+        _recipe.requiredEssence = 17e18;
+    }
+
+    function PiercingTonic() public pure returns (GameObjects_Elixir.ElixirRecipe memory _recipe) {
+        uint[] memory _requiredItems = new uint[](3);
+        _requiredItems[0] = 2;
+        _requiredItems[1] = 35;
+        _requiredItems[2] = 52;
+        _recipe.id = 24;
+        _recipe.requiredMiscItemIDs = _requiredItems;
+
+        _recipe.requiredGold = 175e18;
+        _recipe.requiredEssence = 17e18;
     }
 }
