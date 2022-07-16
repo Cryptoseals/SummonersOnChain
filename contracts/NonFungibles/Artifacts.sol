@@ -15,11 +15,19 @@ pragma solidity ^0.8.0;
 
 contract Artifacts is Initializable, OwnableUpgradeable, InitNavigator, ERC721EnumerableUpgradeable {
 
+
     mapping(uint => uint[]) public tokenToArtifactProps;
     mapping(uint => uint) public tokenToEnchantmentLevel;
 
     uint constant MAX_PROPS = 3;
     uint constant PROPS = 30;
+
+
+    struct ArtifactDTO {
+        uint tokenId;
+        uint[] props;
+        GameObjects_Equipments.Artifact artifact;
+    }
 
     function initialize(address _navigator, string memory name, string memory symbol) external initializer {
         initializeNavigator(_navigator);
@@ -59,8 +67,8 @@ contract Artifacts is Initializable, OwnableUpgradeable, InitNavigator, ERC721En
         _tier = tokenToEnchantmentLevel[id];
     }
 
-    function artifact(uint id) external view returns (GameObjects_Equipments.Artifact memory _result){
-        require(_exists(id),"not found");
+    function artifact(uint id) public view returns (GameObjects_Equipments.Artifact memory _result){
+        require(_exists(id), "not found");
         ArtifactProps props = ArtifactProps(contractAddress(INavigator.CONTRACT.ARTIFACT_PROPS_CODEX));
         GameObjects_Equipments.Artifact[] memory artifactProps = props.properties(tokenToArtifactProps[id], tokenToEnchantmentLevel[id]);
         for (uint i = 0; i < artifactProps.length; i++) {
@@ -71,4 +79,25 @@ contract Artifacts is Initializable, OwnableUpgradeable, InitNavigator, ERC721En
         return _result;
     }
 
+    function tokensOfOwner(address _owner) public view returns (uint[] memory) {
+        uint[] memory _tokensOfOwner = new uint[](balanceOf(_owner));
+        uint i;
+
+        for (i = 0; i < _tokensOfOwner.length; i++) {
+            _tokensOfOwner[i] = tokenOfOwnerByIndex(_owner, i);
+        }
+        return (_tokensOfOwner);
+    }
+
+    function artifactsOfOwner(address _owner) public view returns (ArtifactDTO[] memory) {
+        ArtifactDTO[] memory _artifactsOfOwner = new ArtifactDTO[](balanceOf(_owner));
+        uint i;
+        for (i = 0; i < _artifactsOfOwner.length;) {
+            _artifactsOfOwner[i].tokenId = tokenOfOwnerByIndex(_owner, i);
+            _artifactsOfOwner[i].artifact = artifact(_artifactsOfOwner[i].tokenId);
+            _artifactsOfOwner[i].props = tokenToArtifactProps[_artifactsOfOwner[i].tokenId];
+            unchecked {i++;}
+        }
+        return _artifactsOfOwner;
+    }
 }

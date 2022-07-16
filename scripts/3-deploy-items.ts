@@ -16,7 +16,7 @@ async function main() {
     const deployedNavigator = JSON.parse(fs.readFileSync(DeployedFileLocations.navigator, 'utf-8'))
     const Navigator = await ethers.getContractFactory("Navigator");
     const navigator = Navigator.attach(deployedNavigator.navigator)
-
+    let tx
     let CodexStaves = await ethers.getContractFactory("CodexStaves")
     let codexStaves = await upgrades.deployProxy(CodexStaves, [
         Staves.BASE_INT,
@@ -32,7 +32,7 @@ async function main() {
     });
     await codexStaves.deployed()
     console.log("Staves deployed to:", codexStaves.address,)
-    let tx = await navigator.setGameContractsById(CONTRACTS.STAFF_STATS, codexStaves.address, true)
+    tx = await navigator.setGameContractsById(CONTRACTS.STAFF_STATS, codexStaves.address, true)
     await tx.wait(1)
     console.log("and set in navigator.")
 
@@ -227,11 +227,16 @@ async function main() {
         CodexBows: codexBows.address,
         CodexDaggers: codexDaggers.address,
         CodexWeapons: codexWeapons.address,
+    }), {});
+
+    fs.writeFileSync(DeployedFileLocations.artifacts, JSON.stringify({
         codexArtifactsProperties: codexArtifactsProperties.address,
         artifacts: artifacts.address,
+    }), {});
+    fs.writeFileSync(DeployedFileLocations.elixirs, JSON.stringify({
         codexElixirRecipes: codexElixirRecipes.address,
         codexElixirs: codexElixirs.address,
-        elixirs: elixirs.address,
+        elixirs: artifacts.address,
     }), {});
 
     //fs.writeFileSync('./scripts/contracts.json', JSON.stringify(contracts))
