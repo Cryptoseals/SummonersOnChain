@@ -13,11 +13,44 @@ interface Recipes {
 }
 
 contract Crafting is Initializable, InitNavigator {
+    Recipes HELMET_RECIPES;
+    Recipes ARMOR_RECIPES;
+    Recipes BOOTS_RECIPES;
+    Recipes WEAPON_RECIPES;
+    Recipes AMULET_RECIPES;
+    Recipes RING_RECIPES;
+    Recipes EARRING_RECIPES;
+    Recipes BELT_RECIPES;
+    IFungibleInGameToken goldContract;
+    IFungibleInGameToken essenceContract;
+    IMiscItems miscs;
+    CraftingElixir elixirs;
+    CraftingArtifact artifacts;
+    IEquipableItems equipments;
+    ICraftingMaterialsToken craftingMaterialContract;
 
     function initialize(
         address _navigator
     ) external initializer {
         initializeNavigator(_navigator);
+    }
+
+    function initializeContracts() external {
+        HELMET_RECIPES = Recipes(contractAddress(INavigator.CONTRACT.HELMET_RECIPES));
+        ARMOR_RECIPES = Recipes(contractAddress(INavigator.CONTRACT.ARMOR_RECIPES));
+        BOOTS_RECIPES = Recipes(contractAddress(INavigator.CONTRACT.BOOTS_RECIPES));
+        WEAPON_RECIPES = Recipes(contractAddress(INavigator.CONTRACT.WEAPON_RECIPES));
+        AMULET_RECIPES = Recipes(contractAddress(INavigator.CONTRACT.AMULET_RECIPES));
+        RING_RECIPES = Recipes(contractAddress(INavigator.CONTRACT.RING_RECIPES));
+        EARRING_RECIPES = Recipes(contractAddress(INavigator.CONTRACT.EARRING_RECIPES));
+        BELT_RECIPES = Recipes(contractAddress(INavigator.CONTRACT.BELT_RECIPES));
+        goldContract = IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD));
+        essenceContract = IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE));
+        miscs = IMiscItems(contractAddress(INavigator.CONTRACT.MISC_ITEMS));
+        elixirs = CraftingElixir(contractAddress(INavigator.CONTRACT.ELIXIRS));
+        artifacts = CraftingArtifact(contractAddress(INavigator.CONTRACT.ARTIFACTS));
+        equipments = IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS));
+        craftingMaterialContract = ICraftingMaterialsToken(contractAddress(INavigator.CONTRACT.CRAFTING_MATERIALS));
     }
 
     function craft(
@@ -32,9 +65,8 @@ contract Crafting is Initializable, InitNavigator {
         uint suffix;
         uint suffixTier;
         GameObjects.Element element;
-        IEquipableItems equipableContract = IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS));
 
-        equipableContract.mintItem(
+        equipments.mintItem(
             msg.sender,
             _type,
             id,
@@ -47,27 +79,26 @@ contract Crafting is Initializable, InitNavigator {
     function burnRecipeItems(GameObjects.ItemType _type, uint id) internal {
         ICraftingRecipe.CraftingRecipe memory _recipe;
         if (_type == GameObjects.ItemType.HELMET) {
-            _recipe = Recipes(contractAddress(INavigator.CONTRACT.HELMET_RECIPES)).recipe(id);
+            _recipe = HELMET_RECIPES.recipe(id);
         } else if (_type == GameObjects.ItemType.ARMOR) {
-            _recipe = Recipes(contractAddress(INavigator.CONTRACT.ARMOR_RECIPES)).recipe(id);
+            _recipe = ARMOR_RECIPES.recipe(id);
         } else if (_type == GameObjects.ItemType.BOOTS) {
-            _recipe = Recipes(contractAddress(INavigator.CONTRACT.BOOTS_RECIPES)).recipe(id);
+            _recipe = BOOTS_RECIPES.recipe(id);
         } else if (_type == GameObjects.ItemType.WEAPON) {
-            _recipe = Recipes(contractAddress(INavigator.CONTRACT.WEAPON_RECIPES)).recipe(id);
+            _recipe = WEAPON_RECIPES.recipe(id);
         } else if (_type == GameObjects.ItemType.AMULET) {
-            _recipe = Recipes(contractAddress(INavigator.CONTRACT.AMULET_RECIPES)).recipe(id);
+            _recipe = AMULET_RECIPES.recipe(id);
         } else if (_type == GameObjects.ItemType.RING) {
-            _recipe = Recipes(contractAddress(INavigator.CONTRACT.RING_RECIPES)).recipe(id);
+            _recipe = RING_RECIPES.recipe(id);
         } else if (_type == GameObjects.ItemType.EARRING) {
-            _recipe = Recipes(contractAddress(INavigator.CONTRACT.EARRING_RECIPES)).recipe(id);
+            _recipe = EARRING_RECIPES.recipe(id);
         } else if (_type == GameObjects.ItemType.BELT) {
-            _recipe = Recipes(contractAddress(INavigator.CONTRACT.BELT_RECIPES)).recipe(id);
+            _recipe = BELT_RECIPES.recipe(id);
         } else {
             // not implemented yet.
             revert("niy");
         }
 
-        ICraftingMaterialsToken craftingMaterialContract = ICraftingMaterialsToken(contractAddress(INavigator.CONTRACT.CRAFTING_MATERIALS));
         for (uint i = 0; i < _recipe.materialRequirements.length; i++) {
             if (_recipe.materialRequirements[i].amount > 0) {
                 craftingMaterialContract.burnMaterial(
@@ -78,8 +109,8 @@ contract Crafting is Initializable, InitNavigator {
             }
         }
 
-        if (_recipe.requiredGold > 0) IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD)).burnToken(msg.sender, _recipe.requiredGold);
-        if (_recipe.requiredEssence > 0) IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE)).burnToken(msg.sender, _recipe.requiredEssence);
+        if (_recipe.requiredGold > 0) goldContract.burnToken(msg.sender, _recipe.requiredGold);
+        if (_recipe.requiredEssence > 0) essenceContract.burnToken(msg.sender, _recipe.requiredEssence);
     }
 
     function validateId(GameObjects.ItemType _type, uint id) internal view {
@@ -109,18 +140,18 @@ contract Crafting is Initializable, InitNavigator {
 
     function craftArtifact() external {
         // TODO get reqs, burn stuff etc.
-        CraftingArtifact(contractAddress(INavigator.CONTRACT.ARTIFACTS)).mintItem(msg.sender, 1);
+        artifacts.mintItem(msg.sender, 1);
     }
 
     function craftElixir(uint elixir, uint amount) external {
         GameObjects_Elixir.ElixirRecipe memory recipe = CraftingElixir(contractAddress(INavigator.CONTRACT.ELIXIR_RECIPES)).recipe_by_id(elixir);
         if (recipe.id == 0) revert("invalid");
         for (uint i = 0; i < recipe.requiredMiscItemIDs.length; i++) {
-            IMiscItems(contractAddress(INavigator.CONTRACT.MISC_ITEMS)).burnMiscItem(msg.sender, recipe.requiredMiscItemIDs[i], 1);
+            miscs.burnMiscItem(msg.sender, recipe.requiredMiscItemIDs[i], 1);
         }
-        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD)).burnToken(msg.sender, recipe.requiredGold);
-        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE)).burnToken(msg.sender, recipe.requiredEssence);
-        CraftingElixir(contractAddress(INavigator.CONTRACT.ARTIFACTS)).mintElixir(elixir, 1, msg.sender, amount);
+        goldContract.burnToken(msg.sender, recipe.requiredGold);
+        essenceContract.burnToken(msg.sender, recipe.requiredEssence);
+        elixirs.mintElixir(elixir, 1, msg.sender, amount);
     }
 
 }

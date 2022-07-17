@@ -19,16 +19,28 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     uint battleId;
     mapping(uint => uint) public timer;
     uint public COOLDOWN;
-
-
+    IReward rewardContract;
+    ICodexAdventures adventureCodex;
+    ICalculator calculatorContract;
+    ElixirInventory elixirInventory;
+    ICodexEnemies enemyCodex;
     // summoner -> battle
     mapping(uint => IAdventure.AdventureBattle) public activeBattles;
 
     function initialize(address _navigator) external initializer {
         __Ownable_init();
         initializeNavigator(_navigator);
-        RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
+    }
 
+    function initializeContracts() external {
+        RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
+        rewardContract = IReward(contractAddress(INavigator.CONTRACT.REWARDS));
+        adventureCodex = ICodexAdventures(
+            contractAddress(INavigator.CONTRACT.ADVENTURES_CODEX)
+        );
+        calculatorContract = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR));
+        elixirInventory = ElixirInventory(contractAddress(INavigator.CONTRACT.INVENTORY));
+        enemyCodex = ICodexEnemies(contractAddress(INavigator.CONTRACT.CODEX_ENEMIES));
         //        COOLDOWN = 1 minutes;
     }
 
@@ -43,7 +55,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     notInFight(summoner) {
         require(timer[summoner] < block.timestamp, "early");
         timer[summoner] = block.timestamp + COOLDOWN;
-        uint lvl = ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).level(summoner);
+        uint lvl = Summoners.level(summoner);
         (
         IMonster.Monster memory _monster,
         IAdventure.AdventureMonster memory _advMonster
@@ -52,7 +64,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         (
         GameObjects_Stats.BattleStats memory _summonerStats,
         GameObjects_Stats.BattleStats memory _monsterStats
-        ) = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR)).PVEBattleStats(summoner, _monster);
+        ) = calculatorContract.PVEBattleStats(summoner, _monster);
 
         activeBattles[summoner] = IAdventure.AdventureBattle({
         account : msg.sender,
@@ -68,7 +80,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
         battleNonce++;
         battleId++;
-        ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
+        Summoners.setSummonerState(
             summoner,
             GameEntities.SummonerState.IN_FIGHT
         );
@@ -78,11 +90,11 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         require(activeBattles[summoner].account != address(0) && activeBattles[summoner].isActive == true, "h4x0r");
         delete activeBattles[summoner];
         timer[summoner] = block.timestamp + COOLDOWN * 4;
-        ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
+        Summoners.setSummonerState(
             summoner,
             GameEntities.SummonerState.FREE
         );
-        ElixirInventory(contractAddress(INavigator.CONTRACT.INVENTORY)).reduceElixirDuration(summoner);
+        elixirInventory.reduceElixirDuration(summoner);
     }
 
     function attack(uint summoner, uint multiplier, uint overrideDps) external onlyGameContracts {
@@ -147,14 +159,11 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         uint nonce = battleNonce;
         if (battle.playerStats.TOTAL_HP == 0 && battle.monsterStats.TOTAL_HP > 0) {
             // lose, end battle, cooldown
-            IReward(contractAddress(INavigator.CONTRACT.REWARDS)).halfRewardXP(summoner, battle.monster.level);
+            rewardContract.halfRewardXP(summoner, battle.monster.level);
             timer[battle.summoner] = block.timestamp + (COOLDOWN * 2);
         } else if (battle.monsterStats.TOTAL_HP == 0) {
             // win
-            IAdventure.AdventureLevel memory _level =
-            ICodexAdventures(
-                contractAddress(INavigator.CONTRACT.ADVENTURES_CODEX)
-            ).adventure(battle.adventureArea, battle.adventureLevel);
+            IAdventure.AdventureLevel memory _level = adventureCodex.adventure(battle.adventureArea, battle.adventureLevel);
             IGameRewards.Reward memory rewardPool = _level.Rewards;
             _level.Rewards.bonus = 100;
 
@@ -163,7 +172,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
                 _level.Rewards.bonus = diff > 10 ? 200 : (100 + (diff * 10));
             }
 
-            IReward(contractAddress(INavigator.CONTRACT.REWARDS)).reward(
+            rewardContract.reward(
                 battle.account,
                 summoner,
                 battle.monster.level,
@@ -178,13 +187,13 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             revert("on going");
         }
 
-        ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).setSummonerState(
+        Summoners.setSummonerState(
             battle.summoner,
             GameEntities.SummonerState.FREE
         );
         delete activeBattles[battle.summoner];
         battleNonce = nonce;
-        ElixirInventory(contractAddress(INavigator.CONTRACT.INVENTORY)).reduceElixirDuration(summoner);
+        elixirInventory.reduceElixirDuration(summoner);
     }
 
 
@@ -215,9 +224,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         uint adventureLevel, uint summonerLvl) internal view returns (IMonster.Monster memory, IAdventure.AdventureMonster memory) {
 
         IAdventure.AdventureLevel memory _level =
-        ICodexAdventures(
-            contractAddress(INavigator.CONTRACT.ADVENTURES_CODEX)
-        ).adventure(adventureArea, adventureLevel);
+        adventureCodex.adventure(adventureArea, adventureLevel);
         require(summonerLvl + 4 >= _level.MonsterLevel, "low lvl");
         return pickMonster(_level, summonerLvl);
     }
@@ -229,8 +236,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
         IAdventure.AdventureMonster memory _adventureMonster = _level.MonsterList[monsterIdx];
         _adventureMonster.level = summonerLvl > _level.MonsterLevel + 5 ? summonerLvl - 3 : _level.MonsterLevel;
-        IMonster.Monster memory monster = ICodexEnemies(
-            contractAddress(INavigator.CONTRACT.CODEX_ENEMIES)).enemy(
+        IMonster.Monster memory monster = enemyCodex.enemy(
             _adventureMonster.element,
             _adventureMonster.monsterId,
             _adventureMonster.level

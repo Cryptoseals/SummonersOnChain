@@ -16,7 +16,7 @@ contract EXPCards is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Up
     function redeemCard(uint _cardId, uint _summoner, uint amount) external senderIsSummonerOwner(_summoner) {
         require(balanceOf(msg.sender, _cardId) >= amount && amount > 0, "balance issue");
         uint expReward = EXPCardLib.cardIdToExp(_cardId) * amount;
-        ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).rewardXP(_summoner, expReward);
+        Summoners.rewardXP(_summoner, expReward);
         _burn(msg.sender, _cardId, amount);
     }
 

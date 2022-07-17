@@ -7,8 +7,8 @@ contract CodexSuffixes {
     string constant public version = "0.0.1";
 
     function allSuffix(uint tier) external view returns (GameObjects_Equipments.Suffix[] memory){
-        GameObjects_Equipments.Suffix[] memory result = new GameObjects_Equipments.Suffix[](44);
-        for (uint i = 0; i < 44; i++) {
+        GameObjects_Equipments.Suffix[] memory result = new GameObjects_Equipments.Suffix[](45);
+        for (uint i = 0; i <= 44; i++) {
             result[i] = suffix(i, tier);
         }
         return result;

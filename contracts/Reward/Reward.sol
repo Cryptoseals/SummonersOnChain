@@ -17,17 +17,34 @@ pragma solidity ^0.8.0;
 
 contract Reward is InitNavigator {
     ICodexRandom RNG;
+    CraftingMaterialContract mats;
+    IElixirAndArtifactSlots elixirInventory;
+    IFungibleInGameToken gold;
+    IFungibleInGameToken essence;
+    IRewardNonFungible misc;
     uint nonce;
     uint[] expRewardsByLevel;
 
     function initialize(address _navigator, uint[] memory exps) external initializer {
         initializeNavigator(_navigator);
-        RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
         expRewardsByLevel = exps;
     }
 
+    function initializeContracts() external {
+        mats = CraftingMaterialContract(
+            contractAddress(
+                INavigator.CONTRACT.CRAFTING_MATERIALS
+            )
+        );
+        RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
+        elixirInventory = IElixirAndArtifactSlots(contractAddress(INavigator.CONTRACT.INVENTORY));
+        gold = IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD));
+        essence = IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE));
+        misc = IRewardNonFungible(contractAddress(INavigator.CONTRACT.MISC_ITEMS));
+    }
+
     function reward(address to, uint summoner, uint level, IGameRewards.Reward memory _reward, IGameRewards.CurrencyRewards memory _currencyRewards, uint optionalNonce) external onlyGameContracts {
-        (GameObjects_Elixir.ElixirBonusEffect memory _fx,,,) = IElixirAndArtifactSlots(contractAddress(INavigator.CONTRACT.INVENTORY)).activeElixirs(summoner);
+        (GameObjects_Elixir.ElixirBonusEffect memory _fx,,,) = elixirInventory.activeElixirs(summoner);
 
         if (_currencyRewards.yieldsGold) rewardGold(to, _currencyRewards, _reward.bonus + _fx.BonusGoldPercentage, optionalNonce);
         if (_currencyRewards.yieldsEssence) rewardEssence(to, _currencyRewards, _reward.bonus + _fx.BonusEssencePercentage, optionalNonce + 2);
@@ -41,7 +58,7 @@ contract Reward is InitNavigator {
             _reward.goldRewards.maxAmount - _reward.goldRewards.minAmount);
         uint wODecimals = (roll - (roll % 1e17)) + _reward.goldRewards.minAmount;
         wODecimals = percentage(wODecimals, multiplier);
-        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD)).rewardToken(to, wODecimals);
+        gold.rewardToken(to, wODecimals);
         nonce++;
     }
 
@@ -50,7 +67,7 @@ contract Reward is InitNavigator {
             _reward.essenceRewards.maxAmount - _reward.essenceRewards.minAmount);
         uint wODecimals = (roll - (roll % 1e17)) + _reward.essenceRewards.minAmount;
         wODecimals = percentage(wODecimals, multiplier);
-        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE)).rewardToken(to, wODecimals);
+        essence.rewardToken(to, wODecimals);
         nonce++;
     }
 
@@ -64,7 +81,7 @@ contract Reward is InitNavigator {
 
             amount = percentage(amount + _miscRewards.rewards[pick].minAmount, multiplier);
 
-            IRewardNonFungible(contractAddress(INavigator.CONTRACT.MISC_ITEMS)).rewardMiscItem(
+            misc.rewardMiscItem(
                 to,
                 _miscRewards.rewards[pick].miscType,
                 amount
@@ -75,11 +92,7 @@ contract Reward is InitNavigator {
 
     function rewardCraftingMaterial(address to, IGameRewards.CraftingMaterialReward[] memory rewards, uint multiplier, uint optionalNonce) internal {
 
-        CraftingMaterialContract mats = CraftingMaterialContract(
-            contractAddress(
-                INavigator.CONTRACT.CRAFTING_MATERIALS
-            )
-        );
+
         for (uint i = 0; i < rewards.length; i++) {
             uint roll = RNG.dn(block.number + optionalNonce + 10 + i + nonce,
                 rewards[i].max - rewards[i].min
@@ -99,13 +112,13 @@ contract Reward is InitNavigator {
     }
 
     function rewardXP(uint summoner, uint level, uint multiplier) internal {
-        uint reward = expRewardsByLevel[level-1];
+        uint reward = expRewardsByLevel[level - 1];
         reward = percentage(reward, 100 + multiplier);
-        ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).rewardXP(summoner, reward);
+        Summoners.rewardXP(summoner, reward);
     }
 
     function halfRewardXP(uint summoner, uint level) public onlyGameContracts {
         uint reward = expRewardsByLevel[level] / 4;
-        ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).rewardXP(summoner, reward);
+        Summoners.rewardXP(summoner, reward);
     }
 }

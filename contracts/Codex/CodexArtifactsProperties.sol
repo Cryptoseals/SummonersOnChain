@@ -1,18 +1,10 @@
-import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {GameObjects, GameObjects_Equipments} from "../Interfaces/GameObjects/IGameObjects.sol";
-import {InitNavigator} from "../Core/Navigator/InitNavigator.sol";
 pragma solidity ^0.8.0;
 
-contract CodexArtifactsProperties is InitNavigator, OwnableUpgradeable {
+contract CodexArtifactsProperties {
     string constant public index = "Codex";
     string constant public class = "ArtifactsProperties";
     string constant public version = "0.0.1";
-
-    function initialize(address _navigator) external initializer {
-        initializeNavigator(_navigator);
-        __Ownable_init();
-    }
 
     function properties(uint[] memory ids, uint tier) external view returns (GameObjects_Equipments.Artifact[] memory){
         GameObjects_Equipments.Artifact[] memory result = new  GameObjects_Equipments.Artifact[](ids.length);

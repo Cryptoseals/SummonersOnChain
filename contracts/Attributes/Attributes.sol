@@ -16,9 +16,14 @@ contract Attributes is Initializable, InitNavigator {
 
     mapping(uint => uint) public UsedPoints;
     mapping(uint => uint) public UsedLevelPoints;
+    ICalculator calculator;
 
     function initialize(address _navigator) public initializer {
         initializeNavigator(_navigator);
+    }
+
+    function initializeContracts() external {
+        calculator = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR));
     }
 
     function allocate(uint summoner, GameObjects_Stats.Stats memory _stats) external ensureNotPaused senderIsSummonerOwner(summoner) {
@@ -34,7 +39,6 @@ contract Attributes is Initializable, InitNavigator {
         Distributed[summoner] = true;
 
         // calculate cost.
-        ICalculator calculator = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR));
 
         uint _usedPoints = calculator.SumOfStatSetCost(_stats);
 
@@ -57,7 +61,6 @@ contract Attributes is Initializable, InitNavigator {
         uint used = UsedLevelPoints[summoner];
         if (used >= total) revert AlreadyAllocated(summoner, "NO POINTS LEFT");
 
-        ICalculator calculator = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR));
         uint nextStatLevel;
         // apply
         if (stat == GameObjects_Stats.StatsEnum.STR) {
@@ -100,13 +103,11 @@ contract Attributes is Initializable, InitNavigator {
     }
 
     function totalPointsOfSummoner(uint summoner) public view returns (uint) {
-        ISummoners Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
         uint level = Summoners.level(summoner);
         return GameConstants.SUMMONER_INITIAL_STAT_POINTS + (level - 1) * 10;
     }
 
     function levelPointsOfSummoner(uint summoner) public view returns (uint) {
-        ISummoners Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
         uint level = Summoners.level(summoner);
         return (level - 1) * 10;
     }

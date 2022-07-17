@@ -1,4 +1,4 @@
-import {UpgradeableCodex, INavigator} from "./../Common/UpgradeableCodex.sol";
+import {UpgradeableCodex, INavigator, ICodexPrefixAndSuffix} from "./../Common/UpgradeableCodex.sol";
 import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../Interfaces/GameObjects/IGameObjects.sol";
 import {EquipableUtils} from "../../Inventory/EquipableUtils.sol";
 
@@ -13,6 +13,18 @@ contract CodexArmors is UpgradeableCodex {
     string constant public index = "Codex";
     string constant public class = "BodyArmors";
     string constant public version = "0.0.1";
+
+    IndividualItems HEAVY_ARMOR_STATS;
+    IndividualItems MEDIUM_ARMOR_STATS;
+    IndividualItems LIGHT_ARMOR_STATS;
+
+    function initializeContracts() external {
+        PrefixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.PREFIX_CODEX));
+        SuffixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.SUFFIX_CODEX));
+        HEAVY_ARMOR_STATS = IndividualItems(contractAddress(INavigator.CONTRACT.HEAVY_ARMOR_STATS));
+        MEDIUM_ARMOR_STATS = IndividualItems(contractAddress(INavigator.CONTRACT.MEDIUM_ARMOR_STATS));
+        LIGHT_ARMOR_STATS = IndividualItems(contractAddress(INavigator.CONTRACT.LIGHT_ARMOR_STATS));
+    }
 
     function allArmor() external view returns (GameObjects_Equipments.EquipableItem[] memory){
         GameObjects_Equipments.EquipableItem[] memory result = new GameObjects_Equipments.EquipableItem[](64);
@@ -31,13 +43,13 @@ contract CodexArmors is UpgradeableCodex {
         if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
         if (_equipable.itemId > 0 && _equipable.itemId < 22) {
             // H
-            _armor = IndividualItems(contractAddress(INavigator.CONTRACT.HEAVY_ARMOR_STATS)).armor(_equipable.itemId, _equipable.itemTier);
+            _armor = HEAVY_ARMOR_STATS.armor(_equipable.itemId, _equipable.itemTier);
         } else if (_equipable.itemId > 21 && _equipable.itemId < 43) {
             // M
-            _armor = IndividualItems(contractAddress(INavigator.CONTRACT.MEDIUM_ARMOR_STATS)).armor(_equipable.itemId, _equipable.itemTier);
+            _armor = MEDIUM_ARMOR_STATS.armor(_equipable.itemId, _equipable.itemTier);
         } else if (_equipable.itemId > 42 && _equipable.itemId < 64) {
             // L
-            _armor = IndividualItems(contractAddress(INavigator.CONTRACT.LIGHT_ARMOR_STATS)).armor(_equipable.itemId, _equipable.itemTier);
+            _armor = LIGHT_ARMOR_STATS.armor(_equipable.itemId, _equipable.itemTier);
         } else {
             revert("???");
         }
@@ -55,13 +67,13 @@ contract CodexArmors is UpgradeableCodex {
 
         if (itemId > 0 && itemId < 22) {
             // HEAVY_ARMOR_STATS
-            _armor = IndividualItems(contractAddress(INavigator.CONTRACT.HEAVY_ARMOR_STATS)).armor(itemId, itemTier);
+            _armor = HEAVY_ARMOR_STATS.armor(itemId, itemTier);
         } else if (itemId > 21 && itemId < 43) {
             // MEDIUM_ARMOR_STATS
-            _armor = IndividualItems(contractAddress(INavigator.CONTRACT.MEDIUM_ARMOR_STATS)).armor(itemId, itemTier);
+            _armor = MEDIUM_ARMOR_STATS.armor(itemId, itemTier);
         } else if (itemId > 42 && itemId < 64) {
             // LIGHT_ARMOR_STATS
-            _armor = IndividualItems(contractAddress(INavigator.CONTRACT.LIGHT_ARMOR_STATS)).armor(itemId, itemTier);
+            _armor = LIGHT_ARMOR_STATS.armor(itemId, itemTier);
         } else {
             revert("invalid");
         }

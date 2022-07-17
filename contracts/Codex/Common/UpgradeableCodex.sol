@@ -13,6 +13,10 @@ contract UpgradeableCodex is InitNavigator {
         PrefixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.PREFIX_CODEX));
         SuffixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.SUFFIX_CODEX));
     }
+    function initializePSContracts() external {
+        PrefixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.PREFIX_CODEX));
+        SuffixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.SUFFIX_CODEX));
+    }
 
     function prefixAndSuffix(uint _prefix, uint _prefixTier, uint _suffix, uint _suffixTier) internal view returns (GameObjects_Equipments.Prefix memory, GameObjects_Equipments.Suffix memory) {
         GameObjects_Equipments.Prefix memory prefix = PrefixContract.prefix(_prefix, _prefixTier);

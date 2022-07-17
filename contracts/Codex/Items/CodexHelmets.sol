@@ -1,4 +1,4 @@
-import {UpgradeableCodex, INavigator} from "./../Common/UpgradeableCodex.sol";
+import {UpgradeableCodex, INavigator, ICodexPrefixAndSuffix} from "./../Common/UpgradeableCodex.sol";
 import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../Interfaces/GameObjects/IGameObjects.sol";
 import {EquipableUtils} from "../../Inventory/EquipableUtils.sol";
 pragma solidity ^0.8.0;
@@ -12,7 +12,17 @@ contract CodexHelmets is UpgradeableCodex {
     string constant public index = "Codex";
     string constant public class = "Helmets";
     string constant public version = "0.0.1";
+    IndividualItems HEAVY_HELMET_STATS;
+    IndividualItems MEDIUM_HELMET_STATS;
+    IndividualItems LIGHT_HELMET_STATS;
 
+    function initializeContracts() external {
+        PrefixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.PREFIX_CODEX));
+        SuffixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.SUFFIX_CODEX));
+        HEAVY_HELMET_STATS = IndividualItems(contractAddress(INavigator.CONTRACT.HEAVY_HELMET_STATS));
+        MEDIUM_HELMET_STATS = IndividualItems(contractAddress(INavigator.CONTRACT.MEDIUM_HELMET_STATS));
+        LIGHT_HELMET_STATS = IndividualItems(contractAddress(INavigator.CONTRACT.LIGHT_HELMET_STATS));
+    }
 
     function allHelmets() external view returns (GameObjects_Equipments.EquipableItem[] memory){
         GameObjects_Equipments.EquipableItem[] memory result = new GameObjects_Equipments.EquipableItem[](64);
@@ -31,13 +41,13 @@ contract CodexHelmets is UpgradeableCodex {
         if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
         if (_equipable.itemId > 0 && _equipable.itemId < 22) {
             // H
-            _helmet = IndividualItems(contractAddress(INavigator.CONTRACT.HEAVY_HELMET_STATS)).helmet(_equipable.itemId, _equipable.itemTier);
+            _helmet = HEAVY_HELMET_STATS.helmet(_equipable.itemId, _equipable.itemTier);
         } else if (_equipable.itemId > 21 && _equipable.itemId < 43) {
             // M
-            _helmet = IndividualItems(contractAddress(INavigator.CONTRACT.MEDIUM_HELMET_STATS)).helmet(_equipable.itemId, _equipable.itemTier);
+            _helmet = MEDIUM_HELMET_STATS.helmet(_equipable.itemId, _equipable.itemTier);
         } else if (_equipable.itemId > 42 && _equipable.itemId < 64) {
             // L
-            _helmet = IndividualItems(contractAddress(INavigator.CONTRACT.LIGHT_HELMET_STATS)).helmet(_equipable.itemId, _equipable.itemTier);
+            _helmet = LIGHT_HELMET_STATS.helmet(_equipable.itemId, _equipable.itemTier);
         } else {
             revert("???");
         }
@@ -55,13 +65,13 @@ contract CodexHelmets is UpgradeableCodex {
 
         if (itemId > 0 && itemId < 22) {
             // H
-            _helmet = IndividualItems(contractAddress(INavigator.CONTRACT.HEAVY_HELMET_STATS)).helmet(itemId, itemTier);
+            _helmet = HEAVY_HELMET_STATS.helmet(itemId, itemTier);
         } else if (itemId > 21 && itemId < 43) {
             // M
-            _helmet = IndividualItems(contractAddress(INavigator.CONTRACT.MEDIUM_HELMET_STATS)).helmet(itemId, itemTier);
+            _helmet = MEDIUM_HELMET_STATS.helmet(itemId, itemTier);
         } else if (itemId > 42 && itemId < 64) {
             // L
-            _helmet = IndividualItems(contractAddress(INavigator.CONTRACT.LIGHT_HELMET_STATS)).helmet(itemId, itemTier);
+            _helmet = LIGHT_HELMET_STATS.helmet(itemId, itemTier);
         } else {
             revert("invalid");
         }
@@ -89,7 +99,7 @@ contract CodexHelmets is UpgradeableCodex {
         _helmet.statBonus = EquipableUtils.sumStats(_helmet.statBonus, _pre.statBonus);
         _helmet.statBonus = EquipableUtils.sumStats(_helmet.statBonus, _suf.statBonus);
 
-//        _helmet.metadata.name = string(abi.encodePacked(_pre.title, " ", _helmet.metadata.name, " ", _suf.title));
+        //        _helmet.metadata.name = string(abi.encodePacked(_pre.title, " ", _helmet.metadata.name, " ", _suf.title));
         return _helmet;
     }
 
@@ -104,7 +114,7 @@ contract CodexHelmets is UpgradeableCodex {
 
         _helmet.statBonus = EquipableUtils.sumStats(_helmet.statBonus, _pre.statBonus);
 
-//        _helmet.metadata.name = string(abi.encodePacked(_pre.title, " ", _helmet.metadata.name));
+        //        _helmet.metadata.name = string(abi.encodePacked(_pre.title, " ", _helmet.metadata.name));
         return _helmet;
     }
 
@@ -120,7 +130,7 @@ contract CodexHelmets is UpgradeableCodex {
 
         _helmet.statBonus = EquipableUtils.sumStats(_helmet.statBonus, _suf.statBonus);
 
-//        _helmet.metadata.name = string(abi.encodePacked(_helmet.metadata.name, " ", _suf.title));
+        //        _helmet.metadata.name = string(abi.encodePacked(_helmet.metadata.name, " ", _suf.title));
         return _helmet;
     }
 

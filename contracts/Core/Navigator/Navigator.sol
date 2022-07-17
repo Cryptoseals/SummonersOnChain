@@ -26,6 +26,10 @@ contract Navigator is Initializable, OwnableUpgradeable, Guard, INavigator {
         _endingDate = block.timestamp + (_end * 1 days);
     }
 
+    function initializeContracts(address _seals) external onlyOwner {
+        Seals = ERC721(_seals);
+    }
+
     function extendGameTime(uint _end) external onlyOwner override {
         _endingDate = block.timestamp + (_end * 1 days);
     }

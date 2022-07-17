@@ -15,12 +15,20 @@ interface ICores {
     function burnCore(address from, uint id, uint amount) external;
 }
 
-contract EquipableItems is
-Initializable,
-OwnableUpgradeable,
-InitNavigator,
-ERC721EnumerableUpgradeable
+contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC721EnumerableUpgradeable
 {
+    ICores coreContract;
+    IAllCodexViews coreCodex;
+    IAllCodexViews elixircodex;
+    IAllCodexViews artifactCodex;
+    IAllCodexViews HELMETS_CODEX;
+    IAllCodexViews BODY_ARMORS_CODEX;
+    IAllCodexViews BOOTS_CODEX;
+    IAllCodexViews AMULETS_CODEX;
+    IAllCodexViews RINGS_CODEX;
+    IAllCodexViews EARRINGS_CODEX;
+    IAllCodexViews BELTS_CODEX;
+    IAllCodexViews WEAPONS_CODEX;
     mapping(uint256 => GameObjects.ItemType) public tokenToType;
     mapping(uint256 => uint256) public tokenToItemId;
     mapping(uint256 => uint256) public tokenToEnchantmentLevel;
@@ -38,6 +46,19 @@ ERC721EnumerableUpgradeable
         initializeNavigator(_navigator);
         __ERC721_init(name, symbol);
         __Ownable_init();
+    }
+
+    function initializeContracts() external {
+        coreContract = ICores(contractAddress(INavigator.CONTRACT.CORES));
+        coreCodex = IAllCodexViews(contractAddress(INavigator.CONTRACT.CORE_CODEX));
+        HELMETS_CODEX = IAllCodexViews(contractAddress(INavigator.CONTRACT.HELMETS_CODEX));
+        BODY_ARMORS_CODEX = IAllCodexViews(contractAddress(INavigator.CONTRACT.BODY_ARMORS_CODEX));
+        BOOTS_CODEX = IAllCodexViews(contractAddress(INavigator.CONTRACT.BOOTS_CODEX));
+        AMULETS_CODEX = IAllCodexViews(contractAddress(INavigator.CONTRACT.AMULETS_CODEX));
+        RINGS_CODEX = IAllCodexViews(contractAddress(INavigator.CONTRACT.RINGS_CODEX));
+        EARRINGS_CODEX = IAllCodexViews(contractAddress(INavigator.CONTRACT.EARRINGS_CODEX));
+        BELTS_CODEX = IAllCodexViews(contractAddress(INavigator.CONTRACT.BELTS_CODEX));
+        WEAPONS_CODEX = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX));
     }
 
     function mintItem(
@@ -167,7 +188,6 @@ ERC721EnumerableUpgradeable
     function enhance(uint256 tokenId, uint256 coreId) external {
         require(ownerOf(tokenId) == msg.sender, "not owned");
         // check balance
-        ICores coreContract = ICores(contractAddress(INavigator.CONTRACT.CORES));
         coreContract.burnCore(msg.sender, coreId, 1);
 
         uint bal = coreContract.balanceOf(msg.sender, coreId);
@@ -176,28 +196,28 @@ ERC721EnumerableUpgradeable
         GameObjects.ItemType _type = tokenToType[tokenId];
 
         // get core data.
-        ICore.Core memory core = IAllCodexViews(contractAddress(INavigator.CONTRACT.CORE_CODEX)).core(coreId);
+        ICore.Core memory core = coreCodex.core(coreId);
         // check requirements.
         GameObjects_Equipments.EquipableItem memory _equipableItem;
         GameObjects_Equipments.Weapon memory _equipableItemW;
         if (_type == GameObjects.ItemType.HELMET) {
-            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.HELMETS_CODEX)).helmetCore(itemId, 1);
+            _equipableItem = HELMETS_CODEX.helmetCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.ARMOR) {
-            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.BODY_ARMORS_CODEX)).armorCore(itemId, 1);
+            _equipableItem = BODY_ARMORS_CODEX.armorCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.WEAPON) {
-            _equipableItemW = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(itemId, 1);
+            _equipableItemW = WEAPONS_CODEX.weaponCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.OFFHAND) {
-            _equipableItemW = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX)).weaponCore(itemId, 1);
+            _equipableItemW = WEAPONS_CODEX.weaponCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.BOOTS) {
-            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.BOOTS_CODEX)).bootsCore(itemId, 1);
+            _equipableItem = BOOTS_CODEX.bootsCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.AMULET) {
-            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.AMULETS_CODEX)).amuletCore(itemId, 1);
+            _equipableItem = AMULETS_CODEX.amuletCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.RING) {
-            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.RINGS_CODEX)).ringCore(itemId, 1);
+            _equipableItem = RINGS_CODEX.ringCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.EARRING) {
-            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.EARRINGS_CODEX)).earringsCore(itemId, 1);
+            _equipableItem = EARRINGS_CODEX.earringsCore(itemId, 1);
         } else if (_type == GameObjects.ItemType.BELT) {
-            _equipableItem = IAllCodexViews(contractAddress(INavigator.CONTRACT.BELTS_CODEX)).beltCore(itemId, 1);
+            _equipableItem = BELTS_CODEX.beltCore(itemId, 1);
         } else {
             revert InvalidItem("Not Implemented");
         }

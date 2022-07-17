@@ -584,46 +584,46 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     }
 
 
-    function ringStats(uint index) internal view returns (GameObjects_Stats.Stats memory) {
+    function ringStats(uint _index) internal view returns (GameObjects_Stats.Stats memory) {
         GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
-        STR : BASE_STR[index],
-        DEX : BASE_DEX[index],
-        AGI : BASE_AGI[index],
-        INT : BASE_INT[index],
-        VIT : BASE_VIT[index],
-        LUCK : BASE_LUK[index]});
+        STR : BASE_STR[_index],
+        DEX : BASE_DEX[_index],
+        AGI : BASE_AGI[_index],
+        INT : BASE_INT[_index],
+        VIT : BASE_VIT[_index],
+        LUCK : BASE_LUK[_index]});
         return stats;
     }
 
-    function ringEleD(uint index) internal view returns (GameObjects_Stats.ElementalAtk memory) {
-        GameObjects_Stats.ElementalAtk memory stats = GameObjects_Stats.ElementalAtk({FIRE_ATK : BASE_MATK[index], EARTH_ATK : BASE_MATK[index], COLD_ATK : BASE_MATK[index], LIGHTNING_ATK : BASE_MATK[index], DARK_ATK : BASE_MATK[index], HOLY_ATK : BASE_MATK[index], VOID_ATK : 0});
+    function ringEleD(uint _index) internal view returns (GameObjects_Stats.ElementalAtk memory) {
+        GameObjects_Stats.ElementalAtk memory stats = GameObjects_Stats.ElementalAtk({FIRE_ATK : BASE_MATK[_index], EARTH_ATK : BASE_MATK[_index], COLD_ATK : BASE_MATK[_index], LIGHTNING_ATK : BASE_MATK[_index], DARK_ATK : BASE_MATK[_index], HOLY_ATK : BASE_MATK[_index], VOID_ATK : 0});
         return stats;
     }
 
-    function ringEle(uint index) internal view returns (GameObjects_Stats.ElementalDef memory) {
-        GameObjects_Stats.ElementalDef memory stats = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
+    function ringEle(uint _index) internal view returns (GameObjects_Stats.ElementalDef memory) {
+        GameObjects_Stats.ElementalDef memory stats = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_MDEF[_index], EARTH_DEF : BASE_MDEF[_index], COLD_DEF : BASE_MDEF[_index], LIGHTNING_DEF : BASE_MDEF[_index], DARK_DEF : BASE_MDEF[_index], HOLY_DEF : BASE_MDEF[_index], VOID_DEF : 0});
         return stats;
     }
 
-    function ringGenStats(uint index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
+    function ringGenStats(uint _index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
         GameObjects_Stats.GeneratedStats memory stats = GameObjects_Stats.GeneratedStats({
-        HP : BASE_HP[index],
-        P_ATK : BASE_ATK[index],
-        M_ATK : BASE_MATK[index],
-        P_DEF : BASE_DEF[index],
-        M_DEF : BASE_MDEF[index],
-        ACCURACY : BASE_ACC[index],
-        DODGE : BASE_DODGE[index],
-        CRIT : BASE_CRIT[index],
-        CRIT_MULTIPLIER : BASE_CRITDMG[index],
+        HP : BASE_HP[_index],
+        P_ATK : BASE_ATK[_index],
+        M_ATK : BASE_MATK[_index],
+        P_DEF : BASE_DEF[_index],
+        M_DEF : BASE_MDEF[_index],
+        ACCURACY : BASE_ACC[_index],
+        DODGE : BASE_DODGE[_index],
+        CRIT : BASE_CRIT[_index],
+        CRIT_MULTIPLIER : BASE_CRITDMG[_index],
         INFUSION : 0
         });
         return stats;
     }
 
 
-    function ringEleStats(uint index) internal view returns (GameObjects_Stats.ElementalStats memory _genStats) {
-        _genStats.ElementalDef = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_EDEF[index], EARTH_DEF : BASE_EDEF[index], COLD_DEF : BASE_EDEF[index], LIGHTNING_DEF : BASE_EDEF[index], DARK_DEF : BASE_EDEF[index], HOLY_DEF : BASE_EDEF[index], VOID_DEF : 0});
-        _genStats.ElementalAtk = GameObjects_Stats.ElementalAtk({FIRE_ATK : BASE_MATK[index], EARTH_ATK : BASE_MATK[index], COLD_ATK : BASE_MATK[index], LIGHTNING_ATK : BASE_MATK[index], DARK_ATK : BASE_MATK[index], HOLY_ATK : BASE_MATK[index], VOID_ATK : 0});
+    function ringEleStats(uint _index) internal view returns (GameObjects_Stats.ElementalStats memory _genStats) {
+        _genStats.ElementalDef = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_EDEF[_index], EARTH_DEF : BASE_EDEF[_index], COLD_DEF : BASE_EDEF[_index], LIGHTNING_DEF : BASE_EDEF[_index], DARK_DEF : BASE_EDEF[_index], HOLY_DEF : BASE_EDEF[_index], VOID_DEF : 0});
+        _genStats.ElementalAtk = GameObjects_Stats.ElementalAtk({FIRE_ATK : BASE_MATK[_index], EARTH_ATK : BASE_MATK[_index], COLD_ATK : BASE_MATK[_index], LIGHTNING_ATK : BASE_MATK[_index], DARK_ATK : BASE_MATK[_index], HOLY_ATK : BASE_MATK[_index], VOID_ATK : 0});
     }
 }

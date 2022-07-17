@@ -1,13 +1,6 @@
 import {ethers, upgrades} from "hardhat";
 import fs from "fs";
 import {CONTRACTS, DeployedFileLocations} from "./helpers/constants";
-import * as Axes from "./helpers/Weapon/CodexAxes";
-import * as Bows from "./helpers/Weapon/CodexBows";
-import * as Daggers from "./helpers/Weapon/CodexDaggers";
-import * as Staves from "./helpers/Weapon/CodexStaves";
-import * as Shields from "./helpers/Weapon/CodexShields";
-import * as Focus from "./helpers/Weapon/CodexFocus";
-import * as Swords from "./helpers/Weapon/CodexSwords";
 
 const deployment_mode = process.env?.DEPLOYMENT_MODE || "dev-local"
 

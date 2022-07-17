@@ -17,13 +17,24 @@ interface IAdventures {
 }
 
 contract AdventureControls is InitNavigator {
+
+    IAdventures adventuresContract;
+    ICodexEnemies enemyCodexContract;
+    ICalculator calculatorContract;
+
     function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
+     }
+
+    function initializeContracts() external {
+        adventuresContract = IAdventures(contractAddress(INavigator.CONTRACT.ADVENTURES));
+        enemyCodexContract = ICodexEnemies(contractAddress(INavigator.CONTRACT.CODEX_ENEMIES));
+        calculatorContract = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR));
     }
 
     function basicAttack(uint summoner) external ensureNotPaused
     senderIsSummonerOwner(summoner) {
-        IAdventures(contractAddress(INavigator.CONTRACT.ADVENTURES)).attack(summoner, 100, 0);
+        adventuresContract.attack(summoner, 100, 0);
     }
 
     function spellAttack(uint summoner, ISpell.SpellCategories spellCategory, uint spellId) external
@@ -34,12 +45,10 @@ contract AdventureControls is InitNavigator {
 
         GameObjects.Element dummyEle = GameObjects.Element.FIRE;
 
-        IAdventures adventures = IAdventures(contractAddress(INavigator.CONTRACT.ADVENTURES));
+        IAdventures adventures = adventuresContract;
         IAdventure.AdventureBattle memory _battle = adventures.activeBattle(summoner);
 
-        ICalculator calc = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR));
-        IMonster.Monster memory monster = ICodexEnemies(
-            contractAddress(INavigator.CONTRACT.CODEX_ENEMIES)).enemy(
+        IMonster.Monster memory monster = enemyCodexContract.enemy(
             _battle.monster.element,
             _battle.monster.monsterId,
             _battle.monster.level
@@ -48,19 +57,19 @@ contract AdventureControls is InitNavigator {
         // calculate the extra dps from spell atk of attacker and def from enemy stats
         (
         GameObjects_Stats.BattleStats memory summ,
-        ) = calc.PVEBattleStatsByElement(summoner, monster, dummyEle);
+        ) = calculatorContract.PVEBattleStatsByElement(summoner, monster, dummyEle);
 
         // TODO, override the spell mult (100)
-        IAdventures(contractAddress(INavigator.CONTRACT.ADVENTURES)).attack(summoner, 100, summ.DPS);
+        adventuresContract.attack(summoner, 100, summ.DPS);
     }
 
     function settleBattle(uint summoner) external ensureNotPaused
     senderIsSummonerOwner(summoner) {
-        IAdventures(contractAddress(INavigator.CONTRACT.ADVENTURES)).settleBattle(summoner);
+        adventuresContract.settleBattle(summoner);
     }
 
     function flee(uint summoner) external ensureNotPaused
     senderIsSummonerOwner(summoner) {
-        IAdventures(contractAddress(INavigator.CONTRACT.ADVENTURES)).flee(summoner);
+        adventuresContract.flee(summoner);
     }
 }

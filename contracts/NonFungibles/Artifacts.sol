@@ -15,7 +15,8 @@ pragma solidity ^0.8.0;
 
 contract Artifacts is Initializable, OwnableUpgradeable, InitNavigator, ERC721EnumerableUpgradeable {
 
-
+    ArtifactProps props;
+    ICodexRandom rng;
     mapping(uint => uint[]) public tokenToArtifactProps;
     mapping(uint => uint) public tokenToEnchantmentLevel;
 
@@ -35,11 +36,15 @@ contract Artifacts is Initializable, OwnableUpgradeable, InitNavigator, ERC721En
         __Ownable_init();
     }
 
+    function initializeContracts() external initializer {
+        props = ArtifactProps(contractAddress(INavigator.CONTRACT.ARTIFACT_PROPS_CODEX));
+        rng = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
+    }
+
     function mintItem(address player, uint artifactTier) external onlyGameContracts {
         uint nextToken = totalSupply() + 1;
         tokenToEnchantmentLevel[nextToken] = artifactTier;
 
-        ICodexRandom rng = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
 
         uint[] memory rolls = new uint[](3);
 
@@ -69,7 +74,6 @@ contract Artifacts is Initializable, OwnableUpgradeable, InitNavigator, ERC721En
 
     function artifact(uint id) public view returns (GameObjects_Equipments.Artifact memory _result){
         require(_exists(id), "not found");
-        ArtifactProps props = ArtifactProps(contractAddress(INavigator.CONTRACT.ARTIFACT_PROPS_CODEX));
         GameObjects_Equipments.Artifact[] memory artifactProps = props.properties(tokenToArtifactProps[id], tokenToEnchantmentLevel[id]);
         for (uint i = 0; i < artifactProps.length; i++) {
             _result.statBonus = EquipableUtils.sumStats(_result.statBonus, artifactProps[i].statBonus);
@@ -96,7 +100,7 @@ contract Artifacts is Initializable, OwnableUpgradeable, InitNavigator, ERC721En
             _artifactsOfOwner[i].tokenId = tokenOfOwnerByIndex(_owner, i);
             _artifactsOfOwner[i].artifact = artifact(_artifactsOfOwner[i].tokenId);
             _artifactsOfOwner[i].props = tokenToArtifactProps[_artifactsOfOwner[i].tokenId];
-            unchecked {i++;}
+        unchecked {i++;}
         }
         return _artifactsOfOwner;
     }

@@ -1,4 +1,4 @@
-import {UpgradeableCodex, INavigator} from "./../Common/UpgradeableCodex.sol";
+import {UpgradeableCodex, INavigator, ICodexPrefixAndSuffix} from "./../Common/UpgradeableCodex.sol";
 import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../Interfaces/GameObjects/IGameObjects.sol";
 import {EquipableUtils} from "../../Inventory/EquipableUtils.sol";
 pragma solidity ^0.8.0;
@@ -11,6 +11,26 @@ contract CodexWeapons is UpgradeableCodex {
     string constant public index = "Codex";
     string constant public class = "Weapons";
     string constant public version = "0.0.1";
+
+    IndividualItems SWORD_STATS;
+    IndividualItems DAGGER_STATS;
+    IndividualItems BOW_STATS;
+    IndividualItems AXE_STATS;
+    IndividualItems STAFF_STATS;
+    IndividualItems FOCUS_STATS;
+    IndividualItems SHIELD_STATS;
+
+    function initializeContracts() external {
+        PrefixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.PREFIX_CODEX));
+        SuffixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.SUFFIX_CODEX));
+        SWORD_STATS = IndividualItems(contractAddress(INavigator.CONTRACT.SWORD_STATS));
+        DAGGER_STATS = IndividualItems(contractAddress(INavigator.CONTRACT.DAGGER_STATS));
+        BOW_STATS = IndividualItems(contractAddress(INavigator.CONTRACT.BOW_STATS));
+        AXE_STATS = IndividualItems(contractAddress(INavigator.CONTRACT.AXE_STATS));
+        STAFF_STATS = IndividualItems(contractAddress(INavigator.CONTRACT.STAFF_STATS));
+        FOCUS_STATS = IndividualItems(contractAddress(INavigator.CONTRACT.FOCUS_STATS));
+        SHIELD_STATS = IndividualItems(contractAddress(INavigator.CONTRACT.SHIELD_STATS));
+    }
 
     function allWeapons() external view returns (GameObjects_Equipments.Weapon[] memory){
         GameObjects_Equipments.Weapon[] memory result = new GameObjects_Equipments.Weapon[](148);
@@ -30,7 +50,7 @@ contract CodexWeapons is UpgradeableCodex {
 
         if (_equipable.itemId > 0 && _equipable.itemId < 22) {
             // Swords
-            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.SWORD_STATS)).weapon(_equipable.itemId, _equipable.itemTier);
+            _weapon = SWORD_STATS.weapon(_equipable.itemId, _equipable.itemTier);
             if (_equipable.element == GameObjects.Element.FIRE) {
                 _weapon.elementalStats.ElementalAtk.FIRE_ATK = _weapon.generatedStatBonus.P_ATK;
             } else if (_equipable.element == GameObjects.Element.COLD) {
@@ -51,7 +71,7 @@ contract CodexWeapons is UpgradeableCodex {
 
         } else if (_equipable.itemId > 21 && _equipable.itemId < 43) {
             // Dagger
-            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.DAGGER_STATS)).weapon(_equipable.itemId, _equipable.itemTier);
+            _weapon = DAGGER_STATS.weapon(_equipable.itemId, _equipable.itemTier);
             if (_equipable.element == GameObjects.Element.FIRE) {
                 _weapon.elementalStats.ElementalAtk.FIRE_ATK = _weapon.generatedStatBonus.P_ATK;
             } else if (_equipable.element == GameObjects.Element.COLD) {
@@ -69,7 +89,7 @@ contract CodexWeapons is UpgradeableCodex {
             }
         } else if (_equipable.itemId > 42 && _equipable.itemId < 64) {
             // Bow
-            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.BOW_STATS)).weapon(_equipable.itemId, _equipable.itemTier);
+            _weapon = BOW_STATS.weapon(_equipable.itemId, _equipable.itemTier);
             if (_equipable.element == GameObjects.Element.FIRE) {
                 _weapon.elementalStats.ElementalAtk.FIRE_ATK = _weapon.generatedStatBonus.P_ATK;
             } else if (_equipable.element == GameObjects.Element.COLD) {
@@ -90,7 +110,7 @@ contract CodexWeapons is UpgradeableCodex {
 
         } else if (_equipable.itemId > 63 && _equipable.itemId < 85) {
             // Axe
-            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.AXE_STATS)).weapon(_equipable.itemId, _equipable.itemTier);
+            _weapon = AXE_STATS.weapon(_equipable.itemId, _equipable.itemTier);
 
             if (_equipable.element == GameObjects.Element.FIRE) {
                 _weapon.elementalStats.ElementalAtk.FIRE_ATK = _weapon.generatedStatBonus.P_ATK;
@@ -112,7 +132,7 @@ contract CodexWeapons is UpgradeableCodex {
 
         } else if (_equipable.itemId > 84 && _equipable.itemId < 106) {
             // Staff
-            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.STAFF_STATS)).weapon(_equipable.itemId, _equipable.itemTier);
+            _weapon = STAFF_STATS.weapon(_equipable.itemId, _equipable.itemTier);
             _weapon.elementalStats.ElementalAtk.FIRE_ATK = _weapon.generatedStatBonus.M_ATK;
             _weapon.elementalStats.ElementalAtk.COLD_ATK = _weapon.generatedStatBonus.M_ATK;
             _weapon.elementalStats.ElementalAtk.LIGHTNING_ATK = _weapon.generatedStatBonus.M_ATK;
@@ -125,7 +145,7 @@ contract CodexWeapons is UpgradeableCodex {
             }
         } else if (_equipable.itemId > 105 && _equipable.itemId < 127) {
             // Focus
-            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.FOCUS_STATS)).weapon(_equipable.itemId, _equipable.itemTier);
+            _weapon = FOCUS_STATS.weapon(_equipable.itemId, _equipable.itemTier);
 
             if (_equipable.element == GameObjects.Element.FIRE) {
                 _weapon.elementalStats.ElementalAtk.FIRE_ATK = _weapon.generatedStatBonus.M_ATK;
@@ -146,7 +166,7 @@ contract CodexWeapons is UpgradeableCodex {
             }
         } else if (_equipable.itemId < 148) {
             // Shield
-            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.SHIELD_STATS)).weapon(_equipable.itemId, _equipable.itemTier);
+            _weapon = SHIELD_STATS.weapon(_equipable.itemId, _equipable.itemTier);
             if (_equipable.element == GameObjects.Element.VOID) {
                 _weapon.elementalStats.ElementalDef.VOID_DEF = _weapon.generatedStatBonus.P_DEF;
             }
@@ -168,25 +188,25 @@ contract CodexWeapons is UpgradeableCodex {
 
         if (itemId > 0 && itemId < 22) {
             // Swords
-            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.SWORD_STATS)).weapon(itemId, itemTier);
+            _weapon = SWORD_STATS.weapon(itemId, itemTier);
         } else if (itemId > 21 && itemId < 43) {
             // Dagger
-            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.DAGGER_STATS)).weapon(itemId, itemTier);
+            _weapon = DAGGER_STATS.weapon(itemId, itemTier);
         } else if (itemId > 42 && itemId < 64) {
             // Bow
-            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.BOW_STATS)).weapon(itemId, itemTier);
+            _weapon = BOW_STATS.weapon(itemId, itemTier);
         } else if (itemId > 63 && itemId < 85) {
             // Axe
-            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.AXE_STATS)).weapon(itemId, itemTier);
+            _weapon = AXE_STATS.weapon(itemId, itemTier);
         } else if (itemId > 84 && itemId < 106) {
             // Staff
-            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.STAFF_STATS)).weapon(itemId, itemTier);
+            _weapon = STAFF_STATS.weapon(itemId, itemTier);
         } else if (itemId > 105 && itemId < 127) {
             // Focus
-            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.FOCUS_STATS)).weapon(itemId, itemTier);
+            _weapon = FOCUS_STATS.weapon(itemId, itemTier);
         } else if (itemId < 148) {
             // Shield
-            _weapon = IndividualItems(contractAddress(INavigator.CONTRACT.SHIELD_STATS)).weapon(itemId, itemTier);
+            _weapon = SHIELD_STATS.weapon(itemId, itemTier);
         } else {
             revert("invalid");
         }

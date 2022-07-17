@@ -572,31 +572,31 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     }
 
 
-    function beltStats(uint index) internal view returns (GameObjects_Stats.Stats memory) {
+    function beltStats(uint _index) internal view returns (GameObjects_Stats.Stats memory) {
         GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
-        STR : BASE_STR[index],
-        DEX : BASE_DEX[index],
-        AGI : BASE_AGI[index],
-        INT : BASE_INT[index],
-        VIT : BASE_VIT[index],
-        LUCK : BASE_LUK[index]});
+        STR : BASE_STR[_index],
+        DEX : BASE_DEX[_index],
+        AGI : BASE_AGI[_index],
+        INT : BASE_INT[_index],
+        VIT : BASE_VIT[_index],
+        LUCK : BASE_LUK[_index]});
         return stats;
     }
 
-    function beltEle(uint index) internal view returns (GameObjects_Stats.ElementalDef memory) {
-        GameObjects_Stats.ElementalDef memory stats = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_EDEF[index], EARTH_DEF : BASE_EDEF[index], COLD_DEF : BASE_EDEF[index], LIGHTNING_DEF : BASE_EDEF[index], DARK_DEF : BASE_EDEF[index], HOLY_DEF : BASE_EDEF[index], VOID_DEF : 0});
+    function beltEle(uint _index) internal view returns (GameObjects_Stats.ElementalDef memory) {
+        GameObjects_Stats.ElementalDef memory stats = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_EDEF[_index], EARTH_DEF : BASE_EDEF[_index], COLD_DEF : BASE_EDEF[_index], LIGHTNING_DEF : BASE_EDEF[_index], DARK_DEF : BASE_EDEF[_index], HOLY_DEF : BASE_EDEF[_index], VOID_DEF : 0});
         return stats;
     }
 
-    function beltGenStats(uint index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
+    function beltGenStats(uint _index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
         GameObjects_Stats.GeneratedStats memory stats = GameObjects_Stats.GeneratedStats({
-        HP : BASE_HP[index],
+        HP : BASE_HP[_index],
         P_ATK : 0,
         M_ATK : 0,
-        P_DEF : BASE_DEF[index],
-        M_DEF : BASE_MDEF[index],
-        ACCURACY : BASE_ACC[index],
-        DODGE : BASE_DODGE[index],
+        P_DEF : BASE_DEF[_index],
+        M_DEF : BASE_MDEF[_index],
+        ACCURACY : BASE_ACC[_index],
+        DODGE : BASE_DODGE[_index],
         CRIT : 0,
         CRIT_MULTIPLIER : 0,
         INFUSION : 0
@@ -604,7 +604,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         return stats;
     }
 
-    function beltEleStats(uint index) internal view returns (GameObjects_Stats.ElementalStats memory _genStats) {
-        _genStats.ElementalDef = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_EDEF[index], EARTH_DEF : BASE_EDEF[index], COLD_DEF : BASE_EDEF[index], LIGHTNING_DEF : BASE_EDEF[index], DARK_DEF : BASE_EDEF[index], HOLY_DEF : BASE_EDEF[index], VOID_DEF : 0});
+    function beltEleStats(uint _index) internal view returns (GameObjects_Stats.ElementalStats memory _genStats) {
+        _genStats.ElementalDef = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_EDEF[_index], EARTH_DEF : BASE_EDEF[_index], COLD_DEF : BASE_EDEF[_index], LIGHTNING_DEF : BASE_EDEF[_index], DARK_DEF : BASE_EDEF[_index], HOLY_DEF : BASE_EDEF[_index], VOID_DEF : 0});
     }
 }

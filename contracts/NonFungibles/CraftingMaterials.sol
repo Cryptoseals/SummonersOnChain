@@ -11,6 +11,15 @@ pragma solidity ^0.8.0;
 contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgradeable {
     using EnumerableSetUpgradeable for EnumerableSetUpgradeable.UintSet;
     using Strings for uint256;
+    IProcessingMaterialRecipes ORE_PROCESSING_RECIPES;
+    IProcessingMaterialRecipes WOOD_PROCESSING_RECIPES;
+    IProcessingMaterialRecipes LEATHER_PROCESSING_RECIPES;
+    IProcessingMaterialRecipes CLOTH_PROCESSING_RECIPES;
+    IProcessingMaterialRecipes GEMSTONE_PROCESSING_RECIPES;
+    IProcessingMaterialRecipes ORE_UPGRADING_RECIPES;
+    IProcessingMaterialRecipes WOOD_UPGRADING_RECIPES;
+    IProcessingMaterialRecipes CLOTH_UPGRADING_RECIPES;
+    IProcessingMaterialRecipes GEMSTONE_UPGRADING_RECIPES;
 
     uint nextProcessId;
 
@@ -21,6 +30,18 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         initializeNavigator(_navigator);
         __ERC1155_init(uri);
         __Ownable_init();
+    }
+
+    function initializeContracts() external {
+        ORE_PROCESSING_RECIPES = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.ORE_PROCESSING_RECIPES));
+        WOOD_PROCESSING_RECIPES = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.WOOD_PROCESSING_RECIPES));
+        LEATHER_PROCESSING_RECIPES = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.LEATHER_PROCESSING_RECIPES));
+        CLOTH_PROCESSING_RECIPES = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.CLOTH_PROCESSING_RECIPES));
+        GEMSTONE_PROCESSING_RECIPES = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.GEMSTONE_PROCESSING_RECIPES));
+        ORE_UPGRADING_RECIPES = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.ORE_UPGRADING_RECIPES));
+        WOOD_UPGRADING_RECIPES = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.WOOD_UPGRADING_RECIPES));
+        CLOTH_UPGRADING_RECIPES = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.CLOTH_UPGRADING_RECIPES));
+        GEMSTONE_UPGRADING_RECIPES = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.GEMSTONE_UPGRADING_RECIPES));
     }
 
     function mintMaterial(ICraftingMaterials.CraftingMaterial material, address to, uint amount) external onlyGameContracts {
@@ -42,15 +63,15 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         ICraftingMaterials.ProcessingRecipe memory _recipe;
 
         if (materialType == ICraftingMaterials.MaterialTypes.ORE) {
-            _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.ORE_PROCESSING_RECIPES)).recipe(targetMaterial, amount);
+            _recipe = ORE_PROCESSING_RECIPES.recipe(targetMaterial, amount);
         } else if (materialType == ICraftingMaterials.MaterialTypes.WOOD) {
-            _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.WOOD_PROCESSING_RECIPES)).recipe(targetMaterial, amount);
+            _recipe = WOOD_PROCESSING_RECIPES.recipe(targetMaterial, amount);
         } else if (materialType == ICraftingMaterials.MaterialTypes.LEATHER) {
-            _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.LEATHER_PROCESSING_RECIPES)).recipe(targetMaterial, amount);
+            _recipe = LEATHER_PROCESSING_RECIPES.recipe(targetMaterial, amount);
         } else if (materialType == ICraftingMaterials.MaterialTypes.CLOTH) {
-            _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.CLOTH_PROCESSING_RECIPES)).recipe(targetMaterial, amount);
+            _recipe = CLOTH_PROCESSING_RECIPES.recipe(targetMaterial, amount);
         } else if (materialType == ICraftingMaterials.MaterialTypes.GEMSTONE) {
-            _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.GEMSTONE_PROCESSING_RECIPES)).recipe(targetMaterial, amount);
+            _recipe = GEMSTONE_PROCESSING_RECIPES.recipe(targetMaterial, amount);
         } else {
             revert("?");
         }
@@ -108,13 +129,13 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         ICraftingMaterials.CraftingMaterial targetMaterial, uint amount) external {
         ICraftingMaterials.UpgradingRecipe memory _recipe;
         if (materialType == ICraftingMaterials.MaterialTypes.ORE) {
-            _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.ORE_UPGRADING_RECIPES)).upgradeRecipe(targetMaterial, amount);
+            _recipe = ORE_UPGRADING_RECIPES.upgradeRecipe(targetMaterial, amount);
         } else if (materialType == ICraftingMaterials.MaterialTypes.WOOD) {
-            _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.WOOD_UPGRADING_RECIPES)).upgradeRecipe(targetMaterial, amount);
+            _recipe = WOOD_UPGRADING_RECIPES.upgradeRecipe(targetMaterial, amount);
         } else if (materialType == ICraftingMaterials.MaterialTypes.CLOTH) {
-            _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.CLOTH_UPGRADING_RECIPES)).upgradeRecipe(targetMaterial, amount);
+            _recipe = CLOTH_UPGRADING_RECIPES.upgradeRecipe(targetMaterial, amount);
         } else if (materialType == ICraftingMaterials.MaterialTypes.GEMSTONE) {
-            _recipe = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.GEMSTONE_UPGRADING_RECIPES)).upgradeRecipe(targetMaterial, amount);
+            _recipe = GEMSTONE_UPGRADING_RECIPES.upgradeRecipe(targetMaterial, amount);
         } else {
             revert("?");
         }

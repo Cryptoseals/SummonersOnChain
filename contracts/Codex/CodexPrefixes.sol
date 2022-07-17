@@ -1,4 +1,4 @@
-import {GameObjects,GameObjects_Stats, GameObjects_Equipments} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexPrefixes {

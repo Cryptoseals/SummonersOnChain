@@ -8,9 +8,15 @@ pragma solidity ^0.8.0;
 
 contract InitNavigator is Initializable {
     INavigator Navigator;
+    ISummoners Summoners;
 
     function initializeNavigator(address _navigator) internal {
         Navigator = INavigator(_navigator);
+        Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
+    }
+
+    function initSummonerContract() external {
+        Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
     }
 
     modifier ensureNotPaused() {
@@ -19,13 +25,12 @@ contract InitNavigator is Initializable {
     }
 
     modifier senderIsSummonerOwner(uint summoner) {
-        ISummoners Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
+
         if (!Summoners.senderIsOwner(summoner, msg.sender)) revert UnauthorizedSender(msg.sender, "CALLER IS NOT THE OWNER");
         _;
     }
 
     function ownerOfSummoner(uint summoner) public view returns (address) {
-        ISummoners Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
         return Summoners.ownerOf(summoner);
     }
 
@@ -52,9 +57,7 @@ contract InitNavigator is Initializable {
         _;
     }
     modifier notInFight(uint summoner) {
-        ISummoners Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
         require(Summoners.state(summoner) != GameEntities.SummonerState.IN_FIGHT, "IN_FIGHT");
         _;
     }
-
 }

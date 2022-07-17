@@ -15,9 +15,19 @@ pragma solidity ^0.8.0;
 
 contract Calculator is Initializable, InitNavigator {
 
+    IElixirAndArtifactSlots elixirAndArtifactSlots;
+    IAttributes attributes;
+    IEquipable inventory;
 
     function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
+    }
+
+    function initializeContracts() external initializer {
+        address inventoryAddress = contractAddress(INavigator.CONTRACT.INVENTORY);
+        elixirAndArtifactSlots = IElixirAndArtifactSlots(inventoryAddress);
+        inventory = IEquipable(inventoryAddress);
+        attributes = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES));
     }
 
 
@@ -216,16 +226,6 @@ contract Calculator is Initializable, InitNavigator {
         return uint(chance);
     }
 
-    //    // chance based calculations
-    //    function IsSuccessfulDiceRoll100(uint summoner, uint seed, uint chance) public view returns (bool, uint) {
-    //        ICodexRandom RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
-    //        uint roll = RNG.d100(seed);
-    //        /* @notice */
-    //        /* example: assume crit chance = 10, use rolled 80, 100-80=20, 20 <= 10, false*/
-    //        /* example2: assume crit chance = 20, use rolled 80, 100-80=20, 20 <= 20, true*/
-    //        return (roll <= chance, roll);
-    //    }
-
     // STAT RELATED CALCULATIONS
     function DPS(uint ATK, uint STAT, uint DEF, uint PEN) external pure returns (uint){
         return DPSWDecimals(ATK, STAT, DEF, PEN) / GameConstants.GAME_DECIMAL;
@@ -310,7 +310,7 @@ contract Calculator is Initializable, InitNavigator {
 
         //function getSummonerBattleStats(uint summoner) public view returns
         //(GameObjects_Stats.Stats memory _stats, GameObjects_Stats.GeneratedStats memory _gen_stats, GameObjects_Stats.ElementalStats memory _ele_stats)
-        GameObjects_Stats.Stats memory _summonerStats = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(summoner);
+        GameObjects_Stats.Stats memory _summonerStats = attributes.stats(summoner);
 
         (GameObjects_Stats.Stats memory _stats_eq,
         GameObjects_Stats.GeneratedStats memory _gen_stats_eq,
@@ -318,9 +318,9 @@ contract Calculator is Initializable, InitNavigator {
 
         (GameObjects_Stats.Stats memory _stats_fx,
         GameObjects_Stats.GeneratedStats memory _gen_stats_fx,
-        GameObjects_Stats.ElementalStats memory _ele_stats_fx) = IElixirAndArtifactSlots(contractAddress(INavigator.CONTRACT.INVENTORY)).activeEffects(summoner);
+        GameObjects_Stats.ElementalStats memory _ele_stats_fx) = elixirAndArtifactSlots.activeEffects(summoner);
 
-        lvl = ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).level(summoner);
+        lvl = Summoners.level(summoner);
         _stats = EquipableUtils.sumStats(_stats_fx, _stats_eq);
         _stats = EquipableUtils.sumStats(_summonerStats, _stats);
         _generated_stats = EquipableUtils.sumGeneratedStats(_gen_stats_eq, _gen_stats_fx);
@@ -341,7 +341,7 @@ contract Calculator is Initializable, InitNavigator {
         GameObjects_Stats.ElementalStats memory) {
         (GameObjects_Stats.Stats memory _stats_eq,
         GameObjects_Stats.GeneratedStats memory _gen_stats_eq,
-        GameObjects_Stats.ElementalStats memory _ele_stats_eq) = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY)).getSummonerBattleStats(summoner);
+        GameObjects_Stats.ElementalStats memory _ele_stats_eq) = inventory.getSummonerBattleStats(summoner);
 
         GameObjects_Stats.GeneratedStats memory _base = SummonerBaseStats();
         _gen_stats_eq = EquipableUtils.sumGeneratedStats(_gen_stats_eq, _base);

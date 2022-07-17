@@ -15,4 +15,7 @@ interface IElixirsAndArtifacts {
     function decodeElixir(uint tokenId) external pure returns (uint, uint);
 
     function balanceOf(address account, uint256 id) external view returns (uint256);
+
+    function ownerOf(uint256 tokenId) external view returns (address owner);
+
 }
