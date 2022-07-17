@@ -167,5 +167,6 @@ export const DeployedFileLocations = {
     misc_items: "./scripts/deployed-contracts/misc_items.json",
     artifacts: "./scripts/deployed-contracts/artifacts.json",
     elixirs: "./scripts/deployed-contracts/elixirs.json",
+    cores: "./scripts/deployed-contracts/cores.json",
 }
 

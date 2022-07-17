@@ -26,6 +26,10 @@ async function main() {
     const deployedCodexHelmet = JSON.parse(fs.readFileSync(DeployedFileLocations.codex_armor, 'utf-8'))
 
     const deployedCodexBoots = JSON.parse(fs.readFileSync(DeployedFileLocations.codex_armor, 'utf-8'))
+    const deployedCodexAmulets = JSON.parse(fs.readFileSync(DeployedFileLocations.codex_amulets, 'utf-8'))
+    const deployedCodexRings = JSON.parse(fs.readFileSync(DeployedFileLocations.codex_rings, 'utf-8'))
+    const deployedCodexEarrings = JSON.parse(fs.readFileSync(DeployedFileLocations.codex_earrings, 'utf-8'))
+    const deployedCodexBelts = JSON.parse(fs.readFileSync(DeployedFileLocations.codex_belts, 'utf-8'))
 
     const deployedCrafting = JSON.parse(fs.readFileSync(DeployedFileLocations.crafting, 'utf-8'))
 
@@ -38,22 +42,25 @@ async function main() {
     const deployedReward = JSON.parse(fs.readFileSync(DeployedFileLocations.rewards, 'utf-8'))
 
 
-    console.log(deployedAdventureControls)
-    console.log(deployedAdventure)
-    console.log(deployedArtifacts)
-    console.log(deployedAttributes)
-    console.log(deployedCalculator)
-    console.log(deployedCodexAdventures)
-    console.log(deployedWeaponsCodex)
-    console.log(deployedCodexArmors)
-    console.log(deployedCodexHelmet)
-    console.log(deployedCodexBoots)
-    console.log(deployedCrafting)
-    console.log(deployedCraftingMaterials)
-    console.log(deployedEquipable)
-    console.log(deployedEquipableItems)
-    console.log(deployedReward)
-
+    console.log(deployedAdventureControls.adventureControls)
+    console.log(deployedAdventure.adventures)
+    console.log(deployedArtifacts.artifacts)
+    console.log(deployedAttributes.attributes)
+    console.log(deployedCalculator.calculator)
+    console.log(deployedCodexAdventures.codexAdventures)
+    console.log(deployedWeaponsCodex.CodexWeapons)
+    console.log(deployedCodexArmors.codexArmors)
+    console.log(deployedCodexArmors.codexHelmets)
+    console.log(deployedCodexArmors.codexBoots)
+    console.log(deployedCodexAmulets.CodexAmulets)
+    console.log(deployedCodexRings.CodexRings)
+    console.log(deployedCodexEarrings.CodexEarrings)
+    console.log(deployedCodexBelts.CodexBelts)
+    console.log(deployedCrafting.crafting)
+    console.log(deployedCraftingMaterials.craftingMaterials)
+    console.log(deployedEquipable.inventory)
+    console.log(deployedEquipableItems.equipableItems)
+    console.log(deployedReward.rewards)
 
 
     const adventureControls = helpercontract.attach(deployedAdventureControls.adventureControls);
@@ -66,7 +73,7 @@ async function main() {
 
     const calculator = helpercontract.attach(deployedCalculator.calculator);
 
-    const codexAdventures = helpercontract.attach(deployedCodexAdventures.adventures);
+    const codexAdventures = helpercontract.attach(deployedCodexAdventures.codexAdventures);
 
     const weaponCodex = helpercontract.attach(deployedWeaponsCodex.CodexWeapons);
 
@@ -75,6 +82,11 @@ async function main() {
     const codexHelmet = helpercontract.attach(deployedCodexArmors.codexHelmets);
 
     const codexBoots = helpercontract.attach(deployedCodexArmors.codexBoots);
+
+    const codexAmulet = helpercontract.attach(deployedCodexAmulets.CodexAmulets);
+    const codexRings = helpercontract.attach(deployedCodexRings.CodexRings);
+    const codexEarrings = helpercontract.attach(deployedCodexEarrings.CodexEarrings);
+    const codexBelts = helpercontract.attach(deployedCodexBelts.CodexBelts);
 
     const crafting = helpercontract.attach(deployedCrafting.crafting);
 
@@ -86,52 +98,83 @@ async function main() {
 
     const reward = helpercontract.attach(deployedReward.rewards);
 
+    //
+    // tx = await adventureControls.initializeContracts();
+    // await tx.wait(1)
+    // console.log("adventureControls")
+    //
+    // tx = await adventures.initializeContracts();
+    // await tx.wait(1)
+    // console.log("adventures")
+    //
+    // tx = await artifacts.initializeContracts();
+    // await tx.wait(1)
+    // console.log("artifacts")
+    //
+    // tx = await attributes.initializeContracts();
+    // await tx.wait(1)
+    // console.log("attributes")
 
-    tx = await adventureControls.initializeContracts();
-    await tx.wait(1)
-    console.log("adventureControls")
-    tx = await adventures.initializeContracts();
-    await tx.wait(1)
-    console.log("adventures")
-    tx = await artifacts.initializeContracts();
-    await tx.wait(1)
-    console.log("artifacts")
-    tx = await attributes.initializeContracts();
-    await tx.wait(1)
-    console.log("attributes")
-    tx = await calculator.initializeContracts();
-    await tx.wait(1)
-    console.log("calculator")
-    tx = await codexAdventures.initializeContracts();
-    await tx.wait(1)
-    console.log("codexAdventures")
-    tx = await weaponCodex.initializeContracts();
-    await tx.wait(1)
-    console.log("weaponCodex")
-    tx = await codexArmors.initializeContracts();
-    await tx.wait(1)
-    console.log("codexArmors")
-    tx = await codexHelmet.initializeContracts();
-    await tx.wait(1)
-    console.log("codexHelmet")
-    tx = await codexBoots.initializeContracts();
-    await tx.wait(1)
-    console.log("codexBoots")
-    tx = await crafting.initializeContracts();
-    await tx.wait(1)
-    console.log("crafting")
-    tx = await craftingMaterials.initializeContracts();
-    await tx.wait(1)
-    console.log("craftingMaterials")
-    tx = await craftingInventory.initializeContracts();
-    await tx.wait(1)
-    console.log("craftingInventory")
+    // tx = await calculator.initializeContracts();
+    // await tx.wait(1)
+    // console.log("calculator")
+    //
+    // tx = await codexAdventures.initializeContracts();
+    // await tx.wait(1)
+    // console.log("codexAdventures")
+    //
+    // tx = await weaponCodex.initializeContracts();
+    // await tx.wait(1)
+    // console.log("weaponCodex")
+    //
+    // tx = await codexArmors.initializeContracts();
+    // await tx.wait(1)
+    // console.log("codexArmors")
+    //
+    // tx = await codexHelmet.initializeContracts();
+    // await tx.wait(1)
+    // console.log("codexHelmet")
+    //
+    // tx = await codexBoots.initializeContracts();
+    // await tx.wait(1)
+    // console.log("codexBoots")
+    //
+    // tx = await crafting.initializeContracts();
+    // await tx.wait(1)
+    // console.log("crafting")
+    //
+    // tx = await codexAmulet.initializeContracts();
+    // await tx.wait(1)
+    // console.log("codexAmulet")
+    //
+    // tx = await codexRings.initializeContracts();
+    // await tx.wait(1)
+    // console.log("codexRings")
+    //
+    // tx = await codexEarrings.initializeContracts();
+    // await tx.wait(1)
+    // console.log("codexRings")
+    //
+    // tx = await codexBelts.initializeContracts();
+    // await tx.wait(1)
+    // console.log("codexBelts")
+    //
+    // tx = await craftingMaterials.initializeContracts();
+    // await tx.wait(1)
+    // console.log("craftingMaterials")
+    //
+    // tx = await craftingInventory.initializeContracts();
+    // await tx.wait(1)
+    // console.log("craftingInventory")
+
     tx = await craftingEquipableItems.initializeContracts();
     await tx.wait(1)
     console.log("craftingEquipableItems")
+
     tx = await reward.initializeContracts();
     await tx.wait(1)
     console.log("reward")
+
 
 
     await tx.wait(1)
@@ -151,9 +194,6 @@ async function main() {
     console.log(craftingInventory.address)
     console.log(craftingEquipableItems.address)
     console.log(reward.address)
-
-
-
 
 }
 

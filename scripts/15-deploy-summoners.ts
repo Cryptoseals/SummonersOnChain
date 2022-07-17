@@ -14,18 +14,6 @@ async function main() {
     const Navigator = await ethers.getContractFactory("Navigator");
     const navigator = Navigator.attach(deployedNavigator.navigator)
 
-
-    let Summoners = await ethers.getContractFactory("Summoners")
-    let summoners = await upgrades.deployProxy(Summoners, [navigator.address, RequiredExp]);
-    await summoners.deployed()
-    console.log("summoners deployed to:", summoners.address,)
-    let tx = await navigator.setGameContractsById(CONTRACTS.SUMMONERS, summoners.address, true)
-    await tx.wait(1)
-    console.log("and set in navigator.")
-
-    fs.writeFileSync(DeployedFileLocations.summoners, JSON.stringify({
-        summoners: summoners.address,
-    }))
 }
 
 // We recommend this pattern to be able to use async/await everywhere

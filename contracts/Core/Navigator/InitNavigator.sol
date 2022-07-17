@@ -15,6 +15,10 @@ contract InitNavigator is Initializable {
         Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
     }
 
+    function initializeNavigatorOnly(address _navigator) internal {
+        Navigator = INavigator(_navigator);
+    }
+
     function initSummonerContract() external {
         Summoners = ISummoners(Navigator.getContractAddress(INavigator.CONTRACT.SUMMONERS));
     }

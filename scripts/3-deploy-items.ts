@@ -156,6 +156,7 @@ async function main() {
     let codexWeapons = await upgrades.deployProxy(CodexWeapons, [navigator.address], {
         initializer: "initialize"
     });
+
     await codexWeapons.deployed()
     console.log("CodexWeapons deployed to:", codexWeapons.address,)
     tx = await navigator.setGameContractsById(CONTRACTS.WEAPONS_CODEX, codexWeapons.address, true)

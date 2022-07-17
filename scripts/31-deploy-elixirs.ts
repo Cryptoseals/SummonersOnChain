@@ -12,9 +12,7 @@ async function main() {
     let tx
 
     let CodexElixirRecipes = await ethers.getContractFactory("CodexElixirRecipes")
-    let codexElixirRecipes = await upgrades.deployProxy(CodexElixirRecipes, [navigator.address], {
-        initializer: "initialize"
-    });
+    let codexElixirRecipes = await upgrades.deployProxy(CodexElixirRecipes);
 
     await codexElixirRecipes.deployed()
     console.log("codexElixirRecipes deployed to:", codexElixirRecipes.address,)
@@ -23,9 +21,7 @@ async function main() {
     console.log("and set in navigator.")
 
     let CodexElixirs = await ethers.getContractFactory("CodexElixirs")
-    let codexElixirs = await upgrades.deployProxy(CodexElixirs, [navigator.address], {
-        initializer: "initialize"
-    });
+    let codexElixirs = await upgrades.deployProxy(CodexElixirs);
 
     await codexElixirs.deployed()
     console.log("codexElixirs deployed to:", codexElixirs.address,)

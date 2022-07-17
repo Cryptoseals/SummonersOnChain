@@ -34,10 +34,14 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
 
     function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
-        PrefixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.PREFIX_CODEX));
-        SuffixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.SUFFIX_CODEX));
         __Ownable_init();
     }
+
+    function initializeContracts() external {
+        PrefixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.PREFIX_CODEX));
+        SuffixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.SUFFIX_CODEX));
+    }
+
 
     function initializeCodex1(uint[21] memory _BASE_STR,
         uint[21] memory _BASE_AGI,

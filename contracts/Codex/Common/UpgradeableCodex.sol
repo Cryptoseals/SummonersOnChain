@@ -10,9 +10,8 @@ contract UpgradeableCodex is InitNavigator {
 
     function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
-        PrefixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.PREFIX_CODEX));
-        SuffixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.SUFFIX_CODEX));
     }
+
     function initializePSContracts() external {
         PrefixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.PREFIX_CODEX));
         SuffixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.SUFFIX_CODEX));

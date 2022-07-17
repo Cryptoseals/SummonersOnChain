@@ -23,7 +23,7 @@ contract Calculator is Initializable, InitNavigator {
         initializeNavigator(_navigator);
     }
 
-    function initializeContracts() external initializer {
+    function initializeContracts() external {
         address inventoryAddress = contractAddress(INavigator.CONTRACT.INVENTORY);
         elixirAndArtifactSlots = IElixirAndArtifactSlots(inventoryAddress);
         inventory = IEquipable(inventoryAddress);

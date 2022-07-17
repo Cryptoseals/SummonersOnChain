@@ -12,9 +12,7 @@ async function main() {
     let tx
 
     let CodexArtifactsProperties = await ethers.getContractFactory("CodexArtifactsProperties")
-    let codexArtifactsProperties = await upgrades.deployProxy(CodexArtifactsProperties, [navigator.address], {
-        initializer: "initialize"
-    });
+    let codexArtifactsProperties = await upgrades.deployProxy(CodexArtifactsProperties);
 
     await codexArtifactsProperties.deployed()
     console.log("codexArtifactsProperties deployed to:", codexArtifactsProperties.address,)

@@ -29,7 +29,7 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     uint[] public LevelToRequiredExp;
 
     function initialize(address _navigator, uint[] memory exps) external initializer {
-        initializeNavigator(_navigator);
+        initializeNavigatorOnly(_navigator);
         __ERC721_init("Summoners on Chain Season 1", "SoC1");
         LevelToRequiredExp = exps;
     }

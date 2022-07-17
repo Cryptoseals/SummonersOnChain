@@ -95,7 +95,7 @@ async function main() {
     let codexHelmetsMedium = await upgrades.deployProxy(CodexHelmetsMedium,
         [
             MHelmet.BASE_STR,
-            MHelmet.BASE_AGI,
+            // MHelmet.BASE_AGI,
             MHelmet.BASE_DEX,
             MHelmet.BASE_VIT,
             MHelmet.BASE_INT,
@@ -113,7 +113,7 @@ async function main() {
     let codexHelmetsLight = await upgrades.deployProxy(CodexHelmetsLight,
         [
             LHelmet.BASE_STR,
-            LHelmet.BASE_AGI,
+            // LHelmet.BASE_AGI,
             LHelmet.BASE_DEX,
             LHelmet.BASE_VIT,
             LHelmet.BASE_INT,
