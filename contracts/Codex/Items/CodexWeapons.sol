@@ -175,6 +175,7 @@ contract CodexWeapons is UpgradeableCodex {
         } else {
             revert("???");
         }
+
         if (_equipable.prefixId > 0 && _equipable.suffixId == 0) return applyPrefix(_prefix, _weapon);
         if (_equipable.prefixId == 0 && _equipable.suffixId > 0) return applySuffix(_suffix, _weapon);
         if (_equipable.prefixId > 0 && _equipable.suffixId > 0) return applyPrefixAndSuffix(_prefix, _suffix, _weapon);

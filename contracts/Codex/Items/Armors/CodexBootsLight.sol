@@ -41,12 +41,13 @@ contract CodexBootsLight is Initializable {
         BASE_EDEF = _BASE_EDEF;
     }
 
-    function applyTier(GameObjects_Equipments.EquipableItem memory _grieves, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
-        if (tier == 0) return _grieves;
-        _grieves.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_grieves.generatedStatBonus, (tier) * percentage);
-        _grieves.elementalStats.ElementalDef = armorEle(percentage);
-        _grieves.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_grieves.elementalStats, (tier) * percentage);
-        return _grieves;
+    function applyTier(GameObjects_Equipments.EquipableItem memory _greaves, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
+        if (tier == 0) return _greaves;
+        _greaves.statBonus = EquipableUtils.sumStatsAsTier(_greaves.statBonus, tier * percentage);
+        _greaves.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_greaves.generatedStatBonus, (tier) * percentage);
+        _greaves.elementalStats.ElementalDef = armorEle(percentage);
+        _greaves.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_greaves.elementalStats, (tier) * percentage);
+        return _greaves;
     }
 
     function boots(uint id, uint tier) public view returns (GameObjects_Equipments.EquipableItem memory) {

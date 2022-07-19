@@ -133,8 +133,8 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
 
     function applyTier(GameObjects_Equipments.EquipableItem memory _amulet, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
         if (tier == 0) return _amulet;
+        _amulet.statBonus = EquipableUtils.sumStatsAsTier(_amulet.statBonus, tier * percentage);
         _amulet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_amulet.generatedStatBonus, (tier) * percentage);
-        _amulet.elementalStats.ElementalDef = amuletEle(percentage);
         _amulet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_amulet.elementalStats, (tier) * percentage);
         return _amulet;
     }

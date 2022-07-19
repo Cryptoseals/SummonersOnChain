@@ -87,6 +87,7 @@ contract CodexShields is Initializable {
 
     function applyTier(GameObjects_Equipments.Weapon memory weapon, uint tier, uint percentage) public view returns (GameObjects_Equipments.Weapon memory){
         if (tier == 0) return weapon;
+        weapon.statBonus = EquipableUtils.sumStatsAsTier(weapon.statBonus, tier * percentage);
         weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(weapon.generatedStatBonus, (tier) * percentage);
         weapon.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(weapon.elementalStats, (tier) * percentage);
         return weapon;

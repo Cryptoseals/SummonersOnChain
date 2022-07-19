@@ -46,6 +46,7 @@ contract CodexHelmetsLight is Initializable {
 
     function applyTier(GameObjects_Equipments.EquipableItem memory _hat, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
         if (tier == 0) return _hat;
+        _hat.statBonus = EquipableUtils.sumStatsAsTier(_hat.statBonus, tier * percentage);
         _hat.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_hat.generatedStatBonus, (tier) * percentage);
         _hat.elementalStats.ElementalDef = helmetEle(percentage);
         _hat.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_hat.elementalStats, (tier) * percentage);

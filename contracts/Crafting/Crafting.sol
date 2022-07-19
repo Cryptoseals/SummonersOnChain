@@ -5,6 +5,7 @@ import {IEquipableItems} from "../Interfaces/NonFungibles/EquipableItems/IEquipa
 import {ICraftingRecipe, ICraftingMaterials} from "../Interfaces/Crafting/ICraftingRecipe.sol";
 import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
 import {ICraftingMaterialsToken} from "../Interfaces/NonFungibles/CraftingMaterials/ICraftingMaterialsToken.sol";
+import {ICodexRandom} from "../Interfaces/Codex/ICodexRandom.sol";
 pragma solidity ^0.8.0;
 
 
@@ -28,6 +29,9 @@ contract Crafting is Initializable, InitNavigator {
     CraftingArtifact artifacts;
     IEquipableItems equipments;
     ICraftingMaterialsToken craftingMaterialContract;
+    ICodexRandom rng;
+
+    uint lastRoll;
 
     function initialize(
         address _navigator
@@ -51,6 +55,7 @@ contract Crafting is Initializable, InitNavigator {
         artifacts = CraftingArtifact(contractAddress(INavigator.CONTRACT.ARTIFACTS));
         equipments = IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS));
         craftingMaterialContract = ICraftingMaterialsToken(contractAddress(INavigator.CONTRACT.CRAFTING_MATERIALS));
+        rng = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
     }
 
     function craft(
@@ -59,7 +64,10 @@ contract Crafting is Initializable, InitNavigator {
         uint[] memory coreIds
     ) external {
         validateId(_type, id);
-        burnRecipeItems(_type, id);
+
+        ICraftingRecipe.CraftingRecipe memory _recipe = getRecipe(_type, id);
+        burnRecipeItems(_recipe, 100);
+
         uint prefix;
         uint prefixTier;
         uint suffix;
@@ -76,8 +84,36 @@ contract Crafting is Initializable, InitNavigator {
             suffixTier, element);
     }
 
-    function burnRecipeItems(GameObjects.ItemType _type, uint id) internal {
-        ICraftingRecipe.CraftingRecipe memory _recipe;
+    function upgrade(uint tokenId) external {
+        // todo burn reqs.
+        (
+        GameObjects.ItemType _type,
+        uint _itemId,
+        uint256 _tier,
+        ,
+        ,
+        ,
+        ,
+        GameObjects.Element _element) = equipments.item(tokenId);
+
+        uint nextTier = _tier + 1;
+
+        require(nextTier < 10, "exceeds");
+
+        uint costPercentage = nextTier * 10;
+
+        ICraftingRecipe.CraftingRecipe memory _recipe = getRecipe(_type, _itemId);
+        burnRecipeItems(_recipe, costPercentage);
+
+        uint chance = itemUpgradeChance(nextTier);
+        uint roll = rng.d100(lastRoll + block.number + tokenId + 1 + nextTier + _itemId + costPercentage);
+        if (roll + 1 <= chance) {
+            equipments.upgrade(tokenId);
+        }
+        lastRoll = roll;
+    }
+
+    function getRecipe(GameObjects.ItemType _type, uint id) internal view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         if (_type == GameObjects.ItemType.HELMET) {
             _recipe = HELMET_RECIPES.recipe(id);
         } else if (_type == GameObjects.ItemType.ARMOR) {
@@ -98,19 +134,21 @@ contract Crafting is Initializable, InitNavigator {
             // not implemented yet.
             revert("niy");
         }
+    }
 
+    function burnRecipeItems(ICraftingRecipe.CraftingRecipe memory _recipe, uint percentage) internal {
         for (uint i = 0; i < _recipe.materialRequirements.length; i++) {
             if (_recipe.materialRequirements[i].amount > 0) {
                 craftingMaterialContract.burnMaterial(
                     msg.sender,
                     uint(_recipe.materialRequirements[i].material),
-                    _recipe.materialRequirements[i].amount
+                    (_recipe.materialRequirements[i].amount * percentage) / 100
                 );
             }
         }
 
-        if (_recipe.requiredGold > 0) goldContract.burnToken(msg.sender, _recipe.requiredGold);
-        if (_recipe.requiredEssence > 0) essenceContract.burnToken(msg.sender, _recipe.requiredEssence);
+        if (_recipe.requiredGold > 0) goldContract.burnToken(msg.sender, (_recipe.requiredGold * percentage) / 100);
+        if (_recipe.requiredEssence > 0) essenceContract.burnToken(msg.sender, (_recipe.requiredEssence * percentage) / 100);
     }
 
     function validateId(GameObjects.ItemType _type, uint id) internal view {
@@ -154,6 +192,17 @@ contract Crafting is Initializable, InitNavigator {
         elixirs.mintElixir(elixir, 1, msg.sender, amount);
     }
 
+    function itemUpgradeChance(uint tier) internal view returns (uint _chance) {
+        if (tier == 1) _chance = 100;
+        if (tier == 2) _chance = 95;
+        if (tier == 3) _chance = 90;
+        if (tier == 4) _chance = 85;
+        if (tier == 5) _chance = 75;
+        if (tier == 6) _chance = 40;
+        if (tier == 7) _chance = 25;
+        if (tier == 8) _chance = 10;
+        if (tier == 9) _chance = 5;
+    }
 }
 
 interface IMiscItems {

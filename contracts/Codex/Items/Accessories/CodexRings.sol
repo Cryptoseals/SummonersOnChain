@@ -140,8 +140,8 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
     function applyTier(GameObjects_Equipments.EquipableItem memory _ring, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
         if (tier == 0) return _ring;
+        _ring.statBonus = EquipableUtils.sumStatsAsTier(_ring.statBonus, tier * percentage);
         _ring.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_ring.generatedStatBonus, (tier) * percentage);
-        _ring.elementalStats.ElementalDef = ringEle(percentage);
         _ring.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_ring.elementalStats, (tier) * percentage);
         return _ring;
     }

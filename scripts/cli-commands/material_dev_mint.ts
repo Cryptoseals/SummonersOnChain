@@ -67,8 +67,8 @@ async function main() {
     tx = await navigator.setGameContractsById(CONTRACTS.JOB, deployer, true)
     await tx.wait(1)
 
-    // const deployedMaterials = JSON.parse(fs.readFileSync(DeployedFileLocations.crafting_materials, 'utf-8'))
-    // let mats = await ethers.getContractAt("CraftingMaterials", deployedMaterials.craftingMaterials)
+    const deployedMaterials = JSON.parse(fs.readFileSync(DeployedFileLocations.crafting_materials, 'utf-8'))
+    let mats = await ethers.getContractAt("CraftingMaterials", deployedMaterials.craftingMaterials)
     // console.log("COPPER:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.COPPER)))
     // console.log("TIN:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.TIN)))
     // console.log("IRON:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.IRON)))
@@ -88,6 +88,19 @@ async function main() {
     // await tx.wait(1)
     // tx = await mats.mintMaterial(CraftingMaterial.EBONY_WOOD_PLANK, mintTo, 100)
     // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.ELDER_WOOD_PLANK, mintTo, 100)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.ANCIENT_WOOD_PLANK, mintTo, 100)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.IRON_INGOT, mintTo, 100)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.GOLD_INGOT, mintTo, 100)
+    // await tx.wait(1)
+
+    tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_CASHMERE, mintTo, 100)
+    await tx.wait(1)
+    tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_HEMP, mintTo, 100)
+    await tx.wait(1)
 
 
     // let activeProcesses: any[] = await mats.activeProcessingsOfUser(deployer);
@@ -107,11 +120,11 @@ async function main() {
     // console.log(await adventures.timer(0))
     // console.log(await adventures.activeBattles(0))
 
-    const deployedCrafting = JSON.parse(fs.readFileSync(DeployedFileLocations.crafting, 'utf-8'))
-    let crafting = await ethers.getContractAt("Crafting", deployedCrafting.crafting)
-
-    const deployedEquipables = JSON.parse(fs.readFileSync(DeployedFileLocations.equipable_items, 'utf-8'))
-    let eqs = await ethers.getContractAt("EquipableItems", deployedEquipables.equipableItems)
+    // const deployedCrafting = JSON.parse(fs.readFileSync(DeployedFileLocations.crafting, 'utf-8'))
+    // let crafting = await ethers.getContractAt("Crafting", deployedCrafting.crafting)
+    //
+    // const deployedEquipables = JSON.parse(fs.readFileSync(DeployedFileLocations.equipable_items, 'utf-8'))
+    // let eqs = await ethers.getContractAt("EquipableItems", deployedEquipables.equipableItems)
 
     // console.log(await eqs.item(10))
 
@@ -119,8 +132,8 @@ async function main() {
     // await tx.wait(1);
 
 
-    const deployedElixirs = JSON.parse(fs.readFileSync(DeployedFileLocations.elixirs, 'utf-8'))
-    let elixirs = await ethers.getContractAt("Elixirs", deployedElixirs.elixirs)
+    // const deployedElixirs = JSON.parse(fs.readFileSync(DeployedFileLocations.elixirs, 'utf-8'))
+    // let elixirs = await ethers.getContractAt("Elixirs", deployedElixirs.elixirs)
     // tx = await elixirs.mintDev(10001, 10);
     // await tx.wait(1);
     // tx = await elixirs.mintDev(20003, 10);
@@ -134,9 +147,9 @@ async function main() {
     // tx = await elixirs.mintDev(70005, 10);
     // await tx.wait(1);
     // console.log('minted')
-
-    tx = await elixirs.safeBatchTransferFrom(deployer, mintTo, [10001, 20003, 40005, 50005, 60005, 70005], [10, 10, 10,10,10,10], "0x00")
-    await tx.wait(1)
+    //
+    // tx = await elixirs.safeBatchTransferFrom(deployer, mintTo, [10001, 20003, 40005, 50005, 60005, 70005], [10, 10, 10,10,10,10], "0x00")
+    // await tx.wait(1)
 
 }
 

@@ -128,8 +128,8 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
 
     function applyTier(GameObjects_Equipments.EquipableItem memory _belt, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
         if (tier == 0) return _belt;
+        _belt.statBonus = EquipableUtils.sumStatsAsTier(_belt.statBonus, tier * percentage);
         _belt.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_belt.generatedStatBonus, (tier) * percentage);
-        _belt.elementalStats.ElementalDef = beltEle(percentage);
         _belt.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_belt.elementalStats, (tier) * percentage);
         return _belt;
     }

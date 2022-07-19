@@ -141,8 +141,8 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
 
     function applyTier(GameObjects_Equipments.EquipableItem memory _earrings, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
         if (tier == 0) return _earrings;
+        _earrings.statBonus = EquipableUtils.sumStatsAsTier(_earrings.statBonus, tier * percentage);
         _earrings.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_earrings.generatedStatBonus, (tier) * percentage);
-        _earrings.elementalStats.ElementalDef = earringEle(percentage);
         _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_earrings.elementalStats, (tier) * percentage);
         return _earrings;
     }

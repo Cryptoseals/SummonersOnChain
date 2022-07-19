@@ -43,6 +43,7 @@ contract CodexBootsHeavy is Initializable {
 
     function applyTier(GameObjects_Equipments.EquipableItem memory _boots, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
         if (tier == 0) return _boots;
+        _boots.statBonus = EquipableUtils.sumStatsAsTier(_boots.statBonus, tier * percentage);
         _boots.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_boots.generatedStatBonus, (tier) * percentage);
         _boots.elementalStats.ElementalDef = bootEle(percentage);
         _boots.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_boots.elementalStats, (tier) * percentage);

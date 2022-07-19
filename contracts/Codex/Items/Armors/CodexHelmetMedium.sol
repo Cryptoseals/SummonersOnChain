@@ -47,6 +47,7 @@ contract CodexHelmetsMedium is Initializable {
 
     function applyTier(GameObjects_Equipments.EquipableItem memory _helmet, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
         if (tier == 0) return _helmet;
+        _helmet.statBonus = EquipableUtils.sumStatsAsTier(_helmet.statBonus, tier * percentage);
         _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_helmet.generatedStatBonus, (tier) * percentage);
         _helmet.elementalStats.ElementalDef = hoodieEle(percentage);
         _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_helmet.elementalStats, (tier) * percentage);

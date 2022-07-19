@@ -44,6 +44,7 @@ contract CodexArmorsHeavy is Initializable {
 
     function applyTier(GameObjects_Equipments.EquipableItem memory _armor, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
         if (tier == 0) return _armor;
+        _armor.statBonus = EquipableUtils.sumStatsAsTier(_armor.statBonus, tier * percentage);
         _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_armor.generatedStatBonus, (tier) * percentage);
         _armor.elementalStats.ElementalDef = armorEle(percentage);
         _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_armor.elementalStats, (tier) * percentage);

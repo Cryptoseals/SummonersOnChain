@@ -43,6 +43,7 @@ contract CodexBootsMedium is Initializable {
 
     function applyTier(GameObjects_Equipments.EquipableItem memory _greaves, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
         if (tier == 0) return _greaves;
+        _greaves.statBonus = EquipableUtils.sumStatsAsTier(_greaves.statBonus, tier * percentage);
         _greaves.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_greaves.generatedStatBonus, (tier) * percentage);
         _greaves.elementalStats.ElementalDef = armorEle(percentage);
         _greaves.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_greaves.elementalStats, (tier) * percentage);
