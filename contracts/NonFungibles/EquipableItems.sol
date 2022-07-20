@@ -189,7 +189,7 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
     function enhance(address sender, uint256 tokenId, uint256 coreId) external onlyGameContracts {
         require(ownerOf(tokenId) == sender, "not owned");
         // check balance
-        coreContract.burnCore(msg.sender, coreId, 1);
+        coreContract.burnCore(sender, coreId, 1);
         uint itemId = tokenToItemId[tokenId];
 
         GameObjects.ItemType _type = tokenToType[tokenId];
@@ -218,8 +218,9 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
         } else if (_type == GameObjects.ItemType.BELT) {
             _equipableItem = BELTS_CODEX.beltCore(itemId, 1);
         } else {
-            revert InvalidItem("Not Implemented");
+            revert("?n");
         }
+
         if (_type == GameObjects.ItemType.WEAPON ||
             _type == GameObjects.ItemType.OFFHAND) {
             require(_equipableItemW.requirement.level >= core.minItemLvl, "lowlvl");
@@ -232,9 +233,11 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
 
     function _enhance(uint tokenId, ICore.Effect memory fx) internal {
         if (fx.fxType == ICore.EffectType.OVERRIDE_PREFIX) {
-            tokenPrefix[fx.prefixToAdd];
+            require(fx.prefixToAdd > 0, "?");
+            tokenPrefix[tokenId] = fx.prefixToAdd;
         } else if (fx.fxType == ICore.EffectType.OVERRIDE_SUFFIX) {
-            tokenPrefix[fx.suffixToAdd];
+            require(fx.suffixToAdd > 0, "?");
+            tokenSuffix[tokenId] = fx.suffixToAdd;
         } else if (fx.fxType == ICore.EffectType.OVERRIDE_ELEMENT) {
             tokenElement[tokenId] = fx.elementToAdd;
         } else {
@@ -293,7 +296,7 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
     {
         GameObjects_Equipments.ItemDTO[] memory _dtos = new GameObjects_Equipments.ItemDTO[](ids.length);
         for (uint i = 0; i < ids.length; i++) {
-            if (!_exists(ids[i])) revert InvalidItem("DOES NOT EXIST");
+            if (!_exists(ids[i])) revert("i");
             _dtos[i]._type = tokenToType[ids[i]];
             _dtos[i]._itemId = tokenToItemId[ids[i]];
             _dtos[i]._tier = tokenToEnchantmentLevel[ids[i]];

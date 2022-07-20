@@ -68,6 +68,8 @@ async function main() {
     await tx.wait(1)
 
     const deployedMaterials = JSON.parse(fs.readFileSync(DeployedFileLocations.crafting_materials, 'utf-8'))
+    const deployedCores = JSON.parse(fs.readFileSync(DeployedFileLocations.cores, 'utf-8'))
+    let cores = await ethers.getContractAt("Cores", deployedCores.core)
     let mats = await ethers.getContractAt("CraftingMaterials", deployedMaterials.craftingMaterials)
     // console.log("COPPER:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.COPPER)))
     // console.log("TIN:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.TIN)))
@@ -97,10 +99,10 @@ async function main() {
     // tx = await mats.mintMaterial(CraftingMaterial.GOLD_INGOT, mintTo, 100)
     // await tx.wait(1)
 
-    tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_CASHMERE, mintTo, 100)
-    await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_HEMP, mintTo, 100)
-    await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_CASHMERE, mintTo, 100)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_HEMP, mintTo, 100)
+    // await tx.wait(1)
 
 
     // let activeProcesses: any[] = await mats.activeProcessingsOfUser(deployer);
@@ -150,6 +152,35 @@ async function main() {
     //
     // tx = await elixirs.safeBatchTransferFrom(deployer, mintTo, [10001, 20003, 40005, 50005, 60005, 70005], [10, 10, 10,10,10,10], "0x00")
     // await tx.wait(1)
+
+    // tx = await cores.mintDev(1, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(2, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(3, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(4, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(5, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(6, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(7, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(8, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(9, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(10, 10);
+    // await tx.wait(1);
+    tx = await cores.mintDev(94, 10);
+    await tx.wait(1);
+
+    // tx = await cores.safeBatchTransferFrom(deployer, mintTo, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 10, 10, 10, 10, 10, 10, 10, 10, 10], "0x00")
+    // await tx.wait(1)
+    tx = await cores.safeBatchTransferFrom(deployer, mintTo, [94], [10], "0x00")
+    await tx.wait(1)
+
 
 }
 

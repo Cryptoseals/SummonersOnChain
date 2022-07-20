@@ -16,7 +16,7 @@ contract Cores is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgra
     }
 
     function mintCore(uint core, address to, uint amount) external onlyGameContracts {
-        require(amount > 0, "0");
+        require(amount > 0 && core > 0, "0");
         // TODO("put crafting requirements")
         _mint(to, uint(core), amount, new bytes(0));
     }

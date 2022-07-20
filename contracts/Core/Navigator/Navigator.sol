@@ -18,7 +18,7 @@ contract Navigator is Initializable, OwnableUpgradeable, Guard, INavigator {
     bool public _isPaused;
     uint public _endingDate;
 
-    mapping(uint => address) public CONTRACTS;
+    mapping(uint256 => address) public CONTRACTS;
 
     function initialize(address _seals, uint _end) external initializer {
         Seals = ERC721(_seals);

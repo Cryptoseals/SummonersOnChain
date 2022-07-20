@@ -92,9 +92,9 @@ async function main() {
 
     const craftingMaterials = helpercontract.attach(deployedCraftingMaterials.craftingMaterials);
 
-    const craftingInventory = helpercontract.attach(deployedEquipable.inventory);
+    const inventory = helpercontract.attach(deployedEquipable.inventory);
 
-    const craftingEquipableItems = helpercontract.attach(deployedEquipableItems.equipableItems);
+    const equipableItems = helpercontract.attach(deployedEquipableItems.equipableItems);
 
     const reward = helpercontract.attach(deployedReward.rewards);
 
@@ -163,21 +163,21 @@ async function main() {
     // await tx.wait(1)
     // console.log("craftingMaterials")
     //
-    // tx = await craftingInventory.initializeContracts();
+    // tx = await inventory.initializeContracts();
     // await tx.wait(1)
-    // console.log("craftingInventory")
-
-    tx = await craftingEquipableItems.initializeContracts();
+    // console.log("inventory")
+    //
+    tx = await equipableItems.initializeContracts();
     await tx.wait(1)
-    console.log("craftingEquipableItems")
+    console.log("equipableItems")
+    //
+    // tx = await reward.initializeContracts();
+    // await tx.wait(1)
+    // console.log("reward")
 
-    tx = await reward.initializeContracts();
-    await tx.wait(1)
-    console.log("reward")
 
 
-
-    await tx.wait(1)
+    // await tx.wait(1)
 
     console.log(adventureControls.address)
     console.log(adventures.address)
@@ -191,8 +191,8 @@ async function main() {
     console.log(codexBoots.address)
     console.log(crafting.address)
     console.log(craftingMaterials.address)
-    console.log(craftingInventory.address)
-    console.log(craftingEquipableItems.address)
+    console.log(inventory.address)
+    console.log(equipableItems.address)
     console.log(reward.address)
 
 }
