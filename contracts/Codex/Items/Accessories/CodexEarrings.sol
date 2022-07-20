@@ -101,7 +101,7 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.statBonus = EquipableUtils.sumStats(_earrings.statBonus, _pre.statBonus);
         _earrings.statBonus = EquipableUtils.sumStats(_earrings.statBonus, _suf.statBonus);
 
-        _earrings.metadata.name = string(abi.encodePacked(_pre.title, " ", _earrings.metadata.name, " ", _suf.title));
+        //        _earrings.metadata.name = string(abi.encodePacked(_pre.title, " ", _earrings.metadata.name, " ", _suf.title));
         return _earrings;
     }
 
@@ -116,7 +116,7 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
 
         _earrings.statBonus = EquipableUtils.sumStats(_earrings.statBonus, _pre.statBonus);
 
-        _earrings.metadata.name = string(abi.encodePacked(_pre.title, " ", _earrings.metadata.name));
+        //        _earrings.metadata.name = string(abi.encodePacked(_pre.title, " ", _earrings.metadata.name));
         return _earrings;
     }
 
@@ -135,7 +135,7 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
             _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStats(_earrings.elementalStats, _suf.elementalStats);
         }
 
-        _earrings.metadata.name = string(abi.encodePacked(_earrings.metadata.name, " ", _suf.title));
+        //        _earrings.metadata.name = string(abi.encodePacked(_earrings.metadata.name, " ", _suf.title));
         return _earrings;
     }
 
@@ -213,9 +213,8 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
             _earrings.elementalStats.ElementalAtk.VOID_ATK = _earrings.generatedStatBonus.M_ATK;
         }
 
-        if (_equipable.prefixId > 0 && _equipable.suffixId == 0) return applyPrefix(_prefix, _earrings);
-        if (_equipable.prefixId == 0 && _equipable.suffixId > 0) return applySuffix(_suffix, _earrings);
-        if (_equipable.prefixId > 0 && _equipable.suffixId > 0) return applyPrefixAndSuffix(_prefix, _suffix, _earrings);
+        if (_equipable.prefixId > 0) _earrings = applyPrefix(_prefix, _earrings);
+        if (_equipable.suffixId > 0) _earrings = applySuffix(_suffix, _earrings);
 
         return _earrings;
     }

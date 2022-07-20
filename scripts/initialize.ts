@@ -123,50 +123,55 @@ async function main() {
     // await tx.wait(1)
     // console.log("codexAdventures")
     //
-    // tx = await weaponCodex.initializeContracts();
+    // tx = await weaponCodex.initializePSContracts();
     // await tx.wait(1)
     // console.log("weaponCodex")
+    tx = await weaponCodex.initializeContracts();
+    await tx.wait(1)
+    console.log("weaponCodex")
+
+
+
+    tx = await codexArmors.initializeContracts();
+    await tx.wait(1)
+    console.log("codexArmors")
+
+    tx = await codexHelmet.initializeContracts();
+    await tx.wait(1)
+    console.log("codexHelmet")
+
+    tx = await codexBoots.initializeContracts();
+    await tx.wait(1)
+    console.log("codexBoots")
+
+    tx = await crafting.initializeContracts();
+    await tx.wait(1)
+    console.log("crafting")
+
+    tx = await codexAmulet.initializeContracts();
+    await tx.wait(1)
+    console.log("codexAmulet")
+
+    tx = await codexRings.initializeContracts();
+    await tx.wait(1)
+    console.log("codexRings")
+
+    tx = await codexEarrings.initializeContracts();
+    await tx.wait(1)
+    console.log("codexRings")
+
+    tx = await codexBelts.initializeContracts();
+    await tx.wait(1)
+    console.log("codexBelts")
+
+    tx = await craftingMaterials.initializeContracts();
+    await tx.wait(1)
+    console.log("craftingMaterials")
     //
-    // tx = await codexArmors.initializeContracts();
-    // await tx.wait(1)
-    // console.log("codexArmors")
-    //
-    // tx = await codexHelmet.initializeContracts();
-    // await tx.wait(1)
-    // console.log("codexHelmet")
-    //
-    // tx = await codexBoots.initializeContracts();
-    // await tx.wait(1)
-    // console.log("codexBoots")
-    //
-    // tx = await crafting.initializeContracts();
-    // await tx.wait(1)
-    // console.log("crafting")
-    //
-    // tx = await codexAmulet.initializeContracts();
-    // await tx.wait(1)
-    // console.log("codexAmulet")
-    //
-    // tx = await codexRings.initializeContracts();
-    // await tx.wait(1)
-    // console.log("codexRings")
-    //
-    // tx = await codexEarrings.initializeContracts();
-    // await tx.wait(1)
-    // console.log("codexRings")
-    //
-    // tx = await codexBelts.initializeContracts();
-    // await tx.wait(1)
-    // console.log("codexBelts")
-    //
-    // tx = await craftingMaterials.initializeContracts();
-    // await tx.wait(1)
-    // console.log("craftingMaterials")
-    //
-    // tx = await inventory.initializeContracts();
-    // await tx.wait(1)
-    // console.log("inventory")
-    //
+    tx = await inventory.initializeContracts();
+    await tx.wait(1)
+    console.log("inventory")
+
     tx = await equipableItems.initializeContracts();
     await tx.wait(1)
     console.log("equipableItems")

@@ -52,9 +52,8 @@ contract CodexHelmets is UpgradeableCodex {
             revert("???");
         }
 
-        if (_equipable.prefixId > 0 && _equipable.suffixId == 0) return applyPrefix(_prefix, _helmet);
-        if (_equipable.prefixId == 0 && _equipable.suffixId > 0) return applySuffix(_suffix, _helmet);
-        if (_equipable.prefixId > 0 && _equipable.suffixId > 0) return applyPrefixAndSuffix(_prefix, _suffix, _helmet);
+        if (_equipable.prefixId > 0) _helmet = applyPrefix(_prefix, _helmet);
+        if (_equipable.suffixId > 0) _helmet = applySuffix(_suffix, _helmet);
         return _helmet;
     }
 

@@ -54,9 +54,8 @@ contract CodexArmors is UpgradeableCodex {
             revert("???");
         }
 
-        if (_equipable.prefixId > 0 && _equipable.suffixId == 0) return applyPrefix(_prefix, _armor);
-        if (_equipable.prefixId == 0 && _equipable.suffixId > 0) return applySuffix(_suffix, _armor);
-        if (_equipable.prefixId > 0 && _equipable.suffixId > 0) return applyPrefixAndSuffix(_prefix, _suffix, _armor);
+        if (_equipable.prefixId > 0) return _armor = applyPrefix(_prefix, _armor);
+        if (_equipable.suffixId > 0) return _armor = applySuffix(_suffix, _armor);
         return _armor;
     }
 

@@ -34,7 +34,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         __Ownable_init();
     }
 
-    function initializeContracts () external {
+    function initializeContracts() external {
         PrefixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.PREFIX_CODEX));
         SuffixContract = ICodexPrefixAndSuffix(contractAddress(INavigator.CONTRACT.SUFFIX_CODEX));
     }
@@ -199,10 +199,8 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
             _belt.elementalStats.ElementalDef.VOID_DEF = _belt.generatedStatBonus.M_DEF;
         }
 
-        if (_equipable.prefixId > 0 && _equipable.suffixId == 0) return applyPrefix(_prefix, _belt);
-        if (_equipable.prefixId == 0 && _equipable.suffixId > 0) return applySuffix(_suffix, _belt);
-        if (_equipable.prefixId > 0 && _equipable.suffixId > 0) return applyPrefixAndSuffix(_prefix, _suffix, _belt);
-
+        if (_equipable.prefixId > 0) _belt = applyPrefix(_prefix, _belt);
+        if (_equipable.suffixId > 0) _belt = applySuffix(_suffix, _belt);
         return _belt;
     }
 

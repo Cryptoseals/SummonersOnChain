@@ -235,9 +235,11 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
         if (fx.fxType == ICore.EffectType.OVERRIDE_PREFIX) {
             require(fx.prefixToAdd > 0, "?");
             tokenPrefix[tokenId] = fx.prefixToAdd;
+            tokenPrefixTier[tokenId] = 1;
         } else if (fx.fxType == ICore.EffectType.OVERRIDE_SUFFIX) {
             require(fx.suffixToAdd > 0, "?");
             tokenSuffix[tokenId] = fx.suffixToAdd;
+            tokenSuffixTier[tokenId] = 1;
         } else if (fx.fxType == ICore.EffectType.OVERRIDE_ELEMENT) {
             tokenElement[tokenId] = fx.elementToAdd;
         } else {

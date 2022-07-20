@@ -206,9 +206,8 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
             _amulet.elementalStats.ElementalAtk.VOID_ATK = _amulet.generatedStatBonus.M_ATK;
         }
 
-        if (_equipable.prefixId > 0 && _equipable.suffixId == 0) return applyPrefix(_prefix, _amulet);
-        if (_equipable.prefixId == 0 && _equipable.suffixId > 0) return applySuffix(_suffix, _amulet);
-        if (_equipable.prefixId > 0 && _equipable.suffixId > 0) return applyPrefixAndSuffix(_prefix, _suffix, _amulet);
+        if (_equipable.prefixId > 0) _amulet = applyPrefix(_prefix, _amulet);
+        if (_equipable.suffixId > 0) _amulet = applySuffix(_suffix, _amulet);
         return _amulet;
     }
 

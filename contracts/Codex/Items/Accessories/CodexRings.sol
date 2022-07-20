@@ -212,10 +212,8 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
             _ring.elementalStats.ElementalAtk.VOID_ATK = _ring.generatedStatBonus.M_ATK;
         }
 
-        if (_equipable.prefixId > 0 && _equipable.suffixId == 0) return applyPrefix(_prefix, _ring);
-        if (_equipable.prefixId == 0 && _equipable.suffixId > 0) return applySuffix(_suffix, _ring);
-        if (_equipable.prefixId > 0 && _equipable.suffixId > 0) return applyPrefixAndSuffix(_prefix, _suffix, _ring);
-
+        if (_equipable.prefixId > 0) _ring = applyPrefix(_prefix, _ring);
+        if (_equipable.suffixId > 0) _ring = applySuffix(_suffix, _ring);
         return _ring;
     }
 

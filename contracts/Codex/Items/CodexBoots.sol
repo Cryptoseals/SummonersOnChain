@@ -54,9 +54,8 @@ contract CodexBoots is UpgradeableCodex {
             revert("???");
         }
 
-        if (_equipable.prefixId > 0 && _equipable.suffixId == 0) return applyPrefix(_prefix, _boots);
-        if (_equipable.prefixId == 0 && _equipable.suffixId > 0) return applySuffix(_suffix, _boots);
-        if (_equipable.prefixId > 0 && _equipable.suffixId > 0) return applyPrefixAndSuffix(_prefix, _suffix, _boots);
+        if (_equipable.prefixId > 0) _boots = applyPrefix(_prefix, _boots);
+        if (_equipable.suffixId > 0) _boots = applySuffix(_suffix, _boots);
         return _boots;
     }
 
