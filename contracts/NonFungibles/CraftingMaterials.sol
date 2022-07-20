@@ -1,10 +1,10 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
-import {Strings}from "@openzeppelin/contracts/utils/Strings.sol";
-import {ERC1155Upgradeable}from "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
-import {OwnableUpgradeable}from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import {EnumerableSetUpgradeable}from "@openzeppelin/contracts-upgradeable/utils/structs/EnumerableSetUpgradeable.sol";
-import {IProcessingMaterialRecipes, ICraftingMaterials}from "../Interfaces/Crafting/Processing/IProcessingMaterialRecipes.sol";
+import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
+import {ERC1155Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import {EnumerableSetUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/structs/EnumerableSetUpgradeable.sol";
+import {IProcessingMaterialRecipes, ICraftingMaterials} from "../Interfaces/Crafting/Processing/IProcessingMaterialRecipes.sol";
 
 pragma solidity ^0.8.0;
 

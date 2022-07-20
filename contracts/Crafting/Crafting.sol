@@ -113,6 +113,10 @@ contract Crafting is Initializable, InitNavigator {
         lastRoll = roll;
     }
 
+    function enhance(uint256 tokenId, uint256 coreId) external {
+        equipments.enhance(msg.sender, tokenId, coreId);
+    }
+
     function getRecipe(GameObjects.ItemType _type, uint id) internal view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
         if (_type == GameObjects.ItemType.HELMET) {
             _recipe = HELMET_RECIPES.recipe(id);

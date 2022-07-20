@@ -186,12 +186,10 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
         tokenToEnchantmentLevel[id]++;
     }
 
-    function enhance(uint256 tokenId, uint256 coreId) external {
-        require(ownerOf(tokenId) == msg.sender, "not owned");
+    function enhance(address sender, uint256 tokenId, uint256 coreId) external onlyGameContracts {
+        require(ownerOf(tokenId) == sender, "not owned");
         // check balance
         coreContract.burnCore(msg.sender, coreId, 1);
-
-        uint bal = coreContract.balanceOf(msg.sender, coreId);
         uint itemId = tokenToItemId[tokenId];
 
         GameObjects.ItemType _type = tokenToType[tokenId];

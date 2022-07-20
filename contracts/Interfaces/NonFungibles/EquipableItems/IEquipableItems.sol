@@ -1,5 +1,5 @@
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import {GameObjects,GameObjects_Equipments} from "../../GameObjects/IGameObjects.sol";
+import {GameObjects, GameObjects_Equipments} from "../../GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 interface IEquipableItems is IERC721 {
@@ -14,11 +14,14 @@ interface IEquipableItems is IERC721 {
     external
     view
     returns (GameObjects_Equipments.ItemDTO[] memory);
+
     function tiers(uint[] memory ids) external view returns (uint[] memory);
 
     function itemType(uint id) external view returns (GameObjects.ItemType _type);
 
     function upgrade(uint id) external;
+
+    function enhance(address sender, uint id, uint core) external;
 
     function mintItem(
         address player,

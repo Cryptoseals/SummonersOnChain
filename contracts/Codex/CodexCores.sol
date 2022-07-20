@@ -8,7 +8,7 @@ contract CodexCores {
 
     function getAllCores() external view returns (ICore.Core[] memory) {
         ICore.Core[] memory result = new ICore.Core[](97);
-        for (uint i = 1; i <= 97; i++) {
+        for (uint i = 1; i < 97; i++) {
             result[i - 1] = core(i);
         }
         return result;
