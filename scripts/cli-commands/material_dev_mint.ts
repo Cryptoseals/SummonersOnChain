@@ -148,9 +148,11 @@ async function main() {
     // await tx.wait(1);
     // tx = await elixirs.mintDev(70005, 10);
     // await tx.wait(1);
+    // tx = await elixirs.mintDev(250005, 10);
+    // await tx.wait(1);
     // console.log('minted')
     //
-    // tx = await elixirs.safeBatchTransferFrom(deployer, mintTo, [10001, 20003, 40005, 50005, 60005, 70005], [10, 10, 10,10,10,10], "0x00")
+    // tx = await elixirs.safeBatchTransferFrom(deployer, mintTo, [10001, 20003, 40005, 50005, 60005, 70005, 250005], [10, 10, 10, 10, 10, 10, 10], "0x00")
     // await tx.wait(1)
 
     // tx = await cores.mintDev(1, 10);
@@ -173,15 +175,23 @@ async function main() {
     // await tx.wait(1);
     // tx = await cores.mintDev(10, 10);
     // await tx.wait(1);
-    tx = await cores.mintDev(94, 10);
-    await tx.wait(1);
-
-    // tx = await cores.safeBatchTransferFrom(deployer, mintTo, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 10, 10, 10, 10, 10, 10, 10, 10, 10], "0x00")
+    // tx = await cores.mintDev(29, 10);
+    // await tx.wait(1);
+    //
+    // // tx = await cores.safeBatchTransferFrom(deployer, mintTo, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 10, 10, 10, 10, 10, 10, 10, 10, 10], "0x00")
+    // // await tx.wait(1)
+    // tx = await cores.safeBatchTransferFrom(deployer, mintTo, [29], [10], "0x00")
     // await tx.wait(1)
-    tx = await cores.safeBatchTransferFrom(deployer, mintTo, [94], [10], "0x00")
-    await tx.wait(1)
 
 
+    const deployedMisc = JSON.parse(fs.readFileSync(DeployedFileLocations.misc_items, 'utf-8'))
+    let miscs = await ethers.getContractAt("MiscItems", deployedMisc.miscItems)
+    tx = await miscs.rewardMiscItem(mintTo, 2, 100); await tx.wait(1);
+    tx = await miscs.rewardMiscItem(mintTo, 35, 100); await tx.wait(1);
+    tx = await miscs.rewardMiscItem(mintTo, 52, 100); await tx.wait(1);
+    tx = await miscs.rewardMiscItem(mintTo, 41, 100); await tx.wait(1);
+    tx = await miscs.rewardMiscItem(mintTo, 13, 100); await tx.wait(1);
+    tx = await miscs.rewardMiscItem(mintTo, 40, 100); await tx.wait(1);
 }
 
 main();

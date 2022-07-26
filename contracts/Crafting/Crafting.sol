@@ -186,14 +186,16 @@ contract Crafting is Initializable, InitNavigator {
     }
 
     function craftElixir(uint elixir, uint amount) external {
+        require(amount>0, "0");
         GameObjects_Elixir.ElixirRecipe memory recipe = CraftingElixir(contractAddress(INavigator.CONTRACT.ELIXIR_RECIPES)).recipe_by_id(elixir);
         if (recipe.id == 0) revert("invalid");
         for (uint i = 0; i < recipe.requiredMiscItemIDs.length; i++) {
-            miscs.burnMiscItem(msg.sender, recipe.requiredMiscItemIDs[i], 1);
+            miscs.burnMiscItem(msg.sender, recipe.requiredMiscItemIDs[i], amount);
         }
-        goldContract.burnToken(msg.sender, recipe.requiredGold);
-        essenceContract.burnToken(msg.sender, recipe.requiredEssence);
-        elixirs.mintElixir(elixir, 1, msg.sender, amount);
+
+        goldContract.burnToken(msg.sender, recipe.requiredGold*amount);
+        essenceContract.burnToken(msg.sender, recipe.requiredEssence*amount);
+        elixirs.mintElixir(elixir, 0, msg.sender, amount);
     }
 
     function itemUpgradeChance(uint tier) internal view returns (uint _chance) {

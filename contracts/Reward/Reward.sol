@@ -8,6 +8,7 @@ import {InitNavigator, INavigator, ISummoners} from "../Core/Navigator/InitNavig
 import {IGameRewards, ICraftingMaterials} from "../Interfaces/GameObjects/IGameRewards.sol";
 import {IRewardNonFungible} from "../Interfaces/NonFungibles/Common/IRewardNonFungible.sol";
 import {IElixirAndArtifactSlots} from "../Interfaces/Inventory/IElixirAndArtifactSlots.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 interface CraftingMaterialContract {
     function mintMaterial(ICraftingMaterials.CraftingMaterial material, address to, uint amount) external;
@@ -15,7 +16,7 @@ interface CraftingMaterialContract {
 
 pragma solidity ^0.8.0;
 
-contract Reward is InitNavigator {
+contract Reward is InitNavigator, OwnableUpgradeable {
     ICodexRandom RNG;
     CraftingMaterialContract mats;
     IElixirAndArtifactSlots elixirInventory;
@@ -27,6 +28,11 @@ contract Reward is InitNavigator {
 
     function initialize(address _navigator, uint[] memory exps) external initializer {
         initializeNavigator(_navigator);
+        __Ownable_init();
+        expRewardsByLevel = exps;
+    }
+
+    function setExp(uint[] memory exps) external onlyOwner {
         expRewardsByLevel = exps;
     }
 

@@ -117,6 +117,7 @@
     "fuji-flee": "npx hardhat run scripts/cli-commands/flee.ts --network fuji",
     "fuji-settle": "npx hardhat run scripts/cli-commands/settle.ts --network fuji",
     "fuji-process": "npx hardhat run scripts/cli-commands/process.ts --network fuji",
+    "fuji-mint": "npx hardhat run scripts/cli-commands/material_dev_mint.ts --network fuji",
     "solana-compile": "solang --target solana ./contracts"
   },
   "engines": {
