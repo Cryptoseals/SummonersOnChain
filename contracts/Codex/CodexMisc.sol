@@ -18,603 +18,493 @@ contract CodexMiscItems is Rarity {
     }
 
     function item(uint _id) public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        if (_id == 0) {
+            _misc = Junk();
+        }
         if (_id == 1) {
-            return MeltedCandle();
+            _misc = Rope();
         } else if (_id == 2) {
-            return BrokenSword();
+            _misc = Bronze_Coin();
         } else if (_id == 3) {
-            return TrollSkull();
+            _misc = Poisonous_Fang();
         } else if (_id == 4) {
-            return FireflyInJar();
+            _misc = Fish_Bone();
         } else if (_id == 5) {
-            return KnifeHandle();
+            _misc = Feathers();
         } else if (_id == 6) {
-            return Dirt();
+            _misc = Unknown_Key();
         } else if (_id == 7) {
-            return BrokenUrn();
+            _misc = Silver_Chalice();
         } else if (_id == 8) {
-            return DeadBug();
+            _misc = Golden_Chalice();
         } else if (_id == 9) {
-            return TornFabric();
+            _misc = Needle();
         } else if (_id == 10) {
-            return RustyChain();
+            _misc = Scissor();
         } else if (_id == 11) {
-            return BurnedBranch();
+            _misc = Alcohol();
         } else if (_id == 12) {
-            return Egg();
+            _misc = Mirror();
         } else if (_id == 13) {
-            return BonePowder();
+            _misc = Broom();
         } else if (_id == 14) {
-            return LeatherworkingTools();
+            _misc = Broken_Knife();
         } else if (_id == 15) {
-            return Flint();
+            _misc = Unknown_Map();
         } else if (_id == 16) {
-            return Nail();
+            _misc = Ribbon();
         } else if (_id == 17) {
-            return BoneFragments();
+            _misc = Nails();
         } else if (_id == 18) {
-            return DeerHide();
+            _misc = Bucket();
         } else if (_id == 19) {
-            return Arrowhead();
+            _misc = Seed();
         } else if (_id == 20) {
-            return Fur();
+            _misc = Tribal_Mask();
         } else if (_id == 21) {
-            return SilverCoin();
+            _misc = Skull();
         } else if (_id == 22) {
-            return AnimalEye();
+            _misc = Engagement_Ring();
         } else if (_id == 23) {
-            return SharkTooth();
+            _misc = Broken_Teeth();
         } else if (_id == 24) {
-            return FormlessGoo();
+            _misc = Amethyst_Shard();
         } else if (_id == 25) {
-            return TatteredRope();
+            _misc = Horseshoe();
         } else if (_id == 26) {
-            return Sand();
+            _misc = Voodoo();
         } else if (_id == 27) {
-            return FishBone();
+            _misc = Unlit_Torch();
         } else if (_id == 28) {
-            return FishingRod();
+            _misc = Lit_Torch();
         } else if (_id == 29) {
-            return Net();
+            _misc = Bat_Wing();
         } else if (_id == 30) {
-            return TornSail();
+            _misc = Sailing_Rope();
         } else if (_id == 31) {
-            return WrecksAndFragments();
+            _misc = Gaslamp();
         } else if (_id == 32) {
-            return MermaidHair();
+            _misc = Rotten_Plank();
         } else if (_id == 33) {
-            return FlyInAJar();
+            _misc = Entrails();
         } else if (_id == 34) {
-            return DryLeaf();
+            _misc = Heart();
         } else if (_id == 35) {
-            return IvySeed();
+            _misc = Infused_Heart();
         } else if (_id == 36) {
-            return OxHorn();
+            _misc = Magma_Heart();
         } else if (_id == 37) {
-            return BearPelt();
+            _misc = Eye();
         } else if (_id == 38) {
-            return SnakeScale();
+            _misc = Bandit_Trophy();
         } else if (_id == 39) {
-            return UnknownKey();
+            _misc = Ball_Of_Yarn();
         } else if (_id == 40) {
-            return AncientTreeBark();
+            _misc = Anchor();
         } else if (_id == 41) {
-            return OwlClaw();
+            _misc = Shovel();
         } else if (_id == 42) {
-            return SilverDust();
+            _misc = Stolen_Gol_Bar();
         } else if (_id == 43) {
-            return MoonstonePowder();
+            _misc = Golden_Skull();
         } else if (_id == 44) {
-            return CoalPowder();
+            _misc = Hook();
         } else if (_id == 45) {
-            return Silverweed();
+            _misc = Dice();
         } else if (_id == 46) {
-            return RabbitFoot();
+            _misc = Gold_Chunk();
         } else if (_id == 47) {
-            return ScaleOfDragon();
+            _misc = Lock();
         } else if (_id == 48) {
-            return GingerRoots();
+            _misc = Stolen_Treasure();
         } else if (_id == 49) {
-            return Alcohol();
+            _misc = Whip();
         } else if (_id == 50) {
-            return Dittany();
+            _misc = Animal_Scales();
         } else if (_id == 51) {
-            return Salvia();
+            _misc = Alchemy_Mortar();
         } else if (_id == 52) {
-            return ValerianRoot();
+            _misc = Chain();
         } else if (_id == 53) {
-            return Cannabis();
+            _misc = Ancient_Statue();
         } else if (_id == 54) {
-            return DeadScarab();
+            _misc = Chisel();
         } else if (_id == 55) {
-            return Lava();
+            _misc = Hammer();
         } else if (_id == 56) {
-            return FireflyCarcass();
+            _misc = Infused_Horseshoe();
         } else if (_id == 57) {
-            return BeetRoot();
+            _misc = Otherworldly_Horseshoe();
         } else if (_id == 58) {
-            return Bloodbag();
+            _misc = Magical_Horseshoe();
         } else if (_id == 59) {
-            return FishBrain();
+            _misc = Silver_Horseshoe();
         } else if (_id == 60) {
-            return GreenSlug();
+            _misc = Usable_Horseshoe();
         } else if (_id == 61) {
-            return Dandelion();
+            _misc = Key_Of_Order();
         } else if (_id == 62) {
-            return BlackTruffle();
+            _misc = Key_Of_Wraith();
         } else if (_id == 63) {
-            return Chanterelle();
+            _misc = Whetstone();
         } else if (_id == 64) {
-            return FireballFlower();
+            _misc = Leather_Patch();
         } else if (_id == 65) {
-            return PorcupineQuill();
+            _misc = Stolen_Silver_Bar();
         } else if (_id == 66) {
-            return LizardTail();
+            _misc = Stolen_Copper_Bar();
+        } else if (_id == 67) {
+            _misc = Lost_Diary();
+        } else if (_id == 68) {
+            _misc = Spoon();
+        } else if (_id == 69) {
+            _misc = Crown();
+        } else if (_id == 70) {
+            _misc = Unknown_Recipe();
+        } else if (_id == 71) {
+            _misc = Vial_Of_Poison();
+        } else if (_id == 72) {
+            _misc = Vial_Of_Blood();
+        } else if (_id == 73) {
+            _misc = Fang();
+        } else if (_id == 74) {
+            _misc = Professional_Fishing_Rod();
+        } else if (_id == 75) {
+            _misc = Explosive();
+        } else if (_id == 76) {
+            _misc = Gun_Powder();
+        } else if (_id == 77) {
+            _misc = Magic_Powder();
+        } else if (_id == 78) {
+            _misc = Mechanics_Handbook();
+        } else if (_id == 79) {
+            _misc = RoyalCoin();
+        } else {
+            revert("wrong");
         }
 
-        revert("wrong");
+        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+
     }
 
-    function MeltedCandle() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Junk() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 0;
+    }
+
+    function Rope() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 1;
-        //        _misc.metadata.name = "Melted Candle";
-        //        _misc.metadata.description = "Scented pieces of wax without a wick. They come in different shapes and sizes.";
     }
 
-    function BrokenSword() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+    function Bronze_Coin() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
 
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
         _misc.metadata.id = 2;
-        //        _misc.metadata.name = "Broken Sword";
-        //        _misc.metadata.description = "Broken sword of an old warrior, still sharp.";
     }
 
-    function TrollSkull() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Poisonous_Fang() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 3;
-        //        _misc.metadata.name = "Troll Skull";
-        //        _misc.metadata.description = "Trophy of a hairy, ape-like creature.";
     }
 
-    function FireflyInJar() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Fish_Bone() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 4;
-        //        _misc.metadata.name = "Firefly in Jar";
-        //        _misc.metadata.description = "Prophecy says fireflies are still carrying the essence of the ancient summoners.";
     }
 
-    function KnifeHandle() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Feathers() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 5;
-        //        _misc.metadata.name = "Knife Handle";
-        //        _misc.metadata.description = "Can be used for crafting actual weapons.";
     }
 
-    function Dirt() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Unknown_Key() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 6;
-        //        _misc.metadata.name = "Dirt";
-        //        _misc.metadata.description = "Sand, silt, and clay, and it may be rocky...";
     }
 
-    function BrokenUrn() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Silver_Chalice() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 7;
-        //        _misc.metadata.name = "Broken Urn";
-        //        _misc.metadata.description = "Can be useful if repaired with some dirt.";
     }
 
-    function DeadBug() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Golden_Chalice() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 8;
-        //        _misc.metadata.name = "Dead Bug";
-        //        _misc.metadata.description = "Carcass of a bug, some people use these to craft elixirs.";
     }
 
-    function TornFabric() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Needle() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 9;
-        //        _misc.metadata.name = "Torn Fabric";
-        //        _misc.metadata.description = "An old fabric. Definitely not usable in clothes.";
     }
 
-    function RustyChain() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Scissor() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 10;
-        //        _misc.metadata.name = "Rusty Chain";
-        //        _misc.metadata.description = "The old rusty chain. Can be useful. Worth keeping it.";
-    }
-
-    function BurnedBranch() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 11;
-        //        _misc.metadata.name = "Burned Branch";
-        //        _misc.metadata.description = "Burned branches that covered with ash.";
-    }
-
-    function Egg() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 12;
-        //        _misc.metadata.name = "Egg";
-        //        _misc.metadata.description = "Egg of an unknown animal. Is it edible?";
-    }
-
-    function BonePowder() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 13;
-        //        _misc.metadata.name = "Bone Powder";
-        //        _misc.metadata.description = "Can still hear the sound of the crushed bones.";
-    }
-
-    function LeatherworkingTools() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 14;
-        //        _misc.metadata.name = "Leather";
-        //        _misc.metadata.description = "Animal Leather. A crafting material.";
-    }
-
-    function Flint() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 15;
-        //        _misc.metadata.name = "Flint";
-        //        _misc.metadata.description = "Useful when you need a campfire.";
-    }
-
-    function Nail() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 16;
-        //        _misc.metadata.name = "Nail";
-        //        _misc.metadata.description = "Can be used in advanced crafting.";
-    }
-
-    function BoneFragments() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 17;
-        //        _misc.metadata.name = "Bone Fragments";
-        //        _misc.metadata.description = "Sharp bone fragments of an unknown creature.";
-    }
-
-    function DeerHide() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 18;
-        //        _misc.metadata.name = "Deer Hide";
-        //        _misc.metadata.description = "Deer Hides can be used in advanced crafting.";
-    }
-
-    function Arrowhead() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 19;
-        //        _misc.metadata.name = "Arrowhead";
-        //        _misc.metadata.description = "A sharp, deadly arrowhead made out of metal.";
-    }
-
-    function Fur() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 20;
-        //        _misc.metadata.name = "Fur";
-        //        _misc.metadata.description = "Fur can be used in advanced crafting.";
-    }
-
-    function SilverCoin() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 21;
-        //        _misc.metadata.name = "Silver Coin";
-        //        _misc.metadata.description = "An old, antique silver coin.";
-    }
-
-    function AnimalEye() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 22;
-        //        _misc.metadata.name = "Animal Eye";
-        //        _misc.metadata.description = "Eye of an unknown animal. Looks bad.";
-    }
-
-    function SharkTooth() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 23;
-        //        _misc.metadata.name = "Shark Tooth";
-        //        _misc.metadata.description = "Giant, sharp tooth of a deadly shark.";
-    }
-
-    function FormlessGoo() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 24;
-        //        _misc.metadata.name = "Formless Goo";
-        //        _misc.metadata.description = "Is it alive?";
-    }
-
-    function TatteredRope() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 25;
-        //        _misc.metadata.name = "Tattered Rope";
-        //        _misc.metadata.description = "Not looking very strong. Be careful when using it.";
-    }
-
-    function Sand() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 26;
-        //        _misc.metadata.name = "Sand";
-        //        _misc.metadata.description = "Granular material composed of finely divided rock and mineral particles.";
-    }
-
-    function FishBone() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 27;
-        //        _misc.metadata.name = "Fish Bone";
-        //        _misc.metadata.description = "Skeletal remains of a small fish.";
-    }
-
-    function FishingRod() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 28;
-        //        _misc.metadata.name = "Fishing Rod";
-        //        _misc.metadata.description = "A simple tool used to catch fish.";
-    }
-
-    function Net() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 29;
-        //        _misc.metadata.name = "Net";
-        //        _misc.metadata.description = "Made from fibers woven in a grid-like structure.";
-    }
-
-    function TornSail() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 30;
-        //        _misc.metadata.name = "Torn Sail";
-        //        _misc.metadata.description = "Very risky to travel with this junk.";
-    }
-
-    function WrecksAndFragments() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 31;
-        //        _misc.metadata.name = "Wrecks And Fragments";
-        //        _misc.metadata.description = "Junk metal and useful parts.";
-    }
-
-    function MermaidHair() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 32;
-        //        _misc.metadata.name = "Wrecks And Fragments";
-        //        _misc.metadata.description = "Junk metal and useful parts.";
-    }
-
-    function FlyInAJar() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 33;
-        //        _misc.metadata.name = "Fly In A Jar";
-        //        _misc.metadata.description = "A captured fly in a jar.";
-    }
-
-    function DryLeaf() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 34;
-        //        _misc.metadata.name = "Dry Leaf";
-        //        _misc.metadata.description = "The leaves are all falling, and they're falling like they're falling in love with the ground.";
-    }
-
-    function IvySeed() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 35;
-        //        _misc.metadata.name = "Ivy Seed";
-        //        _misc.metadata.description = "Ivy seeds for planting. Farmers love it.";
-    }
-
-    function OxHorn() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 36;
-        //        _misc.metadata.name = "Ox Horn";
-        //        _misc.metadata.description = "A good crafter can make something useful out of it.";
-    }
-
-    function BearPelt() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 37;
-        //        _misc.metadata.name = "Bear Pelt";
-        //        _misc.metadata.description = "Can be obtained from dead bears.";
-    }
-
-    function SnakeScale() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 38;
-        //        _misc.metadata.name = "Snake Scale";
-        //        _misc.metadata.description = "Scale of a deadly poisonous snake.";
-    }
-
-    function UnknownKey() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 39;
-        //        _misc.metadata.name = "Unknown Key";
-        //        _misc.metadata.description = "...";
-    }
-
-    function AncientTreeBark() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 40;
-        //        _misc.metadata.name = "Ancient Tree Bark";
-        //        _misc.metadata.description = "Obtained from Ancient Trees.";
-    }
-
-    function OwlClaw() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 41;
-        //        _misc.metadata.name = "Owl Claw";
-        //        _misc.metadata.description = "Obtained from Ancient Trees.";
-    }
-
-    function SilverDust() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 42;
-        //        _misc.metadata.name = "Silver Dust";
-        //        _misc.metadata.description = "Grinded shiny particles!";
-    }
-
-    function MoonstonePowder() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 43;
-        //        _misc.metadata.name = "Moonstone Powder";
-        //        _misc.metadata.description = "It's believed it was derived from solidified rays of the Moon.";
-    }
-
-    function CoalPowder() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 44;
-        //        _misc.metadata.name = "Coal Powder";
-        //        _misc.metadata.description = "Don't come near fight fire!";
-    }
-
-    function Silverweed() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 45;
-        //        _misc.metadata.name = "Silverweed";
-        //        _misc.metadata.description = "It could ward off witches and evil spirits.";
-    }
-
-    function RabbitFoot() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 46;
-        //        _misc.metadata.name = "Rabbit Foot";
-        //        _misc.metadata.description = "The foot of a rabbit is carried as an amulet believed to bring good luck.";
-    }
-
-    function ScaleOfDragon() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 47;
-        //        _misc.metadata.name = "Scale of Dragon";
-        //        _misc.metadata.description = "A scale taken from dragon. Supposedly the ability to enhance physical power and health.";
-    }
-
-    function GingerRoots() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
-        _misc.metadata.id = 48;
-        //        _misc.metadata.name = "Ginger Roots";
-        //        _misc.metadata.description = "Roots of tasty, man looking plant.";
     }
 
     function Alcohol() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+        _misc.metadata.id = 11;
+    }
+
+    function Mirror() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 12;
+    }
+
+    function Broom() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 13;
+    }
+
+    function Broken_Knife() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 14;
+    }
+
+    function Unknown_Map() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 15;
+    }
+
+    function Ribbon() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 16;
+    }
+
+    function Nails() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 17;
+    }
+
+    function Bucket() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 18;
+    }
+
+    function Seed() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 19;
+    }
+
+    function Tribal_Mask() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 20;
+    }
+
+    function Skull() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 21;
+    }
+
+    function Engagement_Ring() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 22;
+    }
+
+    function Broken_Teeth() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 23;
+    }
+
+    function Amethyst_Shard() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 24;
+    }
+
+    function Horseshoe() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 25;
+    }
+
+    function Voodoo() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 26;
+    }
+
+    function Unlit_Torch() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 27;
+    }
+
+    function Lit_Torch() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 28;
+    }
+
+    function Bat_Wing() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 29;
+    }
+
+    function Sailing_Rope() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 30;
+    }
+
+    function Gaslamp() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 31;
+    }
+
+    function Rotten_Plank() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 32;
+    }
+
+    function Entrails() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 33;
+    }
+
+    function Heart() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 34;
+    }
+
+    function Infused_Heart() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 35;
+    }
+
+    function Magma_Heart() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 36;
+    }
+
+    function Eye() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 37;
+    }
+
+    function Bandit_Trophy() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 38;
+    }
+
+    function Ball_Of_Yarn() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 39;
+    }
+
+    function Anchor() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 40;
+    }
+
+    function Shovel() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 41;
+    }
+
+    function Stolen_Gol_Bar() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 42;
+    }
+
+    function Golden_Skull() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 43;
+    }
+
+    function Hook() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 44;
+    }
+
+    function Dice() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 45;
+    }
+
+    function Gold_Chunk() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 46;
+    }
+
+    function Lock() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 47;
+    }
+
+    function Stolen_Treasure() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 48;
+    }
+
+    function Whip() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 49;
-        //        _misc.metadata.name = "Alcohol";
-        //        _misc.metadata.description = "Useful after a long day...";
     }
 
-    function Dittany() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Animal_Scales() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 50;
-        //        _misc.metadata.name = "Dittany";
-        //        _misc.metadata.description = "A powerful healing herb and restorative";
     }
 
-    function Salvia() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Alchemy_Mortar() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 51;
-        //        _misc.metadata.name = "Salvia";
-        //        _misc.metadata.description = "Some brew, some smokes... But smells really good! ";
     }
 
-    function ValerianRoot() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Chain() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 52;
-        //        _misc.metadata.name = "Valerian Root";
-        //        _misc.metadata.description = "Has sedative effects.";
     }
 
-    function Cannabis() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Ancient_Statue() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 53;
-        //        _misc.metadata.name = "Cannabis";
-        //        _misc.metadata.description = "The plant has been valued for its use for fiber and rope, as food and medicine, and for its psychoactive properties for religious.";
     }
 
-    function DeadScarab() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Chisel() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 54;
-        //        _misc.metadata.name = "Dead Scarab";
-        //        _misc.metadata.description = "Mush have died from rolling a ball of dung.";
     }
 
-    function Lava() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Hammer() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 55;
-        //        _misc.metadata.name = "Lava";
-        //        _misc.metadata.description = "It's too hot! How could you carry that?";
     }
 
-    function FireflyCarcass() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Infused_Horseshoe() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 56;
-        //        _misc.metadata.name = "Firefly Carcass";
-        //        _misc.metadata.description = "Dead but still shiny!";
     }
 
-    function BeetRoot() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Otherworldly_Horseshoe() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 57;
-        //        _misc.metadata.name = "Beet Root";
-        //        _misc.metadata.description = "Tastes really sweet and gives energy!";
     }
 
-    function Bloodbag() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Magical_Horseshoe() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 58;
-        //        _misc.metadata.name = "Bloodbag";
-        //        _misc.metadata.description = "Generally collected for rituals and potion crafting.";
     }
 
-    function FishBrain() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Silver_Horseshoe() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 59;
-        //        _misc.metadata.name = "Fish Brain";
-        //        _misc.metadata.description = "It's too hot! How could you carry that?";
     }
 
-    function GreenSlug() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Usable_Horseshoe() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 60;
-        //        _misc.metadata.name = "Green Slug";
-        //        _misc.metadata.description = "It has tentacles. Wow!";
     }
 
-    function Dandelion() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Key_Of_Order() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 61;
-        //        _misc.metadata.name = "Dandelion";
-        //        _misc.metadata.description = "Don't you want to blow?";
     }
 
-    function BlackTruffle() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Key_Of_Wraith() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 62;
-        //        _misc.metadata.name = "Black Truffle";
-        //        _misc.metadata.description = "Usually found in close association with tree roots.";
     }
 
-    function Chanterelle() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Whetstone() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 63;
-        //        _misc.metadata.name = "Chanterelle";
-        //        _misc.metadata.description = "The most popular of wild edible mushrooms.";
     }
 
-    function FireballFlower() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Leather_Patch() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 64;
-        //        _misc.metadata.name = "Fireball Flower";
-        //        _misc.metadata.description = "A plant of moist, shady habitats.";
     }
 
-    function PorcupineQuill() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Stolen_Silver_Bar() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 65;
-        //        _misc.metadata.name = "Porcupine Quill";
-        //        _misc.metadata.description = "It's really sharp. What can you do with it?";
     }
 
-    function LizardTail() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
-        _misc.metadata.baseType = GameObjects.ItemType.MISC;
+    function Stolen_Copper_Bar() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
         _misc.metadata.id = 66;
-        //        _misc.metadata.name = "Lizard Tail";
-        //        _misc.metadata.description = "Looks like a scared lizard lost its own tail.";
+    }
+
+    function Lost_Diary() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 67;
+    }
+
+    function Spoon() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 68;
+    }
+
+    function Crown() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 69;
+    }
+
+    function Unknown_Recipe() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 70;
+    }
+
+    function Vial_Of_Poison() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 71;
+    }
+
+    function Vial_Of_Blood() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 72;
+    }
+
+    function Fang() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 73;
+    }
+
+    function Professional_Fishing_Rod() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 74;
+    }
+
+    function Explosive() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 75;
+    }
+
+    function Gun_Powder() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 76;
+    }
+
+    function Magic_Powder() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 77;
+    }
+
+    function Mechanics_Handbook() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 78;
+    }
+
+    function RoyalCoin() public pure returns (GameObjects_Equipments.MiscItem memory _misc) {
+        _misc.metadata.id = 79;
     }
 }

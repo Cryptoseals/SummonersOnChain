@@ -103,8 +103,6 @@ contract CodexBootsLight is Initializable {
     function SoldiersSlipper(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 43;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Soldier's Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
 
         // requirements here
@@ -134,8 +132,6 @@ contract CodexBootsLight is Initializable {
     function PriestsSlipper(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 44;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Executioner's Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 3;
         _grieves.requirement.classRequirement = classRequirement();
@@ -155,8 +151,6 @@ contract CodexBootsLight is Initializable {
     function FaithSlipper(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 45;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Knight's Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 8;
         _grieves.requirement.classRequirement = classRequirement();
@@ -176,8 +170,6 @@ contract CodexBootsLight is Initializable {
     function TraineesSlipper(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 46;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Dwarven Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 13;
         _grieves.requirement.classRequirement = classRequirement();
@@ -197,8 +189,6 @@ contract CodexBootsLight is Initializable {
     function MagiciansSlipper(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 47;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Scale Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 18;
         _grieves.requirement.classRequirement = classRequirement();
@@ -218,8 +208,6 @@ contract CodexBootsLight is Initializable {
     function SealedSandals(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 48;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Winged Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 23;
         _grieves.requirement.classRequirement = classRequirement();
@@ -239,8 +227,6 @@ contract CodexBootsLight is Initializable {
     function GateKeepersSandals(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 49;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Draconic Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 28;
         _grieves.requirement.classRequirement = classRequirement();
@@ -260,8 +246,6 @@ contract CodexBootsLight is Initializable {
     function ElementalistsSandals(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 50;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Argent Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 33;
         _grieves.requirement.classRequirement = classRequirement();
@@ -281,8 +265,6 @@ contract CodexBootsLight is Initializable {
     function AlcemistsSandals(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 51;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Golden Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 38;
         _grieves.requirement.classRequirement = classRequirement();
@@ -302,8 +284,6 @@ contract CodexBootsLight is Initializable {
     function ArchmagesSandals(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 52;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Midas's Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 43;
         _grieves.requirement.classRequirement = classRequirement();
@@ -323,8 +303,6 @@ contract CodexBootsLight is Initializable {
     function ElvenShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 53;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Juggernaut Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 48;
         _grieves.requirement.classRequirement = classRequirement();
@@ -344,8 +322,6 @@ contract CodexBootsLight is Initializable {
     function ChosensShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 54;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Chosen's Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 53;
         _grieves.requirement.classRequirement = classRequirement();
@@ -365,8 +341,6 @@ contract CodexBootsLight is Initializable {
     function ProphetsShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 55;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Templar Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 58;
         _grieves.requirement.classRequirement = classRequirement();
@@ -386,8 +360,6 @@ contract CodexBootsLight is Initializable {
     function EldersShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 56;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Vanguard Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 63;
         _grieves.requirement.classRequirement = classRequirement();
@@ -407,8 +379,6 @@ contract CodexBootsLight is Initializable {
     function AncientShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 57;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Void Dweller Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 68;
         _grieves.requirement.classRequirement = classRequirement();
@@ -428,8 +398,6 @@ contract CodexBootsLight is Initializable {
     function MoonlightShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 58;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Sun Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 73;
         _grieves.requirement.classRequirement = classRequirement();
@@ -449,8 +417,6 @@ contract CodexBootsLight is Initializable {
     function SunlightShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 59;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Moon Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 78;
         _grieves.requirement.classRequirement = classRequirement();
@@ -470,8 +436,6 @@ contract CodexBootsLight is Initializable {
     function CycleShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 60;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Demonic Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 83;
         _grieves.requirement.classRequirement = classRequirement();
@@ -491,8 +455,6 @@ contract CodexBootsLight is Initializable {
     function DemonicBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 61;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Angelic Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 88;
         _grieves.requirement.classRequirement = classRequirement();
@@ -512,8 +474,6 @@ contract CodexBootsLight is Initializable {
     function AngelicBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 62;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Cycle Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 93;
         _grieves.requirement.classRequirement = classRequirement();
@@ -533,8 +493,6 @@ contract CodexBootsLight is Initializable {
     function EternalBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
         _grieves.metadata.id = 63;
         _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //        _grieves.metadata.name = "Eternal Sandals";
-        //        _grieves.metadata.description = "";
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 98;
         _grieves.requirement.classRequirement = classRequirement();

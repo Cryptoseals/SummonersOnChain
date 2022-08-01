@@ -2,8 +2,8 @@ import {IAttributes} from "../Interfaces/Attributes/IAttributes.sol";
 import {IAllCodexViews} from "../Interfaces/Codex/IAllCodexViews.sol";
 import {IEquipableItems} from "../Interfaces/NonFungibles/EquipableItems/IEquipableItems.sol";
 import {InitNavigator, INavigator, Initializable, GameEntities, ISummoners} from "../Core/Navigator/InitNavigator.sol";
-import {GameObjects, GameObjects_Stats, GameObjects_Equipments, GameObjects_Elixir} from "../Interfaces/GameObjects/IGameObjects.sol";
-import {IElixirsAndArtifacts} from "../Interfaces/NonFungibles/ElixirsAndArtifacts/IElixirsAndArtifacts.sol";
+import {GameObjects, GameObjects_Stats, GameObjects_Equipments, GameObjects_BuffEffects} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {IConsumablesAndArtifactsToken} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/IConsumablesAndArtifacts.sol";
 import {EquipableUtils} from "./EquipableUtils.sol";
 
 
@@ -13,9 +13,9 @@ contract Equipable is Initializable, InitNavigator {
 
     // held nfts
     IEquipableItems equips;
-    IElixirsAndArtifacts elixirContract;
-    IElixirsAndArtifacts artifactContract;
-    IAllCodexViews elixircodex;
+    IConsumablesAndArtifactsToken consumables;
+    IConsumablesAndArtifactsToken artifactContract;
+    IAllCodexViews buffEffectCodex;
     IAllCodexViews artifactCodex;
     IAllCodexViews HELMETS_CODEX;
     IAllCodexViews BODY_ARMORS_CODEX;
@@ -26,8 +26,8 @@ contract Equipable is Initializable, InitNavigator {
     IAllCodexViews BELTS_CODEX;
     IAllCodexViews WEAPONS_CODEX;
 
-    struct ConsumedElixir {
-        uint elixirId;
+    struct ConsumedItem {
+        uint consumableId;
         uint tier;
         uint turnLeft;
     }
@@ -44,10 +44,10 @@ contract Equipable is Initializable, InitNavigator {
     mapping(uint => GameObjects_Equipments.SummonedCompanion) public SummonedCompanions;
 
     // summoner elixir slots. summoner id -> equipped
-    mapping(uint => mapping(uint => ConsumedElixir)) public ElixirSlots;
+    mapping(uint => mapping(uint => ConsumedItem)) public ConsumableSlots;
     mapping(uint => mapping(uint => uint)) public ArtifactSlots;
 
-    uint public constant ELIXIR_SLOTS = 3;
+    uint public constant CONSUMABLE_SLOTS = 3;
     uint public constant ARTIFACT_SLOTS = 3;
 
     function initialize(address _navigator) external initializer {
@@ -64,9 +64,9 @@ contract Equipable is Initializable, InitNavigator {
         EARRINGS_CODEX = IAllCodexViews(contractAddress(INavigator.CONTRACT.EARRINGS_CODEX));
         BELTS_CODEX = IAllCodexViews(contractAddress(INavigator.CONTRACT.BELTS_CODEX));
         WEAPONS_CODEX = IAllCodexViews(contractAddress(INavigator.CONTRACT.WEAPONS_CODEX));
-        elixircodex = IAllCodexViews(contractAddress(INavigator.CONTRACT.ELIXIRS_CODEX));
-        elixirContract = IElixirsAndArtifacts(contractAddress(INavigator.CONTRACT.ELIXIRS));
-        artifactContract = IElixirsAndArtifacts(contractAddress(INavigator.CONTRACT.ARTIFACTS));
+        buffEffectCodex = IAllCodexViews(contractAddress(INavigator.CONTRACT.CONSUMABLES_CODEX));
+        consumables = IConsumablesAndArtifactsToken(contractAddress(INavigator.CONTRACT.CONSUMABLES));
+        artifactContract = IConsumablesAndArtifactsToken(contractAddress(INavigator.CONTRACT.ARTIFACTS));
     }
 
     function canEquip(uint summoner, GameObjects_Equipments.ItemRequirement memory _requirement) internal view returns (bool) {
@@ -162,33 +162,33 @@ contract Equipable is Initializable, InitNavigator {
 
     // @param "id" is encoded token id for elixir, e.g 10001 = elixir 1 tier 1
     function consumeElixir(uint summoner, uint slot, uint id) external senderIsSummonerOwner(summoner) notInFight(summoner) {
-        require(slot > 0 && slot <= ELIXIR_SLOTS, "ms");
+        require(slot > 0 && slot <= CONSUMABLE_SLOTS, "ms");
         // check ownership, remove previous effects and apply new
         require(
-            elixirContract.balanceOf(msg.sender, id) > 0,
+            consumables.balanceOf(msg.sender, id) > 0,
             "!"
         );
-        (uint elixirId, uint tier) = elixirContract.decodeElixir(id);
+        (uint consumableId, uint tier) = consumables.decodeConsumableItem(id);
 
-        for (uint i = 1; i <= ELIXIR_SLOTS;) {
-            if (elixirId == ElixirSlots[summoner][i].elixirId) {
-                require(ElixirSlots[summoner][i].turnLeft == 0, "sm");
+        for (uint i = 1; i <= CONSUMABLE_SLOTS;) {
+            if (consumableId == ConsumableSlots[summoner][i].consumableId) {
+                require(ConsumableSlots[summoner][i].turnLeft == 0, "sm");
             }
 
         unchecked {i++;}
         }
-        uint turnDuration = elixircodex.elixirTurnDuration(elixirId, tier);
-        elixirContract.burnElixir(msg.sender, id, 1);
-        ElixirSlots[summoner][slot] = ConsumedElixir({
-        elixirId : elixirId,
+        uint turnDuration = buffEffectCodex.buffEffectTurnDuration(consumableId, tier);
+        consumables.burnConsumableItem(msg.sender, id, 1);
+        ConsumableSlots[summoner][slot] = ConsumedItem({
+        consumableId : consumableId,
         tier : tier,
         turnLeft : turnDuration
         });
     }
 
-    function reduceElixirDuration(uint summoner) external onlyGameContracts {
-        for (uint i = 1; i <= ELIXIR_SLOTS;) {
-            if (ElixirSlots[summoner][i].turnLeft > 0) ElixirSlots[summoner][i].turnLeft -= 1;
+    function reduceConsumableDuration(uint summoner) external onlyGameContracts {
+        for (uint i = 1; i <= CONSUMABLE_SLOTS;) {
+            if (ConsumableSlots[summoner][i].turnLeft > 0) ConsumableSlots[summoner][i].turnLeft -= 1;
         unchecked {i++;}
         }
     }
@@ -204,40 +204,21 @@ contract Equipable is Initializable, InitNavigator {
         ArtifactSlots[summoner][slot] = id;
     }
 
-    function activeElixirs(uint summoner) public view returns (
-        GameObjects_Elixir.ElixirBonusEffect memory _fx,
+    function activeConsumableEffects(uint summoner) public view returns (
+        GameObjects_BuffEffects.ElixirBonusEffect memory _fx,
         GameObjects_Stats.Stats memory _stats,
         GameObjects_Stats.GeneratedStats memory _gen_stats,
         GameObjects_Stats.ElementalStats memory _ele_stats){
 
-        GameObjects_Elixir.Elixir memory elixir;
-        ConsumedElixir memory _consumed;
-        for (uint i = 1; i <= ELIXIR_SLOTS; i++) {
-            _consumed = ElixirSlots[summoner][i];
-            if (_consumed.turnLeft == 0 || _consumed.elixirId == 0) continue;
-            elixir = elixircodex.elixir(_consumed.elixirId, _consumed.tier);
-
-            //            these are now precalculated in codex
-            //            elixir.statBonus = EquipableUtils.sumStatsWithNumber(elixir.statBonus, _consumed.tier * elixir.bonus.StatBonusPerTier);
-            //            elixir.generatedStatBonus = EquipableUtils.sumGeneratedStatsWithNumber(elixir.generatedStatBonus, elixir.bonus.GenStatBonusPerTier * _consumed.tier);
-            //            elixir.elementalStats = EquipableUtils.sumGeneratedElementalStatsWithNumber(elixir.elementalStats, elixir.bonus.EleStatBonusPerTier * _consumed.tier);
-            //            elixir.bonus.BonusGoldPercentage += _consumed.tier * elixir.bonus.BonusGoldPercentagePerTier;
-            //            elixir.bonus.BonusEssencePercentage += _consumed.tier * elixir.bonus.BonusEssencePercentagePerTier;
-            //            elixir.bonus.BonusEXPPercentage += _consumed.tier * elixir.bonus.BonusEXPPercentagePerTier;
-            //            elixir.bonus.BonusMaterialPercentage += _consumed.tier * elixir.bonus.BonusMaterialPercentagePerTier;
-
-            _stats = EquipableUtils.sumStats(_stats, elixir.statBonus);
-            _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, elixir.generatedStatBonus);
-            _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, elixir.elementalStats);
-
-            _fx.BonusEXPPercentage += elixir.bonus.BonusEXPPercentage;
-            //+ (_consumed.tier * elixir.bonus.BonusEXPPercentagePerTier);
-            _fx.BonusMaterialPercentage += elixir.bonus.BonusMaterialPercentage;
-            // + (_consumed.tier * elixir.bonus.BonusMaterialPercentagePerTier);
-            _fx.BonusEssencePercentage += elixir.bonus.BonusEssencePercentage;
-            // + (_consumed.tier * elixir.bonus.BonusEssencePercentagePerTier);
-            _fx.BonusGoldPercentage += elixir.bonus.BonusGoldPercentage;
-            // + (_consumed.tier * elixir.bonus.BonusGoldPercentagePerTier);
+        GameObjects_BuffEffects.BuffEffect memory buffEffect;
+        ConsumedItem memory _consumed;
+        for (uint i = 1; i <= CONSUMABLE_SLOTS; i++) {
+            _consumed = ConsumableSlots[summoner][i];
+            if (_consumed.turnLeft == 0 || _consumed.consumableId == 0) continue;
+            buffEffect = buffEffectCodex.buffEffect(_consumed.consumableId, _consumed.tier);
+            _stats = EquipableUtils.sumStats(_stats, buffEffect.statBonus);
+            _gen_stats = EquipableUtils.sumGeneratedStats(_gen_stats, buffEffect.generatedStatBonus);
+            _ele_stats = EquipableUtils.sumGeneratedElementalStats(_ele_stats, buffEffect.elementalStats);
         }
     }
 
@@ -264,7 +245,7 @@ contract Equipable is Initializable, InitNavigator {
         GameObjects_Stats.ElementalStats memory){
         (,GameObjects_Stats.Stats memory _stats1,
         GameObjects_Stats.GeneratedStats memory _gen_stats1,
-        GameObjects_Stats.ElementalStats memory _ele_stats1) = activeElixirs(summoner);
+        GameObjects_Stats.ElementalStats memory _ele_stats1) = activeConsumableEffects(summoner);
         (GameObjects_Stats.Stats memory _stats2,
         GameObjects_Stats.GeneratedStats memory _gen_stats2,
         GameObjects_Stats.ElementalStats memory _ele_stats2) = activeArtifacts(summoner);
@@ -473,6 +454,15 @@ contract Equipable is Initializable, InitNavigator {
         GameObjects_Equipments.EquippedItemStruct[] memory results = new GameObjects_Equipments.EquippedItemStruct[](slots.length);
         for (uint i = 0; i < slots.length;) {
             results[i] = EquippedGears[summoner][slots[i]];
+        unchecked {i++;}
+        }
+        return results;
+    }
+
+    function consumableSlots (uint summoner, uint[] calldata slots) external view returns(ConsumedItem[] memory){
+        ConsumedItem[] memory results = new ConsumedItem[](slots.length);
+        for (uint i = 0; i < slots.length;) {
+            results[i] = ConsumableSlots[summoner][slots[i]];
         unchecked {i++;}
         }
         return results;

@@ -98,34 +98,34 @@ async function main() {
 
     const reward = helpercontract.attach(deployedReward.rewards);
 
-    //
-    // tx = await adventureControls.initializeContracts();
-    // await tx.wait(1)
-    // console.log("adventureControls")
-    //
-    // tx = await adventures.initializeContracts();
-    // await tx.wait(1)
-    // console.log("adventures")
-    //
-    // tx = await artifacts.initializeContracts();
-    // await tx.wait(1)
-    // console.log("artifacts")
-    //
-    // tx = await attributes.initializeContracts();
-    // await tx.wait(1)
-    // console.log("attributes")
 
-    // tx = await calculator.initializeContracts();
-    // await tx.wait(1)
-    // console.log("calculator")
-    //
-    // tx = await codexAdventures.initializeContracts();
-    // await tx.wait(1)
-    // console.log("codexAdventures")
-    //
-    // tx = await weaponCodex.initializePSContracts();
-    // await tx.wait(1)
-    // console.log("weaponCodex")
+    tx = await adventureControls.initializeContracts();
+    await tx.wait(1)
+    console.log("adventureControls")
+
+    tx = await adventures.initializeContracts();
+    await tx.wait(1)
+    console.log("adventures")
+
+    tx = await artifacts.initializeContracts();
+    await tx.wait(1)
+    console.log("artifacts")
+
+    tx = await attributes.initializeContracts();
+    await tx.wait(1)
+    console.log("attributes")
+
+    tx = await calculator.initializeContracts();
+    await tx.wait(1)
+    console.log("calculator")
+
+    tx = await codexAdventures.initializeContracts();
+    await tx.wait(1)
+    console.log("codexAdventures")
+
+    tx = await weaponCodex.initializePSContracts();
+    await tx.wait(1)
+    console.log("weaponCodex")
     tx = await weaponCodex.initializeContracts();
     await tx.wait(1)
     console.log("weaponCodex")
@@ -175,14 +175,14 @@ async function main() {
     tx = await equipableItems.initializeContracts();
     await tx.wait(1)
     console.log("equipableItems")
-    //
-    // tx = await reward.initializeContracts();
-    // await tx.wait(1)
-    // console.log("reward")
+
+    tx = await reward.initializeContracts();
+    await tx.wait(1)
+    console.log("reward")
 
 
 
-    // await tx.wait(1)
+    await tx.wait(1)
 
     console.log(adventureControls.address)
     console.log(adventures.address)

@@ -7,7 +7,7 @@ import "../Core/Common/Errors.sol";
 
 pragma solidity ^0.8.0;
 
-contract MiscItems is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgradeable {
+contract CookingItems is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgradeable {
 
     using Strings for uint256;
 
@@ -17,12 +17,12 @@ contract MiscItems is Initializable, OwnableUpgradeable, InitNavigator, ERC1155U
         __Ownable_init();
     }
 
-    function rewardMiscItem(address to, uint id, uint amount) external onlyGameContracts {
-//        if (id < 1) revert InvalidItem("invalid item");
+    function rewardCookingItem(address to, uint id, uint amount) external onlyGameContracts {
+        require(id > 0, "i0");
         _mint(to, id, amount, new bytes(0));
     }
 
-    function burnMiscItem(address from, uint id, uint amount) external onlyGameContracts {
+    function burnCookingItem(address from, uint id, uint amount) external onlyGameContracts {
         _burn(from, id, amount);
     }
 
@@ -43,8 +43,7 @@ contract MiscItems is Initializable, OwnableUpgradeable, InitNavigator, ERC1155U
         return result;
     }
 
-
     function name() external view returns (string memory) {
-        return "MiscItems";
+        return "CookingItems";
     }
 }

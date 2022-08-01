@@ -107,8 +107,6 @@ contract CodexHelmetsMedium is Initializable {
     function SoldiersCap(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 22;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Soldier's Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
 
         // requirements here
@@ -129,8 +127,6 @@ contract CodexHelmetsMedium is Initializable {
     function ExecutionersCap(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 23;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Executioner's Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 3;
         _helmet.requirement.classRequirement = classRequirement();
@@ -144,8 +140,6 @@ contract CodexHelmetsMedium is Initializable {
     function HuntersBandana(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 24;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Knight's Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 8;
         _helmet.requirement.classRequirement = classRequirement();
@@ -159,8 +153,6 @@ contract CodexHelmetsMedium is Initializable {
     function RangerBandana(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 25;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Dwarven Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 13;
         _helmet.requirement.classRequirement = classRequirement();
@@ -174,8 +166,6 @@ contract CodexHelmetsMedium is Initializable {
     function MercenaryCap(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 26;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Scale Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 18;
         _helmet.requirement.classRequirement = classRequirement();
@@ -189,8 +179,6 @@ contract CodexHelmetsMedium is Initializable {
     function NobleCap(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 27;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Winged Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 23;
         _helmet.requirement.classRequirement = classRequirement();
@@ -204,8 +192,6 @@ contract CodexHelmetsMedium is Initializable {
     function BloodstainedHood(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 28;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Draconic Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 28;
         _helmet.requirement.classRequirement = classRequirement();
@@ -219,8 +205,6 @@ contract CodexHelmetsMedium is Initializable {
     function HoodOfDusk(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 29;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Argent Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 33;
         _helmet.requirement.classRequirement = classRequirement();
@@ -234,8 +218,6 @@ contract CodexHelmetsMedium is Initializable {
     function ShadowMask(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 30;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Golden Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 38;
         _helmet.requirement.classRequirement = classRequirement();
@@ -249,8 +231,6 @@ contract CodexHelmetsMedium is Initializable {
     function HeadmastersHood(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 31;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Midas's Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 43;
         _helmet.requirement.classRequirement = classRequirement();
@@ -264,8 +244,6 @@ contract CodexHelmetsMedium is Initializable {
     function ElvenHood(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 32;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Juggernaut Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 48;
         _helmet.requirement.classRequirement = classRequirement();
@@ -279,8 +257,6 @@ contract CodexHelmetsMedium is Initializable {
     function ChosensHood(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 33;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Chosen's Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 53;
         _helmet.requirement.classRequirement = classRequirement();
@@ -294,8 +270,6 @@ contract CodexHelmetsMedium is Initializable {
     function ProphetsHood(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 34;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Templar Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 58;
         _helmet.requirement.classRequirement = classRequirement();
@@ -309,8 +283,6 @@ contract CodexHelmetsMedium is Initializable {
     function EldersHood(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 35;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Vanguard Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 63;
         _helmet.requirement.classRequirement = classRequirement();
@@ -324,8 +296,6 @@ contract CodexHelmetsMedium is Initializable {
     function AncientMask(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 36;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Void Dweller Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 68;
         _helmet.requirement.classRequirement = classRequirement();
@@ -339,8 +309,6 @@ contract CodexHelmetsMedium is Initializable {
     function MoonlightHood(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 37;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Sun Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 73;
         _helmet.requirement.classRequirement = classRequirement();
@@ -354,8 +322,6 @@ contract CodexHelmetsMedium is Initializable {
     function SunlightHood(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 38;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Moon Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 78;
         _helmet.requirement.classRequirement = classRequirement();
@@ -369,8 +335,6 @@ contract CodexHelmetsMedium is Initializable {
     function CycleHood(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 39;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Demonic Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 83;
         _helmet.requirement.classRequirement = classRequirement();
@@ -384,8 +348,6 @@ contract CodexHelmetsMedium is Initializable {
     function DemonicHood(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 40;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Angelic Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 88;
         _helmet.requirement.classRequirement = classRequirement();
@@ -399,8 +361,6 @@ contract CodexHelmetsMedium is Initializable {
     function AngelicHood(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 41;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Cycle Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 93;
         _helmet.requirement.classRequirement = classRequirement();
@@ -414,8 +374,6 @@ contract CodexHelmetsMedium is Initializable {
     function EternalHood(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
         _helmet.metadata.id = 42;
         _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _helmet.metadata.name = "Eternal Hoodie";
-        //        _helmet.metadata.description = "";
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 98;
         _helmet.requirement.classRequirement = classRequirement();

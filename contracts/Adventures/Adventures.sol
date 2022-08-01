@@ -9,8 +9,8 @@ import {IReward, IGameRewards} from "../Interfaces/Reward/IReward.sol";
 import {GameObjects_Stats} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
-interface ElixirInventory {
-    function reduceElixirDuration(uint summoner) external;
+interface ConsumableInventory {
+    function reduceConsumableDuration(uint summoner) external;
 }
 
 contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
@@ -22,7 +22,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     IReward rewardContract;
     ICodexAdventures adventureCodex;
     ICalculator calculatorContract;
-    ElixirInventory elixirInventory;
+    ConsumableInventory elixirInventory;
     ICodexEnemies enemyCodex;
     // summoner -> battle
     mapping(uint => IAdventure.AdventureBattle) public activeBattles;
@@ -39,7 +39,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             contractAddress(INavigator.CONTRACT.ADVENTURES_CODEX)
         );
         calculatorContract = ICalculator(contractAddress(INavigator.CONTRACT.CALCULATOR));
-        elixirInventory = ElixirInventory(contractAddress(INavigator.CONTRACT.INVENTORY));
+        elixirInventory = ConsumableInventory(contractAddress(INavigator.CONTRACT.INVENTORY));
         enemyCodex = ICodexEnemies(contractAddress(INavigator.CONTRACT.CODEX_ENEMIES));
         //        COOLDOWN = 1 minutes;
     }
@@ -94,7 +94,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             summoner,
             GameEntities.SummonerState.FREE
         );
-        elixirInventory.reduceElixirDuration(summoner);
+        elixirInventory.reduceConsumableDuration(summoner);
     }
 
     function attack(uint summoner, uint multiplier, uint overrideDps) external onlyGameContracts {
@@ -129,7 +129,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
         if (monsterHits) {
             (bool isCrit, uint roll) = getCritRoll(battle.monster.monsterId + block.number,
-                battle.monsterStats.CRIT_CHANCE, nonce);
+                battle.monsterStats.CRIT_CHANCE, nonce + 1881);
 
             uint damage = isCrit
             ?
@@ -137,7 +137,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             (battle.monsterStats.DPS * battle.monsterStats.CRIT_MULTI) / 100
             :
             (battle.monsterStats.DPS * multiplier) / 100;
-            nonce += roll + 1;
+            nonce += roll + 1938;
 
             if (damage >= battle.playerStats.TOTAL_HP) {
                 battle.playerStats.TOTAL_HP = 0;
@@ -193,7 +193,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         );
         delete activeBattles[battle.summoner];
         battleNonce = nonce;
-        elixirInventory.reduceElixirDuration(summoner);
+        elixirInventory.reduceConsumableDuration(summoner);
     }
 
 
@@ -206,7 +206,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
         // if player dodges or monster misses, skip atk, else roll crit chance
 
-        nonce+= 1001;
+        nonce += 1001;
         uint roll2 = RNG.d100(2 + summoner + block.number + battle.monster.monsterId + nonce);
         nonce++;
         return (

@@ -2,12 +2,12 @@ import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Ini
 import {ERC721EnumerableUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
 import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
 import {ICodexRandom} from "../Interfaces/Codex/ICodexRandom.sol";
-import {GameObjects_Elixir} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {GameObjects_BuffEffects} from "../Interfaces/GameObjects/IGameObjects.sol";
 import {GameEntities} from "../Interfaces/GameObjects/IGameEntities.sol";
 import {InitNavigator, INavigator, ISummoners} from "../Core/Navigator/InitNavigator.sol";
 import {IGameRewards, ICraftingMaterials} from "../Interfaces/GameObjects/IGameRewards.sol";
 import {IRewardNonFungible} from "../Interfaces/NonFungibles/Common/IRewardNonFungible.sol";
-import {IElixirAndArtifactSlots} from "../Interfaces/Inventory/IElixirAndArtifactSlots.sol";
+import {IConsumablesAndArtifacts} from "../Interfaces/Inventory/IConsumablesAndArtifacts.sol";
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 interface CraftingMaterialContract {
@@ -19,7 +19,7 @@ pragma solidity ^0.8.0;
 contract Reward is InitNavigator, OwnableUpgradeable {
     ICodexRandom RNG;
     CraftingMaterialContract mats;
-    IElixirAndArtifactSlots elixirInventory;
+    IConsumablesAndArtifacts elixirInventory;
     IFungibleInGameToken gold;
     IFungibleInGameToken essence;
     IRewardNonFungible misc;
@@ -43,14 +43,14 @@ contract Reward is InitNavigator, OwnableUpgradeable {
             )
         );
         RNG = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
-        elixirInventory = IElixirAndArtifactSlots(contractAddress(INavigator.CONTRACT.INVENTORY));
+        elixirInventory = IConsumablesAndArtifacts(contractAddress(INavigator.CONTRACT.INVENTORY));
         gold = IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD));
         essence = IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE));
         misc = IRewardNonFungible(contractAddress(INavigator.CONTRACT.MISC_ITEMS));
     }
 
     function reward(address to, uint summoner, uint level, IGameRewards.Reward memory _reward, IGameRewards.CurrencyRewards memory _currencyRewards, uint optionalNonce) external onlyGameContracts {
-        (GameObjects_Elixir.ElixirBonusEffect memory _fx,,,) = elixirInventory.activeElixirs(summoner);
+        (GameObjects_BuffEffects.ElixirBonusEffect memory _fx,,,) = elixirInventory.activeConsumableEffects(summoner);
 
         if (_currencyRewards.yieldsGold) rewardGold(to, _currencyRewards, _reward.bonus + _fx.BonusGoldPercentage, optionalNonce);
         if (_currencyRewards.yieldsEssence) rewardEssence(to, _currencyRewards, _reward.bonus + _fx.BonusEssencePercentage, optionalNonce + 2);
@@ -89,8 +89,14 @@ contract Reward is InitNavigator, OwnableUpgradeable {
 
             misc.rewardMiscItem(
                 to,
-                _miscRewards.rewards[pick].miscType,
+                _miscRewards.rewards[pick].itemId,
                 amount
+            );
+        } else {
+            misc.rewardMiscItem(
+                to,
+                0,
+                1
             );
         }
         nonce++;

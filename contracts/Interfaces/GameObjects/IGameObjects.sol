@@ -76,8 +76,6 @@ library GameObjects_Equipments {
     struct ItemMetadata {
         GameObjects.ItemType baseType;
         uint id;
-        string name;
-        string description;
         bool upgradable;
     }
 
@@ -240,12 +238,12 @@ library GameObjects {
         EARRING,
         BELT,
         ARTIFACT,
-        ELIXIR,
+        CONSUMABLE,
         MOUNT,
         FISHING_ROD,
         MISC,
-        MISC2,
-        MISC3,
+        ALCHEMY,
+        COOKING,
         GENERAL_ACCESSORY,
         PET,
         SEAL
@@ -254,7 +252,7 @@ library GameObjects {
 }
 
 
-contract GameObjects_Elixir {
+library GameObjects_BuffEffects {
 
     struct ElixirBonusEffect {
         uint BonusEXPPercentage;
@@ -270,20 +268,50 @@ contract GameObjects_Elixir {
         uint EleStatBonusPerTier;
     }
 
-    struct Elixir {
+    enum BuffEffectType {
+        ELIXIR,
+        FOOD,
+        MISC1,
+        MISC2,
+        MISC3
+    }
+
+    struct BuffEffect {
         //        //        ItemMetadata metadata;
         GameObjects_Stats.Stats statBonus;
         GameObjects_Stats.GeneratedStats generatedStatBonus;
         GameObjects_Stats.ElementalStats elementalStats;
         ElixirBonusEffect bonus;
+        BuffEffectType buffEffectType;
         uint turnDuration;
     }
 
-    struct ElixirRecipe {
+    struct BuffEffectRecipe {
         uint id;
+        uint[] requiredAlchemyItemIDs;
         uint[] requiredMiscItemIDs;
+        uint[] requiredCookingItemIDs;
         uint requiredGold;
         uint requiredEssence;
     }
+
+    struct ItemMetadata {
+        GameObjects.ItemType baseType;
+        uint id;
+        bool upgradable;
+    }
+
+    struct AlchemyItem {
+        ItemMetadata metadata;
+    }
+
+    struct CookingItem {
+        ItemMetadata metadata;
+    }
+
+}
+
+library GameObjects_Cooking {
+
 
 }

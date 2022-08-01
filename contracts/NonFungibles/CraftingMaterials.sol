@@ -173,4 +173,8 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         }
         return result;
     }
+
+    function name() external view returns (string memory) {
+        return "CraftingMaterials";
+    }
 }

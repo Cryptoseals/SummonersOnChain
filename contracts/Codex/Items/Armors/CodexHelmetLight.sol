@@ -106,8 +106,6 @@ contract CodexHelmetsLight is Initializable {
     function SoldiersHat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 43;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Soldier's Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
 
         // requirements here
@@ -137,8 +135,6 @@ contract CodexHelmetsLight is Initializable {
     function PriestsHat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 44;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Executioner's Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 3;
         _hat.requirement.classRequirement = classRequirement();
@@ -151,8 +147,6 @@ contract CodexHelmetsLight is Initializable {
     function FaithHat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 45;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Knight's Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 8;
         _hat.requirement.classRequirement = classRequirement();
@@ -165,8 +159,6 @@ contract CodexHelmetsLight is Initializable {
     function TraineesHat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 46;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Dwarven Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 13;
         _hat.requirement.classRequirement = classRequirement();
@@ -179,8 +171,6 @@ contract CodexHelmetsLight is Initializable {
     function MagiciansHat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 47;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Scale Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 18;
         _hat.requirement.classRequirement = classRequirement();
@@ -193,8 +183,6 @@ contract CodexHelmetsLight is Initializable {
     function SealedMask(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 48;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Winged Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 23;
         _hat.requirement.classRequirement = classRequirement();
@@ -207,8 +195,6 @@ contract CodexHelmetsLight is Initializable {
     function GateKeepersMask(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 49;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Draconic Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 28;
         _hat.requirement.classRequirement = classRequirement();
@@ -221,8 +207,6 @@ contract CodexHelmetsLight is Initializable {
     function ElementalistsMask(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 50;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Argent Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 33;
         _hat.requirement.classRequirement = classRequirement();
@@ -235,8 +219,6 @@ contract CodexHelmetsLight is Initializable {
     function AlchemistsMask(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 51;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Golden Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 38;
         _hat.requirement.classRequirement = classRequirement();
@@ -249,8 +231,6 @@ contract CodexHelmetsLight is Initializable {
     function ArchmagesMask(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 52;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Midas's Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 43;
         _hat.requirement.classRequirement = classRequirement();
@@ -263,8 +243,6 @@ contract CodexHelmetsLight is Initializable {
     function ElvenCirclet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 53;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Juggernaut Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 48;
         _hat.requirement.classRequirement = classRequirement();
@@ -277,8 +255,6 @@ contract CodexHelmetsLight is Initializable {
     function ChosensCirclet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 54;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Chosen's Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 53;
         _hat.requirement.classRequirement = classRequirement();
@@ -291,8 +267,6 @@ contract CodexHelmetsLight is Initializable {
     function ProphetsCirclet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 55;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Templar Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 58;
         _hat.requirement.classRequirement = classRequirement();
@@ -305,8 +279,6 @@ contract CodexHelmetsLight is Initializable {
     function EldersCirclet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 56;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Vanguard Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 63;
         _hat.requirement.classRequirement = classRequirement();
@@ -319,8 +291,6 @@ contract CodexHelmetsLight is Initializable {
     function AncientCirclet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 57;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Void Dweller Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 68;
         _hat.requirement.classRequirement = classRequirement();
@@ -333,8 +303,6 @@ contract CodexHelmetsLight is Initializable {
     function MoonlightCirclet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 58;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Sun Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 73;
         _hat.requirement.classRequirement = classRequirement();
@@ -347,8 +315,6 @@ contract CodexHelmetsLight is Initializable {
     function SunlightCirclet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 59;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Moon Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 78;
         _hat.requirement.classRequirement = classRequirement();
@@ -361,8 +327,6 @@ contract CodexHelmetsLight is Initializable {
     function CycleCirclet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 60;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Demonic Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 83;
         _hat.requirement.classRequirement = classRequirement();
@@ -375,8 +339,6 @@ contract CodexHelmetsLight is Initializable {
     function DemonicCrown(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 61;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Angelic Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 88;
         _hat.requirement.classRequirement = classRequirement();
@@ -389,8 +351,6 @@ contract CodexHelmetsLight is Initializable {
     function AngelicCrown(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 62;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Cycle Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 93;
         _hat.requirement.classRequirement = classRequirement();
@@ -403,8 +363,6 @@ contract CodexHelmetsLight is Initializable {
     function EternalCrown(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _hat) {
         _hat.metadata.id = 63;
         _hat.metadata.baseType = GameObjects.ItemType.HELMET;
-        //        _hat.metadata.name = "Eternal Hat";
-        //        _hat.metadata.description = "";
         _hat.metadata.upgradable = true;
         _hat.requirement.level = 98;
         _hat.requirement.classRequirement = classRequirement();

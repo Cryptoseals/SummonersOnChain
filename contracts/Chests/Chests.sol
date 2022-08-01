@@ -50,7 +50,7 @@ ERC721EnumerableUpgradeable {
             // rewards currency
             _chest.rewards.pool.yieldsMiscItem = false;
             _chest.rewards.pool.yieldsArtifact = false;
-            _chest.rewards.pool.yieldsElixir = false;
+            _chest.rewards.pool.yieldsConsumable = false;
 
             // determine currency type
             uint roll2 = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX)).d100(block.number + roll + 1);

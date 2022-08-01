@@ -12,13 +12,13 @@ interface IGameRewards {
 
     struct RewardPool {
         bool yieldsArtifact;
-        bool yieldsElixir;
+        bool yieldsConsumable;
         bool yieldsMiscItem;
     }
 
     struct Rewards {
         ArtifactRewards artifactRewards;
-        ElixirRewards elixirRewards;
+        ConsumableRewards elixirRewards;
         EquipableItemRewards equipableItemRewards;
         MiscItemRewards miscItemRewards;
     }
@@ -46,9 +46,9 @@ interface IGameRewards {
         uint[] tierChances;
     }
 
-    struct ElixirRewards {
-        uint[] elixirIds;
-        uint[] elixirTiers;
+    struct ConsumableRewards {
+        uint[] consumableIds;
+        uint[] consumableTiers;
         uint minRewardTier;
         uint maxRewardTier;
         uint[] tierChances;
@@ -69,12 +69,22 @@ interface IGameRewards {
     }
 
     struct MiscItemRewards {
-        MiscItemReward[] rewards;
+        ItemReward[] rewards;
         uint chanceToDrop;
     }
 
-    struct MiscItemReward {
-        uint miscType;
+    struct CookingItemRewards {
+        ItemReward[] rewards;
+        uint chanceToDrop;
+    }
+
+    struct AlchemyItemRewards {
+        ItemReward[] rewards;
+        uint chanceToDrop;
+    }
+
+    struct ItemReward {
+        uint itemId;
         uint minAmount;
         uint maxAmount;
     }

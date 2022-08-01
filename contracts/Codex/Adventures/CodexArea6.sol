@@ -69,9 +69,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -143,9 +143,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -217,9 +217,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -291,9 +291,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -365,9 +365,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -440,9 +440,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -514,9 +514,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -588,9 +588,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -662,9 +662,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -736,9 +736,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -810,9 +810,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -884,9 +884,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -958,9 +958,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -1032,9 +1032,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -1106,9 +1106,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -1180,9 +1180,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -1254,9 +1254,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -1328,9 +1328,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -1402,9 +1402,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
@@ -1476,9 +1476,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.MiscItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.MiscItemReward({
-        miscType : 1,
+        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });

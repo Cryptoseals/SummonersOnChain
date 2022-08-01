@@ -92,7 +92,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         _belt.statBonus = EquipableUtils.sumStats(_belt.statBonus, _suf.statBonus);
 
 
-        //        _belt.metadata.name = string(abi.encodePacked(_pre.title, " ", _belt.metadata.name, " ", _suf.title));
         return _belt;
     }
 
@@ -108,7 +107,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         _belt.statBonus = EquipableUtils.sumStats(_belt.statBonus, _pre.statBonus);
 
 
-        //        _belt.metadata.name = string(abi.encodePacked(_pre.title, " ", _belt.metadata.name));
         return _belt;
     }
 
@@ -122,7 +120,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         }
 
         _belt.statBonus = EquipableUtils.sumStats(_belt.statBonus, _suf.statBonus);
-        //        _belt.metadata.name = string(abi.encodePacked(_belt.metadata.name, " ", _suf.title));
         return _belt;
     }
 
@@ -259,8 +256,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function FrailBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 1;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Frail Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 1;
@@ -275,8 +270,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function AntiqueBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 2;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Antique Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 7;
@@ -290,8 +283,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function PurgeBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 3;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Purge Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 12;
@@ -305,8 +296,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function BarbedBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 4;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Barbed Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 17;
@@ -320,8 +309,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function ReflectiveBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 5;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Reflective Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 22;
@@ -335,8 +322,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function StormForgedBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 6;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Storm Forged Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 27;
@@ -350,8 +335,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function VerdantBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 7;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Verdant Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 32;
@@ -365,8 +348,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function ShadowfallBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 8;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Shadowfall Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 37;
@@ -380,8 +361,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function MalignantBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 9;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Malignant Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 42;
@@ -395,8 +374,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function SealedBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 10;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Sealed Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 47;
@@ -410,8 +387,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function TemplarBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 11;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Templar Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 52;
@@ -425,8 +400,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function ChannelerBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 12;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Channeler Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 57;
@@ -440,8 +413,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function ChosensBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 13;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Chosen's Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 62;
@@ -455,8 +426,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function AstraBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 14;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Astra Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 67;
@@ -470,8 +439,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function SoulbinderBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 15;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Soulbinder Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 72;
@@ -485,8 +452,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function MoonlightBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 16;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Sun Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 77;
@@ -500,8 +465,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function SunlightBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 17;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Moon Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 82;
@@ -515,8 +478,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function CycleBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 18;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Cycle Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 87;
@@ -530,8 +491,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function InfernalBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 19;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Infernal Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 92;
@@ -545,8 +504,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function DivineBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 20;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Divine Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 97;
@@ -560,8 +517,6 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     function EternalBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
         _belt.metadata.id = 21;
         _belt.metadata.baseType = GameObjects.ItemType.BELT;
-        //  _belt.metadata.name = "Eternal Belt";
-        //  _belt.metadata.description = "";
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 100;

@@ -20,7 +20,7 @@ export enum CONTRACTS {
     BELTS_CODEX, //19
     ARTIFACTS_CODEX, //20
     ARTIFACT_PROPS_CODEX, //20
-    ELIXIRS_CODEX, //21
+    CONSUMABLES_CODEX, //21
     MOUNTS_CODEX, //22
     RANDOM_CODEX, //23
     CORE_CODEX,
@@ -29,9 +29,13 @@ export enum CONTRACTS {
     CRYPTO_SEAL, // 25
     ARTIFACT_AND_ELIXIR_SLOTS, // 26
     ARTIFACTS,
-    ELIXIRS,
+    CONSUMABLES,
     MISC_CODEX,
     MISC_ITEMS,
+    ALCHEMY_ITEMS_CODEX,
+    ALCHEMY_ITEMS,
+    COOKING_ITEMS_CODEX,
+    COOKING_ITEMS,
     PREFIX_CODEX,
     SUFFIX_CODEX,
     EXP_CARDS,
@@ -85,7 +89,7 @@ export enum CONTRACTS {
     RING_RECIPES,
     EARRING_RECIPES,
     BELT_RECIPES,
-    ELIXIR_RECIPES,
+    CONSUMABLE_RECIPES,
     ARTIFACT_RECIPES,
     SWORD_STATS,
     DAGGER_STATS,
@@ -166,7 +170,7 @@ export const DeployedFileLocations = {
     misc_codex: "./scripts/deployed-contracts/misc_codex.json",
     misc_items: "./scripts/deployed-contracts/misc_items.json",
     artifacts: "./scripts/deployed-contracts/artifacts.json",
-    elixirs: "./scripts/deployed-contracts/elixirs.json",
+    consumables: "./scripts/deployed-contracts/consumables.json",
     cores: "./scripts/deployed-contracts/cores.json",
 }
 

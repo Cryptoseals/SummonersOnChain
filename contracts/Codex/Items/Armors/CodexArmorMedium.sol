@@ -103,8 +103,6 @@ contract CodexArmorsMedium is Initializable {
     function SoldiersTunic(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 22;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Soldier's Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
 
         // requirements here
@@ -134,8 +132,6 @@ contract CodexArmorsMedium is Initializable {
     function ExecutionersTunic(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 23;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Executioner's Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 5;
         _armor.requirement.classRequirement = classRequirement();
@@ -148,8 +144,6 @@ contract CodexArmorsMedium is Initializable {
     function HuntersShirt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 24;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Knight's Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 10;
         _armor.requirement.classRequirement = classRequirement();
@@ -162,8 +156,6 @@ contract CodexArmorsMedium is Initializable {
     function RangerShirt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 25;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Dwarven Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 15;
         _armor.requirement.classRequirement = classRequirement();
@@ -176,8 +168,6 @@ contract CodexArmorsMedium is Initializable {
     function MercenaryCoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 26;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Scale Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 20;
         _armor.requirement.classRequirement = classRequirement();
@@ -190,8 +180,6 @@ contract CodexArmorsMedium is Initializable {
     function NobleCoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 27;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Winged Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 25;
         _armor.requirement.classRequirement = classRequirement();
@@ -204,8 +192,6 @@ contract CodexArmorsMedium is Initializable {
     function BloodstainedCoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 28;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Draconic Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 30;
         _armor.requirement.classRequirement = classRequirement();
@@ -218,8 +204,6 @@ contract CodexArmorsMedium is Initializable {
     function CoatOfDusk(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 29;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Argent Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 35;
         _armor.requirement.classRequirement = classRequirement();
@@ -232,8 +216,6 @@ contract CodexArmorsMedium is Initializable {
     function ShadowLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 30;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Golden Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 40;
         _armor.requirement.classRequirement = classRequirement();
@@ -246,8 +228,6 @@ contract CodexArmorsMedium is Initializable {
     function HeadmastersLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 31;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Midas's Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 45;
         _armor.requirement.classRequirement = classRequirement();
@@ -260,8 +240,6 @@ contract CodexArmorsMedium is Initializable {
     function ElvenLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 32;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Juggernaut Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 50;
         _armor.requirement.classRequirement = classRequirement();
@@ -274,8 +252,6 @@ contract CodexArmorsMedium is Initializable {
     function ChosensLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 33;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Chosen's Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 55;
         _armor.requirement.classRequirement = classRequirement();
@@ -288,8 +264,6 @@ contract CodexArmorsMedium is Initializable {
     function ProphetsLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 34;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Templar Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 60;
         _armor.requirement.classRequirement = classRequirement();
@@ -302,8 +276,6 @@ contract CodexArmorsMedium is Initializable {
     function EldersLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 35;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Vanguard Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 65;
         _armor.requirement.classRequirement = classRequirement();
@@ -316,8 +288,6 @@ contract CodexArmorsMedium is Initializable {
     function AncientLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 36;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Void Dweller Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 70;
         _armor.requirement.classRequirement = classRequirement();
@@ -330,8 +300,6 @@ contract CodexArmorsMedium is Initializable {
     function MoonlightLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 37;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Sun Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 75;
         _armor.requirement.classRequirement = classRequirement();
@@ -344,8 +312,6 @@ contract CodexArmorsMedium is Initializable {
     function SunlightLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 38;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Moon Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 80;
         _armor.requirement.classRequirement = classRequirement();
@@ -358,8 +324,6 @@ contract CodexArmorsMedium is Initializable {
     function CycleLongcoat(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 39;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Demonic Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 85;
         _armor.requirement.classRequirement = classRequirement();
@@ -372,8 +336,6 @@ contract CodexArmorsMedium is Initializable {
     function DemonicSuit(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 40;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Angelic Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 90;
         _armor.requirement.classRequirement = classRequirement();
@@ -386,8 +348,6 @@ contract CodexArmorsMedium is Initializable {
     function AngelicSuit(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 41;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Cycle Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 95;
         _armor.requirement.classRequirement = classRequirement();
@@ -400,8 +360,6 @@ contract CodexArmorsMedium is Initializable {
     function EternalSuit(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
         _armor.metadata.id = 42;
         _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
-        //        _armor.metadata.name = "Eternal Coat";
-        //        _armor.metadata.description = "";
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 100;
         _armor.requirement.classRequirement = classRequirement();

@@ -104,7 +104,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
         _ring.statBonus = EquipableUtils.sumStats(_ring.statBonus, _pre.statBonus);
         _ring.statBonus = EquipableUtils.sumStats(_ring.statBonus, _suf.statBonus);
 
-        //        _ring.metadata.name = string(abi.encodePacked(_pre.title, " ", _ring.metadata.name, " ", _suf.title));
         return _ring;
     }
 
@@ -119,7 +118,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = EquipableUtils.sumStats(_ring.statBonus, _pre.statBonus);
 
-        //        _ring.metadata.name = string(abi.encodePacked(_pre.title, " ", _ring.metadata.name));
         return _ring;
     }
 
@@ -134,7 +132,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
         _ring.statBonus = EquipableUtils.sumStats(_ring.statBonus, _suf.statBonus);
 
-        //        _ring.metadata.name = string(abi.encodePacked(_ring.metadata.name, " ", _suf.title));
         return _ring;
     }
 
@@ -272,8 +269,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function FrailRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 1;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        // _ring.metadata.name = "Frail Ring";
-        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 1;
@@ -287,8 +282,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function AntiqueRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 2;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        // _ring.metadata.name = "Antique Ring";
-        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 6;
@@ -302,8 +295,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function PurgeRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 3;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        // _ring.metadata.name = "Purge Ringg";
-        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 11;
@@ -317,8 +308,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function BarbedRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 4;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        // _ring.metadata.name = "Barbed Ring";
-        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 16;
@@ -332,8 +321,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function ReflectiveRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 5;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        // _ring.metadata.name = "Reflective Ring";
-        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 21;
@@ -347,8 +334,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function StormForgedRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 6;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //  _ring.metadata.name = "Storm Forged Ring";
-        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 26;
@@ -362,8 +347,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function VerdantRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 7;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //  _ring.metadata.name = "Verdant Ring";
-        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 31;
@@ -377,8 +360,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function ShadowfallRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 8;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //  _ring.metadata.name = "Shadowfall Ring";
-        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 36;
@@ -392,8 +373,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function MalignantRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 9;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //  _ring.metadata.name = "Malignant Ring";
-        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 41;
@@ -407,8 +386,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function SealedRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 10;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //  _ring.metadata.name = "Sealed Ring";
-        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 46;
@@ -422,8 +399,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function TemplarRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 11;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //  _ring.metadata.name = "Templar Ring";
-        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 51;
@@ -437,8 +412,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function ChannelerRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 12;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //  _ring.metadata.name = "Channeler Ring";
-        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 56;
@@ -452,8 +425,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function ChosensRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 13;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //  _ring.metadata.name = "Choosen's Ring";
-        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 61;
@@ -467,8 +438,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function AstraRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 14;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //  _ring.metadata.name = "Astra Ring";
-        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 66;
@@ -482,8 +451,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function SoulbinderRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 15;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        // _ring.metadata.name = "Soulbinder Ring";
-        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 71;
@@ -497,8 +464,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function MoonlightRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 16;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        // _ring.metadata.name = "Sun Ring";
-        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 76;
@@ -512,8 +477,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function SunlightRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 17;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //  _ring.metadata.name = "Moon Ring";
-        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 81;
@@ -527,8 +490,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function CycleRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 18;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        //  _ring.metadata.name = "Cycle Ring";
-        //  _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 86;
@@ -542,8 +503,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function InfernalRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 19;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        // _ring.metadata.name = "Infernal Ring";
-        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 91;
@@ -557,8 +516,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function DivineRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 20;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        // _ring.metadata.name = "Divine Ring";
-        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 96;
@@ -572,8 +529,6 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
     function EternalRing(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _ring) {
         _ring.metadata.id = 21;
         _ring.metadata.baseType = GameObjects.ItemType.RING;
-        // _ring.metadata.name = "Eternal Ring";
-        // _ring.metadata.description = "";
         _ring.metadata.upgradable = true;
 
         _ring.requirement.level = 100;

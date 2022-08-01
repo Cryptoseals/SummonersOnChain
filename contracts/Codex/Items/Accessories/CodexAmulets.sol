@@ -99,7 +99,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         _amulet.statBonus = EquipableUtils.sumStats(_amulet.statBonus, _suf.statBonus);
 
 
-        ////        _amulet.metadata.name = string(abi.encodePacked(_pre.title, " ", _amulet.metadata.name, " ", _suf.title));
         return _amulet;
     }
 
@@ -113,7 +112,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         }
         _amulet.statBonus = EquipableUtils.sumStats(_amulet.statBonus, _pre.statBonus);
 
-        //        _amulet.metadata.name = string(abi.encodePacked(_pre.title, " ", _amulet.metadata.name));
         return _amulet;
     }
 
@@ -127,7 +125,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         }
         _amulet.statBonus = EquipableUtils.sumStats(_amulet.statBonus, _suf.statBonus);
 
-        //        _amulet.metadata.name = string(abi.encodePacked(_amulet.metadata.name, " ", _suf.title));
         return _amulet;
     }
 
@@ -264,8 +261,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function FrailAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 1;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        //_amulet.metadata.name = "Frail Amulet";
-        //_amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 1;
@@ -279,8 +274,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function AntiqueAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 2;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        //  _amulet.metadata.name = "Antique Amulet";
-        //  _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 7;
@@ -294,8 +287,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function PurgeAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 3;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        //  _amulet.metadata.name = "Purge Amulet";
-        //  _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 12;
@@ -309,8 +300,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function BarbedAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 4;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        //  _amulet.metadata.name = "Barbed Amulet";
-        //  _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 17;
@@ -324,8 +313,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function ReflectiveAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 5;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        //  _amulet.metadata.name = "Reflective Amulet";
-        //  _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 22;
@@ -339,8 +326,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function StormForgedAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 6;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        //  _amulet.metadata.name = "Storm Forged Amulet";
-        //  _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 27;
@@ -354,8 +339,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function VerdantAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 7;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        //  _amulet.metadata.name = "Verdant Amulet";
-        //  _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 32;
@@ -369,8 +352,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function ShadowfallAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 8;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        //  _amulet.metadata.name = "Shadowfall Amulet";
-        //  _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 37;
@@ -384,8 +365,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function MalignantAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 9;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        // _amulet.metadata.name = "Malignant Amulet";
-        // _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 42;
@@ -399,8 +378,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function SealedAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 10;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        //  _amulet.metadata.name = "Sealed Amulet";
-        //  _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 47;
@@ -414,8 +391,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function TemplarAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 11;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        //   _amulet.metadata.name = "Templar Amulet";
-        //   _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 52;
@@ -429,8 +404,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function ChannelerAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 12;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        //  _amulet.metadata.name = "Channeler Amulet";
-        //  _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 57;
@@ -444,8 +417,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function ChosensAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 13;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        //  _amulet.metadata.name = "Chosen's Amulet";
-        //  _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 62;
@@ -459,8 +430,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function AstraAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 14;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        //  _amulet.metadata.name = "Astra Amulet";
-        //  _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 67;
@@ -474,8 +443,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function SoulbinderAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 15;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        // _amulet.metadata.name = "Soulbinder Amulet";
-        // _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 72;
@@ -489,8 +456,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function MoonlightAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 16;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        // _amulet.metadata.name = "Sun Amulet";
-        // _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 77;
@@ -504,8 +469,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function SunlightAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 17;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        //  _amulet.metadata.name = "Moon Amulet";
-        //  _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 82;
@@ -519,8 +482,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function CycleAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 18;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        // _amulet.metadata.name = "Cycle Amulet";
-        // _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 87;
@@ -534,8 +495,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function InfernalAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 19;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        // _amulet.metadata.name = "Infernal Amulet";
-        // _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 92;
@@ -549,8 +508,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function DivineAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 20;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        // _amulet.metadata.name = "Diamond Amulet";
-        // _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 97;
@@ -564,8 +521,6 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
     function EternalAmulet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _amulet) {
         _amulet.metadata.id = 21;
         _amulet.metadata.baseType = GameObjects.ItemType.AMULET;
-        // _amulet.metadata.name = "Eternal Amulet";
-        // _amulet.metadata.description = "";
         _amulet.metadata.upgradable = true;
 
         _amulet.requirement.level = 100;

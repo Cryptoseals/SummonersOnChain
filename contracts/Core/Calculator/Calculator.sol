@@ -7,7 +7,7 @@ import {IAttributes} from "../../Interfaces/Attributes/IAttributes.sol";
 import {GameConstants} from "../../Interfaces/Core/Constants/Constants.sol";
 import {EquipableUtils} from "../../Inventory/EquipableUtils.sol";
 import {IEquipable} from "../../Interfaces/Inventory/IEquipable.sol";
-import {IElixirAndArtifactSlots} from "../../Interfaces/Inventory/IElixirAndArtifactSlots.sol";
+import {IConsumablesAndArtifacts} from "../../Interfaces/Inventory/IConsumablesAndArtifacts.sol";
 import {ISummoners} from "../../Interfaces/Summoners/ISummoners.sol";
 import {IMonster} from "../../Interfaces/GameObjects/IMonster.sol";
 
@@ -15,7 +15,7 @@ pragma solidity ^0.8.0;
 
 contract Calculator is Initializable, InitNavigator {
 
-    IElixirAndArtifactSlots elixirAndArtifactSlots;
+    IConsumablesAndArtifacts elixirAndArtifactSlots;
     IAttributes attributes;
     IEquipable inventory;
 
@@ -25,7 +25,7 @@ contract Calculator is Initializable, InitNavigator {
 
     function initializeContracts() external {
         address inventoryAddress = contractAddress(INavigator.CONTRACT.INVENTORY);
-        elixirAndArtifactSlots = IElixirAndArtifactSlots(inventoryAddress);
+        elixirAndArtifactSlots = IConsumablesAndArtifacts(inventoryAddress);
         inventory = IEquipable(inventoryAddress);
         attributes = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES));
     }
@@ -328,6 +328,7 @@ contract Calculator is Initializable, InitNavigator {
         _generated_stats.CRIT = CRITW(_generated_stats.CRIT, _stats.LUCK);
         _generated_stats.ACCURACY = ACCU(_generated_stats.ACCURACY, _stats.DEX);
         _generated_stats.DODGE = DODGEWDecimals(_generated_stats.DODGE, _stats.AGI);
+        _generated_stats.INFUSION  = _generated_stats.INFUSION > 100 ? 100 : _generated_stats.INFUSION;
         //        _generated_stats.P_ATK = ATK(_generated_stats.P_ATK, _stats.STR);
         //        _generated_stats.M_ATK = ATK(_generated_stats.M_ATK, _stats.INT);
         _generated_stats.P_DEF = DEFW(_generated_stats.P_DEF, _stats.VIT, lvl);

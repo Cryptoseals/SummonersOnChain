@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {INavigator, InitNavigator} from "../Core/Navigator/InitNavigator.sol";
-import {GameObjects, GameObjects_Elixir} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {GameObjects, GameObjects_BuffEffects} from "../Interfaces/GameObjects/IGameObjects.sol";
 import {IEquipableItems} from "../Interfaces/NonFungibles/EquipableItems/IEquipableItems.sol";
 import {ICraftingRecipe, ICraftingMaterials} from "../Interfaces/Crafting/ICraftingRecipe.sol";
 import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
@@ -25,7 +25,9 @@ contract Crafting is Initializable, InitNavigator {
     IFungibleInGameToken goldContract;
     IFungibleInGameToken essenceContract;
     IMiscItems miscs;
-    CraftingElixir elixirs;
+    IAlchemyItems alchemy;
+    ICookingItems cooking;
+    CraftingConsumable consumables;
     CraftingArtifact artifacts;
     IEquipableItems equipments;
     ICraftingMaterialsToken craftingMaterialContract;
@@ -51,7 +53,9 @@ contract Crafting is Initializable, InitNavigator {
         goldContract = IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD));
         essenceContract = IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE));
         miscs = IMiscItems(contractAddress(INavigator.CONTRACT.MISC_ITEMS));
-        elixirs = CraftingElixir(contractAddress(INavigator.CONTRACT.ELIXIRS));
+        cooking = ICookingItems(contractAddress(INavigator.CONTRACT.COOKING_ITEMS));
+        alchemy = IAlchemyItems(contractAddress(INavigator.CONTRACT.ALCHEMY_ITEMS));
+        consumables = CraftingConsumable(contractAddress(INavigator.CONTRACT.CONSUMABLES));
         artifacts = CraftingArtifact(contractAddress(INavigator.CONTRACT.ARTIFACTS));
         equipments = IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS));
         craftingMaterialContract = ICraftingMaterialsToken(contractAddress(INavigator.CONTRACT.CRAFTING_MATERIALS));
@@ -185,25 +189,34 @@ contract Crafting is Initializable, InitNavigator {
         artifacts.mintItem(msg.sender, 1);
     }
 
-    function craftElixir(uint elixir, uint amount) external {
-        require(amount>0, "0");
-        GameObjects_Elixir.ElixirRecipe memory recipe = CraftingElixir(contractAddress(INavigator.CONTRACT.ELIXIR_RECIPES)).recipe_by_id(elixir);
+    function craftConsumable(uint consumable, uint amount) external {
+        require(amount > 0, "0");
+        GameObjects_BuffEffects.BuffEffectRecipe memory recipe = CraftingConsumable(contractAddress(INavigator.CONTRACT.CONSUMABLE_RECIPES)).recipe_by_id(consumable);
         if (recipe.id == 0) revert("invalid");
+
         for (uint i = 0; i < recipe.requiredMiscItemIDs.length; i++) {
             miscs.burnMiscItem(msg.sender, recipe.requiredMiscItemIDs[i], amount);
         }
 
-        goldContract.burnToken(msg.sender, recipe.requiredGold*amount);
-        essenceContract.burnToken(msg.sender, recipe.requiredEssence*amount);
-        elixirs.mintElixir(elixir, 0, msg.sender, amount);
+        for (uint i = 0; i < recipe.requiredCookingItemIDs.length; i++) {
+            cooking.burnCookingItem(msg.sender, recipe.requiredCookingItemIDs[i], amount);
+        }
+
+        for (uint i = 0; i < recipe.requiredAlchemyItemIDs.length; i++) {
+            alchemy.burnAlchemyItem(msg.sender, recipe.requiredAlchemyItemIDs[i], amount);
+        }
+
+        goldContract.burnToken(msg.sender, recipe.requiredGold * amount);
+        essenceContract.burnToken(msg.sender, recipe.requiredEssence * amount);
+        consumables.mintConsumable(consumable, 0, msg.sender, amount);
     }
 
     function itemUpgradeChance(uint tier) internal view returns (uint _chance) {
         if (tier == 1) _chance = 100;
-        if (tier == 2) _chance = 95;
-        if (tier == 3) _chance = 90;
-        if (tier == 4) _chance = 85;
-        if (tier == 5) _chance = 75;
+        if (tier == 2) _chance = 90;
+        if (tier == 3) _chance = 85;
+        if (tier == 4) _chance = 80;
+        if (tier == 5) _chance = 65;
         if (tier == 6) _chance = 40;
         if (tier == 7) _chance = 25;
         if (tier == 8) _chance = 10;
@@ -215,13 +228,20 @@ interface IMiscItems {
     function burnMiscItem(address from, uint id, uint amount) external;
 }
 
+interface IAlchemyItems {
+    function burnAlchemyItem(address from, uint id, uint amount) external;
+}
+
+interface ICookingItems {
+    function burnCookingItem(address from, uint id, uint amount) external;
+}
+
 interface CraftingArtifact {
     function mintItem(address player, uint artifactTier) external;
 }
 
+interface CraftingConsumable {
+    function recipe_by_id(uint _id) external pure returns (GameObjects_BuffEffects.BuffEffectRecipe memory _recipe);
 
-interface CraftingElixir {
-    function recipe_by_id(uint _id) external pure returns (GameObjects_Elixir.ElixirRecipe memory _recipe);
-
-    function mintElixir(uint elixir_id, uint elixir_tier, address to, uint amount) external;
+    function mintConsumable(uint consumable_id, uint consumable_tier, address to, uint amount) external;
 }

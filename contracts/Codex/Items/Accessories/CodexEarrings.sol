@@ -101,7 +101,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         _earrings.statBonus = EquipableUtils.sumStats(_earrings.statBonus, _pre.statBonus);
         _earrings.statBonus = EquipableUtils.sumStats(_earrings.statBonus, _suf.statBonus);
 
-        //        _earrings.metadata.name = string(abi.encodePacked(_pre.title, " ", _earrings.metadata.name, " ", _suf.title));
         return _earrings;
     }
 
@@ -116,7 +115,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
 
         _earrings.statBonus = EquipableUtils.sumStats(_earrings.statBonus, _pre.statBonus);
 
-        //        _earrings.metadata.name = string(abi.encodePacked(_pre.title, " ", _earrings.metadata.name));
         return _earrings;
     }
 
@@ -135,7 +133,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
             _earrings.elementalStats = EquipableUtils.sumGeneratedElementalStats(_earrings.elementalStats, _suf.elementalStats);
         }
 
-        //        _earrings.metadata.name = string(abi.encodePacked(_earrings.metadata.name, " ", _suf.title));
         return _earrings;
     }
 
@@ -273,8 +270,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function FrailEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 1;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Frail Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 1;
@@ -288,8 +283,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function AntiqueEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 2;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Antique Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 6;
@@ -303,8 +296,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function PurgeEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 3;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Purge Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 11;
@@ -318,8 +309,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function BarbedEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 4;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Barbed Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 16;
@@ -333,8 +322,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function ReflectiveEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 5;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Reflective Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 21;
@@ -348,8 +335,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function StormForgedEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 6;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Storm Forged Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 26;
@@ -363,8 +348,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function VerdantEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 7;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Verdant Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 31;
@@ -378,8 +361,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function ShadowfallEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 8;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Shadowfall Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 36;
@@ -393,8 +374,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function MalignantEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 9;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Malignant Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 41;
@@ -408,8 +387,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function SealedEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 10;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Sealed Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 46;
@@ -423,8 +400,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function TemplarEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 11;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Templar Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 51;
@@ -438,8 +413,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function ChannelerEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 12;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Channeler Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 56;
@@ -453,8 +426,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function ChosensEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 13;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Chosen's Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 61;
@@ -468,8 +439,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function AstraEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 14;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Astra Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 66;
@@ -483,8 +452,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function SoulbinderEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 15;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Soulbinder Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 71;
@@ -498,8 +465,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function MoonlightEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 16;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Sun Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 76;
@@ -513,8 +478,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function SunlightEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 17;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Moon Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 81;
@@ -528,8 +491,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function CycleEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 18;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Cycle Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 86;
@@ -543,8 +504,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function InfernalEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 19;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Infernal Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 91;
@@ -558,8 +517,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function DivineEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 20;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        //  _earrings.metadata.name = "Divine Earrings";
-        //  _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 96;
@@ -573,8 +530,6 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
     function EternalEarrings(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _earrings) {
         _earrings.metadata.id = 21;
         _earrings.metadata.baseType = GameObjects.ItemType.EARRING;
-        // _earrings.metadata.name = "Eternal Earrings";
-        // _earrings.metadata.description = "";
         _earrings.metadata.upgradable = true;
 
         _earrings.requirement.level = 100;

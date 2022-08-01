@@ -3,11 +3,13 @@ import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
 import {Strings}from "@openzeppelin/contracts/utils/Strings.sol";
 import {ERC1155Upgradeable}from "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
 import {OwnableUpgradeable}from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import {CodexCores, ICore} from "../Codex/CodexCores.sol";
+import {GameObjects_BuffEffects} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
-contract Cores is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgradeable {
+contract ConsumableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgradeable {
     using Strings for uint256;
+
+    uint constant precision = 10000;
 
     function initialize(address _navigator, string memory uri) external initializer {
         initializeNavigator(_navigator);
@@ -15,18 +17,18 @@ contract Cores is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgra
         __Ownable_init();
     }
 
-    function mintCore(uint core, address to, uint amount) external onlyGameContracts {
-        require(amount > 0 && core > 0, "0");
-        // TODO("put crafting requirements")
-        _mint(to, uint(core), amount, new bytes(0));
+    function mintConsumable(uint consumable_id, uint consumable_tier, address to, uint amount) external onlyGameContracts {
+        require(amount > 0, "0");
+        uint id = consumableItemTokenIdByTier(consumable_id, consumable_tier);
+        _mint(to, id, amount, new bytes(0));
     }
 
     // test purposes
-    function mintDev(uint core, uint amount) external onlyOwner {
-        _mint(msg.sender, uint(core), amount, new bytes(0));
+    function mintDev(uint consumable, uint amount) external onlyOwner {
+        _mint(msg.sender, uint(consumable), amount, new bytes(0));
     }
 
-    function burnCore(address from, uint id, uint amount) external onlyGameContracts {
+    function burnConsumableItem(address from, uint id, uint amount) external onlyGameContracts {
         require(amount > 0, "0");
         _burn(from, uint(id), amount);
     }
@@ -40,7 +42,7 @@ contract Cores is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgra
         return string(abi.encodePacked(uri(id), id.toString()));
     }
 
-    function coresOf(address account, uint[] memory ids) external view returns (uint[] memory) {
+    function consumablesOf(address account, uint[] memory ids) external view returns (uint[] memory) {
         uint[] memory result = new uint[](ids.length);
         uint i = 0;
         for (i; i < ids.length; i++) {
@@ -49,7 +51,12 @@ contract Cores is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgra
         return result;
     }
 
-    function name() external view returns (string memory) {
-        return "Cores";
+    function consumableItemTokenIdByTier(uint consumable_id, uint tier) public pure returns (uint) {
+        return (consumable_id * precision) + tier;
+    }
+
+    function decodeConsumableItem(uint tokenId) external pure returns (uint, uint) {
+        require(tokenId > 0, "?");
+        return ((tokenId - tokenId % precision) / precision, tokenId % precision);
     }
 }

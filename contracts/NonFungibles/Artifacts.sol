@@ -30,7 +30,7 @@ contract Artifacts is Initializable, OwnableUpgradeable, InitNavigator, ERC721En
         GameObjects_Equipments.Artifact artifact;
     }
 
-    function initialize(address _navigator, string memory name, string memory symbol) external {
+    function initialize(address _navigator, string memory name, string memory symbol) initializer external {
         initializeNavigator(_navigator);
         __ERC721_init(name, symbol);
         __Ownable_init();

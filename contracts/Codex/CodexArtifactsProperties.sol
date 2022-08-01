@@ -1,10 +1,13 @@
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {GameObjects, GameObjects_Equipments} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
-contract CodexArtifactsProperties {
+contract CodexArtifactsProperties is Initializable {
     string constant public index = "Codex";
     string constant public class = "ArtifactsProperties";
     string constant public version = "0.0.1";
+
+    function initialize () external initializer {}
 
     function properties(uint[] memory ids, uint tier) external view returns (GameObjects_Equipments.Artifact[] memory){
         GameObjects_Equipments.Artifact[] memory result = new  GameObjects_Equipments.Artifact[](ids.length);

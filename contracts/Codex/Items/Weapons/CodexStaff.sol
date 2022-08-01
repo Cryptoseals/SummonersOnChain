@@ -95,8 +95,6 @@ contract CodexStaves is Initializable {
     function WoodenStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 85;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Wooden Staff";
-        //   _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
 
         // requirements here
@@ -117,8 +115,6 @@ contract CodexStaves is Initializable {
     function MarbleStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 86;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Marble Staff";
-        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 5;
         _weapon.requirement.classRequirement = classRequirement();
@@ -130,8 +126,6 @@ contract CodexStaves is Initializable {
     function TotemicStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 87;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Totemic Staff";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 10;
         _weapon.requirement.classRequirement = classRequirement();
@@ -143,8 +137,6 @@ contract CodexStaves is Initializable {
     function AuraStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 88;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Aura Staff";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 15;
         _weapon.requirement.classRequirement = classRequirement();
@@ -156,8 +148,6 @@ contract CodexStaves is Initializable {
     function BattleseenStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 89;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Battleseen Staff";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 20;
         _weapon.requirement.classRequirement = classRequirement();
@@ -169,8 +159,6 @@ contract CodexStaves is Initializable {
     function WizardStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 90;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Wizard Staff";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 25;
         _weapon.requirement.classRequirement = classRequirement();
@@ -182,8 +170,6 @@ contract CodexStaves is Initializable {
     function RubyStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 91;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Ruby Staff";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 30;
         _weapon.requirement.classRequirement = classRequirement();
@@ -195,8 +181,6 @@ contract CodexStaves is Initializable {
     function VerdantStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 92;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Verdant Staff";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 35;
         _weapon.requirement.classRequirement = classRequirement();
@@ -208,8 +192,6 @@ contract CodexStaves is Initializable {
     function StarfallensStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 93;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Starfallen's Staff";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 40;
         _weapon.requirement.classRequirement = classRequirement();
@@ -221,8 +203,6 @@ contract CodexStaves is Initializable {
     function Lightbringer(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 94;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Lightbringer";
-        //  _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 45;
         _weapon.requirement.classRequirement = classRequirement();
@@ -234,8 +214,6 @@ contract CodexStaves is Initializable {
     function StaffOfMoonlight(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 95;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Staff of Moonlight";
-        _weapon.metadata.description = "";
         //  _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 50;
         _weapon.requirement.classRequirement = classRequirement();
@@ -247,8 +225,6 @@ contract CodexStaves is Initializable {
     function StaffOfSunlight(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 96;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Staff of Sunlight";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 55;
         _weapon.requirement.classRequirement = classRequirement();
@@ -260,8 +236,6 @@ contract CodexStaves is Initializable {
     function CycleStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 97;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Cycle Staff";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 60;
         _weapon.requirement.classRequirement = classRequirement();
@@ -273,8 +247,6 @@ contract CodexStaves is Initializable {
     function PhantasmalStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 98;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Phantasmal Staff";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 65;
         _weapon.requirement.classRequirement = classRequirement();
@@ -286,8 +258,6 @@ contract CodexStaves is Initializable {
     function WarlocksStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 99;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Warlock's Staff";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 70;
         _weapon.requirement.classRequirement = classRequirement();
@@ -299,8 +269,6 @@ contract CodexStaves is Initializable {
     function LuminescentStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 100;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Luminescent Staff";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 75;
         _weapon.requirement.classRequirement = classRequirement();
@@ -312,8 +280,6 @@ contract CodexStaves is Initializable {
     function AncientElementalistsStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 101;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Ancient Elementalist's Staff";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 80;
         _weapon.requirement.classRequirement = classRequirement();
@@ -325,8 +291,6 @@ contract CodexStaves is Initializable {
     function Spellcatcher(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 102;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Spellcatcher";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 85;
         _weapon.requirement.classRequirement = classRequirement();
@@ -338,8 +302,6 @@ contract CodexStaves is Initializable {
     function IncursionStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 103;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Incursion Staff";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 90;
         _weapon.requirement.classRequirement = classRequirement();
@@ -351,8 +313,6 @@ contract CodexStaves is Initializable {
     function EldersMark(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 104;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Elder's Mark";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 95;
         _weapon.requirement.classRequirement = classRequirement();
@@ -364,8 +324,6 @@ contract CodexStaves is Initializable {
     function Soultrapper(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
         _weapon.metadata.id = 105;
         _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
-        //        _weapon.metadata.name = "Soultrapper";
-        // _weapon.metadata.description = "";
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 100;
         _weapon.requirement.classRequirement = classRequirement();

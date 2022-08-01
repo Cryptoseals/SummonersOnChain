@@ -103,8 +103,6 @@ contract CodexBootsHeavy is Initializable {
     function SoldiersBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 1;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        // _boots.metadata.name = "Soldier's Boots";
-        // _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
 
         // requirements here
@@ -125,8 +123,6 @@ contract CodexBootsHeavy is Initializable {
     function ExecutionerBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 2;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //  _boots.metadata.name = "Executioner's Boots";
-        //  _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 3;
         _boots.requirement.classRequirement = classRequirement();
@@ -140,8 +136,6 @@ contract CodexBootsHeavy is Initializable {
     function KnightsBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 3;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //   _boots.metadata.name = "Knight's Boots";
-        //   _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 8;
         _boots.requirement.classRequirement = classRequirement();
@@ -155,8 +149,6 @@ contract CodexBootsHeavy is Initializable {
     function DwarvenBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 4;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //  _boots.metadata.name = "Dwarven Boots";
-        //  _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 13;
         _boots.requirement.classRequirement = classRequirement();
@@ -170,8 +162,6 @@ contract CodexBootsHeavy is Initializable {
     function ScaleBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 5;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        // _boots.metadata.name = "Scale Boots";
-        // _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 18;
         _boots.requirement.classRequirement = classRequirement();
@@ -184,8 +174,6 @@ contract CodexBootsHeavy is Initializable {
     function WingedBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 6;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //  _boots.metadata.name = "Winged Boots";
-        //  _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 23;
         _boots.requirement.classRequirement = classRequirement();
@@ -198,8 +186,6 @@ contract CodexBootsHeavy is Initializable {
     function JuggernautBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 7;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //  _boots.metadata.name = "Juggernaut Boots";
-        //  _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 28;
         _boots.requirement.classRequirement = classRequirement();
@@ -212,8 +198,6 @@ contract CodexBootsHeavy is Initializable {
     function DraconicBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 8;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //  _boots.metadata.name = "Draconic Boots";
-        //  _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 33;
         _boots.requirement.classRequirement = classRequirement();
@@ -226,8 +210,6 @@ contract CodexBootsHeavy is Initializable {
     function DragonsilverBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 9;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //    _boots.metadata.name = "Dragonsilver Boots";
-        //    _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 38;
         _boots.requirement.classRequirement = classRequirement();
@@ -240,8 +222,6 @@ contract CodexBootsHeavy is Initializable {
     function GoldenBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 10;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        // _boots.metadata.name = "Golden Boots";
-        // _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 43;
         _boots.requirement.classRequirement = classRequirement();
@@ -254,8 +234,6 @@ contract CodexBootsHeavy is Initializable {
     function MidassBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 11;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        ////_boots.metadata.name = "Midas's Boots";
-        //_boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 48;
         _boots.requirement.classRequirement = classRequirement();
@@ -268,8 +246,6 @@ contract CodexBootsHeavy is Initializable {
     function ChosensBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 12;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //_boots.metadata.name = "Chosen's Boots";
-        //_boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 53;
         _boots.requirement.classRequirement = classRequirement();
@@ -282,8 +258,6 @@ contract CodexBootsHeavy is Initializable {
     function TemplarBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 13;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //_boots.metadata.name = "Templar Boots";
-        //_boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 58;
         _boots.requirement.classRequirement = classRequirement();
@@ -296,8 +270,6 @@ contract CodexBootsHeavy is Initializable {
     function VanguardBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 14;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //_boots.metadata.name = "Vanguard Boots";
-        //_boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 63;
         _boots.requirement.classRequirement = classRequirement();
@@ -310,8 +282,6 @@ contract CodexBootsHeavy is Initializable {
     function VoidDwellerBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 15;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //_boots.metadata.name = "Void Dweller Boots";
-        //_boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 68;
         _boots.requirement.classRequirement = classRequirement();
@@ -324,8 +294,6 @@ contract CodexBootsHeavy is Initializable {
     function MoonlightBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 16;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //  _boots.metadata.name = "Sun Boots";
-        // _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 73;
         _boots.requirement.classRequirement = classRequirement();
@@ -338,8 +306,6 @@ contract CodexBootsHeavy is Initializable {
     function SunlightBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 17;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //  _boots.metadata.name = "Moon Boots";
-        //  _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 78;
         _boots.requirement.classRequirement = classRequirement();
@@ -352,8 +318,6 @@ contract CodexBootsHeavy is Initializable {
     function CycleBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 18;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //  _boots.metadata.name = "Demonic Boots";
-        // _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 83;
         _boots.requirement.classRequirement = classRequirement();
@@ -366,8 +330,6 @@ contract CodexBootsHeavy is Initializable {
     function DemonicBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 19;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //  _boots.metadata.name = "Angelic Boots";
-        //  _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 88;
         _boots.requirement.classRequirement = classRequirement();
@@ -381,8 +343,6 @@ contract CodexBootsHeavy is Initializable {
     function AngelicBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 20;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        // _boots.metadata.name = "Cycle Boots";
-        // _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 93;
         _boots.requirement.classRequirement = classRequirement();
@@ -395,8 +355,6 @@ contract CodexBootsHeavy is Initializable {
     function EternalBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _boots) {
         _boots.metadata.id = 21;
         _boots.metadata.baseType = GameObjects.ItemType.BOOTS;
-        //   _boots.metadata.name = "Eternal Boots";
-        //   _boots.metadata.description = "";
         _boots.metadata.upgradable = true;
         _boots.requirement.level = 98;
         _boots.requirement.classRequirement = classRequirement();

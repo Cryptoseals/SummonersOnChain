@@ -167,7 +167,7 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
         } else if (_class == GameObjects.Class.Engineer) {
             weaponId = 1;
             armorId = 22;
-            offhandId = 106;
+            offhandId = 127;
         } else if (_class == GameObjects.Class.Ranger) {
             weaponId = 43;
             armorId = 22;

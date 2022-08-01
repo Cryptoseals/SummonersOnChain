@@ -1,4 +1,4 @@
-import {GameObjects_Equipments, GameObjects_Elixir} from "../GameObjects/IGameObjects.sol";
+import {GameObjects_Equipments, GameObjects_BuffEffects} from "../GameObjects/IGameObjects.sol";
 import {ICore} from "../GameObjects/ICore.sol";
 pragma solidity ^0.8.15;
 
@@ -21,9 +21,9 @@ interface IAllCodexViews {
     function beltCore(uint id, uint itemTier) external pure returns (GameObjects_Equipments.EquipableItem memory);
     function mount(uint _id, uint _tier) external pure returns (GameObjects_Equipments.Mount memory);
     function mountCore(uint _id, uint _tier) external pure returns (GameObjects_Equipments.Mount memory);
-    function elixir(uint _id, uint _tier) external pure returns (GameObjects_Elixir.Elixir memory);
-    function elixirCore(uint _id, uint _tier) external pure returns (GameObjects_Elixir.Elixir memory);
-    function elixirTurnDuration(uint _id, uint _tier) external pure returns (uint);
+    function buffEffect(uint _id, uint _tier) external pure returns (GameObjects_BuffEffects.BuffEffect memory);
+    function buffEffectCore(uint _id, uint _tier) external pure returns (GameObjects_BuffEffects.BuffEffect memory);
+    function buffEffectTurnDuration(uint _id, uint _tier) external pure returns (uint);
     function artifact(uint _id) external pure returns (GameObjects_Equipments.Artifact memory);
     function artifactCore(uint _id, uint _tier) external pure returns (GameObjects_Equipments.Artifact memory);
     function prefix(uint _id, uint _tier) external pure returns (GameObjects_Equipments.Prefix memory);
