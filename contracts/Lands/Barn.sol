@@ -14,13 +14,18 @@ contract Barn is LandUtils {
     // maps land-barn slot id to animal slots
     mapping(uint => mapping(uint => Animals.BabyAnimal)) public BarnSlots;
 
-    function depositAnimals(uint landId, uint[] memory slots, uint[] memory _animalIds) external isOwned(landId) {
+    // use this function if you are depositing same animal in every slot
+    function depositAnimals(uint landId, uint[] memory slots, uint _animalId) external isOwned(landId) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.BarnHouse memory barnhouse = landCodex.barnHouse(stats.BarnHousesTier);
-        require(_animalIds.length <= barnhouse.capacity && slots.length == _animalIds.length, "m");
-        for (uint i = 0; i < _animalIds.length; i++) {
-            _handleDeposit(landId, slots[i], _animalIds[i]);
+        require(slots.length <= barnhouse.capacity, "m");
+        for (uint i = 0; i < slots.length; i++) {
+            _handleDeposit(landId, slots[i], _animalId);
         }
+    }
+
+    function depositAnimal(uint landId, uint slot, uint _animalId) external isOwned(landId) {
+        _handleDeposit(landId, slot, _animalId);
     }
 
     function _handleDeposit(uint landId, uint slot, uint _animalId) internal {
@@ -34,7 +39,13 @@ contract Barn is LandUtils {
         BarnSlots[landId][slot].growthTime = block.timestamp + _animal.growthTime;
     }
 
-    function _handleAnimals(uint landId, uint slot) internal {
+    function withdrawAnimals(uint landId, uint[] memory slots) external isOwned(landId) {
+        for (uint i = 0; i < slots.length; i++) {
+            _handleClaim(landId, slots[i]);
+        }
+    }
+
+    function _handleClaim(uint landId, uint slot) internal {
         BarnSlots[landId][slot].active = false;
         animalToken.mintAnimal(BarnSlots[landId][slot].becomes, msg.sender, 1);
     }
