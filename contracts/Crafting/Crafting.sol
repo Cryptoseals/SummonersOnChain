@@ -194,16 +194,16 @@ contract Crafting is Initializable, InitNavigator {
         GameObjects_BuffEffects.BuffEffectRecipe memory recipe = CraftingConsumable(contractAddress(INavigator.CONTRACT.CONSUMABLE_RECIPES)).recipe_by_id(consumable);
         if (recipe.id == 0) revert("invalid");
 
-        for (uint i = 0; i < recipe.requiredMiscItemIDs.length; i++) {
-            miscs.burnMiscItem(msg.sender, recipe.requiredMiscItemIDs[i], amount);
+        for (uint i = 0; i < recipe.requiredMiscItems.length; i++) {
+            miscs.burnMiscItem(msg.sender, recipe.requiredMiscItems[i].id, recipe.requiredMiscItems[i].amount);
         }
 
-        for (uint i = 0; i < recipe.requiredCookingItemIDs.length; i++) {
-            cooking.burnCookingItem(msg.sender, recipe.requiredCookingItemIDs[i], amount);
+        for (uint i = 0; i < recipe.requiredCookingItems.length; i++) {
+            cooking.burnCookingItem(msg.sender, recipe.requiredCookingItems[i].id, recipe.requiredCookingItems[i].amount);
         }
 
-        for (uint i = 0; i < recipe.requiredAlchemyItemIDs.length; i++) {
-            alchemy.burnAlchemyItem(msg.sender, recipe.requiredAlchemyItemIDs[i], amount);
+        for (uint i = 0; i < recipe.requiredAlchemyItems.length; i++) {
+            alchemy.burnAlchemyItem(msg.sender, recipe.requiredAlchemyItems[i].id, recipe.requiredAlchemyItems[i].amount);
         }
 
         goldContract.burnToken(msg.sender, recipe.requiredGold * amount);

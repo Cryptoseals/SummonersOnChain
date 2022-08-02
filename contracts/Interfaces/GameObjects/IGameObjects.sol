@@ -288,11 +288,16 @@ library GameObjects_BuffEffects {
 
     struct BuffEffectRecipe {
         uint id;
-        uint[] requiredAlchemyItemIDs;
-        uint[] requiredMiscItemIDs;
-        uint[] requiredCookingItemIDs;
+        BasicRequirement[] requiredAlchemyItems;
+        BasicRequirement[] requiredMiscItems;
+        BasicRequirement[] requiredCookingItems;
         uint requiredGold;
         uint requiredEssence;
+    }
+
+    struct BasicRequirement {
+        uint id;
+        uint amount;
     }
 
     struct ItemMetadata {

@@ -5,7 +5,7 @@ import {ERC1155Upgradeable}from "@openzeppelin/contracts-upgradeable/token/ERC11
 import {OwnableUpgradeable}from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 pragma solidity ^0.8.0;
 
-contract Cores is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgradeable {
+contract Animals is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgradeable {
     using Strings for uint256;
 
     function initialize(address _navigator, string memory uri) external initializer {
@@ -14,22 +14,20 @@ contract Cores is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgra
         __Ownable_init();
     }
 
-    function mintCore(uint core, address to, uint amount) external onlyGameContracts {
-        require(amount > 0 && core > 0, "0");
-        // TODO("put crafting requirements")
-        _mint(to, uint(core), amount, new bytes(0));
+    function mintAnimal(uint animal, address to, uint amount) external onlyGameContracts {
+        require(amount > 0 && animal > 0, "0");
+        _mint(to, uint(animal), amount, new bytes(0));
     }
 
     // test purposes
-    function mintDev(uint core, uint amount) external onlyOwner {
-        _mint(msg.sender, uint(core), amount, new bytes(0));
+    function mintDev(uint animal, uint amount) external onlyOwner {
+        _mint(msg.sender, uint(animal), amount, new bytes(0));
     }
 
-    function burnCore(address from, uint id, uint amount) external onlyGameContracts {
+    function burnAnimal(address from, uint id, uint amount) external onlyGameContracts {
         require(amount > 0, "0");
         _burn(from, uint(id), amount);
     }
-
 
     function setURI(string memory __uri) external onlyOwner {
         _setURI(__uri);
@@ -39,7 +37,7 @@ contract Cores is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgra
         return string(abi.encodePacked(uri(id), id.toString()));
     }
 
-    function coresOf(address account, uint[] memory ids) external view returns (uint[] memory) {
+    function animalsOf(address account, uint[] memory ids) external view returns (uint[] memory) {
         uint[] memory result = new uint[](ids.length);
         uint i = 0;
         for (i; i < ids.length; i++) {
@@ -49,6 +47,6 @@ contract Cores is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgra
     }
 
     function name() external view returns (string memory) {
-        return "Cores";
+        return "Animals";
     }
 }
