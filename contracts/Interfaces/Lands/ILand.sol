@@ -42,17 +42,17 @@ library Animals {
 library ILand {
 
     struct LandDetails {
+        GeneralBuilding building;
         address landlord;
         uint experience;
         bool active;
     }
 
-
     // BUILDINGS
     struct GeneralBuilding {
         uint level;
         uint maxLevel;
-        BuildingRequirement[10] upgradeReqs;
+        BuildingRequirement upgradeReqs;
         uint lastInteraction;
         uint bonusChance;
         uint bonusPercentage;
@@ -69,16 +69,14 @@ library ILand {
     struct Poultry {
         GeneralBuilding building;
         uint capacity;
-        Animals.GrowingAnimal[] animalRooms;
     }
 
     struct BarnHouse {
         GeneralBuilding building;
         uint capacity;
-        Animals.GrowingAnimal[] animalRooms;
     }
 
-    struct StorageBuilding {
+    struct Storages {
         GeneralBuilding building;
         uint eggCapacity;
         uint diaryCapacity;
@@ -97,7 +95,7 @@ library ILand {
 
     struct Farm {
         GeneralBuilding building;
-        Plot[] plots;
+        uint plots;
     }
 
     struct WaterTower {
@@ -153,14 +151,13 @@ library ILand {
     // reward and reqs;
 
     struct BuildingRequirement {
-        uint id;
-        GeneralRequirement[] requiredAnimals;
         GeneralRequirement[] requiredAlchemyItems;
         GeneralRequirement[] requiredMiscItems;
         GeneralRequirement[] requiredCookingItems;
         GeneralRequirement[] requiredMaterials;
         uint requiredGold;
         uint requiredEssence;
+        bool isValid;
     }
 
     struct GeneralRequirement {

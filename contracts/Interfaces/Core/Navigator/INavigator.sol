@@ -141,7 +141,11 @@ interface INavigator {
         AREA_16,
         REWARDS,
         CHESTS,
-        WORLD_BOSS
+        WORLD_BOSS,
+        LANDS,
+        LANDS_CODEX,
+        ANIMALS,
+        SEEDS
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;

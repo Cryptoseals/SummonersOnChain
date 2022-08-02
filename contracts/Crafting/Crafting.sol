@@ -6,6 +6,7 @@ import {ICraftingRecipe, ICraftingMaterials} from "../Interfaces/Crafting/ICraft
 import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
 import {ICraftingMaterialsToken} from "../Interfaces/NonFungibles/CraftingMaterials/ICraftingMaterialsToken.sol";
 import {ICodexRandom} from "../Interfaces/Codex/ICodexRandom.sol";
+import {IMiscItems, IAlchemyItems, ICookingItems} from "../Interfaces/Crafting/IBurnables.sol";
 pragma solidity ^0.8.0;
 
 
@@ -224,17 +225,6 @@ contract Crafting is Initializable, InitNavigator {
     }
 }
 
-interface IMiscItems {
-    function burnMiscItem(address from, uint id, uint amount) external;
-}
-
-interface IAlchemyItems {
-    function burnAlchemyItem(address from, uint id, uint amount) external;
-}
-
-interface ICookingItems {
-    function burnCookingItem(address from, uint id, uint amount) external;
-}
 
 interface CraftingArtifact {
     function mintItem(address player, uint artifactTier) external;
