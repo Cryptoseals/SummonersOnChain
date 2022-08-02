@@ -23,24 +23,14 @@ contract Lands is Initializable, OwnableUpgradeable, InitNavigator, ERC721Enumer
         Dairy
     }
 
-    struct LandStatsStruct {
-        uint LandDetailsTier;
-        uint PoultriesTier;
-        uint BarnHousesTier;
-        uint StorageBuildingsTier;
-        uint MillsTier;
-        uint FarmsTier;
-        uint WaterTowersTier;
-        uint SlaughterhousesTier;
-        uint DairiesTier;
-    }
+
 
     ICodexLands landCodex;
     IMiscItems miscs;
     IAlchemyItems alchemy;
     ICookingItems cooking;
     ICraftingMaterialsToken materials;
-    mapping(uint => LandStatsStruct) public LandStats;
+    mapping(uint => ILand.LandStatsStruct) public LandStats;
 
     modifier isOwned(uint landId) {
         require(ownerOf(landId) == msg.sender, "!");
@@ -80,43 +70,61 @@ contract Lands is Initializable, OwnableUpgradeable, InitNavigator, ERC721Enumer
     }
 
     function upgradeBuilding(uint landId, BuildingList building) external isOwned(landId) {
-        LandStatsStruct storage stats = LandStats[landId];
+        ILand.LandStatsStruct storage stats = LandStats[landId];
         ILand.BuildingRequirement memory reqs;
 
         if (building == BuildingList.LandDetails) {
-            reqs = landCodex.landBuildReqs(stats.LandDetailsTier);
+            ILand.GeneralBuilding memory _landDetails = landCodex.land(stats.LandDetailsTier);
+            require(stats.LandDetailsTier < _landDetails.maxLevel, "m");
+            reqs = _landDetails.upgradeReqs;
             stats.LandDetailsTier++;
         }
         else if (building == BuildingList.Poultry) {
-            reqs = landCodex.poultryBuildReqs(stats.PoultriesTier);
+            ILand.Poultry memory _poultries = landCodex.poultry(stats.PoultriesTier);
+            require(stats.PoultriesTier < _poultries.building.maxLevel, "m");
+            reqs = _poultries.building.upgradeReqs;
             stats.PoultriesTier++;
         }
         else if (building == BuildingList.BarnHouse) {
-            reqs = landCodex.barnBuilding(stats.BarnHousesTier);
+            ILand.BarnHouse memory _barn = landCodex.barnHouse(stats.BarnHousesTier);
+            require(stats.BarnHousesTier < _barn.building.maxLevel, "m");
+            reqs = _barn.building.upgradeReqs;
             stats.BarnHousesTier++;
         }
         else if (building == BuildingList.StorageBuilding) {
-            reqs = landCodex.storageBuilding(stats.StorageBuildingsTier);
+            ILand.Storages memory _storage = landCodex.storages(stats.StorageBuildingsTier);
+            require(stats.StorageBuildingsTier < _storage.building.maxLevel, "m");
+            reqs = _storage.building.upgradeReqs;
             stats.StorageBuildingsTier++;
         }
         else if (building == BuildingList.Mill) {
-            reqs = landCodex.millBuilding(stats.MillsTier);
+            ILand.Mill memory _mill = landCodex.mill(stats.MillsTier);
+            require(stats.MillsTier < _mill.building.maxLevel, "m");
+            reqs = _mill.building.upgradeReqs;
             stats.MillsTier++;
         }
         else if (building == BuildingList.Farms) {
-            reqs = landCodex.farmBuilding(stats.FarmsTier);
+            ILand.Farm memory _farms = landCodex.farm(stats.FarmsTier);
+            require(stats.FarmsTier < _farms.building.maxLevel, "m");
+            reqs = _farms.building.upgradeReqs;
             stats.FarmsTier++;
         }
         else if (building == BuildingList.WaterTower) {
-            reqs = landCodex.waterBuilding(stats.WaterTowersTier);
+            ILand.WaterTower memory _watertower = landCodex.waterTower(stats.WaterTowersTier);
+            require(stats.WaterTowersTier < _watertower.building.maxLevel, "m");
+            reqs = _watertower.building.upgradeReqs;
             stats.WaterTowersTier++;
         }
         else if (building == BuildingList.Slaughterhouse) {
-            reqs = landCodex.slaughterhouseBuilding(stats.SlaughterhousesTier);
+            ILand.Slaughterhouse memory _slaughterhouse = landCodex.slaughterhouse(stats.SlaughterhousesTier);
+            require(stats.SlaughterhousesTier < _slaughterhouse.building.maxLevel, "m");
+            reqs = _slaughterhouse.building.upgradeReqs;
             stats.SlaughterhousesTier++;
         }
         else if (building == BuildingList.Dairy) {
-            reqs = landCodex.dairiesBuilding(stats.DairiesTier);
+            ILand.Dairies memory _dairy = landCodex.dairies(stats.DairiesTier);
+            require(stats.DairiesTier < _dairy.building.maxLevel, "m");
+            reqs = _dairy.building.upgradeReqs;
             stats.DairiesTier++;
         }
 
@@ -137,6 +145,11 @@ contract Lands is Initializable, OwnableUpgradeable, InitNavigator, ERC721Enumer
         for (uint i = 0; i < reqs.requiredAlchemyItems.length; i++) {
             alchemy.burnAlchemyItem(msg.sender, reqs.requiredAlchemyItems[i].id, reqs.requiredAlchemyItems[i].amount);
         }
+    }
+
+    function landStats(uint landId) external view returns (ILand.LandStatsStruct memory){
+        require(_exists(landId), "e");
+        return LandStats[landId];
     }
 
 }

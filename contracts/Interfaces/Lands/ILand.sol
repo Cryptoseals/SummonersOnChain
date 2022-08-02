@@ -15,6 +15,7 @@ library Animals {
         uint growthTime;
         AnimalPlace building;
         uint becomes;
+        bool active;
     }
 
     struct GrownAnimal {
@@ -41,9 +42,20 @@ library Animals {
 
 library ILand {
 
+    struct LandStatsStruct {
+        uint LandDetailsTier;
+        uint PoultriesTier;
+        uint BarnHousesTier;
+        uint StorageBuildingsTier;
+        uint MillsTier;
+        uint FarmsTier;
+        uint WaterTowersTier;
+        uint SlaughterhousesTier;
+        uint DairiesTier;
+    }
+
     struct LandDetails {
         GeneralBuilding building;
-        address landlord;
         uint experience;
         bool active;
     }
