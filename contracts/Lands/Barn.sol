@@ -46,6 +46,7 @@ contract Barn is LandUtils {
     }
 
     function _handleBarnClaim(uint landId, uint slot) internal {
+        require(block.timestamp >= BarnSlots[landId][slot].growthTime, "e");
         BarnSlots[landId][slot].active = false;
         animalToken.mintAnimal(BarnSlots[landId][slot].becomes, msg.sender, 1);
     }

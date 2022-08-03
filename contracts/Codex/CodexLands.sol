@@ -1,5 +1,6 @@
 import {Animals, ILand} from "../Interfaces/Lands/ILand.sol";
 import {ICraftingMaterials} from "../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
+import {IAlchemyItem} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/IAlchemyItem.sol";
 pragma solidity ^0.8.0;
 
 contract CodexLands {
@@ -172,7 +173,6 @@ contract CodexLands {
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
-
     }
 
     function barnBuilding(uint tier) public view returns (ILand.BuildingRequirement memory _reqs){
@@ -286,7 +286,43 @@ contract CodexLands {
 
     function seed(uint _id) public pure returns (ILand.Seed memory) {
         if (_id == 1) {
-            return DillSeed();
+            return Dill();
+        } else if (_id == 2) {
+            return Rucola();
+        } else if (_id == 3) {
+            return Basilicum();
+        } else if (_id == 4) {
+            return Manaflower();
+        } else if (_id == 5) {
+            return FireFlower();
+        } else if (_id == 6) {
+            return Parsley();
+        } else if (_id == 7) {
+            return Shadowberry();
+        } else if (_id == 8) {
+            return Mistyflower();
+        } else if (_id == 9) {
+            return Mana_Mushroom();
+        } else if (_id == 10) {
+            return Demon_Mushroom();
+        } else if (_id == 11) {
+            return Raindrop_Mushroom();
+        } else if (_id == 12) {
+            return Bloodberry();
+        } else if (_id == 13) {
+            return King_Flower();
+        } else if (_id == 14) {
+            return Ancient_Flower();
+        } else if (_id == 15) {
+            return Fellherb();
+        } else if (_id == 16) {
+            return Wild_Rose();
+        } else if (_id == 17) {
+            return Red_Rose();
+        } else if (_id == 18) {
+            return Dragon_Flower();
+        } else if (_id == 19) {
+            return Golden_Flower();
         }
         revert("wrong");
     }
@@ -454,14 +490,14 @@ contract CodexLands {
         _animal.minSecondaryBuildingLevel = 4;
     }
 
-    // seed
-    function DillSeed() public pure returns (ILand.Seed memory _seed) {
+    // seeds
+    function Dill() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        // reward section,
+        // reward IAlchemyItem.List.Dill,
 
         //@param id is alchemy item id
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Dill;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -472,7 +508,17 @@ contract CodexLands {
     function Rucola() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Rucola;
+        _seed.reward.min = 1;
+        _seed.reward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Basilicum() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 1;
+        _seed.growTime = 8 hours;
+        _seed.reward.id = IAlchemyItem.List.Basilicum;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -482,7 +528,7 @@ contract CodexLands {
     function Manaflower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Manaflower;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -492,7 +538,7 @@ contract CodexLands {
     function FireFlower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.FireFlower;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -502,7 +548,7 @@ contract CodexLands {
     function Parsley() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Parsley;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -512,7 +558,7 @@ contract CodexLands {
     function Shadowberry() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Shadowberry;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -522,7 +568,7 @@ contract CodexLands {
     function Mistyflower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Mistyflower;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -532,7 +578,7 @@ contract CodexLands {
     function Mana_Mushroom() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Mana_Mushroom;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -542,7 +588,7 @@ contract CodexLands {
     function Demon_Mushroom() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Demon_Mushroom;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -552,7 +598,7 @@ contract CodexLands {
     function Raindrop_Mushroom() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Raindrop_Mushroom;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -562,7 +608,7 @@ contract CodexLands {
     function Bloodberry() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Bloodberry;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -572,7 +618,7 @@ contract CodexLands {
     function King_Flower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.King_Flower;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -582,7 +628,7 @@ contract CodexLands {
     function Ancient_Flower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Ancient_Flower;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -592,7 +638,7 @@ contract CodexLands {
     function Fellherb() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Fellherb;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -602,7 +648,7 @@ contract CodexLands {
     function Wild_Rose() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Wild_Rose;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -612,7 +658,7 @@ contract CodexLands {
     function Red_Rose() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Red_Rose;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -622,7 +668,7 @@ contract CodexLands {
     function Dragon_Flower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Dragon_Flower;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;
@@ -632,7 +678,7 @@ contract CodexLands {
     function Golden_Flower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
         _seed.growTime = 8 hours;
-        _seed.reward.id = 1;
+        _seed.reward.id = IAlchemyItem.List.Golden_Flower;
         _seed.reward.min = 1;
         _seed.reward.max = 3;
         _seed.landExpReward = 100;

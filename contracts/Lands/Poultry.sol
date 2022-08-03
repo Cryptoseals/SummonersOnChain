@@ -45,6 +45,7 @@ contract Poultry is LandUtils {
     }
 
     function _handlePoultryClaim(uint landId, uint slot) internal {
+        require(block.timestamp >= PoultrySlots[landId][slot].growthTime, "e");
         PoultrySlots[landId][slot].active = false;
         animalToken.mintAnimal(PoultrySlots[landId][slot].becomes, msg.sender, 1);
     }

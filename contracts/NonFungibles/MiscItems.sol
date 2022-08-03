@@ -3,7 +3,7 @@ import {ERC1155Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC1
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
-import "../Core/Common/Errors.sol";
+import {IMiscs} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/IMisc.sol";
 
 pragma solidity ^0.8.0;
 
@@ -17,9 +17,9 @@ contract MiscItems is Initializable, OwnableUpgradeable, InitNavigator, ERC1155U
         __Ownable_init();
     }
 
-    function rewardMiscItem(address to, uint id, uint amount) external onlyGameContracts {
-//        if (id < 1) revert InvalidItem("invalid item");
-        _mint(to, id, amount, new bytes(0));
+    function rewardMiscItem(address to, IMiscs.List id, uint amount) external onlyGameContracts {
+        require(uint(id) > 0, "0");
+        _mint(to, uint(id), amount, new bytes(0));
     }
 
     function burnMiscItem(address from, uint id, uint amount) external onlyGameContracts {

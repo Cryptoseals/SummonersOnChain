@@ -6,7 +6,7 @@ import {ICraftingRecipe, ICraftingMaterials} from "../Interfaces/Crafting/ICraft
 import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
 import {ICraftingMaterialsToken} from "../Interfaces/NonFungibles/CraftingMaterials/ICraftingMaterialsToken.sol";
 import {ICodexRandom} from "../Interfaces/Codex/ICodexRandom.sol";
-import {IMiscItems, IAlchemyItems, ICookingItems} from "../Interfaces/Crafting/IBurnables.sol";
+import {IMiscBurnable, IAlchemyBurnable, ICookingBurnable} from "../Interfaces/Crafting/IBurnables.sol";
 pragma solidity ^0.8.0;
 
 
@@ -25,9 +25,9 @@ contract Crafting is Initializable, InitNavigator {
     Recipes BELT_RECIPES;
     IFungibleInGameToken goldContract;
     IFungibleInGameToken essenceContract;
-    IMiscItems miscs;
-    IAlchemyItems alchemy;
-    ICookingItems cooking;
+    IMiscBurnable miscs;
+    IAlchemyBurnable alchemy;
+    ICookingBurnable cooking;
     CraftingConsumable consumables;
     CraftingArtifact artifacts;
     IEquipableItems equipments;
@@ -53,9 +53,9 @@ contract Crafting is Initializable, InitNavigator {
         BELT_RECIPES = Recipes(contractAddress(INavigator.CONTRACT.BELT_RECIPES));
         goldContract = IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD));
         essenceContract = IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE));
-        miscs = IMiscItems(contractAddress(INavigator.CONTRACT.MISC_ITEMS));
-        cooking = ICookingItems(contractAddress(INavigator.CONTRACT.COOKING_ITEMS));
-        alchemy = IAlchemyItems(contractAddress(INavigator.CONTRACT.ALCHEMY_ITEMS));
+        miscs = IMiscBurnable(contractAddress(INavigator.CONTRACT.MISC_ITEMS));
+        cooking = ICookingBurnable(contractAddress(INavigator.CONTRACT.COOKING_ITEMS));
+        alchemy = IAlchemyBurnable(contractAddress(INavigator.CONTRACT.ALCHEMY_ITEMS));
         consumables = CraftingConsumable(contractAddress(INavigator.CONTRACT.CONSUMABLES));
         artifacts = CraftingArtifact(contractAddress(INavigator.CONTRACT.ARTIFACTS));
         equipments = IEquipableItems(contractAddress(INavigator.CONTRACT.EQUIPABLE_ITEMS));

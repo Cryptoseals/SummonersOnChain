@@ -4,7 +4,7 @@ import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721Enumer
 import "../Core/Navigator/InitNavigator.sol";
 import {Animals, ILand} from "../Interfaces/Lands/ILand.sol";
 import {ICodexLands} from "../Interfaces/Codex/ICodexLands.sol";
-import {IMiscItems, IAlchemyItems, ICookingItems} from "../Interfaces/Crafting/IBurnables.sol";
+import {IMiscBurnable, IAlchemyBurnable, ICookingBurnable} from "../Interfaces/Crafting/IBurnables.sol";
 import {ICraftingMaterialsToken} from "../Interfaces/NonFungibles/CraftingMaterials/ICraftingMaterialsToken.sol";
 
 pragma solidity ^0.8.0;
@@ -26,9 +26,9 @@ contract Lands is Initializable, OwnableUpgradeable, InitNavigator, ERC721Enumer
 
 
     ICodexLands landCodex;
-    IMiscItems miscs;
-    IAlchemyItems alchemy;
-    ICookingItems cooking;
+    IMiscBurnable miscs;
+    IAlchemyBurnable alchemy;
+    ICookingBurnable cooking;
     ICraftingMaterialsToken materials;
     mapping(uint => ILand.LandStatsStruct) public LandStats;
 
@@ -49,9 +49,9 @@ contract Lands is Initializable, OwnableUpgradeable, InitNavigator, ERC721Enumer
 
     function initializeContracts() external {
         landCodex = ICodexLands(contractAddress(INavigator.CONTRACT.LANDS_CODEX));
-        miscs = IMiscItems(contractAddress(INavigator.CONTRACT.MISC_ITEMS));
-        cooking = ICookingItems(contractAddress(INavigator.CONTRACT.COOKING_ITEMS));
-        alchemy = IAlchemyItems(contractAddress(INavigator.CONTRACT.ALCHEMY_ITEMS));
+        miscs = IMiscBurnable(contractAddress(INavigator.CONTRACT.MISC_ITEMS));
+        cooking = ICookingBurnable(contractAddress(INavigator.CONTRACT.COOKING_ITEMS));
+        alchemy = IAlchemyBurnable(contractAddress(INavigator.CONTRACT.ALCHEMY_ITEMS));
         materials = ICraftingMaterialsToken(contractAddress(INavigator.CONTRACT.CRAFTING_MATERIALS));
     }
 

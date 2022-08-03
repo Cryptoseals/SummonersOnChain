@@ -4,6 +4,7 @@ import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/Own
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
 import "../Core/Common/Errors.sol";
+import {ICookingItem} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/ICookingItem.sol";
 
 pragma solidity ^0.8.0;
 
@@ -17,13 +18,13 @@ contract CookingItems is Initializable, OwnableUpgradeable, InitNavigator, ERC11
         __Ownable_init();
     }
 
-    function rewardCookingItem(address to, uint id, uint amount) external onlyGameContracts {
-        require(id > 0, "i0");
-        _mint(to, id, amount, new bytes(0));
+    function rewardCookingItem(address to, ICookingItem.List id, uint amount) external onlyGameContracts {
+        require(uint(id) > 0, "0");
+        _mint(to, uint(id), amount, new bytes(0));
     }
 
-    function burnCookingItem(address from, uint id, uint amount) external onlyGameContracts {
-        _burn(from, id, amount);
+    function burnCookingItem(address from, ICookingItem.List id, uint amount) external onlyGameContracts {
+        _burn(from, uint(id), amount);
     }
 
     function setURI(string memory __uri) external onlyOwner {

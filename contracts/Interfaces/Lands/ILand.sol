@@ -1,6 +1,32 @@
 import {GameObjects_BuffEffects} from "../GameObjects/IGameObjects.sol";
+import {IAlchemyItem} from "../NonFungibles/ConsumablesAndArtifacts/IAlchemyItem.sol";
 
 pragma solidity ^0.8.0;
+
+library Seed {
+    enum List {
+        None,
+        Dill,
+        Rucola,
+        Basilicum,
+        Manaflower,
+        FireFlower,
+        Parsley,
+        Shadowberry,
+        Mistyflower,
+        Mana_Mushroom,
+        Demon_Mushroom,
+        Raindrop_Mushroom,
+        Bloodberry,
+        King_Flower,
+        Ancient_Flower,
+        Fellherb,
+        Wild_Rose,
+        Red_Rose,
+        Dragon_Flower,
+        Golden_Flower
+    }
+}
 
 library Animals {
 
@@ -141,7 +167,7 @@ library ILand {
     }
 
     struct SeedReward {
-        uint id;
+        IAlchemyItem.List id;
         uint min;
         uint max;
     }
