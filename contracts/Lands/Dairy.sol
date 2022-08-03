@@ -34,6 +34,7 @@ contract Dairy is LandUtils {
             AnimalsL.GrownAnimal memory _animal = landCodex.grownAnimal(animalIdsForSlots[i]);
             if (Staked[landId][i].animalId != 0) {
                 uint cycle = calculateCycle(landId, i);
+                Staked[landId][i].lastClaim = block.timestamp;
                 animalToken.mintAnimal(msg.sender, Staked[landId][i].animalId, 1);
                 AnimalsL.GrownAnimal memory _prevAnimal = landCodex.grownAnimal(Staked[landId][i].animalId);
                 rewardForAnimal(_prevAnimal, cycle);
@@ -45,13 +46,11 @@ contract Dairy is LandUtils {
         }
     }
 
-    function claimProductions(uint landId, uint[] calldata slotIds) external nonReentrant isOwned(landId) {
+    function claimProductions(uint landId) external nonReentrant isOwned(landId) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Dairies memory dairy = landCodex.dairies(stats.DairiesTier);
         AnimalsL.GrownAnimal memory _animal;
-        require(slotIds.length <= dairy.maxProductionSimultaneously, "l");
-        for (uint i = 0; i < slotIds.length; i++) {
-            uint slot = slotIds[i];
+        for (uint slot = 0; slot <= dairy.maxProductionSimultaneously; slot++) {
             require(Staked[landId][slot].animalId != 0, "0");
             uint cycle = calculateCycle(landId, slot);
             if (_animal.animalId != Staked[landId][slot].animalId) {
