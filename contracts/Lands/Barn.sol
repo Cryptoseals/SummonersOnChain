@@ -15,20 +15,20 @@ contract Barn is LandUtils {
     mapping(uint => mapping(uint => Animals.BabyAnimal)) public BarnSlots;
 
     // use this function if you are depositing same animal in every slot
-    function depositAnimals(uint landId, uint[] memory slots, uint _animalId) external isOwned(landId) {
+    function depositBarnAnimals(uint landId, uint[] memory slots, uint _animalId) external isOwned(landId) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.BarnHouse memory barnhouse = landCodex.barnHouse(stats.BarnHousesTier);
         require(slots.length <= barnhouse.capacity, "m");
         for (uint i = 0; i < slots.length; i++) {
-            _handleDeposit(landId, slots[i], _animalId);
+            _handleBarnDeposit(landId, slots[i], _animalId);
         }
     }
 
-    function depositAnimal(uint landId, uint slot, uint _animalId) external isOwned(landId) {
-        _handleDeposit(landId, slot, _animalId);
+    function depositBarnAnimal(uint landId, uint slot, uint _animalId) external isOwned(landId) {
+        _handleBarnDeposit(landId, slot, _animalId);
     }
 
-    function _handleDeposit(uint landId, uint slot, uint _animalId) internal {
+    function _handleBarnDeposit(uint landId, uint slot, uint _animalId) internal {
         Animals.BabyAnimal memory _animal = landCodex.babyAnimal(_animalId);
         require(!BarnSlots[landId][slot].active, "a");
         require(_animal.building == Animals.AnimalPlace.BARN, "b");
@@ -39,13 +39,13 @@ contract Barn is LandUtils {
         BarnSlots[landId][slot].growthTime = block.timestamp + _animal.growthTime;
     }
 
-    function withdrawAnimals(uint landId, uint[] memory slots) external isOwned(landId) {
+    function withdrawBarnAnimals(uint landId, uint[] memory slots) external isOwned(landId) {
         for (uint i = 0; i < slots.length; i++) {
-            _handleClaim(landId, slots[i]);
+            _handleBarnClaim(landId, slots[i]);
         }
     }
 
-    function _handleClaim(uint landId, uint slot) internal {
+    function _handleBarnClaim(uint landId, uint slot) internal {
         BarnSlots[landId][slot].active = false;
         animalToken.mintAnimal(BarnSlots[landId][slot].becomes, msg.sender, 1);
     }
