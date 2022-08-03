@@ -1,15 +1,16 @@
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
-import "../Core/Navigator/InitNavigator.sol";
-import {Animals, ILand} from "../Interfaces/Lands/ILand.sol";
+import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
+import {ReentrancyGuardUpgradeable} from "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
+import {AnimalsL, ILand} from "../Interfaces/Lands/ILand.sol";
 import {ICodexLands} from "../Interfaces/Codex/ICodexLands.sol";
 import {IMiscBurnable, IAlchemyBurnable, ICookingBurnable} from "../Interfaces/Crafting/IBurnables.sol";
 import {ICraftingMaterialsToken} from "../Interfaces/NonFungibles/CraftingMaterials/ICraftingMaterialsToken.sol";
 
 pragma solidity ^0.8.0;
 
-contract Lands is Initializable, OwnableUpgradeable, InitNavigator, ERC721EnumerableUpgradeable {
+contract Lands is Initializable, ReentrancyGuardUpgradeable, OwnableUpgradeable, InitNavigator, ERC721EnumerableUpgradeable {
 
     enum BuildingList {
         LandDetails,
@@ -45,6 +46,7 @@ contract Lands is Initializable, OwnableUpgradeable, InitNavigator, ERC721Enumer
         initializeNavigator(_navigator);
         __ERC721_init(name, symbol);
         __Ownable_init();
+        __ReentrancyGuard_init();
     }
 
     function initializeContracts() external {
@@ -69,7 +71,7 @@ contract Lands is Initializable, OwnableUpgradeable, InitNavigator, ERC721Enumer
         LandStats[id].BarnHousesTier = 1;
     }
 
-    function upgradeBuilding(uint landId, BuildingList building) external isOwned(landId) {
+    function upgradeBuilding(uint landId, BuildingList building) external nonReentrant isOwned(landId) {
         ILand.LandStatsStruct storage stats = LandStats[landId];
         ILand.BuildingRequirement memory reqs;
 

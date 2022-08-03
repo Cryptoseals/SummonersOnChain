@@ -1,6 +1,6 @@
 pragma solidity ^0.8.0;
-
-import {ILand, Animals} from "../Interfaces/Lands/ILand.sol";
+import {ReentrancyGuardUpgradeable} from "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
+import {ILand, AnimalsL} from "../Interfaces/Lands/ILand.sol";
 import {LandUtils} from "./LandUtils.sol";
 import {ICookingItem} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/ICookingItem.sol";
 import {EnumerableSetUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/structs/EnumerableSetUpgradeable.sol";
@@ -20,10 +20,16 @@ contract Mill is LandUtils {
 
     uint nextProcessId;
     mapping(uint => GrainProcessing) public ActiveProcessings;
-    mapping(address => EnumerableSetUpgradeable.UintSet) AccountsActiveProcessings;
+    mapping(uint => EnumerableSetUpgradeable.UintSet) LandsActiveProcessings;
 
-    function processGrain(ICookingItem.List[] memory grainIds, uint[] memory amounts) external {
+    function processGrain(uint landId, ICookingItem.List[] memory grainIds, uint[] memory amounts) external nonReentrant isOwned(landId) {
         require(grainIds.length == amounts.length, "l");
+
+        ILand.LandStatsStruct memory stats = landToken.landStats(landId);
+        ILand.Mill memory mill = landCodex.mill(stats.MillsTier);
+        require(mill.processTimePerCrop > 0, "0");
+
+
         uint totalFlourReward = 0;
         for (uint i = 0; i < grainIds.length; i++) {
             require(amounts[i] > 0, "0");
@@ -34,18 +40,18 @@ contract Mill is LandUtils {
         ActiveProcessings[nextProcessId] = GrainProcessing({
         amount : totalFlourReward,
         rewardMaterial : ICookingItem.List.Flour,
-        when : block.timestamp + (10 minutes * totalFlourReward),
+        when : block.timestamp + (mill.processTimePerCrop * totalFlourReward),
         who : msg.sender,
         isClaimed : false,
         startingDate : block.timestamp
         });
 
-        AccountsActiveProcessings[msg.sender].add(nextProcessId);
+        LandsActiveProcessings[landId].add(nextProcessId);
 
         nextProcessId++;
     }
 
-    function claimGrain(uint[] memory processIds) external {
+    function claimGrain(uint landId, uint[] memory processIds) external nonReentrant isOwned(landId) {
         uint totalFlourReward = 0;
         for (uint i = 0; i < processIds.length; i++) {
             GrainProcessing memory process = ActiveProcessings[processIds[i]];
@@ -54,14 +60,14 @@ contract Mill is LandUtils {
             require(process.when <= block.timestamp, "time");
 
             totalFlourReward += process.amount;
-            AccountsActiveProcessings[msg.sender].remove(processIds[i]);
+            LandsActiveProcessings[landId].remove(processIds[i]);
             ActiveProcessings[processIds[i]].isClaimed = true;
         }
         cookingItemToken.rewardCookingItem(msg.sender, ICookingItem.List.Flour,
             totalFlourReward);
     }
 
-    function partialGrainClaimProcess(uint processId, uint amount) external {
+    function partialGrainClaimProcess(uint landId, uint processId, uint amount) external nonReentrant isOwned(landId) {
         require(ActiveProcessings[processId].isClaimed == false, "claimed");
         require(ActiveProcessings[processId].who == msg.sender, "unauth");
         require(amount <= ActiveProcessings[processId].amount, "scam?");
@@ -73,7 +79,7 @@ contract Mill is LandUtils {
         ActiveProcessings[processId].amount -= amount;
 
         if (ActiveProcessings[processId].amount == 0) {
-            AccountsActiveProcessings[msg.sender].remove(processId);
+            LandsActiveProcessings[landId].remove(processId);
         }
         cookingItemToken.rewardCookingItem(msg.sender, ICookingItem.List.Flour,
             ActiveProcessings[processId].amount);

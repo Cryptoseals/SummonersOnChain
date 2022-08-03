@@ -1,6 +1,6 @@
 pragma solidity ^0.8.0;
 
-import {ILand, Animals} from "../Interfaces/Lands/ILand.sol";
+import {ILand, AnimalsL} from "../Interfaces/Lands/ILand.sol";
 import {LandUtils} from "./LandUtils.sol";
 
 /*
@@ -11,10 +11,10 @@ import {LandUtils} from "./LandUtils.sol";
 
 contract Poultry is LandUtils {
     // maps land-poultry slot id to animal slots
-    mapping(uint => mapping(uint => Animals.BabyAnimal)) public PoultrySlots;
+    mapping(uint => mapping(uint => AnimalsL.BabyAnimal)) public PoultrySlots;
 
     // use this function if you are depositing same animal in every slot
-    function depositPoultryAnimals(uint landId, uint[] memory slots, uint _animalId) external isOwned(landId) {
+    function depositPoultryAnimals(uint landId, uint[] memory slots, uint _animalId) external nonReentrant isOwned(landId) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Poultry memory poultry = landCodex.poultry(stats.PoultriesTier);
         require(slots.length <= poultry.capacity, "m");
@@ -23,14 +23,14 @@ contract Poultry is LandUtils {
         }
     }
 
-    function depositPoultryAnimal(uint landId, uint slot, uint _animalId) external isOwned(landId) {
+    function depositPoultryAnimal(uint landId, uint slot, uint _animalId) external nonReentrant isOwned(landId) {
         _handlePoultryDeposit(landId, slot, _animalId);
     }
 
     function _handlePoultryDeposit(uint landId, uint slot, uint _animalId) internal {
-        Animals.BabyAnimal memory _animal = landCodex.babyAnimal(_animalId);
+        AnimalsL.BabyAnimal memory _animal = landCodex.babyAnimal(_animalId);
         require(!PoultrySlots[landId][slot].active, "a");
-        require(_animal.building == Animals.AnimalPlace.POULTRY, "b");
+        require(_animal.building == AnimalsL.AnimalPlace.POULTRY, "b");
 
         animalToken.burnAnimal(msg.sender, _animalId, 1);
 
@@ -38,7 +38,7 @@ contract Poultry is LandUtils {
         PoultrySlots[landId][slot].growthTime = block.timestamp + _animal.growthTime;
     }
 
-    function withdrawPoultryAnimals(uint landId, uint[] memory slots) external isOwned(landId) {
+    function withdrawPoultryAnimals(uint landId, uint[] memory slots) external nonReentrant isOwned(landId) {
         for (uint i = 0; i < slots.length; i++) {
             _handlePoultryClaim(landId, slots[i]);
         }
@@ -47,6 +47,6 @@ contract Poultry is LandUtils {
     function _handlePoultryClaim(uint landId, uint slot) internal {
         require(block.timestamp >= PoultrySlots[landId][slot].growthTime, "e");
         PoultrySlots[landId][slot].active = false;
-        animalToken.mintAnimal(PoultrySlots[landId][slot].becomes, msg.sender, 1);
+        animalToken.mintAnimal(msg.sender, PoultrySlots[landId][slot].becomes, 1);
     }
 }

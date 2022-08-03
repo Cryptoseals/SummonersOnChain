@@ -1,6 +1,6 @@
 pragma solidity ^0.8.0;
 
-import {ILand, Animals} from "../Interfaces/Lands/ILand.sol";
+import {ILand, AnimalsL} from "../Interfaces/Lands/ILand.sol";
 import {LandUtils} from "./LandUtils.sol";
 
 /*
@@ -12,10 +12,10 @@ import {LandUtils} from "./LandUtils.sol";
 
 contract Barn is LandUtils {
     // maps land-barn slot id to animal slots
-    mapping(uint => mapping(uint => Animals.BabyAnimal)) public BarnSlots;
+    mapping(uint => mapping(uint => AnimalsL.BabyAnimal)) public BarnSlots;
 
     // use this function if you are depositing same animal in every slot
-    function depositBarnAnimals(uint landId, uint[] memory slots, uint _animalId) external isOwned(landId) {
+    function depositBarnAnimals(uint landId, uint[] memory slots, uint _animalId) external nonReentrant isOwned(landId) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.BarnHouse memory barnhouse = landCodex.barnHouse(stats.BarnHousesTier);
         require(slots.length <= barnhouse.capacity, "m");
@@ -24,14 +24,14 @@ contract Barn is LandUtils {
         }
     }
 
-    function depositBarnAnimal(uint landId, uint slot, uint _animalId) external isOwned(landId) {
+    function depositBarnAnimal(uint landId, uint slot, uint _animalId) external nonReentrant isOwned(landId) {
         _handleBarnDeposit(landId, slot, _animalId);
     }
 
     function _handleBarnDeposit(uint landId, uint slot, uint _animalId) internal {
-        Animals.BabyAnimal memory _animal = landCodex.babyAnimal(_animalId);
+        AnimalsL.BabyAnimal memory _animal = landCodex.babyAnimal(_animalId);
         require(!BarnSlots[landId][slot].active, "a");
-        require(_animal.building == Animals.AnimalPlace.BARN, "b");
+        require(_animal.building == AnimalsL.AnimalPlace.BARN, "b");
 
         animalToken.burnAnimal(msg.sender, _animalId, 1);
 
@@ -39,7 +39,7 @@ contract Barn is LandUtils {
         BarnSlots[landId][slot].growthTime = block.timestamp + _animal.growthTime;
     }
 
-    function withdrawBarnAnimals(uint landId, uint[] memory slots) external isOwned(landId) {
+    function withdrawBarnAnimals(uint landId, uint[] memory slots) external nonReentrant isOwned(landId) {
         for (uint i = 0; i < slots.length; i++) {
             _handleBarnClaim(landId, slots[i]);
         }
@@ -48,7 +48,7 @@ contract Barn is LandUtils {
     function _handleBarnClaim(uint landId, uint slot) internal {
         require(block.timestamp >= BarnSlots[landId][slot].growthTime, "e");
         BarnSlots[landId][slot].active = false;
-        animalToken.mintAnimal(BarnSlots[landId][slot].becomes, msg.sender, 1);
+        animalToken.mintAnimal(msg.sender, BarnSlots[landId][slot].becomes, 1);
     }
 
 }

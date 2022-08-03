@@ -1,4 +1,4 @@
-import {Animals, ILand} from "../Interfaces/Lands/ILand.sol";
+import {AnimalsL, ILand} from "../Interfaces/Lands/ILand.sol";
 import {ICraftingMaterials} from "../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
 import {IAlchemyItem} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/IAlchemyItem.sol";
 pragma solidity ^0.8.0;
@@ -335,7 +335,7 @@ contract CodexLands {
         return result;
     }
 
-    function babyAnimal(uint _id) public pure returns (Animals.BabyAnimal memory _animal) {
+    function babyAnimal(uint _id) public pure returns (AnimalsL.BabyAnimal memory _animal) {
         if (_id == 1) {
             return Lamb();
         } else if (_id == 2) {
@@ -365,7 +365,7 @@ contract CodexLands {
         return result;
     }
 
-    function grownAnimal(uint _id) public pure returns (Animals.GrownAnimal memory _animal) {
+    function grownAnimal(uint _id) public pure returns (AnimalsL.GrownAnimal memory _animal) {
         if (_id == 1 + indexOfGrownAnimals) {
             return Sheep();
         } else if (_id == 2 + indexOfGrownAnimals) {
@@ -390,51 +390,51 @@ contract CodexLands {
 
 
     // baby animals
-    function Lamb() public pure returns (Animals.BabyAnimal memory _animal) {
+    function Lamb() public pure returns (AnimalsL.BabyAnimal memory _animal) {
         _animal.animalId = 1;
-        _animal.building = Animals.AnimalPlace.BARN;
+        _animal.building = AnimalsL.AnimalPlace.BARN;
         _animal.growthTime = 2 days;
     }
 
-    function Kid() public pure returns (Animals.BabyAnimal memory _animal) {
+    function Kid() public pure returns (AnimalsL.BabyAnimal memory _animal) {
         _animal.animalId = 2;
-        _animal.building = Animals.AnimalPlace.BARN;
+        _animal.building = AnimalsL.AnimalPlace.BARN;
         _animal.growthTime = 2 days;
     }
 
-    function BabyPig() public pure returns (Animals.BabyAnimal memory _animal) {
+    function BabyPig() public pure returns (AnimalsL.BabyAnimal memory _animal) {
         _animal.animalId = 3;
-        _animal.building = Animals.AnimalPlace.BARN;
+        _animal.building = AnimalsL.AnimalPlace.BARN;
         _animal.growthTime = 1 days;
     }
 
-    function Calf() public pure returns (Animals.BabyAnimal memory _animal) {
+    function Calf() public pure returns (AnimalsL.BabyAnimal memory _animal) {
         _animal.animalId = 4;
-        _animal.building = Animals.AnimalPlace.BARN;
+        _animal.building = AnimalsL.AnimalPlace.BARN;
         _animal.growthTime = 3 days;
     }
 
-    function Chick() public pure returns (Animals.BabyAnimal memory _animal) {
+    function Chick() public pure returns (AnimalsL.BabyAnimal memory _animal) {
         _animal.animalId = 5;
-        _animal.building = Animals.AnimalPlace.POULTRY;
+        _animal.building = AnimalsL.AnimalPlace.POULTRY;
         _animal.growthTime = 1 days;
     }
 
-    function Duckling() public pure returns (Animals.BabyAnimal memory _animal) {
+    function Duckling() public pure returns (AnimalsL.BabyAnimal memory _animal) {
         _animal.animalId = 6;
-        _animal.building = Animals.AnimalPlace.POULTRY;
+        _animal.building = AnimalsL.AnimalPlace.POULTRY;
         _animal.growthTime = 2 days;
     }
 
-    function Gosling() public pure returns (Animals.BabyAnimal memory _animal) {
+    function Gosling() public pure returns (AnimalsL.BabyAnimal memory _animal) {
         _animal.animalId = 7;
-        _animal.building = Animals.AnimalPlace.POULTRY;
+        _animal.building = AnimalsL.AnimalPlace.POULTRY;
         _animal.growthTime = 60 hours;
     }
 
-    function Poult() public pure returns (Animals.BabyAnimal memory _animal) {
+    function Poult() public pure returns (AnimalsL.BabyAnimal memory _animal) {
         _animal.animalId = 8;
-        _animal.building = Animals.AnimalPlace.POULTRY;
+        _animal.building = AnimalsL.AnimalPlace.POULTRY;
         _animal.growthTime = 3 days;
     }
 
@@ -442,49 +442,49 @@ contract CodexLands {
 
     // grown
 
-    function Sheep() public pure returns (Animals.GrownAnimal memory _animal) {
+    function Sheep() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 1 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 1;
         _animal.minSecondaryBuildingLevel = 1;
     }
 
-    function Goat() public pure returns (Animals.GrownAnimal memory _animal) {
+    function Goat() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 2 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 2;
         _animal.minSecondaryBuildingLevel = 2;
     }
 
-    function Pig() public pure returns (Animals.GrownAnimal memory _animal) {
+    function Pig() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 3 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 3;
         _animal.minSecondaryBuildingLevel = 3;
     }
 
-    function Cow() public pure returns (Animals.GrownAnimal memory _animal) {
+    function Cow() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 4 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 4;
         _animal.minSecondaryBuildingLevel = 4;
     }
 
-    function Chicken() public pure returns (Animals.GrownAnimal memory _animal) {
+    function Chicken() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 5 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 1;
         _animal.minSecondaryBuildingLevel = 1;
     }
 
-    function Duck() public pure returns (Animals.GrownAnimal memory _animal) {
+    function Duck() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 6 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 2;
         _animal.minSecondaryBuildingLevel = 2;
     }
 
-    function Goose() public pure returns (Animals.GrownAnimal memory _animal) {
+    function Goose() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 7 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 3;
         _animal.minSecondaryBuildingLevel = 3;
     }
 
-    function Turkey() public pure returns (Animals.GrownAnimal memory _animal) {
+    function Turkey() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 8 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 4;
         _animal.minSecondaryBuildingLevel = 4;

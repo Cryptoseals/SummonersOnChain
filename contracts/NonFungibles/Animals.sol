@@ -14,7 +14,7 @@ contract Animals is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upg
         __Ownable_init();
     }
 
-    function mintAnimal(uint animal, address to, uint amount) external onlyGameContracts {
+    function mintAnimal(address to, uint animal, uint amount) external onlyGameContracts {
         require(amount > 0 && animal > 0, "0");
         _mint(to, uint(animal), amount, new bytes(0));
     }

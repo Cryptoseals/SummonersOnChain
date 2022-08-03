@@ -1,5 +1,6 @@
 import {GameObjects_BuffEffects} from "../GameObjects/IGameObjects.sol";
 import {IAlchemyItem} from "../NonFungibles/ConsumablesAndArtifacts/IAlchemyItem.sol";
+import {ICookingItem} from "../NonFungibles/ConsumablesAndArtifacts/ICookingItem.sol";
 
 pragma solidity ^0.8.0;
 
@@ -28,7 +29,7 @@ library Seed {
     }
 }
 
-library Animals {
+library AnimalsL {
 
     enum AnimalPlace {
         POULTRY,
@@ -55,11 +56,11 @@ library Animals {
 
     struct AnimalProduction {
         ILand.CookingItemReward[] cookingItems;
-        ILand.AlchemyItemReward[] alchemyItems;
+        //        ILand.AlchemyItemReward[] alchemyItems;
     }
 
     struct GrowingAnimal {
-        Animals.BabyAnimal animal;
+        AnimalsL.BabyAnimal animal;
         uint growthEnds;
     }
 
@@ -143,13 +144,12 @@ library ILand {
     struct Slaughterhouse {
         GeneralBuilding building;
         uint maxProductionSimultaneously;
-        Animals.GrownAnimal[] animalRooms;
+        AnimalsL.GrownAnimal[] animalRooms;
     }
 
     struct Dairies {
         GeneralBuilding building;
         uint maxProductionSimultaneously;
-        Animals.GrownAnimal[] animalRooms;
     }
 
 
@@ -204,7 +204,7 @@ library ILand {
     }
 
     struct CookingItemReward {
-        uint id;
+        ICookingItem.List id;
         uint amount;
     }
 

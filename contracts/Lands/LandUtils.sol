@@ -1,3 +1,4 @@
+import {ReentrancyGuardUpgradeable} from "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
 import {ICodexLands} from "../Interfaces/Codex/ICodexLands.sol";
 import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
 import {ILandsToken} from "../Interfaces/NonFungibles/Lands/ILandsToken.sol";
@@ -6,14 +7,20 @@ import {ICookingItems} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/
 pragma solidity ^0.8.0;
 
 
-contract LandUtils is InitNavigator {
+contract LandUtils is InitNavigator, ReentrancyGuardUpgradeable {
     ICodexLands public landCodex;
     ILandsToken public landToken;
     IAnimalsToken public animalToken;
     ICookingItems public cookingItemToken;
 
+
+    // TODO, edit this on deploy
+    uint DairyProdTime;
+
     function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
+        __ReentrancyGuard_init();
+        DairyProdTime = 3 minutes;
     }
 
     function initializeContracts() external {

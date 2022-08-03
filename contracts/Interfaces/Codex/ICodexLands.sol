@@ -1,4 +1,4 @@
-import {Animals, ILand} from "../Lands/ILand.sol";
+import {AnimalsL, ILand} from "../Lands/ILand.sol";
 
 pragma solidity ^0.8.0;
 
@@ -9,11 +9,11 @@ interface ICodexLands {
 
     function babyAnimalIDs() external view returns (uint[] memory);
 
-    function babyAnimal(uint _id) external pure returns (Animals.BabyAnimal memory _animal);
+    function babyAnimal(uint _id) external pure returns (AnimalsL.BabyAnimal memory _animal);
 
     function grownAnimalIDs() external view returns (uint[] memory);
 
-    function grownAnimal(uint _id) external pure returns (Animals.GrownAnimal memory _animal);
+    function grownAnimal(uint _id) external pure returns (AnimalsL.GrownAnimal memory _animal);
 
 
     // BUILDINGS
