@@ -51,7 +51,7 @@ contract Dairy is LandUtils {
         ILand.Dairies memory dairy = landCodex.dairies(stats.DairiesTier);
         AnimalsL.GrownAnimal memory _animal;
         for (uint slot = 0; slot <= dairy.maxProductionSimultaneously; slot++) {
-            require(Staked[landId][slot].animalId != 0, "0");
+            if (Staked[landId][slot].animalId == 0) continue;
             uint cycle = calculateCycle(landId, slot);
             if (_animal.animalId != Staked[landId][slot].animalId) {
                 _animal = landCodex.grownAnimal(Staked[landId][slot].animalId);
