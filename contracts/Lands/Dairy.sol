@@ -59,7 +59,6 @@ contract Dairy is LandUtils {
                 _animal = landCodex.grownAnimal(StakedDairy[landId][slot].animalId);
             }
             StakedDairy[landId][slot].lastClaim = block.timestamp;
-
             rewardForAnimal(_animal, cycle, storages.eggCapacity, storages.diaryCapacity);
         }
     }
@@ -72,7 +71,6 @@ contract Dairy is LandUtils {
         require(animalIdsForSlots.length <= dairy.maxProductionSimultaneously, "l");
         AnimalsL.GrownAnimal memory _prevAnimal;
         for (uint i = 0; i < animalIdsForSlots.length; i++) {
-
             if (animalIdsForSlots[i] == 0) continue;
 
             if (StakedDairy[landId][i].animalId != 0) {

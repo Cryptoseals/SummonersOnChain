@@ -146,7 +146,7 @@ library ILand {
     struct Slaughterhouse {
         GeneralBuilding building;
         uint maxProductionSimultaneously;
-        AnimalsL.GrownAnimal[] animalRooms;
+        uint cooldownPerAnimal;
     }
 
     struct Dairies {
