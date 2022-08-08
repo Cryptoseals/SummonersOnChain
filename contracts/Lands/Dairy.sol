@@ -25,6 +25,7 @@ contract Dairy is LandUtils {
     function depositAnimalToDairy(uint landId, uint[] memory animalIdsForSlots) external nonReentrant isOwned(landId) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Dairies memory dairy = landCodex.dairies(stats.DairiesTier);
+        ILand.Storages memory storages = landCodex.storages(stats.StorageBuildingsTier);
 
         require(animalIdsForSlots.length <= dairy.maxProductionSimultaneously, "l");
 
@@ -36,7 +37,7 @@ contract Dairy is LandUtils {
                 StakedDairy[landId][i].lastClaim = block.timestamp;
                 animalToken.mintAnimal(msg.sender, StakedDairy[landId][i].animalId, 1);
                 AnimalsL.GrownAnimal memory _prevAnimal = landCodex.grownAnimal(StakedDairy[landId][i].animalId);
-                rewardForAnimal(_prevAnimal, cycle);
+                rewardForAnimal(_prevAnimal, cycle, storages.eggCapacity, storages.diaryCapacity);
             }
             StakedDairy[landId][i].animalId = _animal.animalId;
             StakedDairy[landId][i].depositDate = block.timestamp;
@@ -48,6 +49,7 @@ contract Dairy is LandUtils {
     function claimProductions(uint landId) external nonReentrant isOwned(landId) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Dairies memory dairy = landCodex.dairies(stats.DairiesTier);
+        ILand.Storages memory storages = landCodex.storages(stats.StorageBuildingsTier);
         AnimalsL.GrownAnimal memory _animal;
         for (uint slot = 0; slot <= dairy.maxProductionSimultaneously; slot++) {
             if (StakedDairy[landId][slot].animalId == 0) continue;
@@ -57,7 +59,7 @@ contract Dairy is LandUtils {
             }
             StakedDairy[landId][slot].lastClaim = block.timestamp;
 
-            rewardForAnimal(_animal, cycle);
+            rewardForAnimal(_animal, cycle, storages.eggCapacity, storages.diaryCapacity);
         }
     }
 
@@ -65,6 +67,7 @@ contract Dairy is LandUtils {
     function withdrawAnimalsFromDairy(uint landId, uint[] memory animalIdsForSlots) external nonReentrant isOwned(landId) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Dairies memory dairy = landCodex.dairies(stats.DairiesTier);
+        ILand.Storages memory storages = landCodex.storages(stats.StorageBuildingsTier);
         require(animalIdsForSlots.length <= dairy.maxProductionSimultaneously, "l");
         AnimalsL.GrownAnimal memory _prevAnimal;
         for (uint i = 0; i < animalIdsForSlots.length; i++) {
@@ -76,7 +79,7 @@ contract Dairy is LandUtils {
                 _prevAnimal = landCodex.grownAnimal(StakedDairy[landId][i].animalId);
                 StakedDairy[landId][i].lastClaim = block.timestamp;
                 animalToken.mintAnimal(msg.sender, StakedDairy[landId][i].animalId, 1);
-                rewardForAnimal(_prevAnimal, cycle);
+                rewardForAnimal(_prevAnimal, cycle, storages.eggCapacity, storages.diaryCapacity);
                 StakedDairy[landId][i].animalId = 0;
             }
         }
@@ -92,12 +95,23 @@ contract Dairy is LandUtils {
         }
     }
 
-    function rewardForAnimal(AnimalsL.GrownAnimal memory animal, uint cycle) internal {
+    function rewardForAnimal(AnimalsL.GrownAnimal memory animal, uint cycle, uint eggLimit, uint dairyLimit) internal {
         if (cycle > 0) {
             for (uint i = 0; i < animal.dailyProductions.cookingItems.length; i++) {
+                ICookingItem.List item = animal.dailyProductions.cookingItems[i].id;
+                uint amount = animal.dailyProductions.cookingItems[i].amount * cycle;
+                if (item == ICookingItem.List.Egg) {
+                    if (amount > eggLimit) amount = eggLimit;
+                }
+                if (item == ICookingItem.List.Milk) {
+                    if (amount > dairyLimit) amount = dairyLimit;
+                }
+
+                //ICookingItem.List
                 cookingItemToken.rewardCookingItem(msg.sender,
-                    animal.dailyProductions.cookingItems[i].id,
-                    animal.dailyProductions.cookingItems[i].amount * cycle);
+                    item,
+                    amount
+                );
             }
         }
     }

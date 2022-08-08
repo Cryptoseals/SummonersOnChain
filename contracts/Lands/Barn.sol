@@ -14,13 +14,14 @@ contract Barn is LandUtils {
     // maps land-barn slot id to animal slots
     mapping(uint => mapping(uint => AnimalsL.BabyAnimal)) public BarnSlots;
 
-    // use this function if you are depositing same animal in every slot
-    function depositBarnAnimals(uint landId, uint[] memory slots, uint _animalId) external nonReentrant isOwned(landId) {
+    function depositBarnAnimals(uint landId, uint[] memory slots, uint[] memory _animalIds) external nonReentrant isOwned(landId) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.BarnHouse memory barnhouse = landCodex.barnHouse(stats.BarnHousesTier);
         require(slots.length <= barnhouse.capacity, "m");
         for (uint i = 0; i < slots.length; i++) {
-            _handleBarnDeposit(landId, slots[i], _animalId);
+            if (_animalIds[i] != 0) {
+                _handleBarnDeposit(landId, slots[i], _animalIds[i]);
+            }
         }
     }
 

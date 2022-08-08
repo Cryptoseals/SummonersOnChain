@@ -36,6 +36,8 @@ library AnimalsL {
         BARN
     }
 
+
+
     // ANIMAL STUFF
     struct BabyAnimal {
         uint animalId;
