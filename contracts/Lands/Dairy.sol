@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 import {ILand, AnimalsL} from "../Interfaces/Lands/ILand.sol";
 import {LandUtils} from "./LandUtils.sol";
 import {Animals} from "../NonFungibles/Animals.sol";
+import {ICookingItem} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/ICookingItem.sol";
 
 /*
     Stake animals here.
