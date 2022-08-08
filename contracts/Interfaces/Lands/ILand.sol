@@ -164,6 +164,7 @@ library ILand {
         uint landExpReward;
         uint growTime;
         SeedReward reward;
+        uint buyPrice;
     }
 
     struct SeedReward {
