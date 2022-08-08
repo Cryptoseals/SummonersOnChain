@@ -37,12 +37,14 @@ contract Farm is LandUtils {
             require(!FarmPlots[landId][i].isAvailable, "i");
             require(block.timestamp >= FarmPlots[landId][i].endTime, "e");
 
-            FarmPlots[landId][i].isAvailable = true;
 
             // works like cache. if its same as before, dont call again
             if (_seed.id != FarmPlots[landId][i].seedId) {
                 _seed = landCodex.seed(FarmPlots[landId][i].seedId);
             }
+
+            FarmPlots[landId][i].isAvailable = true;
+            FarmPlots[landId][i].seedId = 0;
 
             if (_seed.alchemyReward.min > 0) {
                 uint roll = rng.dn(
