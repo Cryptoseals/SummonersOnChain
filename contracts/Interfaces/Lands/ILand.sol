@@ -141,6 +141,7 @@ library ILand {
 
     struct WaterTower {
         GeneralBuilding building;
+        uint dailyWaterReward;
     }
 
     struct Slaughterhouse {
