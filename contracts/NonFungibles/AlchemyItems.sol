@@ -4,6 +4,7 @@ import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/Own
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
 import "../Core/Common/Errors.sol";
+import {IAlchemyItem} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/IAlchemyItem.sol";
 
 pragma solidity ^0.8.0;
 
@@ -17,13 +18,13 @@ contract AlchemyItems is Initializable, OwnableUpgradeable, InitNavigator, ERC11
         __Ownable_init();
     }
 
-    function rewardAlchemyItem(address to, uint id, uint amount) external onlyGameContracts {
-        require(id > 0, "0");
-        _mint(to, id, amount, new bytes(0));
+    function rewardAlchemyItem(address to, IAlchemyItem.List id, uint amount) external onlyGameContracts {
+        require(uint(id) > 0, "0");
+        _mint(to, uint(id), amount, new bytes(0));
     }
 
-    function burnAlchemyItem(address from, uint id, uint amount) external onlyGameContracts {
-        _burn(from, id, amount);
+    function burnAlchemyItem(address from, IAlchemyItem.List id, uint amount) external onlyGameContracts {
+        _burn(from, uint(id), amount);
     }
 
     function setURI(string memory __uri) external onlyOwner {

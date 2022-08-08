@@ -132,11 +132,12 @@ library ILand {
     struct Mill {
         GeneralBuilding building;
         uint processTimePerCrop;
+        uint maxProcessSimultaneously;
     }
 
     struct Farm {
         GeneralBuilding building;
-        uint plots;
+        uint usablePlots;
     }
 
     struct WaterTower {
@@ -163,12 +164,18 @@ library ILand {
         uint requiredLandExperience;
         uint landExpReward;
         uint growTime;
-        SeedReward reward;
+        AlchemySeedReward alchemyReward;
+        CookingSeedReward cookingReward;
         uint buyPrice;
     }
 
-    struct SeedReward {
+    struct AlchemySeedReward {
         IAlchemyItem.List id;
+        uint min;
+        uint max;
+    }
+    struct CookingSeedReward {
+        ICookingItem.List id;
         uint min;
         uint max;
     }

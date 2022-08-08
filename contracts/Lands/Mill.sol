@@ -27,6 +27,10 @@ contract Mill is LandUtils {
 
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Mill memory mill = landCodex.mill(stats.MillsTier);
+
+        uint l = LandsActiveProcessings[landId].values().length;
+        require(l <= mill.maxProcessSimultaneously, "o");
+
         require(mill.processTimePerCrop > 0, "0");
 
 

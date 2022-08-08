@@ -3,7 +3,10 @@ import {ICodexLands} from "../Interfaces/Codex/ICodexLands.sol";
 import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
 import {ILandsToken} from "../Interfaces/NonFungibles/Lands/ILandsToken.sol";
 import {IAnimalsToken} from "../Interfaces/NonFungibles/Lands/IAnimalsToken.sol";
+import {ISeedToken} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/ISeed.sol";
 import {ICookingItems} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/ICookingItems.sol";
+import {IAlchemyItems} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/IAlchemyItems.sol";
+import {ICodexRandom} from "../Interfaces/Codex/ICodexRandom.sol";
 pragma solidity ^0.8.0;
 
 
@@ -12,10 +15,14 @@ contract LandUtils is InitNavigator, ReentrancyGuardUpgradeable {
     ILandsToken public landToken;
     IAnimalsToken public animalToken;
     ICookingItems public cookingItemToken;
+    IAlchemyItems public alchemyItemToken;
+    ISeedToken public seedToken;
+    ICodexRandom public rng;
 
 
     // TODO, edit this on deploy
     uint DairyProdTime;
+    mapping(uint => uint) public LandExperiences;
 
     function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
@@ -28,6 +35,9 @@ contract LandUtils is InitNavigator, ReentrancyGuardUpgradeable {
         landToken = ILandsToken(contractAddress(INavigator.CONTRACT.LANDS));
         animalToken = IAnimalsToken(contractAddress(INavigator.CONTRACT.ANIMALS));
         cookingItemToken = ICookingItems(contractAddress(INavigator.CONTRACT.COOKING_ITEMS));
+        alchemyItemToken = IAlchemyItems(contractAddress(INavigator.CONTRACT.ALCHEMY_ITEMS));
+        seedToken = ISeedToken(contractAddress(INavigator.CONTRACT.SEEDS));
+        rng = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
     }
 
     modifier isOwned(uint landId) {
