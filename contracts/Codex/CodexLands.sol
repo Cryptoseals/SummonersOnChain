@@ -1,4 +1,4 @@
-import {AnimalsL, ILand} from "../Interfaces/Lands/ILand.sol";
+import {AnimalsL, ILand, ICookingItem} from "../Interfaces/Lands/ILand.sol";
 import {ICraftingMaterials} from "../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
 import {IAlchemyItem} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/IAlchemyItem.sol";
 pragma solidity ^0.8.0;
@@ -41,7 +41,6 @@ contract CodexLands {
         _poultry.building.level = tier;
         _poultry.building.maxLevel = maxPoultryLevel;
         _poultry.building.bonusChance = 5 * (tier * 2);
-        _poultry.building.maxLevel = 10;
         if (tier != maxPoultryLevel) {
             _poultry.building.upgradeReqs = poultryBuildReqs(tier + 1);
         }
@@ -53,7 +52,6 @@ contract CodexLands {
         _barnHouse.building.level = tier;
         _barnHouse.building.maxLevel = maxBarnLevel;
         _barnHouse.building.bonusChance = 5 * (tier * 2);
-        _barnHouse.building.maxLevel = 10;
         if (tier != maxBarnLevel) {
             _barnHouse.building.upgradeReqs = barnBuilding(tier + 1);
         }
@@ -65,7 +63,6 @@ contract CodexLands {
         _storageBuilding.building.level = tier;
         _storageBuilding.building.maxLevel = maxStorageLevel;
         _storageBuilding.building.bonusChance = 5 * (tier * 2);
-        _storageBuilding.building.maxLevel = 10;
         if (tier != maxStorageLevel) {
             _storageBuilding.building.upgradeReqs = storageBuilding(tier + 1);
         }
@@ -78,7 +75,6 @@ contract CodexLands {
         _mill.building.level = tier;
         _mill.building.maxLevel = maxMillLevel;
         _mill.building.bonusChance = 5 * (tier * 2);
-        _mill.building.maxLevel = 10;
         if (tier != maxMillLevel) {
             _mill.building.upgradeReqs = millBuilding(tier + 1);
         }
@@ -90,7 +86,6 @@ contract CodexLands {
         _farm.building.level = tier;
         _farm.building.maxLevel = maxFarmLevel;
         _farm.building.bonusChance = 5 * (tier * 2);
-        _farm.building.maxLevel = 10;
         if (tier != maxFarmLevel) {
             _farm.building.upgradeReqs = farmBuilding(tier + 1);
         }
@@ -102,7 +97,6 @@ contract CodexLands {
         _waterTower.building.level = tier;
         _waterTower.building.maxLevel = maxWaterLevel;
         _waterTower.building.bonusChance = 5 * (tier * 2);
-        _waterTower.building.maxLevel = 10;
         if (tier != maxWaterLevel) {
             _waterTower.building.upgradeReqs = waterBuilding(tier + 1);
         }
@@ -113,7 +107,6 @@ contract CodexLands {
         _slaughterhouse.building.level = tier;
         _slaughterhouse.building.maxLevel = maxSlaughterhouseLevel;
         _slaughterhouse.building.bonusChance = 5 * (tier * 2);
-        _slaughterhouse.building.maxLevel = 10;
         if (tier != maxSlaughterhouseLevel) {
             _slaughterhouse.building.upgradeReqs = slaughterhouseBuilding(tier + 1);
         }
@@ -125,7 +118,6 @@ contract CodexLands {
         _dairies.building.level = tier;
         _dairies.building.maxLevel = maxDairyLevel;
         _dairies.building.bonusChance = 5 * (tier * 2);
-        _dairies.building.maxLevel = 10;
         if (tier != maxDairyLevel) {
             _dairies.building.upgradeReqs = dairiesBuilding(tier + 1);
         }
@@ -394,48 +386,72 @@ contract CodexLands {
         _animal.animalId = 1;
         _animal.building = AnimalsL.AnimalPlace.BARN;
         _animal.growthTime = 2 days;
+        _animal.becomes = indexOfGrownAnimals + 1;
+        _animal.buyPrice = 75e18;
+        _animal.minMainBuildingLevel = 1;
     }
 
     function Kid() public pure returns (AnimalsL.BabyAnimal memory _animal) {
         _animal.animalId = 2;
         _animal.building = AnimalsL.AnimalPlace.BARN;
         _animal.growthTime = 2 days;
+        _animal.becomes = indexOfGrownAnimals + 2;
+        _animal.buyPrice = 125e18;
+        _animal.minMainBuildingLevel = 2;
     }
 
     function BabyPig() public pure returns (AnimalsL.BabyAnimal memory _animal) {
         _animal.animalId = 3;
         _animal.building = AnimalsL.AnimalPlace.BARN;
         _animal.growthTime = 1 days;
+        _animal.becomes = indexOfGrownAnimals + 3;
+        _animal.buyPrice = 175e18;
+        _animal.minMainBuildingLevel = 3;
     }
 
     function Calf() public pure returns (AnimalsL.BabyAnimal memory _animal) {
         _animal.animalId = 4;
         _animal.building = AnimalsL.AnimalPlace.BARN;
         _animal.growthTime = 3 days;
+        _animal.becomes = indexOfGrownAnimals + 4;
+        _animal.buyPrice = 250e18;
+        _animal.minMainBuildingLevel = 4;
     }
 
     function Chick() public pure returns (AnimalsL.BabyAnimal memory _animal) {
         _animal.animalId = 5;
         _animal.building = AnimalsL.AnimalPlace.POULTRY;
         _animal.growthTime = 1 days;
+        _animal.becomes = indexOfGrownAnimals + 5;
+        _animal.buyPrice = 25e18;
+        _animal.minMainBuildingLevel = 1;
     }
 
     function Duckling() public pure returns (AnimalsL.BabyAnimal memory _animal) {
         _animal.animalId = 6;
         _animal.building = AnimalsL.AnimalPlace.POULTRY;
         _animal.growthTime = 2 days;
+        _animal.becomes = indexOfGrownAnimals + 6;
+        _animal.buyPrice = 50e18;
+        _animal.minMainBuildingLevel = 2;
     }
 
     function Gosling() public pure returns (AnimalsL.BabyAnimal memory _animal) {
         _animal.animalId = 7;
         _animal.building = AnimalsL.AnimalPlace.POULTRY;
         _animal.growthTime = 60 hours;
+        _animal.becomes = indexOfGrownAnimals + 7;
+        _animal.buyPrice = 100e18;
+        _animal.minMainBuildingLevel = 3;
     }
 
     function Poult() public pure returns (AnimalsL.BabyAnimal memory _animal) {
         _animal.animalId = 8;
         _animal.building = AnimalsL.AnimalPlace.POULTRY;
         _animal.growthTime = 3 days;
+        _animal.becomes = indexOfGrownAnimals + 8;
+        _animal.buyPrice = 250e18;
+        _animal.minMainBuildingLevel = 4;
     }
 
 
@@ -446,48 +462,118 @@ contract CodexLands {
         _animal.animalId = 1 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 1;
         _animal.minSecondaryBuildingLevel = 1;
+
+        _animal.dailyProductions.cookingItems[0].id = ICookingItem.List.Milk;
+        _animal.dailyProductions.cookingItems[0].amount = 2;
+
+        _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
+        _animal.harvestOnKill.alchemyItems[0].amount = 2;
+        _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Meat;
+        _animal.harvestOnKill.cookingItems[0].amount = 3;
+        _animal.harvestOnKill.cookingItems[1].id = ICookingItem.List.Steak;
+        _animal.harvestOnKill.cookingItems[1].amount = 1;
     }
 
     function Goat() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 2 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 2;
         _animal.minSecondaryBuildingLevel = 2;
+
+        _animal.dailyProductions.cookingItems[0].id = ICookingItem.List.Milk;
+        _animal.dailyProductions.cookingItems[0].amount = 4;
+
+        _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
+        _animal.harvestOnKill.alchemyItems[0].amount = 2;
+        _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Meat;
+        _animal.harvestOnKill.cookingItems[0].amount = 7;
+        _animal.harvestOnKill.cookingItems[1].id = ICookingItem.List.Steak;
+        _animal.harvestOnKill.cookingItems[1].amount = 2;
     }
 
     function Pig() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 3 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 3;
         _animal.minSecondaryBuildingLevel = 3;
+
+        _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
+        _animal.harvestOnKill.alchemyItems[0].amount = 2;
+        _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Meat;
+        _animal.harvestOnKill.cookingItems[0].amount = 7;
+        _animal.harvestOnKill.cookingItems[1].id = ICookingItem.List.Steak;
+        _animal.harvestOnKill.cookingItems[1].amount = 3;
     }
 
     function Cow() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 4 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 4;
         _animal.minSecondaryBuildingLevel = 4;
+
+
+        _animal.dailyProductions.cookingItems[0].id = ICookingItem.List.Milk;
+        _animal.dailyProductions.cookingItems[0].amount = 8;
+
+        _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
+        _animal.harvestOnKill.alchemyItems[0].amount = 2;
+        _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Meat;
+        _animal.harvestOnKill.cookingItems[0].amount = 10;
+        _animal.harvestOnKill.cookingItems[1].id = ICookingItem.List.Steak;
+        _animal.harvestOnKill.cookingItems[1].amount = 6;
     }
 
     function Chicken() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 5 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 1;
         _animal.minSecondaryBuildingLevel = 1;
+
+        _animal.dailyProductions.cookingItems[0].id = ICookingItem.List.Egg;
+        _animal.dailyProductions.cookingItems[0].amount = 2;
+
+        _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
+        _animal.harvestOnKill.alchemyItems[0].amount = 1;
+        _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Raw_White_Meat;
+        _animal.harvestOnKill.cookingItems[0].amount = 3;
     }
 
     function Duck() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 6 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 2;
         _animal.minSecondaryBuildingLevel = 2;
+
+        _animal.dailyProductions.cookingItems[0].id = ICookingItem.List.Egg;
+        _animal.dailyProductions.cookingItems[0].amount = 4;
+
+        _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
+        _animal.harvestOnKill.alchemyItems[0].amount = 1;
+        _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Raw_White_Meat;
+        _animal.harvestOnKill.cookingItems[0].amount = 5;
     }
 
     function Goose() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 7 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 3;
         _animal.minSecondaryBuildingLevel = 3;
+
+        _animal.dailyProductions.cookingItems[0].id = ICookingItem.List.Egg;
+        _animal.dailyProductions.cookingItems[0].amount = 7;
+
+        _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
+        _animal.harvestOnKill.alchemyItems[0].amount = 1;
+        _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Raw_White_Meat;
+        _animal.harvestOnKill.cookingItems[0].amount = 7;
     }
 
     function Turkey() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 8 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 4;
         _animal.minSecondaryBuildingLevel = 4;
+
+        _animal.dailyProductions.cookingItems[0].id = ICookingItem.List.Egg;
+        _animal.dailyProductions.cookingItems[0].amount = 10;
+
+        _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
+        _animal.harvestOnKill.alchemyItems[0].amount = 1;
+        _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Raw_White_Meat;
+        _animal.harvestOnKill.cookingItems[0].amount = 10;
     }
 
     // seeds
@@ -666,7 +752,7 @@ contract CodexLands {
     }
 
     function Dragon_Flower() public pure returns (ILand.Seed memory _seed) {
-        _seed.id  = 1;
+        _seed.id = 1;
         _seed.growTime = 8 hours;
         _seed.alchemyReward.id = IAlchemyItem.List.Dragon_Flower;
         _seed.alchemyReward.min = 1;

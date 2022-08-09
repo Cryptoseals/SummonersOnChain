@@ -20,19 +20,21 @@ contract Poultry is LandUtils {
         require(slots.length <= poultry.capacity, "m");
         for (uint i = 0; i < slots.length; i++) {
             if (_animalIds[i] != 0) {
-                _handlePoultryDeposit(landId, slots[i], _animalIds[i]);
+                _handlePoultryDeposit(landId, slots[i], _animalIds[i], stats.PoultriesTier);
             }
         }
     }
 
     function depositPoultryAnimal(uint landId, uint slot, uint _animalId) external nonReentrant isOwned(landId) {
-        _handlePoultryDeposit(landId, slot, _animalId);
+        ILand.LandStatsStruct memory stats = landToken.landStats(landId);
+        _handlePoultryDeposit(landId, slot, _animalId, stats.PoultriesTier);
     }
 
-    function _handlePoultryDeposit(uint landId, uint slot, uint _animalId) internal {
+    function _handlePoultryDeposit(uint landId, uint slot, uint _animalId, uint poultryLevel) internal {
         AnimalsL.BabyAnimal memory _animal = landCodex.babyAnimal(_animalId);
         require(!PoultrySlots[landId][slot].active, "a");
         require(_animal.building == AnimalsL.AnimalPlace.POULTRY, "b");
+        require(poultryLevel >= _animal.minMainBuildingLevel, "c");
 
         animalToken.burnAnimal(msg.sender, _animalId, 1);
 

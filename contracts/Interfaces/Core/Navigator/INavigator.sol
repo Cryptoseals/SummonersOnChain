@@ -144,6 +144,7 @@ interface INavigator {
         WORLD_BOSS,
         LANDS,
         LANDS_CODEX,
+        LAND_CONTROLS,
         ANIMALS,
         SEEDS
     }

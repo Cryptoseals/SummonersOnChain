@@ -137,7 +137,12 @@ export enum CONTRACTS {
     AREA_16,
     REWARDS,
     CHESTS,
-    WORLD_BOSS
+    WORLD_BOSS,
+    LANDS,
+    LANDS_CODEX,
+    LAND_CONTROLS,
+    ANIMALS,
+    SEEDS
 }
 
 export const DeployedFileLocations = {
@@ -172,5 +177,6 @@ export const DeployedFileLocations = {
     artifacts: "./scripts/deployed-contracts/artifacts.json",
     consumables: "./scripts/deployed-contracts/consumables.json",
     cores: "./scripts/deployed-contracts/cores.json",
+    lands: "./scripts/deployed-contracts/lands.json",
 }
 

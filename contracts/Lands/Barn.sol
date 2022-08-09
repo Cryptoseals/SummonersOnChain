@@ -20,20 +20,21 @@ contract Barn is LandUtils {
         require(slots.length <= barnhouse.capacity, "m");
         for (uint i = 0; i < slots.length; i++) {
             if (_animalIds[i] != 0) {
-                _handleBarnDeposit(landId, slots[i], _animalIds[i]);
+                _handleBarnDeposit(landId, slots[i], _animalIds[i], stats.BarnHousesTier);
             }
         }
     }
 
     function depositBarnAnimal(uint landId, uint slot, uint _animalId) external nonReentrant isOwned(landId) {
-        _handleBarnDeposit(landId, slot, _animalId);
+        ILand.LandStatsStruct memory stats = landToken.landStats(landId);
+        _handleBarnDeposit(landId, slot, _animalId, stats.BarnHousesTier);
     }
 
-    function _handleBarnDeposit(uint landId, uint slot, uint _animalId) internal {
+    function _handleBarnDeposit(uint landId, uint slot, uint _animalId, uint barnLevel) internal {
         AnimalsL.BabyAnimal memory _animal = landCodex.babyAnimal(_animalId);
         require(!BarnSlots[landId][slot].active, "a");
         require(_animal.building == AnimalsL.AnimalPlace.BARN, "b");
-
+        require(barnLevel >= _animal.minMainBuildingLevel, "c");
         animalToken.burnAnimal(msg.sender, _animalId, 1);
 
         BarnSlots[landId][slot].active = true;

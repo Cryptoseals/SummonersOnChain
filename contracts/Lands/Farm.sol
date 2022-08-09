@@ -1,6 +1,7 @@
-import {ILand, Seed} from "../Interfaces/Lands/ILand.sol";
-import {LandUtils} from "./LandUtils.sol";
+import {ILand, Seed, AnimalsL} from "../Interfaces/Lands/ILand.sol";
+import {LandUtils, INavigator} from "./LandUtils.sol";
 import {ICookingItem} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/ICookingItem.sol";
+import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
 
 /*
     You can plant seeds and grow them / increase farm spots to plant more
@@ -23,10 +24,10 @@ contract Farm is LandUtils {
         require(LandExperiences[landId] >= _seed.requiredLandExperience, "t");
 
         require(FarmPlots[landId][plot].isAvailable, "a");
+        FarmPlots[landId][plot].isAvailable = false;
         seedToken.burnSeed(msg.sender, seedToPlant, 1);
         FarmPlots[landId][plot].seedId = seedToPlant;
         FarmPlots[landId][plot].endTime = block.timestamp + _seed.growTime;
-        FarmPlots[landId][plot].isAvailable = false;
     }
 
     function harvest(uint landId, uint[] memory plots) external nonReentrant isOwned(landId) {
@@ -58,7 +59,25 @@ contract Farm is LandUtils {
                 cookingItemToken.rewardCookingItem(msg.sender, _seed.cookingReward.id, roll);
             }
 
-
         }
+    }
+
+    function buySeed(Seed.List seed, uint amount) external {
+        ILand.Seed memory _seed = landCodex.seed(uint(seed));
+        uint price = 0;
+        price += _seed.buyPrice * amount;
+        require(price > 0, "?");
+        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD)).burnToken(msg.sender, price);
+        seedToken.mintSeed(seed, msg.sender, amount);
+    }
+
+    function buyAnimal(uint landId, uint id, uint amount) external isOwned(landId) {
+        AnimalsL.BabyAnimal memory _animal = landCodex.babyAnimal(id);
+
+        uint price = 0;
+        price += _animal.buyPrice * amount;
+        require(price > 0, "?");
+        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD)).burnToken(msg.sender, price);
+        animalToken.mintAnimal(msg.sender, id, amount);
     }
 }

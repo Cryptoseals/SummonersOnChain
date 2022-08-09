@@ -27,6 +27,13 @@ contract Slaughterhouse is LandUtils {
                 animal.harvestOnKill.cookingItems[i].amount
             );
         }
+        for (uint i = 0; i < animal.harvestOnKill.alchemyItems.length; i++) {
+            //ICookingItem.List
+            alchemyItemToken.rewardAlchemyItem(msg.sender,
+                animal.harvestOnKill.alchemyItems[i].id,
+                animal.harvestOnKill.alchemyItems[i].amount
+            );
+        }
 
     }
 

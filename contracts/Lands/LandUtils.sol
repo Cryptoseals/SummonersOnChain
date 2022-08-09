@@ -20,13 +20,13 @@ contract LandUtils is InitNavigator, ReentrancyGuardUpgradeable {
     ICodexRandom public rng;
 
 
-    // TODO, edit this on deploy
     uint DairyProdTime;
     mapping(uint => uint) public LandExperiences;
 
     function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);
         __ReentrancyGuard_init();
+        // TODO, edit this on deploy
         DairyProdTime = 3 minutes;
     }
 

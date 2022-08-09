@@ -45,7 +45,9 @@ library AnimalsL {
         AnimalPlace building;
         uint becomes;
         bool active;
-    }
+        uint buyPrice;
+        uint minMainBuildingLevel;
+        uint minSecondaryBuildingLevel;}
 
     struct GrownAnimal {
         uint animalId;
@@ -58,7 +60,7 @@ library AnimalsL {
 
     struct AnimalProduction {
         ILand.CookingItemReward[] cookingItems;
-        //        ILand.AlchemyItemReward[] alchemyItems;
+        ILand.AlchemyItemReward[] alchemyItems;
     }
 
     struct GrowingAnimal {
@@ -174,6 +176,7 @@ library ILand {
         uint min;
         uint max;
     }
+
     struct CookingSeedReward {
         ICookingItem.List id;
         uint min;
@@ -217,7 +220,7 @@ library ILand {
     }
 
     struct AlchemyItemReward {
-        uint id;
+        IAlchemyItem.List id;
         uint amount;
     }
 
