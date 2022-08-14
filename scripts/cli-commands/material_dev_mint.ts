@@ -5,6 +5,7 @@ import {ethers, upgrades} from "hardhat";
 import fs from "fs";
 import {CONTRACTS, DeployedFileLocations} from "../helpers/constants";
 import {ISummoners} from "../../typechain-types"
+import {BigNumber} from "ethers";
 
 enum MaterialTypes {
     ORE,
@@ -66,6 +67,7 @@ async function main() {
     tx = await navigator.setGameContractsById(CONTRACTS.JOB, deployer, true)
     await tx.wait(1)
 
+    const deployedFungibles = JSON.parse(fs.readFileSync(DeployedFileLocations.fungibles, 'utf-8'))
     const deployedMaterials = JSON.parse(fs.readFileSync(DeployedFileLocations.crafting_materials, 'utf-8'))
     const deployedCores = JSON.parse(fs.readFileSync(DeployedFileLocations.cores, 'utf-8'))
     let cores = await ethers.getContractAt("Cores", deployedCores.core)
@@ -83,25 +85,25 @@ async function main() {
     // console.log("RED_OAK_WOOD_PLANK:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.RED_OAK_WOOD_PLANK)))
 
     let mintTo = "0xc5E5ec38de39c632f67EbF9795CD1d7D12331799"
-    tx = await mats.mintMaterial(CraftingMaterial.OBSIDIAN_INGOT, mintTo, 100)
-    await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.ORICALCHUM_INGOT, mintTo, 100)
-    await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.EBONY_WOOD_PLANK, mintTo, 100)
-    await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.ELDER_WOOD_PLANK, mintTo, 100)
-    await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.ANCIENT_WOOD_PLANK, mintTo, 100)
-    await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.IRON_INGOT, mintTo, 100)
-    await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.GOLD_INGOT, mintTo, 100)
-    await tx.wait(1)
-
-    tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_CASHMERE, mintTo, 100)
-    await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_HEMP, mintTo, 100)
-    await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.OBSIDIAN_INGOT, mintTo, 100)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.ORICALCHUM_INGOT, mintTo, 100)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.EBONY_WOOD_PLANK, mintTo, 100)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.ELDER_WOOD_PLANK, mintTo, 100)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.ANCIENT_WOOD_PLANK, mintTo, 100)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.IRON_INGOT, mintTo, 100)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.GOLD_INGOT, mintTo, 100)
+    // await tx.wait(1)
+    //
+    // tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_CASHMERE, mintTo, 100)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_HEMP, mintTo, 100)
+    // await tx.wait(1)
 
 
     // let activeProcesses: any[] = await mats.activeProcessingsOfUser(deployer);
@@ -132,71 +134,80 @@ async function main() {
     // tx = await crafting.craft(0, 95)
     // await tx.wait(1);
 
+    //
+    // const deployedElixirs = JSON.parse(fs.readFileSync(DeployedFileLocations.consumables, 'utf-8'))
+    // let elixirs = await ethers.getContractAt("ConsumableItems", deployedElixirs.consumables)
+    // tx = await elixirs.mintDev(10001, 10);
+    // await tx.wait(1);
+    // tx = await elixirs.mintDev(20003, 10);
+    // await tx.wait(1);
+    // tx = await elixirs.mintDev(40005, 10);
+    // await tx.wait(1);
+    // tx = await elixirs.mintDev(50005, 10);
+    // await tx.wait(1);
+    // tx = await elixirs.mintDev(60005, 10);
+    // await tx.wait(1);
+    // tx = await elixirs.mintDev(70005, 10);
+    // await tx.wait(1);
+    // tx = await elixirs.mintDev(250005, 10);
+    // await tx.wait(1);
+    // console.log('minted')
+    //
+    // tx = await elixirs.safeBatchTransferFrom(deployer, mintTo, [10001, 20003, 40005, 50005, 60005, 70005, 250005], [10, 10, 10, 10, 10, 10, 10], "0x00")
+    // await tx.wait(1)
+    //
+    // tx = await cores.mintDev(1, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(2, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(3, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(4, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(5, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(6, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(7, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(8, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(9, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(10, 10);
+    // await tx.wait(1);
+    // tx = await cores.mintDev(29, 10);
+    // await tx.wait(1);
+    //
+    // tx = await cores.safeBatchTransferFrom(deployer, mintTo, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 10, 10, 10, 10, 10, 10, 10, 10, 10], "0x00")
+    // await tx.wait(1)
+    // tx = await cores.safeBatchTransferFrom(deployer, mintTo, [29], [10], "0x00")
+    // await tx.wait(1)
 
-    const deployedElixirs = JSON.parse(fs.readFileSync(DeployedFileLocations.consumables, 'utf-8'))
-    let elixirs = await ethers.getContractAt("ConsumableItems", deployedElixirs.consumables)
-    tx = await elixirs.mintDev(10001, 10);
-    await tx.wait(1);
-    tx = await elixirs.mintDev(20003, 10);
-    await tx.wait(1);
-    tx = await elixirs.mintDev(40005, 10);
-    await tx.wait(1);
-    tx = await elixirs.mintDev(50005, 10);
-    await tx.wait(1);
-    tx = await elixirs.mintDev(60005, 10);
-    await tx.wait(1);
-    tx = await elixirs.mintDev(70005, 10);
-    await tx.wait(1);
-    tx = await elixirs.mintDev(250005, 10);
-    await tx.wait(1);
-    console.log('minted')
+    //
+    // const deployedMisc = JSON.parse(fs.readFileSync(DeployedFileLocations.misc_items, 'utf-8'))
+    // let miscs = await ethers.getContractAt("MiscItems", deployedMisc.miscItems)
+    // tx = await miscs.rewardMiscItem(mintTo, 2, 100);
+    // await tx.wait(1);
+    // tx = await miscs.rewardMiscItem(mintTo, 35, 100);
+    // await tx.wait(1);
+    // tx = await miscs.rewardMiscItem(mintTo, 52, 100);
+    // await tx.wait(1);
+    // tx = await miscs.rewardMiscItem(mintTo, 41, 100);
+    // await tx.wait(1);
+    // tx = await miscs.rewardMiscItem(mintTo, 13, 100);
+    // await tx.wait(1);
+    // tx = await miscs.rewardMiscItem(mintTo, 40, 100);
+    // await tx.wait(1);
 
-    tx = await elixirs.safeBatchTransferFrom(deployer, mintTo, [10001, 20003, 40005, 50005, 60005, 70005, 250005], [10, 10, 10, 10, 10, 10, 10], "0x00")
+    let essence = await ethers.getContractAt("Essence", deployedFungibles.essence)
+    let gold = await ethers.getContractAt("Gold", deployedFungibles.gold)
+    //rewardToken(address _account, uint256 _amount)
+    tx = await essence.rewardToken(mintTo, BigNumber.from(10).pow(18).mul(500))
+    await tx.wait(1)
+    tx = await gold.rewardToken(mintTo, BigNumber.from(10).pow(18).mul(500))
     await tx.wait(1)
 
-    tx = await cores.mintDev(1, 10);
-    await tx.wait(1);
-    tx = await cores.mintDev(2, 10);
-    await tx.wait(1);
-    tx = await cores.mintDev(3, 10);
-    await tx.wait(1);
-    tx = await cores.mintDev(4, 10);
-    await tx.wait(1);
-    tx = await cores.mintDev(5, 10);
-    await tx.wait(1);
-    tx = await cores.mintDev(6, 10);
-    await tx.wait(1);
-    tx = await cores.mintDev(7, 10);
-    await tx.wait(1);
-    tx = await cores.mintDev(8, 10);
-    await tx.wait(1);
-    tx = await cores.mintDev(9, 10);
-    await tx.wait(1);
-    tx = await cores.mintDev(10, 10);
-    await tx.wait(1);
-    tx = await cores.mintDev(29, 10);
-    await tx.wait(1);
-
-    tx = await cores.safeBatchTransferFrom(deployer, mintTo, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 10, 10, 10, 10, 10, 10, 10, 10, 10], "0x00")
-    await tx.wait(1)
-    tx = await cores.safeBatchTransferFrom(deployer, mintTo, [29], [10], "0x00")
-    await tx.wait(1)
-
-
-    const deployedMisc = JSON.parse(fs.readFileSync(DeployedFileLocations.misc_items, 'utf-8'))
-    let miscs = await ethers.getContractAt("MiscItems", deployedMisc.miscItems)
-    tx = await miscs.rewardMiscItem(mintTo, 2, 100);
-    await tx.wait(1);
-    tx = await miscs.rewardMiscItem(mintTo, 35, 100);
-    await tx.wait(1);
-    tx = await miscs.rewardMiscItem(mintTo, 52, 100);
-    await tx.wait(1);
-    tx = await miscs.rewardMiscItem(mintTo, 41, 100);
-    await tx.wait(1);
-    tx = await miscs.rewardMiscItem(mintTo, 13, 100);
-    await tx.wait(1);
-    tx = await miscs.rewardMiscItem(mintTo, 40, 100);
-    await tx.wait(1);
 }
 
 main();

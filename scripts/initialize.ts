@@ -40,6 +40,7 @@ async function main() {
     const deployedEquipableItems = JSON.parse(fs.readFileSync(DeployedFileLocations.equipable_items, 'utf-8'))
 
     const deployedReward = JSON.parse(fs.readFileSync(DeployedFileLocations.rewards, 'utf-8'))
+    const deployedLandControls = JSON.parse(fs.readFileSync(DeployedFileLocations.lands, 'utf-8'))
 
 
     console.log(deployedAdventureControls.adventureControls)
@@ -61,6 +62,7 @@ async function main() {
     console.log(deployedEquipable.inventory)
     console.log(deployedEquipableItems.equipableItems)
     console.log(deployedReward.rewards)
+    console.log(deployedLandControls.lands)
 
 
     const adventureControls = helpercontract.attach(deployedAdventureControls.adventureControls);
@@ -98,6 +100,8 @@ async function main() {
 
     const reward = helpercontract.attach(deployedReward.rewards);
 
+    const landControls = helpercontract.attach(deployedLandControls.lands);
+
 
     tx = await adventureControls.initializeContracts();
     await tx.wait(1)
@@ -123,9 +127,9 @@ async function main() {
     await tx.wait(1)
     console.log("codexAdventures")
 
-    tx = await weaponCodex.initializePSContracts();
-    await tx.wait(1)
-    console.log("weaponCodex")
+    // tx = await weaponCodex.initializePSContracts();
+    // await tx.wait(1)
+    // console.log("weaponCodex")
     tx = await weaponCodex.initializeContracts();
     await tx.wait(1)
     console.log("weaponCodex")
@@ -181,6 +185,11 @@ async function main() {
     console.log("reward")
 
 
+    tx = await landControls.initializeContracts();
+    await tx.wait(1)
+    console.log("landControls")
+
+
 
     await tx.wait(1)
 
@@ -199,6 +208,7 @@ async function main() {
     console.log(inventory.address)
     console.log(equipableItems.address)
     console.log(reward.address)
+    console.log(landControls.address)
 
 }
 

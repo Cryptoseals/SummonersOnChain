@@ -38,7 +38,8 @@ contract Barn is LandUtils {
         animalToken.burnAnimal(msg.sender, _animalId, 1);
 
         BarnSlots[landId][slot].active = true;
-        BarnSlots[landId][slot].growthTime = block.timestamp + _animal.growthTime;
+        //        BarnSlots[landId][slot].growthTime = block.timestamp + _animal.growthTime;
+        BarnSlots[landId][slot].growthTime = block.timestamp + 15 minutes;
     }
 
     function withdrawBarnAnimals(uint landId, uint[] memory slots) external nonReentrant isOwned(landId) {

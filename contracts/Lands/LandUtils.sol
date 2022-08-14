@@ -7,6 +7,7 @@ import {ISeedToken} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/ISe
 import {ICookingItems} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/ICookingItems.sol";
 import {IAlchemyItems} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/IAlchemyItems.sol";
 import {ICodexRandom} from "../Interfaces/Codex/ICodexRandom.sol";
+import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
 pragma solidity ^0.8.0;
 
 
@@ -18,6 +19,7 @@ contract LandUtils is InitNavigator, ReentrancyGuardUpgradeable {
     IAlchemyItems public alchemyItemToken;
     ISeedToken public seedToken;
     ICodexRandom public rng;
+    IFungibleInGameToken public gold;
 
 
     uint DairyProdTime;
@@ -38,10 +40,11 @@ contract LandUtils is InitNavigator, ReentrancyGuardUpgradeable {
         alchemyItemToken = IAlchemyItems(contractAddress(INavigator.CONTRACT.ALCHEMY_ITEMS));
         seedToken = ISeedToken(contractAddress(INavigator.CONTRACT.SEEDS));
         rng = ICodexRandom(contractAddress(INavigator.CONTRACT.RANDOM_CODEX));
+        gold = IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD));
     }
 
-    modifier isOwned(uint landId) {
-        require(landToken.ownerOf(landId) == msg.sender, "o");
+    modifier isOwned(uint landId, address owner) {
+        require(landToken.ownerOf(landId) == owner, "o");
         _;
     }
 }

@@ -6,7 +6,7 @@ const deployment_mode = process.env?.DEPLOYMENT_MODE || "dev-local"
 
 async function main() {
 
-    const deployedNavigator = JSON.parse(fs.readFileSync(DeployedFileLocations.lands, 'utf-8'))
+    const deployedNavigator = JSON.parse(fs.readFileSync(DeployedFileLocations.navigator, 'utf-8'))
     const Navigator = await ethers.getContractFactory("Navigator");
     const navigator = Navigator.attach(deployedNavigator.navigator)
     let tx
@@ -15,14 +15,14 @@ async function main() {
     let codexLands = await upgrades.deployProxy(CodexLands);
 
     await codexLands.deployed()
-    console.log("codexCores deployed to:", codexLands.address,)
+    console.log("codexLands deployed to:", codexLands.address,)
     tx = await navigator.setGameContractsById(CONTRACTS.LANDS_CODEX, codexLands.address, true)
     await tx.wait(1)
     console.log("and set in navigator.")
 
 
     let Lands = await ethers.getContractFactory("Lands")
-    let lands = await upgrades.deployProxy(Lands);
+    let lands = await upgrades.deployProxy(Lands, [navigator.address,"SoC : LAND", "SOCLAND"]);
 
     await lands.deployed()
     console.log("lands deployed to:", lands.address,)
@@ -32,7 +32,7 @@ async function main() {
 
 
     let LandControls = await ethers.getContractFactory("LandControls")
-    let landControls = await upgrades.deployProxy(LandControls);
+    let landControls = await upgrades.deployProxy(LandControls, [navigator.address]);
 
     await landControls.deployed()
     console.log("landControls deployed to:", landControls.address,)
@@ -41,7 +41,7 @@ async function main() {
     console.log("and set in navigator.")
 
     let Seeds = await ethers.getContractFactory("Seeds")
-    let seeds = await upgrades.deployProxy(Seeds);
+    let seeds = await upgrades.deployProxy(Seeds, [navigator.address, "abc.com/seeds/"]);
 
     await seeds.deployed()
     console.log("seeds deployed to:", seeds.address,)
@@ -50,7 +50,7 @@ async function main() {
     console.log("and set in navigator.")
 
     let Animals = await ethers.getContractFactory("Animals")
-    let animals = await upgrades.deployProxy(Animals);
+    let animals = await upgrades.deployProxy(Animals, [navigator.address, "abc.com/animals/"]);
 
     await animals.deployed()
     console.log("animals deployed to:", animals.address,)

@@ -62,6 +62,11 @@ contract Lands is Initializable, ReentrancyGuardUpgradeable, OwnableUpgradeable,
         _initializeLand(landId);
         _mint(player, landId);
     }
+    function mintLand() external {
+        uint landId = totalSupply();
+        _initializeLand(landId);
+        _mint(msg.sender, landId);
+    }
 
     function _initializeLand(uint id) internal {
         require(!_exists(id), "no");
@@ -154,4 +159,22 @@ contract Lands is Initializable, ReentrancyGuardUpgradeable, OwnableUpgradeable,
         return LandStats[landId];
     }
 
+    function landsOfOwner(address _owner) public view returns (uint[] memory) {
+        uint[] memory _tokensOfOwner = new uint[](balanceOf(_owner));
+        uint i;
+
+        for (i = 0; i < _tokensOfOwner.length; i++) {
+            _tokensOfOwner[i] = tokenOfOwnerByIndex(_owner, i);
+        }
+        return (_tokensOfOwner);
+    }
+
+    function landDetails(uint[] memory _lands) public view returns (ILand.LandStatsStruct[] memory) {
+        ILand.LandStatsStruct[] memory _result = new ILand.LandStatsStruct[](_lands.length);
+        for (uint i = 0; i < _lands.length; i++) {
+            _result[i] = LandStats[_lands[i]];
+        }
+
+        return _result;
+    }
 }

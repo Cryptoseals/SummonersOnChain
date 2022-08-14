@@ -30,7 +30,7 @@ contract Farm is LandUtils {
         FarmPlots[landId][plot].endTime = block.timestamp + _seed.growTime;
     }
 
-    function harvest(uint landId, uint[] memory plots) external nonReentrant isOwned(landId) {
+    function harvest(uint landId, uint[] memory plots) external nonReentrant isOwned(landId, msg.sender) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Farm memory farm = landCodex.farm(stats.FarmsTier);
         ILand.Seed memory _seed;
@@ -63,21 +63,23 @@ contract Farm is LandUtils {
     }
 
     function buySeed(Seed.List seed, uint amount) external {
+        require(uint(seed) > 0 && amount > 0, "a");
         ILand.Seed memory _seed = landCodex.seed(uint(seed));
         uint price = 0;
         price += _seed.buyPrice * amount;
         require(price > 0, "?");
-        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD)).burnToken(msg.sender, price);
+        gold.burnToken(msg.sender, price);
         seedToken.mintSeed(seed, msg.sender, amount);
     }
 
-    function buyAnimal(uint landId, uint id, uint amount) external isOwned(landId) {
+    function buyAnimal(uint landId, uint id, uint amount) external isOwned(landId, msg.sender) {
+        require(amount > 0, "a");
         AnimalsL.BabyAnimal memory _animal = landCodex.babyAnimal(id);
 
         uint price = 0;
         price += _animal.buyPrice * amount;
         require(price > 0, "?");
-        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.GOLD)).burnToken(msg.sender, price);
+        gold.burnToken(msg.sender, price);
         animalToken.mintAnimal(msg.sender, id, amount);
     }
 }
