@@ -14,7 +14,7 @@ contract Barn is LandUtils {
     // maps land-barn slot id to animal slots
     mapping(uint => mapping(uint => AnimalsL.BabyAnimal)) public BarnSlots;
 
-    function depositBarnAnimals(uint landId, uint[] memory slots, uint[] memory _animalIds) external nonReentrant isOwned(landId) {
+    function depositBarnAnimals(uint landId, uint[] memory slots, uint[] memory _animalIds) external nonReentrant isOwned(landId, msg.sender) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.BarnHouse memory barnhouse = landCodex.barnHouse(stats.BarnHousesTier);
         require(slots.length <= barnhouse.capacity, "m");
@@ -25,7 +25,7 @@ contract Barn is LandUtils {
         }
     }
 
-    function depositBarnAnimal(uint landId, uint slot, uint _animalId) external nonReentrant isOwned(landId) {
+    function depositBarnAnimal(uint landId, uint slot, uint _animalId) external nonReentrant isOwned(landId, msg.sender) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         _handleBarnDeposit(landId, slot, _animalId, stats.BarnHousesTier);
     }
@@ -42,7 +42,7 @@ contract Barn is LandUtils {
         BarnSlots[landId][slot].growthTime = block.timestamp + 15 minutes;
     }
 
-    function withdrawBarnAnimals(uint landId, uint[] memory slots) external nonReentrant isOwned(landId) {
+    function withdrawBarnAnimals(uint landId, uint[] memory slots) external nonReentrant isOwned(landId, msg.sender) {
         for (uint i = 0; i < slots.length; i++) {
             _handleBarnClaim(landId, slots[i]);
         }

@@ -291,6 +291,7 @@ library GameObjects_BuffEffects {
         BasicRequirement[] requiredAlchemyItems;
         BasicRequirement[] requiredMiscItems;
         BasicRequirement[] requiredCookingItems;
+        BasicRequirement[] requiredConsumableItem;
         uint requiredGold;
         uint requiredEssence;
     }

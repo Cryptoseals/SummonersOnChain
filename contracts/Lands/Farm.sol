@@ -13,7 +13,7 @@ contract Farm is LandUtils {
     // land id- plot - progress
     mapping(uint => mapping(uint => ILand.Plot)) public FarmPlots;
 
-    function plant(uint landId, uint plot, uint seedToPlant) external nonReentrant isOwned(landId) {
+    function plant(uint landId, uint plot, uint seedToPlant) external nonReentrant isOwned(landId,msg.sender) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Farm memory farm = landCodex.farm(stats.FarmsTier);
 

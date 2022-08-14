@@ -11,7 +11,7 @@ contract Slaughterhouse is LandUtils {
     // land -> cooldown
     mapping(uint => uint) public SlaughterhouseCooldown;
 
-    function killAnimal(uint landId, uint animalId, uint amount) external nonReentrant isOwned(landId) {
+    function killAnimal(uint landId, uint animalId, uint amount) external nonReentrant isOwned(landId,msg.sender) {
         require(block.timestamp >= SlaughterhouseCooldown[landId], "early");
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Slaughterhouse memory slaughterhouse = landCodex.slaughterhouse(stats.SlaughterhousesTier);

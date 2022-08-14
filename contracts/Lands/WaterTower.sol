@@ -10,7 +10,7 @@ contract WaterTower is LandUtils {
 
     mapping(uint => uint) public WaterTowerCooldown;
 
-    function claimWater(uint landId) external nonReentrant isOwned(landId) {
+    function claimWater(uint landId) external nonReentrant isOwned(landId, msg.sender) {
         require(block.timestamp >= WaterTowerCooldown[landId], "early");
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.WaterTower memory waterTower = landCodex.waterTower(stats.WaterTowersTier);

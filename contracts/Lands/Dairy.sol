@@ -23,7 +23,7 @@ contract Dairy is LandUtils {
     mapping(uint => mapping(uint => DairyAnimal)) public StakedDairy;
 
     // animal id must be 0, if you dont want to touch that dairy slot
-    function depositAnimalToDairy(uint landId, uint[] memory animalIdsForSlots) external nonReentrant isOwned(landId) {
+    function depositAnimalToDairy(uint landId, uint[] memory animalIdsForSlots) external nonReentrant isOwned(landId,msg.sender) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Dairies memory dairy = landCodex.dairies(stats.DairiesTier);
         ILand.Storages memory storages = landCodex.storages(stats.StorageBuildingsTier);
@@ -47,7 +47,7 @@ contract Dairy is LandUtils {
         }
     }
 
-    function claimProductions(uint landId) external nonReentrant isOwned(landId) {
+    function claimProductions(uint landId) external nonReentrant isOwned(landId,msg.sender) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Dairies memory dairy = landCodex.dairies(stats.DairiesTier);
         ILand.Storages memory storages = landCodex.storages(stats.StorageBuildingsTier);
@@ -64,7 +64,7 @@ contract Dairy is LandUtils {
     }
 
     // withdraw
-    function withdrawAnimalsFromDairy(uint landId, uint[] memory animalIdsForSlots) external nonReentrant isOwned(landId) {
+    function withdrawAnimalsFromDairy(uint landId, uint[] memory animalIdsForSlots) external nonReentrant isOwned(landId,msg.sender) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Dairies memory dairy = landCodex.dairies(stats.DairiesTier);
         ILand.Storages memory storages = landCodex.storages(stats.StorageBuildingsTier);

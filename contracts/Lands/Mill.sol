@@ -22,7 +22,7 @@ contract Mill is LandUtils {
     mapping(uint => GrainProcessing) public ActiveProcessings;
     mapping(uint => EnumerableSetUpgradeable.UintSet) LandsActiveProcessings;
 
-    function processGrain(uint landId, ICookingItem.List[] memory grainIds, uint[] memory amounts) external nonReentrant isOwned(landId) {
+    function processGrain(uint landId, ICookingItem.List[] memory grainIds, uint[] memory amounts) external nonReentrant isOwned(landId,msg.sender) {
         require(grainIds.length == amounts.length, "l");
 
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
@@ -55,7 +55,7 @@ contract Mill is LandUtils {
         nextProcessId++;
     }
 
-    function claimGrain(uint landId, uint[] memory processIds) external nonReentrant isOwned(landId) {
+    function claimGrain(uint landId, uint[] memory processIds) external nonReentrant isOwned(landId,msg.sender) {
         uint totalFlourReward = 0;
         for (uint i = 0; i < processIds.length; i++) {
             GrainProcessing memory process = ActiveProcessings[processIds[i]];
@@ -71,7 +71,7 @@ contract Mill is LandUtils {
             totalFlourReward);
     }
 
-    function partialGrainClaimProcess(uint landId, uint processId, uint amount) external nonReentrant isOwned(landId) {
+    function partialGrainClaimProcess(uint landId, uint processId, uint amount) external nonReentrant isOwned(landId,msg.sender) {
         require(ActiveProcessings[processId].isClaimed == false, "claimed");
         require(ActiveProcessings[processId].who == msg.sender, "unauth");
         require(amount <= ActiveProcessings[processId].amount, "scam?");

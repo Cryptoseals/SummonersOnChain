@@ -14,7 +14,7 @@ contract Poultry is LandUtils {
     mapping(uint => mapping(uint => AnimalsL.BabyAnimal)) public PoultrySlots;
 
     // use this function if you are depositing same animal in every slot
-    function depositPoultryAnimals(uint landId, uint[] memory slots, uint[] memory _animalIds) external nonReentrant isOwned(landId) {
+    function depositPoultryAnimals(uint landId, uint[] memory slots, uint[] memory _animalIds) external nonReentrant isOwned(landId,msg.sender) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Poultry memory poultry = landCodex.poultry(stats.PoultriesTier);
         require(slots.length <= poultry.capacity, "m");
@@ -25,7 +25,7 @@ contract Poultry is LandUtils {
         }
     }
 
-    function depositPoultryAnimal(uint landId, uint slot, uint _animalId) external nonReentrant isOwned(landId) {
+    function depositPoultryAnimal(uint landId, uint slot, uint _animalId) external nonReentrant isOwned(landId,msg.sender) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         _handlePoultryDeposit(landId, slot, _animalId, stats.PoultriesTier);
     }
@@ -42,7 +42,7 @@ contract Poultry is LandUtils {
         PoultrySlots[landId][slot].growthTime = block.timestamp + _animal.growthTime;
     }
 
-    function withdrawPoultryAnimals(uint landId, uint[] memory slots) external nonReentrant isOwned(landId) {
+    function withdrawPoultryAnimals(uint landId, uint[] memory slots) external nonReentrant isOwned(landId,msg.sender) {
         for (uint i = 0; i < slots.length; i++) {
             _handlePoultryClaim(landId, slots[i]);
         }

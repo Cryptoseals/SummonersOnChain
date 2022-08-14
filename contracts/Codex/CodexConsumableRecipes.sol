@@ -110,9 +110,15 @@ contract CodexBuffEffectRecipes {
         _requiredCookingItems[0].id = 1;
         _requiredCookingItems[0].amount = 1;
 
+        // consumable item req
+        GameObjects_BuffEffects.BasicRequirement[] memory _requiredConsumables = generateRequirement(1);
+        _requiredConsumables[0].id = 1;
+        _requiredConsumables[0].amount = 1;
+
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
         _recipe.requiredCookingItems = _requiredCookingItems;
         _recipe.requiredMiscItems = _requiredMiscItems;
+        _recipe.requiredConsumableItem = _requiredConsumables;
 
         _recipe.requiredEssence = 15e18;
     }
