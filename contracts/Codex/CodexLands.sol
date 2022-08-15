@@ -213,12 +213,13 @@ contract CodexLands {
         _reqs.isValid = true;
 
         if (tier == 2) {
-            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials = generateRequirement(2);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.BOLT_OF_JUTE);
             _reqs.requiredMaterials[0].amount = 40;
             _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[1].amount = 40;
-        }}
+        }
+    }
 
     function waterBuilding(uint tier) public view returns (ILand.BuildingRequirement memory _reqs){
         _reqs.isValid = true;
@@ -314,8 +315,43 @@ contract CodexLands {
             return Red_Rose();
         } else if (_id == 18) {
             return Dragon_Flower();
-        } else if (_id == 19) {
-            return Golden_Flower();
+        }
+        else if (_id == 19) {
+            return Apple();
+        } else if (_id == 20) {
+            return Carrot();
+        } else if (_id == 21) {
+            return Cabbage();
+        } else if (_id == 22) {
+            return Bell_Pepper();
+        } else if (_id == 23) {
+            return Chili_Pepper();
+        } else if (_id == 24) {
+            return Tomato();
+        } else if (_id == 25) {
+            return Onion();
+        } else if (_id == 26) {
+            return Corn();
+        } else if (_id == 27) {
+            return Mushroom();
+        } else if (_id == 28) {
+            return Turnip();
+        } else if (_id == 29) {
+            return Grapes();
+        } else if (_id == 30) {
+            return Black_Grapes();
+        } else if (_id == 31) {
+            return Red_Grapes();
+        } else if (_id == 32) {
+            return Strawberry();
+        } else if (_id == 33) {
+            return Cherry();
+        } else if (_id == 34) {
+            return Cacao();
+        } else if (_id == 35) {
+            return Banana();
+        } else if (_id == 36) {
+            return Wheat();
         }
         revert("wrong");
     }
@@ -798,4 +834,203 @@ contract CodexLands {
         _seed.landExpReward = 100;
         _seed.requiredLandExperience = 0;
     }
+
+    function Apple() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 20;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Apple;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Carrot() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 21;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Carrot;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Cabbage() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 22;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Cabbage;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Bell_Pepper() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 23;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Bell_Pepper;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Chili_Pepper() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 24;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Chili_Pepper;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Tomato() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 25;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Tomato;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Onion() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 26;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Onion;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Corn() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 27;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Corn;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Mushroom() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 28;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Mushroom;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Turnip() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 29;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Turnip;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Grapes() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 30;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Grapes;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Black_Grapes() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 31;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Black_Grapes;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Red_Grapes() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 32;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Red_Grapes;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Strawberry() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 33;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Strawberry;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Cherry() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 34;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Cherry;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Cacao() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 35;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Cacao;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Banana() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 36;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Banana;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Wheat() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 37;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Wheat;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
 }

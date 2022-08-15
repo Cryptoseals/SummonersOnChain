@@ -25,7 +25,25 @@ library Seed {
         Wild_Rose,
         Red_Rose,
         Dragon_Flower,
-        Golden_Flower
+        Golden_Flower,
+        Apple,
+        Carrot,
+        Cabbage,
+        Bell_Pepper,
+        Chili_Pepper,
+        Tomato,
+        Onion,
+        Corn,
+        Mushroom,
+        Turnip,
+        Grapes,
+        Black_Grapes,
+        Red_Grapes,
+        Strawberry,
+        Cherry,
+        Cacao,
+        Banana,
+        Wheat
     }
 }
 

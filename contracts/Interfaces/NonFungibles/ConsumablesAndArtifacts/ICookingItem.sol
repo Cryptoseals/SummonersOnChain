@@ -36,6 +36,7 @@ library ICookingItem {
         Banana,
         Potato,
         Olive_Oil,
-        Sunflower_Oil
+        Sunflower_Oil,
+        Wheat
     }
 }

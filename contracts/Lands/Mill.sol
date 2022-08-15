@@ -38,6 +38,7 @@ contract Mill is LandUtils {
         uint totalFlourReward = 0;
         for (uint i = 0; i < grainIds.length; i++) {
             require(amounts[i] > 0, "0");
+            require(grainIds[i] == ICookingItem.List.Wheat || grainIds[i] == ICookingItem.List.Corn, "i");
             totalFlourReward += amounts[i];
             cookingItemToken.burnCookingItem(msg.sender, grainIds[i], amounts[i]);
         }
