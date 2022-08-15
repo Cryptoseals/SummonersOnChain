@@ -60,6 +60,7 @@ contract InitNavigator is Initializable {
         require(Navigator.isGameContract(msg.sender), "UNAUTHORIZED");
         _;
     }
+
     modifier notInFight(uint summoner) {
         require(Summoners.state(summoner) != GameEntities.SummonerState.IN_FIGHT, "IN_FIGHT");
         _;

@@ -42,8 +42,9 @@ contract Seeds is Initializable, OwnableUpgradeable, InitNavigator, ERC1155Upgra
     function seedsOf(address account, uint[] memory ids) external view returns (uint[] memory) {
         uint[] memory result = new uint[](ids.length);
         uint i = 0;
-        for (i; i < ids.length; i++) {
+        for (i; i < ids.length;) {
             result[i] = balanceOf(account, ids[i]);
+            unchecked{i++;}
         }
         return result;
     }

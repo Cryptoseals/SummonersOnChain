@@ -13,7 +13,7 @@ contract Farm is LandUtils {
     // land id- plot - progress
     mapping(uint => mapping(uint => ILand.Plot)) public FarmPlots;
 
-    function plant(uint landId, uint plot, uint seedToPlant) external nonReentrant isOwned(landId,msg.sender) {
+    function plant(uint landId, uint plot, uint seedToPlant) external nonReentrant isOwned(landId, msg.sender) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Farm memory farm = landCodex.farm(stats.FarmsTier);
 
@@ -23,8 +23,8 @@ contract Farm is LandUtils {
 
         require(LandExperiences[landId] >= _seed.requiredLandExperience, "t");
 
-        require(FarmPlots[landId][plot].isAvailable, "a");
-        FarmPlots[landId][plot].isAvailable = false;
+        require(!FarmPlots[landId][plot].isAvailable, "a");
+        FarmPlots[landId][plot].isAvailable = true;
         seedToken.burnSeed(msg.sender, seedToPlant, 1);
         FarmPlots[landId][plot].seedId = seedToPlant;
         FarmPlots[landId][plot].endTime = block.timestamp + _seed.growTime;
@@ -35,7 +35,7 @@ contract Farm is LandUtils {
         ILand.Farm memory farm = landCodex.farm(stats.FarmsTier);
         ILand.Seed memory _seed;
         for (uint i = 0; i < farm.usablePlots; i++) {
-            require(!FarmPlots[landId][i].isAvailable, "i");
+            require(FarmPlots[landId][i].isAvailable, "i");
             require(block.timestamp >= FarmPlots[landId][i].endTime, "e");
 
 
@@ -44,7 +44,7 @@ contract Farm is LandUtils {
                 _seed = landCodex.seed(FarmPlots[landId][i].seedId);
             }
 
-            FarmPlots[landId][i].isAvailable = true;
+            FarmPlots[landId][i].isAvailable = false;
             FarmPlots[landId][i].seedId = 0;
 
             if (_seed.alchemyReward.min > 0) {
@@ -81,5 +81,15 @@ contract Farm is LandUtils {
         require(price > 0, "?");
         gold.burnToken(msg.sender, price);
         animalToken.mintAnimal(msg.sender, id, amount);
+    }
+
+    function plots(uint landId, uint[] memory plots) external view returns (ILand.Plot[] memory){
+        ILand.Plot[] memory result = new ILand.Plot[](plots.length);
+
+        for (uint i = 0; i < plots.length; i++) {
+            result[i] = FarmPlots[landId][plots[i]];
+        }
+
+        return result;
     }
 }
