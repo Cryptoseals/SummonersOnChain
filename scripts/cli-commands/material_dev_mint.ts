@@ -104,6 +104,12 @@ async function main() {
     // await tx.wait(1)
     // tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_HEMP, mintTo, 100)
     // await tx.wait(1)
+    tx = await mats.mintMaterial(CraftingMaterial.COPPER_INGOT, mintTo, 100)
+    await tx.wait(1)
+    tx = await mats.mintMaterial(CraftingMaterial.GREEN_WOOD_PLANK, mintTo, 100)
+    await tx.wait(1)
+    tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_JUTE, mintTo, 100)
+    await tx.wait(1)
 
 
     // let activeProcesses: any[] = await mats.activeProcessingsOfUser(deployer);

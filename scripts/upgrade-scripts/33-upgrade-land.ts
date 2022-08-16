@@ -14,13 +14,13 @@ async function main() {
     // let lands = await upgrades.upgradeProxy(deployedE.lands,
     //     Lands);
     // await lands.deployed();
-
+    //
     let CodexLands = await ethers.getContractFactory("CodexLands");
     let codexLands = await upgrades.upgradeProxy(deployedE.codexLands,
         CodexLands);
     await codexLands.deployed();
-    //
-    //
+    // //
+    // //
     // let LandControls = await ethers.getContractFactory("LandControls")
     // let landControls = await upgrades.upgradeProxy(deployedE.landControls,
     //     LandControls);

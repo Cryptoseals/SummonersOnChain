@@ -44,7 +44,7 @@ contract CodexLands {
         if (tier != maxPoultryLevel) {
             _poultry.building.upgradeReqs = poultryBuildReqs(tier + 1);
         }
-        _poultry.capacity = 5 + (tier * 2);
+        _poultry.capacity = 0 + (tier * 3);
     }
 
     function barnHouse(uint tier) external view returns (ILand.BarnHouse memory _barnHouse){
@@ -55,7 +55,7 @@ contract CodexLands {
         if (tier != maxBarnLevel) {
             _barnHouse.building.upgradeReqs = barnBuilding(tier + 1);
         }
-        _barnHouse.capacity = 5 + (tier * 2);
+        _barnHouse.capacity = 0 + (tier * 3);
     }
 
     function storages(uint tier) external view returns (ILand.Storages memory _storageBuilding){
@@ -142,7 +142,9 @@ contract CodexLands {
         //        _reqs.requiredAlchemyItems = generateRequirement(1);
         //        _reqs.requiredAlchemyItems[0].id = 1;
         //        _reqs.requiredAlchemyItems[0].amount = 100;
-        if (tier == 2) {
+        if (tier == 1) {
+
+        } else if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.COPPER_INGOT);
             _reqs.requiredMaterials[0].amount = 40;
@@ -150,6 +152,8 @@ contract CodexLands {
             _reqs.requiredMaterials[1].amount = 40;
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.BOLT_OF_JUTE);
             _reqs.requiredMaterials[2].amount = 20;
+        } else {
+            _reqs.isValid = false;
         }
     }
 
@@ -157,7 +161,10 @@ contract CodexLands {
         require(tier > 0, "t");
         _reqs.isValid = true;
 
-        if (tier == 2) {
+        if (tier == 1) {
+
+        }
+        else if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 25;
@@ -165,6 +172,8 @@ contract CodexLands {
             _reqs.requiredMaterials[1].amount = 25;
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
+        } else {
+            _reqs.isValid = false;
         }
     }
 
@@ -172,7 +181,10 @@ contract CodexLands {
         require(tier > 0, "t");
         _reqs.isValid = true;
 
-        if (tier == 2) {
+        if (tier == 1) {
+
+        }
+        else if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 35;
@@ -180,6 +192,8 @@ contract CodexLands {
             _reqs.requiredMaterials[1].amount = 35;
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER);
             _reqs.requiredMaterials[2].amount = 15;
+        } else {
+            _reqs.isValid = false;
         }
     }
 
@@ -194,6 +208,8 @@ contract CodexLands {
             _reqs.requiredMaterials[1].amount = 35;
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER);
             _reqs.requiredMaterials[2].amount = 20;
+        } else {
+            _reqs.isValid = false;
         }
     }
 
@@ -206,18 +222,24 @@ contract CodexLands {
             _reqs.requiredMaterials[0].amount = 40;
             _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.COPPER_INGOT);
             _reqs.requiredMaterials[1].amount = 40;
+        } else {
+            _reqs.isValid = false;
         }
     }
 
     function farmBuilding(uint tier) public view returns (ILand.BuildingRequirement memory _reqs){
         _reqs.isValid = true;
 
-        if (tier == 2) {
+        if (tier == 1) {
+
+        } else if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(2);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.BOLT_OF_JUTE);
             _reqs.requiredMaterials[0].amount = 40;
             _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[1].amount = 40;
+        } else {
+            _reqs.isValid = false;
         }
     }
 
@@ -232,6 +254,8 @@ contract CodexLands {
             _reqs.requiredMaterials[1].amount = 10;
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.BOLT_OF_JUTE);
             _reqs.requiredMaterials[2].amount = 5;
+        } else {
+            _reqs.isValid = false;
         }
     }
 
@@ -248,6 +272,8 @@ contract CodexLands {
             _reqs.requiredMaterials[2].amount = 10;
             _reqs.requiredMaterials[3].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[3].amount = 10;
+        } else {
+            _reqs.isValid = false;
         }
 
     }
@@ -265,6 +291,8 @@ contract CodexLands {
             _reqs.requiredMaterials[2].amount = 10;
             _reqs.requiredMaterials[3].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[3].amount = 10;
+        } else {
+            _reqs.isValid = false;
         }
     }
 
@@ -315,8 +343,7 @@ contract CodexLands {
             return Red_Rose();
         } else if (_id == 18) {
             return Dragon_Flower();
-        }
-        else if (_id == 19) {
+        } else if (_id == 19) {
             return Apple();
         } else if (_id == 20) {
             return Carrot();

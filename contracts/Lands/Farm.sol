@@ -30,13 +30,14 @@ contract Farm is LandUtils {
         FarmPlots[landId][plot].endTime = block.timestamp + _seed.growTime;
     }
 
-    function harvest(uint landId, uint[] memory plots) external nonReentrant isOwned(landId, msg.sender) {
+    function harvest(uint landId) external nonReentrant isOwned(landId, msg.sender) {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Farm memory farm = landCodex.farm(stats.FarmsTier);
         ILand.Seed memory _seed;
         for (uint i = 0; i < farm.usablePlots; i++) {
-            require(FarmPlots[landId][i].isAvailable, "i");
-            require(block.timestamp >= FarmPlots[landId][i].endTime, "e");
+            if (!FarmPlots[landId][i].isAvailable) continue;
+            if (FarmPlots[landId][i].seedId == 0) continue;
+            if (block.timestamp < FarmPlots[landId][i].endTime) continue;
 
 
             // works like cache. if its same as before, dont call again
@@ -47,12 +48,13 @@ contract Farm is LandUtils {
             FarmPlots[landId][i].isAvailable = false;
             FarmPlots[landId][i].seedId = 0;
 
-            if (_seed.alchemyReward.min > 0) {
+            if (_seed.alchemyReward.min > 0 && uint(_seed.alchemyReward.id) != 0) {
                 uint roll = rng.dn(
                     _seed.growTime + block.number + (i * 100),
                     _seed.alchemyReward.max - _seed.alchemyReward.min) + _seed.alchemyReward.min;
                 alchemyItemToken.rewardAlchemyItem(msg.sender, _seed.alchemyReward.id, roll);
-            } else if (_seed.cookingReward.min > 0) {
+            }
+            if (_seed.cookingReward.min > 0 && uint(_seed.cookingReward.id) != 0) {
                 uint roll = rng.dn(
                     _seed.growTime + block.number + 1881 + (i * 300),
                     _seed.cookingReward.max - _seed.cookingReward.min) + _seed.cookingReward.min;
