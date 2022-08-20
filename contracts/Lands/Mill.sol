@@ -57,37 +57,47 @@ contract Mill is LandUtils {
         nextProcessId++;
     }
 
-//    function claimGrain(uint landId, uint[] memory processIds) external nonReentrant isOwned(landId, msg.sender) {
-//        uint totalFlourReward = 0;
-//        for (uint i = 0; i < processIds.length; i++) {
-//            GrainProcessing memory process = ActiveProcessings[processIds[i]];
-//            require(process.isClaimed == false, "claimed");
-//            require(process.who == msg.sender, "unauth");
-//            require(process.when <= block.timestamp, "time");
-//
-//            totalFlourReward += process.amount;
-//            LandsActiveProcessings[landId].remove(processIds[i]);
-//            ActiveProcessings[processIds[i]].isClaimed = true;
-//        }
-//        cookingItemToken.rewardCookingItem(msg.sender, ICookingItem.List.Flour,
-//            totalFlourReward);
-//    }
+    //    function claimGrain(uint landId, uint[] memory processIds) external nonReentrant isOwned(landId, msg.sender) {
+    //        uint totalFlourReward = 0;
+    //        for (uint i = 0; i < processIds.length; i++) {
+    //            GrainProcessing memory process = ActiveProcessings[processIds[i]];
+    //            require(process.isClaimed == false, "claimed");
+    //            require(process.who == msg.sender, "unauth");
+    //            require(process.when <= block.timestamp, "time");
+    //
+    //            totalFlourReward += process.amount;
+    //            LandsActiveProcessings[landId].remove(processIds[i]);
+    //            ActiveProcessings[processIds[i]].isClaimed = true;
+    //        }
+    //        cookingItemToken.rewardCookingItem(msg.sender, ICookingItem.List.Flour,
+    //            totalFlourReward);
+    //    }
 
-        function partialGrainClaimProcess(uint landId, uint processId, uint amount) external nonReentrant isOwned(landId,msg.sender) {
-            require(ActiveProcessings[processId].isClaimed == false, "claimed");
-            require(ActiveProcessings[processId].who == msg.sender, "unauth");
-            require(amount <= ActiveProcessings[processId].amount, "scam?");
+    function partialGrainClaimProcess(uint landId, uint processId, uint amount) external nonReentrant isOwned(landId, msg.sender) {
+        require(ActiveProcessings[processId].isClaimed == false, "claimed");
+        require(ActiveProcessings[processId].who == msg.sender, "unauth");
+        require(amount <= ActiveProcessings[processId].amount, "scam?");
 
-            uint timeRequiredPerMaterial = (ActiveProcessings[processId].when - ActiveProcessings[processId].startingDate) / ActiveProcessings[processId].amount;
-            require(block.timestamp > ActiveProcessings[processId].startingDate + timeRequiredPerMaterial * amount, "early");
+        uint timeRequiredPerMaterial = (ActiveProcessings[processId].when - ActiveProcessings[processId].startingDate) / ActiveProcessings[processId].amount;
+        require(block.timestamp > ActiveProcessings[processId].startingDate + timeRequiredPerMaterial * amount, "early");
 
-            ActiveProcessings[processId].startingDate += timeRequiredPerMaterial * amount;
-            ActiveProcessings[processId].amount -= amount;
+        ActiveProcessings[processId].startingDate += timeRequiredPerMaterial * amount;
+        ActiveProcessings[processId].amount -= amount;
+        ActiveProcessings[processId].isClaimed = true;
 
-            if (ActiveProcessings[processId].amount == 0) {
-                LandsActiveProcessings[landId].remove(processId);
-            }
-            cookingItemToken.rewardCookingItem(msg.sender, ICookingItem.List.Flour,
-                ActiveProcessings[processId].amount);
+        if (ActiveProcessings[processId].amount == 0) {
+            LandsActiveProcessings[landId].remove(processId);
         }
+        cookingItemToken.rewardCookingItem(msg.sender, ICookingItem.List.Flour,
+            ActiveProcessings[processId].amount);
+    }
+
+    function activeProcessings(uint land) external view returns (GrainProcessing[] memory) {
+        uint[] memory processes = LandsActiveProcessings[land].values();
+        GrainProcessing[] memory result = new GrainProcessing[](processes.length);
+        for (uint i = 0; i < processes.length; i++) {
+            result[i] = ActiveProcessings[processes[i]];
+        }
+        return result;
+    }
 }

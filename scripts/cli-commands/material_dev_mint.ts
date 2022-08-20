@@ -69,6 +69,7 @@ async function main() {
 
     const deployedFungibles = JSON.parse(fs.readFileSync(DeployedFileLocations.fungibles, 'utf-8'))
     const deployedMaterials = JSON.parse(fs.readFileSync(DeployedFileLocations.crafting_materials, 'utf-8'))
+    const deployedCook = JSON.parse(fs.readFileSync(DeployedFileLocations.misc_items, 'utf-8'))
     const deployedCores = JSON.parse(fs.readFileSync(DeployedFileLocations.cores, 'utf-8'))
     let cores = await ethers.getContractAt("Cores", deployedCores.core)
     let mats = await ethers.getContractAt("CraftingMaterials", deployedMaterials.craftingMaterials)
@@ -104,12 +105,12 @@ async function main() {
     // await tx.wait(1)
     // tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_HEMP, mintTo, 100)
     // await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.COPPER_INGOT, mintTo, 100)
-    await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.GREEN_WOOD_PLANK, mintTo, 100)
-    await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_JUTE, mintTo, 100)
-    await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.COPPER_INGOT, mintTo, 100)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.GREEN_WOOD_PLANK, mintTo, 100)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_JUTE, mintTo, 100)
+    // await tx.wait(1)
 
 
     // let activeProcesses: any[] = await mats.activeProcessingsOfUser(deployer);
@@ -206,12 +207,17 @@ async function main() {
     // tx = await miscs.rewardMiscItem(mintTo, 40, 100);
     // await tx.wait(1);
 
-    let essence = await ethers.getContractAt("Essence", deployedFungibles.essence)
-    let gold = await ethers.getContractAt("Gold", deployedFungibles.gold)
-    //rewardToken(address _account, uint256 _amount)
-    tx = await essence.rewardToken(mintTo, BigNumber.from(10).pow(18).mul(500))
+    // let essence = await ethers.getContractAt("Essence", deployedFungibles.essence)
+    // let gold = await ethers.getContractAt("Gold", deployedFungibles.gold)
+    // //rewardToken(address _account, uint256 _amount)
+    // tx = await essence.rewardToken(mintTo, BigNumber.from(10).pow(18).mul(500))
+    // await tx.wait(1)
+    // tx = await gold.rewardToken(mintTo, BigNumber.from(10).pow(18).mul(500))
+    // await tx.wait(1)
+    let cook = await ethers.getContractAt("CookingItems", deployedCook.cookingItems)
+    tx = await cook.rewardCookingItem(mintTo, 10, 100)
     await tx.wait(1)
-    tx = await gold.rewardToken(mintTo, BigNumber.from(10).pow(18).mul(500))
+    tx = await cook.rewardCookingItem(mintTo, 35, 100)
     await tx.wait(1)
 
 }
