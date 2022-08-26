@@ -25,7 +25,7 @@ async function main() {
     let landControls = await upgrades.upgradeProxy(deployedE.landControls,
         LandControls);
     await landControls.deployed();
-
+    //
     // tx = await landControls.initializeContracts()
     // await tx.wait(1)
 

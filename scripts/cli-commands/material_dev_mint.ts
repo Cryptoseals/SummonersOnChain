@@ -86,6 +86,8 @@ async function main() {
     // console.log("RED_OAK_WOOD_PLANK:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.RED_OAK_WOOD_PLANK)))
 
     let mintTo = "0xc5E5ec38de39c632f67EbF9795CD1d7D12331799"
+    tx = await mats.mintMaterial(CraftingMaterial.GREEN_WOOD, mintTo, 100)
+    await tx.wait(1)
     // tx = await mats.mintMaterial(CraftingMaterial.OBSIDIAN_INGOT, mintTo, 100)
     // await tx.wait(1)
     // tx = await mats.mintMaterial(CraftingMaterial.ORICALCHUM_INGOT, mintTo, 100)
@@ -214,11 +216,11 @@ async function main() {
     // await tx.wait(1)
     // tx = await gold.rewardToken(mintTo, BigNumber.from(10).pow(18).mul(500))
     // await tx.wait(1)
-    let cook = await ethers.getContractAt("CookingItems", deployedCook.cookingItems)
-    tx = await cook.rewardCookingItem(mintTo, 10, 100)
-    await tx.wait(1)
-    tx = await cook.rewardCookingItem(mintTo, 35, 100)
-    await tx.wait(1)
+    // let cook = await ethers.getContractAt("CookingItems", deployedCook.cookingItems)
+    // tx = await cook.rewardCookingItem(mintTo, 10, 100)
+    // await tx.wait(1)
+    // tx = await cook.rewardCookingItem(mintTo, 35, 100)
+    // await tx.wait(1)
 
 }
 

@@ -29,7 +29,7 @@ contract LandUtils is InitNavigator, ReentrancyGuardUpgradeable {
         initializeNavigator(_navigator);
         __ReentrancyGuard_init();
         // TODO, edit this on deploy
-        DairyProdTime = 3 minutes;
+        DairyProdTime = 5 minutes;
     }
 
     function initializeContracts() external {

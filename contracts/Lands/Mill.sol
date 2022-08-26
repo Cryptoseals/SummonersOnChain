@@ -100,4 +100,7 @@ contract Mill is LandUtils {
         }
         return result;
     }
+    function activeProcessingIds(uint land) external view returns (uint[] memory) {
+        return LandsActiveProcessings[land].values();
+    }
 }

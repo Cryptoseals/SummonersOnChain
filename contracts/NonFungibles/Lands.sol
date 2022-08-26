@@ -62,6 +62,7 @@ contract Lands is Initializable, ReentrancyGuardUpgradeable, OwnableUpgradeable,
         _initializeLand(landId);
         _mint(player, landId);
     }
+
     function mintLand() external {
         uint landId = totalSupply();
         _initializeLand(landId);
@@ -74,6 +75,11 @@ contract Lands is Initializable, ReentrancyGuardUpgradeable, OwnableUpgradeable,
         LandStats[id].FarmsTier = 1;
         LandStats[id].PoultriesTier = 1;
         LandStats[id].BarnHousesTier = 1;
+        LandStats[id].MillsTier = 1;
+        LandStats[id].SlaughterhousesTier = 1;
+        LandStats[id].StorageBuildingsTier = 1;
+        LandStats[id].WaterTowersTier = 1;
+        LandStats[id].DairiesTier = 1;
     }
 
     function upgradeBuilding(uint landId, BuildingList building) external nonReentrant isOwned(landId) {

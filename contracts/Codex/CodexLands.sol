@@ -75,7 +75,7 @@ contract CodexLands {
         _mill.building.level = tier;
         _mill.building.maxLevel = maxMillLevel;
         _mill.building.bonusChance = 5 + (tier * 2);
-        _mill.maxProcessSimultaneously = (tier * 2) + tier;
+        _mill.maxProcessSimultaneously = 3 + (tier * 2);
         if (tier != maxMillLevel) {
             _mill.building.upgradeReqs = millBuilding(tier + 1);
         }
@@ -123,7 +123,7 @@ contract CodexLands {
         if (tier != maxDairyLevel) {
             _dairies.building.upgradeReqs = dairiesBuilding(tier + 1);
         }
-        _dairies.maxProductionSimultaneously = 5 + (tier * 2);
+        _dairies.maxProductionSimultaneously = 3 + (tier * 3);
     }
 
     // upgrades
@@ -520,6 +520,13 @@ contract CodexLands {
     }
 
 
+    function generateArrayCooking(uint len) internal pure returns (ILand.CookingItemReward[] memory){
+        return new ILand.CookingItemReward[](len);
+    }
+
+    function generateArrayAlchemy(uint len) internal pure returns (ILand.AlchemyItemReward[] memory){
+        return new ILand.AlchemyItemReward[](len);
+    }
 
     // grown
 
@@ -527,28 +534,36 @@ contract CodexLands {
         _animal.animalId = 1 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 1;
         _animal.minSecondaryBuildingLevel = 1;
+        _animal.dailyProductions.cookingItems = generateArrayCooking(1);
 
         _animal.dailyProductions.cookingItems[0].id = ICookingItem.List.Milk;
         _animal.dailyProductions.cookingItems[0].amount = 2;
 
+        _animal.harvestOnKill.alchemyItems = generateArrayAlchemy(1);
         _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
         _animal.harvestOnKill.alchemyItems[0].amount = 2;
+        _animal.harvestOnKill.cookingItems = generateArrayCooking(2);
         _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Meat;
         _animal.harvestOnKill.cookingItems[0].amount = 3;
         _animal.harvestOnKill.cookingItems[1].id = ICookingItem.List.Steak;
         _animal.harvestOnKill.cookingItems[1].amount = 1;
     }
 
+
     function Goat() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 2 + indexOfGrownAnimals;
         _animal.minMainBuildingLevel = 2;
         _animal.minSecondaryBuildingLevel = 2;
 
+        _animal.dailyProductions.cookingItems = generateArrayCooking(1);
+
         _animal.dailyProductions.cookingItems[0].id = ICookingItem.List.Milk;
         _animal.dailyProductions.cookingItems[0].amount = 4;
 
+        _animal.harvestOnKill.alchemyItems = generateArrayAlchemy(1);
         _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
         _animal.harvestOnKill.alchemyItems[0].amount = 2;
+        _animal.harvestOnKill.cookingItems = generateArrayCooking(2);
         _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Meat;
         _animal.harvestOnKill.cookingItems[0].amount = 7;
         _animal.harvestOnKill.cookingItems[1].id = ICookingItem.List.Steak;
@@ -560,8 +575,10 @@ contract CodexLands {
         _animal.minMainBuildingLevel = 3;
         _animal.minSecondaryBuildingLevel = 3;
 
+        _animal.harvestOnKill.alchemyItems = generateArrayAlchemy(1);
         _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
         _animal.harvestOnKill.alchemyItems[0].amount = 2;
+        _animal.harvestOnKill.cookingItems = generateArrayCooking(2);
         _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Meat;
         _animal.harvestOnKill.cookingItems[0].amount = 7;
         _animal.harvestOnKill.cookingItems[1].id = ICookingItem.List.Steak;
@@ -573,12 +590,15 @@ contract CodexLands {
         _animal.minMainBuildingLevel = 4;
         _animal.minSecondaryBuildingLevel = 4;
 
+        _animal.dailyProductions.cookingItems = generateArrayCooking(1);
 
         _animal.dailyProductions.cookingItems[0].id = ICookingItem.List.Milk;
         _animal.dailyProductions.cookingItems[0].amount = 8;
 
+        _animal.harvestOnKill.alchemyItems = generateArrayAlchemy(1);
         _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
         _animal.harvestOnKill.alchemyItems[0].amount = 2;
+        _animal.harvestOnKill.cookingItems = generateArrayCooking(2);
         _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Meat;
         _animal.harvestOnKill.cookingItems[0].amount = 10;
         _animal.harvestOnKill.cookingItems[1].id = ICookingItem.List.Steak;
@@ -590,11 +610,14 @@ contract CodexLands {
         _animal.minMainBuildingLevel = 1;
         _animal.minSecondaryBuildingLevel = 1;
 
+        _animal.dailyProductions.cookingItems = generateArrayCooking(1);
         _animal.dailyProductions.cookingItems[0].id = ICookingItem.List.Egg;
         _animal.dailyProductions.cookingItems[0].amount = 2;
 
+        _animal.harvestOnKill.alchemyItems = generateArrayAlchemy(1);
         _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
         _animal.harvestOnKill.alchemyItems[0].amount = 1;
+        _animal.harvestOnKill.cookingItems = generateArrayCooking(1);
         _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Raw_White_Meat;
         _animal.harvestOnKill.cookingItems[0].amount = 3;
     }
@@ -604,11 +627,14 @@ contract CodexLands {
         _animal.minMainBuildingLevel = 2;
         _animal.minSecondaryBuildingLevel = 2;
 
+        _animal.dailyProductions.cookingItems = generateArrayCooking(1);
         _animal.dailyProductions.cookingItems[0].id = ICookingItem.List.Egg;
         _animal.dailyProductions.cookingItems[0].amount = 4;
 
+        _animal.harvestOnKill.alchemyItems = generateArrayAlchemy(1);
         _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
         _animal.harvestOnKill.alchemyItems[0].amount = 1;
+        _animal.harvestOnKill.cookingItems = generateArrayCooking(1);
         _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Raw_White_Meat;
         _animal.harvestOnKill.cookingItems[0].amount = 5;
     }
@@ -618,11 +644,14 @@ contract CodexLands {
         _animal.minMainBuildingLevel = 3;
         _animal.minSecondaryBuildingLevel = 3;
 
+        _animal.dailyProductions.cookingItems = generateArrayCooking(1);
         _animal.dailyProductions.cookingItems[0].id = ICookingItem.List.Egg;
         _animal.dailyProductions.cookingItems[0].amount = 7;
 
+        _animal.harvestOnKill.alchemyItems = generateArrayAlchemy(1);
         _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
         _animal.harvestOnKill.alchemyItems[0].amount = 1;
+        _animal.harvestOnKill.cookingItems = generateArrayCooking(1);
         _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Raw_White_Meat;
         _animal.harvestOnKill.cookingItems[0].amount = 7;
     }
@@ -632,11 +661,14 @@ contract CodexLands {
         _animal.minMainBuildingLevel = 4;
         _animal.minSecondaryBuildingLevel = 4;
 
+        _animal.dailyProductions.cookingItems = generateArrayCooking(1);
         _animal.dailyProductions.cookingItems[0].id = ICookingItem.List.Egg;
         _animal.dailyProductions.cookingItems[0].amount = 10;
 
+        _animal.harvestOnKill.alchemyItems = generateArrayAlchemy(1);
         _animal.harvestOnKill.alchemyItems[0].id = IAlchemyItem.List.Organs;
         _animal.harvestOnKill.alchemyItems[0].amount = 1;
+        _animal.harvestOnKill.cookingItems = generateArrayCooking(1);
         _animal.harvestOnKill.cookingItems[0].id = ICookingItem.List.Raw_White_Meat;
         _animal.harvestOnKill.cookingItems[0].amount = 10;
     }
