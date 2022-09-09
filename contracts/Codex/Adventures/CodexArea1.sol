@@ -1,5 +1,6 @@
-import {IAdventure, GameObjects, IGameRewards, ICraftingMaterials} from "../../Interfaces/GameObjects/IAdventure.sol";
+import {IAdventure, IGameRewards, ICraftingMaterials} from "../../Interfaces/GameObjects/IAdventure.sol";
 import {IMonster} from "../../Interfaces/GameObjects/IMonster.sol";
+import {Element} from "../../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexArea1 {
@@ -74,13 +75,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 1,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 2,
         level : 1
         });
@@ -123,13 +124,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 2,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 3,
         level : 1
         });
@@ -172,13 +173,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 3,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 4,
         level : 1
         });
@@ -221,13 +222,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 4,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 5,
         level : 1
         });
@@ -270,13 +271,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 5,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 6,
         level : 1
         });
@@ -319,13 +320,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 6,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 7,
         level : 1
         });
@@ -368,13 +369,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 7,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 8,
         level : 1
         });
@@ -417,13 +418,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 8,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 9,
         level : 1
         });
@@ -466,13 +467,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 9,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 10,
         level : 1
         });
@@ -515,13 +516,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 10,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 11,
         level : 1
         });
@@ -564,13 +565,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 11,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 12,
         level : 1
         });
@@ -613,13 +614,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 12,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 13,
         level : 1
         });
@@ -662,13 +663,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 13,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 14,
         level : 1
         });
@@ -711,13 +712,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 14,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 15,
         level : 1
         });
@@ -760,13 +761,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 15,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 16,
         level : 1
         });
@@ -809,13 +810,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 16,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 17,
         level : 1
         });
@@ -858,13 +859,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 17,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 18,
         level : 1
         });
@@ -907,13 +908,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 18,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 19,
         level : 1
         });
@@ -956,13 +957,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 19,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 20,
         level : 1
         });
@@ -1005,13 +1006,13 @@ contract CodexArea1 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 20,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.EARTH,
+        element : Element.EARTH,
         monsterId : 21,
         level : 1
         });

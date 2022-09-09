@@ -1,4 +1,4 @@
-import "./IGameObjects.sol";
+import {Class} from "./IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 library GameEntities {
@@ -18,7 +18,7 @@ library GameEntities {
 
     struct SummonerData {
         uint level;
-        GameObjects.Class class;
+        Class class;
         uint EXP;
         SummonerState state;
     }

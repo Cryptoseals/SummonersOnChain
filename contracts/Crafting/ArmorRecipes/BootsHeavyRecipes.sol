@@ -1,4 +1,4 @@
-import {GameObjects, ICraftingRecipe, ICraftingMaterials} from "../../Interfaces/Crafting/ICraftingRecipe.sol";
+import {ItemType, ICraftingRecipe, ICraftingMaterials} from "../../Interfaces/Crafting/ICraftingRecipe.sol";
 pragma solidity ^0.8.0;
 
 contract BootsHeavyRecipes {
@@ -414,12 +414,12 @@ contract BootsHeavyRecipes {
 
         _recipe.equipmentRequirements = new ICraftingRecipe.RequiredEquipment[](2);
         _recipe.equipmentRequirements[0] = ICraftingRecipe.RequiredEquipment({
-            itemType: GameObjects.ItemType.BOOTS,
+            itemType: ItemType.BOOTS,
             id: 16
         });
 
         _recipe.equipmentRequirements[1] = ICraftingRecipe.RequiredEquipment({
-            itemType: GameObjects.ItemType.BOOTS,
+            itemType: ItemType.BOOTS,
             id: 17
         });
     }

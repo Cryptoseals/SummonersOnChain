@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {GameObjects,GameObjects_Stats, GameObjects_Equipments} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, Stats, GeneratedStats,ElementalStats, ElementalAtk, ElementalDef,Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
@@ -42,7 +42,7 @@ contract CodexArmorsLight is Initializable {
     }
 
 
-    function applyTier(GameObjects_Equipments.EquipableItem memory _armor, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
+    function applyTier(EquipableItem memory _armor, uint tier, uint percentage) public view returns (EquipableItem memory){
         if (tier == 0) return _armor;
         _armor.statBonus = EquipableUtils.sumStatsAsTier(_armor.statBonus, tier * percentage);
         _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_armor.generatedStatBonus, (tier) * percentage);
@@ -51,7 +51,7 @@ contract CodexArmorsLight is Initializable {
         return _armor;
     }
 
-    function armor(uint id, uint tier) public view returns (GameObjects_Equipments.EquipableItem memory) {
+    function armor(uint id, uint tier) public view returns (EquipableItem memory) {
         require(tier < 10, "t");
 
         if (id == 43) {
@@ -101,9 +101,9 @@ contract CodexArmorsLight is Initializable {
         revert("?hm");
     }
 
-    function SoldiersTunic(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function SoldiersTunic(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 43;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
 
         // requirements here
@@ -124,9 +124,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(0);
     }
 
-    function PriestsTunic(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function PriestsTunic(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 44;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 5;
         _armor.requirement.classRequirement = classRequirement();
@@ -137,9 +137,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(1);
     }
 
-    function FaithTunic(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function FaithTunic(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 45;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 10;
         _armor.requirement.classRequirement = classRequirement();
@@ -150,9 +150,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(2);
     }
 
-    function TraineesTunic(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function TraineesTunic(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 46;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 15;
         _armor.requirement.classRequirement = classRequirement();
@@ -163,9 +163,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(3);
     }
 
-    function MagiciansShirt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function MagiciansShirt(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 47;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 20;
         _armor.requirement.classRequirement = classRequirement();
@@ -176,9 +176,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(4);
     }
 
-    function SealedShirt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function SealedShirt(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 48;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 25;
         _armor.requirement.classRequirement = classRequirement();
@@ -189,9 +189,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(5);
     }
 
-    function GateKeepersShirt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function GateKeepersShirt(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 49;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 30;
         _armor.requirement.classRequirement = classRequirement();
@@ -202,9 +202,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(6);
     }
 
-    function ElementalistsShirt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function ElementalistsShirt(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 50;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 35;
         _armor.requirement.classRequirement = classRequirement();
@@ -215,9 +215,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(7);
     }
 
-    function AlcemistsJacket(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function AlcemistsJacket(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 51;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 40;
         _armor.requirement.classRequirement = classRequirement();
@@ -228,9 +228,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(8);
     }
 
-    function ArchmagesJacket(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function ArchmagesJacket(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 52;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 45;
         _armor.requirement.classRequirement = classRequirement();
@@ -241,9 +241,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(9);
     }
 
-    function ElvenJacket(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function ElvenJacket(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 53;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 50;
         _armor.requirement.classRequirement = classRequirement();
@@ -254,9 +254,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(10);
     }
 
-    function ChosensJacket(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function ChosensJacket(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 54;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 55;
         _armor.requirement.classRequirement = classRequirement();
@@ -267,9 +267,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(11);
     }
 
-    function ProphetsJacket(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function ProphetsJacket(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 55;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 60;
         _armor.requirement.classRequirement = classRequirement();
@@ -280,9 +280,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(12);
     }
 
-    function EldersJacket(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function EldersJacket(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 56;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 65;
         _armor.requirement.classRequirement = classRequirement();
@@ -293,9 +293,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(13);
     }
 
-    function AncientCuirass(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function AncientCuirass(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 57;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 70;
         _armor.requirement.classRequirement = classRequirement();
@@ -306,9 +306,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(14);
     }
 
-    function MoonlightCuirass(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function MoonlightCuirass(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 58;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 75;
         _armor.requirement.classRequirement = classRequirement();
@@ -319,9 +319,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(15);
     }
 
-    function SunlightCuirass(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function SunlightCuirass(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 59;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 80;
         _armor.requirement.classRequirement = classRequirement();
@@ -332,9 +332,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(16);
     }
 
-    function CycleCuirass(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function CycleCuirass(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 60;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 85;
         _armor.requirement.classRequirement = classRequirement();
@@ -345,9 +345,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(17);
     }
 
-    function DemonicRobe(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function DemonicRobe(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 61;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 90;
         _armor.requirement.classRequirement = classRequirement();
@@ -358,9 +358,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(18);
     }
 
-    function AngelicRobe(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function AngelicRobe(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 62;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 95;
         _armor.requirement.classRequirement = classRequirement();
@@ -371,9 +371,9 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(19);
     }
 
-    function EternalRobe(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _armor) {
+    function EternalRobe(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 63;
-        _armor.metadata.baseType = GameObjects.ItemType.ARMOR;
+        _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
         _armor.requirement.level = 100;
         _armor.requirement.classRequirement = classRequirement();
@@ -384,8 +384,8 @@ contract CodexArmorsLight is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(20);
     }
 
-    function armorStats(uint index) internal view returns (GameObjects_Stats.Stats memory) {
-        GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
+    function armorStats(uint index) internal view returns (Stats memory) {
+        Stats memory stats = Stats({
         STR : BASE_STR[index],
         DEX : BASE_DEX[index],
         AGI : BASE_AGI[index],
@@ -395,13 +395,13 @@ contract CodexArmorsLight is Initializable {
         return stats;
     }
 
-    function armorEle(uint index) internal view returns (GameObjects_Stats.ElementalDef memory) {
-        GameObjects_Stats.ElementalDef memory stats = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
+    function armorEle(uint index) internal view returns (ElementalDef memory) {
+        ElementalDef memory stats = ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
         return stats;
     }
 
-    function armorGenStats(uint index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
-        GameObjects_Stats.GeneratedStats memory stats = GameObjects_Stats.GeneratedStats({
+    function armorGenStats(uint index) internal view returns (GeneratedStats memory) {
+        GeneratedStats memory stats = GeneratedStats({
         HP : BASE_HP[index],
         P_ATK : 0,
         M_ATK : 0,
@@ -416,11 +416,11 @@ contract CodexArmorsLight is Initializable {
         return stats;
     }
 
-    function classRequirement() internal view returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](3);
-        _reqClass[0] = GameObjects.Class.Wizard;
-        _reqClass[1] = GameObjects.Class.Priest;
-        _reqClass[2] = GameObjects.Class.Necromancer;
+    function classRequirement() internal view returns (Class[] memory) {
+        Class[] memory _reqClass = new Class[](3);
+        _reqClass[0] = Class.Wizard;
+        _reqClass[1] = Class.Priest;
+        _reqClass[2] = Class.Necromancer;
         return _reqClass;
     }
 }

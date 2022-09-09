@@ -1,10 +1,12 @@
-import {GameObjects_Stats} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {Stats,
+GeneratedStats,
+ElementalStats} from "../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
 library EquipableUtils {
 
-    function sumStats(GameObjects_Stats.Stats memory _a, GameObjects_Stats.Stats memory _b) internal pure returns (GameObjects_Stats.Stats memory) {
+    function sumStats(Stats memory _a, Stats memory _b) internal pure returns (Stats memory) {
         _a.STR += _b.STR;
         _a.AGI += _b.AGI;
         _a.DEX += _b.DEX;
@@ -14,7 +16,7 @@ library EquipableUtils {
         return _a;
     }
 
-    function sumStatsAsTier(GameObjects_Stats.Stats memory _a, uint tier) internal pure returns (GameObjects_Stats.Stats memory) {
+    function sumStatsAsTier(Stats memory _a, uint tier) internal pure returns (Stats memory) {
         _a.STR += percentage(_a.STR, tier);
         _a.AGI += percentage(_a.AGI, tier);
         _a.DEX += percentage(_a.DEX, tier);
@@ -24,7 +26,7 @@ library EquipableUtils {
         return _a;
     }
 
-    function sumStatsWithNumber(GameObjects_Stats.Stats memory _a, uint num) internal pure returns (GameObjects_Stats.Stats memory) {
+    function sumStatsWithNumber(Stats memory _a, uint num) internal pure returns (Stats memory) {
         if (num == 0) return _a;
         if (_a.STR > 0) _a.STR += (_a.STR + num);
         if (_a.AGI > 0) _a.AGI += (_a.AGI + num);
@@ -35,7 +37,7 @@ library EquipableUtils {
         return _a;
     }
 
-    function sumStatsAsPercentage(GameObjects_Stats.Stats memory _a, GameObjects_Stats.Stats memory _b) internal pure returns (GameObjects_Stats.Stats memory) {
+    function sumStatsAsPercentage(Stats memory _a, Stats memory _b) internal pure returns (Stats memory) {
         _a.STR += percentage(_a.STR, _b.STR);
         _a.AGI += percentage(_a.AGI, _b.AGI);
         _a.DEX += percentage(_a.DEX, _b.DEX);
@@ -45,7 +47,7 @@ library EquipableUtils {
         return _a;
     }
 
-    function sumGeneratedStats(GameObjects_Stats.GeneratedStats memory _a, GameObjects_Stats.GeneratedStats memory _b) internal pure returns (GameObjects_Stats.GeneratedStats memory) {
+    function sumGeneratedStats(GeneratedStats memory _a, GeneratedStats memory _b) internal pure returns (GeneratedStats memory) {
         _a.HP += _b.HP;
         _a.P_ATK += _b.P_ATK;
         _a.M_ATK += _b.M_ATK;
@@ -59,7 +61,7 @@ library EquipableUtils {
         return _a;
     }
 
-    function sumGeneratedStatsWithNumber(GameObjects_Stats.GeneratedStats memory _a, uint num) internal pure returns (GameObjects_Stats.GeneratedStats memory) {
+    function sumGeneratedStatsWithNumber(GeneratedStats memory _a, uint num) internal pure returns (GeneratedStats memory) {
         if (num == 0) return _a;
         if (_a.HP > 0) _a.HP += num;
         if (_a.P_ATK > 0) _a.P_ATK += num;
@@ -75,8 +77,8 @@ library EquipableUtils {
     }
 
     function sumGeneratedStatsAsPercentage(
-        GameObjects_Stats.GeneratedStats memory _a,
-        GameObjects_Stats.GeneratedStats memory _b) internal pure returns (GameObjects_Stats.GeneratedStats memory) {
+        GeneratedStats memory _a,
+        GeneratedStats memory _b) internal pure returns (GeneratedStats memory) {
         _a.HP += percentage(_a.HP, _b.HP);
         _a.P_ATK += percentage(_a.P_ATK, _b.P_ATK);
         _a.M_ATK += percentage(_a.M_ATK, _b.M_ATK);
@@ -91,8 +93,8 @@ library EquipableUtils {
     }
 
     function sumGeneratedStatsAsTier(
-        GameObjects_Stats.GeneratedStats memory _a,
-        uint tier) internal pure returns (GameObjects_Stats.GeneratedStats memory) {
+        GeneratedStats memory _a,
+        uint tier) internal pure returns (GeneratedStats memory) {
         _a.HP += percentage(_a.HP, tier);
         _a.P_ATK += percentage(_a.P_ATK, tier);
         _a.M_ATK += percentage(_a.M_ATK, tier);
@@ -106,7 +108,7 @@ library EquipableUtils {
         return _a;
     }
 
-    function sumGeneratedElementalStats(GameObjects_Stats.ElementalStats memory _a, GameObjects_Stats.ElementalStats memory _b) internal pure returns (GameObjects_Stats.ElementalStats memory) {
+    function sumGeneratedElementalStats(ElementalStats memory _a, ElementalStats memory _b) internal pure returns (ElementalStats memory) {
         _a.ElementalAtk.FIRE_ATK += _b.ElementalAtk.FIRE_ATK;
         _a.ElementalAtk.COLD_ATK += _b.ElementalAtk.COLD_ATK;
         _a.ElementalAtk.LIGHTNING_ATK += _b.ElementalAtk.LIGHTNING_ATK;
@@ -125,7 +127,7 @@ library EquipableUtils {
         return _a;
     }
 
-    function sumGeneratedElementalStatsAsPercentage(GameObjects_Stats.ElementalStats memory _a, GameObjects_Stats.ElementalStats memory _b) internal pure returns (GameObjects_Stats.ElementalStats memory) {
+    function sumGeneratedElementalStatsAsPercentage(ElementalStats memory _a, ElementalStats memory _b) internal pure returns (ElementalStats memory) {
         _a.ElementalAtk.FIRE_ATK += percentage(_a.ElementalAtk.FIRE_ATK, _b.ElementalAtk.FIRE_ATK);
         _a.ElementalAtk.COLD_ATK += percentage(_a.ElementalAtk.COLD_ATK, _b.ElementalAtk.COLD_ATK);
         _a.ElementalAtk.LIGHTNING_ATK += percentage(_a.ElementalAtk.LIGHTNING_ATK, _b.ElementalAtk.LIGHTNING_ATK);
@@ -144,7 +146,7 @@ library EquipableUtils {
         return _a;
     }
 
-    function sumGeneratedElementalStatsAsTier(GameObjects_Stats.ElementalStats memory _a, uint tier) internal pure returns (GameObjects_Stats.ElementalStats memory) {
+    function sumGeneratedElementalStatsAsTier(ElementalStats memory _a, uint tier) internal pure returns (ElementalStats memory) {
         _a.ElementalAtk.FIRE_ATK += percentage(_a.ElementalAtk.FIRE_ATK, tier);
         _a.ElementalAtk.COLD_ATK += percentage(_a.ElementalAtk.COLD_ATK, tier);
         _a.ElementalAtk.LIGHTNING_ATK += percentage(_a.ElementalAtk.LIGHTNING_ATK, tier);
@@ -163,7 +165,7 @@ library EquipableUtils {
         return _a;
     }
 
-    function sumGeneratedElementalStatsWithNumber(GameObjects_Stats.ElementalStats memory _a, uint num) internal pure returns (GameObjects_Stats.ElementalStats memory) {
+    function sumGeneratedElementalStatsWithNumber(ElementalStats memory _a, uint num) internal pure returns (ElementalStats memory) {
         if (num == 0) return _a;
         if (_a.ElementalAtk.FIRE_ATK > 0) _a.ElementalAtk.FIRE_ATK += (_a.ElementalAtk.FIRE_ATK + num);
         if (_a.ElementalAtk.COLD_ATK > 0) _a.ElementalAtk.COLD_ATK += (_a.ElementalAtk.COLD_ATK + num);

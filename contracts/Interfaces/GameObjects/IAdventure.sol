@@ -1,4 +1,4 @@
-import {GameObjects, GameObjects_Stats} from "./IGameObjects.sol";
+import {BattleStats, Element} from "./IGameObjects.sol";
 import "./IGameRewards.sol";
 pragma solidity ^0.8.0;
 
@@ -13,12 +13,12 @@ interface IAdventure {
         uint adventureLevel;
         bool isActive;
         IAdventure.AdventureMonster monster;
-        GameObjects_Stats.BattleStats playerStats;
-        GameObjects_Stats.BattleStats monsterStats;
+        BattleStats playerStats;
+        BattleStats monsterStats;
 
     }
     struct AdventureMonster {
-        GameObjects.Element element;
+        Element element;
         uint monsterId;
         uint level;
     }

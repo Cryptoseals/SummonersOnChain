@@ -58,6 +58,15 @@ async function main() {
     await tx.wait(1)
     console.log("and set in navigator.")
 
+    let Trader = await ethers.getContractFactory("Trader")
+    let trader = await upgrades.deployProxy(Trader, [navigator.address]);
+
+    await trader.deployed()
+    console.log("trader deployed to:", trader.address,)
+    tx = await navigator.setGameContractsById(CONTRACTS.TRADER, trader.address, true)
+    await tx.wait(1)
+    console.log("and set in navigator.")
+
 
     fs.writeFileSync(DeployedFileLocations.lands,
         JSON.stringify({
@@ -65,7 +74,8 @@ async function main() {
             lands: lands.address,
             landControls: landControls.address,
             seeds: seeds.address,
-            animals: animals.address
+            animals: animals.address,
+            trader: trader.address
         }), {});
 
     //fs.writeFileSync('./scripts/contracts.json', JSON.stringify(contracts))

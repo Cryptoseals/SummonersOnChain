@@ -1,4 +1,4 @@
-import {GameObjects, ICraftingRecipe, ICraftingMaterials} from "../../Interfaces/Crafting/ICraftingRecipe.sol";
+import {ItemType, ICraftingRecipe, ICraftingMaterials} from "../../Interfaces/Crafting/ICraftingRecipe.sol";
 pragma solidity ^0.8.0;
 
 contract EarringsRecipes {
@@ -416,12 +416,12 @@ contract EarringsRecipes {
         _recipe.equipmentRequirements = new ICraftingRecipe.RequiredEquipment[](2);
 
         _recipe.equipmentRequirements[0] = ICraftingRecipe.RequiredEquipment({
-            itemType: GameObjects.ItemType.EARRING,
+            itemType: ItemType.EARRING,
             id: 16
         });
 
         _recipe.equipmentRequirements[1] = ICraftingRecipe.RequiredEquipment({
-            itemType: GameObjects.ItemType.EARRING,
+            itemType: ItemType.EARRING,
             id: 17
         });
     }

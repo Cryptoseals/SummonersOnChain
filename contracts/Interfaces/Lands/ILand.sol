@@ -1,4 +1,3 @@
-import {GameObjects_BuffEffects} from "../GameObjects/IGameObjects.sol";
 import {IAlchemyItem} from "../NonFungibles/ConsumablesAndArtifacts/IAlchemyItem.sol";
 import {ICookingItem} from "../NonFungibles/ConsumablesAndArtifacts/ICookingItem.sol";
 
@@ -14,18 +13,25 @@ library Seed {
         FireFlower,
         Parsley,
         Shadowberry,
+        Raptorherb,
+        Dragonherb,
+        Shadowflower,
         Mistyflower,
+        Green_Poisonous_Mushroom,
+        Red_Poisonous_Mushroom,
         Mana_Mushroom,
         Demon_Mushroom,
         Raindrop_Mushroom,
         Bloodberry,
         King_Flower,
+        Wood_Moss,
         Ancient_Flower,
         Fellherb,
         Wild_Rose,
         Red_Rose,
         Dragon_Flower,
         Golden_Flower,
+        Stinky_Flower,
         Apple,
         Carrot,
         Cabbage,
@@ -43,6 +49,7 @@ library Seed {
         Cherry,
         Cacao,
         Banana,
+        Potato,
         Wheat
     }
 }

@@ -1,7 +1,8 @@
-import {GameObjects, ISpell} from "../GameObjects/ISpell.sol";
+import {Spell} from "../GameObjects/ISpell.sol";
+import {Class} from "../GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.15;
 
 interface ICodexSpells {
-    function spell(uint _id, uint _tier) external pure returns (ISpell.Spell memory);
-    function classSpells(GameObjects.Class _class) external view returns(bool[11] memory);
+    function spell(uint _id, uint _tier) external pure returns (Spell memory);
+    function classSpells(Class _class) external view returns(bool[11] memory);
 }

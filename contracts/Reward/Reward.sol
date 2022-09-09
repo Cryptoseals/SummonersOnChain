@@ -2,7 +2,7 @@ import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Ini
 import {ERC721EnumerableUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
 import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
 import {ICodexRandom} from "../Interfaces/Codex/ICodexRandom.sol";
-import {GameObjects_BuffEffects} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {ElixirBonusEffect} from "../Interfaces/GameObjects/IGameObjects.sol";
 import {GameEntities} from "../Interfaces/GameObjects/IGameEntities.sol";
 import {InitNavigator, INavigator, ISummoners} from "../Core/Navigator/InitNavigator.sol";
 import {IGameRewards, ICraftingMaterials} from "../Interfaces/GameObjects/IGameRewards.sol";
@@ -50,7 +50,7 @@ contract Reward is InitNavigator, OwnableUpgradeable {
     }
 
     function reward(address to, uint summoner, uint level, IGameRewards.Reward memory _reward, IGameRewards.CurrencyRewards memory _currencyRewards, uint optionalNonce) external onlyGameContracts {
-        (GameObjects_BuffEffects.ElixirBonusEffect memory _fx,,,) = elixirInventory.activeConsumableEffects(summoner);
+        (ElixirBonusEffect memory _fx,,,) = elixirInventory.activeConsumableEffects(summoner);
 
         if (_currencyRewards.yieldsGold) rewardGold(to, _currencyRewards, _reward.bonus + _fx.BonusGoldPercentage, optionalNonce);
         if (_currencyRewards.yieldsEssence) rewardEssence(to, _currencyRewards, _reward.bonus + _fx.BonusEssencePercentage, optionalNonce + 2);

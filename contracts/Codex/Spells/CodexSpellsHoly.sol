@@ -1,9 +1,10 @@
-import {ISpell, GameObjects} from "../../Interfaces/GameObjects/ISpell.sol";
+import {Element,Class} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {Spell, SpellType} from "../../Interfaces/GameObjects/ISpell.sol";
 pragma solidity ^0.8.0;
 
 contract CodexSpellsHoly {
 
-    function spell(uint _id, uint _tier) public pure returns (ISpell.Spell memory) {
+    function spell(uint _id, uint _tier) public pure returns (Spell memory) {
         if (_id == 1) {return Purify(_tier);}
         else if (_id == 2) {return Smite(_tier);}
         else if (_id == 3) {return Restoration(_tier);}
@@ -16,10 +17,10 @@ contract CodexSpellsHoly {
         revert("invalid");
     }
 
-    function Purify(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function Purify(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 1;
         _spell.cooldown = 3;
-        _spell.spellType = ISpell.SpellType.HEALING;
+        _spell.spellType = SpellType.HEALING;
 
         _spell.healingProps.maxAmount = 15;
         _spell.healingProps.maxAmount = 25;
@@ -37,12 +38,12 @@ contract CodexSpellsHoly {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function Smite(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function Smite(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 2;
         _spell.cooldown = 3;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.HOLY;
+        _spell.attackProps.element = Element.HOLY;
         _spell.attackProps.damageMultiplier = 20;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 3;
@@ -60,10 +61,10 @@ contract CodexSpellsHoly {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function Restoration(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function Restoration(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 3;
         _spell.cooldown = 3;
-        _spell.spellType = ISpell.SpellType.HEALING;
+        _spell.spellType = SpellType.HEALING;
 
         _spell.healingProps.maxAmount = 25;
         _spell.healingProps.maxAmount = 35;
@@ -81,12 +82,12 @@ contract CodexSpellsHoly {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function PureHunger(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function PureHunger(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 4;
         _spell.cooldown = 3;
-        _spell.spellType = ISpell.SpellType.LIFESTEAL;
+        _spell.spellType = SpellType.LIFESTEAL;
 
-        _spell.attackProps.element = GameObjects.Element.HOLY;
+        _spell.attackProps.element = Element.HOLY;
         _spell.attackProps.damageMultiplier = 0;
         _spell.attackProps.multiplierBonusPerTier = 3;
         _spell.attackProps.infusion = 3;
@@ -108,10 +109,10 @@ contract CodexSpellsHoly {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function Consecrate(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function Consecrate(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 5;
         _spell.cooldown = 3;
-        _spell.spellType = ISpell.SpellType.HEALING;
+        _spell.spellType = SpellType.HEALING;
         
         _spell.healingProps.maxAmount = 35;
         _spell.healingProps.maxAmount = 45;
@@ -129,12 +130,12 @@ contract CodexSpellsHoly {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function Blasphemy(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function Blasphemy(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 6;
         _spell.cooldown = 3;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.HOLY;
+        _spell.attackProps.element = Element.HOLY;
         _spell.attackProps.damageMultiplier = 25;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 3;
@@ -152,12 +153,12 @@ contract CodexSpellsHoly {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function EnergyDrain(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function EnergyDrain(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 7;
         _spell.cooldown = 3;
-        _spell.spellType = ISpell.SpellType.LIFESTEAL;
+        _spell.spellType = SpellType.LIFESTEAL;
 
-        _spell.attackProps.element = GameObjects.Element.HOLY;
+        _spell.attackProps.element = Element.HOLY;
         _spell.attackProps.damageMultiplier = 10;
         _spell.attackProps.multiplierBonusPerTier = 3;
         _spell.attackProps.infusion = 3;
@@ -179,12 +180,12 @@ contract CodexSpellsHoly {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function Implosion(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function Implosion(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 8;
         _spell.cooldown = 3;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.HOLY;
+        _spell.attackProps.element = Element.HOLY;
         _spell.attackProps.damageMultiplier = 50;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 5;
@@ -203,10 +204,10 @@ contract CodexSpellsHoly {
     }
 
 
-    function classRequirement() internal pure returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](2);
-        _reqClass[0] = GameObjects.Class.Wizard;
-        _reqClass[1] = GameObjects.Class.Assassin;
+    function classRequirement() internal pure returns (Class[] memory) {
+        Class[] memory _reqClass = new Class[](2);
+        _reqClass[0] = Class.Wizard;
+        _reqClass[1] = Class.Assassin;
         return _reqClass;
     }
 }

@@ -1,9 +1,9 @@
 import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
-import {ISpell} from "../Interfaces/GameObjects/ISpell.sol";
+import {SpellCategories} from "../Interfaces/GameObjects/ISpell.sol";
 import {IAdventure} from "../Interfaces/GameObjects/IAdventure.sol";
 import {ICalculator} from  "../Interfaces/Core/Calculator/ICalculator.sol";
 import {ICodexEnemies, IMonster} from "../Interfaces/Codex/ICodexEnemies.sol";
-import {GameObjects, GameObjects_Stats} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {Element, BattleStats} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 interface IAdventures {
@@ -37,13 +37,13 @@ contract AdventureControls is InitNavigator {
         adventuresContract.attack(summoner, 100, 0);
     }
 
-    function spellAttack(uint summoner, ISpell.SpellCategories spellCategory, uint spellId) external
+    function spellAttack(uint summoner, SpellCategories spellCategory, uint spellId) external
     ensureNotPaused
     senderIsSummonerOwner(summoner) {
 
         // TODO("check if skill is learnt")
 
-        GameObjects.Element dummyEle = GameObjects.Element.FIRE;
+        Element dummyEle = Element.FIRE;
 
         IAdventures adventures = adventuresContract;
         IAdventure.AdventureBattle memory _battle = adventures.activeBattle(summoner);
@@ -56,7 +56,7 @@ contract AdventureControls is InitNavigator {
 
         // calculate the extra dps from spell atk of attacker and def from enemy stats
         (
-        GameObjects_Stats.BattleStats memory summ,
+        BattleStats memory summ,
         ) = calculatorContract.PVEBattleStatsByElement(summoner, monster, dummyEle);
 
         // TODO, override the spell mult (100)

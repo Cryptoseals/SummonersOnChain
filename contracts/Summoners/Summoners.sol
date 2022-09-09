@@ -1,7 +1,7 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {ERC721EnumerableUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
 import {GameEntities} from "../Interfaces/GameObjects/IGameEntities.sol";
-import {GameObjects, GameObjects_Stats} from "../Interfaces/GameObjects/IGameEntities.sol";
+import {Class, Stats, GeneratedStats, ElementalStats} from "../Interfaces/GameObjects/IGameObjects.sol";
 import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
 import "../Core/Common/Errors.sol";
 import {GameConstants} from "../Interfaces/Core/Constants/Constants.sol";
@@ -14,13 +14,13 @@ pragma solidity ^0.8.0;
 
 
 interface Equipables {
-    function mintBeginnerSet(uint summoner, address to, GameObjects.Class _class) external;
+    function mintBeginnerSet(uint summoner, address to, Class _class) external;
 }
 
 contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     mapping(uint => GameEntities.SummonerMetadata) public SummonerMetadatas;
     mapping(uint => GameEntities.SummonerState) public SummonerState;
-    mapping(uint => GameObjects.Class) public SummonerClasses;
+    mapping(uint => Class) public SummonerClasses;
 
     mapping(uint => uint) public SummonerEXP;
     mapping(uint => uint) public SummonerLevels;
@@ -34,7 +34,7 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
         LevelToRequiredExp = exps;
     }
 
-    function mintSummoner(GameObjects.Class _class) external {
+    function mintSummoner(Class _class) external {
         uint tokenId = totalSupply();
 
         SummonerState[tokenId] = GameEntities.SummonerState.FREE;
@@ -86,7 +86,7 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     }
 
     // view functions
-    function class(uint id) external view returns (GameObjects.Class) {
+    function class(uint id) external view returns (Class) {
         return SummonerClasses[id];
     }
 
@@ -129,10 +129,10 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     public view returns (
         GameEntities.SummonerData memory _data,
         GameEntities.SummonerMetadata memory _metadata,
-        GameObjects_Stats.Stats memory _base_stats,
-        GameObjects_Stats.Stats memory,
-        GameObjects_Stats.GeneratedStats memory,
-        GameObjects_Stats.ElementalStats memory
+        Stats memory _base_stats,
+        Stats memory,
+        GeneratedStats memory,
+        ElementalStats memory
     ){
         _data.level = SummonerLevels[id];
         _data.class = SummonerClasses[id];
@@ -141,9 +141,9 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
         _base_stats = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(id);
 
         (
-        GameObjects_Stats.Stats memory _stats,
-        GameObjects_Stats.GeneratedStats memory _gen_stats,
-        GameObjects_Stats.ElementalStats memory _ele_stats
+        Stats memory _stats,
+        GeneratedStats memory _gen_stats,
+        ElementalStats memory _ele_stats
         ) = IEquipable(contractAddress(INavigator.CONTRACT.INVENTORY)).getSummonerBattleStats(id);
         return (
         _data, _metadata, _base_stats,

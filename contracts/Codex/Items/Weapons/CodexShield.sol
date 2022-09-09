@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, ElementalAtk, ElementalDef,Class, Weapon, Stats, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexShields is Initializable {
@@ -35,7 +35,7 @@ contract CodexShields is Initializable {
     }
 
 
-    function weapon(uint id, uint tier) public view returns (GameObjects_Equipments.Weapon memory) {
+    function weapon(uint id, uint tier) public view returns (Weapon memory) {
         require(tier < 10, "t");
 
         if (id == 127) {
@@ -85,7 +85,7 @@ contract CodexShields is Initializable {
         revert("?sh");
     }
 
-    function applyTier(GameObjects_Equipments.Weapon memory weapon, uint tier, uint percentage) public view returns (GameObjects_Equipments.Weapon memory){
+    function applyTier(Weapon memory weapon, uint tier, uint percentage) public view returns (Weapon memory){
         if (tier == 0) return weapon;
         weapon.statBonus = EquipableUtils.sumStatsAsTier(weapon.statBonus, tier * percentage);
         weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(weapon.generatedStatBonus, (tier) * percentage);
@@ -93,9 +93,9 @@ contract CodexShields is Initializable {
         return weapon;
     }
 
-    function SmallWoodenShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function SmallWoodenShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 127;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
 
         // requirements here
@@ -108,9 +108,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(0);
     }
 
-    function SmallCopperShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function SmallCopperShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 128;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 4;
 
@@ -121,9 +121,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(1);
     }
 
-    function MediumCopperShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function MediumCopperShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 129;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 9;
 
@@ -134,9 +134,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(2);
     }
 
-    function SmallTinShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function SmallTinShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 130;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 14;
 
@@ -147,9 +147,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(3);
     }
 
-    function MediumTinShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function MediumTinShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 131;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 19;
 
@@ -160,9 +160,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(4);
     }
 
-    function SilverShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function SilverShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 132;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 24;
 
@@ -173,9 +173,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(5);
     }
 
-    function GoldenShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function GoldenShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 133;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 29;
 
@@ -186,9 +186,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(6);
     }
 
-    function MythrilShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function MythrilShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 134;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 34;
 
@@ -199,9 +199,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(7);
     }
 
-    function DarksteelShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function DarksteelShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 135;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 39;
 
@@ -212,9 +212,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(8);
     }
 
-    function OricalchumShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function OricalchumShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 136;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 44;
 
@@ -225,9 +225,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(9);
     }
 
-    function MoonlightShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function MoonlightShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 137;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 49;
 
@@ -238,9 +238,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(10);
     }
 
-    function SunlightShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function SunlightShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 138;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 54;
 
@@ -251,9 +251,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(11);
     }
 
-    function CycleShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function CycleShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 139;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 59;
 
@@ -264,9 +264,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(12);
     }
 
-    function PhantasmalShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function PhantasmalShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 140;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 64;
 
@@ -277,9 +277,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(13);
     }
 
-    function HolyPaladinsShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function HolyPaladinsShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 141;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 69;
 
@@ -290,9 +290,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(14);
     }
 
-    function LuminousShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function LuminousShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 142;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 74;
 
@@ -303,9 +303,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(15);
     }
 
-    function ShieldOfCalamity(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function ShieldOfCalamity(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 143;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 79;
 
@@ -316,9 +316,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(16);
     }
 
-    function Reflector(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function Reflector(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 144;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 84;
 
@@ -329,9 +329,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(17);
     }
 
-    function EssenceCapacitorShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function EssenceCapacitorShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 145;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 89;
         _weapon.requirement.classRequirement = classRequirement();
@@ -341,9 +341,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(18);
     }
 
-    function AetherealShield(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function AetherealShield(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 146;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 94;
         _weapon.requirement.classRequirement = classRequirement();
@@ -353,9 +353,9 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(19);
     }
 
-    function TheProtector(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function TheProtector(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 147;
-        _weapon.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _weapon.metadata.baseType = ItemType.OFFHAND;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 99;
         _weapon.requirement.classRequirement = classRequirement();
@@ -365,13 +365,13 @@ contract CodexShields is Initializable {
         _weapon.elementalStats.ElementalDef = weaponEle(20);
     }
 
-    function weaponEle(uint index) internal view returns (GameObjects_Stats.ElementalDef memory) {
-        GameObjects_Stats.ElementalDef memory stats = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_PDEF[index], EARTH_DEF : BASE_PDEF[index], COLD_DEF : BASE_PDEF[index], LIGHTNING_DEF : BASE_PDEF[index], DARK_DEF : BASE_PDEF[index], HOLY_DEF : BASE_PDEF[index], VOID_DEF : 0});
+    function weaponEle(uint index) internal view returns (ElementalDef memory) {
+        ElementalDef memory stats = ElementalDef({FIRE_DEF : BASE_PDEF[index], EARTH_DEF : BASE_PDEF[index], COLD_DEF : BASE_PDEF[index], LIGHTNING_DEF : BASE_PDEF[index], DARK_DEF : BASE_PDEF[index], HOLY_DEF : BASE_PDEF[index], VOID_DEF : 0});
         return stats;
     }
 
-    function weaponStats(uint index) internal view returns (GameObjects_Stats.Stats memory) {
-        GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
+    function weaponStats(uint index) internal view returns (Stats memory) {
+        Stats memory stats = Stats({
         STR : BASE_STR[index],
         DEX : 0,
         AGI : 0,
@@ -381,8 +381,8 @@ contract CodexShields is Initializable {
         return stats;
     }
 
-    function weaponGenStats(uint index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
-        GameObjects_Stats.GeneratedStats memory stats = GameObjects_Stats.GeneratedStats({
+    function weaponGenStats(uint index) internal view returns (GeneratedStats memory) {
+        GeneratedStats memory stats = GeneratedStats({
         HP : BASE_HP[index],
         P_ATK : BASE_ATK[index],
         M_ATK : 0,
@@ -397,15 +397,15 @@ contract CodexShields is Initializable {
         return stats;
     }
 
-    function classRequirement() internal view returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory classRequirement = new GameObjects.Class[](7);
-        classRequirement[0] = GameObjects.Class.Barbarian;
-        classRequirement[1] = GameObjects.Class.Paladin;
-        classRequirement[2] = GameObjects.Class.Wizard;
-        classRequirement[3] = GameObjects.Class.Priest;
-        classRequirement[4] = GameObjects.Class.Engineer;
-        classRequirement[5] = GameObjects.Class.Necromancer;
-        classRequirement[6] = GameObjects.Class.Ranger;
+    function classRequirement() internal view returns (Class[] memory) {
+        Class[] memory classRequirement = new Class[](7);
+        classRequirement[0] = Class.Barbarian;
+        classRequirement[1] = Class.Paladin;
+        classRequirement[2] = Class.Wizard;
+        classRequirement[3] = Class.Priest;
+        classRequirement[4] = Class.Engineer;
+        classRequirement[5] = Class.Necromancer;
+        classRequirement[6] = Class.Ranger;
         return classRequirement;
     }
 }

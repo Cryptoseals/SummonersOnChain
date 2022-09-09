@@ -30,11 +30,8 @@ export enum CONTRACTS {
     ARTIFACT_AND_ELIXIR_SLOTS, // 26
     ARTIFACTS,
     CONSUMABLES,
-    MISC_CODEX,
     MISC_ITEMS,
-    ALCHEMY_ITEMS_CODEX,
     ALCHEMY_ITEMS,
-    COOKING_ITEMS_CODEX,
     COOKING_ITEMS,
     PREFIX_CODEX,
     SUFFIX_CODEX,
@@ -142,7 +139,8 @@ export enum CONTRACTS {
     LANDS_CODEX,
     LAND_CONTROLS,
     ANIMALS,
-    SEEDS
+    SEEDS,
+    TRADER
 }
 
 export const DeployedFileLocations = {

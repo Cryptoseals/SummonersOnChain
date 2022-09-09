@@ -1,9 +1,10 @@
-import {ISpell, GameObjects} from "../../Interfaces/GameObjects/ISpell.sol";
+import {Element,Class} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {Spell, SpellType} from "../../Interfaces/GameObjects/ISpell.sol";
 pragma solidity ^0.8.0;
 
 contract CodexSpellsEarth {
 
-    function spell(uint _id, uint _tier) public pure returns (ISpell.Spell memory) {
+    function spell(uint _id, uint _tier) public pure returns (Spell memory) {
         if (_id == 1) {return EarthTremor(_tier);}
         else if (_id == 2) {return MoldEarth(_tier);}
         else if (_id == 3) {return EruptingEarth(_tier);}
@@ -16,12 +17,12 @@ contract CodexSpellsEarth {
         revert("invalid");
     }
 
-    function EarthTremor(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function EarthTremor(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 1;
         _spell.cooldown = 3;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.EARTH;
+        _spell.attackProps.element = Element.EARTH;
         _spell.attackProps.damageMultiplier = 20;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 3;
@@ -39,12 +40,12 @@ contract CodexSpellsEarth {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function MoldEarth(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function MoldEarth(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 2;
         _spell.cooldown = 4;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.EARTH;
+        _spell.attackProps.element = Element.EARTH;
         _spell.attackProps.damageMultiplier = 25;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 3;
@@ -62,12 +63,12 @@ contract CodexSpellsEarth {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function EruptingEarth(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function EruptingEarth(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 3;
         _spell.cooldown = 4;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.EARTH;
+        _spell.attackProps.element = Element.EARTH;
         _spell.attackProps.damageMultiplier = 30;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 3;
@@ -85,12 +86,12 @@ contract CodexSpellsEarth {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function WallOfSand(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function WallOfSand(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 4;
         _spell.cooldown = 5;
-        _spell.spellType = ISpell.SpellType.LIFESTEAL;
+        _spell.spellType = SpellType.LIFESTEAL;
 
-        _spell.attackProps.element = GameObjects.Element.EARTH;
+        _spell.attackProps.element = Element.EARTH;
         _spell.attackProps.damageMultiplier = 0;
         _spell.attackProps.multiplierBonusPerTier = 3;
         _spell.attackProps.infusion = 3;
@@ -112,10 +113,10 @@ contract CodexSpellsEarth {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function FleshToStone(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function FleshToStone(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 5;
         _spell.cooldown = 5;
-        _spell.spellType = ISpell.SpellType.HEALING;
+        _spell.spellType = SpellType.HEALING;
 
         _spell.healingProps.maxAmount = 30;
         _spell.healingProps.maxAmount = 50;
@@ -133,12 +134,12 @@ contract CodexSpellsEarth {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function ForceOfNature(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function ForceOfNature(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 6;
         _spell.cooldown = 6;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.EARTH;
+        _spell.attackProps.element = Element.EARTH;
         _spell.attackProps.damageMultiplier = 35;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 5;
@@ -156,12 +157,12 @@ contract CodexSpellsEarth {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function Earthquake(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function Earthquake(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 7;
         _spell.cooldown = 6;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.EARTH;
+        _spell.attackProps.element = Element.EARTH;
         _spell.attackProps.damageMultiplier = 40;
         _spell.attackProps.multiplierBonusPerTier = 10;
         _spell.attackProps.infusion = 5;
@@ -179,12 +180,12 @@ contract CodexSpellsEarth {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function BonesOfTheEarth(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function BonesOfTheEarth(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 8;
         _spell.cooldown = 6;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.EARTH;
+        _spell.attackProps.element = Element.EARTH;
         _spell.attackProps.damageMultiplier = 70;
         _spell.attackProps.multiplierBonusPerTier = 25;
         _spell.attackProps.infusion = 5;
@@ -202,10 +203,10 @@ contract CodexSpellsEarth {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function classRequirement() internal pure returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](2);
-        _reqClass[0] = GameObjects.Class.Wizard;
-        _reqClass[1] = GameObjects.Class.Assassin;
+    function classRequirement() internal pure returns (Class[] memory) {
+        Class[] memory _reqClass = new Class[](2);
+        _reqClass[0] = Class.Wizard;
+        _reqClass[1] = Class.Assassin;
         return _reqClass;
     }
 }

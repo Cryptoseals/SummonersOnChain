@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {INavigator, InitNavigator} from "../Core/Navigator/InitNavigator.sol";
-import {GameObjects, GameObjects_BuffEffects} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, BuffEffectRecipe, Element} from "../Interfaces/GameObjects/IGameObjects.sol";
 import {IEquipableItems} from "../Interfaces/NonFungibles/EquipableItems/IEquipableItems.sol";
 import {ICraftingRecipe, ICraftingMaterials} from "../Interfaces/Crafting/ICraftingRecipe.sol";
 import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
@@ -64,7 +64,7 @@ contract Crafting is Initializable, InitNavigator {
     }
 
     function craft(
-        GameObjects.ItemType _type,
+        ItemType _type,
         uint id,
         uint[] memory coreIds
     ) external {
@@ -77,7 +77,7 @@ contract Crafting is Initializable, InitNavigator {
         uint prefixTier;
         uint suffix;
         uint suffixTier;
-        GameObjects.Element element;
+        Element element;
 
         equipments.mintItem(
             msg.sender,
@@ -92,14 +92,14 @@ contract Crafting is Initializable, InitNavigator {
     function upgrade(uint tokenId) external {
         // todo burn reqs.
         (
-        GameObjects.ItemType _type,
+        ItemType _type,
         uint _itemId,
         uint256 _tier,
         ,
         ,
         ,
         ,
-        GameObjects.Element _element) = equipments.item(tokenId);
+        Element _element) = equipments.item(tokenId);
 
         uint nextTier = _tier + 1;
 
@@ -122,22 +122,22 @@ contract Crafting is Initializable, InitNavigator {
         equipments.enhance(msg.sender, tokenId, coreId);
     }
 
-    function getRecipe(GameObjects.ItemType _type, uint id) internal view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        if (_type == GameObjects.ItemType.HELMET) {
+    function getRecipe(ItemType _type, uint id) internal view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+        if (_type == ItemType.HELMET) {
             _recipe = HELMET_RECIPES.recipe(id);
-        } else if (_type == GameObjects.ItemType.ARMOR) {
+        } else if (_type == ItemType.ARMOR) {
             _recipe = ARMOR_RECIPES.recipe(id);
-        } else if (_type == GameObjects.ItemType.BOOTS) {
+        } else if (_type == ItemType.BOOTS) {
             _recipe = BOOTS_RECIPES.recipe(id);
-        } else if (_type == GameObjects.ItemType.WEAPON) {
+        } else if (_type == ItemType.WEAPON) {
             _recipe = WEAPON_RECIPES.recipe(id);
-        } else if (_type == GameObjects.ItemType.AMULET) {
+        } else if (_type == ItemType.AMULET) {
             _recipe = AMULET_RECIPES.recipe(id);
-        } else if (_type == GameObjects.ItemType.RING) {
+        } else if (_type == ItemType.RING) {
             _recipe = RING_RECIPES.recipe(id);
-        } else if (_type == GameObjects.ItemType.EARRING) {
+        } else if (_type == ItemType.EARRING) {
             _recipe = EARRING_RECIPES.recipe(id);
-        } else if (_type == GameObjects.ItemType.BELT) {
+        } else if (_type == ItemType.BELT) {
             _recipe = BELT_RECIPES.recipe(id);
         } else {
             // not implemented yet.
@@ -160,23 +160,23 @@ contract Crafting is Initializable, InitNavigator {
         if (_recipe.requiredEssence > 0) essenceContract.burnToken(msg.sender, (_recipe.requiredEssence * percentage) / 100);
     }
 
-    function validateId(GameObjects.ItemType _type, uint id) internal view {
+    function validateId(ItemType _type, uint id) internal view {
         // check if id is valid
         if (
-            _type == GameObjects.ItemType.HELMET ||
-            _type == GameObjects.ItemType.ARMOR ||
-            _type == GameObjects.ItemType.BOOTS
+            _type == ItemType.HELMET ||
+            _type == ItemType.ARMOR ||
+            _type == ItemType.BOOTS
         ) {
             require((id > 0 && id < 64), "invalid ar");
-        } else if (_type == GameObjects.ItemType.WEAPON) {
+        } else if (_type == ItemType.WEAPON) {
             require((id > 0 && id < 106), "invalid w");
-        } else if (_type == GameObjects.ItemType.OFFHAND) {
+        } else if (_type == ItemType.OFFHAND) {
             require((id > 105 && id < 148), "invalid o");
         } else if (
-            _type == GameObjects.ItemType.AMULET ||
-            _type == GameObjects.ItemType.RING ||
-            _type == GameObjects.ItemType.EARRING ||
-            _type == GameObjects.ItemType.BELT
+            _type == ItemType.AMULET ||
+            _type == ItemType.RING ||
+            _type == ItemType.EARRING ||
+            _type == ItemType.BELT
         ) {
             require((id > 0 && id < 22), "invalid acc");
         } else {
@@ -192,7 +192,7 @@ contract Crafting is Initializable, InitNavigator {
 
     function craftConsumable(uint consumable, uint amount) external {
         require(amount > 0, "0");
-        GameObjects_BuffEffects.BuffEffectRecipe memory recipe = CraftingConsumable(contractAddress(INavigator.CONTRACT.CONSUMABLE_RECIPES)).recipe_by_id(consumable);
+        BuffEffectRecipe memory recipe = CraftingConsumable(contractAddress(INavigator.CONTRACT.CONSUMABLE_RECIPES)).recipe_by_id(consumable);
         if (recipe.id == 0) revert("invalid");
 
         for (uint i = 0; i < recipe.requiredMiscItems.length; i++) {
@@ -231,7 +231,7 @@ interface CraftingArtifact {
 }
 
 interface CraftingConsumable {
-    function recipe_by_id(uint _id) external pure returns (GameObjects_BuffEffects.BuffEffectRecipe memory _recipe);
+    function recipe_by_id(uint _id) external pure returns (BuffEffectRecipe memory _recipe);
 
     function mintConsumable(uint consumable_id, uint consumable_tier, address to, uint amount) external;
 }

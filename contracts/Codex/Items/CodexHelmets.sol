@@ -1,11 +1,11 @@
 import {UpgradeableCodex, INavigator, ICodexPrefixAndSuffix} from "./../Common/UpgradeableCodex.sol";
-import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {EquippedItemStruct, EquipableItem, Prefix, Suffix } from "../../Interfaces/GameObjects/IGameObjects.sol";
 import {EquipableUtils} from "../../Inventory/EquipableUtils.sol";
 pragma solidity ^0.8.0;
 
 
 interface IndividualItems {
-    function helmet(uint id, uint tier) external view returns (GameObjects_Equipments.EquipableItem memory);
+    function helmet(uint id, uint tier) external view returns (EquipableItem memory);
 }
 
 contract CodexHelmets is UpgradeableCodex {
@@ -24,18 +24,18 @@ contract CodexHelmets is UpgradeableCodex {
         LIGHT_HELMET_STATS = IndividualItems(contractAddress(INavigator.CONTRACT.LIGHT_HELMET_STATS));
     }
 
-    function allHelmets() external view returns (GameObjects_Equipments.EquipableItem[] memory){
-        GameObjects_Equipments.EquipableItem[] memory result = new GameObjects_Equipments.EquipableItem[](64);
+    function allHelmets() external view returns (EquipableItem[] memory){
+        EquipableItem[] memory result = new EquipableItem[](64);
         for (uint i = 1; i < 64; i++) {
             result[i - 1] = helmetCore(i, 1);
         }
         return result;
     }
 
-    function helmet(GameObjects_Equipments.EquippedItemStruct memory _equipable) public view returns (GameObjects_Equipments.EquipableItem memory) {
-        GameObjects_Equipments.EquipableItem memory _helmet;
-        GameObjects_Equipments.Prefix memory _prefix;
-        GameObjects_Equipments.Suffix memory _suffix;
+    function helmet(EquippedItemStruct memory _equipable) public view returns (EquipableItem memory) {
+        EquipableItem memory _helmet;
+        Prefix memory _prefix;
+        Suffix memory _suffix;
 
         if (_equipable.prefixId > 0) _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
@@ -57,8 +57,8 @@ contract CodexHelmets is UpgradeableCodex {
         return _helmet;
     }
 
-    function helmetCore(uint itemId, uint itemTier) public view returns (GameObjects_Equipments.EquipableItem memory) {
-        GameObjects_Equipments.EquipableItem memory _helmet;
+    function helmetCore(uint itemId, uint itemTier) public view returns (EquipableItem memory) {
+        EquipableItem memory _helmet;
         //        if (_equipable.prefixId > 0) _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         //        if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
 
@@ -78,7 +78,7 @@ contract CodexHelmets is UpgradeableCodex {
         return _helmet;
     }
 
-    function applyPrefixAndSuffix(GameObjects_Equipments.Prefix memory _pre, GameObjects_Equipments.Suffix memory _suf, GameObjects_Equipments.EquipableItem memory _helmet) public pure returns (GameObjects_Equipments.EquipableItem memory) {
+    function applyPrefixAndSuffix(Prefix memory _pre, Suffix memory _suf, EquipableItem memory _helmet) public pure returns (EquipableItem memory) {
         if (_pre.isPercentage) {
             _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_helmet.generatedStatBonus, _pre.generatedStatBonus);
             _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_helmet.elementalStats, _pre.elementalStats);
@@ -102,7 +102,7 @@ contract CodexHelmets is UpgradeableCodex {
         return _helmet;
     }
 
-    function applyPrefix(GameObjects_Equipments.Prefix memory _pre, GameObjects_Equipments.EquipableItem memory _helmet) public pure returns (GameObjects_Equipments.EquipableItem memory) {
+    function applyPrefix(Prefix memory _pre, EquipableItem memory _helmet) public pure returns (EquipableItem memory) {
         if (_pre.isPercentage) {
             _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_helmet.generatedStatBonus, _pre.generatedStatBonus);
             _helmet.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_helmet.elementalStats, _pre.elementalStats);
@@ -117,7 +117,7 @@ contract CodexHelmets is UpgradeableCodex {
         return _helmet;
     }
 
-    function applySuffix(GameObjects_Equipments.Suffix memory _suf, GameObjects_Equipments.EquipableItem memory _helmet) public pure returns (GameObjects_Equipments.EquipableItem memory) {
+    function applySuffix(Suffix memory _suf, EquipableItem memory _helmet) public pure returns (EquipableItem memory) {
 
         if (_suf.isPercentage) {
             _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_helmet.generatedStatBonus, _suf.generatedStatBonus);

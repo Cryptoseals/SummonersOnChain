@@ -1,4 +1,4 @@
-import {GameObjects, GameObjects_Equipments} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {Mount, ItemType} from "../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
@@ -7,7 +7,7 @@ contract CodexMounts {
     string constant public class = "Mounts";
     string constant public version = "0.0.1";
 
-    function mount(uint _id, uint _tier) public pure returns (GameObjects_Equipments.Mount memory) {
+    function mount(uint _id, uint _tier) public pure returns (Mount memory) {
         if (_id == 1) {
             return DummyDonkey(_tier);
         }
@@ -15,9 +15,9 @@ contract CodexMounts {
         revert("invalid");
     }
 
-    function DummyDonkey(uint tier) public pure returns (GameObjects_Equipments.Mount memory _mount) {
+    function DummyDonkey(uint tier) public pure returns (Mount memory _mount) {
         _mount.metadata.id = 1;
-        _mount.metadata.baseType = GameObjects.ItemType.OFFHAND;
+        _mount.metadata.baseType = ItemType.MOUNT;
 //        _mount.metadata.name = "Dummy Donkey";
 //        _mount.metadata.description = "Dummy Donkey is best mount";
         _mount.metadata.upgradable = true;

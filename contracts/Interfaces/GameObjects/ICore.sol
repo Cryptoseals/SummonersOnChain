@@ -1,8 +1,17 @@
-import {GameObjects} from "./IGameObjects.sol";
+import {Element} from "./IGameObjects.sol";
 
 pragma solidity ^0.8.0;
-
-library ICore {
+    struct Core {
+        uint minItemLvl;
+        uint difficulty;
+        Effect fx;
+    }
+    struct Effect {
+        EffectType fxType;
+        uint prefixToAdd;
+        uint suffixToAdd;
+        Element elementToAdd;
+    }
 
     enum EffectType {
         OVERRIDE_ELEMENT,
@@ -10,18 +19,5 @@ library ICore {
         OVERRIDE_SUFFIX
     }
 
-    struct Core {
-        uint minItemLvl;
-        uint difficulty;
-        Effect fx;
-    }
-
-    struct Effect {
-        EffectType fxType;
-        uint prefixToAdd;
-        uint suffixToAdd;
-        GameObjects.Element elementToAdd;
-    }
-}
 
 

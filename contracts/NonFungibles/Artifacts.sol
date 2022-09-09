@@ -2,13 +2,13 @@ import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Ini
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {ERC721EnumerableUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
 import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
-import {GameObjects, GameObjects_Equipments} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {Artifact} from "../Interfaces/GameObjects/IGameObjects.sol";
 import {ICodexRandom} from "../Interfaces/Codex/ICodexRandom.sol";
 import "../Core/Common/Errors.sol";
 import {EquipableUtils} from "../Inventory/EquipableUtils.sol";
 
 interface ArtifactProps {
-    function properties(uint[] memory ids, uint tier) external view returns (GameObjects_Equipments.Artifact[] memory);
+    function properties(uint[] memory ids, uint tier) external view returns (Artifact[] memory);
 }
 
 pragma solidity ^0.8.0;
@@ -27,7 +27,7 @@ contract Artifacts is Initializable, OwnableUpgradeable, InitNavigator, ERC721En
     struct ArtifactDTO {
         uint tokenId;
         uint[] props;
-        GameObjects_Equipments.Artifact artifact;
+        Artifact artifact;
     }
 
     function initialize(address _navigator, string memory name, string memory symbol) initializer external {
@@ -72,9 +72,9 @@ contract Artifacts is Initializable, OwnableUpgradeable, InitNavigator, ERC721En
         _tier = tokenToEnchantmentLevel[id];
     }
 
-    function artifact(uint id) public view returns (GameObjects_Equipments.Artifact memory _result){
+    function artifact(uint id) public view returns (Artifact memory _result){
         require(_exists(id), "not found");
-        GameObjects_Equipments.Artifact[] memory artifactProps = props.properties(tokenToArtifactProps[id], tokenToEnchantmentLevel[id]);
+        Artifact[] memory artifactProps = props.properties(tokenToArtifactProps[id], tokenToEnchantmentLevel[id]);
         for (uint i = 0; i < artifactProps.length; i++) {
             _result.statBonus = EquipableUtils.sumStats(_result.statBonus, artifactProps[i].statBonus);
             _result.generatedStatBonus = EquipableUtils.sumGeneratedStats(_result.generatedStatBonus, artifactProps[i].generatedStatBonus);

@@ -1,9 +1,10 @@
-import {ISpell, GameObjects} from "../../Interfaces/GameObjects/ISpell.sol";
+import {Element,Class} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {Spell,SpellType} from "../../Interfaces/GameObjects/ISpell.sol";
 pragma solidity ^0.8.0;
 
 contract CodexSpellsArcane {
 
-    function spell(uint _id, uint _tier) public pure returns (ISpell.Spell memory) {
+    function spell(uint _id, uint _tier) public pure returns (Spell memory) {
         if (_id == 1) {return ArcaneBolts(_tier);}
         else if (_id == 2) {return MinorIllusions(_tier);}
         else if (_id == 3) {return ChromaticOrb(_tier);}
@@ -16,12 +17,12 @@ contract CodexSpellsArcane {
         revert("invalid");
     }
 
-    function ArcaneBolts(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function ArcaneBolts(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 1;
         _spell.cooldown = 3;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.ARCANE;
+        _spell.attackProps.element = Element.ARCANE;
         _spell.attackProps.damageMultiplier = 20;
         _spell.attackProps.multiplierBonusPerTier = 1;
         _spell.attackProps.infusion = 3;
@@ -36,17 +37,17 @@ contract CodexSpellsArcane {
         _spell.requirements.level = 2;
         _spell.requirements.levelRequirementPerTier = 3;
 
-        _spell.requirements.classRequirement = new GameObjects.Class[](2);
-        _spell.requirements.classRequirement[0] = GameObjects.Class.Wizard;
-        _spell.requirements.classRequirement[1] = GameObjects.Class.Assassin;
+        _spell.requirements.classRequirement = new Class[](2);
+        _spell.requirements.classRequirement[0] = Class.Wizard;
+        _spell.requirements.classRequirement[1] = Class.Assassin;
     }
 
-    function MinorIllusions(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function MinorIllusions(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 2;
         _spell.cooldown = 4;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.ARCANE;
+        _spell.attackProps.element = Element.ARCANE;
         _spell.attackProps.damageMultiplier = 25;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 3;
@@ -61,17 +62,17 @@ contract CodexSpellsArcane {
         _spell.requirements.level = 6;
         _spell.requirements.levelRequirementPerTier = 3;
 
-        _spell.requirements.classRequirement = new GameObjects.Class[](2);
-        _spell.requirements.classRequirement[0] = GameObjects.Class.Wizard;
-        _spell.requirements.classRequirement[1] = GameObjects.Class.Assassin;
+        _spell.requirements.classRequirement = new Class[](2);
+        _spell.requirements.classRequirement[0] = Class.Wizard;
+        _spell.requirements.classRequirement[1] = Class.Assassin;
     }
 
-    function ChromaticOrb(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function ChromaticOrb(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 3;
         _spell.cooldown = 5;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.ARCANE;
+        _spell.attackProps.element = Element.ARCANE;
         _spell.attackProps.damageMultiplier = 30;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 3;
@@ -86,17 +87,17 @@ contract CodexSpellsArcane {
         _spell.requirements.level = 12;
         _spell.requirements.levelRequirementPerTier = 4;
 
-        _spell.requirements.classRequirement = new GameObjects.Class[](2);
-        _spell.requirements.classRequirement[0] = GameObjects.Class.Wizard;
-        _spell.requirements.classRequirement[1] = GameObjects.Class.Assassin;
+        _spell.requirements.classRequirement = new Class[](2);
+        _spell.requirements.classRequirement[0] = Class.Wizard;
+        _spell.requirements.classRequirement[1] = Class.Assassin;
     }
 
-    function Charm(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function Charm(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 4;
         _spell.cooldown = 5;
-        _spell.spellType = ISpell.SpellType.LIFESTEAL;
+        _spell.spellType = SpellType.LIFESTEAL;
 
-        _spell.attackProps.element = GameObjects.Element.ARCANE;
+        _spell.attackProps.element = Element.ARCANE;
         _spell.attackProps.damageMultiplier = 0;
         _spell.attackProps.multiplierBonusPerTier = 3;
         _spell.attackProps.infusion = 3;
@@ -115,15 +116,15 @@ contract CodexSpellsArcane {
         _spell.requirements.level = 46;
         _spell.requirements.levelRequirementPerTier = 6;
 
-        _spell.requirements.classRequirement = new GameObjects.Class[](2);
-        _spell.requirements.classRequirement[0] = GameObjects.Class.Wizard;
-        _spell.requirements.classRequirement[1] = GameObjects.Class.Assassin;
+        _spell.requirements.classRequirement = new Class[](2);
+        _spell.requirements.classRequirement[0] = Class.Wizard;
+        _spell.requirements.classRequirement[1] = Class.Assassin;
     }
 
-    function MirrorImage(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function MirrorImage(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 5;
         _spell.cooldown = 5;
-        _spell.spellType = ISpell.SpellType.HEALING;
+        _spell.spellType = SpellType.HEALING;
 
         _spell.healingProps.minAmount = 40;
         _spell.healingProps.maxAmount = 50;
@@ -138,17 +139,17 @@ contract CodexSpellsArcane {
         _spell.requirements.level = 24;
         _spell.requirements.levelRequirementPerTier = 8;
 
-        _spell.requirements.classRequirement = new GameObjects.Class[](2);
-        _spell.requirements.classRequirement[0] = GameObjects.Class.Wizard;
-        _spell.requirements.classRequirement[1] = GameObjects.Class.Assassin;
+        _spell.requirements.classRequirement = new Class[](2);
+        _spell.requirements.classRequirement[0] = Class.Wizard;
+        _spell.requirements.classRequirement[1] = Class.Assassin;
     }
 
-    function ShatteredDreams(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function ShatteredDreams(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 6;
         _spell.cooldown = 6;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.ARCANE;
+        _spell.attackProps.element = Element.ARCANE;
         _spell.attackProps.damageMultiplier = 35;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 5;
@@ -163,17 +164,17 @@ contract CodexSpellsArcane {
         _spell.requirements.level = 32;
         _spell.requirements.levelRequirementPerTier = 13;
 
-        _spell.requirements.classRequirement = new GameObjects.Class[](2);
-        _spell.requirements.classRequirement[0] = GameObjects.Class.Wizard;
-        _spell.requirements.classRequirement[1] = GameObjects.Class.Assassin;
+        _spell.requirements.classRequirement = new Class[](2);
+        _spell.requirements.classRequirement[0] = Class.Wizard;
+        _spell.requirements.classRequirement[1] = Class.Assassin;
     }
 
-    function MassHypnosis(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function MassHypnosis(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 7;
         _spell.cooldown = 6;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.ARCANE;
+        _spell.attackProps.element = Element.ARCANE;
         _spell.attackProps.damageMultiplier = 40;
         _spell.attackProps.multiplierBonusPerTier = 10;
         _spell.attackProps.infusion = 5;
@@ -188,17 +189,17 @@ contract CodexSpellsArcane {
         _spell.requirements.level = 40;
         _spell.requirements.levelRequirementPerTier = 18;
 
-        _spell.requirements.classRequirement = new GameObjects.Class[](2);
-        _spell.requirements.classRequirement[0] = GameObjects.Class.Wizard;
-        _spell.requirements.classRequirement[1] = GameObjects.Class.Assassin;
+        _spell.requirements.classRequirement = new Class[](2);
+        _spell.requirements.classRequirement[0] = Class.Wizard;
+        _spell.requirements.classRequirement[1] = Class.Assassin;
     }
 
-    function MindSliver(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function MindSliver(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 8;
         _spell.cooldown = 6;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.ARCANE;
+        _spell.attackProps.element = Element.ARCANE;
         _spell.attackProps.damageMultiplier = 70;
         _spell.attackProps.multiplierBonusPerTier = 25;
         _spell.attackProps.infusion = 3;
@@ -216,10 +217,10 @@ contract CodexSpellsArcane {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function classRequirement() internal pure returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](2);
-        _reqClass[0] = GameObjects.Class.Wizard;
-        _reqClass[1] = GameObjects.Class.Assassin;
+    function classRequirement() internal pure returns (Class[] memory) {
+        Class[] memory _reqClass = new Class[](2);
+        _reqClass[0] = Class.Wizard;
+        _reqClass[1] = Class.Assassin;
         return _reqClass;
     }
 }

@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, Stats, GeneratedStats,ElementalStats, ElementalAtk, ElementalDef,Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
@@ -42,7 +42,7 @@ contract CodexHelmetsHeavy is Initializable {
     }
 
 
-    function applyTier(GameObjects_Equipments.EquipableItem memory _helmet, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
+    function applyTier(EquipableItem memory _helmet, uint tier, uint percentage) public view returns (EquipableItem memory){
         if (tier == 0) return _helmet;
         _helmet.statBonus = EquipableUtils.sumStatsAsTier(_helmet.statBonus, tier * percentage);
         _helmet.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_helmet.generatedStatBonus, (tier) * percentage);
@@ -51,7 +51,7 @@ contract CodexHelmetsHeavy is Initializable {
         return _helmet;
     }
 
-    function helmet(uint id, uint tier) public view returns (GameObjects_Equipments.EquipableItem memory) {
+    function helmet(uint id, uint tier) public view returns (EquipableItem memory) {
         require(tier < 10, "t");
 
         if (id == 1) {
@@ -101,9 +101,9 @@ contract CodexHelmetsHeavy is Initializable {
         revert("?hm");
     }
 
-    function SoldiersHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function SoldiersHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 1;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
 
         // requirements here
@@ -115,7 +115,7 @@ contract CodexHelmetsHeavy is Initializable {
         // }
         _helmet.requirement.classRequirement = classRequirement();
 
-        //        _helmet.requirement.statRequirement = GameObjects.Stats({
+        //        _helmet.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -130,9 +130,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(0);
     }
 
-    function ExecutionerHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function ExecutionerHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 2;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 3;
         _helmet.requirement.classRequirement = classRequirement();
@@ -142,9 +142,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(1);
     }
 
-    function KnightsHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function KnightsHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 3;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 8;
         _helmet.requirement.classRequirement = classRequirement();
@@ -154,9 +154,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(2);
     }
 
-    function DwarvenHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function DwarvenHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 4;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 13;
         _helmet.requirement.classRequirement = classRequirement();
@@ -166,9 +166,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(3);
     }
 
-    function ScaleHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function ScaleHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 5;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 18;
         _helmet.requirement.classRequirement = classRequirement();
@@ -178,9 +178,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(4);
     }
 
-    function WingedHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function WingedHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 6;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 23;
         _helmet.requirement.classRequirement = classRequirement();
@@ -190,9 +190,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(5);
     }
 
-    function JuggernautHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function JuggernautHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 7;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 28;
         _helmet.requirement.classRequirement = classRequirement();
@@ -202,9 +202,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(6);
     }
 
-    function DraconicHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function DraconicHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 8;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 33;
         _helmet.requirement.classRequirement = classRequirement();
@@ -214,9 +214,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(7);
     }
 
-    function DragonsilverHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function DragonsilverHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 9;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 38;
         _helmet.requirement.classRequirement = classRequirement();
@@ -226,9 +226,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(8);
     }
 
-    function GoldenHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function GoldenHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 10;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 43;
         _helmet.requirement.classRequirement = classRequirement();
@@ -238,9 +238,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(9);
     }
 
-    function MidassHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function MidassHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 11;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 48;
         _helmet.requirement.classRequirement = classRequirement();
@@ -250,9 +250,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(10);
     }
 
-    function ChosensHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function ChosensHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 12;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 53;
         _helmet.requirement.classRequirement = classRequirement();
@@ -262,9 +262,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(11);
     }
 
-    function TemplarHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function TemplarHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 13;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 58;
         _helmet.requirement.classRequirement = classRequirement();
@@ -274,9 +274,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(12);
     }
 
-    function VanguardHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function VanguardHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 14;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 63;
         _helmet.requirement.classRequirement = classRequirement();
@@ -286,9 +286,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(13);
     }
 
-    function VoidDwellerHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function VoidDwellerHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 15;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 68;
         _helmet.requirement.classRequirement = classRequirement();
@@ -298,9 +298,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(14);
     }
 
-    function MoonlightHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function MoonlightHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 16;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 73;
         _helmet.requirement.classRequirement = classRequirement();
@@ -310,9 +310,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(15);
     }
 
-    function SunlightHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function SunlightHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 17;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 78;
         _helmet.requirement.classRequirement = classRequirement();
@@ -322,9 +322,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(16);
     }
 
-    function CycleHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function CycleHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 18;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 83;
         _helmet.requirement.classRequirement = classRequirement();
@@ -334,9 +334,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(17);
     }
 
-    function DemonicHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function DemonicHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 19;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 88;
         _helmet.requirement.classRequirement = classRequirement();
@@ -346,9 +346,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(18);
     }
 
-    function AngelicHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function AngelicHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 20;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 93;
         _helmet.requirement.classRequirement = classRequirement();
@@ -358,9 +358,9 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(19);
     }
 
-    function EternalHelmet(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _helmet) {
+    function EternalHelmet(uint tier) public view returns (EquipableItem memory _helmet) {
         _helmet.metadata.id = 21;
-        _helmet.metadata.baseType = GameObjects.ItemType.HELMET;
+        _helmet.metadata.baseType = ItemType.HELMET;
         _helmet.metadata.upgradable = true;
         _helmet.requirement.level = 98;
         _helmet.requirement.classRequirement = classRequirement();
@@ -370,8 +370,8 @@ contract CodexHelmetsHeavy is Initializable {
         _helmet.elementalStats.ElementalDef = helmetEle(20);
     }
 
-    function helmetStats(uint index) internal view returns (GameObjects_Stats.Stats memory) {
-        GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
+    function helmetStats(uint index) internal view returns (Stats memory) {
+        Stats memory stats = Stats({
         STR : BASE_STR[index],
         DEX : BASE_DEX[index],
         AGI : 0,
@@ -381,13 +381,13 @@ contract CodexHelmetsHeavy is Initializable {
         return stats;
     }
 
-    function helmetEle(uint index) internal view returns (GameObjects_Stats.ElementalDef memory) {
-        GameObjects_Stats.ElementalDef memory stats = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
+    function helmetEle(uint index) internal view returns (ElementalDef memory) {
+        ElementalDef memory stats = ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
         return stats;
     }
 
-    function helmetGenStats(uint index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
-        GameObjects_Stats.GeneratedStats memory stats = GameObjects_Stats.GeneratedStats({
+    function helmetGenStats(uint index) internal view returns (GeneratedStats memory) {
+        GeneratedStats memory stats = GeneratedStats({
         HP : BASE_HP[index],
         P_ATK : 0,
         M_ATK : 0,
@@ -402,10 +402,10 @@ contract CodexHelmetsHeavy is Initializable {
         return stats;
     }
 
-    function classRequirement() internal view returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](2);
-        _reqClass[0] = GameObjects.Class.Barbarian;
-        _reqClass[1] = GameObjects.Class.Paladin;
+    function classRequirement() internal view returns (Class[] memory) {
+        Class[] memory _reqClass = new Class[](2);
+        _reqClass[0] = Class.Barbarian;
+        _reqClass[1] = Class.Paladin;
         return _reqClass;
     }
 }

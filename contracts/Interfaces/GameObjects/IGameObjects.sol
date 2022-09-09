@@ -1,9 +1,5 @@
 //import "./IGenericMetadata.sol";
 pragma solidity ^0.8.0;
-
-library GameObjects_Stats {
-
-
     enum StatsEnum {
         STR, AGI, INT, DEX, VIT, LUCK
     }
@@ -41,7 +37,7 @@ library GameObjects_Stats {
     struct ElementalStats {
         ElementalAtk ElementalAtk;
         ElementalDef ElementalDef;
-        GameObjects.Element SummonerDamageType;
+        Element SummonerDamageType;
     }
 
     struct ElementalAtk {
@@ -69,32 +65,30 @@ library GameObjects_Stats {
         GeneratedStats GeneratedStats;
         ElementalStats ElementalStats;
     }
-}
 
-library GameObjects_Equipments {
 
     struct ItemMetadata {
-        GameObjects.ItemType baseType;
+        ItemType baseType;
         uint id;
         bool upgradable;
     }
 
     struct Prefix {
         string title;
-        GameObjects_Stats.Stats statBonus;
+        Stats statBonus;
 
         // these are percentages.
-        GameObjects_Stats.GeneratedStats generatedStatBonus;
-        GameObjects_Stats.ElementalStats elementalStats;
+        GeneratedStats generatedStatBonus;
+        ElementalStats elementalStats;
         uint difficulty;
         bool isPercentage;
     }
 
     struct Suffix {
         string title;
-        GameObjects_Stats.Stats statBonus;
-        GameObjects_Stats.GeneratedStats generatedStatBonus;
-        GameObjects_Stats.ElementalStats elementalStats;
+        Stats statBonus;
+        GeneratedStats generatedStatBonus;
+        ElementalStats elementalStats;
         uint difficulty;
         bool isPercentage;
     }
@@ -106,10 +100,10 @@ library GameObjects_Equipments {
     struct Weapon {
         ItemMetadata metadata;
         ItemRequirement requirement;
-        GameObjects_Stats.Stats statBonus;
-        GameObjects_Stats.GeneratedStats generatedStatBonus;
-        GameObjects_Stats.ElementalStats elementalStats;
-        GameObjects.Element damageType;
+        Stats statBonus;
+        GeneratedStats generatedStatBonus;
+        ElementalStats elementalStats;
+        Element damageType;
     }
 
     struct EquippedItemStruct {
@@ -120,39 +114,39 @@ library GameObjects_Equipments {
         uint prefixTier;
         uint suffixId;
         uint suffixTier;
-        GameObjects.Element element;
+        Element element;
     }
 
     struct Artifact {
-        GameObjects_Stats.Stats statBonus;
-        GameObjects_Stats.GeneratedStats generatedStatBonus;
-        GameObjects_Stats.ElementalStats elementalStats;
+        Stats statBonus;
+        GeneratedStats generatedStatBonus;
+        ElementalStats elementalStats;
     }
 
 
     struct Companion {
         ItemMetadata metadata;
         ItemRequirement requirement;
-        GameObjects_Stats.Stats statBonus;
-        GameObjects_Stats.GeneratedStats generatedStatBonus;
-        GameObjects_Stats.ElementalStats elementalStats;
+        Stats statBonus;
+        GeneratedStats generatedStatBonus;
+        ElementalStats elementalStats;
 
     }
 
     struct EquipableItem {
         ItemMetadata metadata;
         ItemRequirement requirement;
-        GameObjects_Stats.Stats statBonus;
-        GameObjects_Stats.GeneratedStats generatedStatBonus;
-        GameObjects_Stats.ElementalStats elementalStats;
+        Stats statBonus;
+        GeneratedStats generatedStatBonus;
+        ElementalStats elementalStats;
 
     }
 
 
     struct ItemRequirement {
         uint level;
-        GameObjects_Stats.Stats statRequirement;
-        GameObjects.Class[] classRequirement;
+        Stats statRequirement;
+        Class[] classRequirement;
     }
 
     struct ItemNFTMetadata {
@@ -164,9 +158,9 @@ library GameObjects_Equipments {
     struct Seal {
         ItemMetadata metadata;
         ItemRequirement requirement;
-        GameObjects_Stats.Stats statBonus;
-        GameObjects_Stats.GeneratedStats generatedStatBonus;
-        GameObjects_Stats.ElementalStats elementalStats;
+        Stats statBonus;
+        GeneratedStats generatedStatBonus;
+        ElementalStats elementalStats;
 
     }
 
@@ -174,21 +168,21 @@ library GameObjects_Equipments {
     struct Mount {
         ItemMetadata metadata;
         ItemRequirement requirement;
-        GameObjects_Stats.Stats statBonus;
-        GameObjects_Stats.GeneratedStats generatedStatBonus;
-        GameObjects_Stats.ElementalStats elementalStats;
+        Stats statBonus;
+        GeneratedStats generatedStatBonus;
+        ElementalStats elementalStats;
 
     }
 
     struct ItemDTO {
-        GameObjects.ItemType _type;
+        ItemType _type;
         uint _itemId;
         uint256 _tier;
         uint _prefix;
         uint _prefixTier;
         uint _suffix;
         uint _suffixTier;
-        GameObjects.Element _element;
+        Element _element;
     }
 
 
@@ -196,10 +190,8 @@ library GameObjects_Equipments {
         address companionAddress;
         uint companionId;
     }
-}
 
 
-library GameObjects {
 
     enum Element {
         PHYSICAL,
@@ -249,10 +241,7 @@ library GameObjects {
         SEAL
     }
 
-}
 
-
-library GameObjects_BuffEffects {
 
     struct ElixirBonusEffect {
         uint BonusEXPPercentage;
@@ -278,9 +267,9 @@ library GameObjects_BuffEffects {
 
     struct BuffEffect {
         //        //        ItemMetadata metadata;
-        GameObjects_Stats.Stats statBonus;
-        GameObjects_Stats.GeneratedStats generatedStatBonus;
-        GameObjects_Stats.ElementalStats elementalStats;
+        Stats statBonus;
+        GeneratedStats generatedStatBonus;
+        ElementalStats elementalStats;
         ElixirBonusEffect bonus;
         BuffEffectType buffEffectType;
         uint turnDuration;
@@ -301,12 +290,6 @@ library GameObjects_BuffEffects {
         uint amount;
     }
 
-    struct ItemMetadata {
-        GameObjects.ItemType baseType;
-        uint id;
-        bool upgradable;
-    }
-
     struct AlchemyItem {
         ItemMetadata metadata;
     }
@@ -315,9 +298,3 @@ library GameObjects_BuffEffects {
         ItemMetadata metadata;
     }
 
-}
-
-library GameObjects_Cooking {
-
-
-}

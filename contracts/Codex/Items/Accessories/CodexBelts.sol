@@ -2,7 +2,7 @@ import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Ini
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {ICodexPrefixAndSuffix} from "../../../Interfaces/Codex/ICodexPrefixAndSuffix.sol";
 import {InitNavigator, INavigator} from "../../../Core/Navigator/InitNavigator.sol";
-import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {Class, Element, Stats, GeneratedStats,ElementalStats, ElementalAtk, ElementalDef, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ItemType } from "../../../Interfaces/GameObjects/IGameObjects.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
 
 pragma solidity ^0.8.0;
@@ -72,7 +72,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     }
 
 
-    function applyPrefixAndSuffix(GameObjects_Equipments.Prefix memory _pre, GameObjects_Equipments.Suffix memory _suf, GameObjects_Equipments.EquipableItem memory _belt) public view returns (GameObjects_Equipments.EquipableItem memory) {
+    function applyPrefixAndSuffix(Prefix memory _pre, Suffix memory _suf, EquipableItem memory _belt) public view returns (EquipableItem memory) {
         if (_pre.isPercentage) {
             _belt.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_belt.generatedStatBonus, _pre.generatedStatBonus);
             _belt.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_belt.elementalStats, _pre.elementalStats);
@@ -95,7 +95,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         return _belt;
     }
 
-    function applyPrefix(GameObjects_Equipments.Prefix memory _pre, GameObjects_Equipments.EquipableItem memory _belt) public view returns (GameObjects_Equipments.EquipableItem memory) {
+    function applyPrefix(Prefix memory _pre, EquipableItem memory _belt) public view returns (EquipableItem memory) {
         if (_pre.isPercentage) {
             _belt.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_belt.generatedStatBonus, _pre.generatedStatBonus);
             _belt.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_belt.elementalStats, _pre.elementalStats);
@@ -110,7 +110,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         return _belt;
     }
 
-    function applySuffix(GameObjects_Equipments.Suffix memory _suf, GameObjects_Equipments.EquipableItem memory _belt) public view returns (GameObjects_Equipments.EquipableItem memory) {
+    function applySuffix(Suffix memory _suf, EquipableItem memory _belt) public view returns (EquipableItem memory) {
         if (_suf.isPercentage) {
             _belt.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_belt.generatedStatBonus, _suf.generatedStatBonus);
             _belt.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_belt.elementalStats, _suf.elementalStats);
@@ -123,7 +123,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         return _belt;
     }
 
-    function applyTier(GameObjects_Equipments.EquipableItem memory _belt, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
+    function applyTier(EquipableItem memory _belt, uint tier, uint percentage) public view returns (EquipableItem memory){
         if (tier == 0) return _belt;
         _belt.statBonus = EquipableUtils.sumStatsAsTier(_belt.statBonus, tier * percentage);
         _belt.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_belt.generatedStatBonus, (tier) * percentage);
@@ -131,18 +131,18 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         return _belt;
     }
 
-    function allBelt() external view returns (GameObjects_Equipments.EquipableItem[] memory){
-        GameObjects_Equipments.EquipableItem[] memory result = new GameObjects_Equipments.EquipableItem[](21);
+    function allBelt() external view returns (EquipableItem[] memory){
+        EquipableItem[] memory result = new EquipableItem[](21);
         for (uint i = 1; i < 22; i++) {
             result[i - 1] = beltCore(i, 1);
         }
         return result;
     }
 
-    function belt(GameObjects_Equipments.EquippedItemStruct memory _equipable) public view returns (GameObjects_Equipments.EquipableItem memory) {
-        GameObjects_Equipments.EquipableItem memory _belt;
-        GameObjects_Equipments.Prefix memory _prefix;
-        GameObjects_Equipments.Suffix memory _suffix;
+    function belt(EquippedItemStruct memory _equipable) public view returns (EquipableItem memory) {
+        EquipableItem memory _belt;
+        Prefix memory _prefix;
+        Suffix memory _suffix;
         require(_equipable.itemTier < 10, "tier");
 
         if (_equipable.prefixId > 0) _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
@@ -192,7 +192,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
             _belt = applyTier(EternalBelt(_equipable.itemTier), _equipable.itemTier, 13);
         }
 
-        if (_equipable.element == GameObjects.Element.VOID) {
+        if (_equipable.element == Element.VOID) {
             _belt.elementalStats.ElementalDef.VOID_DEF = _belt.generatedStatBonus.M_DEF;
         }
 
@@ -201,8 +201,8 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         return _belt;
     }
 
-    function beltCore(uint itemId, uint itemTier) public view returns (GameObjects_Equipments.EquipableItem memory) {
-        GameObjects_Equipments.EquipableItem memory _belt;
+    function beltCore(uint itemId, uint itemTier) public view returns (EquipableItem memory) {
+        EquipableItem memory _belt;
         require(itemTier < 10, "tier");
 
 
@@ -253,274 +253,274 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         return _belt;
     }
 
-    function FrailBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function FrailBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 1;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 1;
-        _belt.requirement.classRequirement = new GameObjects.Class[](0);
-        // _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        _belt.requirement.classRequirement = new Class[](0);
+        // _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(0);
         _belt.generatedStatBonus = beltGenStats(0);
         _belt.elementalStats = beltEleStats(0);
     }
 
-    function AntiqueBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function AntiqueBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 2;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 7;
-        // _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        // _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(1);
         _belt.generatedStatBonus = beltGenStats(1);
         _belt.elementalStats = beltEleStats(1);
     }
 
-    function PurgeBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function PurgeBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 3;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 12;
-        // _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        // _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(2);
         _belt.generatedStatBonus = beltGenStats(2);
         _belt.elementalStats = beltEleStats(2);
     }
 
-    function BarbedBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function BarbedBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 4;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 17;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(3);
         _belt.generatedStatBonus = beltGenStats(3);
         _belt.elementalStats = beltEleStats(3);
     }
 
-    function ReflectiveBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function ReflectiveBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 5;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 22;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(4);
         _belt.generatedStatBonus = beltGenStats(4);
         _belt.elementalStats = beltEleStats(4);
     }
 
-    function StormForgedBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function StormForgedBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 6;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 27;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(5);
         _belt.generatedStatBonus = beltGenStats(5);
         _belt.elementalStats = beltEleStats(5);
     }
 
-    function VerdantBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function VerdantBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 7;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 32;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(6);
         _belt.generatedStatBonus = beltGenStats(6);
         _belt.elementalStats = beltEleStats(6);
     }
 
-    function ShadowfallBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function ShadowfallBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 8;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 37;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(7);
         _belt.generatedStatBonus = beltGenStats(7);
         _belt.elementalStats = beltEleStats(7);
     }
 
-    function MalignantBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function MalignantBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 9;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 42;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(8);
         _belt.generatedStatBonus = beltGenStats(8);
         _belt.elementalStats = beltEleStats(8);
     }
 
-    function SealedBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function SealedBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 10;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 47;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(9);
         _belt.generatedStatBonus = beltGenStats(9);
         _belt.elementalStats = beltEleStats(9);
     }
 
-    function TemplarBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function TemplarBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 11;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 52;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(10);
         _belt.generatedStatBonus = beltGenStats(10);
         _belt.elementalStats = beltEleStats(10);
     }
 
-    function ChannelerBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function ChannelerBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 12;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 57;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(11);
         _belt.generatedStatBonus = beltGenStats(11);
         _belt.elementalStats = beltEleStats(11);
     }
 
-    function ChosensBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function ChosensBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 13;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 62;
-        // _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        // _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(12);
         _belt.generatedStatBonus = beltGenStats(12);
         _belt.elementalStats = beltEleStats(12);
     }
 
-    function AstraBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function AstraBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 14;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 67;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(13);
         _belt.generatedStatBonus = beltGenStats(13);
         _belt.elementalStats = beltEleStats(13);
     }
 
-    function SoulbinderBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function SoulbinderBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 15;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 72;
-        // _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        // _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(14);
         _belt.generatedStatBonus = beltGenStats(14);
         _belt.elementalStats = beltEleStats(14);
     }
 
-    function MoonlightBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function MoonlightBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 16;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 77;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(15);
         _belt.generatedStatBonus = beltGenStats(15);
         _belt.elementalStats = beltEleStats(15);
     }
 
-    function SunlightBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function SunlightBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 17;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 82;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(16);
         _belt.generatedStatBonus = beltGenStats(16);
         _belt.elementalStats = beltEleStats(16);
     }
 
-    function CycleBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function CycleBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 18;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 87;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(17);
         _belt.generatedStatBonus = beltGenStats(17);
         _belt.elementalStats = beltEleStats(17);
     }
 
-    function InfernalBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function InfernalBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 19;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 92;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(18);
         _belt.generatedStatBonus = beltGenStats(18);
         _belt.elementalStats = beltEleStats(18);
     }
 
-    function DivineBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function DivineBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 20;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 97;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(19);
         _belt.generatedStatBonus = beltGenStats(19);
         _belt.elementalStats = beltEleStats(19);
     }
 
-    function EternalBelt(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _belt) {
+    function EternalBelt(uint tier) public view returns (EquipableItem memory _belt) {
         _belt.metadata.id = 21;
-        _belt.metadata.baseType = GameObjects.ItemType.BELT;
+        _belt.metadata.baseType = ItemType.BELT;
         _belt.metadata.upgradable = true;
 
         _belt.requirement.level = 100;
-        //  _belt.requirement.statRequirement = GameObjects.Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
+        //  _belt.requirement.statRequirement = Stats({STR : 0, DEX : 0, AGI : 0, INT : 0, VIT : 0, LUCK : 0});
 
         _belt.statBonus = beltStats(20);
         _belt.generatedStatBonus = beltGenStats(20);
@@ -528,8 +528,8 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
     }
 
 
-    function beltStats(uint _index) internal view returns (GameObjects_Stats.Stats memory) {
-        GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
+    function beltStats(uint _index) internal view returns (Stats memory) {
+        Stats memory stats = Stats({
         STR : BASE_STR[_index],
         DEX : BASE_DEX[_index],
         AGI : BASE_AGI[_index],
@@ -539,13 +539,13 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         return stats;
     }
 
-    function beltEle(uint _index) internal view returns (GameObjects_Stats.ElementalDef memory) {
-        GameObjects_Stats.ElementalDef memory stats = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_EDEF[_index], EARTH_DEF : BASE_EDEF[_index], COLD_DEF : BASE_EDEF[_index], LIGHTNING_DEF : BASE_EDEF[_index], DARK_DEF : BASE_EDEF[_index], HOLY_DEF : BASE_EDEF[_index], VOID_DEF : 0});
+    function beltEle(uint _index) internal view returns (ElementalDef memory) {
+        ElementalDef memory stats = ElementalDef({FIRE_DEF : BASE_EDEF[_index], EARTH_DEF : BASE_EDEF[_index], COLD_DEF : BASE_EDEF[_index], LIGHTNING_DEF : BASE_EDEF[_index], DARK_DEF : BASE_EDEF[_index], HOLY_DEF : BASE_EDEF[_index], VOID_DEF : 0});
         return stats;
     }
 
-    function beltGenStats(uint _index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
-        GameObjects_Stats.GeneratedStats memory stats = GameObjects_Stats.GeneratedStats({
+    function beltGenStats(uint _index) internal view returns (GeneratedStats memory) {
+        GeneratedStats memory stats = GeneratedStats({
         HP : BASE_HP[_index],
         P_ATK : 0,
         M_ATK : 0,
@@ -560,7 +560,7 @@ contract CodexBelts is InitNavigator, OwnableUpgradeable {
         return stats;
     }
 
-    function beltEleStats(uint _index) internal view returns (GameObjects_Stats.ElementalStats memory _genStats) {
-        _genStats.ElementalDef = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_EDEF[_index], EARTH_DEF : BASE_EDEF[_index], COLD_DEF : BASE_EDEF[_index], LIGHTNING_DEF : BASE_EDEF[_index], DARK_DEF : BASE_EDEF[_index], HOLY_DEF : BASE_EDEF[_index], VOID_DEF : 0});
+    function beltEleStats(uint _index) internal view returns (ElementalStats memory _genStats) {
+        _genStats.ElementalDef = ElementalDef({FIRE_DEF : BASE_EDEF[_index], EARTH_DEF : BASE_EDEF[_index], COLD_DEF : BASE_EDEF[_index], LIGHTNING_DEF : BASE_EDEF[_index], DARK_DEF : BASE_EDEF[_index], HOLY_DEF : BASE_EDEF[_index], VOID_DEF : 0});
     }
 }

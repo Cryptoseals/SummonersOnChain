@@ -102,6 +102,12 @@ async function main() {
 
     const landControls = helpercontract.attach(deployedLandControls.lands);
 
+    const traderContracts = helpercontract.attach(deployedLandControls.trader);
+
+
+    tx = await traderContracts.initializeContracts();
+    await tx.wait(1)
+    console.log("traderContracts")
 
     tx = await adventureControls.initializeContracts();
     await tx.wait(1)

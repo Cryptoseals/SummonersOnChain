@@ -34,11 +34,8 @@ interface INavigator {
         ARTIFACT_AND_ELIXIR_SLOTS, // 26
         ARTIFACTS,
         CONSUMABLES,
-        MISC_CODEX,
         MISC_ITEMS,
-        ALCHEMY_ITEMS_CODEX,
         ALCHEMY_ITEMS,
-        COOKING_ITEMS_CODEX,
         COOKING_ITEMS,
         PREFIX_CODEX,
         SUFFIX_CODEX,
@@ -146,7 +143,8 @@ interface INavigator {
         LANDS_CODEX,
         LAND_CONTROLS,
         ANIMALS,
-        SEEDS
+        SEEDS,
+        TRADER
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;

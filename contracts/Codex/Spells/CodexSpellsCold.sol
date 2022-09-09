@@ -1,9 +1,10 @@
-import {ISpell, GameObjects} from "../../Interfaces/GameObjects/ISpell.sol";
+import {Element,Class} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {Spell, SpellType} from "../../Interfaces/GameObjects/ISpell.sol";
 pragma solidity ^0.8.0;
 
 contract CodexSpellsCold {
 
-    function spell(uint _id, uint _tier) public pure returns (ISpell.Spell memory) {
+    function spell(uint _id, uint _tier) public pure returns (Spell memory) {
         if (_id == 1) {return Frostbolt(_tier);}
         else if (_id == 2) {return IcicleShot(_tier);}
         else if (_id == 3) {return FreezingBlast(_tier);}
@@ -16,12 +17,12 @@ contract CodexSpellsCold {
         revert("invalid");
     }
 
-    function Frostbolt(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function Frostbolt(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 1;
         _spell.cooldown = 3;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.COLD;
+        _spell.attackProps.element = Element.COLD;
         _spell.attackProps.damageMultiplier = 25;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 3;
@@ -39,12 +40,12 @@ contract CodexSpellsCold {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function IcicleShot(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function IcicleShot(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 2;
         _spell.cooldown = 4;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.COLD;
+        _spell.attackProps.element = Element.COLD;
         _spell.attackProps.damageMultiplier = 30;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 3;
@@ -62,12 +63,12 @@ contract CodexSpellsCold {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function FreezingBlast(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function FreezingBlast(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 3;
         _spell.cooldown = 5;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.COLD;
+        _spell.attackProps.element = Element.COLD;
         _spell.attackProps.damageMultiplier = 35;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 3;
@@ -85,12 +86,12 @@ contract CodexSpellsCold {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function Icebite(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function Icebite(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 4;
         _spell.cooldown = 5;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.COLD;
+        _spell.attackProps.element = Element.COLD;
         _spell.attackProps.damageMultiplier = 40;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 5;
@@ -108,12 +109,12 @@ contract CodexSpellsCold {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function Blizzard(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function Blizzard(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 5;
         _spell.cooldown = 5;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.COLD;
+        _spell.attackProps.element = Element.COLD;
         _spell.attackProps.damageMultiplier = 45;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 5;
@@ -131,10 +132,10 @@ contract CodexSpellsCold {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function WallOfIce(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function WallOfIce(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 6;
         _spell.cooldown = 6;
-        _spell.spellType = ISpell.SpellType.HEALING;
+        _spell.spellType = SpellType.HEALING;
 
         _spell.healingProps.maxAmount = 35;
         _spell.healingProps.maxAmount = 45;
@@ -152,12 +153,12 @@ contract CodexSpellsCold {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function RayOfFrost(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function RayOfFrost(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 7;
         _spell.cooldown = 6;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.COLD;
+        _spell.attackProps.element = Element.COLD;
         _spell.attackProps.damageMultiplier = 50;
         _spell.attackProps.multiplierBonusPerTier = 10;
         _spell.attackProps.infusion = 5;
@@ -175,12 +176,12 @@ contract CodexSpellsCold {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function Dragonfrost(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function Dragonfrost(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 8;
         _spell.cooldown = 6;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.COLD;
+        _spell.attackProps.element = Element.COLD;
         _spell.attackProps.damageMultiplier = 75;
         _spell.attackProps.multiplierBonusPerTier = 25;
         _spell.attackProps.infusion = 5;
@@ -198,10 +199,10 @@ contract CodexSpellsCold {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function classRequirement() internal pure returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](2);
-        _reqClass[0] = GameObjects.Class.Wizard;
-        _reqClass[1] = GameObjects.Class.Assassin;
+    function classRequirement() internal pure returns (Class[] memory) {
+        Class[] memory _reqClass = new Class[](2);
+        _reqClass[0] = Class.Wizard;
+        _reqClass[1] = Class.Assassin;
         return _reqClass;
     }
 }

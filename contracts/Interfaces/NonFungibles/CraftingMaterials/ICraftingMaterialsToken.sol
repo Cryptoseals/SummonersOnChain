@@ -1,4 +1,4 @@
-import "../../GameObjects/ICrafting/ICraftingMaterials.sol";
+import {ICraftingMaterials} from "../../GameObjects/ICrafting/ICraftingMaterials.sol";
 pragma solidity ^0.8.0;
 
 interface ICraftingMaterialsToken {

@@ -1,5 +1,5 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {GameObjects, GameObjects_Stats} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {Element, Stats, GeneratedStats, ElementalStats} from "../../Interfaces/GameObjects/IGameObjects.sol";
 import {IMonster} from "../../Interfaces/GameObjects/IMonster.sol";
 import {InitNavigator, INavigator} from "../../Core/Navigator/InitNavigator.sol";
 import {IBaseEnemyStats} from "../../Interfaces/Codex/IBaseEnemyStats.sol";
@@ -16,7 +16,7 @@ contract CodexEnemies is Initializable, InitNavigator {
     IBaseEnemyStats baseStats;
 
 
-    function getAllMonsters(GameObjects.Element ele, uint lvl) external view returns (IMonster.Monster[] memory){
+    function getAllMonsters(Element ele, uint lvl) external view returns (IMonster.Monster[] memory){
         IMonster.Monster[] memory result = new IMonster.Monster[](22);
         for (uint i = 1; i < 22; i++) {
             result[i - 1] = enemy(ele, i, lvl);
@@ -33,14 +33,14 @@ contract CodexEnemies is Initializable, InitNavigator {
         baseStats = IBaseEnemyStats(contractAddress(INavigator.CONTRACT.BASE_ENEMY_STATS));
     }
 
-    function enemy(GameObjects.Element ele, uint256 _id, uint256 _lvl)
+    function enemy(Element ele, uint256 _id, uint256 _lvl)
     public
     view
     returns (IMonster.Monster memory _enemy)
     {
-        (GameObjects_Stats.Stats memory _stats,
-        GameObjects_Stats.GeneratedStats memory _gen_stats,
-        GameObjects_Stats.ElementalStats memory _ele_stats) = baseStats.getStatSet(_lvl);
+        (Stats memory _stats,
+        GeneratedStats memory _gen_stats,
+        ElementalStats memory _ele_stats) = baseStats.getStatSet(_lvl);
 
         _enemy.EnemyStats = _stats;
         _enemy.EnemyGeneratedStats = _gen_stats;
@@ -50,7 +50,7 @@ contract CodexEnemies is Initializable, InitNavigator {
         _enemy.EnemyElementalStats.SummonerDamageType = ele;
 
 
-        if (ele == GameObjects.Element.VOID) {
+        if (ele == Element.VOID) {
             _enemy.EnemyStats.STR += percentage(_enemy.EnemyStats.STR, 10);
             _enemy.EnemyStats.AGI += percentage(_enemy.EnemyStats.AGI, 10);
             _enemy.EnemyStats.DEX += percentage(_enemy.EnemyStats.DEX, 10);
@@ -69,41 +69,41 @@ contract CodexEnemies is Initializable, InitNavigator {
         }
 
         // VOID & ARCANE BOOST
-        if (ele == GameObjects.Element.VOID || ele == GameObjects.Element.ARCANE) {
+        if (ele == Element.VOID || ele == Element.ARCANE) {
             _enemy.EnemyGeneratedStats.M_DEF += percentage(_enemy.EnemyGeneratedStats.M_DEF, 10);
         }
 
         // VOID & HOLY
-        if (ele == GameObjects.Element.VOID || ele == GameObjects.Element.HOLY) {
+        if (ele == Element.VOID || ele == Element.HOLY) {
             _enemy.EnemyGeneratedStats.HP += percentage(_enemy.EnemyGeneratedStats.HP, 10);
         }
 
         // VOID && COLD
-        if (ele == GameObjects.Element.VOID || ele == GameObjects.Element.COLD) {
+        if (ele == Element.VOID || ele == Element.COLD) {
             _enemy.EnemyGeneratedStats.CRIT += percentage(_enemy.EnemyGeneratedStats.CRIT, 10);
         }
 
         // VOID && LIGHTNING
-        if (ele == GameObjects.Element.VOID || ele == GameObjects.Element.LIGHTNING) {
+        if (ele == Element.VOID || ele == Element.LIGHTNING) {
             _enemy.EnemyGeneratedStats.DODGE += percentage(_enemy.EnemyGeneratedStats.DODGE, 10);
         }
 
         // VOID && FIRE
-        if (ele == GameObjects.Element.FIRE) {
+        if (ele == Element.FIRE) {
             _enemy.EnemyElementalStats.ElementalAtk.FIRE_ATK += percentage(_enemy.EnemyElementalStats.ElementalAtk.FIRE_ATK, 10);
         }
 
         // VOID && PHYSICAL
-        if (ele == GameObjects.Element.PHYSICAL) {
+        if (ele == Element.PHYSICAL) {
             _enemy.EnemyGeneratedStats.CRIT_MULTIPLIER += percentage(_enemy.EnemyGeneratedStats.CRIT_MULTIPLIER, 10);
         }
         // VOID && DARK
-        if (ele == GameObjects.Element.DARK) {
+        if (ele == Element.DARK) {
             _enemy.EnemyGeneratedStats.ACCURACY += percentage(_enemy.EnemyGeneratedStats.ACCURACY, 10);
         }
 
         // VOID && EARTH
-        if (ele == GameObjects.Element.EARTH) {
+        if (ele == Element.EARTH) {
             _enemy.EnemyGeneratedStats.P_DEF += percentage(_enemy.EnemyGeneratedStats.P_DEF, 10);
         }
 

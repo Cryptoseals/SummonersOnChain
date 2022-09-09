@@ -1,6 +1,5 @@
-import {ILand, Seed, AnimalsL} from "../Interfaces/Lands/ILand.sol";
+import {ILand, Seed} from "../Interfaces/Lands/ILand.sol";
 import {LandUtils, INavigator} from "./LandUtils.sol";
-import {ICookingItem} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/ICookingItem.sol";
 import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
 
 /*
@@ -64,26 +63,6 @@ contract Farm is LandUtils {
         }
     }
 
-    function buySeed(Seed.List seed, uint amount) external {
-        require(uint(seed) > 0 && amount > 0, "a");
-        ILand.Seed memory _seed = landCodex.seed(uint(seed));
-        uint price = 0;
-        price += _seed.buyPrice * amount;
-        require(price > 0, "?");
-        gold.burnToken(msg.sender, price);
-        seedToken.mintSeed(seed, msg.sender, amount);
-    }
-
-    function buyAnimal(uint landId, uint id, uint amount) external isOwned(landId, msg.sender) {
-        require(amount > 0, "a");
-        AnimalsL.BabyAnimal memory _animal = landCodex.babyAnimal(id);
-
-        uint price = 0;
-        price += _animal.buyPrice * amount;
-        require(price > 0, "?");
-        gold.burnToken(msg.sender, price);
-        animalToken.mintAnimal(msg.sender, id, amount);
-    }
 
     function plots(uint landId, uint[] memory plots) external view returns (ILand.Plot[] memory){
         ILand.Plot[] memory result = new ILand.Plot[](plots.length);

@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, Stats, GeneratedStats,ElementalStats, ElementalAtk, ElementalDef,Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
@@ -41,7 +41,7 @@ contract CodexBootsMedium is Initializable {
         BASE_EDEF = _BASE_EDEF;
     }
 
-    function applyTier(GameObjects_Equipments.EquipableItem memory _greaves, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
+    function applyTier(EquipableItem memory _greaves, uint tier, uint percentage) public view returns (EquipableItem memory){
         if (tier == 0) return _greaves;
         _greaves.statBonus = EquipableUtils.sumStatsAsTier(_greaves.statBonus, tier * percentage);
         _greaves.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_greaves.generatedStatBonus, (tier) * percentage);
@@ -50,7 +50,7 @@ contract CodexBootsMedium is Initializable {
         return _greaves;
     }
 
-    function boots(uint id, uint tier) public view returns (GameObjects_Equipments.EquipableItem memory) {
+    function boots(uint id, uint tier) public view returns (EquipableItem memory) {
         require(tier < 10, "t");
 
         if (id == 22) {
@@ -100,9 +100,9 @@ contract CodexBootsMedium is Initializable {
         revert("?hm");
     }
 
-    function SoldiersSandals(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function SoldiersSandals(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 22;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
 
         // requirements here
@@ -114,7 +114,7 @@ contract CodexBootsMedium is Initializable {
         // }
         _greaves.requirement.classRequirement = classRequirement();
 
-        //  _greaves.requirement.statRequirement = GameObjects.Stats({
+        //  _greaves.requirement.statRequirement = Stats({
         //  STR : 0,
         //  DEX : 0,
         //  AGI : 0,
@@ -129,13 +129,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(0);
     }
 
-    function ExecutionersSandals(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function ExecutionersSandals(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 23;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 3;
         _greaves.requirement.classRequirement = classRequirement();
-        //    _greaves.requirement.statRequirement = GameObjects.Stats({
+        //    _greaves.requirement.statRequirement = Stats({
         //    STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -148,13 +148,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(1);
     }
 
-    function HuntersSandals(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function HuntersSandals(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 24;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 8;
         _greaves.requirement.classRequirement = classRequirement();
-        //   _greaves.requirement.statRequirement = GameObjects.Stats({
+        //   _greaves.requirement.statRequirement = Stats({
         //   STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -167,13 +167,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(2);
     }
 
-    function RangerSandals(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function RangerSandals(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 25;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 13;
         _greaves.requirement.classRequirement = classRequirement();
-        //  _greaves.requirement.statRequirement = GameObjects.Stats({
+        //  _greaves.requirement.statRequirement = Stats({
         //  STR : 0,
         //  DEX : 0,
         //   AGI : 0,
@@ -186,13 +186,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(3);
     }
 
-    function MercenaryShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function MercenaryShoes(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 26;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 18;
         _greaves.requirement.classRequirement = classRequirement();
-        // _greaves.requirement.statRequirement = GameObjects.Stats({
+        // _greaves.requirement.statRequirement = Stats({
         //  STR : 0,
         //  DEX : 0,
         //  AGI : 0,
@@ -205,13 +205,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(4);
     }
 
-    function NobleShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function NobleShoes(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 27;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 23;
         _greaves.requirement.classRequirement = classRequirement();
-        //   _greaves.requirement.statRequirement = GameObjects.Stats({
+        //   _greaves.requirement.statRequirement = Stats({
         //   STR : 0,
         //  DEX : 0,
         //   AGI : 0,
@@ -224,13 +224,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(5);
     }
 
-    function BloodstainedShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function BloodstainedShoes(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 28;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 28;
         _greaves.requirement.classRequirement = classRequirement();
-        //  _greaves.requirement.statRequirement = GameObjects.Stats({
+        //  _greaves.requirement.statRequirement = Stats({
         //   STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -243,13 +243,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(6);
     }
 
-    function ShoesOfDusk(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function ShoesOfDusk(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 29;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 33;
         _greaves.requirement.classRequirement = classRequirement();
-        //  _greaves.requirement.statRequirement = GameObjects.Stats({
+        //  _greaves.requirement.statRequirement = Stats({
         //  STR : 0,
         //  DEX : 0,
         //  AGI : 0,
@@ -262,13 +262,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(7);
     }
 
-    function ShadowBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function ShadowBoots(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 30;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 38;
         _greaves.requirement.classRequirement = classRequirement();
-        //  _greaves.requirement.statRequirement = GameObjects.Stats({
+        //  _greaves.requirement.statRequirement = Stats({
         //  STR : 0,
         //  DEX : 0,
         //  AGI : 0,
@@ -281,13 +281,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(8);
     }
 
-    function HeadmastersBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function HeadmastersBoots(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 31;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 43;
         _greaves.requirement.classRequirement = classRequirement();
-        //  _greaves.requirement.statRequirement = GameObjects.Stats({
+        //  _greaves.requirement.statRequirement = Stats({
         //  STR : 0,
         //  DEX : 0,
         //  AGI : 0,
@@ -300,13 +300,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(9);
     }
 
-    function ElvenBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function ElvenBoots(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 32;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 48;
         _greaves.requirement.classRequirement = classRequirement();
-        //  _greaves.requirement.statRequirement = GameObjects.Stats({
+        //  _greaves.requirement.statRequirement = Stats({
         //  STR : 0,
         //  DEX : 0,
         //  AGI : 0,
@@ -319,13 +319,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(10);
     }
 
-    function ChosensBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function ChosensBoots(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 33;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 53;
         _greaves.requirement.classRequirement = classRequirement();
-        //   _greaves.requirement.statRequirement = GameObjects.Stats({
+        //   _greaves.requirement.statRequirement = Stats({
         //   STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -338,13 +338,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(11);
     }
 
-    function ProphetsBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function ProphetsBoots(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 34;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 58;
         _greaves.requirement.classRequirement = classRequirement();
-        //   _greaves.requirement.statRequirement = GameObjects.Stats({
+        //   _greaves.requirement.statRequirement = Stats({
         //   STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -357,13 +357,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(12);
     }
 
-    function EldersBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function EldersBoots(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 35;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 63;
         _greaves.requirement.classRequirement = classRequirement();
-        //   _greaves.requirement.statRequirement = GameObjects.Stats({
+        //   _greaves.requirement.statRequirement = Stats({
         //   STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -376,13 +376,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(13);
     }
 
-    function AncientShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function AncientShoes(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 36;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 68;
         _greaves.requirement.classRequirement = classRequirement();
-        //   _greaves.requirement.statRequirement = GameObjects.Stats({
+        //   _greaves.requirement.statRequirement = Stats({
         //   STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -395,13 +395,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(14);
     }
 
-    function MoonlightShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function MoonlightShoes(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 37;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 73;
         _greaves.requirement.classRequirement = classRequirement();
-        //   _greaves.requirement.statRequirement = GameObjects.Stats({
+        //   _greaves.requirement.statRequirement = Stats({
         //   STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -414,13 +414,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(15);
     }
 
-    function SunlightShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function SunlightShoes(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 38;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 78;
         _greaves.requirement.classRequirement = classRequirement();
-        //   _greaves.requirement.statRequirement = GameObjects.Stats({
+        //   _greaves.requirement.statRequirement = Stats({
         //   STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -433,13 +433,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(16);
     }
 
-    function CycleShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function CycleShoes(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 39;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 83;
         _greaves.requirement.classRequirement = classRequirement();
-        //   _greaves.requirement.statRequirement = GameObjects.Stats({
+        //   _greaves.requirement.statRequirement = Stats({
         //   STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -452,13 +452,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(17);
     }
 
-    function DemonicGreaves(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function DemonicGreaves(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 40;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 88;
         _greaves.requirement.classRequirement = classRequirement();
-        //   _greaves.requirement.statRequirement = GameObjects.Stats({
+        //   _greaves.requirement.statRequirement = Stats({
         //    STR : 0,
         //    DEX : 0,
         //    AGI : 0,
@@ -471,13 +471,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(18);
     }
 
-    function AngelicGreaves(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function AngelicGreaves(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 41;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 93;
         _greaves.requirement.classRequirement = classRequirement();
-        //    _greaves.requirement.statRequirement = GameObjects.Stats({
+        //    _greaves.requirement.statRequirement = Stats({
         //    STR : 0,
         //    DEX : 0,
         //    AGI : 0,
@@ -490,13 +490,13 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(19);
     }
 
-    function EternalGreaves(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _greaves) {
+    function EternalGreaves(uint tier) public view returns (EquipableItem memory _greaves) {
         _greaves.metadata.id = 42;
-        _greaves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _greaves.metadata.baseType = ItemType.BOOTS;
         _greaves.metadata.upgradable = true;
         _greaves.requirement.level = 98;
         _greaves.requirement.classRequirement = classRequirement();
-        //    _greaves.requirement.statRequirement = GameObjects.Stats({
+        //    _greaves.requirement.statRequirement = Stats({
         //   STR : 0,
         //    DEX : 0,
         //    AGI : 0,
@@ -509,8 +509,8 @@ contract CodexBootsMedium is Initializable {
         _greaves.elementalStats.ElementalDef = armorEle(20);
     }
 
-    function armorStats(uint index) internal view returns (GameObjects_Stats.Stats memory) {
-        GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
+    function armorStats(uint index) internal view returns (Stats memory) {
+        Stats memory stats = Stats({
         STR : BASE_STR[index],
         DEX : BASE_DEX[index],
         AGI : BASE_AGI[index],
@@ -520,13 +520,13 @@ contract CodexBootsMedium is Initializable {
         return stats;
     }
 
-    function armorEle(uint index) internal view returns (GameObjects_Stats.ElementalDef memory) {
-        GameObjects_Stats.ElementalDef memory stats = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
+    function armorEle(uint index) internal view returns (ElementalDef memory) {
+        ElementalDef memory stats = ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
         return stats;
     }
 
-    function armorGenStats(uint index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
-        GameObjects_Stats.GeneratedStats memory stats = GameObjects_Stats.GeneratedStats({
+    function armorGenStats(uint index) internal view returns (GeneratedStats memory) {
+        GeneratedStats memory stats = GeneratedStats({
         HP : BASE_HP[index],
         P_ATK : 0,
         M_ATK : 0,
@@ -541,11 +541,11 @@ contract CodexBootsMedium is Initializable {
         return stats;
     }
 
-    function classRequirement() internal view returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](3);
-        _reqClass[0] = GameObjects.Class.Assassin;
-        _reqClass[1] = GameObjects.Class.Ranger;
-        _reqClass[2] = GameObjects.Class.Engineer;
+    function classRequirement() internal view returns (Class[] memory) {
+        Class[] memory _reqClass = new Class[](3);
+        _reqClass[0] = Class.Assassin;
+        _reqClass[1] = Class.Ranger;
+        _reqClass[2] = Class.Engineer;
         return _reqClass;
     }
 }

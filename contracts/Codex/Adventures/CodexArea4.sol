@@ -1,5 +1,6 @@
-import {IAdventure, GameObjects, IGameRewards, ICraftingMaterials} from "../../Interfaces/GameObjects/IAdventure.sol";
+import {IAdventure, IGameRewards, ICraftingMaterials} from "../../Interfaces/GameObjects/IAdventure.sol";
 import {IMonster} from "../../Interfaces/GameObjects/IMonster.sol";
+import {Element} from "../../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexArea4 {
@@ -73,13 +74,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 1,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 2,
         level : 1
         });
@@ -122,13 +123,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 2,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 3,
         level : 1
         });
@@ -171,13 +172,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 3,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 4,
         level : 1
         });
@@ -220,13 +221,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 4,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 5,
         level : 1
         });
@@ -269,13 +270,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 5,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 6,
         level : 1
         });
@@ -318,13 +319,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 6,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 7,
         level : 1
         });
@@ -367,13 +368,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 7,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 8,
         level : 1
         });
@@ -416,13 +417,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 8,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 9,
         level : 1
         });
@@ -465,13 +466,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 9,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 10,
         level : 1
         });
@@ -514,13 +515,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 10,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 11,
         level : 1
         });
@@ -563,13 +564,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 11,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 12,
         level : 1
         });
@@ -612,13 +613,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 12,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 13,
         level : 1
         });
@@ -661,13 +662,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 13,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 14,
         level : 1
         });
@@ -710,13 +711,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 14,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 15,
         level : 1
         });
@@ -759,13 +760,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 15,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 16,
         level : 1
         });
@@ -808,13 +809,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 16,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 17,
         level : 1
         });
@@ -857,13 +858,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 17,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 18,
         level : 1
         });
@@ -906,13 +907,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 18,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 19,
         level : 1
         });
@@ -955,13 +956,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 19,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 20,
         level : 1
         });
@@ -1004,13 +1005,13 @@ contract CodexArea4 {
 
         _level.MonsterList = new IAdventure.AdventureMonster[](2);
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 20,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.HOLY,
+        element : Element.HOLY,
         monsterId : 21,
         level : 1
         });

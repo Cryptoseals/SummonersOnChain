@@ -2,10 +2,10 @@ import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Ini
 import "../Core/Common/Errors.sol";
 import {IAttributes} from "../Interfaces/Attributes/IAttributes.sol";
 import {GameEntities} from "../Interfaces/GameObjects/IGameEntities.sol";
-import {GameObjects, GameObjects_Stats} from "../Interfaces/GameObjects/IGameEntities.sol";
+import {Class,Stats} from "../Interfaces/GameObjects/IGameObjects.sol";
 import {EquipableUtils} from "../Inventory/EquipableUtils.sol";
 import {ICodexSpells} from "../Interfaces/Codex/ICodexSpells.sol";
-import {ISpell} from "../Interfaces/GameObjects/ISpell.sol";
+import {SpellCategories, Spell } from "../Interfaces/GameObjects/ISpell.sol";
 import {GameConstants} from "../Interfaces/Core/Constants/Constants.sol";
 import {ICalculator} from "../Interfaces/Core/Calculator/ICalculator.sol";
 import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
@@ -22,9 +22,9 @@ contract Spells is Initializable, InitNavigator {
         initializeNavigator(_navigator);
     }
 
-    function learnSpell(uint _summoner, ISpell.SpellCategories category, uint spellId) external senderIsSummonerOwner(_summoner) {
+    function learnSpell(uint _summoner, SpellCategories category, uint spellId) external senderIsSummonerOwner(_summoner) {
         require(SummonerSpellLevels[_summoner][spellId] == 0, "learnt");
-        ISpell.Spell memory spell = ICodexSpells(contractAddress(INavigator.CONTRACT.SPELLS_CODEX)).spell(spellId, 1);
+        Spell memory spell = ICodexSpells(contractAddress(INavigator.CONTRACT.SPELLS_CODEX)).spell(spellId, 1);
         GameEntities.SummonerData memory summoner = ISummoners(contractAddress(INavigator.CONTRACT.SUMMONERS)).summonerData(_summoner);
         require(summoner.level >= spell.requirements.level, "lvl");
         require(checkClass(summoner.class, category), "class");
@@ -32,21 +32,21 @@ contract Spells is Initializable, InitNavigator {
         IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE)).burnToken(msg.sender, spell.learningCost);
         SummonerSpellLevels[_summoner][spellId] = 1;
     }
-    function upgradeSpell(uint _summoner, ISpell.SpellCategories category, uint spellId) external senderIsSummonerOwner(_summoner) {
+    function upgradeSpell(uint _summoner, SpellCategories category, uint spellId) external senderIsSummonerOwner(_summoner) {
         require(SummonerSpellLevels[_summoner][spellId] != 0, "not learnt");
         uint nextTier = SummonerSpellLevels[_summoner][spellId]+1;
-        ISpell.Spell memory spell = ICodexSpells(contractAddress(INavigator.CONTRACT.SPELLS_CODEX)).spell(spellId, nextTier);
-        GameObjects_Stats.Stats memory summed = EquipableUtils.sumStats(spell.requirements.statRequirement, spell.requirements.additionalStatRequirementsPerTier);
+        Spell memory spell = ICodexSpells(contractAddress(INavigator.CONTRACT.SPELLS_CODEX)).spell(spellId, nextTier);
+        Stats memory summed = EquipableUtils.sumStats(spell.requirements.statRequirement, spell.requirements.additionalStatRequirementsPerTier);
 
     }
 
-    function checkClass(GameObjects.Class _summonerClass, ISpell.SpellCategories cat) internal view returns (bool) {
+    function checkClass(Class _summonerClass, SpellCategories cat) internal view returns (bool) {
         bool[11] memory _validSpells = ICodexSpells(contractAddress(INavigator.CONTRACT.SPELLS_CODEX)).classSpells(_summonerClass);
         return _validSpells[uint(cat)];
     }
 
-    function checkAttributes(uint summoner, GameObjects_Stats.Stats memory _spellAttr) internal view returns (bool) {
-        GameObjects_Stats.Stats memory _summonerAttr = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(summoner);
+    function checkAttributes(uint summoner, Stats memory _spellAttr) internal view returns (bool) {
+        Stats memory _summonerAttr = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(summoner);
         return _summonerAttr.STR >= _spellAttr.STR &&
         _summonerAttr.DEX >= _spellAttr.DEX &&
         _summonerAttr.INT >= _spellAttr.INT &&
@@ -57,7 +57,7 @@ contract Spells is Initializable, InitNavigator {
 
     function upgradeSpell(uint summoner, uint spellId) external senderIsSummonerOwner(summoner) {
         require(SummonerSpellLevels[summoner][spellId] > 0, "not");
-        ISpell.Spell memory spell = ICodexSpells(contractAddress(INavigator.CONTRACT.SPELLS_CODEX)).spell(spellId, 1);
+        Spell memory spell = ICodexSpells(contractAddress(INavigator.CONTRACT.SPELLS_CODEX)).spell(spellId, 1);
 
         uint nextTier = SummonerSpellLevels[summoner][spellId];
         uint nextTierCost = spell.learningCost * spell.upgradeCostMultiplier * nextTier;
@@ -70,8 +70,8 @@ contract Spells is Initializable, InitNavigator {
     }
 
     function checkAttributesUpgrade(uint summoner, uint tier,
-        GameObjects_Stats.Stats memory _spellAttr, GameObjects_Stats.Stats memory _perTier) internal view returns (bool) {
-        GameObjects_Stats.Stats memory _summonerAttr = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(summoner);
+        Stats memory _spellAttr, Stats memory _perTier) internal view returns (bool) {
+        Stats memory _summonerAttr = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(summoner);
 
         for (uint i = 1; i <= tier; i++) {
             _spellAttr = EquipableUtils.sumStats(_spellAttr, _perTier);

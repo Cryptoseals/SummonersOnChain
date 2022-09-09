@@ -1,4 +1,4 @@
-import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {Prefix, ElementalAtk, ElementalDef} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexPrefixes {
@@ -7,15 +7,15 @@ contract CodexPrefixes {
     string constant public version = "0.0.1";
 
 
-    function allPrefix(uint tier) external view returns (GameObjects_Equipments.Prefix[] memory){
-        GameObjects_Equipments.Prefix[] memory result = new GameObjects_Equipments.Prefix[](44);
+    function allPrefix(uint tier) external view returns (Prefix[] memory){
+        Prefix[] memory result = new Prefix[](44);
         for (uint i = 0; i < 44; i++) {
             result[i] = prefix(i, tier);
         }
         return result;
     }
 
-    function prefix(uint _id, uint _tier) public pure returns (GameObjects_Equipments.Prefix memory) {
+    function prefix(uint _id, uint _tier) public pure returns (Prefix memory) {
         require(_tier < 21, "?");
         if (_id == 0) {
             return none();
@@ -115,7 +115,7 @@ contract CodexPrefixes {
     }
 
     function baseStr() internal pure returns (uint) {
-        return 14;
+        return 5;
     }
 
     function baseDex() internal pure returns (uint) {
@@ -127,11 +127,11 @@ contract CodexPrefixes {
     }
 
     function baseInt() internal pure returns (uint) {
-        return 15;
+        return 5;
     }
 
     function baseVit() internal pure returns (uint) {
-        return 16;
+        return 5;
     }
 
     function baseLuck() internal pure returns (uint) {
@@ -167,7 +167,7 @@ contract CodexPrefixes {
     }
 
     function baseEleAtk() internal pure returns (uint) {
-        return 3;
+        return 5;
     }
 
     function baseHp() internal pure returns (uint) {
@@ -175,13 +175,13 @@ contract CodexPrefixes {
     }
 
 
-    function none() public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function none() public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "";
         _prefix.difficulty = 1;
     }
 
-    function Berserkers(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Berserkers(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Berserker's";
         _prefix.difficulty = 1;
@@ -191,7 +191,7 @@ contract CodexPrefixes {
         _prefix.generatedStatBonus.P_ATK = baseAtk() * _tier;
     }
 
-    function Wizards(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Wizards(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Wizard's";
         _prefix.difficulty = 1;
@@ -201,7 +201,7 @@ contract CodexPrefixes {
         _prefix.generatedStatBonus.M_ATK = baseAtk() * _tier;
     }
 
-    function Elementalists(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Elementalists(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Elementalist's";
         _prefix.difficulty = 1;
@@ -216,7 +216,7 @@ contract CodexPrefixes {
 
     }
 
-    function Ferocious(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Ferocious(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Ferocious";
         _prefix.difficulty = 2;
@@ -224,7 +224,7 @@ contract CodexPrefixes {
         _prefix.generatedStatBonus.CRIT_MULTIPLIER = baseCritMulti() * _tier;
     }
 
-    function Wicked(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Wicked(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Wicked";
         _prefix.difficulty = 1;
@@ -234,7 +234,7 @@ contract CodexPrefixes {
         _prefix.generatedStatBonus.P_ATK = baseAtk() * _tier;
     }
 
-    function Sharpshooter(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Sharpshooter(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Sharpshooter";
         _prefix.difficulty = 2;
@@ -244,7 +244,7 @@ contract CodexPrefixes {
         _prefix.generatedStatBonus.CRIT = baseCrit() * _tier;
     }
 
-    function Skirmishing(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Skirmishing(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Skirmishing";
         _prefix.difficulty = 1;
@@ -252,7 +252,7 @@ contract CodexPrefixes {
         _prefix.generatedStatBonus.M_ATK = baseAtk() * _tier;
     }
 
-    function Defiant(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Defiant(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Defiant";
         _prefix.difficulty = 1;
@@ -262,7 +262,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.FIRE_DEF = baseEleDef() * _tier;
     }
 
-    function Merciless(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Merciless(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Merciless";
         _prefix.difficulty = 1;
@@ -274,7 +274,7 @@ contract CodexPrefixes {
 
     }
 
-    function Fiery(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Fiery(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Fiery";
         _prefix.difficulty = 1;
@@ -284,7 +284,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.FIRE_DEF = baseEleDef() * _tier;
     }
 
-    function Thunderous(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Thunderous(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Thunderous";
         _prefix.difficulty = 1;
@@ -294,7 +294,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.LIGHTNING_DEF = baseEleDef() * _tier;
     }
 
-    function Holy(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Holy(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Holy";
         _prefix.difficulty = 1;
@@ -304,7 +304,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.HOLY_DEF = baseEleDef() * _tier;
     }
 
-    function Frozen(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Frozen(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Frozen";
         _prefix.difficulty = 1;
@@ -314,7 +314,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.COLD_DEF = baseEleDef() * _tier;
     }
 
-    function Natural(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Natural(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Natural";
         _prefix.difficulty = 2;
@@ -325,7 +325,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.EARTH_DEF = baseEleDef() * _tier;
     }
 
-    function Sacred(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Sacred(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Sacred";
         _prefix.difficulty = 3;
@@ -338,7 +338,7 @@ contract CodexPrefixes {
         _prefix.statBonus.LUCK = baseLuck() * _tier;
     }
 
-    function Eternal(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Eternal(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Eternal";
         _prefix.difficulty = 5;
@@ -348,7 +348,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.VOID_DEF = baseEleDef() * _tier;
     }
 
-    function Devastating(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Devastating(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Devastating ";
         _prefix.difficulty = 3;
@@ -360,7 +360,7 @@ contract CodexPrefixes {
         _prefix.generatedStatBonus.CRIT = baseCrit() * _tier;
     }
 
-    function Forged(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Forged(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Forged";
         _prefix.difficulty = 2;
@@ -372,7 +372,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.FIRE_DEF = baseEleDef() * _tier;
     }
 
-    function Mystical(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Mystical(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Mystical";
         _prefix.difficulty = 2;
@@ -382,7 +382,7 @@ contract CodexPrefixes {
         _prefix.generatedStatBonus.M_ATK = baseAtk() * _tier;
     }
 
-    function Clever(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Clever(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Clever";
         _prefix.difficulty = 2;
@@ -392,7 +392,7 @@ contract CodexPrefixes {
         _prefix.statBonus.INT = baseInt() * _tier;
     }
 
-    function Enormous(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Enormous(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Enormous";
         _prefix.difficulty = 2;
@@ -402,7 +402,7 @@ contract CodexPrefixes {
         _prefix.generatedStatBonus.HP = baseHp() * _tier;
     }
 
-    function Ethereal(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Ethereal(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Ethereal";
         _prefix.difficulty = 3;
@@ -414,7 +414,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.DARK_DEF = baseEleDef() * _tier;
     }
 
-    function Vengeful(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Vengeful(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Vengeful";
         _prefix.difficulty = 2;
@@ -426,7 +426,7 @@ contract CodexPrefixes {
         _prefix.generatedStatBonus.CRIT_MULTIPLIER = baseCritMulti() * _tier;
     }
 
-    function Divine(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Divine(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Divine";
         _prefix.difficulty = 3;
@@ -438,7 +438,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.DARK_DEF = baseEleDef() * _tier;
     }
 
-    function Elusive(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Elusive(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Elusive";
         _prefix.difficulty = 2;
@@ -450,7 +450,7 @@ contract CodexPrefixes {
 
     }
 
-    function Protective(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Protective(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Protective";
         _prefix.difficulty = 3;
@@ -458,7 +458,7 @@ contract CodexPrefixes {
         _prefix.generatedStatBonus.P_DEF = baseDef() * _tier;
         _prefix.generatedStatBonus.M_DEF = baseDef() * _tier;
 
-        _prefix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
+        _prefix.elementalStats.ElementalDef = ElementalDef({
         FIRE_DEF : baseEleDef() * _tier,
         COLD_DEF : baseEleDef() * _tier,
         EARTH_DEF : baseEleDef() * _tier,
@@ -469,14 +469,14 @@ contract CodexPrefixes {
         });
     }
 
-    function Pristine(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Pristine(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Pristine";
         _prefix.difficulty = 3;
         _prefix.statBonus.LUCK = baseLuck() * _tier;
 
 
-        _prefix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
+        _prefix.elementalStats.ElementalDef = ElementalDef({
         FIRE_DEF : baseEleDef() * _tier,
         COLD_DEF : baseEleDef() * _tier,
         EARTH_DEF : baseEleDef() * _tier,
@@ -487,7 +487,7 @@ contract CodexPrefixes {
         });
     }
 
-    function Glacial(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Glacial(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Glacial";
         _prefix.difficulty = 1;
@@ -498,7 +498,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.FIRE_DEF = baseEleDef() * _tier;
     }
 
-    function Rugged(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Rugged(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Rugged";
         _prefix.difficulty = 2;
@@ -508,7 +508,7 @@ contract CodexPrefixes {
         _prefix.generatedStatBonus.DODGE = baseDodge() * _tier;
     }
 
-    function Ruthless(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Ruthless(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Ruthless";
         _prefix.difficulty = 1;
@@ -518,7 +518,7 @@ contract CodexPrefixes {
         _prefix.generatedStatBonus.ACCURACY = baseAcc() * _tier;
     }
 
-    function Lurid(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Lurid(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Lurid";
         _prefix.difficulty = 1;
@@ -528,7 +528,7 @@ contract CodexPrefixes {
         _prefix.generatedStatBonus.DODGE = baseDodge() * _tier;
     }
 
-    function Pastoral(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Pastoral(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Pastoral";
         _prefix.difficulty = 1;
@@ -538,7 +538,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.EARTH_DEF = baseEleDef() * _tier;
     }
 
-    function Supreme(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Supreme(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Supreme";
         _prefix.difficulty = 3;
@@ -546,7 +546,7 @@ contract CodexPrefixes {
         _prefix.statBonus.DEX = baseDex() * _tier;
         _prefix.statBonus.AGI = baseAgi() * _tier;
 
-        _prefix.elementalStats.ElementalDef = GameObjects_Stats.ElementalDef({
+        _prefix.elementalStats.ElementalDef = ElementalDef({
         FIRE_DEF : baseEleDef() * _tier,
         COLD_DEF : baseEleDef() * _tier,
         EARTH_DEF : baseEleDef() * _tier,
@@ -557,7 +557,7 @@ contract CodexPrefixes {
         });
     }
 
-    function Banishing(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Banishing(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Banishing";
         _prefix.difficulty = 3;
@@ -569,7 +569,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.LIGHTNING_DEF = baseEleDef() * _tier;
     }
 
-    function Sharpened(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Sharpened(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Sharpened";
         _prefix.difficulty = 1;
@@ -579,7 +579,7 @@ contract CodexPrefixes {
         _prefix.generatedStatBonus.ACCURACY = baseAcc() * _tier;
     }
 
-    function Obsidian(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Obsidian(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Obsidian";
         _prefix.difficulty = 2;
@@ -589,7 +589,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.FIRE_DEF = baseEleDef() * _tier;
     }
 
-    function Devoted(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Devoted(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Devoted";
         _prefix.difficulty = 2;
@@ -599,7 +599,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.HOLY_DEF = baseEleDef() * _tier;
     }
 
-    function Revival(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Revival(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Revival";
         _prefix.difficulty = 2;
@@ -610,7 +610,7 @@ contract CodexPrefixes {
 
     }
 
-    function Damned(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Damned(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Damned";
         _prefix.difficulty = 3;
@@ -621,7 +621,7 @@ contract CodexPrefixes {
 
     }
 
-    function Unholy(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Unholy(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Unholy";
         _prefix.difficulty = 2;
@@ -631,7 +631,7 @@ contract CodexPrefixes {
         _prefix.elementalStats.ElementalDef.DARK_DEF = baseEleDef() * _tier;
     }
 
-    function Smoky(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Smoky(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Smoky";
         _prefix.difficulty = 2;
@@ -642,7 +642,7 @@ contract CodexPrefixes {
 
     }
 
-    function Shardy(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Shardy(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Shardy";
         _prefix.difficulty = 2;
@@ -653,7 +653,7 @@ contract CodexPrefixes {
 
     }
 
-    function Shiny(uint _tier) public pure returns (GameObjects_Equipments.Prefix memory _prefix) {
+    function Shiny(uint _tier) public pure returns (Prefix memory _prefix) {
         _prefix.isPercentage = true;
         //        _prefix.title = "Shiny";
         _prefix.difficulty = 2;

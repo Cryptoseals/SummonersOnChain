@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, Stats, GeneratedStats,ElementalStats, ElementalAtk, ElementalDef,Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
@@ -41,7 +41,7 @@ contract CodexBootsLight is Initializable {
         BASE_EDEF = _BASE_EDEF;
     }
 
-    function applyTier(GameObjects_Equipments.EquipableItem memory _greaves, uint tier, uint percentage) public view returns (GameObjects_Equipments.EquipableItem memory){
+    function applyTier(EquipableItem memory _greaves, uint tier, uint percentage) public view returns (EquipableItem memory){
         if (tier == 0) return _greaves;
         _greaves.statBonus = EquipableUtils.sumStatsAsTier(_greaves.statBonus, tier * percentage);
         _greaves.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_greaves.generatedStatBonus, (tier) * percentage);
@@ -50,7 +50,7 @@ contract CodexBootsLight is Initializable {
         return _greaves;
     }
 
-    function boots(uint id, uint tier) public view returns (GameObjects_Equipments.EquipableItem memory) {
+    function boots(uint id, uint tier) public view returns (EquipableItem memory) {
         require(tier < 10, "t");
 
         if (id == 43) {
@@ -100,9 +100,9 @@ contract CodexBootsLight is Initializable {
         revert("?hm");
     }
 
-    function SoldiersSlipper(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function SoldiersSlipper(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 43;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
 
         // requirements here
@@ -114,7 +114,7 @@ contract CodexBootsLight is Initializable {
         // }
         _grieves.requirement.classRequirement = classRequirement();
 
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -129,13 +129,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(0);
     }
 
-    function PriestsSlipper(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function PriestsSlipper(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 44;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 3;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -148,13 +148,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(1);
     }
 
-    function FaithSlipper(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function FaithSlipper(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 45;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 8;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -167,13 +167,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(2);
     }
 
-    function TraineesSlipper(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function TraineesSlipper(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 46;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 13;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -186,13 +186,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(3);
     }
 
-    function MagiciansSlipper(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function MagiciansSlipper(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 47;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 18;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -205,13 +205,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(4);
     }
 
-    function SealedSandals(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function SealedSandals(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 48;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 23;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -224,13 +224,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(5);
     }
 
-    function GateKeepersSandals(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function GateKeepersSandals(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 49;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 28;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -243,13 +243,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(6);
     }
 
-    function ElementalistsSandals(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function ElementalistsSandals(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 50;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 33;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -262,13 +262,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(7);
     }
 
-    function AlcemistsSandals(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function AlcemistsSandals(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 51;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 38;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -281,13 +281,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(8);
     }
 
-    function ArchmagesSandals(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function ArchmagesSandals(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 52;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 43;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -300,13 +300,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(9);
     }
 
-    function ElvenShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function ElvenShoes(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 53;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 48;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -319,13 +319,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(10);
     }
 
-    function ChosensShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function ChosensShoes(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 54;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 53;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -338,13 +338,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(11);
     }
 
-    function ProphetsShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function ProphetsShoes(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 55;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 58;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -357,13 +357,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(12);
     }
 
-    function EldersShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function EldersShoes(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 56;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 63;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -376,13 +376,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(13);
     }
 
-    function AncientShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function AncientShoes(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 57;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 68;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -395,13 +395,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(14);
     }
 
-    function MoonlightShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function MoonlightShoes(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 58;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 73;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -414,13 +414,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(15);
     }
 
-    function SunlightShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function SunlightShoes(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 59;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 78;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -433,13 +433,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(16);
     }
 
-    function CycleShoes(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function CycleShoes(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 60;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 83;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -452,13 +452,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(17);
     }
 
-    function DemonicBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function DemonicBoots(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 61;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 88;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -471,13 +471,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(18);
     }
 
-    function AngelicBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function AngelicBoots(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 62;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 93;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -490,13 +490,13 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(19);
     }
 
-    function EternalBoots(uint tier) public view returns (GameObjects_Equipments.EquipableItem memory _grieves) {
+    function EternalBoots(uint tier) public view returns (EquipableItem memory _grieves) {
         _grieves.metadata.id = 63;
-        _grieves.metadata.baseType = GameObjects.ItemType.BOOTS;
+        _grieves.metadata.baseType = ItemType.BOOTS;
         _grieves.metadata.upgradable = true;
         _grieves.requirement.level = 98;
         _grieves.requirement.classRequirement = classRequirement();
-        //        _grieves.requirement.statRequirement = GameObjects.Stats({
+        //        _grieves.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -509,8 +509,8 @@ contract CodexBootsLight is Initializable {
         _grieves.elementalStats.ElementalDef = armorEle(20);
     }
 
-    function armorStats(uint index) internal view returns (GameObjects_Stats.Stats memory) {
-        GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
+    function armorStats(uint index) internal view returns (Stats memory) {
+        Stats memory stats = Stats({
         STR : BASE_STR[index],
         DEX : BASE_DEX[index],
         AGI : BASE_AGI[index],
@@ -520,13 +520,13 @@ contract CodexBootsLight is Initializable {
         return stats;
     }
 
-    function armorEle(uint index) internal view returns (GameObjects_Stats.ElementalDef memory) {
-        GameObjects_Stats.ElementalDef memory stats = GameObjects_Stats.ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
+    function armorEle(uint index) internal view returns (ElementalDef memory) {
+        ElementalDef memory stats = ElementalDef({FIRE_DEF : BASE_MDEF[index], EARTH_DEF : BASE_MDEF[index], COLD_DEF : BASE_MDEF[index], LIGHTNING_DEF : BASE_MDEF[index], DARK_DEF : BASE_MDEF[index], HOLY_DEF : BASE_MDEF[index], VOID_DEF : 0});
         return stats;
     }
 
-    function armorGenStats(uint index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
-        GameObjects_Stats.GeneratedStats memory stats = GameObjects_Stats.GeneratedStats({
+    function armorGenStats(uint index) internal view returns (GeneratedStats memory) {
+        GeneratedStats memory stats = GeneratedStats({
         HP : BASE_HP[index],
         P_ATK : 0,
         M_ATK : 0,
@@ -541,11 +541,11 @@ contract CodexBootsLight is Initializable {
         return stats;
     }
 
-    function classRequirement() internal view returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](3);
-        _reqClass[0] = GameObjects.Class.Wizard;
-        _reqClass[1] = GameObjects.Class.Priest;
-        _reqClass[2] = GameObjects.Class.Necromancer;
+    function classRequirement() internal view returns (Class[] memory) {
+        Class[] memory _reqClass = new Class[](3);
+        _reqClass[0] = Class.Wizard;
+        _reqClass[1] = Class.Priest;
+        _reqClass[2] = Class.Necromancer;
         return _reqClass;
     }
 }

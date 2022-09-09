@@ -9,15 +9,15 @@ contract CodexLands {
     string constant public class = "Lands";
     string constant public version = "0.0.1";
     uint constant public indexOfGrownAnimals = 10000;
-    uint constant public maxLandLevel = 5;
-    uint constant public maxPoultryLevel = 5;
-    uint constant public maxBarnLevel = 5;
-    uint constant public maxStorageLevel = 5;
-    uint constant public maxMillLevel = 5;
-    uint constant public maxFarmLevel = 5;
-    uint constant public maxWaterLevel = 5;
-    uint constant public maxSlaughterhouseLevel = 5;
-    uint constant public maxDairyLevel = 5;
+    uint constant public maxLandLevel = 10;
+    uint constant public maxPoultryLevel = 10;
+    uint constant public maxBarnLevel = 10;
+    uint constant public maxStorageLevel = 10;
+    uint constant public maxMillLevel = 10;
+    uint constant public maxFarmLevel = 10;
+    uint constant public maxWaterLevel = 10;
+    uint constant public maxSlaughterhouseLevel = 10;
+    uint constant public maxDairyLevel = 10;
 
     // utils
     function generateRequirement(uint length) internal pure returns (ILand.GeneralRequirement[] memory){
@@ -86,7 +86,7 @@ contract CodexLands {
         require(tier > 0 && tier <= maxFarmLevel, "t");
         _farm.building.level = tier;
         _farm.building.maxLevel = maxFarmLevel;
-        _farm.building.bonusChance = 3 + (tier * 2);
+        _farm.building.bonusChance = 5 + (tier * 2);
         if (tier != maxFarmLevel) {
             _farm.building.upgradeReqs = farmBuilding(tier + 1);
         }
@@ -145,8 +145,7 @@ contract CodexLands {
         //        _reqs.requiredAlchemyItems[0].amount = 100;
         if (tier == 1) {
 
-        }
-        else if (tier == 2) {
+        } else if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -183,6 +182,56 @@ contract CodexLands {
             _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 6) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 7) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 8) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 9) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 10) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -195,8 +244,7 @@ contract CodexLands {
 
         if (tier == 1) {
 
-        }
-        else if (tier == 2) {
+        } else if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -233,6 +281,56 @@ contract CodexLands {
             _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 6) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 7) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 8) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 9) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 10) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -245,8 +343,7 @@ contract CodexLands {
 
         if (tier == 1) {
 
-        }
-        else if (tier == 2) {
+        } else if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -283,6 +380,56 @@ contract CodexLands {
             _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 6) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 7) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 8) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 9) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 10) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -293,6 +440,8 @@ contract CodexLands {
         _reqs.isValid = true;
 
         if (tier == 1) {
+
+        } else if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -300,9 +449,9 @@ contract CodexLands {
             _reqs.requiredMaterials[1].amount = 10;
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
-
         }
-        else if (tier == 2) {
+
+        else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.SOFT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
@@ -312,7 +461,7 @@ contract CodexLands {
             _reqs.requiredMaterials[2].amount = 10;
         }
 
-        else if (tier == 3) {
+        else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.AGED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
@@ -322,7 +471,7 @@ contract CodexLands {
             _reqs.requiredMaterials[2].amount = 10;
         }
 
-        else if (tier == 4) {
+        else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.HARD_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
@@ -332,13 +481,53 @@ contract CodexLands {
             _reqs.requiredMaterials[2].amount = 10;
         }
 
-        else if (tier == 5) {
+        else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 7) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 8) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 9) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 10) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -350,8 +539,7 @@ contract CodexLands {
 
         if (tier == 1) {
 
-        }
-        else if (tier == 2) {
+        } else if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -388,6 +576,56 @@ contract CodexLands {
             _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 6) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 7) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 8) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 9) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 10) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -399,8 +637,7 @@ contract CodexLands {
 
         if (tier == 1) {
 
-        }
-        else if (tier == 2) {
+        } else if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -437,6 +674,56 @@ contract CodexLands {
             _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 6) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 7) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 8) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 9) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 10) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -448,8 +735,7 @@ contract CodexLands {
 
         if (tier == 1) {
 
-        }
-        else if (tier == 2) {
+        } else if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -486,6 +772,56 @@ contract CodexLands {
             _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 6) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 7) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 8) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 9) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 10) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -497,8 +833,7 @@ contract CodexLands {
 
         if (tier == 1) {
 
-        }
-        else if (tier == 2) {
+        } else if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -536,10 +871,59 @@ contract CodexLands {
             _reqs.requiredMaterials[1].amount = 10;
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 6) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 7) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 8) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 9) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 10) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
         }
-
     }
 
     function dairiesBuilding(uint tier) public view returns (ILand.BuildingRequirement memory _reqs){
@@ -547,8 +931,7 @@ contract CodexLands {
 
         if (tier == 1) {
 
-        }
-        else if (tier == 2) {
+        } else if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -585,6 +968,56 @@ contract CodexLands {
             _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
             _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 6) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 7) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 8) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 9) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].amount = 10;
+        }
+
+        else if (tier == 10) {
+            _reqs.requiredMaterials = generateRequirement(3);
+            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].amount = 10;
+            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].amount = 10;
+            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -617,62 +1050,80 @@ contract CodexLands {
         } else if (_id == 7) {
             return Shadowberry();
         } else if (_id == 8) {
-            return Mistyflower();
+            return Raptorherb();
         } else if (_id == 9) {
-            return Mana_Mushroom();
+            return Dragonherb();
         } else if (_id == 10) {
-            return Demon_Mushroom();
+            return Shadowflower();
         } else if (_id == 11) {
-            return Raindrop_Mushroom();
+            return Mistyflower();
         } else if (_id == 12) {
-            return Bloodberry();
+            return Green_Poisonous_Mushroom();
         } else if (_id == 13) {
-            return King_Flower();
+            return Red_Poisonous_Mushroom();
         } else if (_id == 14) {
-            return Ancient_Flower();
+            return Mana_Mushroom();
         } else if (_id == 15) {
-            return Fellherb();
+            return Demon_Mushroom();
         } else if (_id == 16) {
-            return Wild_Rose();
+            return Raindrop_Mushroom();
         } else if (_id == 17) {
-            return Red_Rose();
+            return Bloodberry();
         } else if (_id == 18) {
-            return Dragon_Flower();
+            return King_Flower();
         } else if (_id == 19) {
-            return Apple();
-        } else if (_id == 20) {
-            return Carrot();
+            return Wood_Moss();
+        }  else if (_id == 20) {
+            return Ancient_Flower();
         } else if (_id == 21) {
-            return Cabbage();
+            return Fellherb();
         } else if (_id == 22) {
-            return Bell_Pepper();
+            return Wild_Rose();
         } else if (_id == 23) {
-            return Chili_Pepper();
+            return Red_Rose();
         } else if (_id == 24) {
-            return Tomato();
+            return Dragon_Flower();
         } else if (_id == 25) {
-            return Onion();
+            return Golden_Flower();
         } else if (_id == 26) {
-            return Corn();
-        } else if (_id == 27) {
-            return Mushroom();
+            return Stinky_Flower();
+        }  else if (_id == 27) {
+            return Apple();
         } else if (_id == 28) {
-            return Turnip();
+            return Carrot();
         } else if (_id == 29) {
-            return Grapes();
+            return Cabbage();
         } else if (_id == 30) {
-            return Black_Grapes();
+            return Bell_Pepper();
         } else if (_id == 31) {
-            return Red_Grapes();
+            return Chili_Pepper();
         } else if (_id == 32) {
-            return Strawberry();
+            return Tomato();
         } else if (_id == 33) {
-            return Cherry();
+            return Onion();
         } else if (_id == 34) {
-            return Cacao();
+            return Corn();
         } else if (_id == 35) {
-            return Banana();
+            return Mushroom();
         } else if (_id == 36) {
+            return Turnip();
+        } else if (_id == 37) {
+            return Grapes();
+        } else if (_id == 38) {
+            return Black_Grapes();
+        } else if (_id == 39) {
+            return Red_Grapes();
+        } else if (_id == 40) {
+            return Strawberry();
+        } else if (_id == 41) {
+            return Cherry();
+        } else if (_id == 42) {
+            return Cacao();
+        } else if (_id == 43) {
+            return Banana();
+        } else if (_id == 44) {
+            return Potato();
+        } else if (_id == 45) {
             return Wheat();
         }
         revert("wrong");
@@ -704,7 +1155,6 @@ contract CodexLands {
         } else if (_id == 8) {
             return Poult();
         }
-
         revert("wrong");
     }
 
@@ -737,8 +1187,6 @@ contract CodexLands {
 
         revert("wrong");
     }
-
-
 
     // baby animals
     function Lamb() public pure returns (AnimalsL.BabyAnimal memory _animal) {
@@ -842,7 +1290,6 @@ contract CodexLands {
         _animal.harvestOnKill.cookingItems[1].id = ICookingItem.List.Steak;
         _animal.harvestOnKill.cookingItems[1].amount = 1;
     }
-
 
     function Goat() public pure returns (AnimalsL.GrownAnimal memory _animal) {
         _animal.animalId = 2 + indexOfGrownAnimals;
@@ -970,7 +1417,7 @@ contract CodexLands {
     // seeds
     function Dill() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 1;
-        _seed.growTime = 8 hours;
+        _seed.growTime = 6 hours;
         // reward IAlchemyItem.List.Dill,
         _seed.buyPrice = 1e18;
         //@param id is alchemy item id
@@ -995,7 +1442,7 @@ contract CodexLands {
 
     function Basilicum() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 3;
-        _seed.growTime = 8 hours;
+        _seed.growTime = 12 hours;
         _seed.buyPrice = 1e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Basilicum;
         _seed.alchemyReward.min = 1;
@@ -1006,7 +1453,7 @@ contract CodexLands {
 
     function Manaflower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 4;
-        _seed.growTime = 8 hours;
+        _seed.growTime = 10 hours;
         _seed.buyPrice = 1e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Manaflower;
         _seed.alchemyReward.min = 1;
@@ -1028,7 +1475,7 @@ contract CodexLands {
 
     function Parsley() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 6;
-        _seed.growTime = 8 hours;
+        _seed.growTime = 6 hours;
         _seed.buyPrice = 1e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Parsley;
         _seed.alchemyReward.min = 1;
@@ -1039,9 +1486,42 @@ contract CodexLands {
 
     function Shadowberry() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 7;
-        _seed.growTime = 8 hours;
+        _seed.growTime = 12 hours;
         _seed.buyPrice = 1e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Shadowberry;
+        _seed.alchemyReward.min = 1;
+        _seed.alchemyReward.max = 2;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Raptorherb() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 16;
+        _seed.growTime = 16 hours;
+        _seed.buyPrice = 1e18;
+        _seed.alchemyReward.id = IAlchemyItem.List.Raptorherb;
+        _seed.alchemyReward.min = 2;
+        _seed.alchemyReward.max = 4;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Dragonherb() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 9;
+        _seed.growTime = 8 hours;
+        _seed.buyPrice = 1e18;
+        _seed.alchemyReward.id = IAlchemyItem.List.Dragonherb;
+        _seed.alchemyReward.min = 1;
+        _seed.alchemyReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Shadowflower() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 10;
+        _seed.growTime = 18 hours;
+        _seed.buyPrice = 1e18;
+        _seed.alchemyReward.id = IAlchemyItem.List.Shadowflower;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
         _seed.landExpReward = 100;
@@ -1049,10 +1529,32 @@ contract CodexLands {
     }
 
     function Mistyflower() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 8;
+        _seed.id = 11;
         _seed.growTime = 8 hours;
         _seed.buyPrice = 1e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Mistyflower;
+        _seed.alchemyReward.min = 2;
+        _seed.alchemyReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Green_Poisonous_Mushroom() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 12;
+        _seed.growTime = 6 hours;
+        _seed.buyPrice = 1e18;
+        _seed.alchemyReward.id = IAlchemyItem.List.Green_Poisonous_Mushroom;
+        _seed.alchemyReward.min = 1;
+        _seed.alchemyReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Red_Poisonous_Mushroom() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 13;
+        _seed.growTime = 6 hours;
+        _seed.buyPrice = 1e18;
+        _seed.alchemyReward.id = IAlchemyItem.List.Red_Poisonous_Mushroom;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
         _seed.landExpReward = 100;
@@ -1060,8 +1562,8 @@ contract CodexLands {
     }
 
     function Mana_Mushroom() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 9;
-        _seed.growTime = 8 hours;
+        _seed.id = 14;
+        _seed.growTime = 16 hours;
         _seed.buyPrice = 1e18;
 
         _seed.alchemyReward.id = IAlchemyItem.List.Mana_Mushroom;
@@ -1072,20 +1574,20 @@ contract CodexLands {
     }
 
     function Demon_Mushroom() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 10;
-        _seed.growTime = 8 hours;
+        _seed.id = 15;
+        _seed.growTime = 16 hours;
         _seed.buyPrice = 1e18;
 
         _seed.alchemyReward.id = IAlchemyItem.List.Demon_Mushroom;
-        _seed.alchemyReward.min = 1;
-        _seed.alchemyReward.max = 3;
+        _seed.alchemyReward.min = 2;
+        _seed.alchemyReward.max = 4;
         _seed.landExpReward = 100;
         _seed.requiredLandExperience = 0;
     }
 
     function Raindrop_Mushroom() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 11;
-        _seed.growTime = 8 hours;
+        _seed.id = 16;
+        _seed.growTime = 16 hours;
         _seed.buyPrice = 1e18;
 
         _seed.alchemyReward.id = IAlchemyItem.List.Raindrop_Mushroom;
@@ -1096,7 +1598,7 @@ contract CodexLands {
     }
 
     function Bloodberry() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 12;
+        _seed.id = 17;
         _seed.growTime = 8 hours;
         _seed.buyPrice = 1e18;
 
@@ -1108,7 +1610,7 @@ contract CodexLands {
     }
 
     function King_Flower() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 13;
+        _seed.id = 18;
         _seed.growTime = 8 hours;
         _seed.buyPrice = 1e18;
 
@@ -1119,21 +1621,33 @@ contract CodexLands {
         _seed.requiredLandExperience = 0;
     }
 
-    function Ancient_Flower() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 14;
-        _seed.growTime = 8 hours;
+    function Wood_Moss() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 19;
+        _seed.growTime = 6 hours;
         _seed.buyPrice = 1e18;
 
-        _seed.alchemyReward.id = IAlchemyItem.List.Ancient_Flower;
-        _seed.alchemyReward.min = 1;
+        _seed.alchemyReward.id = IAlchemyItem.List.Wood_Moss;
+        _seed.alchemyReward.min = 2;
         _seed.alchemyReward.max = 3;
         _seed.landExpReward = 100;
         _seed.requiredLandExperience = 0;
     }
 
+    function Ancient_Flower() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 20;
+        _seed.growTime = 12 hours;
+        _seed.buyPrice = 1e18;
+
+        _seed.alchemyReward.id = IAlchemyItem.List.Ancient_Flower;
+        _seed.alchemyReward.min = 1;
+        _seed.alchemyReward.max = 2;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
     function Fellherb() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 15;
-        _seed.growTime = 8 hours;
+        _seed.id = 21;
+        _seed.growTime = 12 hours;
         _seed.buyPrice = 1e18;
 
         _seed.alchemyReward.id = IAlchemyItem.List.Fellherb;
@@ -1144,8 +1658,8 @@ contract CodexLands {
     }
 
     function Wild_Rose() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 16;
-        _seed.growTime = 8 hours;
+        _seed.id = 22;
+        _seed.growTime = 6 hours;
         _seed.buyPrice = 1e18;
 
         _seed.alchemyReward.id = IAlchemyItem.List.Wild_Rose;
@@ -1156,7 +1670,7 @@ contract CodexLands {
     }
 
     function Red_Rose() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 17;
+        _seed.id = 23;
         _seed.growTime = 8 hours;
         _seed.buyPrice = 1e18;
 
@@ -1168,7 +1682,7 @@ contract CodexLands {
     }
 
     function Dragon_Flower() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 18;
+        _seed.id = 24;
         _seed.growTime = 8 hours;
         _seed.buyPrice = 1e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Dragon_Flower;
@@ -1179,7 +1693,7 @@ contract CodexLands {
     }
 
     function Golden_Flower() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 19;
+        _seed.id = 25;
         _seed.growTime = 8 hours;
         _seed.buyPrice = 1e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Golden_Flower;
@@ -1189,8 +1703,19 @@ contract CodexLands {
         _seed.requiredLandExperience = 0;
     }
 
+    function Stinky_Flower() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 26;
+        _seed.growTime = 6 hours;
+        _seed.buyPrice = 1e18;
+        _seed.alchemyReward.id = IAlchemyItem.List.Stinky_Flower;
+        _seed.alchemyReward.min = 2;
+        _seed.alchemyReward.max = 3;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
     function Apple() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 20;
+        _seed.id = 27;
         _seed.growTime = 8 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Apple;
@@ -1201,8 +1726,8 @@ contract CodexLands {
     }
 
     function Carrot() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 21;
-        _seed.growTime = 8 hours;
+        _seed.id = 28;
+        _seed.growTime = 18 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Carrot;
         _seed.cookingReward.min = 1;
@@ -1212,8 +1737,8 @@ contract CodexLands {
     }
 
     function Cabbage() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 22;
-        _seed.growTime = 8 hours;
+        _seed.id = 29;
+        _seed.growTime = 18 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Cabbage;
         _seed.cookingReward.min = 1;
@@ -1223,8 +1748,8 @@ contract CodexLands {
     }
 
     function Bell_Pepper() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 23;
-        _seed.growTime = 8 hours;
+        _seed.id = 30;
+        _seed.growTime = 12 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Bell_Pepper;
         _seed.cookingReward.min = 1;
@@ -1234,8 +1759,8 @@ contract CodexLands {
     }
 
     function Chili_Pepper() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 24;
-        _seed.growTime = 8 hours;
+        _seed.id = 31;
+        _seed.growTime = 12 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Chili_Pepper;
         _seed.cookingReward.min = 1;
@@ -1245,8 +1770,8 @@ contract CodexLands {
     }
 
     function Tomato() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 25;
-        _seed.growTime = 8 hours;
+        _seed.id = 32;
+        _seed.growTime = 12 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Tomato;
         _seed.cookingReward.min = 1;
@@ -1256,7 +1781,7 @@ contract CodexLands {
     }
 
     function Onion() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 26;
+        _seed.id = 33;
         _seed.growTime = 8 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Onion;
@@ -1267,7 +1792,7 @@ contract CodexLands {
     }
 
     function Corn() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 27;
+        _seed.id = 34;
         _seed.growTime = 8 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Corn;
@@ -1278,41 +1803,41 @@ contract CodexLands {
     }
 
     function Mushroom() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 28;
-        _seed.growTime = 8 hours;
+        _seed.id = 35;
+        _seed.growTime = 18 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Mushroom;
         _seed.cookingReward.min = 1;
-        _seed.cookingReward.max = 3;
+        _seed.cookingReward.max = 2;
         _seed.landExpReward = 100;
         _seed.requiredLandExperience = 0;
     }
 
     function Turnip() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 29;
-        _seed.growTime = 8 hours;
+        _seed.id = 36;
+        _seed.growTime = 24 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Turnip;
         _seed.cookingReward.min = 1;
-        _seed.cookingReward.max = 3;
+        _seed.cookingReward.max = 2;
         _seed.landExpReward = 100;
         _seed.requiredLandExperience = 0;
     }
 
     function Grapes() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 30;
-        _seed.growTime = 8 hours;
+        _seed.id = 37;
+        _seed.growTime = 24 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Grapes;
         _seed.cookingReward.min = 1;
-        _seed.cookingReward.max = 3;
+        _seed.cookingReward.max = 2;
         _seed.landExpReward = 100;
         _seed.requiredLandExperience = 0;
     }
 
     function Black_Grapes() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 31;
-        _seed.growTime = 8 hours;
+        _seed.id = 38;
+        _seed.growTime = 12 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Black_Grapes;
         _seed.cookingReward.min = 1;
@@ -1322,8 +1847,8 @@ contract CodexLands {
     }
 
     function Red_Grapes() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 32;
-        _seed.growTime = 8 hours;
+        _seed.id = 39;
+        _seed.growTime = 12 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Red_Grapes;
         _seed.cookingReward.min = 1;
@@ -1333,8 +1858,8 @@ contract CodexLands {
     }
 
     function Strawberry() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 33;
-        _seed.growTime = 8 hours;
+        _seed.id = 40;
+        _seed.growTime = 12 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Strawberry;
         _seed.cookingReward.min = 1;
@@ -1344,32 +1869,43 @@ contract CodexLands {
     }
 
     function Cherry() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 34;
-        _seed.growTime = 8 hours;
+        _seed.id = 41;
+        _seed.growTime = 24 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Cherry;
         _seed.cookingReward.min = 1;
-        _seed.cookingReward.max = 3;
+        _seed.cookingReward.max = 2;
         _seed.landExpReward = 100;
         _seed.requiredLandExperience = 0;
     }
 
     function Cacao() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 35;
-        _seed.growTime = 8 hours;
+        _seed.id = 42;
+        _seed.growTime = 20 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Cacao;
         _seed.cookingReward.min = 1;
-        _seed.cookingReward.max = 3;
+        _seed.cookingReward.max = 2;
         _seed.landExpReward = 100;
         _seed.requiredLandExperience = 0;
     }
 
     function Banana() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 36;
-        _seed.growTime = 8 hours;
+        _seed.id = 43;
+        _seed.growTime = 24 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Banana;
+        _seed.cookingReward.min = 1;
+        _seed.cookingReward.max = 2;
+        _seed.landExpReward = 100;
+        _seed.requiredLandExperience = 0;
+    }
+
+    function Potato() public pure returns (ILand.Seed memory _seed) {
+        _seed.id = 44;
+        _seed.growTime = 20 hours;
+        _seed.buyPrice = 1e18;
+        _seed.cookingReward.id = ICookingItem.List.Potato;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 3;
         _seed.landExpReward = 100;
@@ -1377,7 +1913,7 @@ contract CodexLands {
     }
 
     function Wheat() public pure returns (ILand.Seed memory _seed) {
-        _seed.id = 37;
+        _seed.id = 45;
         _seed.growTime = 8 hours;
         _seed.buyPrice = 1e18;
         _seed.cookingReward.id = ICookingItem.List.Wheat;
@@ -1386,5 +1922,4 @@ contract CodexLands {
         _seed.landExpReward = 100;
         _seed.requiredLandExperience = 0;
     }
-
 }

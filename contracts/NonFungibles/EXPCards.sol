@@ -2,7 +2,6 @@ import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Ini
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {ERC1155Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
 import {ISummoners, INavigator, InitNavigator} from "../Core/Navigator/InitNavigator.sol";
-import {GameObjects} from "../Interfaces/GameObjects/IGameObjects.sol";
 import {EXPCardLib} from "../Interfaces/NonFungibles/EXP/EXPCardLib.sol";
 
 pragma solidity ^0.8.0;

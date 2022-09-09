@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, ElementalAtk, ElementalDef,Class, Weapon, Stats, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexAxes is Initializable {
@@ -32,7 +32,7 @@ contract CodexAxes is Initializable {
     }
 
 
-    function weapon(uint id, uint tier) public view returns (GameObjects_Equipments.Weapon memory) {
+    function weapon(uint id, uint tier) public view returns (Weapon memory) {
         require(tier < 10, "t");
 
         if (id == 64) {
@@ -82,7 +82,7 @@ contract CodexAxes is Initializable {
         revert("?a");
     }
 
-    function applyTier(GameObjects_Equipments.Weapon memory weapon, uint tier, uint percentage) public view returns (GameObjects_Equipments.Weapon memory){
+    function applyTier(Weapon memory weapon, uint tier, uint percentage) public view returns (Weapon memory){
         if (tier == 0) return weapon;
         weapon.statBonus = EquipableUtils.sumStatsAsTier(weapon.statBonus, tier * percentage);
         weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(weapon.generatedStatBonus, (tier) * percentage);
@@ -90,9 +90,9 @@ contract CodexAxes is Initializable {
         return weapon;
     }
 
-    function WoodenAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function WoodenAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 64;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
 
         // requirements here
@@ -105,7 +105,7 @@ contract CodexAxes is Initializable {
         _weapon.requirement.classRequirement = classRequirement();
 
 
-        //        _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        //        _weapon.requirement.statRequirement = Stats({
         //        STR : 0,
         //        DEX : 0,
         //        AGI : 0,
@@ -120,13 +120,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(0);
     }
 
-    function HandAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function HandAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 65;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 5;
         _weapon.requirement.classRequirement = classRequirement();
-        // _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        // _weapon.requirement.statRequirement = Stats({
         // STR : 0,
         // DEX : 0,
         //  AGI : 0,
@@ -137,13 +137,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(1);
     }
 
-    function Pickaxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function Pickaxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 66;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 10;
         _weapon.requirement.classRequirement = classRequirement();
-        //  _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        //  _weapon.requirement.statRequirement = Stats({
         //   STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -154,13 +154,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(2);
     }
 
-    function SkullAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function SkullAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 67;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 15;
         _weapon.requirement.classRequirement = classRequirement();
-        //  _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        //  _weapon.requirement.statRequirement = Stats({
         //  STR : 0,
         //  DEX : 0,
         //   AGI : 0,
@@ -171,13 +171,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(3);
     }
 
-    function BattleAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function BattleAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 68;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 20;
         _weapon.requirement.classRequirement = classRequirement();
-        //   _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        //   _weapon.requirement.statRequirement = Stats({
         //   STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -188,13 +188,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(4);
     }
 
-    function SilverAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function SilverAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 69;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 25;
         _weapon.requirement.classRequirement = classRequirement();
-        //   _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        //   _weapon.requirement.statRequirement = Stats({
         //   STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -205,13 +205,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(5);
     }
 
-    function BerserkersAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function BerserkersAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 70;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 30;
         _weapon.requirement.classRequirement = classRequirement();
-        //   _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        //   _weapon.requirement.statRequirement = Stats({
         //   STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -222,13 +222,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(6);
     }
 
-    function VerdantAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function VerdantAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 71;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 35;
         _weapon.requirement.classRequirement = classRequirement();
-        //   _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        //   _weapon.requirement.statRequirement = Stats({
         //   STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -239,13 +239,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(7);
     }
 
-    function WarlordsAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function WarlordsAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 72;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 40;
         _weapon.requirement.classRequirement = classRequirement();
-        //   _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        //   _weapon.requirement.statRequirement = Stats({
         //   STR : 0,
         //   DEX : 0,
         //   AGI : 0,
@@ -256,13 +256,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(8);
     }
 
-    function CrescentAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function CrescentAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 73;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 45;
         _weapon.requirement.classRequirement = classRequirement();
-        //  _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        //  _weapon.requirement.statRequirement = Stats({
         //  STR : 0,
         //  DEX : 0,
         //  AGI : 0,
@@ -273,13 +273,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(9);
     }
 
-    function AxeOfMoonlight(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function AxeOfMoonlight(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 74;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 50;
         _weapon.requirement.classRequirement = classRequirement();
-        // _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        // _weapon.requirement.statRequirement = Stats({
         // STR : 0,
         // DEX : 0,
         //  AGI : 0,
@@ -290,13 +290,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(10);
     }
 
-    function AxeOfSunlight(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function AxeOfSunlight(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 75;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 55;
         _weapon.requirement.classRequirement = classRequirement();
-        // _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        // _weapon.requirement.statRequirement = Stats({
         // STR : 0,
         // DEX : 0,
         // AGI : 0,
@@ -307,13 +307,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(11);
     }
 
-    function CycleAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function CycleAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 76;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 60;
         _weapon.requirement.classRequirement = classRequirement();
-        //  _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        //  _weapon.requirement.statRequirement = Stats({
         // STR : 0,
         //  DEX : 0,
         //  AGI : 0,
@@ -324,13 +324,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(12);
     }
 
-    function PhantasmalAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function PhantasmalAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 77;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 65;
         _weapon.requirement.classRequirement = classRequirement();
-        // _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        // _weapon.requirement.statRequirement = Stats({
         // STR : 0,
         //  DEX : 0,
         //  AGI : 0,
@@ -341,13 +341,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(13);
     }
 
-    function EmeraldAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function EmeraldAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 78;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 70;
         _weapon.requirement.classRequirement = classRequirement();
-        //  _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        //  _weapon.requirement.statRequirement = Stats({
         //  STR : 0,
         //  DEX : 0,
         //  AGI : 0,
@@ -358,13 +358,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(14);
     }
 
-    function LuminescentAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function LuminescentAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 79;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 75;
         _weapon.requirement.classRequirement = classRequirement();
-        //  _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        //  _weapon.requirement.statRequirement = Stats({
         //  STR : 0,
         //  DEX : 0,
         //  AGI : 0,
@@ -375,13 +375,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(15);
     }
 
-    function EldersAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function EldersAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 80;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 80;
         _weapon.requirement.classRequirement = classRequirement();
-        //  _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        //  _weapon.requirement.statRequirement = Stats({
         //  STR : 0,
         //  DEX : 0,
         //  AGI : 0,
@@ -392,13 +392,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(16);
     }
 
-    function FallenOrdersAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function FallenOrdersAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 81;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 85;
         _weapon.requirement.classRequirement = classRequirement();
-        //  _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        //  _weapon.requirement.statRequirement = Stats({
         //  STR : 0,
         //   DEX : 0,
         //  AGI : 0,
@@ -409,13 +409,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(17);
     }
 
-    function IncursionAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function IncursionAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 82;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 90;
         _weapon.requirement.classRequirement = classRequirement();
-        //  _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        //  _weapon.requirement.statRequirement = Stats({
         //  STR : 0,
         //  DEX : 0,
         //   AGI : 0,
@@ -426,13 +426,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(18);
     }
 
-    function TotemicAxe(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function TotemicAxe(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 83;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 95;
         _weapon.requirement.classRequirement = classRequirement();
-        // _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        // _weapon.requirement.statRequirement = Stats({
         // STR : 0,
         //  DEX : 0,
         //  AGI : 0,
@@ -443,13 +443,13 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(19);
     }
 
-    function Blooddrinker(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function Blooddrinker(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 84;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 100;
         _weapon.requirement.classRequirement = classRequirement();
-        // _weapon.requirement.statRequirement = GameObjects_Stats.Stats({
+        // _weapon.requirement.statRequirement = Stats({
         //  STR : 0,
         //  DEX : 0,
         //  AGI : 0,
@@ -460,8 +460,8 @@ contract CodexAxes is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(20);
     }
 
-    function weaponStats(uint index) internal view returns (GameObjects_Stats.Stats memory) {
-        GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
+    function weaponStats(uint index) internal view returns (Stats memory) {
+        Stats memory stats = Stats({
         STR : BASE_STR[index],
         DEX : BASE_DEX[index],
         AGI : BASE_AGI[index],
@@ -471,8 +471,8 @@ contract CodexAxes is Initializable {
         return stats;
     }
 
-    function weaponGenStats(uint index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
-        GameObjects_Stats.GeneratedStats memory stats = GameObjects_Stats.GeneratedStats({
+    function weaponGenStats(uint index) internal view returns (GeneratedStats memory) {
+        GeneratedStats memory stats = GeneratedStats({
         HP : 0,
         P_ATK : BASE_ATK[index],
         M_ATK : 0,
@@ -488,11 +488,11 @@ contract CodexAxes is Initializable {
     }
 
 
-    function classRequirement() internal view returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](3);
-        _reqClass[0] = GameObjects.Class.Barbarian;
-        _reqClass[1] = GameObjects.Class.Necromancer;
-        _reqClass[2] = GameObjects.Class.Ranger;
+    function classRequirement() internal view returns (Class[] memory) {
+        Class[] memory _reqClass = new Class[](3);
+        _reqClass[0] = Class.Barbarian;
+        _reqClass[1] = Class.Necromancer;
+        _reqClass[2] = Class.Ranger;
         return _reqClass;
     }
 }

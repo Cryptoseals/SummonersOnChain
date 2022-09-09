@@ -1,4 +1,5 @@
-import {ICore, GameObjects} from "../Interfaces/GameObjects/ICore.sol";
+import {Element} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {Core,EffectType} from "../Interfaces/GameObjects/ICore.sol";
 pragma solidity ^0.8.0;
 
 contract CodexCores {
@@ -6,15 +7,15 @@ contract CodexCores {
     string constant public class = "Cores";
     string constant public version = "0.0.1";
 
-    function getAllCores() external view returns (ICore.Core[] memory) {
-        ICore.Core[] memory result = new ICore.Core[](97);
+    function getAllCores() external view returns (Core[] memory) {
+        Core[] memory result = new Core[](97);
         for (uint i = 1; i < 97; i++) {
             result[i - 1] = core(i);
         }
         return result;
     }
 
-    function core(uint _id) public view returns (ICore.Core memory) {
+    function core(uint _id) public view returns (Core memory) {
         if (_id == 1) {return earthCore();}
         else if (_id == 2) {return lightningCore();}
         else if (_id == 3) {return fireCore();}
@@ -115,674 +116,674 @@ contract CodexCores {
         else {revert("?c");}
     }
 
-    function earthCore() public view returns (ICore.Core memory _core) {
+    function earthCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_ELEMENT;
-        _core.fx.elementToAdd = GameObjects.Element.EARTH;
+        _core.fx.fxType = EffectType.OVERRIDE_ELEMENT;
+        _core.fx.elementToAdd = Element.EARTH;
         _core.minItemLvl = 10;
     }
 
-    function lightningCore() public view returns (ICore.Core memory _core) {
+    function lightningCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_ELEMENT;
-        _core.fx.elementToAdd = GameObjects.Element.LIGHTNING;
+        _core.fx.fxType = EffectType.OVERRIDE_ELEMENT;
+        _core.fx.elementToAdd = Element.LIGHTNING;
         _core.minItemLvl = 10;
     }
 
-    function fireCore() public view returns (ICore.Core memory _core) {
+    function fireCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_ELEMENT;
-        _core.fx.elementToAdd = GameObjects.Element.FIRE;
+        _core.fx.fxType = EffectType.OVERRIDE_ELEMENT;
+        _core.fx.elementToAdd = Element.FIRE;
         _core.minItemLvl = 10;
     }
 
-    function coldCore() public view returns (ICore.Core memory _core) {
+    function coldCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_ELEMENT;
-        _core.fx.elementToAdd = GameObjects.Element.COLD;
+        _core.fx.fxType = EffectType.OVERRIDE_ELEMENT;
+        _core.fx.elementToAdd = Element.COLD;
         _core.minItemLvl = 10;
     }
 
-    function darkCore() public view returns (ICore.Core memory _core) {
+    function darkCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_ELEMENT;
-        _core.fx.elementToAdd = GameObjects.Element.DARK;
+        _core.fx.fxType = EffectType.OVERRIDE_ELEMENT;
+        _core.fx.elementToAdd = Element.DARK;
         _core.minItemLvl = 10;
     }
 
-    function holyCore() public view returns (ICore.Core memory _core) {
+    function holyCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_ELEMENT;
-        _core.fx.elementToAdd = GameObjects.Element.HOLY;
+        _core.fx.fxType = EffectType.OVERRIDE_ELEMENT;
+        _core.fx.elementToAdd = Element.HOLY;
         _core.minItemLvl = 10;
     }
 
-    function voidCore() public view returns (ICore.Core memory _core) {
+    function voidCore() public view returns (Core memory _core) {
         _core.difficulty = 4;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_ELEMENT;
-        _core.fx.elementToAdd = GameObjects.Element.VOID;
+        _core.fx.fxType = EffectType.OVERRIDE_ELEMENT;
+        _core.fx.elementToAdd = Element.VOID;
         _core.minItemLvl = 30;
     }
 
-    function physicalCore() public view returns (ICore.Core memory _core) {
+    function physicalCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_ELEMENT;
-        _core.fx.elementToAdd = GameObjects.Element.PHYSICAL;
+        _core.fx.fxType = EffectType.OVERRIDE_ELEMENT;
+        _core.fx.elementToAdd = Element.PHYSICAL;
         _core.minItemLvl = 10;
     }
 
-    function arcaneCore() public view returns (ICore.Core memory _core) {
+    function arcaneCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_ELEMENT;
-        _core.fx.elementToAdd = GameObjects.Element.ARCANE;
+        _core.fx.fxType = EffectType.OVERRIDE_ELEMENT;
+        _core.fx.elementToAdd = Element.ARCANE;
         _core.minItemLvl = 10;
     }
 
-    function solarionCore() public view returns (ICore.Core memory _core) {
+    function solarionCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 1;
         _core.minItemLvl = 5;
     }
 
-    function templarCore() public view returns (ICore.Core memory _core) {
+    function templarCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 2;
         _core.minItemLvl = 5;
     }
 
-    function phoenixCore() public view returns (ICore.Core memory _core) {
+    function phoenixCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 3;
         _core.minItemLvl = 5;
     }
 
-    function celestionCore() public view returns (ICore.Core memory _core) {
+    function celestionCore() public view returns (Core memory _core) {
         _core.difficulty = 4;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 4;
         _core.minItemLvl = 30;
     }
 
-    function baphometCore() public view returns (ICore.Core memory _core) {
+    function baphometCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 5;
         _core.minItemLvl = 5;
     }
 
-    function sujinCore() public view returns (ICore.Core memory _core) {
+    function sujinCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 6;
         _core.minItemLvl = 5;
     }
 
-    function sentinelCore() public view returns (ICore.Core memory _core) {
+    function sentinelCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 7;
         _core.minItemLvl = 5;
     }
 
-    function verdantCore() public view returns (ICore.Core memory _core) {
+    function verdantCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 8;
         _core.minItemLvl = 5;
     }
 
-    function watcherCore() public view returns (ICore.Core memory _core) {
+    function watcherCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 9;
         _core.minItemLvl = 5;
     }
 
-    function deathbringerCore() public view returns (ICore.Core memory _core) {
+    function deathbringerCore() public view returns (Core memory _core) {
         _core.difficulty = 4;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 10;
         _core.minItemLvl = 30;
     }
 
-    function wraithCore() public view returns (ICore.Core memory _core) {
+    function wraithCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 11;
         _core.minItemLvl = 5;
     }
 
-    function spellcasterCore() public view returns (ICore.Core memory _core) {
+    function spellcasterCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 12;
         _core.minItemLvl = 30;
     }
 
-    function luminousCore() public view returns (ICore.Core memory _core) {
+    function luminousCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 13;
         _core.minItemLvl = 5;
     }
 
-    function fallenCore() public view returns (ICore.Core memory _core) {
+    function fallenCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 14;
         _core.minItemLvl = 10;
     }
 
-    function greedyCore() public view returns (ICore.Core memory _core) {
+    function greedyCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 15;
         _core.minItemLvl = 5;
     }
 
-    function blacksmithCore() public view returns (ICore.Core memory _core) {
+    function blacksmithCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 16;
         _core.minItemLvl = 20;
     }
 
-    function sunCore() public view returns (ICore.Core memory _core) {
+    function sunCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 17;
         _core.minItemLvl = 10;
     }
 
-    function moonCore() public view returns (ICore.Core memory _core) {
+    function moonCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 18;
         _core.minItemLvl = 10;
     }
 
-    function stormCore() public view returns (ICore.Core memory _core) {
+    function stormCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 19;
         _core.minItemLvl = 10;
     }
 
-    function gladiatorCore() public view returns (ICore.Core memory _core) {
+    function gladiatorCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 20;
         _core.minItemLvl = 10;
     }
 
-    function voidheartCore() public view returns (ICore.Core memory _core) {
+    function voidheartCore() public view returns (Core memory _core) {
         _core.difficulty = 5;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 21;
         _core.minItemLvl = 35;
     }
 
-    function trollCore() public view returns (ICore.Core memory _core) {
+    function trollCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 22;
         _core.minItemLvl = 5;
     }
 
-    function warmongerCore() public view returns (ICore.Core memory _core) {
+    function warmongerCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 23;
         _core.minItemLvl = 20;
     }
 
-    function assassinCore() public view returns (ICore.Core memory _core) {
+    function assassinCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 24;
         _core.minItemLvl = 25;
     }
 
-    function deathCore() public view returns (ICore.Core memory _core) {
+    function deathCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 25;
         _core.minItemLvl = 25;
     }
 
-    function acrobatCore() public view returns (ICore.Core memory _core) {
+    function acrobatCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 26;
         _core.minItemLvl = 25;
     }
 
-    function shadowCore() public view returns (ICore.Core memory _core) {
+    function shadowCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 27;
         _core.minItemLvl = 15;
     }
 
-    function concentrationCore() public view returns (ICore.Core memory _core) {
+    function concentrationCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 28;
         _core.minItemLvl = 15;
     }
 
-    function guardianCore() public view returns (ICore.Core memory _core) {
+    function guardianCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 29;
         _core.minItemLvl = 25;
     }
 
-    function savageCore() public view returns (ICore.Core memory _core) {
+    function savageCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 30;
         _core.minItemLvl = 15;
     }
 
-    function cultistCore() public view returns (ICore.Core memory _core) {
+    function cultistCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 31;
         _core.minItemLvl = 25;
     }
 
-    function faithCore() public view returns (ICore.Core memory _core) {
+    function faithCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 32;
         _core.minItemLvl = 15;
     }
 
-    function wandererCore() public view returns (ICore.Core memory _core) {
+    function wandererCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 33;
         _core.minItemLvl = 5;
     }
 
-    function rootsCore() public view returns (ICore.Core memory _core) {
+    function rootsCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 34;
         _core.minItemLvl = 25;
     }
 
-    function orderCore() public view returns (ICore.Core memory _core) {
+    function orderCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 35;
         _core.minItemLvl = 15;
     }
 
-    function sealCore() public view returns (ICore.Core memory _core) {
+    function sealCore() public view returns (Core memory _core) {
         _core.difficulty = 4;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 36;
         _core.minItemLvl = 30;
     }
 
-    function resistanceCore() public view returns (ICore.Core memory _core) {
+    function resistanceCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 37;
         _core.minItemLvl = 25;
     }
 
-    function fortitudeCore() public view returns (ICore.Core memory _core) {
+    function fortitudeCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 38;
         _core.minItemLvl = 15;
     }
 
-    function runesCore() public view returns (ICore.Core memory _core) {
+    function runesCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 39;
         _core.minItemLvl = 25;
     }
 
-    function malevolenceCore() public view returns (ICore.Core memory _core) {
+    function malevolenceCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 40;
         _core.minItemLvl = 15;
     }
 
-    function eclipseCore() public view returns (ICore.Core memory _core) {
+    function eclipseCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 41;
         _core.minItemLvl = 15;
     }
 
-    function immortalCore() public view returns (ICore.Core memory _core) {
+    function immortalCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 42;
         _core.minItemLvl = 25;
     }
 
-    function sanctityCore() public view returns (ICore.Core memory _core) {
+    function sanctityCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 43;
         _core.minItemLvl = 20;
     }
 
-    function wisdomCore() public view returns (ICore.Core memory _core) {
+    function wisdomCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_SUFFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_SUFFIX;
         _core.fx.suffixToAdd = 44;
         _core.minItemLvl = 5;
     }
 
-    function berserkerCore() public view returns (ICore.Core memory _core) {
+    function berserkerCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 1;
         _core.minItemLvl = 5;
     }
 
-    function wizardCore() public view returns (ICore.Core memory _core) {
+    function wizardCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 2;
         _core.minItemLvl = 5;
     }
 
-    function elementalistCore() public view returns (ICore.Core memory _core) {
+    function elementalistCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 3;
         _core.minItemLvl = 5;
     }
 
-    function ferociousCore() public view returns (ICore.Core memory _core) {
+    function ferociousCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 4;
         _core.minItemLvl = 15;
     }
 
-    function wickedCore() public view returns (ICore.Core memory _core) {
+    function wickedCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 5;
         _core.minItemLvl = 5;
     }
 
-    function sharpshooterCore() public view returns (ICore.Core memory _core) {
+    function sharpshooterCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 6;
         _core.minItemLvl = 10;
     }
 
-    function skirmishingCore() public view returns (ICore.Core memory _core) {
+    function skirmishingCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 7;
         _core.minItemLvl = 5;
     }
 
-    function defiantCore() public view returns (ICore.Core memory _core) {
+    function defiantCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 8;
         _core.minItemLvl = 5;
     }
 
-    function mercilessCore() public view returns (ICore.Core memory _core) {
+    function mercilessCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 9;
         _core.minItemLvl = 5;
     }
 
-    function fieryCore() public view returns (ICore.Core memory _core) {
+    function fieryCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 10;
         _core.minItemLvl = 5;
     }
 
-    function thunderousCore() public view returns (ICore.Core memory _core) {
+    function thunderousCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 11;
         _core.minItemLvl = 5;
     }
 
-    function righteousCore() public view returns (ICore.Core memory _core) {
+    function righteousCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 12;
         _core.minItemLvl = 5;
     }
 
-    function frozenCore() public view returns (ICore.Core memory _core) {
+    function frozenCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 13;
         _core.minItemLvl = 5;
     }
 
-    function naturalCore() public view returns (ICore.Core memory _core) {
+    function naturalCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 14;
         _core.minItemLvl = 20;
     }
 
-    function sacredCore() public view returns (ICore.Core memory _core) {
+    function sacredCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 15;
         _core.minItemLvl = 30;
     }
 
-    function eternalCore() public view returns (ICore.Core memory _core) {
+    function eternalCore() public view returns (Core memory _core) {
         _core.difficulty = 5;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 16;
         _core.minItemLvl = 40;
     }
 
-    function devastatingCore() public view returns (ICore.Core memory _core) {
+    function devastatingCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 17;
         _core.minItemLvl = 25;
     }
 
-    function forgedCore() public view returns (ICore.Core memory _core) {
+    function forgedCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 18;
         _core.minItemLvl = 20;
     }
 
-    function mysticalCore() public view returns (ICore.Core memory _core) {
+    function mysticalCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 19;
         _core.minItemLvl = 15;
     }
 
-    function cleverCore() public view returns (ICore.Core memory _core) {
+    function cleverCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 20;
         _core.minItemLvl = 15;
     }
 
-    function enormousCore() public view returns (ICore.Core memory _core) {
+    function enormousCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 21;
         _core.minItemLvl = 15;
     }
 
-    function etherealCore() public view returns (ICore.Core memory _core) {
+    function etherealCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 22;
         _core.minItemLvl = 25;
     }
 
-    function vengefulCore() public view returns (ICore.Core memory _core) {
+    function vengefulCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 23;
         _core.minItemLvl = 30;
     }
 
-    function divineCore() public view returns (ICore.Core memory _core) {
+    function divineCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 24;
         _core.minItemLvl = 25;
     }
 
-    function elusiveCore() public view returns (ICore.Core memory _core) {
+    function elusiveCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 25;
         _core.minItemLvl = 20;
     }
 
-    function protectiveCore() public view returns (ICore.Core memory _core) {
+    function protectiveCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 26;
         _core.minItemLvl = 30;
     }
 
-    function pristineCore() public view returns (ICore.Core memory _core) {
+    function pristineCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 27;
         _core.minItemLvl = 30;
     }
 
-    function glacialCore() public view returns (ICore.Core memory _core) {
+    function glacialCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 28;
         _core.minItemLvl = 10;
     }
 
-    function ruggedCore() public view returns (ICore.Core memory _core) {
+    function ruggedCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 29;
         _core.minItemLvl = 15;
     }
 
-    function ruthlessCore() public view returns (ICore.Core memory _core) {
+    function ruthlessCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 30;
         _core.minItemLvl = 5;
     }
 
-    function luridCore() public view returns (ICore.Core memory _core) {
+    function luridCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 31;
         _core.minItemLvl = 5;
     }
 
-    function pastoralCore() public view returns (ICore.Core memory _core) {
+    function pastoralCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 32;
         _core.minItemLvl = 10;
     }
 
-    function supremeCore() public view returns (ICore.Core memory _core) {
+    function supremeCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 33;
         _core.minItemLvl = 30;
     }
 
-    function banishingCore() public view returns (ICore.Core memory _core) {
+    function banishingCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 34;
         _core.minItemLvl = 25;
     }
 
-    function sharpenedCore() public view returns (ICore.Core memory _core) {
+    function sharpenedCore() public view returns (Core memory _core) {
         _core.difficulty = 1;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 35;
         _core.minItemLvl = 5;
     }
 
-    function obsidianCore() public view returns (ICore.Core memory _core) {
+    function obsidianCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 36;
         _core.minItemLvl = 15;
     }
 
-    function devotedCore() public view returns (ICore.Core memory _core) {
+    function devotedCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 37;
         _core.minItemLvl = 15;
     }
 
-    function revivalCore() public view returns (ICore.Core memory _core) {
+    function revivalCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 38;
         _core.minItemLvl = 15;
     }
 
-    function damnedCore() public view returns (ICore.Core memory _core) {
+    function damnedCore() public view returns (Core memory _core) {
         _core.difficulty = 3;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 39;
         _core.minItemLvl = 25;
     }
 
-    function unholyCore() public view returns (ICore.Core memory _core) {
+    function unholyCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 40;
         _core.minItemLvl = 15;
     }
 
-    function smokyCore() public view returns (ICore.Core memory _core) {
+    function smokyCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 41;
         _core.minItemLvl = 15;
     }
 
-    function shardyCore() public view returns (ICore.Core memory _core) {
+    function shardyCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 42;
         _core.minItemLvl = 15;
     }
 
-    function shinyCore() public view returns (ICore.Core memory _core) {
+    function shinyCore() public view returns (Core memory _core) {
         _core.difficulty = 2;
-        _core.fx.fxType = ICore.EffectType.OVERRIDE_PREFIX;
+        _core.fx.fxType = EffectType.OVERRIDE_PREFIX;
         _core.fx.prefixToAdd = 43;
         _core.minItemLvl = 15;
     }

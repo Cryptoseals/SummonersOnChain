@@ -1,4 +1,4 @@
-import {GameObjects} from "../GameObjects/IGameObjects.sol";
+import {ItemType} from "../GameObjects/IGameObjects.sol";
 import {ICraftingMaterials} from "../GameObjects/ICrafting/ICraftingMaterials.sol";
 pragma solidity ^0.8.0;
 
@@ -20,7 +20,7 @@ interface ICraftingRecipe {
     }
 
     struct RequiredEquipment {
-        GameObjects.ItemType itemType;
+        ItemType itemType;
         uint id;
     }
 }

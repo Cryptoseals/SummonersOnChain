@@ -2,9 +2,9 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
 import "../Core/Navigator/InitNavigator.sol";
-import {GameObjects, GameObjects_Equipments} from "../Interfaces/GameObjects/IGameObjects.sol";
-import "../Interfaces/Codex/IAllCodexViews.sol";
-import {ICore} from "../Interfaces/GameObjects/ICore.sol";
+import {Element, Class, EquipableItem, Weapon, ItemType, ItemDTO} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {IAllCodexViews} from "../Interfaces/Codex/IAllCodexViews.sol";
+import {Core, Effect,EffectType} from "../Interfaces/GameObjects/ICore.sol";
 import {Base64} from "../Lib/Base64.sol";
 
 pragma solidity ^0.8.0;
@@ -29,14 +29,14 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
     IAllCodexViews EARRINGS_CODEX;
     IAllCodexViews BELTS_CODEX;
     IAllCodexViews WEAPONS_CODEX;
-    mapping(uint256 => GameObjects.ItemType) public tokenToType;
+    mapping(uint256 => ItemType) public tokenToType;
     mapping(uint256 => uint256) public tokenToItemId;
     mapping(uint256 => uint256) public tokenToEnchantmentLevel;
     mapping(uint256 => uint256) public tokenPrefix;
     mapping(uint256 => uint256) public tokenPrefixTier;
     mapping(uint256 => uint256) public tokenSuffix;
     mapping(uint256 => uint256) public tokenSuffixTier;
-    mapping(uint256 => GameObjects.Element) public tokenElement;
+    mapping(uint256 => Element) public tokenElement;
 
     function initialize(
         address _navigator,
@@ -63,13 +63,13 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
 
     function mintItem(
         address player,
-        GameObjects.ItemType _type,
+        ItemType _type,
         uint256 id,
         uint256 prefix,
         uint256 prefixTier,
         uint256 suffix,
         uint256 suffixTier,
-        GameObjects.Element element
+        Element element
     ) external onlyGameContracts {
         uint256 nextToken = totalSupply() + 1;
         tokenToType[nextToken] = _type;
@@ -80,31 +80,31 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
         _mint(player, nextToken);
     }
 
-    function mintBeginnerSet(uint summoner, address to, GameObjects.Class _class) external onlyGameContracts {
+    function mintBeginnerSet(uint summoner, address to, Class _class) external onlyGameContracts {
         uint256 nextToken = totalSupply() + 1;
-        (uint weaponId, uint armorId, uint offhandId, GameObjects.Element ele) = getDefaultItems(_class);
+        (uint weaponId, uint armorId, uint offhandId, Element ele) = getDefaultItems(_class);
 
-        tokenToType[nextToken] = GameObjects.ItemType.WEAPON;
+        tokenToType[nextToken] = ItemType.WEAPON;
         tokenToItemId[nextToken] = weaponId;
         tokenElement[nextToken] = ele;
         _mint(to, nextToken);
         nextToken++;
 
-        tokenToType[nextToken] = GameObjects.ItemType.OFFHAND;
+        tokenToType[nextToken] = ItemType.OFFHAND;
         tokenToItemId[nextToken] = offhandId;
         _mint(to, nextToken);
         nextToken++;
 
-        tokenToType[nextToken] = GameObjects.ItemType.HELMET;
+        tokenToType[nextToken] = ItemType.HELMET;
         tokenToItemId[nextToken] = armorId;
         _mint(to, nextToken);
         nextToken++;
 
-        tokenToType[nextToken] = GameObjects.ItemType.ARMOR;
+        tokenToType[nextToken] = ItemType.ARMOR;
         tokenToItemId[nextToken] = armorId;
         _mint(to, nextToken);
         nextToken++;
-        tokenToType[nextToken] = GameObjects.ItemType.BOOTS;
+        tokenToType[nextToken] = ItemType.BOOTS;
         tokenToItemId[nextToken] = armorId;
         _mint(to, nextToken);
 
@@ -112,63 +112,63 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
         // COMMON
         // amulet
         nextToken++;
-        tokenToType[nextToken] = GameObjects.ItemType.AMULET;
+        tokenToType[nextToken] = ItemType.AMULET;
         tokenToItemId[nextToken] = 1;
         _mint(to, nextToken);
 
         // ring
         nextToken++;
-        tokenToType[nextToken] = GameObjects.ItemType.RING;
+        tokenToType[nextToken] = ItemType.RING;
         tokenToItemId[nextToken] = 1;
         _mint(to, nextToken);
         // earring
         nextToken++;
-        tokenToType[nextToken] = GameObjects.ItemType.EARRING;
+        tokenToType[nextToken] = ItemType.EARRING;
         tokenToItemId[nextToken] = 1;
         _mint(to, nextToken);
         // belt
         nextToken++;
-        tokenToType[nextToken] = GameObjects.ItemType.BELT;
+        tokenToType[nextToken] = ItemType.BELT;
         tokenToItemId[nextToken] = 1;
         _mint(to, nextToken);
 
     }
 
-    function getDefaultItems(GameObjects.Class _class) internal view returns (uint weaponId, uint armorId, uint offhandId, GameObjects.Element _wEle) {
-        if (_class == GameObjects.Class.Barbarian) {
+    function getDefaultItems(Class _class) internal view returns (uint weaponId, uint armorId, uint offhandId, Element _wEle) {
+        if (_class == Class.Barbarian) {
             weaponId = 1;
             armorId = 1;
             offhandId = 127;
             // shield
-        } else if (_class == GameObjects.Class.Paladin) {
+        } else if (_class == Class.Paladin) {
             weaponId = 1;
             armorId = 1;
             offhandId = 127;
             // shield
-        } else if (_class == GameObjects.Class.Assassin) {
+        } else if (_class == Class.Assassin) {
             weaponId = 22;
             armorId = 22;
             offhandId = 106;
-        } else if (_class == GameObjects.Class.Wizard) {
+        } else if (_class == Class.Wizard) {
             weaponId = 85;
             armorId = 43;
             offhandId = 106;
-            _wEle = GameObjects.Element.ARCANE;
-        } else if (_class == GameObjects.Class.Necromancer) {
+            _wEle = Element.ARCANE;
+        } else if (_class == Class.Necromancer) {
             weaponId = 64;
             armorId = 43;
             offhandId = 106;
-            _wEle = GameObjects.Element.ARCANE;
-        } else if (_class == GameObjects.Class.Priest) {
+            _wEle = Element.ARCANE;
+        } else if (_class == Class.Priest) {
             weaponId = 85;
             armorId = 43;
             offhandId = 106;
-            _wEle = GameObjects.Element.ARCANE;
-        } else if (_class == GameObjects.Class.Engineer) {
+            _wEle = Element.ARCANE;
+        } else if (_class == Class.Engineer) {
             weaponId = 1;
             armorId = 22;
             offhandId = 127;
-        } else if (_class == GameObjects.Class.Ranger) {
+        } else if (_class == Class.Ranger) {
             weaponId = 43;
             armorId = 22;
             offhandId = 127;
@@ -192,37 +192,37 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
         coreContract.burnCore(sender, coreId, 1);
         uint itemId = tokenToItemId[tokenId];
 
-        GameObjects.ItemType _type = tokenToType[tokenId];
+        ItemType _type = tokenToType[tokenId];
 
         // get core data.
-        ICore.Core memory core = coreCodex.core(coreId);
+        Core memory core = coreCodex.core(coreId);
         // check requirements.
-        GameObjects_Equipments.EquipableItem memory _equipableItem;
-        GameObjects_Equipments.Weapon memory _equipableItemW;
-        if (_type == GameObjects.ItemType.HELMET) {
+        EquipableItem memory _equipableItem;
+        Weapon memory _equipableItemW;
+        if (_type == ItemType.HELMET) {
             _equipableItem = HELMETS_CODEX.helmetCore(itemId, 1);
-        } else if (_type == GameObjects.ItemType.ARMOR) {
+        } else if (_type == ItemType.ARMOR) {
             _equipableItem = BODY_ARMORS_CODEX.armorCore(itemId, 1);
-        } else if (_type == GameObjects.ItemType.WEAPON) {
+        } else if (_type == ItemType.WEAPON) {
             _equipableItemW = WEAPONS_CODEX.weaponCore(itemId, 1);
-        } else if (_type == GameObjects.ItemType.OFFHAND) {
+        } else if (_type == ItemType.OFFHAND) {
             _equipableItemW = WEAPONS_CODEX.weaponCore(itemId, 1);
-        } else if (_type == GameObjects.ItemType.BOOTS) {
+        } else if (_type == ItemType.BOOTS) {
             _equipableItem = BOOTS_CODEX.bootsCore(itemId, 1);
-        } else if (_type == GameObjects.ItemType.AMULET) {
+        } else if (_type == ItemType.AMULET) {
             _equipableItem = AMULETS_CODEX.amuletCore(itemId, 1);
-        } else if (_type == GameObjects.ItemType.RING) {
+        } else if (_type == ItemType.RING) {
             _equipableItem = RINGS_CODEX.ringCore(itemId, 1);
-        } else if (_type == GameObjects.ItemType.EARRING) {
+        } else if (_type == ItemType.EARRING) {
             _equipableItem = EARRINGS_CODEX.earringsCore(itemId, 1);
-        } else if (_type == GameObjects.ItemType.BELT) {
+        } else if (_type == ItemType.BELT) {
             _equipableItem = BELTS_CODEX.beltCore(itemId, 1);
         } else {
             revert("?n");
         }
 
-        if (_type == GameObjects.ItemType.WEAPON ||
-            _type == GameObjects.ItemType.OFFHAND) {
+        if (_type == ItemType.WEAPON ||
+            _type == ItemType.OFFHAND) {
             require(_equipableItemW.requirement.level >= core.minItemLvl, "lowlvl");
         } else {
             require(_equipableItem.requirement.level >= core.minItemLvl, "lowlvl");
@@ -231,16 +231,16 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
         _enhance(tokenId, core.fx);
     }
 
-    function _enhance(uint tokenId, ICore.Effect memory fx) internal {
-        if (fx.fxType == ICore.EffectType.OVERRIDE_PREFIX) {
+    function _enhance(uint tokenId, Effect memory fx) internal {
+        if (fx.fxType == EffectType.OVERRIDE_PREFIX) {
             require(fx.prefixToAdd > 0, "?");
             tokenPrefix[tokenId] = fx.prefixToAdd;
             tokenPrefixTier[tokenId] = 1;
-        } else if (fx.fxType == ICore.EffectType.OVERRIDE_SUFFIX) {
+        } else if (fx.fxType == EffectType.OVERRIDE_SUFFIX) {
             require(fx.suffixToAdd > 0, "?");
             tokenSuffix[tokenId] = fx.suffixToAdd;
             tokenSuffixTier[tokenId] = 1;
-        } else if (fx.fxType == ICore.EffectType.OVERRIDE_ELEMENT) {
+        } else if (fx.fxType == EffectType.OVERRIDE_ELEMENT) {
             tokenElement[tokenId] = fx.elementToAdd;
         } else {
             revert("critical.err");
@@ -268,7 +268,7 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
     function itemType(uint256 id)
     public
     view
-    returns (GameObjects.ItemType _type)
+    returns (ItemType _type)
     {
         if (!_exists(id)) revert InvalidItem("DOES NOT EXIST");
         _type = tokenToType[id];
@@ -277,7 +277,7 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
     function item(uint256 id)
     external
     view
-    returns (GameObjects.ItemType _type, uint _itemId, uint256 _tier, uint _prefix, uint _prefixTier, uint _suffix, uint _suffixTier, GameObjects.Element _element)
+    returns (ItemType _type, uint _itemId, uint256 _tier, uint _prefix, uint _prefixTier, uint _suffix, uint _suffixTier, Element _element)
     {
         if (!_exists(id)) revert InvalidItem("DOES NOT EXIST");
 
@@ -294,9 +294,9 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
     function items(uint256[] memory ids)
     external
     view
-    returns (GameObjects_Equipments.ItemDTO[] memory)
+    returns (ItemDTO[] memory)
     {
-        GameObjects_Equipments.ItemDTO[] memory _dtos = new GameObjects_Equipments.ItemDTO[](ids.length);
+        ItemDTO[] memory _dtos = new ItemDTO[](ids.length);
         for (uint i = 0; i < ids.length; i++) {
             if (!_exists(ids[i])) revert("i");
             _dtos[i]._type = tokenToType[ids[i]];

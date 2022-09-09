@@ -1,4 +1,4 @@
-import {GameObjects, ICraftingRecipe, ICraftingMaterials} from "../../Interfaces/Crafting/ICraftingRecipe.sol";
+import {ItemType, ICraftingRecipe, ICraftingMaterials} from "../../Interfaces/Crafting/ICraftingRecipe.sol";
 pragma solidity ^0.8.0;
 
 contract ArmorLightRecipes {
@@ -324,12 +324,12 @@ contract ArmorLightRecipes {
 
         _recipe.equipmentRequirements = new ICraftingRecipe.RequiredEquipment[](2);
         _recipe.equipmentRequirements[0] = ICraftingRecipe.RequiredEquipment({
-            itemType: GameObjects.ItemType.ARMOR,
+            itemType: ItemType.ARMOR,
             id: 58
         });
 
         _recipe.equipmentRequirements[1] = ICraftingRecipe.RequiredEquipment({
-            itemType: GameObjects.ItemType.ARMOR,
+            itemType: ItemType.ARMOR,
             id: 59
         });
     }

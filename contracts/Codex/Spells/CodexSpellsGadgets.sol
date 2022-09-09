@@ -1,9 +1,10 @@
-import {ISpell, GameObjects} from "../../Interfaces/GameObjects/ISpell.sol";
+import {Element,Class} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {Spell, SpellType} from "../../Interfaces/GameObjects/ISpell.sol";
 pragma solidity ^0.8.0;
 
 contract CodexSpellsGadgets {
 
-    function spell(uint _id, uint _tier) public pure returns (ISpell.Spell memory) {
+    function spell(uint _id, uint _tier) public pure returns (Spell memory) {
         if (_id == 1) {return ExplosiveGrenade(_tier);}
         else if (_id == 2) {return Claymore(_tier);}
         else if (_id == 3) {return FrostBomb(_tier);}
@@ -16,12 +17,12 @@ contract CodexSpellsGadgets {
         revert("invalid");
     }
 
-    function ExplosiveGrenade(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function ExplosiveGrenade(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 1;
         _spell.cooldown = 3;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.PHYSICAL;
+        _spell.attackProps.element = Element.PHYSICAL;
         _spell.attackProps.damageMultiplier = 25;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 3;
@@ -39,12 +40,12 @@ contract CodexSpellsGadgets {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function Claymore(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function Claymore(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 2;
         _spell.cooldown = 4;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.PHYSICAL;
+        _spell.attackProps.element = Element.PHYSICAL;
         _spell.attackProps.damageMultiplier = 30;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 3;
@@ -62,12 +63,12 @@ contract CodexSpellsGadgets {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function FrostBomb(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function FrostBomb(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 3;
         _spell.cooldown = 4;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.PHYSICAL;
+        _spell.attackProps.element = Element.PHYSICAL;
         _spell.attackProps.damageMultiplier = 35;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 3;
@@ -85,12 +86,12 @@ contract CodexSpellsGadgets {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function Supercharge(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function Supercharge(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 4;
         _spell.cooldown = 5;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.PHYSICAL;
+        _spell.attackProps.element = Element.PHYSICAL;
         _spell.attackProps.damageMultiplier = 40;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 3;
@@ -108,12 +109,12 @@ contract CodexSpellsGadgets {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function PoisonDartShot(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function PoisonDartShot(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 5;
         _spell.cooldown = 5;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.PHYSICAL;
+        _spell.attackProps.element = Element.PHYSICAL;
         _spell.attackProps.damageMultiplier = 45;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 5;
@@ -131,12 +132,12 @@ contract CodexSpellsGadgets {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function SuicideDrone(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function SuicideDrone(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 6;
         _spell.cooldown = 6;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.PHYSICAL;
+        _spell.attackProps.element = Element.PHYSICAL;
         _spell.attackProps.damageMultiplier = 50;
         _spell.attackProps.multiplierBonusPerTier = 5;
         _spell.attackProps.infusion = 5;
@@ -154,10 +155,10 @@ contract CodexSpellsGadgets {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function MegaElixir(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function MegaElixir(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 7;
         _spell.cooldown = 6;
-        _spell.spellType = ISpell.SpellType.HEALING;
+        _spell.spellType = SpellType.HEALING;
 
         _spell.healingProps.maxAmount = 40;
         _spell.healingProps.maxAmount = 60;
@@ -175,12 +176,12 @@ contract CodexSpellsGadgets {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function Flamethrower(uint tier) public pure returns (ISpell.Spell memory _spell) {
+    function Flamethrower(uint tier) public pure returns (Spell memory _spell) {
         _spell.id = 8;
         _spell.cooldown = 6;
-        _spell.spellType = ISpell.SpellType.ATTACK;
+        _spell.spellType = SpellType.ATTACK;
 
-        _spell.attackProps.element = GameObjects.Element.PHYSICAL;
+        _spell.attackProps.element = Element.PHYSICAL;
         _spell.attackProps.damageMultiplier = 75;
         _spell.attackProps.multiplierBonusPerTier = 25;
         _spell.attackProps.infusion = 5;
@@ -198,10 +199,10 @@ contract CodexSpellsGadgets {
         _spell.requirements.classRequirement = classRequirement();
     }
 
-    function classRequirement() internal pure returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](2);
-        _reqClass[0] = GameObjects.Class.Wizard;
-        _reqClass[1] = GameObjects.Class.Assassin;
+    function classRequirement() internal pure returns (Class[] memory) {
+        Class[] memory _reqClass = new Class[](2);
+        _reqClass[0] = Class.Wizard;
+        _reqClass[1] = Class.Assassin;
         return _reqClass;
     }
 }

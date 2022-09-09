@@ -1,12 +1,12 @@
 import {UpgradeableCodex, INavigator, ICodexPrefixAndSuffix} from "./../Common/UpgradeableCodex.sol";
-import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {EquippedItemStruct, EquipableItem, Prefix, Suffix } from "../../Interfaces/GameObjects/IGameObjects.sol";
 import {EquipableUtils} from "../../Inventory/EquipableUtils.sol";
 
 pragma solidity ^0.8.0;
 
 
 interface IndividualItems {
-    function armor(uint id, uint tier) external view returns (GameObjects_Equipments.EquipableItem memory);
+    function armor(uint id, uint tier) external view returns (EquipableItem memory);
 }
 
 contract CodexArmors is UpgradeableCodex {
@@ -26,18 +26,18 @@ contract CodexArmors is UpgradeableCodex {
         LIGHT_ARMOR_STATS = IndividualItems(contractAddress(INavigator.CONTRACT.LIGHT_ARMOR_STATS));
     }
 
-    function allArmor() external view returns (GameObjects_Equipments.EquipableItem[] memory){
-        GameObjects_Equipments.EquipableItem[] memory result = new GameObjects_Equipments.EquipableItem[](64);
+    function allArmor() external view returns (EquipableItem[] memory){
+        EquipableItem[] memory result = new EquipableItem[](64);
         for (uint i = 1; i < 64; i++) {
             result[i - 1] = armorCore(i, 1);
         }
         return result;
     }
 
-    function armor(GameObjects_Equipments.EquippedItemStruct memory _equipable) public view returns (GameObjects_Equipments.EquipableItem memory) {
-        GameObjects_Equipments.EquipableItem memory _armor;
-        GameObjects_Equipments.Prefix memory _prefix;
-        GameObjects_Equipments.Suffix memory _suffix;
+    function armor(EquippedItemStruct memory _equipable) public view returns (EquipableItem memory) {
+        EquipableItem memory _armor;
+        Prefix memory _prefix;
+        Suffix memory _suffix;
 
         if (_equipable.prefixId > 0) _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
@@ -59,8 +59,8 @@ contract CodexArmors is UpgradeableCodex {
         return _armor;
     }
 
-    function armorCore(uint itemId, uint itemTier) public view returns (GameObjects_Equipments.EquipableItem memory) {
-        GameObjects_Equipments.EquipableItem memory _armor;
+    function armorCore(uint itemId, uint itemTier) public view returns (EquipableItem memory) {
+        EquipableItem memory _armor;
         //        if (_equipable.prefixId > 0) _prefix = PrefixContract.prefix(_equipable.prefixId, _equipable.prefixTier);
         //        if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
 
@@ -80,7 +80,7 @@ contract CodexArmors is UpgradeableCodex {
         return _armor;
     }
 
-    function applyPrefixAndSuffix(GameObjects_Equipments.Prefix memory _pre, GameObjects_Equipments.Suffix memory _suf, GameObjects_Equipments.EquipableItem memory _armor) public pure returns (GameObjects_Equipments.EquipableItem memory) {
+    function applyPrefixAndSuffix(Prefix memory _pre, Suffix memory _suf, EquipableItem memory _armor) public pure returns (EquipableItem memory) {
         if (_pre.isPercentage) {
             _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_armor.generatedStatBonus, _pre.generatedStatBonus);
             _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_armor.elementalStats, _pre.elementalStats);
@@ -104,7 +104,7 @@ contract CodexArmors is UpgradeableCodex {
         return _armor;
     }
 
-    function applyPrefix(GameObjects_Equipments.Prefix memory _pre, GameObjects_Equipments.EquipableItem memory _armor) public pure returns (GameObjects_Equipments.EquipableItem memory) {
+    function applyPrefix(Prefix memory _pre, EquipableItem memory _armor) public pure returns (EquipableItem memory) {
         if (_pre.isPercentage) {
             _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_armor.generatedStatBonus, _pre.generatedStatBonus);
             _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_armor.elementalStats, _pre.elementalStats);
@@ -118,7 +118,7 @@ contract CodexArmors is UpgradeableCodex {
         return _armor;
     }
 
-    function applySuffix(GameObjects_Equipments.Suffix memory _suf, GameObjects_Equipments.EquipableItem memory _armor) public pure returns (GameObjects_Equipments.EquipableItem memory) {
+    function applySuffix(Suffix memory _suf, EquipableItem memory _armor) public pure returns (EquipableItem memory) {
         if (_suf.isPercentage) {
             _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsPercentage(_armor.generatedStatBonus, _suf.generatedStatBonus);
             _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(_armor.elementalStats, _suf.elementalStats);

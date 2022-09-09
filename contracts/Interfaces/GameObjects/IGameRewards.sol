@@ -1,4 +1,4 @@
-import {GameObjects} from "./IGameObjects.sol";
+import {ItemType} from "./IGameObjects.sol";
 import {ICraftingMaterials} from "./ICrafting/ICraftingMaterials.sol";
 pragma solidity ^0.8.0;
 
@@ -62,7 +62,7 @@ interface IGameRewards {
     }
 
     struct EquipableItemReward {
-        GameObjects.ItemType equipableType;
+        ItemType equipableType;
         uint equipableId;
         uint maxTierDrop;
         uint[] weights;

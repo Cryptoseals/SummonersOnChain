@@ -1,5 +1,5 @@
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {GameObjects, GameObjects_Stats} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {Element, Stats, GeneratedStats, ElementalStats, ElementalDef, ElementalAtk} from "../../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
@@ -79,29 +79,29 @@ contract BaseEnemyStats is Initializable {
         _;
     }
 
-    function enemyDEF(GameObjects.Element element, uint level) maxLvl(level) external view returns (uint) {
+    function enemyDEF(Element element, uint level) maxLvl(level) external view returns (uint) {
         uint def = ENEMY_BASE_DEF[level - 1];
         return def;
     }
 
-    function enemyHP(GameObjects.Element element, uint level) maxLvl(level) external view returns (uint) {
+    function enemyHP(Element element, uint level) maxLvl(level) external view returns (uint) {
         uint hp = ENEMY_BASE_HP[level - 1];
         return hp;
     }
 
-    function enemyACC(GameObjects.Element element, uint level) maxLvl(level) external view returns (uint) {
+    function enemyACC(Element element, uint level) maxLvl(level) external view returns (uint) {
         uint acc = ENEMY_BASE_ACC[level - 1];
         return acc;
     }
 
-    function enemyDODGE(GameObjects.Element element, uint level) maxLvl(level) external view returns (uint) {
+    function enemyDODGE(Element element, uint level) maxLvl(level) external view returns (uint) {
         uint dodge = ENEMY_BASE_DODGE[level - 1];
         return dodge;
     }
 
-    function enemySTAT(GameObjects.Element element, uint level) maxLvl(level) external view returns (GameObjects_Stats.Stats memory) {
+    function enemySTAT(Element element, uint level) maxLvl(level) external view returns (Stats memory) {
 
-        return GameObjects_Stats.Stats({
+        return Stats({
         STR : ENEMY_BASE_STR[level - 1],
         AGI : ENEMY_BASE_AGI[level - 1],
         INT : ENEMY_BASE_INT[level - 1],
@@ -111,24 +111,24 @@ contract BaseEnemyStats is Initializable {
         });
     }
 
-    function enemyATK(GameObjects.Element element, uint level) maxLvl(level) external view returns (uint) {
+    function enemyATK(Element element, uint level) maxLvl(level) external view returns (uint) {
         uint atk = ENEMY_BASE_ATK[level - 1];
         return atk;
     }
 
-    function enemyCRIT(GameObjects.Element element, uint level) maxLvl(level) external view returns (uint) {
+    function enemyCRIT(Element element, uint level) maxLvl(level) external view returns (uint) {
         uint crit = ENEMY_BASE_CRIT[level - 1];
         return crit;
     }
 
-    function enemyCRIT_MULT(GameObjects.Element element, uint level) maxLvl(level) external view returns (uint) {
+    function enemyCRIT_MULT(Element element, uint level) maxLvl(level) external view returns (uint) {
         uint crit = ENEMY_BASE_CRIT_MULTI[level - 1];
         return crit;
     }
 
-    function getStatSet(uint level) maxLvl(level) external view returns (GameObjects_Stats.Stats memory, GameObjects_Stats.GeneratedStats memory, GameObjects_Stats.ElementalStats memory ele_stats) {
+    function getStatSet(uint level) maxLvl(level) external view returns (Stats memory, GeneratedStats memory, ElementalStats memory ele_stats) {
 
-        GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
+        Stats memory stats = Stats({
         STR : ENEMY_BASE_STR[level - 1],
         AGI : ENEMY_BASE_AGI[level - 1],
         INT : ENEMY_BASE_INT[level - 1],
@@ -137,7 +137,7 @@ contract BaseEnemyStats is Initializable {
         LUCK : ENEMY_BASE_LUCK[level - 1]
         });
 
-        GameObjects_Stats.GeneratedStats memory gen_stats = GameObjects_Stats.GeneratedStats({
+        GeneratedStats memory gen_stats = GeneratedStats({
         HP : ENEMY_BASE_HP[level - 1],
         P_ATK : ENEMY_BASE_ATK[level - 1],
         M_ATK : ENEMY_BASE_ATK[level - 1],
@@ -150,7 +150,7 @@ contract BaseEnemyStats is Initializable {
         INFUSION : 0
         });
 
-        ele_stats.ElementalAtk = GameObjects_Stats.ElementalAtk({
+        ele_stats.ElementalAtk = ElementalAtk({
         FIRE_ATK : ENEMY_BASE_ATK[level - 1],
         COLD_ATK : ENEMY_BASE_ATK[level - 1],
         EARTH_ATK : ENEMY_BASE_ATK[level - 1],
@@ -160,7 +160,7 @@ contract BaseEnemyStats is Initializable {
         VOID_ATK : ENEMY_BASE_ATK[level - 1]
         });
 
-        ele_stats.ElementalDef = GameObjects_Stats.ElementalDef({
+        ele_stats.ElementalDef = ElementalDef({
         FIRE_DEF : ENEMY_BASE_DEF[level - 1],
         COLD_DEF : ENEMY_BASE_DEF[level - 1],
         EARTH_DEF : ENEMY_BASE_DEF[level - 1],

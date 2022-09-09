@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {GameObjects, GameObjects_Stats, GameObjects_Equipments} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, ElementalAtk, ElementalDef,Class, Weapon, Stats, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexStaves is Initializable {
@@ -34,7 +34,7 @@ contract CodexStaves is Initializable {
         BASE_ACCURACY = _BASE_ACCURACY;
     }
 
-    function weapon(uint id, uint tier) public view returns (GameObjects_Equipments.Weapon memory) {
+    function weapon(uint id, uint tier) public view returns (Weapon memory) {
         require(tier < 10, "t");
 
         if (id == 85) {
@@ -84,7 +84,7 @@ contract CodexStaves is Initializable {
         revert("?st");
     }
 
-    function applyTier(GameObjects_Equipments.Weapon memory weapon, uint tier, uint percentage) public view returns (GameObjects_Equipments.Weapon memory){
+    function applyTier(Weapon memory weapon, uint tier, uint percentage) public view returns (Weapon memory){
         if (tier == 0) return weapon;
         weapon.statBonus = EquipableUtils.sumStatsAsTier(weapon.statBonus, tier * percentage);
         weapon.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(weapon.generatedStatBonus, (tier) * percentage);
@@ -92,9 +92,9 @@ contract CodexStaves is Initializable {
         return weapon;
     }
 
-    function WoodenStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function WoodenStaff(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 85;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
 
         // requirements here
@@ -112,9 +112,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(0);
     }
 
-    function MarbleStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function MarbleStaff(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 86;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 5;
         _weapon.requirement.classRequirement = classRequirement();
@@ -123,9 +123,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(1);
     }
 
-    function TotemicStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function TotemicStaff(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 87;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 10;
         _weapon.requirement.classRequirement = classRequirement();
@@ -134,9 +134,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(2);
     }
 
-    function AuraStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function AuraStaff(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 88;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 15;
         _weapon.requirement.classRequirement = classRequirement();
@@ -145,9 +145,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(3);
     }
 
-    function BattleseenStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function BattleseenStaff(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 89;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 20;
         _weapon.requirement.classRequirement = classRequirement();
@@ -156,9 +156,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(4);
     }
 
-    function WizardStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function WizardStaff(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 90;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 25;
         _weapon.requirement.classRequirement = classRequirement();
@@ -167,9 +167,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(5);
     }
 
-    function RubyStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function RubyStaff(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 91;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 30;
         _weapon.requirement.classRequirement = classRequirement();
@@ -178,9 +178,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(6);
     }
 
-    function VerdantStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function VerdantStaff(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 92;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 35;
         _weapon.requirement.classRequirement = classRequirement();
@@ -189,9 +189,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(7);
     }
 
-    function StarfallensStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function StarfallensStaff(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 93;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 40;
         _weapon.requirement.classRequirement = classRequirement();
@@ -200,9 +200,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(8);
     }
 
-    function Lightbringer(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function Lightbringer(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 94;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 45;
         _weapon.requirement.classRequirement = classRequirement();
@@ -211,9 +211,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(9);
     }
 
-    function StaffOfMoonlight(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function StaffOfMoonlight(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 95;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         //  _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 50;
         _weapon.requirement.classRequirement = classRequirement();
@@ -222,9 +222,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(10);
     }
 
-    function StaffOfSunlight(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function StaffOfSunlight(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 96;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 55;
         _weapon.requirement.classRequirement = classRequirement();
@@ -233,9 +233,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(11);
     }
 
-    function CycleStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function CycleStaff(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 97;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 60;
         _weapon.requirement.classRequirement = classRequirement();
@@ -244,9 +244,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(12);
     }
 
-    function PhantasmalStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function PhantasmalStaff(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 98;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 65;
         _weapon.requirement.classRequirement = classRequirement();
@@ -255,9 +255,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(13);
     }
 
-    function WarlocksStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function WarlocksStaff(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 99;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 70;
         _weapon.requirement.classRequirement = classRequirement();
@@ -266,9 +266,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(14);
     }
 
-    function LuminescentStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function LuminescentStaff(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 100;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 75;
         _weapon.requirement.classRequirement = classRequirement();
@@ -277,9 +277,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(15);
     }
 
-    function AncientElementalistsStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function AncientElementalistsStaff(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 101;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 80;
         _weapon.requirement.classRequirement = classRequirement();
@@ -288,9 +288,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(16);
     }
 
-    function Spellcatcher(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function Spellcatcher(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 102;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 85;
         _weapon.requirement.classRequirement = classRequirement();
@@ -299,9 +299,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(17);
     }
 
-    function IncursionStaff(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function IncursionStaff(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 103;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 90;
         _weapon.requirement.classRequirement = classRequirement();
@@ -310,9 +310,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(18);
     }
 
-    function EldersMark(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function EldersMark(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 104;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 95;
         _weapon.requirement.classRequirement = classRequirement();
@@ -321,9 +321,9 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(19);
     }
 
-    function Soultrapper(uint tier) public view returns (GameObjects_Equipments.Weapon memory _weapon) {
+    function Soultrapper(uint tier) public view returns (Weapon memory _weapon) {
         _weapon.metadata.id = 105;
-        _weapon.metadata.baseType = GameObjects.ItemType.WEAPON;
+        _weapon.metadata.baseType = ItemType.WEAPON;
         _weapon.metadata.upgradable = true;
         _weapon.requirement.level = 100;
         _weapon.requirement.classRequirement = classRequirement();
@@ -332,8 +332,8 @@ contract CodexStaves is Initializable {
         _weapon.generatedStatBonus = weaponGenStats(20);
     }
 
-    function weaponStats(uint index) internal view returns (GameObjects_Stats.Stats memory) {
-        GameObjects_Stats.Stats memory stats = GameObjects_Stats.Stats({
+    function weaponStats(uint index) internal view returns (Stats memory) {
+        Stats memory stats = Stats({
         STR : 0,
         DEX : BASE_DEX[index],
         AGI : BASE_AGI[index],
@@ -343,8 +343,8 @@ contract CodexStaves is Initializable {
         return stats;
     }
 
-    function weaponGenStats(uint index) internal view returns (GameObjects_Stats.GeneratedStats memory) {
-        GameObjects_Stats.GeneratedStats memory stats = GameObjects_Stats.GeneratedStats({
+    function weaponGenStats(uint index) internal view returns (GeneratedStats memory) {
+        GeneratedStats memory stats = GeneratedStats({
         HP : 0,
         P_ATK : 0,
         M_ATK : BASE_MATK[index],
@@ -359,11 +359,11 @@ contract CodexStaves is Initializable {
         return stats;
     }
 
-    function classRequirement() internal view returns (GameObjects.Class[] memory) {
-        GameObjects.Class[] memory _reqClass = new GameObjects.Class[](3);
-        _reqClass[0] = GameObjects.Class.Wizard;
-        _reqClass[1] = GameObjects.Class.Necromancer;
-        _reqClass[2] = GameObjects.Class.Priest;
+    function classRequirement() internal view returns (Class[] memory) {
+        Class[] memory _reqClass = new Class[](3);
+        _reqClass[0] = Class.Wizard;
+        _reqClass[1] = Class.Necromancer;
+        _reqClass[2] = Class.Priest;
         return _reqClass;
     }
 }

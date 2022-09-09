@@ -1,4 +1,4 @@
-import {GameObjects_BuffEffects} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {BuffEffect} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexBuffEffect {
@@ -10,7 +10,7 @@ contract CodexBuffEffect {
         return buffEffect(_id, _tier).turnDuration;
     }
 
-    function buffEffect(uint _id, uint _tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function buffEffect(uint _id, uint _tier) public pure returns (BuffEffect memory _effect) {
         if (_id == 1) {
             _effect = EldersPotion(_tier);
         }
@@ -87,154 +87,154 @@ contract CodexBuffEffect {
         //        revert("invalid");
     }
 
-    function EldersPotion(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function EldersPotion(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.BonusEXPPercentagePerTier = 2;
         _effect.bonus.BonusEXPPercentage = 10 + (tier * _effect.bonus.BonusEXPPercentagePerTier);
         _effect.turnDuration = 2;
     }
 
-    function TonicOfTranscendence(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function TonicOfTranscendence(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.BonusEssencePercentagePerTier = 2;
         _effect.bonus.BonusEssencePercentage = 3 + (tier * _effect.bonus.BonusEssencePercentagePerTier);
         _effect.turnDuration = 3;
     }
 
-    function CraftsmansPotion(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function CraftsmansPotion(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.BonusMaterialPercentagePerTier = 3;
         _effect.bonus.BonusMaterialPercentage = 5 + (tier * _effect.bonus.BonusMaterialPercentagePerTier);
         _effect.turnDuration = 3;
     }
 
-    function TonicOfAnger(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function TonicOfAnger(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.StatBonusPerTier = 2;
         _effect.statBonus.STR = 3 + (tier * _effect.bonus.StatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function PhialOfAgility(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function PhialOfAgility(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.StatBonusPerTier = 2;
         _effect.statBonus.AGI = 3 + (tier * _effect.bonus.StatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function PotionOfIronSkin(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function PotionOfIronSkin(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.StatBonusPerTier = 2;
         _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function ElixirOfSolutions(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function ElixirOfSolutions(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.StatBonusPerTier = 2;
         _effect.statBonus.INT = 3 + (tier * _effect.bonus.StatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function AthletesFlask(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function AthletesFlask(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.StatBonusPerTier = 2;
         _effect.statBonus.DEX = 3 + (tier * _effect.bonus.StatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function PerfumeOfBlackwidow(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function PerfumeOfBlackwidow(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.StatBonusPerTier = 2;
         _effect.statBonus.LUCK = 3 + (tier * _effect.bonus.StatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function VialOfMotherEarth(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function VialOfMotherEarth(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.EleStatBonusPerTier = 2;
         _effect.elementalStats.ElementalAtk.EARTH_ATK = 3 + _effect.bonus.EleStatBonusPerTier;
         _effect.elementalStats.ElementalDef.EARTH_DEF = 3 + _effect.bonus.EleStatBonusPerTier;
         _effect.turnDuration = 2;
     }
 
-    function PotionOfCharge(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function PotionOfCharge(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.EleStatBonusPerTier = 2;
         _effect.elementalStats.ElementalAtk.LIGHTNING_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.elementalStats.ElementalDef.LIGHTNING_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function ElixirOfFrosty(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function ElixirOfFrosty(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.EleStatBonusPerTier = 2;
         _effect.elementalStats.ElementalAtk.COLD_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.elementalStats.ElementalDef.COLD_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function DragonBreathPotion(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function DragonBreathPotion(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.EleStatBonusPerTier = 2;
         _effect.elementalStats.ElementalAtk.FIRE_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.elementalStats.ElementalDef.FIRE_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function VialOfSpirit(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function VialOfSpirit(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.EleStatBonusPerTier = 2;
         _effect.elementalStats.ElementalAtk.HOLY_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.elementalStats.ElementalDef.HOLY_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function NightmareFlask(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function NightmareFlask(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.EleStatBonusPerTier = 2;
         _effect.elementalStats.ElementalAtk.DARK_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.elementalStats.ElementalDef.DARK_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function NihilityTonic(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function NihilityTonic(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.EleStatBonusPerTier = 2;
         _effect.elementalStats.ElementalAtk.VOID_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.elementalStats.ElementalDef.VOID_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function PhialOfGladiator(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function PhialOfGladiator(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.GenStatBonusPerTier = 2;
         _effect.generatedStatBonus.P_ATK = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.generatedStatBonus.P_DEF = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function PotionOfArchmage(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function PotionOfArchmage(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.GenStatBonusPerTier = 2;
         _effect.generatedStatBonus.M_ATK = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.generatedStatBonus.M_DEF = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function PotionOfPrecision(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function PotionOfPrecision(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.GenStatBonusPerTier = 2;
         _effect.generatedStatBonus.ACCURACY = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function ExactionPotion(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function ExactionPotion(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.GenStatBonusPerTier = 2;
         _effect.generatedStatBonus.CRIT = 1 + (_effect.bonus.GenStatBonusPerTier * tier);
         _effect.turnDuration = 2;
     }
 
-    function MercilessFlask(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function MercilessFlask(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.GenStatBonusPerTier = 2;
         _effect.generatedStatBonus.CRIT_MULTIPLIER = 5 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function ElixirOfMobility(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function ElixirOfMobility(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.GenStatBonusPerTier = 2;
         _effect.generatedStatBonus.DODGE = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function TonicOfToughness(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function TonicOfToughness(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.generatedStatBonus.HP = 3;
         _effect.bonus.GenStatBonusPerTier = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
-    function PiercingTonic(uint tier) public pure returns (GameObjects_BuffEffects.BuffEffect memory _effect) {
+    function PiercingTonic(uint tier) public pure returns (BuffEffect memory _effect) {
         _effect.bonus.GenStatBonusPerTier = 2;
         _effect.generatedStatBonus.INFUSION = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;

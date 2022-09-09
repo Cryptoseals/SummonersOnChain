@@ -1,5 +1,5 @@
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {GameObjects, GameObjects_Stats} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {BattleStats, Stats, GeneratedStats, ElementalStats, Element, Stats} from "../../Interfaces/GameObjects/IGameObjects.sol";
 import {ICalculator} from "../../Interfaces/Core/Calculator/ICalculator.sol";
 import {InitNavigator, INavigator} from "../../Core/Navigator/InitNavigator.sol";
 import {ICodexRandom} from "../../Interfaces/Codex/ICodexRandom.sol";
@@ -33,17 +33,17 @@ contract Calculator is Initializable, InitNavigator {
 
     function PVEBattleStats(
         uint summoner,
-        IMonster.Monster memory _monster) external view returns (GameObjects_Stats.BattleStats memory,
-        GameObjects_Stats.BattleStats memory) {
+        IMonster.Monster memory _monster) external view returns (BattleStats memory,
+        BattleStats memory) {
         (
-        GameObjects_Stats.Stats memory _statsBase1,
-        GameObjects_Stats.GeneratedStats memory _genStatsFromEquips1,
-        GameObjects_Stats.ElementalStats memory _eleStatsFromEquips1,
+        Stats memory _statsBase1,
+        GeneratedStats memory _genStatsFromEquips1,
+        ElementalStats memory _eleStatsFromEquips1,
         uint lvl
         ) = getAllStats(summoner);
 
-        (GameObjects_Stats.BattleStats memory player,
-        GameObjects_Stats.BattleStats memory monster) = GetBattleStats(
+        (BattleStats memory player,
+        BattleStats memory monster) = GetBattleStats(
             _statsBase1,
             _genStatsFromEquips1,
             _eleStatsFromEquips1,
@@ -58,18 +58,18 @@ contract Calculator is Initializable, InitNavigator {
 
     function PVEBattleStatsByElement(
         uint summoner,
-        IMonster.Monster memory _monster, GameObjects.Element element) external view returns (GameObjects_Stats.BattleStats memory,
-        GameObjects_Stats.BattleStats memory) {
+        IMonster.Monster memory _monster, Element element) external view returns (BattleStats memory,
+        BattleStats memory) {
         (
-        GameObjects_Stats.Stats memory _statsBase1,
-        GameObjects_Stats.GeneratedStats memory _genStatsFromEquips1,
-        GameObjects_Stats.ElementalStats memory _eleStatsFromEquips1,
+        Stats memory _statsBase1,
+        GeneratedStats memory _genStatsFromEquips1,
+        ElementalStats memory _eleStatsFromEquips1,
         uint lvl
         ) = getAllStats(summoner);
         _eleStatsFromEquips1.SummonerDamageType = element;
 
-        (GameObjects_Stats.BattleStats memory player,
-        GameObjects_Stats.BattleStats memory monster) = GetBattleStats(
+        (BattleStats memory player,
+        BattleStats memory monster) = GetBattleStats(
             _statsBase1,
             _genStatsFromEquips1,
             _eleStatsFromEquips1,
@@ -82,13 +82,13 @@ contract Calculator is Initializable, InitNavigator {
         return (player, monster);
     }
 
-    function BattleStats(GameObjects_Stats.Stats memory _stats1,
-        GameObjects_Stats.GeneratedStats memory _gen_stats1,
-        GameObjects_Stats.ElementalStats memory _eleStats1,
-        GameObjects_Stats.Stats memory _stats2,
-        GameObjects_Stats.GeneratedStats memory _gen_stats2,
-        GameObjects_Stats.ElementalStats memory _eleStats2) external view returns (GameObjects_Stats.BattleStats memory,
-        GameObjects_Stats.BattleStats memory) {
+    function BattleStats(Stats memory _stats1,
+        GeneratedStats memory _gen_stats1,
+        ElementalStats memory _eleStats1,
+        Stats memory _stats2,
+        GeneratedStats memory _gen_stats2,
+        ElementalStats memory _eleStats2) external view returns (BattleStats memory,
+        BattleStats memory) {
         return GetBattleStats(_stats1,
             _gen_stats1,
             _eleStats1,
@@ -98,22 +98,22 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     function VSBattleStats(uint summoner, uint summoner2) external view returns (
-        GameObjects_Stats.BattleStats memory,
-        GameObjects_Stats.BattleStats memory
+        BattleStats memory,
+        BattleStats memory
     ){
         (
-        GameObjects_Stats.Stats memory _stats1,
-        GameObjects_Stats.GeneratedStats memory _genStatsFromEquips1,
-        GameObjects_Stats.ElementalStats memory _eleStatsFromEquips1,) = getAllStats(summoner);
+        Stats memory _stats1,
+        GeneratedStats memory _genStatsFromEquips1,
+        ElementalStats memory _eleStatsFromEquips1,) = getAllStats(summoner);
 
         (
-        GameObjects_Stats.Stats memory _stats2,
-        GameObjects_Stats.GeneratedStats memory _genStatsFromEquips2,
-        GameObjects_Stats.ElementalStats memory _eleStatsFromEquips2,) = getAllStats(summoner2);
+        Stats memory _stats2,
+        GeneratedStats memory _genStatsFromEquips2,
+        ElementalStats memory _eleStatsFromEquips2,) = getAllStats(summoner2);
 
         (
-        GameObjects_Stats.BattleStats memory _battleStats1,
-        GameObjects_Stats.BattleStats memory _battleStats2
+        BattleStats memory _battleStats1,
+        BattleStats memory _battleStats2
         ) = GetBattleStats(
             _stats1,
             _genStatsFromEquips1,
@@ -128,39 +128,39 @@ contract Calculator is Initializable, InitNavigator {
 
 
     function GetBattleStats(
-        GameObjects_Stats.Stats memory _stats1,
-        GameObjects_Stats.GeneratedStats memory _gen_stats1,
-        GameObjects_Stats.ElementalStats memory _eleStats1,
-        GameObjects_Stats.Stats memory _stats2,
-        GameObjects_Stats.GeneratedStats memory _gen_stats2,
-        GameObjects_Stats.ElementalStats memory _eleStats2
+        Stats memory _stats1,
+        GeneratedStats memory _gen_stats1,
+        ElementalStats memory _eleStats1,
+        Stats memory _stats2,
+        GeneratedStats memory _gen_stats2,
+        ElementalStats memory _eleStats2
     ) internal view returns (
-        GameObjects_Stats.BattleStats memory _battleStats1,
-        GameObjects_Stats.BattleStats memory _battleStats2) {
+        BattleStats memory _battleStats1,
+        BattleStats memory _battleStats2) {
 
-        if (_eleStats1.SummonerDamageType == GameObjects.Element.PHYSICAL) {
+        if (_eleStats1.SummonerDamageType == Element.PHYSICAL) {
             _battleStats1.DPS = DPSWDecimals(_gen_stats1.P_ATK, _stats1.STR, _gen_stats2.P_DEF, _gen_stats1.INFUSION);
-        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.ARCANE) {
+        } else if (_eleStats1.SummonerDamageType == Element.ARCANE) {
             _battleStats1.DPS = DPSWDecimals(_gen_stats1.M_ATK, _stats1.INT, _gen_stats2.M_DEF, _gen_stats1.INFUSION);
-        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.FIRE) {
+        } else if (_eleStats1.SummonerDamageType == Element.FIRE) {
             _battleStats1.DPS = DPSWDecimals(_eleStats1.ElementalAtk.FIRE_ATK, _stats1.INT > _stats1.STR ? _stats1.INT : _stats1.STR,
                 _eleStats2.ElementalDef.FIRE_DEF, _gen_stats1.INFUSION);
-        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.COLD) {
+        } else if (_eleStats1.SummonerDamageType == Element.COLD) {
             _battleStats1.DPS = DPSWDecimals(_eleStats1.ElementalAtk.COLD_ATK, _stats1.INT > _stats1.STR ? _stats1.INT : _stats1.STR,
                 _eleStats2.ElementalDef.COLD_DEF, _gen_stats1.INFUSION);
-        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.EARTH) {
+        } else if (_eleStats1.SummonerDamageType == Element.EARTH) {
             _battleStats1.DPS = DPSWDecimals(_eleStats1.ElementalAtk.EARTH_ATK, _stats1.INT > _stats1.STR ? _stats1.INT : _stats1.STR,
                 _eleStats2.ElementalDef.EARTH_DEF, _gen_stats1.INFUSION);
-        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.LIGHTNING) {
+        } else if (_eleStats1.SummonerDamageType == Element.LIGHTNING) {
             _battleStats1.DPS = DPSWDecimals(_eleStats1.ElementalAtk.LIGHTNING_ATK, _stats1.INT > _stats1.STR ? _stats1.INT : _stats1.STR,
                 _eleStats2.ElementalDef.LIGHTNING_DEF, _gen_stats1.INFUSION);
-        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.DARK) {
+        } else if (_eleStats1.SummonerDamageType == Element.DARK) {
             _battleStats1.DPS = DPSWDecimals(_eleStats1.ElementalAtk.DARK_ATK, _stats1.INT > _stats1.STR ? _stats1.INT : _stats1.STR,
                 _eleStats2.ElementalDef.DARK_DEF, _gen_stats1.INFUSION);
-        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.HOLY) {
+        } else if (_eleStats1.SummonerDamageType == Element.HOLY) {
             _battleStats1.DPS = DPSWDecimals(_eleStats1.ElementalAtk.HOLY_ATK, _stats1.INT > _stats1.STR ? _stats1.INT : _stats1.STR,
                 _eleStats2.ElementalDef.HOLY_DEF, _gen_stats1.INFUSION);
-        } else if (_eleStats1.SummonerDamageType == GameObjects.Element.VOID) {
+        } else if (_eleStats1.SummonerDamageType == Element.VOID) {
             _battleStats1.DPS = DPSWDecimals(_eleStats1.ElementalAtk.VOID_ATK, _stats1.INT > _stats1.STR ? _stats1.INT : _stats1.STR,
                 _eleStats2.ElementalDef.VOID_DEF, _gen_stats1.INFUSION);
         } else {
@@ -168,29 +168,29 @@ contract Calculator is Initializable, InitNavigator {
         }
 
 
-        if (_eleStats2.SummonerDamageType == GameObjects.Element.PHYSICAL) {
+        if (_eleStats2.SummonerDamageType == Element.PHYSICAL) {
             _battleStats2.DPS = DPSWDecimals(_gen_stats2.P_ATK, _stats2.STR, _gen_stats1.P_DEF, _gen_stats2.INFUSION);
-        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.ARCANE) {
+        } else if (_eleStats2.SummonerDamageType == Element.ARCANE) {
             _battleStats2.DPS = DPSWDecimals(_gen_stats2.M_ATK, _stats2.INT, _gen_stats1.M_DEF, _gen_stats2.INFUSION);
-        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.FIRE) {
+        } else if (_eleStats2.SummonerDamageType == Element.FIRE) {
             _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.FIRE_ATK, _stats2.INT > _stats2.STR ? _stats2.INT : _stats2.STR,
                 _eleStats1.ElementalDef.FIRE_DEF, _gen_stats2.INFUSION);
-        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.COLD) {
+        } else if (_eleStats2.SummonerDamageType == Element.COLD) {
             _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.COLD_ATK, _stats2.INT > _stats2.STR ? _stats2.INT : _stats2.STR,
                 _eleStats1.ElementalDef.COLD_DEF, _gen_stats2.INFUSION);
-        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.EARTH) {
+        } else if (_eleStats2.SummonerDamageType == Element.EARTH) {
             _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.EARTH_ATK, _stats2.INT > _stats2.STR ? _stats2.INT : _stats2.STR,
                 _eleStats1.ElementalDef.EARTH_DEF, _gen_stats2.INFUSION);
-        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.LIGHTNING) {
+        } else if (_eleStats2.SummonerDamageType == Element.LIGHTNING) {
             _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.LIGHTNING_ATK, _stats2.INT > _stats2.STR ? _stats2.INT : _stats2.STR,
                 _eleStats1.ElementalDef.LIGHTNING_DEF, _gen_stats2.INFUSION);
-        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.DARK) {
+        } else if (_eleStats2.SummonerDamageType == Element.DARK) {
             _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.DARK_ATK, _stats2.INT > _stats2.STR ? _stats2.INT : _stats2.STR,
                 _eleStats1.ElementalDef.DARK_DEF, _gen_stats2.INFUSION);
-        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.HOLY) {
+        } else if (_eleStats2.SummonerDamageType == Element.HOLY) {
             _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.HOLY_ATK, _stats2.INT > _stats2.STR ? _stats2.INT : _stats2.STR,
                 _eleStats1.ElementalDef.HOLY_DEF, _gen_stats2.INFUSION);
-        } else if (_eleStats2.SummonerDamageType == GameObjects.Element.VOID) {
+        } else if (_eleStats2.SummonerDamageType == Element.VOID) {
             _battleStats2.DPS = DPSWDecimals(_eleStats2.ElementalAtk.VOID_ATK, _stats2.INT > _stats2.STR ? _stats2.INT : _stats2.STR,
                 _eleStats1.ElementalDef.VOID_DEF, _gen_stats2.INFUSION);
         } else {
@@ -241,15 +241,15 @@ contract Calculator is Initializable, InitNavigator {
 
     function P_ATK(uint summoner) public view returns (uint) {
         (
-        GameObjects_Stats.Stats memory _statsFromEquipments,
-        GameObjects_Stats.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
+        Stats memory _statsFromEquipments,
+        GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
         return ATK(_generatedStatsFromEquipments.P_ATK, _statsFromEquipments.STR) / GameConstants.GAME_DECIMAL;
     }
 
     function M_ATK(uint summoner) public view returns (uint) {
         (
-        GameObjects_Stats.Stats memory _statsFromEquipments,
-        GameObjects_Stats.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
+        Stats memory _statsFromEquipments,
+        GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
         return ATK(_generatedStatsFromEquipments.M_ATK, _statsFromEquipments.INT) / GameConstants.GAME_DECIMAL;
     }
 
@@ -260,15 +260,15 @@ contract Calculator is Initializable, InitNavigator {
 
     function P_DEF(uint summoner) public view returns (uint) {
         (
-        GameObjects_Stats.Stats memory _statsFromEquipments,
-        GameObjects_Stats.GeneratedStats memory _generatedStatsFromEquipments,,uint lvl) = getAllStats(summoner);
+        Stats memory _statsFromEquipments,
+        GeneratedStats memory _generatedStatsFromEquipments,,uint lvl) = getAllStats(summoner);
         return DEFW(_generatedStatsFromEquipments.P_DEF, _statsFromEquipments.VIT, lvl) / GameConstants.GAME_DECIMAL;
     }
 
     function M_DEF(uint summoner) public view returns (uint) {
         (
-        GameObjects_Stats.Stats memory _statsFromEquipments,
-        GameObjects_Stats.GeneratedStats memory _generatedStatsFromEquipments,,uint lvl) = getAllStats(summoner);
+        Stats memory _statsFromEquipments,
+        GeneratedStats memory _generatedStatsFromEquipments,,uint lvl) = getAllStats(summoner);
         return DEFW(_generatedStatsFromEquipments.M_DEF, _statsFromEquipments.INT, lvl) / GameConstants.GAME_DECIMAL;
     }
 
@@ -278,8 +278,8 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     function ACCURACY(uint summoner) public view returns (uint) {
-        (GameObjects_Stats.Stats memory _statsFromEquipments,
-        GameObjects_Stats.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
+        (Stats memory _statsFromEquipments,
+        GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
         return ACCU(_generatedStatsFromEquipments.ACCURACY,
             _statsFromEquipments.DEX);
     }
@@ -290,8 +290,8 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     function CRIT(uint summoner) public view returns (uint) {
-        (GameObjects_Stats.Stats memory _statsFromEquipments,
-        GameObjects_Stats.GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
+        (Stats memory _statsFromEquipments,
+        GeneratedStats memory _generatedStatsFromEquipments,,) = getAllStats(summoner);
         return CRITW(_generatedStatsFromEquipments.CRIT,
             _statsFromEquipments.LUCK);
     }
@@ -306,19 +306,19 @@ contract Calculator is Initializable, InitNavigator {
     }
 
     // @notice VIEW UTILS
-    function getAllStats(uint summoner) public view returns (GameObjects_Stats.Stats memory _stats, GameObjects_Stats.GeneratedStats memory _generated_stats, GameObjects_Stats.ElementalStats memory _ele_stats, uint lvl) {
+    function getAllStats(uint summoner) public view returns (Stats memory _stats, GeneratedStats memory _generated_stats, ElementalStats memory _ele_stats, uint lvl) {
 
         //function getSummonerBattleStats(uint summoner) public view returns
-        //(GameObjects_Stats.Stats memory _stats, GameObjects_Stats.GeneratedStats memory _gen_stats, GameObjects_Stats.ElementalStats memory _ele_stats)
-        GameObjects_Stats.Stats memory _summonerStats = attributes.stats(summoner);
+        //(Stats memory _stats, GeneratedStats memory _gen_stats, ElementalStats memory _ele_stats)
+        Stats memory _summonerStats = attributes.stats(summoner);
 
-        (GameObjects_Stats.Stats memory _stats_eq,
-        GameObjects_Stats.GeneratedStats memory _gen_stats_eq,
-        GameObjects_Stats.ElementalStats memory _ele_stats_eq) = precalculatedStats(summoner);
+        (Stats memory _stats_eq,
+        GeneratedStats memory _gen_stats_eq,
+        ElementalStats memory _ele_stats_eq) = precalculatedStats(summoner);
 
-        (GameObjects_Stats.Stats memory _stats_fx,
-        GameObjects_Stats.GeneratedStats memory _gen_stats_fx,
-        GameObjects_Stats.ElementalStats memory _ele_stats_fx) = elixirAndArtifactSlots.activeEffects(summoner);
+        (Stats memory _stats_fx,
+        GeneratedStats memory _gen_stats_fx,
+        ElementalStats memory _ele_stats_fx) = elixirAndArtifactSlots.activeEffects(summoner);
 
         lvl = Summoners.level(summoner);
         _stats = EquipableUtils.sumStats(_stats_fx, _stats_eq);
@@ -337,20 +337,20 @@ contract Calculator is Initializable, InitNavigator {
         _ele_stats.SummonerDamageType = _ele_stats_eq.SummonerDamageType;
     }
 
-    function precalculatedStats(uint summoner) public view returns (GameObjects_Stats.Stats memory,
-        GameObjects_Stats.GeneratedStats memory,
-        GameObjects_Stats.ElementalStats memory) {
-        (GameObjects_Stats.Stats memory _stats_eq,
-        GameObjects_Stats.GeneratedStats memory _gen_stats_eq,
-        GameObjects_Stats.ElementalStats memory _ele_stats_eq) = inventory.getSummonerBattleStats(summoner);
+    function precalculatedStats(uint summoner) public view returns (Stats memory,
+        GeneratedStats memory,
+        ElementalStats memory) {
+        (Stats memory _stats_eq,
+        GeneratedStats memory _gen_stats_eq,
+        ElementalStats memory _ele_stats_eq) = inventory.getSummonerBattleStats(summoner);
 
-        GameObjects_Stats.GeneratedStats memory _base = SummonerBaseStats();
+        GeneratedStats memory _base = SummonerBaseStats();
         _gen_stats_eq = EquipableUtils.sumGeneratedStats(_gen_stats_eq, _base);
         return (_stats_eq, _gen_stats_eq, _ele_stats_eq);
     }
 
-    function SummonerBaseStats() public view returns (GameObjects_Stats.GeneratedStats memory) {
-        return GameObjects_Stats.GeneratedStats({HP : 10, P_ATK : 10, M_ATK : 10, P_DEF : 10, M_DEF : 10, ACCURACY : 10, DODGE : 10, CRIT : 0, CRIT_MULTIPLIER : 0, INFUSION : 0});
+    function SummonerBaseStats() public view returns (GeneratedStats memory) {
+        return GeneratedStats({HP : 10, P_ATK : 10, M_ATK : 10, P_DEF : 10, M_DEF : 10, ACCURACY : 10, DODGE : 10, CRIT : 0, CRIT_MULTIPLIER : 0, INFUSION : 0});
     }
 
     function CostOfStat(uint lvl) public view returns (uint) {
@@ -358,7 +358,7 @@ contract Calculator is Initializable, InitNavigator {
         return lvl == 0 ? 0 : 1 + (lvl / 14);
     }
 
-    function SumOfStatSetCost(GameObjects_Stats.Stats memory stats) external view returns (uint) {
+    function SumOfStatSetCost(Stats memory stats) external view returns (uint) {
         uint cost = 0;
 
         for (uint i = 0; i <= stats.STR; i++) {

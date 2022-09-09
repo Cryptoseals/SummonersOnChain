@@ -1,5 +1,6 @@
-import {IAdventure, GameObjects, IGameRewards, ICraftingMaterials} from "../../Interfaces/GameObjects/IAdventure.sol";
+import {IAdventure, IGameRewards, ICraftingMaterials} from "../../Interfaces/GameObjects/IAdventure.sol";
 import {IMonster} from "../../Interfaces/GameObjects/IMonster.sol";
+import {Element} from "../../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexArea7 {
@@ -80,25 +81,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 1,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 2,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 1,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 2,
         level : 1
         });
@@ -154,25 +155,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 2,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 3,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 2,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 3,
         level : 1
         });
@@ -228,25 +229,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 3,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 4,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 3,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 4,
         level : 1
         });
@@ -302,25 +303,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 4,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 5,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 4,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 5,
         level : 1
         });
@@ -376,25 +377,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 5,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 6,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 5,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 6,
         level : 1
         });
@@ -450,25 +451,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 6,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 7,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 6,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 7,
         level : 1
         });
@@ -524,25 +525,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 7,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 8,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 7,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 8,
         level : 1
         });
@@ -598,25 +599,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 8,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 9,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 8,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 9,
         level : 1
         });
@@ -672,25 +673,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 9,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 10,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 9,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 10,
         level : 1
         });
@@ -746,25 +747,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 10,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 11,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 10,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 11,
         level : 1
         });
@@ -820,25 +821,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 11,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 12,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 11,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 12,
         level : 1
         });
@@ -894,25 +895,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 12,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 13,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 12,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 13,
         level : 1
         });
@@ -968,25 +969,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 13,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 14,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 13,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 14,
         level : 1
         });
@@ -1042,25 +1043,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 14,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 15,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 14,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 15,
         level : 1
         });
@@ -1116,25 +1117,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 15,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 16,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 15,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 16,
         level : 1
         });
@@ -1190,25 +1191,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 16,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 17,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 16,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 17,
         level : 1
         });
@@ -1264,25 +1265,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 17,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 18,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 17,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 18,
         level : 1
         });
@@ -1338,25 +1339,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 18,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 19,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 18,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 19,
         level : 1
         });
@@ -1412,25 +1413,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 19,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 20,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 19,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 20,
         level : 1
         });
@@ -1486,25 +1487,25 @@ contract CodexArea7 {
         _level.MonsterList = new IAdventure.AdventureMonster[](4);
 
         _level.MonsterList[0] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 20,
         level : 1
         });
 
         _level.MonsterList[1] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.FIRE,
+        element : Element.FIRE,
         monsterId : 21,
         level : 1
         });
 
         _level.MonsterList[2] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 20,
         level : 1
         });
 
         _level.MonsterList[3] = IAdventure.AdventureMonster({
-        element : GameObjects.Element.ARCANE,
+        element : Element.ARCANE,
         monsterId : 21,
         level : 1
         });

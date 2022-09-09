@@ -1,5 +1,5 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {GameObjects, GameObjects_Equipments} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {Artifact} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexArtifactsProperties is Initializable {
@@ -9,15 +9,15 @@ contract CodexArtifactsProperties is Initializable {
 
     function initialize () external initializer {}
 
-    function properties(uint[] memory ids, uint tier) external view returns (GameObjects_Equipments.Artifact[] memory){
-        GameObjects_Equipments.Artifact[] memory result = new  GameObjects_Equipments.Artifact[](ids.length);
+    function properties(uint[] memory ids, uint tier) external view returns (Artifact[] memory){
+        Artifact[] memory result = new  Artifact[](ids.length);
         for (uint i = 0; i < ids.length; i++) {
             result[i] = property(ids[i], tier);
         }
         return result;
     }
 
-    function property(uint _id, uint _tier) public pure returns (GameObjects_Equipments.Artifact memory) {
+    function property(uint _id, uint _tier) public pure returns (Artifact memory) {
         if (_id == 1) {return STR(_tier);}
         else if (_id == 2) {return AGI(_tier);}
         else if (_id == 3) {return INT(_tier);}
@@ -52,123 +52,123 @@ contract CodexArtifactsProperties is Initializable {
         revert("invalid");
     }
 
-    function STR(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function STR(uint tier) public pure returns (Artifact memory _property) {
         _property.statBonus.STR = 7 + tier * 2;
     }
 
-    function AGI(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function AGI(uint tier) public pure returns (Artifact memory _property) {
         _property.statBonus.AGI = 7 + tier * 2;
     }
 
-    function INT(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function INT(uint tier) public pure returns (Artifact memory _property) {
         _property.statBonus.INT = 7 + tier * 2;
     }
 
-    function DEX(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function DEX(uint tier) public pure returns (Artifact memory _property) {
         _property.statBonus.DEX = 7 + tier * 2;
     }
 
-    function VIT(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function VIT(uint tier) public pure returns (Artifact memory _property) {
         _property.statBonus.VIT = 7 + tier * 2;
     }
 
-    function LUCK(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function LUCK(uint tier) public pure returns (Artifact memory _property) {
         _property.statBonus.LUCK = 7 + tier * 2;
     }
 
-    function HP(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function HP(uint tier) public pure returns (Artifact memory _property) {
         _property.generatedStatBonus.HP = 5 + tier * 2;
     }
 
-    function P_ATK(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function P_ATK(uint tier) public pure returns (Artifact memory _property) {
         _property.generatedStatBonus.P_ATK = 5 + tier * 2;
     }
 
-    function P_DEF(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function P_DEF(uint tier) public pure returns (Artifact memory _property) {
         _property.generatedStatBonus.P_DEF = 5 + tier * 2;
     }
 
-    function M_ATK(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function M_ATK(uint tier) public pure returns (Artifact memory _property) {
         _property.generatedStatBonus.M_ATK = 5 + tier * 2;
     }
 
-    function M_DEF(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function M_DEF(uint tier) public pure returns (Artifact memory _property) {
         _property.generatedStatBonus.M_DEF = 5 + tier * 2;
     }
 
-    function ACC(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function ACC(uint tier) public pure returns (Artifact memory _property) {
         _property.generatedStatBonus.ACCURACY = 5 + tier * 2;
     }
 
-    function DODGE(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function DODGE(uint tier) public pure returns (Artifact memory _property) {
         _property.generatedStatBonus.DODGE = 5 + tier * 2;
     }
 
-    function CRIT(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function CRIT(uint tier) public pure returns (Artifact memory _property) {
         _property.generatedStatBonus.CRIT = 5 + tier * 2;
     }
 
-    function CRIT_MULT(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function CRIT_MULT(uint tier) public pure returns (Artifact memory _property) {
         _property.generatedStatBonus.CRIT_MULTIPLIER = 5 + tier * 2;
     }
 
-    function INFUSION(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function INFUSION(uint tier) public pure returns (Artifact memory _property) {
         _property.generatedStatBonus.INFUSION = 5 + tier * 2;
     }
 
-    function FIRE_ATK(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function FIRE_ATK(uint tier) public pure returns (Artifact memory _property) {
         _property.elementalStats.ElementalAtk.FIRE_ATK = 10 + tier * 2;
     }
 
-    function FIRE_DEF(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function FIRE_DEF(uint tier) public pure returns (Artifact memory _property) {
         _property.elementalStats.ElementalDef.FIRE_DEF = 10 + tier * 2;
     }
 
-    function COLD_ATK(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function COLD_ATK(uint tier) public pure returns (Artifact memory _property) {
         _property.elementalStats.ElementalAtk.COLD_ATK = 10 + tier * 2;
     }
 
-    function COLD_DEF(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function COLD_DEF(uint tier) public pure returns (Artifact memory _property) {
         _property.elementalStats.ElementalDef.COLD_DEF = 10 + tier * 2;
     }
 
-    function EARTH_ATK(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function EARTH_ATK(uint tier) public pure returns (Artifact memory _property) {
         _property.elementalStats.ElementalAtk.EARTH_ATK = 10 + tier * 2;
     }
 
-    function EARTH_DEF(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function EARTH_DEF(uint tier) public pure returns (Artifact memory _property) {
         _property.elementalStats.ElementalDef.EARTH_DEF = 10 + tier * 2;
     }
 
-    function LIGHTNING_ATK(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function LIGHTNING_ATK(uint tier) public pure returns (Artifact memory _property) {
         _property.elementalStats.ElementalAtk.LIGHTNING_ATK = 10 + tier * 2;
     }
 
-    function LIGHTNING_DEF(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function LIGHTNING_DEF(uint tier) public pure returns (Artifact memory _property) {
         _property.elementalStats.ElementalDef.LIGHTNING_DEF = 10 + tier * 2;
     }
 
-    function HOLY_ATK(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function HOLY_ATK(uint tier) public pure returns (Artifact memory _property) {
         _property.elementalStats.ElementalAtk.HOLY_ATK = 10 + tier * 2;
     }
 
-    function HOLY_DEF(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function HOLY_DEF(uint tier) public pure returns (Artifact memory _property) {
         _property.elementalStats.ElementalDef.HOLY_DEF = 10 + tier * 2;
     }
 
-    function DARK_ATK(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function DARK_ATK(uint tier) public pure returns (Artifact memory _property) {
         _property.elementalStats.ElementalAtk.DARK_ATK = 10 + tier * 2;
     }
 
-    function DARK_DEF(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function DARK_DEF(uint tier) public pure returns (Artifact memory _property) {
         _property.elementalStats.ElementalDef.DARK_DEF = 10 + tier * 2;
     }
 
-    function VOID_ATK(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function VOID_ATK(uint tier) public pure returns (Artifact memory _property) {
         _property.elementalStats.ElementalAtk.VOID_ATK = 10 + tier * 2;
     }
 
-    function VOID_DEF(uint tier) public pure returns (GameObjects_Equipments.Artifact memory _property) {
+    function VOID_DEF(uint tier) public pure returns (Artifact memory _property) {
         _property.elementalStats.ElementalDef.VOID_DEF = 10 + tier * 2;
     }
 }
