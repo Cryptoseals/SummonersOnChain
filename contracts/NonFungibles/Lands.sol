@@ -91,50 +91,42 @@ contract Lands is Initializable, ReentrancyGuardUpgradeable, OwnableUpgradeable,
             require(stats.LandDetailsTier < _landDetails.maxLevel, "m");
             reqs = _landDetails.upgradeReqs;
             stats.LandDetailsTier++;
-        }
-        else if (building == BuildingList.Poultry) {
+        } else if (building == BuildingList.Poultry) {
             ILand.Poultry memory _poultries = landCodex.poultry(stats.PoultriesTier);
             require(stats.PoultriesTier < _poultries.building.maxLevel, "m");
             reqs = _poultries.building.upgradeReqs;
             stats.PoultriesTier++;
-        }
-        else if (building == BuildingList.BarnHouse) {
+        } else if (building == BuildingList.BarnHouse) {
             ILand.BarnHouse memory _barn = landCodex.barnHouse(stats.BarnHousesTier);
             require(stats.BarnHousesTier < _barn.building.maxLevel, "m");
             reqs = _barn.building.upgradeReqs;
             stats.BarnHousesTier++;
-        }
-        else if (building == BuildingList.StorageBuilding) {
+        } else if (building == BuildingList.StorageBuilding) {
             ILand.Storages memory _storage = landCodex.storages(stats.StorageBuildingsTier);
             require(stats.StorageBuildingsTier < _storage.building.maxLevel, "m");
             reqs = _storage.building.upgradeReqs;
             stats.StorageBuildingsTier++;
-        }
-        else if (building == BuildingList.Mill) {
+        } else if (building == BuildingList.Mill) {
             ILand.Mill memory _mill = landCodex.mill(stats.MillsTier);
             require(stats.MillsTier < _mill.building.maxLevel, "m");
             reqs = _mill.building.upgradeReqs;
             stats.MillsTier++;
-        }
-        else if (building == BuildingList.Farms) {
+        } else if (building == BuildingList.Farms) {
             ILand.Farm memory _farms = landCodex.farm(stats.FarmsTier);
             require(stats.FarmsTier < _farms.building.maxLevel, "m");
             reqs = _farms.building.upgradeReqs;
             stats.FarmsTier++;
-        }
-        else if (building == BuildingList.WaterTower) {
+        } else if (building == BuildingList.WaterTower) {
             ILand.WaterTower memory _watertower = landCodex.waterTower(stats.WaterTowersTier);
             require(stats.WaterTowersTier < _watertower.building.maxLevel, "m");
             reqs = _watertower.building.upgradeReqs;
             stats.WaterTowersTier++;
-        }
-        else if (building == BuildingList.Slaughterhouse) {
+        } else if (building == BuildingList.Slaughterhouse) {
             ILand.Slaughterhouse memory _slaughterhouse = landCodex.slaughterhouse(stats.SlaughterhousesTier);
             require(stats.SlaughterhousesTier < _slaughterhouse.building.maxLevel, "m");
             reqs = _slaughterhouse.building.upgradeReqs;
             stats.SlaughterhousesTier++;
-        }
-        else if (building == BuildingList.Dairy) {
+        } else if (building == BuildingList.Dairy) {
             ILand.Dairies memory _dairy = landCodex.dairies(stats.DairiesTier);
             require(stats.DairiesTier < _dairy.building.maxLevel, "m");
             reqs = _dairy.building.upgradeReqs;
@@ -143,20 +135,8 @@ contract Lands is Initializable, ReentrancyGuardUpgradeable, OwnableUpgradeable,
 
         require(reqs.isValid, "v");
 
-        for (uint i = 0; i < reqs.requiredMiscItems.length; i++) {
+        for (uint i = 0; i < reqs.requiredMaterials.length; i++) {
             materials.burnMaterial(msg.sender, reqs.requiredMaterials[i].id, reqs.requiredMaterials[i].amount);
-        }
-
-        for (uint i = 0; i < reqs.requiredMiscItems.length; i++) {
-            miscs.burnMiscItem(msg.sender, reqs.requiredMiscItems[i].id, reqs.requiredMiscItems[i].amount);
-        }
-
-        for (uint i = 0; i < reqs.requiredCookingItems.length; i++) {
-            cooking.burnCookingItem(msg.sender, reqs.requiredCookingItems[i].id, reqs.requiredCookingItems[i].amount);
-        }
-
-        for (uint i = 0; i < reqs.requiredAlchemyItems.length; i++) {
-            alchemy.burnAlchemyItem(msg.sender, reqs.requiredAlchemyItems[i].id, reqs.requiredAlchemyItems[i].amount);
         }
     }
 
@@ -167,9 +147,8 @@ contract Lands is Initializable, ReentrancyGuardUpgradeable, OwnableUpgradeable,
 
     function landsOfOwner(address _owner) public view returns (uint[] memory) {
         uint[] memory _tokensOfOwner = new uint[](balanceOf(_owner));
-        uint i;
 
-        for (i = 0; i < _tokensOfOwner.length; i++) {
+        for (uint i = 0; i < _tokensOfOwner.length; i++) {
             _tokensOfOwner[i] = tokenOfOwnerByIndex(_owner, i);
         }
         return (_tokensOfOwner);
@@ -182,5 +161,9 @@ contract Lands is Initializable, ReentrancyGuardUpgradeable, OwnableUpgradeable,
         }
 
         return _result;
+    }
+
+    function landBuilding(uint id) external view returns (ILand.BuildingRequirement memory){
+        return landCodex.waterTower(1).building.upgradeReqs;
     }
 }

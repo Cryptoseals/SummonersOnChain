@@ -84,7 +84,7 @@ contract CodexBuffEffect {
             _effect = PiercingTonic(_tier);
         }
 
-        //        revert("invalid");
+        revert("invalid");
     }
 
     function EldersPotion(uint tier) public pure returns (BuffEffect memory _effect) {

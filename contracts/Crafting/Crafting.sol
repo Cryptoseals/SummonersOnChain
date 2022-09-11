@@ -195,20 +195,31 @@ contract Crafting is Initializable, InitNavigator {
         BuffEffectRecipe memory recipe = CraftingConsumable(contractAddress(INavigator.CONTRACT.CONSUMABLE_RECIPES)).recipe_by_id(consumable);
         if (recipe.id == 0) revert("invalid");
 
-        for (uint i = 0; i < recipe.requiredMiscItems.length; i++) {
-            miscs.burnMiscItem(msg.sender, recipe.requiredMiscItems[i].id, recipe.requiredMiscItems[i].amount);
+
+        if (recipe.requiredMiscItems.length > 0) {
+            for (uint i = 0; i < recipe.requiredMiscItems.length; i++) {
+                miscs.burnMiscItem(msg.sender, recipe.requiredMiscItems[i].id, recipe.requiredMiscItems[i].amount * amount);
+            }
         }
 
-        for (uint i = 0; i < recipe.requiredCookingItems.length; i++) {
-            cooking.burnCookingItem(msg.sender, recipe.requiredCookingItems[i].id, recipe.requiredCookingItems[i].amount);
+        if (recipe.requiredCookingItems.length > 0) {
+            for (uint i = 0; i < recipe.requiredCookingItems.length; i++) {
+                cooking.burnCookingItem(msg.sender, recipe.requiredCookingItems[i].id, recipe.requiredCookingItems[i].amount * amount);
+            }
         }
 
-        for (uint i = 0; i < recipe.requiredAlchemyItems.length; i++) {
-            alchemy.burnAlchemyItem(msg.sender, recipe.requiredAlchemyItems[i].id, recipe.requiredAlchemyItems[i].amount);
+        if (recipe.requiredAlchemyItems.length > 0) {
+            for (uint i = 0; i < recipe.requiredAlchemyItems.length; i++) {
+                alchemy.burnAlchemyItem(msg.sender, recipe.requiredAlchemyItems[i].id, recipe.requiredAlchemyItems[i].amount * amount);
+            }
         }
 
-        goldContract.burnToken(msg.sender, recipe.requiredGold * amount);
-        essenceContract.burnToken(msg.sender, recipe.requiredEssence * amount);
+        if (recipe.requiredGold > 0) {
+            goldContract.burnToken(msg.sender, recipe.requiredGold * amount);
+        }
+        if (recipe.requiredEssence > 0) {
+            essenceContract.burnToken(msg.sender, recipe.requiredEssence * amount);
+        }
         consumables.mintConsumable(consumable, 0, msg.sender, amount);
     }
 

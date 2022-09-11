@@ -1,6 +1,7 @@
 import {AnimalsL, ILand, ICookingItem} from "../Interfaces/Lands/ILand.sol";
 import {ICraftingMaterials} from "../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
 import {IAlchemyItem} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/IAlchemyItem.sol";
+import {BasicRequirement} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexLands {
@@ -20,8 +21,8 @@ contract CodexLands {
     uint constant public maxDairyLevel = 10;
 
     // utils
-    function generateRequirement(uint length) internal pure returns (ILand.GeneralRequirement[] memory){
-        return new ILand.GeneralRequirement[](length);
+    function generateRequirement(uint length) internal pure returns (BasicRequirement[] memory){
+        return new BasicRequirement[](length);
     }
 
 
@@ -29,10 +30,7 @@ contract CodexLands {
     function land(uint tier) external view returns (ILand.GeneralBuilding memory _land){
         require(tier > 0 && tier <= maxLandLevel, "t");
         _land.level = tier;
-
-        if (tier != maxLandLevel) {
-            _land.upgradeReqs = landBuildReqs(tier + 1);
-        }
+        _land.upgradeReqs = landBuildReqs(tier + 1);
         _land.maxLevel = maxLandLevel;
     }
 
@@ -41,9 +39,7 @@ contract CodexLands {
         _poultry.building.level = tier;
         _poultry.building.maxLevel = maxPoultryLevel;
         _poultry.building.bonusChance = 5 + (tier * 2);
-        if (tier != maxPoultryLevel) {
-            _poultry.building.upgradeReqs = poultryBuildReqs(tier + 1);
-        }
+        _poultry.building.upgradeReqs = poultryBuildReqs(tier + 1);
         _poultry.capacity = 0 + (tier * 3);
     }
 
@@ -52,9 +48,7 @@ contract CodexLands {
         _barnHouse.building.level = tier;
         _barnHouse.building.maxLevel = maxBarnLevel;
         _barnHouse.building.bonusChance = 5 + (tier * 2);
-        if (tier != maxBarnLevel) {
-            _barnHouse.building.upgradeReqs = barnBuilding(tier + 1);
-        }
+        _barnHouse.building.upgradeReqs = barnBuilding(tier + 1);
         _barnHouse.capacity = 0 + (tier * 3);
     }
 
@@ -63,9 +57,7 @@ contract CodexLands {
         _storageBuilding.building.level = tier;
         _storageBuilding.building.maxLevel = maxStorageLevel;
         _storageBuilding.building.bonusChance = 5 + (tier * 2);
-        if (tier != maxStorageLevel) {
-            _storageBuilding.building.upgradeReqs = storageBuilding(tier + 1);
-        }
+        _storageBuilding.building.upgradeReqs = storageBuilding(tier + 1);
         _storageBuilding.diaryCapacity = 5 + (tier * 2);
         _storageBuilding.eggCapacity = 5 + (tier * 2);
     }
@@ -76,9 +68,7 @@ contract CodexLands {
         _mill.building.maxLevel = maxMillLevel;
         _mill.building.bonusChance = 5 + (tier * 2);
         _mill.maxProcessSimultaneously = 3 + (tier * 2);
-        if (tier != maxMillLevel) {
-            _mill.building.upgradeReqs = millBuilding(tier + 1);
-        }
+        _mill.building.upgradeReqs = millBuilding(tier + 1);
         _mill.processTimePerCrop = (15 minutes) - ((tier * 2) * 1 minutes);
     }
 
@@ -87,9 +77,7 @@ contract CodexLands {
         _farm.building.level = tier;
         _farm.building.maxLevel = maxFarmLevel;
         _farm.building.bonusChance = 5 + (tier * 2);
-        if (tier != maxFarmLevel) {
-            _farm.building.upgradeReqs = farmBuilding(tier + 1);
-        }
+        _farm.building.upgradeReqs = farmBuilding(tier + 1);
         _farm.usablePlots = 3 + (tier * 3);
     }
 
@@ -98,9 +86,7 @@ contract CodexLands {
         _waterTower.building.level = tier;
         _waterTower.building.maxLevel = maxWaterLevel;
         _waterTower.building.bonusChance = 5 + (tier * 2);
-        if (tier != maxWaterLevel) {
-            _waterTower.building.upgradeReqs = waterBuilding(tier + 1);
-        }
+        _waterTower.building.upgradeReqs = waterBuilding(tier + 1);
         _waterTower.dailyWaterReward = 10 + ((10 * tier) / 2);
     }
 
@@ -109,9 +95,7 @@ contract CodexLands {
         _slaughterhouse.building.level = tier;
         _slaughterhouse.building.maxLevel = maxSlaughterhouseLevel;
         _slaughterhouse.building.bonusChance = 5 + (tier * 2);
-        if (tier != maxSlaughterhouseLevel) {
-            _slaughterhouse.building.upgradeReqs = slaughterhouseBuilding(tier + 1);
-        }
+        _slaughterhouse.building.upgradeReqs = slaughterhouseBuilding(tier + 1);
         _slaughterhouse.maxProductionSimultaneously = 5 + (tier * 2);
     }
 
@@ -120,16 +104,14 @@ contract CodexLands {
         _dairies.building.level = tier;
         _dairies.building.maxLevel = maxDairyLevel;
         _dairies.building.bonusChance = 5 + (tier * 2);
-        if (tier != maxDairyLevel) {
-            _dairies.building.upgradeReqs = dairiesBuilding(tier + 1);
-        }
+        _dairies.building.upgradeReqs = dairiesBuilding(tier + 1);
         _dairies.maxProductionSimultaneously = 3 + (tier * 3);
     }
 
     // upgrades
 
     function landBuildReqs(uint tier) public pure returns (ILand.BuildingRequirement memory _reqs) {
-        require(tier > 0, "t");
+        require(tier > 1, "t");
         _reqs.isValid = true;
 
         //        _reqs.requiredMiscItems = generateRequirement(1);
@@ -143,9 +125,7 @@ contract CodexLands {
         //        _reqs.requiredAlchemyItems = generateRequirement(1);
         //        _reqs.requiredAlchemyItems[0].id = 1;
         //        _reqs.requiredAlchemyItems[0].amount = 100;
-        if (tier == 1) {
-
-        } else if (tier == 2) {
+        if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -239,12 +219,10 @@ contract CodexLands {
     }
 
     function poultryBuildReqs(uint tier) public pure returns (ILand.BuildingRequirement memory _reqs) {
-        require(tier > 0, "t");
+        require(tier > 1, "t");
         _reqs.isValid = true;
 
-        if (tier == 1) {
-
-        } else if (tier == 2) {
+        if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -338,12 +316,10 @@ contract CodexLands {
     }
 
     function barnBuilding(uint tier) public view returns (ILand.BuildingRequirement memory _reqs){
-        require(tier > 0, "t");
+        require(tier > 1, "t");
         _reqs.isValid = true;
 
-        if (tier == 1) {
-
-        } else if (tier == 2) {
+        if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -439,9 +415,7 @@ contract CodexLands {
     function storageBuilding(uint tier) public view returns (ILand.BuildingRequirement memory _reqs){
         _reqs.isValid = true;
 
-        if (tier == 1) {
-
-        } else if (tier == 2) {
+        if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -537,9 +511,7 @@ contract CodexLands {
     function millBuilding(uint tier) public view returns (ILand.BuildingRequirement memory _reqs){
         _reqs.isValid = true;
 
-        if (tier == 1) {
-
-        } else if (tier == 2) {
+        if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -635,9 +607,7 @@ contract CodexLands {
     function farmBuilding(uint tier) public view returns (ILand.BuildingRequirement memory _reqs){
         _reqs.isValid = true;
 
-        if (tier == 1) {
-
-        } else if (tier == 2) {
+        if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -733,9 +703,7 @@ contract CodexLands {
     function waterBuilding(uint tier) public view returns (ILand.BuildingRequirement memory _reqs){
         _reqs.isValid = true;
 
-        if (tier == 1) {
-
-        } else if (tier == 2) {
+        if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -831,9 +799,7 @@ contract CodexLands {
     function slaughterhouseBuilding(uint tier) public view returns (ILand.BuildingRequirement memory _reqs){
         _reqs.isValid = true;
 
-        if (tier == 1) {
-
-        } else if (tier == 2) {
+        if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -929,9 +895,7 @@ contract CodexLands {
     function dairiesBuilding(uint tier) public view returns (ILand.BuildingRequirement memory _reqs){
         _reqs.isValid = true;
 
-        if (tier == 1) {
-
-        } else if (tier == 2) {
+        if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
             _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
@@ -1073,7 +1037,7 @@ contract CodexLands {
             return King_Flower();
         } else if (_id == 19) {
             return Wood_Moss();
-        }  else if (_id == 20) {
+        } else if (_id == 20) {
             return Ancient_Flower();
         } else if (_id == 21) {
             return Fellherb();
@@ -1087,7 +1051,7 @@ contract CodexLands {
             return Golden_Flower();
         } else if (_id == 26) {
             return Stinky_Flower();
-        }  else if (_id == 27) {
+        } else if (_id == 27) {
             return Apple();
         } else if (_id == 28) {
             return Carrot();

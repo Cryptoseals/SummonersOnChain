@@ -37,6 +37,9 @@ contract ConsumableItems is Initializable, OwnableUpgradeable, InitNavigator, ER
         _setURI(__uri);
     }
 
+    function name(uint256 id) public view returns (string memory) {
+        return "Consumables";
+    }
     function tokenURI(uint256 id) public view returns (string memory) {
         return string(abi.encodePacked(uri(id), id.toString()));
     }

@@ -13,10 +13,23 @@ async function main() {
         MiscItems);
     await miscItems.deployed();
 
-    fs.writeFileSync(DeployedFileLocations.misc_items, JSON.stringify({
-        miscItems: miscItems.address,
-    }), {});
+    //
+    // let CookingItems = await ethers.getContractFactory("CookingItems");
+    // let cookingItems = await upgrades.upgradeProxy(deployedMisc.cookingItems,
+    //     CookingItems);
+    // await cookingItems.deployed();
+    //
+    // let AlchemyItems = await ethers.getContractFactory("AlchemyItems");
+    // let alchemyItems = await upgrades.upgradeProxy(deployedMisc.alchemyItems,
+    //     AlchemyItems);
+    // await alchemyItems.deployed();
 
+    //
+    // fs.writeFileSync(DeployedFileLocations.misc_items, JSON.stringify({
+    //     miscItems: miscItems.address,
+    //     cookingItems: cookingItems.address,
+    //     alchemyItems: alchemyItems.address,
+    // }), {});
 }
 
 main();

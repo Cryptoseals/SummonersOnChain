@@ -100,7 +100,8 @@ async function main() {
 
     const reward = helpercontract.attach(deployedReward.rewards);
 
-    const landControls = helpercontract.attach(deployedLandControls.lands);
+    const landControls = helpercontract.attach(deployedLandControls.landControls);
+    const lands = helpercontract.attach(deployedLandControls.lands);
 
     const traderContracts = helpercontract.attach(deployedLandControls.trader);
 
@@ -190,14 +191,16 @@ async function main() {
     await tx.wait(1)
     console.log("reward")
 
-
     tx = await landControls.initializeContracts();
     await tx.wait(1)
     console.log("landControls")
 
 
-
+    tx = await lands.initializeContracts();
     await tx.wait(1)
+    console.log("lands")
+
+
 
     console.log(adventureControls.address)
     console.log(adventures.address)

@@ -1,5 +1,10 @@
 //import "./IGenericMetadata.sol";
 pragma solidity ^0.8.0;
+
+import "../NonFungibles/ConsumablesAndArtifacts/IMisc.sol";
+import "../NonFungibles/ConsumablesAndArtifacts/IAlchemyItem.sol";
+import "../NonFungibles/ConsumablesAndArtifacts/IAlchemyItem.sol";
+import "../NonFungibles/ConsumablesAndArtifacts/ICookingItem.sol";
     enum StatsEnum {
         STR, AGI, INT, DEX, VIT, LUCK
     }
@@ -277,9 +282,9 @@ pragma solidity ^0.8.0;
 
     struct BuffEffectRecipe {
         uint id;
-        BasicRequirement[] requiredAlchemyItems;
-        BasicRequirement[] requiredMiscItems;
-        BasicRequirement[] requiredCookingItems;
+        BasicAlchemyRequirement[] requiredAlchemyItems;
+        BasicMiscRequirement[] requiredMiscItems;
+        BasicCookingRequirement[] requiredCookingItems;
         BasicRequirement[] requiredConsumableItem;
         uint requiredGold;
         uint requiredEssence;
@@ -287,6 +292,21 @@ pragma solidity ^0.8.0;
 
     struct BasicRequirement {
         uint id;
+        uint amount;
+    }
+
+    struct BasicMiscRequirement {
+        IMiscs.List id;
+        uint amount;
+    }
+
+    struct BasicAlchemyRequirement {
+        IAlchemyItem.List id;
+        uint amount;
+    }
+
+    struct BasicCookingRequirement {
+        ICookingItem.List id;
         uint amount;
     }
 

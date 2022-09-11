@@ -1,5 +1,6 @@
 import {IAlchemyItem} from "../NonFungibles/ConsumablesAndArtifacts/IAlchemyItem.sol";
 import {ICookingItem} from "../NonFungibles/ConsumablesAndArtifacts/ICookingItem.sol";
+import {BasicRequirement, BasicMiscRequirement, BasicAlchemyRequirement, BasicCookingRequirement} from "../GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
@@ -225,19 +226,15 @@ library ILand {
     // reward and reqs;
 
     struct BuildingRequirement {
-        GeneralRequirement[] requiredAlchemyItems;
-        GeneralRequirement[] requiredMiscItems;
-        GeneralRequirement[] requiredCookingItems;
-        GeneralRequirement[] requiredMaterials;
+        BasicAlchemyRequirement[] requiredAlchemyItems;
+        BasicMiscRequirement[] requiredMiscItems;
+        BasicCookingRequirement[] requiredCookingItems;
+        BasicRequirement[] requiredMaterials;
         uint requiredGold;
         uint requiredEssence;
         bool isValid;
     }
 
-    struct GeneralRequirement {
-        uint id;
-        uint amount;
-    }
 
     struct CookingItemReward {
         ICookingItem.List id;
@@ -248,6 +245,5 @@ library ILand {
         IAlchemyItem.List id;
         uint amount;
     }
-
 
 }

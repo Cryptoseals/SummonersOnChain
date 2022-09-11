@@ -85,9 +85,11 @@ async function main() {
     // console.log("ELDER_WOOD_PLANK:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.ELDER_WOOD_PLANK)))
     // console.log("RED_OAK_WOOD_PLANK:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.RED_OAK_WOOD_PLANK)))
 
-    let mintTo = "0xc5E5ec38de39c632f67EbF9795CD1d7D12331799"
-    tx = await mats.mintMaterial(CraftingMaterial.GREEN_WOOD, mintTo, 100)
-    await tx.wait(1)
+    let mintTo = "0xCf2788A7f68462D80436b00d87c784F6ec1bED41"
+    // for (const mat in CraftingMaterial) {
+    //     tx = await mats.mintMaterial(mat, mintTo, 100)
+    //     await tx.wait(1)
+    // }
     // tx = await mats.mintMaterial(CraftingMaterial.OBSIDIAN_INGOT, mintTo, 100)
     // await tx.wait(1)
     // tx = await mats.mintMaterial(CraftingMaterial.ORICALCHUM_INGOT, mintTo, 100)
@@ -209,19 +211,67 @@ async function main() {
     // tx = await miscs.rewardMiscItem(mintTo, 40, 100);
     // await tx.wait(1);
 
-    // let essence = await ethers.getContractAt("Essence", deployedFungibles.essence)
-    // let gold = await ethers.getContractAt("Gold", deployedFungibles.gold)
+    let essence = await ethers.getContractAt("Essence", deployedFungibles.essence)
+    let gold = await ethers.getContractAt("Gold", deployedFungibles.gold)
     // //rewardToken(address _account, uint256 _amount)
-    // tx = await essence.rewardToken(mintTo, BigNumber.from(10).pow(18).mul(500))
-    // await tx.wait(1)
-    // tx = await gold.rewardToken(mintTo, BigNumber.from(10).pow(18).mul(500))
-    // await tx.wait(1)
+    tx = await essence.rewardToken(mintTo, BigNumber.from(10).pow(18).mul(50000))
+    await tx.wait(1)
+    tx = await gold.rewardToken(mintTo, BigNumber.from(10).pow(18).mul(50000))
+    await tx.wait(1)
     // let cook = await ethers.getContractAt("CookingItems", deployedCook.cookingItems)
-    // tx = await cook.rewardCookingItem(mintTo, 10, 100)
-    // await tx.wait(1)
-    // tx = await cook.rewardCookingItem(mintTo, 35, 100)
-    // await tx.wait(1)
+    // let alch = await ethers.getContractAt("AlchemyItems", deployedCook.alchemyItems)
 
+
+    // for (const f in cookingitem) {
+    //     tx = await cook.rewardCookingItem(mintTo, parseInt(f) + 1, 100)
+    //     await tx.wait(1)
+    // }
+    //
+    // for (const f in cookingitem) {
+    //     tx = await alch.rewardAlchemyItem(mintTo, parseInt(f) + 1, 100)
+    //     await tx.wait(2)
+    // }
 }
 
+
 main();
+
+
+enum cookingitem {
+    None,
+    Raw_White_Meat,
+    Apple,
+    Carrot,
+    Cabbage,
+    Bell_Pepper,
+    Chili_Pepper,
+    Tomato,
+    Onion,
+    Flour,
+    Corn,
+    Meat,
+    Steak,
+    Egg,
+    Mushroom,
+    Milk,
+    Water,
+    Sea_Fish,
+    Ocean_Fish,
+    Turnip,
+    Grapes,
+    Black_Grapes,
+    Red_Grapes,
+    Strawberry,
+    Cherry,
+    Wine,
+    Salt,
+    Cacao,
+    Chocolate,
+    Butter,
+    Sugar,
+    Banana,
+    Potato,
+    Olive_Oil,
+    Sunflower_Oil,
+    Wheat
+}

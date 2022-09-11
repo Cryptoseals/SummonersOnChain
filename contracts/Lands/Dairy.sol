@@ -114,9 +114,9 @@ contract Dairy is LandUtils {
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Dairies memory dairy = landCodex.dairies(stats.DairiesTier);
         DairyAnimal[] memory result = new DairyAnimal[](dairy.maxProductionSimultaneously);
-        for (uint i = 0; i < dairy.maxProductionSimultaneously;) {
+        if (dairy.maxProductionSimultaneously == 0) return result;
+        for (uint i = 0; i < result.length; i++) {
             result[i] = StakedDairy[landId][i];
-        unchecked{i++;}
         }
         return result;
     }

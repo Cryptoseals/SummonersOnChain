@@ -18,7 +18,7 @@ contract MiscItems is Initializable, OwnableUpgradeable, InitNavigator, ERC1155U
     }
 
     function rewardMiscItem(address to, IMiscs.List id, uint amount) external onlyGameContracts {
-        require(uint(id) > 0, "0");
+//        require(uint(id) > 0, "0");
         _mint(to, uint(id), amount, new bytes(0));
     }
 

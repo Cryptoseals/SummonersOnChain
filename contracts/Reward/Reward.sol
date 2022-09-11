@@ -9,6 +9,7 @@ import {IGameRewards, ICraftingMaterials} from "../Interfaces/GameObjects/IGameR
 import {IRewardNonFungible} from "../Interfaces/NonFungibles/Common/IRewardNonFungible.sol";
 import {IConsumablesAndArtifacts} from "../Interfaces/Inventory/IConsumablesAndArtifacts.sol";
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import {IMiscs} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/IMisc.sol";
 
 interface CraftingMaterialContract {
     function mintMaterial(ICraftingMaterials.CraftingMaterial material, address to, uint amount) external;
@@ -89,13 +90,13 @@ contract Reward is InitNavigator, OwnableUpgradeable {
 
             misc.rewardMiscItem(
                 to,
-                _miscRewards.rewards[pick].itemId,
+                IMiscs.List(_miscRewards.rewards[pick].itemId),
                 amount
             );
         } else {
             misc.rewardMiscItem(
                 to,
-                0,
+                IMiscs.List(0),
                 1
             );
         }
@@ -103,8 +104,6 @@ contract Reward is InitNavigator, OwnableUpgradeable {
     }
 
     function rewardCraftingMaterial(address to, IGameRewards.CraftingMaterialReward[] memory rewards, uint multiplier, uint optionalNonce) internal {
-
-
         for (uint i = 0; i < rewards.length; i++) {
             uint roll = RNG.dn(block.number + optionalNonce + 10 + i + nonce,
                 rewards[i].max - rewards[i].min
