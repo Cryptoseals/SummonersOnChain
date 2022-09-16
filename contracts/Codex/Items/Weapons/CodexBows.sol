@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {ItemType, ElementalAtk, ElementalDef,Class, Weapon, Stats, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, ElementalAtk, ElementalDef, Class, Weapon, Stats, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexBows is Initializable {
@@ -34,54 +34,62 @@ contract CodexBows is Initializable {
     }
 
 
-    function weapon(uint id, uint tier) public view returns (Weapon memory) {
+    function weapon(uint id, uint tier) public view returns (Weapon memory _weapon) {
         require(tier < 10, "t");
-
+        Weapon memory base;
         if (id == 43) {
-            return applyTier(SimpleBow(tier), tier, 4);
-        } else if (id == 44) {
-            return applyTier(Crossbow(tier), tier, 5);
-        } else if (id == 45) {
-            return applyTier(LongBow(tier), tier, 5);
-        } else if (id == 46) {
-            return applyTier(CompositeBow(tier), tier, 5);
-        } else if (id == 47) {
-            return applyTier(RecurveCrossbow(tier), tier, 5);
-        } else if (id == 48) {
-            return applyTier(GreatBow(tier), tier, 5);
-        } else if (id == 49) {
-            return applyTier(ReinforcedBow(tier), tier, 5);
-        } else if (id == 50) {
-            return applyTier(VerdantBow(tier), tier, 5);
-        } else if (id == 51) {
-            return applyTier(TemplarsCrossbow(tier), tier, 5);
-        } else if (id == 52) {
-            return applyTier(ElvenBow(tier), tier, 5);
-        } else if (id == 53) {
-            return applyTier(Moonlightbow(tier), tier, 5);
-        } else if (id == 54) {
-            return applyTier(Sunlightbow(tier), tier, 5);
-        } else if (id == 55) {
-            return applyTier(CycleBow(tier), tier, 5);
-        } else if (id == 56) {
-            return applyTier(PhantasmalBow(tier), tier, 5);
-        } else if (id == 57) {
-            return applyTier(BowOfUndeadKing(tier), tier, 5);
-        } else if (id == 58) {
-            return applyTier(PyroCrossbow(tier), tier, 5);
-        } else if (id == 59) {
-            return applyTier(Ghostbolt(tier), tier, 5);
-        } else if (id == 60) {
-            return applyTier(SkeletalBolter(tier), tier, 5);
-        } else if (id == 61) {
-            return applyTier(Astrarrow(tier), tier, 5);
-        } else if (id == 62) {
-            return applyTier(Comet(tier), tier, 5);
-        } else if (id == 63) {
-            return applyTier(Deathwhisperer(tier), tier, 5);
-        }
+            _weapon = applyTier(SimpleBow(tier), tier, 600);
+            base = SimpleBow(tier);
+            _weapon.generatedStatBonus.CRIT = base.generatedStatBonus.CRIT + ((_weapon.generatedStatBonus.CRIT * 500) / 1000);
+            _weapon.generatedStatBonus.CRIT_MULTIPLIER = base.generatedStatBonus.CRIT_MULTIPLIER + ((_weapon.generatedStatBonus.CRIT_MULTIPLIER * 10) / 100);
+            _weapon.generatedStatBonus.ACCURACY = base.generatedStatBonus.ACCURACY + ((_weapon.generatedStatBonus.ACCURACY * 23) / 1000);
+            _weapon.generatedStatBonus.P_ATK = base.generatedStatBonus.P_ATK + ((_weapon.generatedStatBonus.P_ATK * 10) / 1000);
+            _weapon.statBonus.STR = base.statBonus.STR + ((_weapon.statBonus.STR * 350) / 1000);
+            _weapon.statBonus.AGI = base.statBonus.AGI + ((_weapon.statBonus.AGI * 350) / 1000);
+            _weapon.statBonus.DEX = base.statBonus.DEX + ((_weapon.statBonus.DEX * 350) / 1000);
+            _weapon.statBonus.LUCK = base.statBonus.LUCK + ((_weapon.statBonus.LUCK * 350) / 1000);
 
-        revert("?b");
+        } else if (id == 44) {
+            _weapon = applyTier(Crossbow(tier), tier, 150);
+        } else if (id == 45) {
+            _weapon = applyTier(LongBow(tier), tier, 70);
+        } else if (id == 46) {
+            _weapon = applyTier(CompositeBow(tier), tier, 50);
+        } else if (id == 47) {
+            _weapon = applyTier(RecurveCrossbow(tier), tier, 35);
+        } else if (id == 48) {
+            _weapon = applyTier(GreatBow(tier), tier, 20);
+        } else if (id == 49) {
+            _weapon = applyTier(ReinforcedBow(tier), tier, 20);
+        } else if (id == 50) {
+            _weapon = applyTier(VerdantBow(tier), tier, 20);
+        } else if (id == 51) {
+            _weapon = applyTier(TemplarsCrossbow(tier), tier, 15);
+        } else if (id == 52) {
+            _weapon = applyTier(ElvenBow(tier), tier, 12);
+        } else if (id == 53) {
+            _weapon = applyTier(Moonlightbow(tier), tier, 12);
+        } else if (id == 54) {
+            _weapon = applyTier(Sunlightbow(tier), tier, 12);
+        } else if (id == 55) {
+            _weapon = applyTier(CycleBow(tier), tier, 12);
+        } else if (id == 56) {
+            _weapon = applyTier(PhantasmalBow(tier), tier, 12);
+        } else if (id == 57) {
+            _weapon = applyTier(BowOfUndeadKing(tier), tier, 10);
+        } else if (id == 58) {
+            _weapon = applyTier(PyroCrossbow(tier), tier, 10);
+        } else if (id == 59) {
+            _weapon = applyTier(Ghostbolt(tier), tier, 7);
+        } else if (id == 60) {
+            _weapon = applyTier(SkeletalBolter(tier), tier, 7);
+        } else if (id == 61) {
+            _weapon = applyTier(Astrarrow(tier), tier, 7);
+        } else if (id == 62) {
+            _weapon = applyTier(Comet(tier), tier, 7);
+        } else if (id == 63) {
+            _weapon = applyTier(Deathwhisperer(tier), tier, 7);
+        } else revert("?b");
     }
 
     function applyTier(Weapon memory weapon, uint tier, uint percentage) public view returns (Weapon memory){

@@ -242,9 +242,9 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             _adventureMonster.level
         );
         if (_level.Difficulty > 100) {
-            monster.EnemyStats = EquipableUtils.sumStatsAsTier(monster.EnemyStats, _level.Difficulty);
-            monster.EnemyGeneratedStats = EquipableUtils.sumGeneratedStatsAsTier(monster.EnemyGeneratedStats, _level.Difficulty);
-            monster.EnemyElementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(monster.EnemyElementalStats, _level.Difficulty);
+            monster.EnemyStats = EquipableUtils.sumStatsAsTier(monster.EnemyStats, _level.Difficulty * 10);
+            monster.EnemyGeneratedStats = EquipableUtils.sumGeneratedStatsAsTier(monster.EnemyGeneratedStats, _level.Difficulty * 10);
+            monster.EnemyElementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(monster.EnemyElementalStats, _level.Difficulty * 10);
         }
         return (monster, _adventureMonster);
     }

@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {ItemType, ElementalAtk, ElementalDef,Class, Weapon, Stats, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, ElementalAtk, ElementalDef, Class, Weapon, Stats, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexAxes is Initializable {
@@ -32,54 +32,60 @@ contract CodexAxes is Initializable {
     }
 
 
-    function weapon(uint id, uint tier) public view returns (Weapon memory) {
+    function weapon(uint id, uint tier) public view returns (Weapon memory _weapon) {
         require(tier < 10, "t");
-
+        Weapon memory base;
         if (id == 64) {
-            return applyTier(WoodenAxe(tier), tier, 4);
+            _weapon = applyTier(WoodenAxe(tier), tier, 630);
+            base = WoodenAxe(tier);
+            _weapon.generatedStatBonus.CRIT = base.generatedStatBonus.CRIT + ((_weapon.generatedStatBonus.CRIT * 500) / 1000);
+            _weapon.generatedStatBonus.CRIT_MULTIPLIER = base.generatedStatBonus.CRIT_MULTIPLIER + ((_weapon.generatedStatBonus.CRIT_MULTIPLIER * 5) / 1000);
+            _weapon.generatedStatBonus.ACCURACY = base.generatedStatBonus.ACCURACY + ((_weapon.generatedStatBonus.ACCURACY * 20) / 1000);
+            _weapon.generatedStatBonus.P_ATK = base.generatedStatBonus.P_ATK + ((_weapon.generatedStatBonus.P_ATK * 10) / 1000);
+            _weapon.statBonus.STR = base.statBonus.STR + ((_weapon.statBonus.STR * 350) / 1000);
+            _weapon.statBonus.AGI = base.statBonus.AGI + ((_weapon.statBonus.AGI * 350) / 1000);
+            _weapon.statBonus.DEX = base.statBonus.DEX + ((_weapon.statBonus.DEX * 350) / 1000);
         } else if (id == 65) {
-            return applyTier(HandAxe(tier), tier, 5);
+            _weapon = applyTier(HandAxe(tier), tier, 160);
         } else if (id == 66) {
-            return applyTier(Pickaxe(tier), tier, 5);
+            _weapon = applyTier(Pickaxe(tier), tier, 70);
         } else if (id == 67) {
-            return applyTier(SkullAxe(tier), tier, 5);
+            _weapon = applyTier(SkullAxe(tier), tier, 50);
         } else if (id == 68) {
-            return applyTier(BattleAxe(tier), tier, 5);
+            _weapon = applyTier(BattleAxe(tier), tier, 35);
         } else if (id == 69) {
-            return applyTier(SilverAxe(tier), tier, 5);
+            _weapon = applyTier(SilverAxe(tier), tier, 20);
         } else if (id == 70) {
-            return applyTier(BerserkersAxe(tier), tier, 5);
+            _weapon = applyTier(BerserkersAxe(tier), tier, 20);
         } else if (id == 71) {
-            return applyTier(VerdantAxe(tier), tier, 5);
+            _weapon = applyTier(VerdantAxe(tier), tier, 20);
         } else if (id == 72) {
-            return applyTier(WarlordsAxe(tier), tier, 5);
+            _weapon = applyTier(WarlordsAxe(tier), tier, 20);
         } else if (id == 73) {
-            return applyTier(CrescentAxe(tier), tier, 5);
+            _weapon = applyTier(CrescentAxe(tier), tier, 15);
         } else if (id == 74) {
-            return applyTier(AxeOfMoonlight(tier), tier, 5);
+            _weapon = applyTier(AxeOfMoonlight(tier), tier, 15);
         } else if (id == 75) {
-            return applyTier(AxeOfSunlight(tier), tier, 5);
+            _weapon = applyTier(AxeOfSunlight(tier), tier, 15);
         } else if (id == 76) {
-            return applyTier(CycleAxe(tier), tier, 5);
+            _weapon = applyTier(CycleAxe(tier), tier, 10);
         } else if (id == 77) {
-            return applyTier(PhantasmalAxe(tier), tier, 5);
+            _weapon = applyTier(PhantasmalAxe(tier), tier, 10);
         } else if (id == 78) {
-            return applyTier(EmeraldAxe(tier), tier, 5);
+            _weapon = applyTier(EmeraldAxe(tier), tier, 10);
         } else if (id == 79) {
-            return applyTier(LuminescentAxe(tier), tier, 5);
+            _weapon = applyTier(LuminescentAxe(tier), tier, 10);
         } else if (id == 80) {
-            return applyTier(EldersAxe(tier), tier, 5);
+            _weapon = applyTier(EldersAxe(tier), tier, 10);
         } else if (id == 81) {
-            return applyTier(FallenOrdersAxe(tier), tier, 5);
+            _weapon = applyTier(FallenOrdersAxe(tier), tier, 7);
         } else if (id == 82) {
-            return applyTier(IncursionAxe(tier), tier, 5);
+            _weapon = applyTier(IncursionAxe(tier), tier, 7);
         } else if (id == 83) {
-            return applyTier(TotemicAxe(tier), tier, 5);
+            _weapon = applyTier(TotemicAxe(tier), tier, 7);
         } else if (id == 84) {
-            return applyTier(Blooddrinker(tier), tier, 5);
-        }
-
-        revert("?a");
+            _weapon = applyTier(Blooddrinker(tier), tier, 7);
+        } else revert("?a");
     }
 
     function applyTier(Weapon memory weapon, uint tier, uint percentage) public view returns (Weapon memory){

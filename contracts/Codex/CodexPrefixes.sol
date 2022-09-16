@@ -115,63 +115,63 @@ contract CodexPrefixes {
     }
 
     function baseStr() internal pure returns (uint) {
-        return 5;
+        return 50;
     }
 
     function baseDex() internal pure returns (uint) {
-        return 3;
+        return 30;
     }
 
     function baseAgi() internal pure returns (uint) {
-        return 3;
+        return 30;
     }
 
     function baseInt() internal pure returns (uint) {
-        return 5;
+        return 50;
     }
 
     function baseVit() internal pure returns (uint) {
-        return 5;
+        return 50;
     }
 
     function baseLuck() internal pure returns (uint) {
-        return 3;
+        return 30;
     }
 
     function baseAtk() internal pure returns (uint) {
-        return 3;
+        return 30;
     }
 
     function baseDef() internal pure returns (uint) {
-        return 5;
+        return 50;
     }
 
     function baseCrit() internal pure returns (uint) {
-        return 1;
+        return 100;
     }
 
     function baseCritMulti() internal pure returns (uint) {
-        return 10;
+        return 100;
     }
 
     function baseDodge() internal pure returns (uint) {
-        return 2;
+        return 20;
     }
 
     function baseAcc() internal pure returns (uint) {
-        return 3;
+        return 30;
     }
 
     function baseEleDef() internal pure returns (uint) {
-        return 5;
+        return 50;
     }
 
     function baseEleAtk() internal pure returns (uint) {
-        return 5;
+        return 50;
     }
 
     function baseHp() internal pure returns (uint) {
-        return 3;
+        return 30;
     }
 
 

@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {ItemType, Stats, GeneratedStats,ElementalStats, ElementalAtk, ElementalDef,Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, Stats, GeneratedStats, ElementalStats, ElementalAtk, ElementalDef, Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
@@ -46,59 +46,75 @@ contract CodexArmorsLight is Initializable {
         if (tier == 0) return _armor;
         _armor.statBonus = EquipableUtils.sumStatsAsTier(_armor.statBonus, tier * percentage);
         _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_armor.generatedStatBonus, (tier) * percentage);
-        _armor.elementalStats.ElementalDef = armorEle(percentage);
         _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_armor.elementalStats, (tier) * percentage);
         return _armor;
     }
 
-    function armor(uint id, uint tier) public view returns (EquipableItem memory) {
+    function armor(uint id, uint tier) public view returns (EquipableItem memory _armor) {
         require(tier < 10, "t");
-
+        EquipableItem memory base;
         if (id == 43) {
-            return applyTier(SoldiersTunic(tier), tier, 1);
-        } else if (id == 44) {
-            return applyTier(PriestsTunic(tier), tier, 1);
-        } else if (id == 45) {
-            return applyTier(FaithTunic(tier), tier, 1);
-        } else if (id == 46) {
-            return applyTier(TraineesTunic(tier), tier, 1);
-        } else if (id == 47) {
-            return applyTier(MagiciansShirt(tier), tier, 1);
-        } else if (id == 48) {
-            return applyTier(SealedShirt(tier), tier, 2);
-        } else if (id == 49) {
-            return applyTier(GateKeepersShirt(tier), tier, 2);
-        } else if (id == 50) {
-            return applyTier(ElementalistsShirt(tier), tier, 2);
-        } else if (id == 51) {
-            return applyTier(AlcemistsJacket(tier), tier, 3);
-        } else if (id == 52) {
-            return applyTier(ArchmagesJacket(tier), tier, 3);
-        } else if (id == 53) {
-            return applyTier(ElvenJacket(tier), tier, 4);
-        } else if (id == 54) {
-            return applyTier(ChosensJacket(tier), tier, 4);
-        } else if (id == 55) {
-            return applyTier(ProphetsJacket(tier), tier, 5);
-        } else if (id == 56) {
-            return applyTier(EldersJacket(tier), tier, 6);
-        } else if (id == 57) {
-            return applyTier(AncientCuirass(tier), tier, 7);
-        } else if (id == 58) {
-            return applyTier(MoonlightCuirass(tier), tier, 9);
-        } else if (id == 59) {
-            return applyTier(SunlightCuirass(tier), tier, 11);
-        } else if (id == 60) {
-            return applyTier(CycleCuirass(tier), tier, 13);
-        } else if (id == 61) {
-            return applyTier(DemonicRobe(tier), tier, 15);
-        } else if (id == 62) {
-            return applyTier(AngelicRobe(tier), tier, 19);
-        } else if (id == 63) {
-            return applyTier(EternalRobe(tier), tier, 20);
-        }
+            _armor = applyTier(SoldiersTunic(tier), tier, 630);
+            base = SoldiersTunic(tier);
+            _armor.statBonus.STR = base.statBonus.STR + ((_armor.statBonus.STR * 900) / 1000);
+            _armor.statBonus.DEX = base.statBonus.DEX + ((_armor.statBonus.DEX * 900) / 1000);
+            _armor.statBonus.AGI = base.statBonus.AGI + ((_armor.statBonus.AGI * 900) / 1000);
+            _armor.statBonus.VIT = base.statBonus.VIT + ((_armor.statBonus.VIT * 900) / 1000);
+            _armor.statBonus.INT = base.statBonus.INT + ((_armor.statBonus.INT * 900) / 1000);
 
-        revert("?hm");
+            _armor.generatedStatBonus.HP = base.generatedStatBonus.HP + ((_armor.generatedStatBonus.HP * 100) / 1000);
+
+            _armor.generatedStatBonus.P_DEF = base.generatedStatBonus.P_DEF + ((_armor.generatedStatBonus.P_DEF * 100) / 1000);
+            _armor.generatedStatBonus.M_DEF = base.generatedStatBonus.M_DEF + ((_armor.generatedStatBonus.M_DEF * 100) / 1000);
+            _armor.generatedStatBonus.DODGE = base.generatedStatBonus.DODGE + ((_armor.generatedStatBonus.DODGE * 50) / 1000);
+
+            _armor.elementalStats.ElementalDef.FIRE_DEF = base.elementalStats.ElementalDef.FIRE_DEF + ((_armor.elementalStats.ElementalDef.FIRE_DEF * 100) / 1000);
+            _armor.elementalStats.ElementalDef.COLD_DEF = base.elementalStats.ElementalDef.COLD_DEF + ((_armor.elementalStats.ElementalDef.COLD_DEF * 100) / 1000);
+            _armor.elementalStats.ElementalDef.EARTH_DEF = base.elementalStats.ElementalDef.EARTH_DEF + ((_armor.elementalStats.ElementalDef.EARTH_DEF * 100) / 1000);
+            _armor.elementalStats.ElementalDef.LIGHTNING_DEF = base.elementalStats.ElementalDef.LIGHTNING_DEF + ((_armor.elementalStats.ElementalDef.LIGHTNING_DEF * 100) / 1000);
+            _armor.elementalStats.ElementalDef.DARK_DEF = base.elementalStats.ElementalDef.DARK_DEF + ((_armor.elementalStats.ElementalDef.DARK_DEF * 100) / 1000);
+            _armor.elementalStats.ElementalDef.HOLY_DEF = base.elementalStats.ElementalDef.HOLY_DEF + ((_armor.elementalStats.ElementalDef.HOLY_DEF * 100) / 1000);
+        } else if (id == 44) {
+            _armor = applyTier(PriestsTunic(tier), tier, 160);
+        } else if (id == 45) {
+            _armor = applyTier(FaithTunic(tier), tier, 75);
+        } else if (id == 46) {
+            _armor = applyTier(TraineesTunic(tier), tier, 50);
+        } else if (id == 47) {
+            _armor = applyTier(MagiciansShirt(tier), tier, 35);
+        } else if (id == 48) {
+            _armor = applyTier(SealedShirt(tier), tier, 20);
+        } else if (id == 49) {
+            _armor = applyTier(GateKeepersShirt(tier), tier, 20);
+        } else if (id == 50) {
+            _armor = applyTier(ElementalistsShirt(tier), tier, 20);
+        } else if (id == 51) {
+            _armor = applyTier(AlcemistsJacket(tier), tier, 20);
+        } else if (id == 52) {
+            _armor = applyTier(ArchmagesJacket(tier), tier, 15);
+        } else if (id == 53) {
+            _armor = applyTier(ElvenJacket(tier), tier, 15);
+        } else if (id == 54) {
+            _armor = applyTier(ChosensJacket(tier), tier, 15);
+        } else if (id == 55) {
+            _armor = applyTier(ProphetsJacket(tier), tier, 10);
+        } else if (id == 56) {
+            _armor = applyTier(EldersJacket(tier), tier, 10);
+        } else if (id == 57) {
+            _armor = applyTier(AncientCuirass(tier), tier, 10);
+        } else if (id == 58) {
+            _armor = applyTier(MoonlightCuirass(tier), tier, 10);
+        } else if (id == 59) {
+            _armor = applyTier(SunlightCuirass(tier), tier, 10);
+        } else if (id == 60) {
+            _armor = applyTier(CycleCuirass(tier), tier, 7);
+        } else if (id == 61) {
+            _armor = applyTier(DemonicRobe(tier), tier, 7);
+        } else if (id == 62) {
+            _armor = applyTier(AngelicRobe(tier), tier, 7);
+        } else if (id == 63) {
+            _armor = applyTier(EternalRobe(tier), tier, 7);
+        } else revert("?hm");
     }
 
     function SoldiersTunic(uint tier) public view returns (EquipableItem memory _armor) {
@@ -114,8 +130,6 @@ contract CodexArmorsLight is Initializable {
         //      Barbarian, Paladin, Assassin, Wizard, Necromancer, Priest, Engineer, Ranger
         // }
         _armor.requirement.classRequirement = classRequirement();
-
-
 
 
         // bonuses here

@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {ItemType, Stats, GeneratedStats,ElementalStats, ElementalAtk, ElementalDef,Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, Stats, GeneratedStats, ElementalStats, ElementalAtk, ElementalDef, Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
@@ -44,63 +44,79 @@ contract CodexArmorsMedium is Initializable {
     function applyTier(EquipableItem memory _armor, uint tier, uint percentage) public view returns (EquipableItem memory){
         if (tier == 0) return _armor;
         _armor.statBonus = EquipableUtils.sumStatsAsTier(_armor.statBonus, tier * percentage);
-        _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_armor.generatedStatBonus, (tier) * percentage);
-        _armor.elementalStats.ElementalDef = armorEle(percentage);
-        _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_armor.elementalStats, (tier) * percentage);
+        _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_armor.generatedStatBonus, tier * percentage);
+        _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_armor.elementalStats, tier * percentage);
         return _armor;
     }
 
-    function armor(uint id, uint tier) public view returns (EquipableItem memory) {
+    function armor(uint id, uint tier) public view returns (EquipableItem memory _armor) {
         require(tier < 10, "t");
-
+        EquipableItem memory base;
         if (id == 22) {
-            return applyTier(SoldiersTunic(tier), tier, 1);
-        } else if (id == 23) {
-            return applyTier(ExecutionersTunic(tier), tier, 1);
-        } else if (id == 24) {
-            return applyTier(HuntersShirt(tier), tier, 1);
-        } else if (id == 25) {
-            return applyTier(RangerShirt(tier), tier, 1);
-        } else if (id == 26) {
-            return applyTier(MercenaryCoat(tier), tier, 1);
-        } else if (id == 27) {
-            return applyTier(NobleCoat(tier), tier, 2);
-        } else if (id == 28) {
-            return applyTier(BloodstainedCoat(tier), tier, 2);
-        } else if (id == 29) {
-            return applyTier(CoatOfDusk(tier), tier, 2);
-        } else if (id == 30) {
-            return applyTier(ShadowLongcoat(tier), tier, 3);
-        } else if (id == 31) {
-            return applyTier(HeadmastersLongcoat(tier), tier, 3);
-        } else if (id == 32) {
-            return applyTier(ElvenLongcoat(tier), tier, 4);
-        } else if (id == 33) {
-            return applyTier(ChosensLongcoat(tier), tier, 4);
-        } else if (id == 34) {
-            return applyTier(ProphetsLongcoat(tier), tier, 5);
-        } else if (id == 35) {
-            return applyTier(EldersLongcoat(tier), tier, 6);
-        } else if (id == 36) {
-            return applyTier(AncientLongcoat(tier), tier, 7);
-        } else if (id == 37) {
-            return applyTier(MoonlightLongcoat(tier), tier, 9);
-        } else if (id == 38) {
-            return applyTier(SunlightLongcoat(tier), tier, 11);
-        } else if (id == 39) {
-            return applyTier(CycleLongcoat(tier), tier, 13);
-        } else if (id == 40) {
-            return applyTier(DemonicSuit(tier), tier, 15);
-        } else if (id == 41) {
-            return applyTier(AngelicSuit(tier), tier, 19);
-        } else if (id == 42) {
-            return applyTier(EternalSuit(tier), tier, 20);
-        }
+            _armor = applyTier(SoldiersCoat(tier), tier, 600);
+            base = SoldiersCoat(tier);
+            _armor.statBonus.STR = base.statBonus.STR + ((_armor.statBonus.STR * 900) / 1000);
+            _armor.statBonus.DEX = base.statBonus.DEX + ((_armor.statBonus.DEX * 900) / 1000);
+            _armor.statBonus.AGI = base.statBonus.AGI + ((_armor.statBonus.AGI * 900) / 1000);
+            _armor.statBonus.VIT = base.statBonus.VIT + ((_armor.statBonus.VIT * 900) / 1000);
+            _armor.statBonus.INT = base.statBonus.INT + ((_armor.statBonus.INT * 900) / 1000);
 
-        revert("?hm");
+            _armor.generatedStatBonus.HP = base.generatedStatBonus.HP + ((_armor.generatedStatBonus.HP * 100) / 1000);
+
+            _armor.generatedStatBonus.P_DEF = base.generatedStatBonus.P_DEF + ((_armor.generatedStatBonus.P_DEF * 100) / 1000);
+            _armor.generatedStatBonus.M_DEF = base.generatedStatBonus.M_DEF + ((_armor.generatedStatBonus.M_DEF * 100) / 1000);
+            _armor.generatedStatBonus.DODGE = base.generatedStatBonus.DODGE + ((_armor.generatedStatBonus.DODGE * 50) / 1000);
+
+            _armor.elementalStats.ElementalDef.FIRE_DEF = base.elementalStats.ElementalDef.FIRE_DEF + ((_armor.elementalStats.ElementalDef.FIRE_DEF * 100) / 1000);
+            _armor.elementalStats.ElementalDef.COLD_DEF = base.elementalStats.ElementalDef.COLD_DEF + ((_armor.elementalStats.ElementalDef.COLD_DEF * 100) / 1000);
+            _armor.elementalStats.ElementalDef.EARTH_DEF = base.elementalStats.ElementalDef.EARTH_DEF + ((_armor.elementalStats.ElementalDef.EARTH_DEF * 100) / 1000);
+            _armor.elementalStats.ElementalDef.LIGHTNING_DEF = base.elementalStats.ElementalDef.LIGHTNING_DEF + ((_armor.elementalStats.ElementalDef.LIGHTNING_DEF * 100) / 1000);
+            _armor.elementalStats.ElementalDef.DARK_DEF = base.elementalStats.ElementalDef.DARK_DEF + ((_armor.elementalStats.ElementalDef.DARK_DEF * 100) / 1000);
+            _armor.elementalStats.ElementalDef.HOLY_DEF = base.elementalStats.ElementalDef.HOLY_DEF + ((_armor.elementalStats.ElementalDef.HOLY_DEF * 100) / 1000);
+        } else if (id == 23) {
+            _armor = applyTier(ExecutionersCoat(tier), tier, 150);
+        } else if (id == 24) {
+            _armor = applyTier(HuntersShirt(tier), tier, 75);
+        } else if (id == 25) {
+            _armor = applyTier(RangerShirt(tier), tier, 50);
+        } else if (id == 26) {
+            _armor = applyTier(MercenaryCoat(tier), tier, 35);
+        } else if (id == 27) {
+            _armor = applyTier(NobleCoat(tier), tier, 20);
+        } else if (id == 28) {
+            _armor = applyTier(BloodstainedCoat(tier), tier, 20);
+        } else if (id == 29) {
+            _armor = applyTier(CoatOfDusk(tier), tier, 20);
+        } else if (id == 30) {
+            _armor = applyTier(ShadowLongcoat(tier), tier, 20);
+        } else if (id == 31) {
+            _armor = applyTier(HeadmastersLongcoat(tier), tier, 15);
+        } else if (id == 32) {
+            _armor = applyTier(ElvenLongcoat(tier), tier, 15);
+        } else if (id == 33) {
+            _armor = applyTier(ChosensLongcoat(tier), tier, 15);
+        } else if (id == 34) {
+            _armor = applyTier(ProphetsLongcoat(tier), tier, 10);
+        } else if (id == 35) {
+            _armor = applyTier(EldersLongcoat(tier), tier, 10);
+        } else if (id == 36) {
+            _armor = applyTier(AncientLongcoat(tier), tier, 10);
+        } else if (id == 37) {
+            _armor = applyTier(MoonlightLongcoat(tier), tier, 10);
+        } else if (id == 38) {
+            _armor = applyTier(SunlightLongcoat(tier), tier, 10);
+        } else if (id == 39) {
+            _armor = applyTier(CycleLongcoat(tier), tier, 7);
+        } else if (id == 40) {
+            _armor = applyTier(DemonicSuit(tier), tier, 7);
+        } else if (id == 41) {
+            _armor = applyTier(AngelicSuit(tier), tier, 7);
+        } else if (id == 42) {
+            _armor = applyTier(EternalSuit(tier), tier, 7);
+        } else revert("?hm");
     }
 
-    function SoldiersTunic(uint tier) public view returns (EquipableItem memory _armor) {
+    function SoldiersCoat(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 22;
         _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;
@@ -129,7 +145,7 @@ contract CodexArmorsMedium is Initializable {
         _armor.elementalStats.ElementalDef = armorEle(0);
     }
 
-    function ExecutionersTunic(uint tier) public view returns (EquipableItem memory _armor) {
+    function ExecutionersCoat(uint tier) public view returns (EquipableItem memory _armor) {
         _armor.metadata.id = 23;
         _armor.metadata.baseType = ItemType.ARMOR;
         _armor.metadata.upgradable = true;

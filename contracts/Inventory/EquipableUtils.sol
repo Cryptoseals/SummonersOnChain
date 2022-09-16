@@ -1,6 +1,4 @@
-import {Stats,
-GeneratedStats,
-ElementalStats} from "../Interfaces/GameObjects/IGameObjects.sol";
+import {Stats, GeneratedStats, ElementalStats} from "../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
@@ -187,6 +185,6 @@ library EquipableUtils {
 
     function percentage(uint val, uint percentage) internal pure returns (uint){
         if (percentage == 0) return 0;
-        return val * percentage / 100;
+        return val * percentage / 1000;
     }
 }

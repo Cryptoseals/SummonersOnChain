@@ -2,7 +2,7 @@ import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Ini
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {ICodexPrefixAndSuffix} from "../../../Interfaces/Codex/ICodexPrefixAndSuffix.sol";
 import {InitNavigator, INavigator} from "../../../Core/Navigator/InitNavigator.sol";
-import {Class, Element, Stats, GeneratedStats,ElementalStats, ElementalAtk, ElementalDef,EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ItemType } from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {Class, Element, Stats, GeneratedStats, ElementalStats, ElementalAtk, ElementalDef, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ItemType} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
 
 pragma solidity ^0.8.0;
@@ -151,8 +151,8 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
         return result;
     }
 
-    function ring(EquippedItemStruct memory _equipable) public view returns (EquipableItem memory) {
-        EquipableItem memory _ring;
+    function ring(EquippedItemStruct memory _equipable) public view returns (EquipableItem memory _ring) {
+        EquipableItem memory base;
         Prefix memory _prefix;
         Suffix memory _suffix;
         require(_equipable.itemTier < 10, "tier");
@@ -161,27 +161,56 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
         if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
 
         if (_equipable.itemId == 1) {
-            _ring = applyTier(FrailRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(FrailRing(_equipable.itemTier), _equipable.itemTier, 560);
+            base = FrailRing(_equipable.itemTier);
+            _ring.statBonus.STR = base.statBonus.STR + ((_ring.statBonus.STR * 350) / 1000);
+            _ring.statBonus.DEX = base.statBonus.DEX + ((_ring.statBonus.DEX * 350) / 1000);
+            _ring.statBonus.AGI = base.statBonus.AGI + ((_ring.statBonus.AGI * 350) / 1000);
+            _ring.statBonus.VIT = base.statBonus.VIT + ((_ring.statBonus.VIT * 350) / 1000);
+            _ring.statBonus.INT = base.statBonus.INT + ((_ring.statBonus.INT * 350) / 1000);
+            _ring.statBonus.LUCK = base.statBonus.LUCK + ((_ring.statBonus.LUCK * 350) / 1000);
+
+            _ring.generatedStatBonus.CRIT_MULTIPLIER = base.generatedStatBonus.CRIT_MULTIPLIER + ((_ring.generatedStatBonus.CRIT_MULTIPLIER * 10) / 1000);
+            _ring.generatedStatBonus.ACCURACY = base.generatedStatBonus.ACCURACY + ((_ring.generatedStatBonus.ACCURACY * 20) / 1000);
+            _ring.generatedStatBonus.P_ATK = base.generatedStatBonus.P_ATK + ((_ring.generatedStatBonus.P_ATK * 10) / 1000);
+            _ring.generatedStatBonus.M_ATK = base.generatedStatBonus.M_ATK + ((_ring.generatedStatBonus.M_ATK * 10) / 1000);
+            _ring.generatedStatBonus.P_DEF = base.generatedStatBonus.P_DEF + ((_ring.generatedStatBonus.P_DEF * 10) / 1000);
+            _ring.generatedStatBonus.M_DEF = base.generatedStatBonus.M_DEF + ((_ring.generatedStatBonus.M_DEF * 10) / 1000);
+            _ring.generatedStatBonus.DODGE = base.generatedStatBonus.DODGE + ((_ring.generatedStatBonus.DODGE * 10) / 1000);
+
+            _ring.elementalStats.ElementalAtk.FIRE_ATK = base.elementalStats.ElementalAtk.FIRE_ATK + ((_ring.elementalStats.ElementalAtk.FIRE_ATK * 10) / 1000);
+            _ring.elementalStats.ElementalAtk.COLD_ATK = base.elementalStats.ElementalAtk.COLD_ATK + ((_ring.elementalStats.ElementalAtk.COLD_ATK * 10) / 1000);
+            _ring.elementalStats.ElementalAtk.EARTH_ATK = base.elementalStats.ElementalAtk.EARTH_ATK + ((_ring.elementalStats.ElementalAtk.EARTH_ATK * 10) / 1000);
+            _ring.elementalStats.ElementalAtk.LIGHTNING_ATK = base.elementalStats.ElementalAtk.LIGHTNING_ATK + ((_ring.elementalStats.ElementalAtk.LIGHTNING_ATK * 10) / 1000);
+            _ring.elementalStats.ElementalAtk.DARK_ATK = base.elementalStats.ElementalAtk.DARK_ATK + ((_ring.elementalStats.ElementalAtk.DARK_ATK * 10) / 1000);
+            _ring.elementalStats.ElementalAtk.HOLY_ATK = base.elementalStats.ElementalAtk.HOLY_ATK + ((_ring.elementalStats.ElementalAtk.HOLY_ATK * 10) / 1000);
+
+            _ring.elementalStats.ElementalDef.FIRE_DEF = base.elementalStats.ElementalDef.FIRE_DEF + ((_ring.elementalStats.ElementalDef.FIRE_DEF * 10) / 1000);
+            _ring.elementalStats.ElementalDef.COLD_DEF = base.elementalStats.ElementalDef.COLD_DEF + ((_ring.elementalStats.ElementalDef.COLD_DEF * 10) / 1000);
+            _ring.elementalStats.ElementalDef.EARTH_DEF = base.elementalStats.ElementalDef.EARTH_DEF + ((_ring.elementalStats.ElementalDef.EARTH_DEF * 10) / 1000);
+            _ring.elementalStats.ElementalDef.LIGHTNING_DEF = base.elementalStats.ElementalDef.LIGHTNING_DEF + ((_ring.elementalStats.ElementalDef.LIGHTNING_DEF * 10) / 1000);
+            _ring.elementalStats.ElementalDef.DARK_DEF = base.elementalStats.ElementalDef.DARK_DEF + ((_ring.elementalStats.ElementalDef.DARK_DEF * 10) / 1000);
+            _ring.elementalStats.ElementalDef.HOLY_DEF = base.elementalStats.ElementalDef.HOLY_DEF + ((_ring.elementalStats.ElementalDef.HOLY_DEF * 10) / 1000);
         } else if (_equipable.itemId == 2) {
-            _ring = applyTier(AntiqueRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(AntiqueRing(_equipable.itemTier), _equipable.itemTier, 150);
         } else if (_equipable.itemId == 3) {
-            _ring = applyTier(PurgeRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(PurgeRing(_equipable.itemTier), _equipable.itemTier, 70);
         } else if (_equipable.itemId == 4) {
-            _ring = applyTier(BarbedRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(BarbedRing(_equipable.itemTier), _equipable.itemTier, 40);
         } else if (_equipable.itemId == 5) {
-            _ring = applyTier(ReflectiveRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(ReflectiveRing(_equipable.itemTier), _equipable.itemTier, 35);
         } else if (_equipable.itemId == 6) {
-            _ring = applyTier(StormForgedRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(StormForgedRing(_equipable.itemTier), _equipable.itemTier, 25);
         } else if (_equipable.itemId == 7) {
-            _ring = applyTier(VerdantRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(VerdantRing(_equipable.itemTier), _equipable.itemTier, 19);
         } else if (_equipable.itemId == 8) {
-            _ring = applyTier(ShadowfallRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(ShadowfallRing(_equipable.itemTier), _equipable.itemTier, 18);
         } else if (_equipable.itemId == 9) {
-            _ring = applyTier(MalignantRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(MalignantRing(_equipable.itemTier), _equipable.itemTier, 15);
         } else if (_equipable.itemId == 10) {
-            _ring = applyTier(SealedRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(SealedRing(_equipable.itemTier), _equipable.itemTier, 11);
         } else if (_equipable.itemId == 11) {
-            _ring = applyTier(TemplarRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(TemplarRing(_equipable.itemTier), _equipable.itemTier, 11);
         } else if (_equipable.itemId == 12) {
             _ring = applyTier(ChannelerRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 13) {
@@ -189,19 +218,21 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
         } else if (_equipable.itemId == 14) {
             _ring = applyTier(AstraRing(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 15) {
-            _ring = applyTier(SoulbinderRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(SoulbinderRing(_equipable.itemTier), _equipable.itemTier, 7);
         } else if (_equipable.itemId == 16) {
-            _ring = applyTier(MoonlightRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(MoonlightRing(_equipable.itemTier), _equipable.itemTier, 7);
         } else if (_equipable.itemId == 17) {
-            _ring = applyTier(SunlightRing(_equipable.itemTier), _equipable.itemTier, 10);
+            _ring = applyTier(SunlightRing(_equipable.itemTier), _equipable.itemTier, 7);
         } else if (_equipable.itemId == 18) {
-            _ring = applyTier(CycleRing(_equipable.itemTier), _equipable.itemTier, 13);
+            _ring = applyTier(CycleRing(_equipable.itemTier), _equipable.itemTier, 6);
         } else if (_equipable.itemId == 19) {
-            _ring = applyTier(InfernalRing(_equipable.itemTier), _equipable.itemTier, 13);
+            _ring = applyTier(InfernalRing(_equipable.itemTier), _equipable.itemTier, 6);
         } else if (_equipable.itemId == 20) {
-            _ring = applyTier(DivineRing(_equipable.itemTier), _equipable.itemTier, 13);
+            _ring = applyTier(DivineRing(_equipable.itemTier), _equipable.itemTier, 5);
         } else if (_equipable.itemId == 21) {
-            _ring = applyTier(EternalRing(_equipable.itemTier), _equipable.itemTier, 13);
+            _ring = applyTier(EternalRing(_equipable.itemTier), _equipable.itemTier, 4);
+        } else {
+            revert("?r");
         }
 
         if (_equipable.element == Element.VOID) {
@@ -220,27 +251,27 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
 
 
         if (itemId == 1) {
-            _ring = applyTier(FrailRing(itemTier), itemTier, 10);
+            _ring = applyTier(FrailRing(itemTier), itemTier, 560);
         } else if (itemId == 2) {
-            _ring = applyTier(AntiqueRing(itemTier), itemTier, 10);
+            _ring = applyTier(AntiqueRing(itemTier), itemTier, 150);
         } else if (itemId == 3) {
-            _ring = applyTier(PurgeRing(itemTier), itemTier, 10);
+            _ring = applyTier(PurgeRing(itemTier), itemTier, 70);
         } else if (itemId == 4) {
-            _ring = applyTier(BarbedRing(itemTier), itemTier, 10);
+            _ring = applyTier(BarbedRing(itemTier), itemTier, 40);
         } else if (itemId == 5) {
-            _ring = applyTier(ReflectiveRing(itemTier), itemTier, 10);
+            _ring = applyTier(ReflectiveRing(itemTier), itemTier, 35);
         } else if (itemId == 6) {
-            _ring = applyTier(StormForgedRing(itemTier), itemTier, 10);
+            _ring = applyTier(StormForgedRing(itemTier), itemTier, 25);
         } else if (itemId == 7) {
-            _ring = applyTier(VerdantRing(itemTier), itemTier, 10);
+            _ring = applyTier(VerdantRing(itemTier), itemTier, 19);
         } else if (itemId == 8) {
-            _ring = applyTier(ShadowfallRing(itemTier), itemTier, 10);
+            _ring = applyTier(ShadowfallRing(itemTier), itemTier, 18);
         } else if (itemId == 9) {
-            _ring = applyTier(MalignantRing(itemTier), itemTier, 10);
+            _ring = applyTier(MalignantRing(itemTier), itemTier, 15);
         } else if (itemId == 10) {
-            _ring = applyTier(SealedRing(itemTier), itemTier, 10);
+            _ring = applyTier(SealedRing(itemTier), itemTier, 11);
         } else if (itemId == 11) {
-            _ring = applyTier(TemplarRing(itemTier), itemTier, 10);
+            _ring = applyTier(TemplarRing(itemTier), itemTier, 11);
         } else if (itemId == 12) {
             _ring = applyTier(ChannelerRing(itemTier), itemTier, 10);
         } else if (itemId == 13) {
@@ -248,19 +279,19 @@ contract CodexRings is InitNavigator, OwnableUpgradeable {
         } else if (itemId == 14) {
             _ring = applyTier(AstraRing(itemTier), itemTier, 10);
         } else if (itemId == 15) {
-            _ring = applyTier(SoulbinderRing(itemTier), itemTier, 10);
+            _ring = applyTier(SoulbinderRing(itemTier), itemTier, 7);
         } else if (itemId == 16) {
-            _ring = applyTier(MoonlightRing(itemTier), itemTier, 10);
+            _ring = applyTier(MoonlightRing(itemTier), itemTier, 7);
         } else if (itemId == 17) {
-            _ring = applyTier(SunlightRing(itemTier), itemTier, 10);
+            _ring = applyTier(SunlightRing(itemTier), itemTier, 7);
         } else if (itemId == 18) {
-            _ring = applyTier(CycleRing(itemTier), itemTier, 13);
+            _ring = applyTier(CycleRing(itemTier), itemTier, 6);
         } else if (itemId == 19) {
-            _ring = applyTier(InfernalRing(itemTier), itemTier, 13);
+            _ring = applyTier(InfernalRing(itemTier), itemTier, 6);
         } else if (itemId == 20) {
-            _ring = applyTier(DivineRing(itemTier), itemTier, 13);
+            _ring = applyTier(DivineRing(itemTier), itemTier, 5);
         } else if (itemId == 21) {
-            _ring = applyTier(EternalRing(itemTier), itemTier, 13);
+            _ring = applyTier(EternalRing(itemTier), itemTier, 4);
         }
 
         return _ring;

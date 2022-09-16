@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {ItemType, ElementalAtk, ElementalDef,Class, Weapon, Stats, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, ElementalAtk, ElementalDef, Class, Weapon, Stats, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexFocuses is Initializable {
@@ -38,54 +38,65 @@ contract CodexFocuses is Initializable {
         BASE_DODGE = _BASE_DODGE;
     }
 
-    function weapon(uint id, uint tier) public view returns (Weapon memory) {
+    function weapon(uint id, uint tier) public view returns (Weapon memory _weapon) {
         require(tier < 10, "t");
+        Weapon memory base;
 
         if (id == 106) {
-            return applyTier(WellShapedRock(tier), tier, 4);
+            _weapon = applyTier(WellShapedRock(tier), tier, 500);
+            base = WellShapedRock(tier);
+            _weapon.generatedStatBonus.CRIT = base.generatedStatBonus.CRIT + ((_weapon.generatedStatBonus.CRIT * 500) / 1000);
+            _weapon.generatedStatBonus.CRIT_MULTIPLIER = base.generatedStatBonus.CRIT_MULTIPLIER + ((_weapon.generatedStatBonus.CRIT_MULTIPLIER * 15) / 1000);
+            _weapon.generatedStatBonus.ACCURACY = base.generatedStatBonus.ACCURACY + ((_weapon.generatedStatBonus.ACCURACY * 10) / 1000);
+            _weapon.generatedStatBonus.DODGE = base.generatedStatBonus.DODGE + ((_weapon.generatedStatBonus.DODGE * 10) / 1000);
+            _weapon.generatedStatBonus.M_ATK = base.generatedStatBonus.M_ATK + ((_weapon.generatedStatBonus.M_ATK * 10) / 1000);
+            _weapon.statBonus.AGI = base.statBonus.AGI + ((_weapon.statBonus.AGI * 350) / 1000);
+            _weapon.statBonus.INT = base.statBonus.INT + ((_weapon.statBonus.INT * 350) / 1000);
+            _weapon.statBonus.DEX = base.statBonus.DEX + ((_weapon.statBonus.DEX * 350) / 1000);
+            _weapon.statBonus.LUCK = base.statBonus.LUCK + ((_weapon.statBonus.LUCK * 350) / 1000);
         } else if (id == 107) {
-            return applyTier(EvergreenFlower(tier), tier, 5);
+            _weapon = applyTier(EvergreenFlower(tier), tier, 150);
         } else if (id == 108) {
-            return applyTier(IdolOfAberranth(tier), tier, 5);
+            _weapon = applyTier(IdolOfAberranth(tier), tier, 70);
         } else if (id == 109) {
-            return applyTier(WarlordTotem(tier), tier, 5);
+            _weapon = applyTier(WarlordTotem(tier), tier, 50);
         } else if (id == 110) {
-            return applyTier(BookOfPhilosopher(tier), tier, 5);
+            _weapon = applyTier(BookOfPhilosopher(tier), tier, 35);
         } else if (id == 111) {
-            return applyTier(SilverCoin(tier), tier, 5);
+            _weapon = applyTier(SilverCoin(tier), tier, 20);
         } else if (id == 112) {
-            return applyTier(GoldenChain(tier), tier, 5);
+            _weapon = applyTier(GoldenChain(tier), tier, 20);
         } else if (id == 113) {
-            return applyTier(ChannellingCrystal(tier), tier, 5);
+            _weapon = applyTier(ChannellingCrystal(tier), tier, 20);
         } else if (id == 114) {
-            return applyTier(StarfallensFocus(tier), tier, 5);
+            _weapon = applyTier(StarfallensFocus(tier), tier, 15);
         } else if (id == 115) {
-            return applyTier(BlessedDice(tier), tier, 5);
+            _weapon = applyTier(BlessedDice(tier), tier, 12);
         } else if (id == 116) {
-            return applyTier(MoonstoneRelic(tier), tier, 5);
+            _weapon = applyTier(MoonstoneRelic(tier), tier, 12);
         } else if (id == 117) {
-            return applyTier(SunfireRelic(tier), tier, 5);
+            _weapon = applyTier(SunfireRelic(tier), tier, 12);
         } else if (id == 118) {
-            return applyTier(CycleRelic(tier), tier, 5);
+            _weapon = applyTier(CycleRelic(tier), tier, 12);
         } else if (id == 119) {
-            return applyTier(PhantasmalRelic(tier), tier, 5);
+            _weapon = applyTier(PhantasmalRelic(tier), tier, 12);
         } else if (id == 120) {
-            return applyTier(AncientOrb(tier), tier, 5);
+            _weapon = applyTier(AncientOrb(tier), tier, 10);
         } else if (id == 121) {
-            return applyTier(ScrollOfLuminous(tier), tier, 5);
+            _weapon = applyTier(ScrollOfLuminous(tier), tier, 10);
         } else if (id == 122) {
-            return applyTier(HeavenfallenFeather(tier), tier, 5);
+            _weapon = applyTier(HeavenfallenFeather(tier), tier, 7);
         } else if (id == 123) {
-            return applyTier(Godbringt(tier), tier, 5);
+            _weapon = applyTier(Godbringt(tier), tier, 7);
         } else if (id == 124) {
-            return applyTier(KeyOfTheExistence(tier), tier, 5);
+            _weapon = applyTier(KeyOfTheExistence(tier), tier, 7);
         } else if (id == 125) {
-            return applyTier(MistguardRelic(tier), tier, 5);
+            _weapon = applyTier(MistguardRelic(tier), tier, 7);
         } else if (id == 126) {
-            return applyTier(Mistbringer(tier), tier, 5);
-        }
+            _weapon = applyTier(Mistbringer(tier), tier, 7);
+        } else revert("?f");
 
-        revert("?f");
+
     }
 
     function applyTier(Weapon memory weapon, uint tier, uint percentage) public view returns (Weapon memory){

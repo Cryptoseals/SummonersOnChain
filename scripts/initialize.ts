@@ -21,11 +21,9 @@ async function main() {
 
     const deployedWeaponsCodex = JSON.parse(fs.readFileSync(DeployedFileLocations.codex_weapons, 'utf-8'))
 
-    const deployedCodexArmors = JSON.parse(fs.readFileSync(DeployedFileLocations.codex_armor, 'utf-8'))
+    const deployedCodexArmors = JSON.parse(fs.readFileSync(DeployedFileLocations.codex_armor_main, 'utf-8'))
 
-    const deployedCodexHelmet = JSON.parse(fs.readFileSync(DeployedFileLocations.codex_armor, 'utf-8'))
 
-    const deployedCodexBoots = JSON.parse(fs.readFileSync(DeployedFileLocations.codex_armor, 'utf-8'))
     const deployedCodexAmulets = JSON.parse(fs.readFileSync(DeployedFileLocations.codex_amulets, 'utf-8'))
     const deployedCodexRings = JSON.parse(fs.readFileSync(DeployedFileLocations.codex_rings, 'utf-8'))
     const deployedCodexEarrings = JSON.parse(fs.readFileSync(DeployedFileLocations.codex_earrings, 'utf-8'))
@@ -142,7 +140,6 @@ async function main() {
     console.log("weaponCodex")
 
 
-
     tx = await codexArmors.initializeContracts();
     await tx.wait(1)
     console.log("codexArmors")
@@ -199,7 +196,6 @@ async function main() {
     tx = await lands.initializeContracts();
     await tx.wait(1)
     console.log("lands")
-
 
 
     console.log(adventureControls.address)

@@ -144,6 +144,7 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
             weaponId = 1;
             armorId = 1;
             offhandId = 127;
+            _wEle = Element.FIRE;
             // shield
         } else if (_class == Class.Assassin) {
             weaponId = 22;
@@ -158,12 +159,12 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
             weaponId = 64;
             armorId = 43;
             offhandId = 106;
-            _wEle = Element.ARCANE;
+            _wEle = Element.DARK;
         } else if (_class == Class.Priest) {
             weaponId = 85;
             armorId = 43;
             offhandId = 106;
-            _wEle = Element.ARCANE;
+            _wEle = Element.HOLY;
         } else if (_class == Class.Engineer) {
             weaponId = 1;
             armorId = 22;

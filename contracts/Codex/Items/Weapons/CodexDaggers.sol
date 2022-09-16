@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {ItemType, ElementalAtk, ElementalDef,Class, Weapon, Stats, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, ElementalAtk, ElementalDef, Class, Weapon, Stats, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexDaggers is Initializable {
@@ -34,54 +34,63 @@ contract CodexDaggers is Initializable {
         BASE_ACCURACY = _BASE_ACCURACY;
     }
 
-    function weapon(uint id, uint tier) public view returns (Weapon memory) {
+    function weapon(uint id, uint tier) public view returns (Weapon memory _weapon) {
         require(tier < 10, "t");
+        Weapon memory base;
 
         if (id == 22) {
-            return applyTier(BreadKnife(tier), tier, 4);
-        } else if (id == 23) {
-            return applyTier(Twinkle(tier), tier, 5);
-        } else if (id == 24) {
-            return applyTier(Razor(tier), tier, 5);
-        } else if (id == 25) {
-            return applyTier(Quickblade(tier), tier, 5);
-        } else if (id == 26) {
-            return applyTier(PocketKiller(tier), tier, 5);
-        } else if (id == 27) {
-            return applyTier(SilverDagger(tier), tier, 5);
-        } else if (id == 28) {
-            return applyTier(GoldenStiletto(tier), tier, 5);
-        } else if (id == 29) {
-            return applyTier(VerdantKris(tier), tier, 5);
-        } else if (id == 30) {
-            return applyTier(NightfallDagger(tier), tier, 5);
-        } else if (id == 31) {
-            return applyTier(Voidslasher(tier), tier, 5);
-        } else if (id == 32) {
-            return applyTier(DaggerOfMoonlight(tier), tier, 5);
-        } else if (id == 33) {
-            return applyTier(DaggerOfSunlight(tier), tier, 5);
-        } else if (id == 34) {
-            return applyTier(CycleDagger(tier), tier, 5);
-        } else if (id == 35) {
-            return applyTier(PhantasmalDagger(tier), tier, 5);
-        } else if (id == 36) {
-            return applyTier(DefilingRazor(tier), tier, 5);
-        } else if (id == 37) {
-            return applyTier(DaggerOfTheSuccubus(tier), tier, 5);
-        } else if (id == 38) {
-            return applyTier(Pyrodagger(tier), tier, 5);
-        } else if (id == 39) {
-            return applyTier(PointOfZero(tier), tier, 5);
-        } else if (id == 40) {
-            return applyTier(DaggerOfIncursion(tier), tier, 5);
-        } else if (id == 41) {
-            return applyTier(Kingmaker(tier), tier, 5);
-        } else if (id == 42) {
-            return applyTier(Blooddrainer(tier), tier, 5);
-        }
+            _weapon = applyTier(BreadKnife(tier), tier, 600);
+            base = BreadKnife(tier);
+            _weapon.generatedStatBonus.CRIT = base.generatedStatBonus.CRIT + ((_weapon.generatedStatBonus.CRIT * 500) / 1000);
+            _weapon.generatedStatBonus.CRIT_MULTIPLIER = base.generatedStatBonus.CRIT_MULTIPLIER + ((_weapon.generatedStatBonus.CRIT_MULTIPLIER * 12) / 100);
+            _weapon.generatedStatBonus.ACCURACY = base.generatedStatBonus.ACCURACY + ((_weapon.generatedStatBonus.ACCURACY * 24) / 1000);
+            _weapon.generatedStatBonus.P_ATK = base.generatedStatBonus.P_ATK + ((_weapon.generatedStatBonus.P_ATK * 10) / 1000);
+            _weapon.statBonus.STR = base.statBonus.STR + ((_weapon.statBonus.STR * 350) / 1000);
+            _weapon.statBonus.DEX = base.statBonus.DEX + ((_weapon.statBonus.DEX * 350) / 1000);
+            _weapon.statBonus.AGI = base.statBonus.AGI + ((_weapon.statBonus.AGI * 350) / 1000);
+            _weapon.statBonus.LUCK = base.statBonus.LUCK + ((_weapon.statBonus.LUCK * 350) / 1000);
 
-        revert("?d");
+        } else if (id == 23) {
+            _weapon = applyTier(Twinkle(tier), tier, 150);
+        } else if (id == 24) {
+            _weapon = applyTier(Razor(tier), tier, 70);
+        } else if (id == 25) {
+            _weapon = applyTier(Quickblade(tier), tier, 50);
+        } else if (id == 26) {
+            _weapon = applyTier(PocketKiller(tier), tier, 35);
+        } else if (id == 27) {
+            _weapon = applyTier(SilverDagger(tier), tier, 20);
+        } else if (id == 28) {
+            _weapon = applyTier(GoldenStiletto(tier), tier, 20);
+        } else if (id == 29) {
+            _weapon = applyTier(VerdantKris(tier), tier, 20);
+        } else if (id == 30) {
+            _weapon = applyTier(NightfallDagger(tier), tier, 15);
+        } else if (id == 31) {
+            _weapon = applyTier(Voidslasher(tier), tier, 12);
+        } else if (id == 32) {
+            _weapon = applyTier(DaggerOfMoonlight(tier), tier, 12);
+        } else if (id == 33) {
+            _weapon = applyTier(DaggerOfSunlight(tier), tier, 12);
+        } else if (id == 34) {
+            _weapon = applyTier(CycleDagger(tier), tier, 12);
+        } else if (id == 35) {
+            _weapon = applyTier(PhantasmalDagger(tier), tier, 12);
+        } else if (id == 36) {
+            _weapon = applyTier(DefilingRazor(tier), tier, 10);
+        } else if (id == 37) {
+            _weapon = applyTier(DaggerOfTheSuccubus(tier), tier, 10);
+        } else if (id == 38) {
+            _weapon = applyTier(Pyrodagger(tier), tier, 7);
+        } else if (id == 39) {
+            _weapon = applyTier(PointOfZero(tier), tier, 7);
+        } else if (id == 40) {
+            _weapon = applyTier(DaggerOfIncursion(tier), tier, 7);
+        } else if (id == 41) {
+            _weapon = applyTier(Kingmaker(tier), tier, 7);
+        } else if (id == 42) {
+            _weapon = applyTier(Blooddrainer(tier), tier, 7);
+        } else revert("?d");
     }
 
     function applyTier(Weapon memory weapon, uint tier, uint percentage) public view returns (Weapon memory){

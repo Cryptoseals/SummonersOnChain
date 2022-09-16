@@ -1,12 +1,12 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {ItemType, Stats, GeneratedStats,ElementalStats, ElementalAtk, ElementalDef,Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, Stats, GeneratedStats, ElementalStats, ElementalAtk, ElementalDef, Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
 contract CodexHelmetsLight is Initializable {
     uint[21] public BASE_STR;
-//    uint[21] public BASE_AGI;
+    //    uint[21] public BASE_AGI;
     uint[21] public BASE_DEX;
     uint[21] public BASE_VIT;
     uint[21] public BASE_INT;
@@ -20,7 +20,7 @@ contract CodexHelmetsLight is Initializable {
 
     function initialize(
         uint[21] memory _BASE_STR,
-//        uint[21] memory _BASE_AGI,
+    //        uint[21] memory _BASE_AGI,
         uint[21] memory _BASE_DEX,
         uint[21] memory _BASE_VIT,
         uint[21] memory _BASE_INT,
@@ -32,7 +32,7 @@ contract CodexHelmetsLight is Initializable {
         uint[21] memory _BASE_ACCURACY
     ) external initializer {
         BASE_STR = _BASE_STR;
-//        BASE_AGI = _BASE_AGI;
+        //        BASE_AGI = _BASE_AGI;
         BASE_DEX = _BASE_DEX;
         BASE_VIT = _BASE_VIT;
         BASE_INT = _BASE_INT;
@@ -48,59 +48,76 @@ contract CodexHelmetsLight is Initializable {
         if (tier == 0) return _hat;
         _hat.statBonus = EquipableUtils.sumStatsAsTier(_hat.statBonus, tier * percentage);
         _hat.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_hat.generatedStatBonus, (tier) * percentage);
-        _hat.elementalStats.ElementalDef = helmetEle(percentage);
         _hat.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_hat.elementalStats, (tier) * percentage);
         return _hat;
     }
 
-    function helmet(uint id, uint tier) public view returns (EquipableItem memory) {
+    function helmet(uint id, uint tier) public view returns (EquipableItem memory _helmet) {
         require(tier < 10, "t");
-
+        EquipableItem memory base;
         if (id == 43) {
-            return applyTier(SoldiersHat(tier), tier, 1);
-        } else if (id == 44) {
-            return applyTier(PriestsHat(tier), tier, 1);
-        } else if (id == 45) {
-            return applyTier(FaithHat(tier), tier, 1);
-        } else if (id == 46) {
-            return applyTier(TraineesHat(tier), tier, 1);
-        } else if (id == 47) {
-            return applyTier(MagiciansHat(tier), tier, 1);
-        } else if (id == 48) {
-            return applyTier(SealedMask(tier), tier, 2);
-        } else if (id == 49) {
-            return applyTier(GateKeepersMask(tier), tier, 2);
-        } else if (id == 50) {
-            return applyTier(ElementalistsMask(tier), tier, 2);
-        } else if (id == 51) {
-            return applyTier(AlchemistsMask(tier), tier, 3);
-        } else if (id == 52) {
-            return applyTier(ArchmagesMask(tier), tier, 3);
-        } else if (id == 53) {
-            return applyTier(ElvenCirclet(tier), tier, 4);
-        } else if (id == 54) {
-            return applyTier(ChosensCirclet(tier), tier, 4);
-        } else if (id == 55) {
-            return applyTier(ProphetsCirclet(tier), tier, 5);
-        } else if (id == 56) {
-            return applyTier(EldersCirclet(tier), tier, 6);
-        } else if (id == 57) {
-            return applyTier(AncientCirclet(tier), tier, 7);
-        } else if (id == 58) {
-            return applyTier(MoonlightCirclet(tier), tier, 9);
-        } else if (id == 59) {
-            return applyTier(SunlightCirclet(tier), tier, 11);
-        } else if (id == 60) {
-            return applyTier(CycleCirclet(tier), tier, 13);
-        } else if (id == 61) {
-            return applyTier(DemonicCrown(tier), tier, 15);
-        } else if (id == 62) {
-            return applyTier(AngelicCrown(tier), tier, 19);
-        } else if (id == 63) {
-            return applyTier(EternalCrown(tier), tier, 10);
-        }
+            _helmet = applyTier(SoldiersHat(tier), tier, 550);
+            base = SoldiersHat(tier);
+            _helmet.statBonus.STR = base.statBonus.STR + ((_helmet.statBonus.STR * 900) / 1000);
+            _helmet.statBonus.DEX = base.statBonus.DEX + ((_helmet.statBonus.DEX * 900) / 1000);
+//            _helmet.statBonus.AGI = base.statBonus.AGI + ((_helmet.statBonus.AGI * 900) / 1000);
+            _helmet.statBonus.VIT = base.statBonus.VIT + ((_helmet.statBonus.VIT * 900) / 1000);
+            _helmet.statBonus.INT = base.statBonus.INT + ((_helmet.statBonus.INT * 900) / 1000);
 
-        revert("?hm");
+            _helmet.generatedStatBonus.HP = base.generatedStatBonus.HP + ((_helmet.generatedStatBonus.HP * 100) / 1000);
+            _helmet.generatedStatBonus.P_DEF = base.generatedStatBonus.P_DEF + ((_helmet.generatedStatBonus.P_DEF * 100) / 1000);
+            _helmet.generatedStatBonus.M_DEF = base.generatedStatBonus.M_DEF + ((_helmet.generatedStatBonus.M_DEF * 100) / 1000);
+            _helmet.generatedStatBonus.DODGE = base.generatedStatBonus.DODGE + ((_helmet.generatedStatBonus.DODGE * 50) / 1000);
+            _helmet.generatedStatBonus.ACCURACY = base.generatedStatBonus.ACCURACY + ((_helmet.generatedStatBonus.ACCURACY * 50) / 1000);
+
+            _helmet.elementalStats.ElementalDef.FIRE_DEF = base.elementalStats.ElementalDef.FIRE_DEF + ((_helmet.elementalStats.ElementalDef.FIRE_DEF * 100) / 1000);
+            _helmet.elementalStats.ElementalDef.COLD_DEF = base.elementalStats.ElementalDef.COLD_DEF + ((_helmet.elementalStats.ElementalDef.COLD_DEF * 100) / 1000);
+            _helmet.elementalStats.ElementalDef.EARTH_DEF = base.elementalStats.ElementalDef.EARTH_DEF + ((_helmet.elementalStats.ElementalDef.EARTH_DEF * 100) / 1000);
+            _helmet.elementalStats.ElementalDef.LIGHTNING_DEF = base.elementalStats.ElementalDef.LIGHTNING_DEF + ((_helmet.elementalStats.ElementalDef.LIGHTNING_DEF * 100) / 1000);
+            _helmet.elementalStats.ElementalDef.DARK_DEF = base.elementalStats.ElementalDef.DARK_DEF + ((_helmet.elementalStats.ElementalDef.DARK_DEF * 100) / 1000);
+            _helmet.elementalStats.ElementalDef.HOLY_DEF = base.elementalStats.ElementalDef.HOLY_DEF + ((_helmet.elementalStats.ElementalDef.HOLY_DEF * 100) / 1000);
+
+        } else if (id == 44) {
+            _helmet = applyTier(PriestsHat(tier), tier, 150);
+        } else if (id == 45) {
+            _helmet = applyTier(FaithHat(tier), tier, 70);
+        } else if (id == 46) {
+            _helmet = applyTier(TraineesHat(tier), tier, 50);
+        } else if (id == 47) {
+            _helmet = applyTier(MagiciansHat(tier), tier, 36);
+        } else if (id == 48) {
+            _helmet = applyTier(SealedMask(tier), tier, 28);
+        } else if (id == 49) {
+            _helmet = applyTier(GateKeepersMask(tier), tier, 25);
+        } else if (id == 50) {
+            _helmet = applyTier(ElementalistsMask(tier), tier, 21);
+        } else if (id == 51) {
+            _helmet = applyTier(AlchemistsMask(tier), tier, 18);
+        } else if (id == 52) {
+            _helmet = applyTier(ArchmagesMask(tier), tier, 15);
+        } else if (id == 53) {
+            _helmet = applyTier(ElvenCirclet(tier), tier, 15);
+        } else if (id == 54) {
+            _helmet = applyTier(ChosensCirclet(tier), tier, 12);
+        } else if (id == 55) {
+            _helmet = applyTier(ProphetsCirclet(tier), tier, 12);
+        } else if (id == 56) {
+            _helmet = applyTier(EldersCirclet(tier), tier, 11);
+        } else if (id == 57) {
+            _helmet = applyTier(AncientCirclet(tier), tier, 10);
+        } else if (id == 58) {
+            _helmet = applyTier(MoonlightCirclet(tier), tier, 10);
+        } else if (id == 59) {
+            _helmet = applyTier(SunlightCirclet(tier), tier, 9);
+        } else if (id == 60) {
+            _helmet = applyTier(CycleCirclet(tier), tier, 8);
+        } else if (id == 61) {
+            _helmet = applyTier(DemonicCrown(tier), tier, 8);
+        } else if (id == 62) {
+            _helmet = applyTier(AngelicCrown(tier), tier, 7);
+        } else if (id == 63) {
+            _helmet = applyTier(EternalCrown(tier), tier, 7);
+        } else revert("?hm");
     }
 
     function SoldiersHat(uint tier) public view returns (EquipableItem memory _hat) {

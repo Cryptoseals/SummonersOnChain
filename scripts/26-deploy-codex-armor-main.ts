@@ -38,7 +38,7 @@ async function main() {
     await tx.wait(1)
     console.log('set in contracts')
 
-    fs.writeFileSync(DeployedFileLocations.codex_armor, JSON.stringify({
+    fs.writeFileSync(DeployedFileLocations.codex_armor_main, JSON.stringify({
         codexArmors: codexArmors.address,
         codexHelmets: codexHelmets.address,
         codexBoots: codexBoots.address,

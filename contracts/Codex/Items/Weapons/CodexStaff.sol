@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {ItemType, ElementalAtk, ElementalDef,Class, Weapon, Stats, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, ElementalAtk, ElementalDef, Class, Weapon, Stats, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexStaves is Initializable {
@@ -34,54 +34,66 @@ contract CodexStaves is Initializable {
         BASE_ACCURACY = _BASE_ACCURACY;
     }
 
-    function weapon(uint id, uint tier) public view returns (Weapon memory) {
+    function weapon(uint id, uint tier) public view returns (Weapon memory _weapon) {
         require(tier < 10, "t");
+        Weapon memory base;
 
         if (id == 85) {
-            return applyTier(WoodenStaff(tier), tier, 4);
-        } else if (id == 86) {
-            return applyTier(MarbleStaff(tier), tier, 5);
+            _weapon = applyTier(WoodenStaff(tier), tier, 630);
+            base = WoodenStaff(tier);
+            _weapon.generatedStatBonus.CRIT = base.generatedStatBonus.CRIT + ((_weapon.generatedStatBonus.CRIT * 500) / 1000);
+            _weapon.generatedStatBonus.CRIT_MULTIPLIER = base.generatedStatBonus.CRIT_MULTIPLIER + ((_weapon.generatedStatBonus.CRIT_MULTIPLIER * 5) / 100);
+            _weapon.generatedStatBonus.ACCURACY = base.generatedStatBonus.ACCURACY + ((_weapon.generatedStatBonus.ACCURACY * 25) / 1000);
+            _weapon.generatedStatBonus.M_ATK = base.generatedStatBonus.M_ATK + ((_weapon.generatedStatBonus.M_ATK * 10) / 1000);
+            _weapon.statBonus.INT = base.statBonus.INT + ((_weapon.statBonus.INT * 350) / 1000);
+            _weapon.statBonus.DEX = base.statBonus.DEX + ((_weapon.statBonus.DEX * 350) / 1000);
+            _weapon.statBonus.AGI = base.statBonus.AGI + ((_weapon.statBonus.AGI * 350) / 1000);
+            _weapon.statBonus.LUCK = base.statBonus.LUCK + ((_weapon.statBonus.LUCK * 350) / 1000);}
+        else if (id == 86) {
+            _weapon = applyTier(MarbleStaff(tier), tier, 160);
         } else if (id == 87) {
-            return applyTier(TotemicStaff(tier), tier, 5);
+            _weapon = applyTier(TotemicStaff(tier), tier, 70);
         } else if (id == 88) {
-            return applyTier(AuraStaff(tier), tier, 5);
+            _weapon = applyTier(AuraStaff(tier), tier, 50);
         } else if (id == 89) {
-            return applyTier(BattleseenStaff(tier), tier, 5);
+            _weapon = applyTier(BattleseenStaff(tier), tier, 35);
         } else if (id == 90) {
-            return applyTier(WizardStaff(tier), tier, 5);
+            _weapon = applyTier(WizardStaff(tier), tier, 20);
         } else if (id == 91) {
-            return applyTier(RubyStaff(tier), tier, 5);
+            _weapon = applyTier(RubyStaff(tier), tier, 20);
         } else if (id == 92) {
-            return applyTier(VerdantStaff(tier), tier, 5);
+            _weapon = applyTier(VerdantStaff(tier), tier, 20);
         } else if (id == 93) {
-            return applyTier(StarfallensStaff(tier), tier, 5);
+            _weapon = applyTier(StarfallensStaff(tier), tier, 20);
         } else if (id == 94) {
-            return applyTier(Lightbringer(tier), tier, 5);
+            _weapon = applyTier(Lightbringer(tier), tier, 15);
         } else if (id == 95) {
-            return applyTier(StaffOfMoonlight(tier), tier, 5);
+            _weapon = applyTier(StaffOfMoonlight(tier), tier, 15);
         } else if (id == 96) {
-            return applyTier(StaffOfSunlight(tier), tier, 5);
+            _weapon = applyTier(StaffOfSunlight(tier), tier, 15);
         } else if (id == 97) {
-            return applyTier(CycleStaff(tier), tier, 5);
+            _weapon = applyTier(CycleStaff(tier), tier, 10);
         } else if (id == 98) {
-            return applyTier(PhantasmalStaff(tier), tier, 5);
+            _weapon = applyTier(PhantasmalStaff(tier), tier, 10);
         } else if (id == 99) {
-            return applyTier(WarlocksStaff(tier), tier, 5);
+            _weapon = applyTier(WarlocksStaff(tier), tier, 10);
         } else if (id == 100) {
-            return applyTier(LuminescentStaff(tier), tier, 5);
+            _weapon = applyTier(LuminescentStaff(tier), tier, 10);
         } else if (id == 101) {
-            return applyTier(AncientElementalistsStaff(tier), tier, 5);
+            _weapon = applyTier(AncientElementalistsStaff(tier), tier, 10);
         } else if (id == 102) {
-            return applyTier(Spellcatcher(tier), tier, 5);
+            _weapon = applyTier(Spellcatcher(tier), tier, 7);
         } else if (id == 103) {
-            return applyTier(IncursionStaff(tier), tier, 5);
+            _weapon = applyTier(IncursionStaff(tier), tier, 7);
         } else if (id == 104) {
-            return applyTier(EldersMark(tier), tier, 5);
+            _weapon = applyTier(EldersMark(tier), tier, 7);
         } else if (id == 105) {
-            return applyTier(Soultrapper(tier), tier, 5);
+            _weapon = applyTier(Soultrapper(tier), tier, 7);
+        } else {
+            revert("?st");
         }
 
-        revert("?st");
+
     }
 
     function applyTier(Weapon memory weapon, uint tier, uint percentage) public view returns (Weapon memory){
@@ -360,10 +372,11 @@ contract CodexStaves is Initializable {
     }
 
     function classRequirement() internal view returns (Class[] memory) {
-        Class[] memory _reqClass = new Class[](3);
+        Class[] memory _reqClass = new Class[](4);
         _reqClass[0] = Class.Wizard;
         _reqClass[1] = Class.Necromancer;
         _reqClass[2] = Class.Priest;
+        _reqClass[3] = Class.Paladin;
         return _reqClass;
     }
 }

@@ -2,7 +2,7 @@ import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Ini
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {ICodexPrefixAndSuffix} from "../../../Interfaces/Codex/ICodexPrefixAndSuffix.sol";
 import {InitNavigator, INavigator} from "../../../Core/Navigator/InitNavigator.sol";
-import {Class, Element, Stats, GeneratedStats,ElementalStats, ElementalAtk, ElementalDef,EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ItemType } from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {Class, Element, Stats, GeneratedStats, ElementalStats, ElementalAtk, ElementalDef, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ItemType} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
 
 pragma solidity ^0.8.0;
@@ -152,8 +152,8 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         return result;
     }
 
-    function earrings(EquippedItemStruct memory _equipable) public view returns (EquipableItem memory) {
-        EquipableItem memory _earrings;
+    function earrings(EquippedItemStruct memory _equipable) public view returns (EquipableItem memory _earrings) {
+        EquipableItem memory base;
         Prefix memory _prefix;
         Suffix memory _suffix;
         require(_equipable.itemTier < 10, "tier");
@@ -162,27 +162,56 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
 
         if (_equipable.itemId == 1) {
-            _earrings = applyTier(FrailEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(FrailEarrings(_equipable.itemTier), _equipable.itemTier, 560);
+            base = FrailEarrings(_equipable.itemTier);
+            _earrings.statBonus.STR = base.statBonus.STR + ((_earrings.statBonus.STR * 350) / 1000);
+            _earrings.statBonus.DEX = base.statBonus.DEX + ((_earrings.statBonus.DEX * 350) / 1000);
+            _earrings.statBonus.AGI = base.statBonus.AGI + ((_earrings.statBonus.AGI * 350) / 1000);
+            _earrings.statBonus.VIT = base.statBonus.VIT + ((_earrings.statBonus.VIT * 350) / 1000);
+            _earrings.statBonus.INT = base.statBonus.INT + ((_earrings.statBonus.INT * 350) / 1000);
+            _earrings.statBonus.LUCK = base.statBonus.LUCK + ((_earrings.statBonus.LUCK * 350) / 1000);
+
+            _earrings.generatedStatBonus.CRIT_MULTIPLIER = base.generatedStatBonus.CRIT_MULTIPLIER + ((_earrings.generatedStatBonus.CRIT_MULTIPLIER * 10) / 1000);
+            _earrings.generatedStatBonus.ACCURACY = base.generatedStatBonus.ACCURACY + ((_earrings.generatedStatBonus.ACCURACY * 20) / 1000);
+            _earrings.generatedStatBonus.P_ATK = base.generatedStatBonus.P_ATK + ((_earrings.generatedStatBonus.P_ATK * 10) / 1000);
+            _earrings.generatedStatBonus.M_ATK = base.generatedStatBonus.M_ATK + ((_earrings.generatedStatBonus.M_ATK * 10) / 1000);
+            _earrings.generatedStatBonus.P_DEF = base.generatedStatBonus.P_DEF + ((_earrings.generatedStatBonus.P_DEF * 10) / 1000);
+            _earrings.generatedStatBonus.M_DEF = base.generatedStatBonus.M_DEF + ((_earrings.generatedStatBonus.M_DEF * 10) / 1000);
+            _earrings.generatedStatBonus.DODGE = base.generatedStatBonus.DODGE + ((_earrings.generatedStatBonus.DODGE * 10) / 1000);
+
+            _earrings.elementalStats.ElementalAtk.FIRE_ATK = base.elementalStats.ElementalAtk.FIRE_ATK + ((_earrings.elementalStats.ElementalAtk.FIRE_ATK * 10) / 1000);
+            _earrings.elementalStats.ElementalAtk.COLD_ATK = base.elementalStats.ElementalAtk.COLD_ATK + ((_earrings.elementalStats.ElementalAtk.COLD_ATK * 10) / 1000);
+            _earrings.elementalStats.ElementalAtk.EARTH_ATK = base.elementalStats.ElementalAtk.EARTH_ATK + ((_earrings.elementalStats.ElementalAtk.EARTH_ATK * 10) / 1000);
+            _earrings.elementalStats.ElementalAtk.LIGHTNING_ATK = base.elementalStats.ElementalAtk.LIGHTNING_ATK + ((_earrings.elementalStats.ElementalAtk.LIGHTNING_ATK * 10) / 1000);
+            _earrings.elementalStats.ElementalAtk.DARK_ATK = base.elementalStats.ElementalAtk.DARK_ATK + ((_earrings.elementalStats.ElementalAtk.DARK_ATK * 10) / 1000);
+            _earrings.elementalStats.ElementalAtk.HOLY_ATK = base.elementalStats.ElementalAtk.HOLY_ATK + ((_earrings.elementalStats.ElementalAtk.HOLY_ATK * 10) / 1000);
+
+            _earrings.elementalStats.ElementalDef.FIRE_DEF = base.elementalStats.ElementalDef.FIRE_DEF + ((_earrings.elementalStats.ElementalDef.FIRE_DEF * 10) / 1000);
+            _earrings.elementalStats.ElementalDef.COLD_DEF = base.elementalStats.ElementalDef.COLD_DEF + ((_earrings.elementalStats.ElementalDef.COLD_DEF * 10) / 1000);
+            _earrings.elementalStats.ElementalDef.EARTH_DEF = base.elementalStats.ElementalDef.EARTH_DEF + ((_earrings.elementalStats.ElementalDef.EARTH_DEF * 10) / 1000);
+            _earrings.elementalStats.ElementalDef.LIGHTNING_DEF = base.elementalStats.ElementalDef.LIGHTNING_DEF + ((_earrings.elementalStats.ElementalDef.LIGHTNING_DEF * 10) / 1000);
+            _earrings.elementalStats.ElementalDef.DARK_DEF = base.elementalStats.ElementalDef.DARK_DEF + ((_earrings.elementalStats.ElementalDef.DARK_DEF * 10) / 1000);
+            _earrings.elementalStats.ElementalDef.HOLY_DEF = base.elementalStats.ElementalDef.HOLY_DEF + ((_earrings.elementalStats.ElementalDef.HOLY_DEF * 10) / 1000);
         } else if (_equipable.itemId == 2) {
-            _earrings = applyTier(AntiqueEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(AntiqueEarrings(_equipable.itemTier), _equipable.itemTier, 150);
         } else if (_equipable.itemId == 3) {
-            _earrings = applyTier(PurgeEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(PurgeEarrings(_equipable.itemTier), _equipable.itemTier, 70);
         } else if (_equipable.itemId == 4) {
-            _earrings = applyTier(BarbedEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(BarbedEarrings(_equipable.itemTier), _equipable.itemTier, 40);
         } else if (_equipable.itemId == 5) {
-            _earrings = applyTier(ReflectiveEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(ReflectiveEarrings(_equipable.itemTier), _equipable.itemTier, 35);
         } else if (_equipable.itemId == 6) {
-            _earrings = applyTier(StormForgedEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(StormForgedEarrings(_equipable.itemTier), _equipable.itemTier, 25);
         } else if (_equipable.itemId == 7) {
-            _earrings = applyTier(VerdantEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(VerdantEarrings(_equipable.itemTier), _equipable.itemTier, 19);
         } else if (_equipable.itemId == 8) {
-            _earrings = applyTier(ShadowfallEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(ShadowfallEarrings(_equipable.itemTier), _equipable.itemTier, 18);
         } else if (_equipable.itemId == 9) {
-            _earrings = applyTier(MalignantEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(MalignantEarrings(_equipable.itemTier), _equipable.itemTier, 15);
         } else if (_equipable.itemId == 10) {
-            _earrings = applyTier(SealedEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(SealedEarrings(_equipable.itemTier), _equipable.itemTier, 11);
         } else if (_equipable.itemId == 11) {
-            _earrings = applyTier(TemplarEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(TemplarEarrings(_equipable.itemTier), _equipable.itemTier, 11);
         } else if (_equipable.itemId == 12) {
             _earrings = applyTier(ChannelerEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 13) {
@@ -190,19 +219,21 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         } else if (_equipable.itemId == 14) {
             _earrings = applyTier(AstraEarrings(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 15) {
-            _earrings = applyTier(SoulbinderEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(SoulbinderEarrings(_equipable.itemTier), _equipable.itemTier, 7);
         } else if (_equipable.itemId == 16) {
-            _earrings = applyTier(MoonlightEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(MoonlightEarrings(_equipable.itemTier), _equipable.itemTier, 7);
         } else if (_equipable.itemId == 17) {
-            _earrings = applyTier(SunlightEarrings(_equipable.itemTier), _equipable.itemTier, 10);
+            _earrings = applyTier(SunlightEarrings(_equipable.itemTier), _equipable.itemTier, 7);
         } else if (_equipable.itemId == 18) {
-            _earrings = applyTier(CycleEarrings(_equipable.itemTier), _equipable.itemTier, 13);
+            _earrings = applyTier(CycleEarrings(_equipable.itemTier), _equipable.itemTier, 6);
         } else if (_equipable.itemId == 19) {
-            _earrings = applyTier(InfernalEarrings(_equipable.itemTier), _equipable.itemTier, 13);
+            _earrings = applyTier(InfernalEarrings(_equipable.itemTier), _equipable.itemTier, 6);
         } else if (_equipable.itemId == 20) {
-            _earrings = applyTier(DivineEarrings(_equipable.itemTier), _equipable.itemTier, 13);
+            _earrings = applyTier(DivineEarrings(_equipable.itemTier), _equipable.itemTier, 5);
         } else if (_equipable.itemId == 21) {
-            _earrings = applyTier(EternalEarrings(_equipable.itemTier), _equipable.itemTier, 13);
+            _earrings = applyTier(EternalEarrings(_equipable.itemTier), _equipable.itemTier, 4);
+        } else {
+            revert("?e");
         }
 
         if (_equipable.element == Element.VOID) {
@@ -221,27 +252,27 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         require(itemTier < 10, "tier");
 
         if (itemId == 1) {
-            _earrings = applyTier(FrailEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(FrailEarrings(itemTier), itemTier, 560);
         } else if (itemId == 2) {
-            _earrings = applyTier(AntiqueEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(AntiqueEarrings(itemTier), itemTier, 150);
         } else if (itemId == 3) {
-            _earrings = applyTier(PurgeEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(PurgeEarrings(itemTier), itemTier, 70);
         } else if (itemId == 4) {
-            _earrings = applyTier(BarbedEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(BarbedEarrings(itemTier), itemTier, 40);
         } else if (itemId == 5) {
-            _earrings = applyTier(ReflectiveEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(ReflectiveEarrings(itemTier), itemTier, 35);
         } else if (itemId == 6) {
-            _earrings = applyTier(StormForgedEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(StormForgedEarrings(itemTier), itemTier, 25);
         } else if (itemId == 7) {
-            _earrings = applyTier(VerdantEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(VerdantEarrings(itemTier), itemTier, 19);
         } else if (itemId == 8) {
-            _earrings = applyTier(ShadowfallEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(ShadowfallEarrings(itemTier), itemTier, 18);
         } else if (itemId == 9) {
-            _earrings = applyTier(MalignantEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(MalignantEarrings(itemTier), itemTier, 15);
         } else if (itemId == 10) {
-            _earrings = applyTier(SealedEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(SealedEarrings(itemTier), itemTier, 11);
         } else if (itemId == 11) {
-            _earrings = applyTier(TemplarEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(TemplarEarrings(itemTier), itemTier, 11);
         } else if (itemId == 12) {
             _earrings = applyTier(ChannelerEarrings(itemTier), itemTier, 10);
         } else if (itemId == 13) {
@@ -249,19 +280,19 @@ contract CodexEarrings is InitNavigator, OwnableUpgradeable {
         } else if (itemId == 14) {
             _earrings = applyTier(AstraEarrings(itemTier), itemTier, 10);
         } else if (itemId == 15) {
-            _earrings = applyTier(SoulbinderEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(SoulbinderEarrings(itemTier), itemTier, 7);
         } else if (itemId == 16) {
-            _earrings = applyTier(MoonlightEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(MoonlightEarrings(itemTier), itemTier, 7);
         } else if (itemId == 17) {
-            _earrings = applyTier(SunlightEarrings(itemTier), itemTier, 10);
+            _earrings = applyTier(SunlightEarrings(itemTier), itemTier, 7);
         } else if (itemId == 18) {
-            _earrings = applyTier(CycleEarrings(itemTier), itemTier, 13);
+            _earrings = applyTier(CycleEarrings(itemTier), itemTier, 6);
         } else if (itemId == 19) {
-            _earrings = applyTier(InfernalEarrings(itemTier), itemTier, 13);
+            _earrings = applyTier(InfernalEarrings(itemTier), itemTier, 6);
         } else if (itemId == 20) {
-            _earrings = applyTier(DivineEarrings(itemTier), itemTier, 13);
+            _earrings = applyTier(DivineEarrings(itemTier), itemTier, 5);
         } else if (itemId == 21) {
-            _earrings = applyTier(EternalEarrings(itemTier), itemTier, 13);
+            _earrings = applyTier(EternalEarrings(itemTier), itemTier, 4);
         }
 
         return _earrings;

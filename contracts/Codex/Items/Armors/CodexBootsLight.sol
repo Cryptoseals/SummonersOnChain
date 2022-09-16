@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {ItemType, Stats, GeneratedStats,ElementalStats, ElementalAtk, ElementalDef,Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, Stats, GeneratedStats, ElementalStats, ElementalAtk, ElementalDef, Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
@@ -45,59 +45,74 @@ contract CodexBootsLight is Initializable {
         if (tier == 0) return _greaves;
         _greaves.statBonus = EquipableUtils.sumStatsAsTier(_greaves.statBonus, tier * percentage);
         _greaves.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_greaves.generatedStatBonus, (tier) * percentage);
-        _greaves.elementalStats.ElementalDef = armorEle(percentage);
         _greaves.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_greaves.elementalStats, (tier) * percentage);
         return _greaves;
     }
 
-    function boots(uint id, uint tier) public view returns (EquipableItem memory) {
+    function boots(uint id, uint tier) public view returns (EquipableItem memory _boots) {
         require(tier < 10, "t");
-
+        EquipableItem memory base;
         if (id == 43) {
-            return applyTier(SoldiersSlipper(tier), tier, 1);
-        } else if (id == 44) {
-            return applyTier(PriestsSlipper(tier), tier, 1);
-        } else if (id == 45) {
-            return applyTier(FaithSlipper(tier), tier, 1);
-        } else if (id == 46) {
-            return applyTier(TraineesSlipper(tier), tier, 1);
-        } else if (id == 47) {
-            return applyTier(MagiciansSlipper(tier), tier, 1);
-        } else if (id == 48) {
-            return applyTier(SealedSandals(tier), tier, 2);
-        } else if (id == 49) {
-            return applyTier(GateKeepersSandals(tier), tier, 2);
-        } else if (id == 50) {
-            return applyTier(ElementalistsSandals(tier), tier, 2);
-        } else if (id == 51) {
-            return applyTier(AlcemistsSandals(tier), tier, 3);
-        } else if (id == 52) {
-            return applyTier(ArchmagesSandals(tier), tier, 3);
-        } else if (id == 53) {
-            return applyTier(ElvenShoes(tier), tier, 4);
-        } else if (id == 54) {
-            return applyTier(ChosensShoes(tier), tier, 4);
-        } else if (id == 55) {
-            return applyTier(ProphetsShoes(tier), tier, 5);
-        } else if (id == 56) {
-            return applyTier(EldersShoes(tier), tier, 6);
-        } else if (id == 57) {
-            return applyTier(AncientShoes(tier), tier, 7);
-        } else if (id == 58) {
-            return applyTier(MoonlightShoes(tier), tier, 9);
-        } else if (id == 59) {
-            return applyTier(SunlightShoes(tier), tier, 11);
-        } else if (id == 60) {
-            return applyTier(CycleShoes(tier), tier, 13);
-        } else if (id == 61) {
-            return applyTier(DemonicBoots(tier), tier, 15);
-        } else if (id == 62) {
-            return applyTier(AngelicBoots(tier), tier, 19);
-        } else if (id == 63) {
-            return applyTier(EternalBoots(tier), tier, 10);
-        }
+            _boots = applyTier(SoldiersSlipper(tier), tier, 550);
+            base = SoldiersSlipper(tier);
+            _boots.statBonus.STR = base.statBonus.STR + ((_boots.statBonus.STR * 900) / 1000);
+            _boots.statBonus.DEX = base.statBonus.DEX + ((_boots.statBonus.DEX * 900) / 1000);
+            _boots.statBonus.AGI = base.statBonus.AGI + ((_boots.statBonus.AGI * 900) / 1000);
+            _boots.statBonus.VIT = base.statBonus.VIT + ((_boots.statBonus.VIT * 900) / 1000);
+            _boots.statBonus.INT = base.statBonus.INT + ((_boots.statBonus.INT * 900) / 1000);
 
-        revert("?hm");
+            _boots.generatedStatBonus.HP = base.generatedStatBonus.HP + ((_boots.generatedStatBonus.HP * 100) / 1000);
+            _boots.generatedStatBonus.P_DEF = base.generatedStatBonus.P_DEF + ((_boots.generatedStatBonus.P_DEF * 100) / 1000);
+            _boots.generatedStatBonus.M_DEF = base.generatedStatBonus.M_DEF + ((_boots.generatedStatBonus.M_DEF * 100) / 1000);
+            _boots.generatedStatBonus.DODGE = base.generatedStatBonus.DODGE + ((_boots.generatedStatBonus.DODGE * 50) / 1000);
+
+            _boots.elementalStats.ElementalDef.FIRE_DEF = base.elementalStats.ElementalDef.FIRE_DEF + ((_boots.elementalStats.ElementalDef.FIRE_DEF * 100) / 1000);
+            _boots.elementalStats.ElementalDef.COLD_DEF = base.elementalStats.ElementalDef.COLD_DEF + ((_boots.elementalStats.ElementalDef.COLD_DEF * 100) / 1000);
+            _boots.elementalStats.ElementalDef.EARTH_DEF = base.elementalStats.ElementalDef.EARTH_DEF + ((_boots.elementalStats.ElementalDef.EARTH_DEF * 100) / 1000);
+            _boots.elementalStats.ElementalDef.LIGHTNING_DEF = base.elementalStats.ElementalDef.LIGHTNING_DEF + ((_boots.elementalStats.ElementalDef.LIGHTNING_DEF * 100) / 1000);
+            _boots.elementalStats.ElementalDef.DARK_DEF = base.elementalStats.ElementalDef.DARK_DEF + ((_boots.elementalStats.ElementalDef.DARK_DEF * 100) / 1000);
+            _boots.elementalStats.ElementalDef.HOLY_DEF = base.elementalStats.ElementalDef.HOLY_DEF + ((_boots.elementalStats.ElementalDef.HOLY_DEF * 100) / 1000);
+        } else if (id == 44) {
+            _boots = applyTier(PriestsSlipper(tier), tier, 150);
+        } else if (id == 45) {
+            _boots = applyTier(FaithSlipper(tier), tier, 70);
+        } else if (id == 46) {
+            _boots = applyTier(TraineesSlipper(tier), tier, 50);
+        } else if (id == 47) {
+            _boots = applyTier(MagiciansSlipper(tier), tier, 36);
+        } else if (id == 48) {
+            _boots = applyTier(SealedSandals(tier), tier, 28);
+        } else if (id == 49) {
+            _boots = applyTier(GateKeepersSandals(tier), tier, 25);
+        } else if (id == 50) {
+            _boots = applyTier(ElementalistsSandals(tier), tier, 21);
+        } else if (id == 51) {
+            _boots = applyTier(AlcemistsSandals(tier), tier, 18);
+        } else if (id == 52) {
+            _boots = applyTier(ArchmagesSandals(tier), tier, 15);
+        } else if (id == 53) {
+            _boots = applyTier(ElvenShoes(tier), tier, 15);
+        } else if (id == 54) {
+            _boots = applyTier(ChosensShoes(tier), tier, 12);
+        } else if (id == 55) {
+            _boots = applyTier(ProphetsShoes(tier), tier, 12);
+        } else if (id == 56) {
+            _boots = applyTier(EldersShoes(tier), tier, 11);
+        } else if (id == 57) {
+            _boots = applyTier(AncientShoes(tier), tier, 10);
+        } else if (id == 58) {
+            _boots = applyTier(MoonlightShoes(tier), tier, 10);
+        } else if (id == 59) {
+            _boots = applyTier(SunlightShoes(tier), tier, 9);
+        } else if (id == 60) {
+            _boots = applyTier(CycleShoes(tier), tier, 8);
+        } else if (id == 61) {
+            _boots = applyTier(DemonicBoots(tier), tier, 8);
+        } else if (id == 62) {
+            _boots = applyTier(AngelicBoots(tier), tier, 7);
+        } else if (id == 63) {
+            _boots = applyTier(EternalBoots(tier), tier, 7);
+        } else revert("?hm");
     }
 
     function SoldiersSlipper(uint tier) public view returns (EquipableItem memory _grieves) {

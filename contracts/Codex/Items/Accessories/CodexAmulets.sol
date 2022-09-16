@@ -2,7 +2,7 @@ import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Ini
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {ICodexPrefixAndSuffix} from "../../../Interfaces/Codex/ICodexPrefixAndSuffix.sol";
 import {InitNavigator, INavigator} from "../../../Core/Navigator/InitNavigator.sol";
-import {Class, Element, Stats, GeneratedStats,ElementalStats, ElementalAtk, ElementalDef, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ItemType } from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {Class, Element, Stats, GeneratedStats, ElementalStats, ElementalAtk, ElementalDef, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ItemType} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
 
 pragma solidity ^0.8.0;
@@ -144,8 +144,8 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         return result;
     }
 
-    function amulet(EquippedItemStruct memory _equipable) public view returns (EquipableItem memory) {
-        EquipableItem memory _amulet;
+    function amulet(EquippedItemStruct memory _equipable) public view returns (EquipableItem memory _amulet) {
+        EquipableItem memory base;
         Prefix memory _prefix;
         Suffix memory _suffix;
         require(_equipable.itemTier < 10, "tier");
@@ -154,27 +154,59 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         if (_equipable.suffixId > 0) _suffix = SuffixContract.suffix(_equipable.suffixId, _equipable.suffixTier);
 
         if (_equipable.itemId == 1) {
-            _amulet = applyTier(FrailAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(FrailAmulet(_equipable.itemTier), _equipable.itemTier, 560);
+            base = FrailAmulet(_equipable.itemTier);
+            _amulet.statBonus.STR = base.statBonus.STR + ((_amulet.statBonus.STR * 350) / 1000);
+            _amulet.statBonus.DEX = base.statBonus.DEX + ((_amulet.statBonus.DEX * 350) / 1000);
+            _amulet.statBonus.AGI = base.statBonus.AGI + ((_amulet.statBonus.AGI * 350) / 1000);
+            _amulet.statBonus.VIT = base.statBonus.VIT + ((_amulet.statBonus.VIT * 350) / 1000);
+            _amulet.statBonus.INT = base.statBonus.INT + ((_amulet.statBonus.INT * 350) / 1000);
+            _amulet.statBonus.LUCK = base.statBonus.LUCK + ((_amulet.statBonus.LUCK * 350) / 1000);
+
+            _amulet.generatedStatBonus.CRIT_MULTIPLIER = base.generatedStatBonus.CRIT_MULTIPLIER + ((_amulet.generatedStatBonus.CRIT_MULTIPLIER * 10) / 1000);
+            _amulet.generatedStatBonus.ACCURACY = base.generatedStatBonus.ACCURACY + ((_amulet.generatedStatBonus.ACCURACY * 20) / 1000);
+            _amulet.generatedStatBonus.P_ATK = base.generatedStatBonus.P_ATK + ((_amulet.generatedStatBonus.P_ATK * 10) / 1000);
+            _amulet.generatedStatBonus.M_ATK = base.generatedStatBonus.M_ATK + ((_amulet.generatedStatBonus.M_ATK * 10) / 1000);
+            _amulet.generatedStatBonus.P_DEF = base.generatedStatBonus.P_DEF + ((_amulet.generatedStatBonus.P_DEF * 10) / 1000);
+            _amulet.generatedStatBonus.M_DEF = base.generatedStatBonus.M_DEF + ((_amulet.generatedStatBonus.M_DEF * 10) / 1000);
+            _amulet.generatedStatBonus.DODGE = base.generatedStatBonus.DODGE + ((_amulet.generatedStatBonus.DODGE * 10) / 1000);
+
+            _amulet.elementalStats.ElementalAtk.FIRE_ATK = base.elementalStats.ElementalAtk.FIRE_ATK + ((_amulet.elementalStats.ElementalAtk.FIRE_ATK * 10) / 1000);
+            _amulet.elementalStats.ElementalAtk.COLD_ATK = base.elementalStats.ElementalAtk.COLD_ATK + ((_amulet.elementalStats.ElementalAtk.COLD_ATK * 10) / 1000);
+            _amulet.elementalStats.ElementalAtk.EARTH_ATK = base.elementalStats.ElementalAtk.EARTH_ATK + ((_amulet.elementalStats.ElementalAtk.EARTH_ATK * 10) / 1000);
+            _amulet.elementalStats.ElementalAtk.LIGHTNING_ATK = base.elementalStats.ElementalAtk.LIGHTNING_ATK + ((_amulet.elementalStats.ElementalAtk.LIGHTNING_ATK * 10) / 1000);
+            _amulet.elementalStats.ElementalAtk.DARK_ATK = base.elementalStats.ElementalAtk.DARK_ATK + ((_amulet.elementalStats.ElementalAtk.DARK_ATK * 10) / 1000);
+            _amulet.elementalStats.ElementalAtk.HOLY_ATK = base.elementalStats.ElementalAtk.HOLY_ATK + ((_amulet.elementalStats.ElementalAtk.HOLY_ATK * 10) / 1000);
+
+            _amulet.elementalStats.ElementalDef.FIRE_DEF = base.elementalStats.ElementalDef.FIRE_DEF + ((_amulet.elementalStats.ElementalDef.FIRE_DEF * 10) / 1000);
+            _amulet.elementalStats.ElementalDef.COLD_DEF = base.elementalStats.ElementalDef.COLD_DEF + ((_amulet.elementalStats.ElementalDef.COLD_DEF * 10) / 1000);
+            _amulet.elementalStats.ElementalDef.EARTH_DEF = base.elementalStats.ElementalDef.EARTH_DEF + ((_amulet.elementalStats.ElementalDef.EARTH_DEF * 10) / 1000);
+            _amulet.elementalStats.ElementalDef.LIGHTNING_DEF = base.elementalStats.ElementalDef.LIGHTNING_DEF + ((_amulet.elementalStats.ElementalDef.LIGHTNING_DEF * 10) / 1000);
+            _amulet.elementalStats.ElementalDef.DARK_DEF = base.elementalStats.ElementalDef.DARK_DEF + ((_amulet.elementalStats.ElementalDef.DARK_DEF * 10) / 1000);
+            _amulet.elementalStats.ElementalDef.HOLY_DEF = base.elementalStats.ElementalDef.HOLY_DEF + ((_amulet.elementalStats.ElementalDef.HOLY_DEF * 10) / 1000);
+
+
+            //            _amulet.statBonus.STR = base.statBonus.STR + ((_amulet.statBonus.STR * 10) / 1000) ;
         } else if (_equipable.itemId == 2) {
-            _amulet = applyTier(AntiqueAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(AntiqueAmulet(_equipable.itemTier), _equipable.itemTier, 150);
         } else if (_equipable.itemId == 3) {
-            _amulet = applyTier(PurgeAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(PurgeAmulet(_equipable.itemTier), _equipable.itemTier, 70);
         } else if (_equipable.itemId == 4) {
-            _amulet = applyTier(BarbedAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(BarbedAmulet(_equipable.itemTier), _equipable.itemTier, 40);
         } else if (_equipable.itemId == 5) {
-            _amulet = applyTier(ReflectiveAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(ReflectiveAmulet(_equipable.itemTier), _equipable.itemTier, 35);
         } else if (_equipable.itemId == 6) {
-            _amulet = applyTier(StormForgedAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(StormForgedAmulet(_equipable.itemTier), _equipable.itemTier, 25);
         } else if (_equipable.itemId == 7) {
-            _amulet = applyTier(VerdantAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(VerdantAmulet(_equipable.itemTier), _equipable.itemTier, 19);
         } else if (_equipable.itemId == 8) {
-            _amulet = applyTier(ShadowfallAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(ShadowfallAmulet(_equipable.itemTier), _equipable.itemTier, 18);
         } else if (_equipable.itemId == 9) {
-            _amulet = applyTier(MalignantAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(MalignantAmulet(_equipable.itemTier), _equipable.itemTier, 15);
         } else if (_equipable.itemId == 10) {
-            _amulet = applyTier(SealedAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(SealedAmulet(_equipable.itemTier), _equipable.itemTier, 11);
         } else if (_equipable.itemId == 11) {
-            _amulet = applyTier(TemplarAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(TemplarAmulet(_equipable.itemTier), _equipable.itemTier, 11);
         } else if (_equipable.itemId == 12) {
             _amulet = applyTier(ChannelerAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 13) {
@@ -182,19 +214,21 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         } else if (_equipable.itemId == 14) {
             _amulet = applyTier(AstraAmulet(_equipable.itemTier), _equipable.itemTier, 10);
         } else if (_equipable.itemId == 15) {
-            _amulet = applyTier(SoulbinderAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(SoulbinderAmulet(_equipable.itemTier), _equipable.itemTier, 7);
         } else if (_equipable.itemId == 16) {
-            _amulet = applyTier(MoonlightAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(MoonlightAmulet(_equipable.itemTier), _equipable.itemTier, 7);
         } else if (_equipable.itemId == 17) {
-            _amulet = applyTier(SunlightAmulet(_equipable.itemTier), _equipable.itemTier, 10);
+            _amulet = applyTier(SunlightAmulet(_equipable.itemTier), _equipable.itemTier, 7);
         } else if (_equipable.itemId == 18) {
-            _amulet = applyTier(CycleAmulet(_equipable.itemTier), _equipable.itemTier, 13);
+            _amulet = applyTier(CycleAmulet(_equipable.itemTier), _equipable.itemTier, 6);
         } else if (_equipable.itemId == 19) {
-            _amulet = applyTier(InfernalAmulet(_equipable.itemTier), _equipable.itemTier, 13);
+            _amulet = applyTier(InfernalAmulet(_equipable.itemTier), _equipable.itemTier, 6);
         } else if (_equipable.itemId == 20) {
-            _amulet = applyTier(DivineAmulet(_equipable.itemTier), _equipable.itemTier, 13);
+            _amulet = applyTier(DivineAmulet(_equipable.itemTier), _equipable.itemTier, 5);
         } else if (_equipable.itemId == 21) {
-            _amulet = applyTier(EternalAmulet(_equipable.itemTier), _equipable.itemTier, 13);
+            _amulet = applyTier(EternalAmulet(_equipable.itemTier), _equipable.itemTier, 4);
+        } else {
+            revert("?a");
         }
         _amulet.metadata.baseType = ItemType.AMULET;
         _amulet.metadata.upgradable = true;
@@ -213,27 +247,27 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         require(itemTier < 10, "tier");
 
         if (itemId == 1) {
-            _amulet = applyTier(FrailAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(FrailAmulet(itemTier), itemTier, 560);
         } else if (itemId == 2) {
-            _amulet = applyTier(AntiqueAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(AntiqueAmulet(itemTier), itemTier, 150);
         } else if (itemId == 3) {
-            _amulet = applyTier(PurgeAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(PurgeAmulet(itemTier), itemTier, 70);
         } else if (itemId == 4) {
-            _amulet = applyTier(BarbedAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(BarbedAmulet(itemTier), itemTier, 40);
         } else if (itemId == 5) {
-            _amulet = applyTier(ReflectiveAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(ReflectiveAmulet(itemTier), itemTier, 35);
         } else if (itemId == 6) {
-            _amulet = applyTier(StormForgedAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(StormForgedAmulet(itemTier), itemTier, 25);
         } else if (itemId == 7) {
-            _amulet = applyTier(VerdantAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(VerdantAmulet(itemTier), itemTier, 19);
         } else if (itemId == 8) {
-            _amulet = applyTier(ShadowfallAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(ShadowfallAmulet(itemTier), itemTier, 18);
         } else if (itemId == 9) {
-            _amulet = applyTier(MalignantAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(MalignantAmulet(itemTier), itemTier, 15);
         } else if (itemId == 10) {
-            _amulet = applyTier(SealedAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(SealedAmulet(itemTier), itemTier, 11);
         } else if (itemId == 11) {
-            _amulet = applyTier(TemplarAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(TemplarAmulet(itemTier), itemTier, 11);
         } else if (itemId == 12) {
             _amulet = applyTier(ChannelerAmulet(itemTier), itemTier, 10);
         } else if (itemId == 13) {
@@ -241,19 +275,19 @@ contract CodexAmulets is InitNavigator, OwnableUpgradeable {
         } else if (itemId == 14) {
             _amulet = applyTier(AstraAmulet(itemTier), itemTier, 10);
         } else if (itemId == 15) {
-            _amulet = applyTier(SoulbinderAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(SoulbinderAmulet(itemTier), itemTier, 7);
         } else if (itemId == 16) {
-            _amulet = applyTier(MoonlightAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(MoonlightAmulet(itemTier), itemTier, 7);
         } else if (itemId == 17) {
-            _amulet = applyTier(SunlightAmulet(itemTier), itemTier, 10);
+            _amulet = applyTier(SunlightAmulet(itemTier), itemTier, 7);
         } else if (itemId == 18) {
-            _amulet = applyTier(CycleAmulet(itemTier), itemTier, 13);
+            _amulet = applyTier(CycleAmulet(itemTier), itemTier, 6);
         } else if (itemId == 19) {
-            _amulet = applyTier(InfernalAmulet(itemTier), itemTier, 13);
+            _amulet = applyTier(InfernalAmulet(itemTier), itemTier, 6);
         } else if (itemId == 20) {
-            _amulet = applyTier(DivineAmulet(itemTier), itemTier, 13);
+            _amulet = applyTier(DivineAmulet(itemTier), itemTier, 5);
         } else if (itemId == 21) {
-            _amulet = applyTier(EternalAmulet(itemTier), itemTier, 13);
+            _amulet = applyTier(EternalAmulet(itemTier), itemTier, 4);
         }
         return _amulet;
     }

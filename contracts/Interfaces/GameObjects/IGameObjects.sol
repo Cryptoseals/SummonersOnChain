@@ -144,7 +144,6 @@ import "../NonFungibles/ConsumablesAndArtifacts/ICookingItem.sol";
         Stats statBonus;
         GeneratedStats generatedStatBonus;
         ElementalStats elementalStats;
-
     }
 
 

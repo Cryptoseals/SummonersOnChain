@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {ItemType, Stats, GeneratedStats,ElementalStats, ElementalAtk, ElementalDef,Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, Stats, GeneratedStats, ElementalStats, ElementalAtk, ElementalDef, Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
@@ -45,59 +45,75 @@ contract CodexBootsMedium is Initializable {
         if (tier == 0) return _greaves;
         _greaves.statBonus = EquipableUtils.sumStatsAsTier(_greaves.statBonus, tier * percentage);
         _greaves.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_greaves.generatedStatBonus, (tier) * percentage);
-        _greaves.elementalStats.ElementalDef = armorEle(percentage);
         _greaves.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_greaves.elementalStats, (tier) * percentage);
         return _greaves;
     }
 
-    function boots(uint id, uint tier) public view returns (EquipableItem memory) {
+    function boots(uint id, uint tier) public view returns (EquipableItem memory _boots) {
         require(tier < 10, "t");
-
+        EquipableItem memory base;
         if (id == 22) {
-            return applyTier(SoldiersSandals(tier), tier, 1);
-        } else if (id == 23) {
-            return applyTier(ExecutionersSandals(tier), tier, 1);
-        } else if (id == 24) {
-            return applyTier(HuntersSandals(tier), tier, 1);
-        } else if (id == 25) {
-            return applyTier(RangerSandals(tier), tier, 1);
-        } else if (id == 26) {
-            return applyTier(MercenaryShoes(tier), tier, 1);
-        } else if (id == 27) {
-            return applyTier(NobleShoes(tier), tier, 2);
-        } else if (id == 28) {
-            return applyTier(BloodstainedShoes(tier), tier, 2);
-        } else if (id == 29) {
-            return applyTier(ShoesOfDusk(tier), tier, 2);
-        } else if (id == 30) {
-            return applyTier(ShadowBoots(tier), tier, 3);
-        } else if (id == 31) {
-            return applyTier(HeadmastersBoots(tier), tier, 3);
-        } else if (id == 32) {
-            return applyTier(ElvenBoots(tier), tier, 4);
-        } else if (id == 33) {
-            return applyTier(ChosensBoots(tier), tier, 4);
-        } else if (id == 34) {
-            return applyTier(ProphetsBoots(tier), tier, 5);
-        } else if (id == 35) {
-            return applyTier(EldersBoots(tier), tier, 6);
-        } else if (id == 36) {
-            return applyTier(AncientShoes(tier), tier, 7);
-        } else if (id == 37) {
-            return applyTier(MoonlightShoes(tier), tier, 9);
-        } else if (id == 38) {
-            return applyTier(SunlightShoes(tier), tier, 11);
-        } else if (id == 39) {
-            return applyTier(CycleShoes(tier), tier, 13);
-        } else if (id == 40) {
-            return applyTier(DemonicGreaves(tier), tier, 15);
-        } else if (id == 41) {
-            return applyTier(AngelicGreaves(tier), tier, 19);
-        } else if (id == 42) {
-            return applyTier(EternalGreaves(tier), tier, 10);
-        }
+            _boots = applyTier(SoldiersSandals(tier), tier, 550);
+            base = SoldiersSandals(tier);
+            _boots.statBonus.STR = base.statBonus.STR + ((_boots.statBonus.STR * 900) / 1000);
+            _boots.statBonus.DEX = base.statBonus.DEX + ((_boots.statBonus.DEX * 900) / 1000);
+            _boots.statBonus.AGI = base.statBonus.AGI + ((_boots.statBonus.AGI * 900) / 1000);
+            _boots.statBonus.VIT = base.statBonus.VIT + ((_boots.statBonus.VIT * 900) / 1000);
+            _boots.statBonus.INT = base.statBonus.INT + ((_boots.statBonus.INT * 900) / 1000);
 
-        revert("?hm");
+            _boots.generatedStatBonus.HP = base.generatedStatBonus.HP + ((_boots.generatedStatBonus.HP * 100) / 1000);
+            _boots.generatedStatBonus.P_DEF = base.generatedStatBonus.P_DEF + ((_boots.generatedStatBonus.P_DEF * 100) / 1000);
+            _boots.generatedStatBonus.M_DEF = base.generatedStatBonus.M_DEF + ((_boots.generatedStatBonus.M_DEF * 100) / 1000);
+            _boots.generatedStatBonus.DODGE = base.generatedStatBonus.DODGE + ((_boots.generatedStatBonus.DODGE * 50) / 1000);
+
+            _boots.elementalStats.ElementalDef.FIRE_DEF = base.elementalStats.ElementalDef.FIRE_DEF + ((_boots.elementalStats.ElementalDef.FIRE_DEF * 100) / 1000);
+            _boots.elementalStats.ElementalDef.COLD_DEF = base.elementalStats.ElementalDef.COLD_DEF + ((_boots.elementalStats.ElementalDef.COLD_DEF * 100) / 1000);
+            _boots.elementalStats.ElementalDef.EARTH_DEF = base.elementalStats.ElementalDef.EARTH_DEF + ((_boots.elementalStats.ElementalDef.EARTH_DEF * 100) / 1000);
+            _boots.elementalStats.ElementalDef.LIGHTNING_DEF = base.elementalStats.ElementalDef.LIGHTNING_DEF + ((_boots.elementalStats.ElementalDef.LIGHTNING_DEF * 100) / 1000);
+            _boots.elementalStats.ElementalDef.DARK_DEF = base.elementalStats.ElementalDef.DARK_DEF + ((_boots.elementalStats.ElementalDef.DARK_DEF * 100) / 1000);
+            _boots.elementalStats.ElementalDef.HOLY_DEF = base.elementalStats.ElementalDef.HOLY_DEF + ((_boots.elementalStats.ElementalDef.HOLY_DEF * 100) / 1000);
+        } else if (id == 23) {
+            _boots = applyTier(ExecutionersSandals(tier), tier, 150);
+        } else if (id == 24) {
+            _boots = applyTier(HuntersSandals(tier), tier, 70);
+        } else if (id == 25) {
+            _boots = applyTier(RangerSandals(tier), tier, 50);
+        } else if (id == 26) {
+            _boots = applyTier(MercenaryShoes(tier), tier, 36);
+        } else if (id == 27) {
+            _boots = applyTier(NobleShoes(tier), tier, 28);
+        } else if (id == 28) {
+            _boots = applyTier(BloodstainedShoes(tier), tier, 25);
+        } else if (id == 29) {
+            _boots = applyTier(ShoesOfDusk(tier), tier, 21);
+        } else if (id == 30) {
+            _boots = applyTier(ShadowBoots(tier), tier, 18);
+        } else if (id == 31) {
+            _boots = applyTier(HeadmastersBoots(tier), tier, 15);
+        } else if (id == 32) {
+            _boots = applyTier(ElvenBoots(tier), tier, 15);
+        } else if (id == 33) {
+            _boots = applyTier(ChosensBoots(tier), tier, 12);
+        } else if (id == 34) {
+            _boots = applyTier(ProphetsBoots(tier), tier, 12);
+        } else if (id == 35) {
+            _boots = applyTier(EldersBoots(tier), tier, 11);
+        } else if (id == 36) {
+            _boots = applyTier(AncientShoes(tier), tier, 10);
+        } else if (id == 37) {
+            _boots = applyTier(MoonlightShoes(tier), tier, 10);
+        } else if (id == 38) {
+            _boots = applyTier(SunlightShoes(tier), tier, 9);
+        } else if (id == 39) {
+            _boots = applyTier(CycleShoes(tier), tier, 8);
+        } else if (id == 40) {
+            _boots = applyTier(DemonicGreaves(tier), tier, 8);
+        } else if (id == 41) {
+            _boots = applyTier(AngelicGreaves(tier), tier, 7);
+        } else if (id == 42) {
+            _boots = applyTier(EternalGreaves(tier), tier, 7);
+        }
+        else revert("?hm");
     }
 
     function SoldiersSandals(uint tier) public view returns (EquipableItem memory _greaves) {

@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {ItemType, Stats, GeneratedStats,ElementalStats, ElementalAtk, ElementalDef,Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, Stats, GeneratedStats, ElementalStats, ElementalAtk, ElementalDef, Class, EquippedItemStruct, Prefix, Suffix, EquipableItem, Stats, ElementalDef, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 
 pragma solidity ^0.8.0;
 
@@ -46,59 +46,74 @@ contract CodexArmorsHeavy is Initializable {
         if (tier == 0) return _armor;
         _armor.statBonus = EquipableUtils.sumStatsAsTier(_armor.statBonus, tier * percentage);
         _armor.generatedStatBonus = EquipableUtils.sumGeneratedStatsAsTier(_armor.generatedStatBonus, (tier) * percentage);
-        _armor.elementalStats.ElementalDef = armorEle(percentage);
         _armor.elementalStats = EquipableUtils.sumGeneratedElementalStatsAsTier(_armor.elementalStats, (tier) * percentage);
         return _armor;
     }
 
-    function armor(uint id, uint tier) public view returns (EquipableItem memory) {
+    function armor(uint id, uint tier) public view returns (EquipableItem memory _armor) {
         require(tier < 10, "t");
-
+        EquipableItem memory base;
         if (id == 1) {
-            return applyTier(SoldiersArmor(tier), tier, 1);
-        } else if (id == 2) {
-            return applyTier(ExecutionerArmor(tier), tier, 1);
-        } else if (id == 3) {
-            return applyTier(KnightsArmor(tier), tier, 1);
-        } else if (id == 4) {
-            return applyTier(DwarvenArmor(tier), tier, 1);
-        } else if (id == 5) {
-            return applyTier(ScaleArmor(tier), tier, 1);
-        } else if (id == 6) {
-            return applyTier(WingedArmor(tier), tier, 2);
-        } else if (id == 7) {
-            return applyTier(JuggernautArmor(tier), tier, 2);
-        } else if (id == 8) {
-            return applyTier(DraconicArmor(tier), tier, 2);
-        } else if (id == 9) {
-            return applyTier(DragonsilverArmor(tier), tier, 3);
-        } else if (id == 10) {
-            return applyTier(GoldenArmor(tier), tier, 3);
-        } else if (id == 11) {
-            return applyTier(MidassArmor(tier), tier, 4);
-        } else if (id == 12) {
-            return applyTier(ChosensArmor(tier), tier, 4);
-        } else if (id == 13) {
-            return applyTier(TemplarArmor(tier), tier, 5);
-        } else if (id == 14) {
-            return applyTier(VanguardArmor(tier), tier, 6);
-        } else if (id == 15) {
-            return applyTier(VoidDwellerArmor(tier), tier, 7);
-        } else if (id == 16) {
-            return applyTier(MoonlightArmor(tier), tier, 9);
-        } else if (id == 17) {
-            return applyTier(SunlightArmor(tier), tier, 11);
-        } else if (id == 18) {
-            return applyTier(CycleArmor(tier), tier, 13);
-        } else if (id == 19) {
-            return applyTier(DemonicArmor(tier), tier, 15);
-        } else if (id == 20) {
-            return applyTier(AngelicArmor(tier), tier, 19);
-        } else if (id == 21) {
-            return applyTier(EternalArmor(tier), tier, 20);
-        }
+            _armor = applyTier(SoldiersArmor(tier), tier, 600);
+            base = SoldiersArmor(tier);
+            _armor.statBonus.STR = base.statBonus.STR + ((_armor.statBonus.STR * 900) / 1000);
+            _armor.statBonus.DEX = base.statBonus.DEX + ((_armor.statBonus.DEX * 900) / 1000);
+            _armor.statBonus.AGI = base.statBonus.AGI + ((_armor.statBonus.AGI * 900) / 1000);
+            _armor.statBonus.VIT = base.statBonus.VIT + ((_armor.statBonus.VIT * 900) / 1000);
+            _armor.statBonus.INT = base.statBonus.INT + ((_armor.statBonus.INT * 900) / 1000);
 
-        revert("?hm");
+            _armor.generatedStatBonus.HP = base.generatedStatBonus.HP + ((_armor.generatedStatBonus.HP * 100) / 1000);
+            _armor.generatedStatBonus.P_DEF = base.generatedStatBonus.P_DEF + ((_armor.generatedStatBonus.P_DEF * 100) / 1000);
+            _armor.generatedStatBonus.M_DEF = base.generatedStatBonus.M_DEF + ((_armor.generatedStatBonus.M_DEF * 100) / 1000);
+            _armor.generatedStatBonus.DODGE = base.generatedStatBonus.DODGE + ((_armor.generatedStatBonus.DODGE * 50) / 1000);
+
+            _armor.elementalStats.ElementalDef.FIRE_DEF = base.elementalStats.ElementalDef.FIRE_DEF + ((_armor.elementalStats.ElementalDef.FIRE_DEF * 100) / 1000);
+            _armor.elementalStats.ElementalDef.COLD_DEF = base.elementalStats.ElementalDef.COLD_DEF + ((_armor.elementalStats.ElementalDef.COLD_DEF * 100) / 1000);
+            _armor.elementalStats.ElementalDef.EARTH_DEF = base.elementalStats.ElementalDef.EARTH_DEF + ((_armor.elementalStats.ElementalDef.EARTH_DEF * 100) / 1000);
+            _armor.elementalStats.ElementalDef.LIGHTNING_DEF = base.elementalStats.ElementalDef.LIGHTNING_DEF + ((_armor.elementalStats.ElementalDef.LIGHTNING_DEF * 100) / 1000);
+            _armor.elementalStats.ElementalDef.DARK_DEF = base.elementalStats.ElementalDef.DARK_DEF + ((_armor.elementalStats.ElementalDef.DARK_DEF * 100) / 1000);
+            _armor.elementalStats.ElementalDef.HOLY_DEF = base.elementalStats.ElementalDef.HOLY_DEF + ((_armor.elementalStats.ElementalDef.HOLY_DEF * 100) / 1000);
+        } else if (id == 2) {
+            _armor = applyTier(ExecutionerArmor(tier), tier, 150);
+        } else if (id == 3) {
+            _armor = applyTier(KnightsArmor(tier), tier, 75);
+        } else if (id == 4) {
+            _armor = applyTier(DwarvenArmor(tier), tier, 50);
+        } else if (id == 5) {
+            _armor = applyTier(ScaleArmor(tier), tier, 35);
+        } else if (id == 6) {
+            _armor = applyTier(WingedArmor(tier), tier, 20);
+        } else if (id == 7) {
+            _armor = applyTier(JuggernautArmor(tier), tier, 20);
+        } else if (id == 8) {
+            _armor = applyTier(DraconicArmor(tier), tier, 20);
+        } else if (id == 9) {
+            _armor = applyTier(DragonsilverArmor(tier), tier, 20);
+        } else if (id == 10) {
+            _armor = applyTier(GoldenArmor(tier), tier, 15);
+        } else if (id == 11) {
+            _armor = applyTier(MidassArmor(tier), tier, 15);
+        } else if (id == 12) {
+            _armor = applyTier(ChosensArmor(tier), tier, 15);
+        } else if (id == 13) {
+            _armor = applyTier(TemplarArmor(tier), tier, 10);
+        } else if (id == 14) {
+            _armor = applyTier(VanguardArmor(tier), tier, 10);
+        } else if (id == 15) {
+            _armor = applyTier(VoidDwellerArmor(tier), tier, 10);
+        } else if (id == 16) {
+            _armor = applyTier(MoonlightArmor(tier), tier, 10);
+        } else if (id == 17) {
+            _armor = applyTier(SunlightArmor(tier), tier, 10);
+        } else if (id == 18) {
+            _armor = applyTier(CycleArmor(tier), tier, 7);
+        } else if (id == 19) {
+            _armor = applyTier(DemonicArmor(tier), tier, 7);
+        } else if (id == 20) {
+            _armor = applyTier(AngelicArmor(tier), tier, 7);
+        } else if (id == 21) {
+            _armor = applyTier(EternalArmor(tier), tier, 7);
+        } else revert("?hm");
     }
 
     function SoldiersArmor(uint tier) public view returns (EquipableItem memory _armor) {

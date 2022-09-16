@@ -160,4 +160,9 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
         }
         return (_tokensOfOwner);
     }
+
+
+    function setLevel(uint summoner, uint level) external onlyGameContracts {
+        SummonerLevels[summoner] = level;
+    }
 }

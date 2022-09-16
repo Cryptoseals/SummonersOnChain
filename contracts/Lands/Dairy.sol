@@ -52,12 +52,34 @@ contract Dairy is LandUtils {
         for (uint slot = 0; slot <= dairy.maxProductionSimultaneously; slot++) {
             if (StakedDairy[landId][slot].animalId == 0) continue;
             uint cycle = calculateCycle(landId, slot);
+            if (cycle == 0) continue;
             if (_animal.animalId != StakedDairy[landId][slot].animalId) {
                 _animal = landCodex.grownAnimal(StakedDairy[landId][slot].animalId);
             }
-            StakedDairy[landId][slot].lastClaim = block.timestamp;
+            uint remaining = (block.timestamp - StakedDairy[landId][slot].lastClaim) % (cycle * DairyProdTime);
+            StakedDairy[landId][slot].lastClaim = block.timestamp - remaining;
             rewardForAnimal(_animal, cycle, storages.eggCapacity, storages.diaryCapacity);
         }
+    }
+
+    function claimProduction(uint landId, uint slot) external nonReentrant isOwned(landId, msg.sender) {
+        ILand.LandStatsStruct memory stats = landToken.landStats(landId);
+        ILand.Dairies memory dairy = landCodex.dairies(stats.DairiesTier);
+        ILand.Storages memory storages = landCodex.storages(stats.StorageBuildingsTier);
+        AnimalsL.GrownAnimal memory _animal;
+
+        require(slot <= dairy.maxProductionSimultaneously, "s");
+        if (StakedDairy[landId][slot].animalId == 0) return;
+
+        uint cycle = calculateCycle(landId, slot);
+        if (cycle == 0) return;
+        if (_animal.animalId != StakedDairy[landId][slot].animalId) {
+            _animal = landCodex.grownAnimal(StakedDairy[landId][slot].animalId);
+        }
+
+        uint remaining = (block.timestamp - StakedDairy[landId][slot].lastClaim) % (cycle * DairyProdTime);
+        StakedDairy[landId][slot].lastClaim = block.timestamp - remaining;
+        rewardForAnimal(_animal, cycle, storages.eggCapacity, storages.diaryCapacity);
     }
 
     // withdraw

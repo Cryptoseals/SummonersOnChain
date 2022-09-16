@@ -10,21 +10,24 @@ async function main() {
 
 
     let tx
-    let Lands = await ethers.getContractFactory("Lands");
-    let lands = await upgrades.upgradeProxy(deployedE.lands,
-        Lands);
-    await lands.deployed();
+    // let Lands = await ethers.getContractFactory("Lands");
+    // let lands = await upgrades.upgradeProxy(deployedE.lands,
+    //     Lands);
+    // await lands.deployed();
+    // //
+    // let CodexLands = await ethers.getContractFactory("CodexLands");
+    // let codexLands = await upgrades.upgradeProxy(deployedE.codexLands,
+    //     CodexLands);
+    // await codexLands.deployed();
     //
-    let CodexLands = await ethers.getContractFactory("CodexLands");
-    let codexLands = await upgrades.upgradeProxy(deployedE.codexLands,
-        CodexLands);
-    await codexLands.deployed();
     //
-    //
-    // let LandControls = await ethers.getContractFactory("LandControls")
-    // let landControls = await upgrades.upgradeProxy(deployedE.landControls,
-    //     LandControls);
-    // await landControls.deployed();
+    
+    let LandControls = await ethers.getContractFactory("LandControls")
+    let landControls = await upgrades.upgradeProxy(deployedE.landControls,
+        LandControls);
+    await landControls.deployed();
+
+
     //
     // tx = await landControls.initializeContracts()
     // await tx.wait(1)

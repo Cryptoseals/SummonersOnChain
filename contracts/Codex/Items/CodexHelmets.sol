@@ -1,5 +1,5 @@
 import {UpgradeableCodex, INavigator, ICodexPrefixAndSuffix} from "./../Common/UpgradeableCodex.sol";
-import {EquippedItemStruct, EquipableItem, Prefix, Suffix } from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {EquippedItemStruct, EquipableItem, Prefix, Suffix} from "../../Interfaces/GameObjects/IGameObjects.sol";
 import {EquipableUtils} from "../../Inventory/EquipableUtils.sol";
 pragma solidity ^0.8.0;
 

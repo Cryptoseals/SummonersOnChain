@@ -69,7 +69,7 @@ contract CodexLands {
         _mill.building.bonusChance = 5 + (tier * 2);
         _mill.maxProcessSimultaneously = 3 + (tier * 2);
         _mill.building.upgradeReqs = millBuilding(tier + 1);
-        _mill.processTimePerCrop = (15 minutes) - ((tier * 2) * 1 minutes);
+        _mill.processTimePerCrop = (15 minutes) - ((tier * 2) * 30 seconds);
     }
 
     function farm(uint tier) external view returns (ILand.Farm memory _farm){

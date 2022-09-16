@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {EquipableUtils} from "../../../Inventory/EquipableUtils.sol";
-import {ItemType, ElementalAtk, ElementalDef,Class, Weapon, Stats, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
+import {ItemType, ElementalAtk, ElementalDef, Class, Weapon, Stats, GeneratedStats} from "../../../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 contract CodexShields is Initializable {
@@ -35,54 +35,67 @@ contract CodexShields is Initializable {
     }
 
 
-    function weapon(uint id, uint tier) public view returns (Weapon memory) {
+    function weapon(uint id, uint tier) public view returns (Weapon memory _weapon) {
         require(tier < 10, "t");
+        Weapon memory base;
 
         if (id == 127) {
-            return applyTier(SmallWoodenShield(tier), tier, 4);
+            _weapon = applyTier(SmallWoodenShield(tier), tier, 550);
+            base = SmallWoodenShield(tier);
+            //            _weapon.generatedStatBonus.CRIT_MULTIPLIER = base.generatedStatBonus.CRIT_MULTIPLIER + ((_weapon.generatedStatBonus.CRIT_MULTIPLIER * 12) / 100);
+            _weapon.generatedStatBonus.ACCURACY = base.generatedStatBonus.ACCURACY + ((_weapon.generatedStatBonus.ACCURACY * 10) / 1000);
+            _weapon.generatedStatBonus.DODGE = base.generatedStatBonus.DODGE + ((_weapon.generatedStatBonus.DODGE * 10) / 1000);
+            _weapon.generatedStatBonus.P_ATK = base.generatedStatBonus.P_ATK + ((_weapon.generatedStatBonus.P_ATK * 10) / 1000);
+            _weapon.generatedStatBonus.P_DEF = base.generatedStatBonus.P_DEF + ((_weapon.generatedStatBonus.P_DEF * 15) / 1000);
+            _weapon.generatedStatBonus.M_DEF = base.generatedStatBonus.M_DEF + ((_weapon.generatedStatBonus.M_DEF * 15) / 1000);
+
+            _weapon.statBonus.STR = base.statBonus.STR + ((_weapon.statBonus.STR * 350) / 1000);
+            _weapon.statBonus.VIT = base.statBonus.VIT + ((_weapon.statBonus.VIT * 350) / 1000);
+            //            _weapon.generatedStatBonus.HP = base.generatedStatBonus.HP + (_weapon.generatedStatBonus.HP * 10) / 1000;
         } else if (id == 128) {
-            return applyTier(SmallCopperShield(tier), tier, 5);
+            _weapon = applyTier(SmallCopperShield(tier), tier, 150);
         } else if (id == 129) {
-            return applyTier(MediumCopperShield(tier), tier, 5);
+            _weapon = applyTier(MediumCopperShield(tier), tier, 70);
         } else if (id == 130) {
-            return applyTier(SmallTinShield(tier), tier, 5);
+            _weapon = applyTier(SmallTinShield(tier), tier, 50);
         } else if (id == 131) {
-            return applyTier(MediumTinShield(tier), tier, 5);
+            _weapon = applyTier(MediumTinShield(tier), tier, 36);
         } else if (id == 132) {
-            return applyTier(SilverShield(tier), tier, 5);
+            _weapon = applyTier(SilverShield(tier), tier, 28);
         } else if (id == 133) {
-            return applyTier(GoldenShield(tier), tier, 5);
+            _weapon = applyTier(GoldenShield(tier), tier, 25);
         } else if (id == 134) {
-            return applyTier(MythrilShield(tier), tier, 5);
+            _weapon = applyTier(MythrilShield(tier), tier, 21);
         } else if (id == 135) {
-            return applyTier(DarksteelShield(tier), tier, 5);
+            _weapon = applyTier(DarksteelShield(tier), tier, 18);
         } else if (id == 136) {
-            return applyTier(OricalchumShield(tier), tier, 5);
+            _weapon = applyTier(OricalchumShield(tier), tier, 15);
         } else if (id == 137) {
-            return applyTier(MoonlightShield(tier), tier, 5);
+            _weapon = applyTier(MoonlightShield(tier), tier, 15);
         } else if (id == 138) {
-            return applyTier(SunlightShield(tier), tier, 5);
+            _weapon = applyTier(SunlightShield(tier), tier, 12);
         } else if (id == 139) {
-            return applyTier(CycleShield(tier), tier, 5);
+            _weapon = applyTier(CycleShield(tier), tier, 12);
         } else if (id == 140) {
-            return applyTier(PhantasmalShield(tier), tier, 5);
+            _weapon = applyTier(PhantasmalShield(tier), tier, 12);
         } else if (id == 141) {
-            return applyTier(HolyPaladinsShield(tier), tier, 5);
+            _weapon = applyTier(HolyPaladinsShield(tier), tier, 10);
         } else if (id == 142) {
-            return applyTier(LuminousShield(tier), tier, 5);
+            _weapon = applyTier(LuminousShield(tier), tier, 10);
         } else if (id == 143) {
-            return applyTier(ShieldOfCalamity(tier), tier, 5);
+            _weapon = applyTier(ShieldOfCalamity(tier), tier, 9);
         } else if (id == 144) {
-            return applyTier(Reflector(tier), tier, 5);
+            _weapon = applyTier(Reflector(tier), tier, 8);
         } else if (id == 145) {
-            return applyTier(EssenceCapacitorShield(tier), tier, 5);
+            _weapon = applyTier(EssenceCapacitorShield(tier), tier, 8);
         } else if (id == 146) {
-            return applyTier(AetherealShield(tier), tier, 5);
+            _weapon = applyTier(AetherealShield(tier), tier, 7);
         } else if (id == 147) {
-            return applyTier(TheProtector(tier), tier, 5);
+            _weapon = applyTier(TheProtector(tier), tier, 7);
+        } else {
+            revert("?sh");
         }
 
-        revert("?sh");
     }
 
     function applyTier(Weapon memory weapon, uint tier, uint percentage) public view returns (Weapon memory){
