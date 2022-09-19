@@ -29,7 +29,7 @@ contract CodexBoots is UpgradeableCodex {
     function allBoots() external view returns (EquipableItem[] memory){
         EquipableItem[] memory result = new EquipableItem[](64);
         for (uint i = 1; i < 64; i++) {
-            result[i - 1] = bootsCore(i, 1);
+            result[i - 1] = bootsCore(i, 0);
         }
         return result;
     }

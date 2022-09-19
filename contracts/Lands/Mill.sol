@@ -12,44 +12,56 @@ contract Mill is LandUtils {
 
     struct GrainProcessing {
         ICookingItem.List rewardMaterial;
-        uint amount;
-        uint when;
-        uint startingDate;
+        uint256 amount;
+        uint256 when;
+        uint256 startingDate;
         address who;
         bool isClaimed;
     }
 
-    uint nextProcessId;
-    mapping(uint => GrainProcessing) public ActiveProcessings;
-    mapping(uint => EnumerableSetUpgradeable.UintSet) LandsActiveProcessings;
+    uint256 nextProcessId;
+    mapping(uint256 => GrainProcessing) public ActiveProcessings;
+    mapping(uint256 => EnumerableSetUpgradeable.UintSet) LandsActiveProcessings;
 
-    function processGrain(uint landId, ICookingItem.List[] memory grainIds, uint[] memory amounts) external nonReentrant isOwned(landId, msg.sender) {
+    function processGrain(
+        uint256 landId,
+        ICookingItem.List[] memory grainIds,
+        uint256[] memory amounts
+    ) external nonReentrant isOwned(landId, msg.sender) {
         require(grainIds.length == amounts.length, "l");
 
         ILand.LandStatsStruct memory stats = landToken.landStats(landId);
         ILand.Mill memory mill = landCodex.mill(stats.MillsTier);
 
-        uint l = LandsActiveProcessings[landId].values().length;
+        uint256 l = LandsActiveProcessings[landId].values().length;
         require(l <= mill.maxProcessSimultaneously, "o");
 
         require(mill.processTimePerCrop > 0, "0");
 
-
-        uint totalFlourReward = 0;
-        for (uint i = 0; i < grainIds.length; i++) {
+        uint256 totalFlourReward = 0;
+        for (uint256 i = 0; i < grainIds.length; i++) {
             require(amounts[i] > 0, "0");
-            require(grainIds[i] == ICookingItem.List.Wheat || grainIds[i] == ICookingItem.List.Corn, "i");
+            require(
+                grainIds[i] == ICookingItem.List.Wheat ||
+                    grainIds[i] == ICookingItem.List.Corn,
+                "i"
+            );
             totalFlourReward += amounts[i];
-            cookingItemToken.burnCookingItem(msg.sender, grainIds[i], amounts[i]);
+            cookingItemToken.burnCookingItem(
+                msg.sender,
+                grainIds[i],
+                amounts[i]
+            );
         }
 
         ActiveProcessings[nextProcessId] = GrainProcessing({
-        amount : totalFlourReward,
-        rewardMaterial : ICookingItem.List.Flour,
-        when : block.timestamp + (mill.processTimePerCrop * totalFlourReward),
-        who : msg.sender,
-        isClaimed : false,
-        startingDate : block.timestamp
+            amount: totalFlourReward,
+            rewardMaterial: ICookingItem.List.Flour,
+            when: block.timestamp +
+                (mill.processTimePerCrop * totalFlourReward),
+            who: msg.sender,
+            isClaimed: false,
+            startingDate: block.timestamp
         });
 
         LandsActiveProcessings[landId].add(nextProcessId);
@@ -73,35 +85,61 @@ contract Mill is LandUtils {
     //            totalFlourReward);
     //    }
 
-    function partialGrainClaimProcess(uint landId, uint processId, uint amount) external nonReentrant isOwned(landId, msg.sender) {
+    function partialGrainClaimProcess(
+        uint256 landId,
+        uint256 processId,
+        uint256 amount
+    ) external nonReentrant isOwned(landId, msg.sender) {
         require(ActiveProcessings[processId].isClaimed == false, "claimed");
         require(ActiveProcessings[processId].who == msg.sender, "unauth");
         require(amount <= ActiveProcessings[processId].amount, "scam?");
 
-        uint timeRequiredPerMaterial = (ActiveProcessings[processId].when - ActiveProcessings[processId].startingDate) / ActiveProcessings[processId].amount;
-        require(block.timestamp > ActiveProcessings[processId].startingDate + timeRequiredPerMaterial * amount, "early");
-
-        ActiveProcessings[processId].startingDate += timeRequiredPerMaterial * amount;
+        uint256 timeRequiredPerMaterial = (ActiveProcessings[processId].when -
+            ActiveProcessings[processId].startingDate) /
+            ActiveProcessings[processId].amount;
+        require(
+            block.timestamp >
+                ActiveProcessings[processId].startingDate +
+                    timeRequiredPerMaterial *
+                    amount,
+            "early"
+        );
+        cookingItemToken.rewardCookingItem(
+            msg.sender,
+            ICookingItem.List.Flour,
+            ActiveProcessings[processId].amount
+        );
+        ActiveProcessings[processId].startingDate +=
+            timeRequiredPerMaterial *
+            amount;
         ActiveProcessings[processId].amount -= amount;
         ActiveProcessings[processId].isClaimed = true;
 
         if (ActiveProcessings[processId].amount == 0) {
             LandsActiveProcessings[landId].remove(processId);
         }
-        cookingItemToken.rewardCookingItem(msg.sender, ICookingItem.List.Flour,
-            ActiveProcessings[processId].amount);
     }
 
-    function activeProcessings(uint land) external view returns (GrainProcessing[] memory) {
-        uint[] memory processes = LandsActiveProcessings[land].values();
-        GrainProcessing[] memory result = new GrainProcessing[](processes.length);
-        for (uint i = 0; i < processes.length; i++) {
+    function activeProcessings(uint256 land)
+        external
+        view
+        returns (GrainProcessing[] memory)
+    {
+        uint256[] memory processes = LandsActiveProcessings[land].values();
+        GrainProcessing[] memory result = new GrainProcessing[](
+            processes.length
+        );
+        for (uint256 i = 0; i < processes.length; i++) {
             result[i] = ActiveProcessings[processes[i]];
         }
         return result;
     }
 
-    function activeProcessingIds(uint land) external view returns (uint[] memory) {
+    function activeProcessingIds(uint256 land)
+        external
+        view
+        returns (uint256[] memory)
+    {
         return LandsActiveProcessings[land].values();
     }
 }

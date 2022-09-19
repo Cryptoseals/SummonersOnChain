@@ -35,7 +35,7 @@ contract CodexWeapons is UpgradeableCodex {
     function allWeapons() external view returns (Weapon[] memory){
         Weapon[] memory result = new Weapon[](148);
         for (uint i = 1; i < 148; i++) {
-            result[i - 1] = weaponCore(i, 1);
+            result[i - 1] = weaponCore(i, 0);
         }
         return result;
     }
