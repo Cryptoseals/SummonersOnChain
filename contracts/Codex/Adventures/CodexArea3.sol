@@ -1,6 +1,8 @@
-import {IAdventure, IGameRewards, ICraftingMaterials} from "../../Interfaces/GameObjects/IAdventure.sol";
+import {CraftingMaterialReward, ItemReward, CraftingMaterial} from "../../Interfaces/GameObjects/IGameRewards.sol";
+import {AdventureLevel, AdventureMonster} from "../../Interfaces/GameObjects/IAdventure.sol";
 import {IMonster} from "../../Interfaces/GameObjects/IMonster.sol";
 import {Element} from "../../Interfaces/GameObjects/IGameObjects.sol";
+
 pragma solidity ^0.8.0;
 
 contract CodexArea3 {
@@ -8,15 +10,15 @@ contract CodexArea3 {
     string constant public class = "Area3";
     string constant public version = "0.0.1";
 
-    function getAllLevels() external view returns (IAdventure.AdventureLevel[] memory){
-        IAdventure.AdventureLevel[] memory result = new IAdventure.AdventureLevel[](20);
+    function getAllLevels() external view returns (AdventureLevel[] memory){
+        AdventureLevel[] memory result = new AdventureLevel[](20);
         for (uint i = 1; i <= 20; i++) {
             result[i-1] = adventureLevel(i);
         }
         return result;
     }
 
-    function adventureLevel(uint level) public view returns (IAdventure.AdventureLevel memory) {
+    function adventureLevel(uint level) public view returns (AdventureLevel memory) {
 
         if (level == 1) {return ForsakenStronghold1();}
         else if (level == 2) {return ForsakenStronghold2();}
@@ -42,7 +44,7 @@ contract CodexArea3 {
         revert("invalid");
     }
 
-    function ForsakenStronghold1() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold1() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 1;
         _level.Difficulty = 100;
 
@@ -55,38 +57,38 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 6e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](1);
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](1);
 
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.TATTERED_LEATHER,
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.TATTERED_LEATHER,
         min : 15,
         max : 22
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 1,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 2,
         level : 1
         });
     }
 
-    function ForsakenStronghold2() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold2() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 5;
         _level.Difficulty = 100;
 
@@ -99,43 +101,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 11e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RAGGED_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.RAGGED_LEATHER,
         min : 7,
         max : 10
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.TATTERED_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.TATTERED_LEATHER,
         min : 9,
         max : 14
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 2,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 3,
         level : 1
         });
     }
 
-    function ForsakenStronghold3() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold3() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 10;
         _level.Difficulty = 100;
 
@@ -148,43 +150,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 22e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RAGGED_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.RAGGED_LEATHER,
         min : 12,
         max : 18
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.TATTERED_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.TATTERED_LEATHER,
         min : 5,
         max : 7
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 3,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 4,
         level : 1
         });
     }
 
-    function ForsakenStronghold4() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold4() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 15;
         _level.Difficulty = 100;
 
@@ -197,43 +199,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 44e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RAW_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.RAW_LEATHER,
         min : 8,
         max : 11
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RAGGED_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.RAGGED_LEATHER,
         min : 9,
         max : 14
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 4,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 5,
         level : 1
         });
     }
 
-    function ForsakenStronghold5() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold5() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 20;
         _level.Difficulty = 100;
 
@@ -246,43 +248,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 88e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RAW_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.RAW_LEATHER,
         min : 11,
         max : 16
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RAGGED_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.RAGGED_LEATHER,
         min : 5,
         max : 7
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 5,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 6,
         level : 1
         });
     }
 
-    function ForsakenStronghold6() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold6() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 25;
         _level.Difficulty = 100;
 
@@ -295,43 +297,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 176e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.THIN_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.THIN_LEATHER,
         min : 6,
         max : 9
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RAW_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.RAW_LEATHER,
         min : 8,
         max : 11
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 6,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 7,
         level : 1
         });
     }
 
-    function ForsakenStronghold7() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold7() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 30;
         _level.Difficulty = 100;
 
@@ -344,43 +346,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 352e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.THIN_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.THIN_LEATHER,
         min : 11,
         max : 16
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RAW_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.RAW_LEATHER,
         min : 4,
         max : 6
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 7,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 8,
         level : 1
         });
     }
 
-    function ForsakenStronghold8() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold8() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 35;
         _level.Difficulty = 100;
 
@@ -393,43 +395,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 704e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.COARSE_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.COARSE_LEATHER,
         min : 6,
         max : 9
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.THIN_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.THIN_LEATHER,
         min : 8,
         max : 11
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 8,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 9,
         level : 1
         });
     }
 
-    function ForsakenStronghold9() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold9() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 40;
         _level.Difficulty = 100;
 
@@ -442,43 +444,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 1408e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.COARSE_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.COARSE_LEATHER,
         min : 9,
         max : 13
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.THIN_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.THIN_LEATHER,
         min : 4,
         max : 6
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 9,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 10,
         level : 1
         });
     }
 
-    function ForsakenStronghold10() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold10() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 45;
         _level.Difficulty = 100;
 
@@ -491,43 +493,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 2816e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RUGGED_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.RUGGED_LEATHER,
         min : 5,
         max : 7
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.COARSE_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.COARSE_LEATHER,
         min : 6,
         max : 9
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 10,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 11,
         level : 1
         });
     }
 
-    function ForsakenStronghold11() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold11() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 50;
         _level.Difficulty = 100;
 
@@ -540,43 +542,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 5632e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RUGGED_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.RUGGED_LEATHER,
         min : 9,
         max : 13
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.COARSE_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.COARSE_LEATHER,
         min : 3,
         max : 5
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 11,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 12,
         level : 1
         });
     }
 
-    function ForsakenStronghold12() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold12() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 55;
         _level.Difficulty = 100;
 
@@ -589,43 +591,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 11264e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.THICK_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.THICK_LEATHER,
         min : 5,
         max : 7
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RUGGED_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.RUGGED_LEATHER,
         min : 6,
         max : 9
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 12,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 13,
         level : 1
         });
     }
 
-    function ForsakenStronghold13() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold13() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 60;
         _level.Difficulty = 100;
 
@@ -638,43 +640,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 22528e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.THICK_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.THICK_LEATHER,
         min : 7,
         max : 10
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RUGGED_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.RUGGED_LEATHER,
         min : 3,
         max : 5
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 13,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 14,
         level : 1
         });
     }
 
-    function ForsakenStronghold14() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold14() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 65;
         _level.Difficulty = 100;
 
@@ -687,43 +689,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 45056e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.REINFORCED_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.REINFORCED_LEATHER,
         min : 4,
         max : 6
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.THICK_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.THICK_LEATHER,
         min : 6,
         max : 8
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 14,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 15,
         level : 1
         });
     }
 
-    function ForsakenStronghold15() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold15() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 70;
         _level.Difficulty = 100;
 
@@ -736,43 +738,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 90112e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.REINFORCED_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.REINFORCED_LEATHER,
         min : 7,
         max : 10
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.THICK_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.THICK_LEATHER,
         min : 3,
         max : 5
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 15,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 16,
         level : 1
         });
     }
 
-    function ForsakenStronghold16() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold16() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 75;
         _level.Difficulty = 100;
 
@@ -785,43 +787,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 180224e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.HARDENED_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.HARDENED_LEATHER,
         min : 4,
         max : 6
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.REINFORCED_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.REINFORCED_LEATHER,
         min : 5,
         max : 7
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 16,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 17,
         level : 1
         });
     }
 
-    function ForsakenStronghold17() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold17() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 80;
         _level.Difficulty = 100;
 
@@ -834,43 +836,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 360778e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.HARDENED_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.HARDENED_LEATHER,
         min : 6,
         max : 9
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.REINFORCED_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.REINFORCED_LEATHER,
         min : 3,
         max : 4
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 17,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 18,
         level : 1
         });
     }
 
-    function ForsakenStronghold18() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold18() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 85;
         _level.Difficulty = 100;
 
@@ -883,43 +885,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 720896e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.LORDLY_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.LORDLY_LEATHER,
         min : 3,
         max : 5
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.HARDENED_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.HARDENED_LEATHER,
         min : 4,
         max : 6
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 18,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 19,
         level : 1
         });
     }
 
-    function ForsakenStronghold19() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold19() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 90;
         _level.Difficulty = 100;
 
@@ -932,43 +934,43 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 1441792e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.LORDLY_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.LORDLY_LEATHER,
         min : 6,
         max : 8
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.HARDENED_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.HARDENED_LEATHER,
         min : 3,
         max : 4
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 19,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 20,
         level : 1
         });
     }
 
-    function ForsakenStronghold20() public view returns (IAdventure.AdventureLevel memory _level) {
+    function ForsakenStronghold20() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 95;
         _level.Difficulty = 100;
 
@@ -981,36 +983,36 @@ contract CodexArea3 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 2883584e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.LORDLY_LEATHER,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.LORDLY_LEATHER,
         min : 7,
         max : 10
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.HARDENED_LEATHER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.HARDENED_LEATHER,
         min : 4,
         max : 6
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](2);
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList = new AdventureMonster[](2);
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.DARK,
         monsterId : 20,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.DARK,
         monsterId : 21,
         level : 1

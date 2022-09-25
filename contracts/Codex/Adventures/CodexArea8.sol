@@ -1,4 +1,5 @@
-import {IAdventure, IGameRewards, ICraftingMaterials} from "../../Interfaces/GameObjects/IAdventure.sol";
+import {CraftingMaterialReward, ItemReward, CraftingMaterial} from "../../Interfaces/GameObjects/IGameRewards.sol";
+import {AdventureLevel, AdventureMonster} from "../../Interfaces/GameObjects/IAdventure.sol";
 import {IMonster} from "../../Interfaces/GameObjects/IMonster.sol";
 import {Element} from "../../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
@@ -8,15 +9,15 @@ contract CodexArea8 {
     string constant public class = "Area8";
     string constant public version = "0.0.1";
 
-    function getAllLevels() external view returns (IAdventure.AdventureLevel[] memory){
-        IAdventure.AdventureLevel[] memory result = new IAdventure.AdventureLevel[](20);
+    function getAllLevels() external view returns (AdventureLevel[] memory){
+        AdventureLevel[] memory result = new AdventureLevel[](20);
         for (uint i = 1; i <= 20; i++) {
             result[i-1] = adventureLevel(i);
         }
         return result;
     }
 
-    function adventureLevel(uint level) public view returns (IAdventure.AdventureLevel memory) {
+    function adventureLevel(uint level) public view returns (AdventureLevel memory) {
 
         if (level == 1) {return SacredGrounds1();}
         else if (level == 2) {return SacredGrounds2();}
@@ -42,7 +43,7 @@ contract CodexArea8 {
         revert("invalid");
     }
 
-    function SacredGrounds1() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds1() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 1;
         _level.Difficulty = 100;
 
@@ -55,57 +56,57 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 6e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
 
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD,
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.GREEN_WOOD,
         min : 6,
         max : 9
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.COPPER,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.COPPER,
         min : 12,
         max : 18
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 1,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 2,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 1,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 2,
         level : 1
         });
     }
 
-    function SacredGrounds2() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds2() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 5;
         _level.Difficulty = 100;
 
@@ -118,68 +119,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 11e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.SOFT_WOOD,
         min : 3,
         max : 5
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.GREEN_WOOD,
         min : 3,
         max : 5
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.TIN,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.TIN,
         min : 6,
         max : 9
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.COPPER,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.COPPER,
         min : 7,
         max : 10
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 2,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 3,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 2,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 3,
         level : 1
         });
     }
 
-    function SacredGrounds3() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds3() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 10;
         _level.Difficulty = 100;
 
@@ -192,68 +193,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 22e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.SOFT_WOOD,
         min : 5,
         max : 7
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.GREEN_WOOD,
         min : 2,
         max : 3
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.TIN,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.TIN,
         min : 9,
         max : 14
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.COPPER,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.COPPER,
         min : 3,
         max : 5
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 3,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 4,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 3,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 4,
         level : 1
         });
     }
 
-    function SacredGrounds4() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds4() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 15;
         _level.Difficulty = 100;
 
@@ -266,68 +267,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 44e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.AGED_WOOD,
         min : 3,
         max : 5
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.SOFT_WOOD,
         min : 3,
         max : 5
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.IRON,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.IRON,
         min : 6,
         max : 8
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.TIN,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.TIN,
         min : 6,
         max : 8
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 4,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 5,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 4,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 5,
         level : 1
         });
     }
 
-    function SacredGrounds5() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds5() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 20;
         _level.Difficulty = 100;
 
@@ -340,68 +341,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 88e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.AGED_WOOD,
         min : 4,
         max : 6
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.SOFT_WOOD,
         min : 2,
         max : 3
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.IRON,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.IRON,
         min : 9,
         max : 13
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.TIN,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.TIN,
         min : 4,
         max : 6
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 5,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 6,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 5,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 6,
         level : 1
         });
     }
 
-    function SacredGrounds6() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds6() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 25;
         _level.Difficulty = 100;
 
@@ -414,68 +415,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 176e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.HARD_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.HARD_WOOD,
         min : 3,
         max : 4
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.AGED_WOOD,
         min : 3,
         max : 5
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.SILVER,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.SILVER,
         min : 6,
         max : 8
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.IRON,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.IRON,
         min : 6,
         max : 9
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 6,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 7,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 6,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 7,
         level : 1
         });
     }
 
-    function SacredGrounds7() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds7() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 30;
         _level.Difficulty = 100;
 
@@ -488,68 +489,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 352e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.HARD_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.HARD_WOOD,
         min : 4,
         max : 6
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.AGED_WOOD,
         min : 2,
         max : 3
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.SILVER,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.SILVER,
         min : 9,
         max : 13
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.IRON,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.IRON,
         min : 3,
         max : 5
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 7,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 8,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 7,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 8,
         level : 1
         });
     }
 
-    function SacredGrounds8() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds8() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 35;
         _level.Difficulty = 100;
 
@@ -562,68 +563,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 704e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.PETRIFIED_WOOD,
         min : 3,
         max : 4
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.HARD_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.HARD_WOOD,
         min : 3,
         max : 5
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.GOLD,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.GOLD,
         min : 6,
         max : 8
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.SILVER,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.SILVER,
         min : 6,
         max : 9
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 8,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 9,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 8,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 9,
         level : 1
         });
     }
 
-    function SacredGrounds9() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds9() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 40;
         _level.Difficulty = 100;
 
@@ -636,68 +637,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 1408e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.PETRIFIED_WOOD,
         min : 3,
         max : 5
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.HARD_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.HARD_WOOD,
         min : 2,
         max : 3
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.GOLD,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.GOLD,
         min : 6,
         max : 9
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.SILVER,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.SILVER,
         min : 3,
         max : 4
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 9,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 10,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 9,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 10,
         level : 1
         });
     }
 
-    function SacredGrounds10() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds10() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 45;
         _level.Difficulty = 100;
 
@@ -710,68 +711,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 2816e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.RED_OAK_WOOD,
         min : 3,
         max : 4
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.PETRIFIED_WOOD,
         min : 3,
         max : 4
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.PLATINUM,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.PLATINUM,
         min : 4,
         max : 6
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.GOLD,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.GOLD,
         min : 5,
         max : 7
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 10,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 11,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 10,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 11,
         level : 1
         });
     }
 
-    function SacredGrounds11() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds11() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 50;
         _level.Difficulty = 100;
 
@@ -784,68 +785,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 5632e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.RED_OAK_WOOD,
         min : 3,
         max : 5
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.PETRIFIED_WOOD,
         min : 2,
         max : 3
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.PLATINUM,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.PLATINUM,
         min : 7,
         max : 10
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.GOLD,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.GOLD,
         min : 3,
         max : 4
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 11,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 12,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 11,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 12,
         level : 1
         });
     }
 
-    function SacredGrounds12() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds12() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 55;
         _level.Difficulty = 100;
 
@@ -858,68 +859,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 11264e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.ELDER_WOOD,
         min : 3,
         max : 4
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.RED_OAK_WOOD,
         min : 3,
         max : 4
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.MYTHRIL,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.MYTHRIL,
         min : 4,
         max : 6
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.PLATINUM,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.PLATINUM,
         min : 5,
         max : 7
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 12,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 13,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 12,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 13,
         level : 1
         });
     }
 
-    function SacredGrounds13() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds13() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 60;
         _level.Difficulty = 100;
 
@@ -932,68 +933,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 22528e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.ELDER_WOOD,
         min : 3,
         max : 5
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.RED_OAK_WOOD,
         min : 2,
         max : 3
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.MYTHRIL,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.MYTHRIL,
         min : 6,
         max : 9
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.PLATINUM,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.PLATINUM,
         min : 3,
         max : 4
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 13,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 14,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 13,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 14,
         level : 1
         });
     }
 
-    function SacredGrounds14() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds14() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 65;
         _level.Difficulty = 100;
 
@@ -1006,68 +1007,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 45056e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.ANCIENT_WOOD,
         min : 2,
         max : 3
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.ELDER_WOOD,
         min : 3,
         max : 4
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.ORICALCHUM,
         min : 4,
         max : 6
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.MYTHRIL,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.MYTHRIL,
         min : 4,
         max : 6
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 14,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 15,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 14,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 15,
         level : 1
         });
     }
 
-    function SacredGrounds15() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds15() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 70;
         _level.Difficulty = 100;
 
@@ -1080,68 +1081,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 90112e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.ANCIENT_WOOD,
         min : 3,
         max : 5
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.ELDER_WOOD,
         min : 2,
         max : 3
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.ORICALCHUM,
         min : 6,
         max : 8
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.MYTHRIL,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.MYTHRIL,
         min : 2,
         max : 3
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 15,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 16,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 15,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 16,
         level : 1
         });
     }
 
-    function SacredGrounds16() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds16() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 75;
         _level.Difficulty = 100;
 
@@ -1154,68 +1155,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 180224e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.EBONY_WOOD,
         min : 2,
         max : 3
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.ANCIENT_WOOD,
         min : 2,
         max : 3
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.OBSIDIAN,
         min : 3,
         max : 5
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.ORICALCHUM,
         min : 4,
         max : 6
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 16,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 17,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 16,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 17,
         level : 1
         });
     }
 
-    function SacredGrounds17() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds17() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 80;
         _level.Difficulty = 100;
 
@@ -1228,68 +1229,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 360778e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.EBONY_WOOD,
         min : 3,
         max : 4
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.ANCIENT_WOOD,
         min : 1,
         max : 2
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.OBSIDIAN,
         min : 5,
         max : 7
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.ORICALCHUM,
         min : 2,
         max : 3
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 17,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 18,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 17,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 18,
         level : 1
         });
     }
 
-    function SacredGrounds18() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds18() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 85;
         _level.Difficulty = 100;
 
@@ -1302,68 +1303,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 720896e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.SNAKEWOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.SNAKEWOOD,
         min : 2,
         max : 3
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.EBONY_WOOD,
         min : 2,
         max : 3
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.LUMINITE,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.LUMINITE,
         min : 3,
         max : 5
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.OBSIDIAN,
         min : 3,
         max : 5
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 18,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 19,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 18,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 19,
         level : 1
         });
     }
 
-    function SacredGrounds19() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds19() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 90;
         _level.Difficulty = 100;
 
@@ -1376,68 +1377,68 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 1441792e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.SNAKEWOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.SNAKEWOOD,
         min : 3,
         max : 4
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.EBONY_WOOD,
         min : 1,
         max : 2
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.LUMINITE,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.LUMINITE,
         min : 4,
         max : 6
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.OBSIDIAN,
         min : 2,
         max : 3
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 19,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 20,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 19,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 20,
         level : 1
         });
     }
 
-    function SacredGrounds20() public view returns (IAdventure.AdventureLevel memory _level) {
+    function SacredGrounds20() public view returns (AdventureLevel memory _level) {
         _level.MonsterLevel = 95;
         _level.Difficulty = 100;
 
@@ -1450,61 +1451,61 @@ contract CodexArea8 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 2883584e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new IGameRewards.CraftingMaterialReward[](4);
-        _level.CurrencyRewards.materials[0] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.SNAKEWOOD,
+        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
+        material : CraftingMaterial.SNAKEWOOD,
         min : 3,
         max : 4
         });
 
-        _level.CurrencyRewards.materials[1] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD,
+        _level.CurrencyRewards.materials[1] = CraftingMaterialReward({
+        material : CraftingMaterial.EBONY_WOOD,
         min : 2,
         max : 3
         });
 
-        _level.CurrencyRewards.materials[2] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.LUMINITE,
+        _level.CurrencyRewards.materials[2] = CraftingMaterialReward({
+        material : CraftingMaterial.LUMINITE,
         min : 6,
         max : 8
         });
 
-        _level.CurrencyRewards.materials[3] = IGameRewards.CraftingMaterialReward({
-        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN,
+        _level.CurrencyRewards.materials[3] = CraftingMaterialReward({
+        material : CraftingMaterial.OBSIDIAN,
         min : 3,
         max : 5
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new IGameRewards.ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = IGameRewards.ItemReward({
+        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
+        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
         itemId : 1,
         minAmount : 1,
         maxAmount : 3
         });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new IAdventure.AdventureMonster[](4);
+        _level.MonsterList = new AdventureMonster[](4);
 
-        _level.MonsterList[0] = IAdventure.AdventureMonster({
+        _level.MonsterList[0] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 20,
         level : 1
         });
 
-        _level.MonsterList[1] = IAdventure.AdventureMonster({
+        _level.MonsterList[1] = AdventureMonster({
         element : Element.LIGHTNING,
         monsterId : 21,
         level : 1
         });
 
-        _level.MonsterList[2] = IAdventure.AdventureMonster({
+        _level.MonsterList[2] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 20,
         level : 1
         });
 
-        _level.MonsterList[3] = IAdventure.AdventureMonster({
+        _level.MonsterList[3] = AdventureMonster({
         element : Element.PHYSICAL,
         monsterId : 21,
         level : 1

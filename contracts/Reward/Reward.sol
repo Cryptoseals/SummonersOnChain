@@ -5,19 +5,28 @@ import {ICodexRandom} from "../Interfaces/Codex/ICodexRandom.sol";
 import {ElixirBonusEffect} from "../Interfaces/GameObjects/IGameObjects.sol";
 import {GameEntities} from "../Interfaces/GameObjects/IGameEntities.sol";
 import {InitNavigator, INavigator, ISummoners} from "../Core/Navigator/InitNavigator.sol";
-import {IGameRewards, ICraftingMaterials} from "../Interfaces/GameObjects/IGameRewards.sol";
+import {
+    Reward,
+    CurrencyRewards,
+    CraftingMaterialReward,
+    ArtifactRewards,
+    ConsumableRewards,
+    EquipableItemRewards,
+    MiscItemRewards
+} from "../Interfaces/GameObjects/IGameRewards.sol";
+import {CraftingMaterial} from "../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
 import {IRewardNonFungible} from "../Interfaces/NonFungibles/Common/IRewardNonFungible.sol";
 import {IConsumablesAndArtifacts} from "../Interfaces/Inventory/IConsumablesAndArtifacts.sol";
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {IMiscs} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/IMisc.sol";
 
 interface CraftingMaterialContract {
-    function mintMaterial(ICraftingMaterials.CraftingMaterial material, address to, uint amount) external;
+    function mintMaterial(CraftingMaterial material, address to, uint amount) external;
 }
 
 pragma solidity ^0.8.0;
 
-contract Reward is InitNavigator, OwnableUpgradeable {
+contract Rewarder is InitNavigator, OwnableUpgradeable {
     ICodexRandom RNG;
     CraftingMaterialContract mats;
     IConsumablesAndArtifacts elixirInventory;
@@ -50,7 +59,7 @@ contract Reward is InitNavigator, OwnableUpgradeable {
         misc = IRewardNonFungible(contractAddress(INavigator.CONTRACT.MISC_ITEMS));
     }
 
-    function reward(address to, uint summoner, uint level, IGameRewards.Reward memory _reward, IGameRewards.CurrencyRewards memory _currencyRewards, uint optionalNonce) external onlyGameContracts {
+    function reward(address to, uint summoner, uint level, Reward memory _reward, CurrencyRewards memory _currencyRewards, uint optionalNonce) external onlyGameContracts {
         (ElixirBonusEffect memory _fx,,,) = elixirInventory.activeConsumableEffects(summoner);
 
         if (_currencyRewards.yieldsGold) rewardGold(to, _currencyRewards, _reward.bonus + _fx.BonusGoldPercentage, optionalNonce);
@@ -60,7 +69,7 @@ contract Reward is InitNavigator, OwnableUpgradeable {
         rewardXP(summoner, level, _fx.BonusEXPPercentage);
     }
 
-    function rewardGold(address to, IGameRewards.CurrencyRewards memory _reward, uint multiplier, uint optionalNonce) internal {
+    function rewardGold(address to, CurrencyRewards memory _reward, uint multiplier, uint optionalNonce) internal {
         uint roll = RNG.dn(block.number + optionalNonce + nonce,
             _reward.goldRewards.maxAmount - _reward.goldRewards.minAmount);
         uint wODecimals = (roll - (roll % 1e17)) + _reward.goldRewards.minAmount;
@@ -69,7 +78,7 @@ contract Reward is InitNavigator, OwnableUpgradeable {
         nonce++;
     }
 
-    function rewardEssence(address to, IGameRewards.CurrencyRewards memory _reward, uint multiplier, uint optionalNonce) internal {
+    function rewardEssence(address to, CurrencyRewards memory _reward, uint multiplier, uint optionalNonce) internal {
         uint roll = RNG.dn(block.number + optionalNonce + nonce,
             _reward.essenceRewards.maxAmount - _reward.essenceRewards.minAmount);
         uint wODecimals = (roll - (roll % 1e17)) + _reward.essenceRewards.minAmount;
@@ -78,7 +87,7 @@ contract Reward is InitNavigator, OwnableUpgradeable {
         nonce++;
     }
 
-    function rewardMiscItem(address to, IGameRewards.MiscItemRewards memory _miscRewards, uint multiplier, uint optionalNonce) internal {
+    function rewardMiscItem(address to, MiscItemRewards memory _miscRewards, uint multiplier, uint optionalNonce) internal {
         //         roll chance to drop
         uint dropRoll = RNG.d100(block.number + optionalNonce + nonce);
         if (dropRoll <= _miscRewards.chanceToDrop) {
@@ -103,7 +112,7 @@ contract Reward is InitNavigator, OwnableUpgradeable {
         nonce++;
     }
 
-    function rewardCraftingMaterial(address to, IGameRewards.CraftingMaterialReward[] memory rewards, uint multiplier, uint optionalNonce) internal {
+    function rewardCraftingMaterial(address to, CraftingMaterialReward[] memory rewards, uint multiplier, uint optionalNonce) internal {
         for (uint i = 0; i < rewards.length; i++) {
             uint roll = RNG.dn(block.number + optionalNonce + 10 + i + nonce,
                 rewards[i].max - rewards[i].min

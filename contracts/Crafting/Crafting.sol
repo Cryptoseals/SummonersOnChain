@@ -2,7 +2,7 @@ import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Ini
 import {INavigator, InitNavigator} from "../Core/Navigator/InitNavigator.sol";
 import {ItemType, BuffEffectRecipe, Element} from "../Interfaces/GameObjects/IGameObjects.sol";
 import {IEquipableItems} from "../Interfaces/NonFungibles/EquipableItems/IEquipableItems.sol";
-import {ICraftingRecipe, ICraftingMaterials} from "../Interfaces/Crafting/ICraftingRecipe.sol";
+import {CraftingRecipe} from "../Interfaces/Crafting/ICraftingRecipe.sol";
 import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
 import {ICraftingMaterialsToken} from "../Interfaces/NonFungibles/CraftingMaterials/ICraftingMaterialsToken.sol";
 import {ICodexRandom} from "../Interfaces/Codex/ICodexRandom.sol";
@@ -11,7 +11,7 @@ pragma solidity ^0.8.0;
 
 
 interface Recipes {
-    function recipe(uint itemId) external view returns (ICraftingRecipe.CraftingRecipe memory _recipe);
+    function recipe(uint itemId) external view returns (CraftingRecipe memory _recipe);
 }
 
 contract Crafting is Initializable, InitNavigator {
@@ -70,7 +70,7 @@ contract Crafting is Initializable, InitNavigator {
     ) external {
         validateId(_type, id);
 
-        ICraftingRecipe.CraftingRecipe memory _recipe = getRecipe(_type, id);
+        CraftingRecipe memory _recipe = getRecipe(_type, id);
         burnRecipeItems(_recipe, 100);
 
         uint prefix;
@@ -107,7 +107,7 @@ contract Crafting is Initializable, InitNavigator {
 
         uint costPercentage = nextTier * 10;
 
-        ICraftingRecipe.CraftingRecipe memory _recipe = getRecipe(_type, _itemId);
+        CraftingRecipe memory _recipe = getRecipe(_type, _itemId);
         burnRecipeItems(_recipe, costPercentage);
 
         uint chance = itemUpgradeChance(nextTier);
@@ -122,7 +122,7 @@ contract Crafting is Initializable, InitNavigator {
         equipments.enhance(msg.sender, tokenId, coreId);
     }
 
-    function getRecipe(ItemType _type, uint id) internal view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function getRecipe(ItemType _type, uint id) internal view returns (CraftingRecipe memory _recipe) {
         if (_type == ItemType.HELMET) {
             _recipe = HELMET_RECIPES.recipe(id);
         } else if (_type == ItemType.ARMOR) {
@@ -145,7 +145,7 @@ contract Crafting is Initializable, InitNavigator {
         }
     }
 
-    function burnRecipeItems(ICraftingRecipe.CraftingRecipe memory _recipe, uint percentage) internal {
+    function burnRecipeItems(CraftingRecipe memory _recipe, uint percentage) internal {
         for (uint i = 0; i < _recipe.materialRequirements.length; i++) {
             if (_recipe.materialRequirements[i].amount > 0) {
                 craftingMaterialContract.burnMaterial(

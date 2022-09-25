@@ -1,8 +1,16 @@
-import "../GameObjects/IGameRewards.sol";
+import {Reward, CurrencyRewards} from "../GameObjects/IGameRewards.sol";
 
 pragma solidity ^0.8.0;
 
 interface IReward {
-    function reward(address to, uint summoner, uint level, IGameRewards.Reward memory _reward, IGameRewards.CurrencyRewards memory _currencyRewards, uint optionalNonce) external;
-    function halfRewardXP(uint summoner, uint level) external;
+    function reward(
+        address to,
+        uint256 summoner,
+        uint256 level,
+        Reward memory _reward,
+        CurrencyRewards memory _currencyRewards,
+        uint256 optionalNonce
+    ) external;
+
+    function halfRewardXP(uint256 summoner, uint256 level) external;
 }

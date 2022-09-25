@@ -1,101 +1,98 @@
 import {ItemType} from "./IGameObjects.sol";
-import {ICraftingMaterials} from "./ICrafting/ICraftingMaterials.sol";
+import {CraftingMaterial} from "./ICrafting/ICraftingMaterials.sol";
 pragma solidity ^0.8.0;
 
-interface IGameRewards {
+struct Reward {
+    RewardPool pool;
+    Rewards rewards;
+    uint256 bonus;
+}
 
-    struct Reward {
-        RewardPool pool;
-        Rewards rewards;
-        uint bonus;
-    }
+struct RewardPool {
+    bool yieldsArtifact;
+    bool yieldsConsumable;
+    bool yieldsMiscItem;
+}
 
-    struct RewardPool {
-        bool yieldsArtifact;
-        bool yieldsConsumable;
-        bool yieldsMiscItem;
-    }
+struct Rewards {
+    ArtifactRewards artifactRewards;
+    ConsumableRewards elixirRewards;
+    EquipableItemRewards equipableItemRewards;
+    MiscItemRewards miscItemRewards;
+}
 
-    struct Rewards {
-        ArtifactRewards artifactRewards;
-        ConsumableRewards elixirRewards;
-        EquipableItemRewards equipableItemRewards;
-        MiscItemRewards miscItemRewards;
-    }
+struct CurrencyRewards {
+    bool yieldsGold;
+    bool yieldsEssence;
+    bool yieldsCraftingMaterial;
+    GoldRewards goldRewards;
+    EssenceRewards essenceRewards;
+    CraftingMaterialReward[] materials;
+}
 
-    struct CurrencyRewards {
-        bool yieldsGold;
-        bool yieldsEssence;
-        bool yieldsCraftingMaterial;
-        GoldRewards goldRewards;
-        EssenceRewards essenceRewards;
-        CraftingMaterialReward[] materials;
-    }
+struct CraftingMaterialReward {
+    CraftingMaterial material;
+    uint256 min;
+    uint256 max;
+}
 
-    struct CraftingMaterialReward {
-        ICraftingMaterials.CraftingMaterial material;
-        uint min;
-        uint max;
-    }
+struct ArtifactRewards {
+    uint256[] artifactIds;
+    uint256[] artifactTiers;
+    uint256 minRewardTier;
+    uint256 maxRewardTier;
+    uint256[] tierChances;
+}
 
-    struct ArtifactRewards {
-        uint[] artifactIds;
-        uint[] artifactTiers;
-        uint minRewardTier;
-        uint maxRewardTier;
-        uint[] tierChances;
-    }
+struct ConsumableRewards {
+    uint256[] consumableIds;
+    uint256[] consumableTiers;
+    uint256 minRewardTier;
+    uint256 maxRewardTier;
+    uint256[] tierChances;
+}
 
-    struct ConsumableRewards {
-        uint[] consumableIds;
-        uint[] consumableTiers;
-        uint minRewardTier;
-        uint maxRewardTier;
-        uint[] tierChances;
-    }
+struct EquipableItemRewards {
+    EquipableItemReward[] rewards;
+    uint256[] weights;
+    uint256 totalWeight;
+    uint256 chanceToDrop;
+}
 
-    struct EquipableItemRewards {
-        EquipableItemReward[] rewards;
-        uint[] weights;
-        uint totalWeight;
-        uint chanceToDrop;
-    }
+struct EquipableItemReward {
+    ItemType equipableType;
+    uint256 equipableId;
+    uint256 maxTierDrop;
+    uint256[] weights;
+}
 
-    struct EquipableItemReward {
-        ItemType equipableType;
-        uint equipableId;
-        uint maxTierDrop;
-        uint[] weights;
-    }
+struct MiscItemRewards {
+    ItemReward[] rewards;
+    uint256 chanceToDrop;
+}
 
-    struct MiscItemRewards {
-        ItemReward[] rewards;
-        uint chanceToDrop;
-    }
+struct CookingItemRewards {
+    ItemReward[] rewards;
+    uint256 chanceToDrop;
+}
 
-    struct CookingItemRewards {
-        ItemReward[] rewards;
-        uint chanceToDrop;
-    }
+struct AlchemyItemRewards {
+    ItemReward[] rewards;
+    uint256 chanceToDrop;
+}
 
-    struct AlchemyItemRewards {
-        ItemReward[] rewards;
-        uint chanceToDrop;
-    }
+struct ItemReward {
+    uint256 itemId;
+    uint256 minAmount;
+    uint256 maxAmount;
+}
 
-    struct ItemReward {
-        uint itemId;
-        uint minAmount;
-        uint maxAmount;
-    }
+struct GoldRewards {
+    uint256 minAmount;
+    uint256 maxAmount;
+}
 
-    struct GoldRewards {
-        uint minAmount;
-        uint maxAmount;
-    }
-
-    struct EssenceRewards {
-        uint minAmount;
-        uint maxAmount;
-    }
+struct EssenceRewards {
+    uint256 minAmount;
+    uint256 maxAmount;
 }

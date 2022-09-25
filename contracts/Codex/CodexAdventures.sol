@@ -1,4 +1,4 @@
-import {IAdventure} from "../Interfaces/GameObjects/IAdventure.sol";
+import {IAdventure, AdventureLevel} from "../Interfaces/GameObjects/IAdventure.sol";
 import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
 
 pragma solidity ^0.8.0;
@@ -37,7 +37,7 @@ contract CodexAdventures is InitNavigator {
         AREA_11 = IAdventure(contractAddress(INavigator.CONTRACT.AREA_11));
     }
 
-    function adventure(uint _id, uint lvl) public view returns (IAdventure.AdventureLevel memory) {
+    function adventure(uint _id, uint lvl) public view returns (AdventureLevel memory) {
         if (_id == 1) {
             return Area1(lvl);
         } else if (_id == 2) {
@@ -65,47 +65,47 @@ contract CodexAdventures is InitNavigator {
         revert("invalid");
     }
 
-    function Area1(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+    function Area1(uint lvl) public view returns (AdventureLevel memory _adventureLvl) {
         return AREA_1.adventureLevel(lvl);
     }
 
-    function Area2(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+    function Area2(uint lvl) public view returns (AdventureLevel memory _adventureLvl) {
         return AREA_2.adventureLevel(lvl);
     }
 
-    function Area3(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+    function Area3(uint lvl) public view returns (AdventureLevel memory _adventureLvl) {
         return AREA_3.adventureLevel(lvl);
     }
 
-    function Area4(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+    function Area4(uint lvl) public view returns (AdventureLevel memory _adventureLvl) {
         return AREA_4.adventureLevel(lvl);
     }
 
-    function Area5(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+    function Area5(uint lvl) public view returns (AdventureLevel memory _adventureLvl) {
         return AREA_5.adventureLevel(lvl);
     }
 
-    function Area6(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+    function Area6(uint lvl) public view returns (AdventureLevel memory _adventureLvl) {
         return AREA_6.adventureLevel(lvl);
     }
 
-    function Area7(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+    function Area7(uint lvl) public view returns (AdventureLevel memory _adventureLvl) {
         return AREA_7.adventureLevel(lvl);
     }
 
-    function Area8(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+    function Area8(uint lvl) public view returns (AdventureLevel memory _adventureLvl) {
         return AREA_8.adventureLevel(lvl);
     }
 
-    function Area9(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+    function Area9(uint lvl) public view returns (AdventureLevel memory _adventureLvl) {
         return AREA_9.adventureLevel(lvl);
     }
 
-    function Area10(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+    function Area10(uint lvl) public view returns (AdventureLevel memory _adventureLvl) {
         return AREA_10.adventureLevel(lvl);
     }
 
-    function Area11(uint lvl) public view returns (IAdventure.AdventureLevel memory _adventureLvl) {
+    function Area11(uint lvl) public view returns (AdventureLevel memory _adventureLvl) {
         return AREA_11.adventureLevel(lvl);
     }
 }

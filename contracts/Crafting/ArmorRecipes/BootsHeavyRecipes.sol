@@ -1,8 +1,10 @@
-import {ItemType, ICraftingRecipe, ICraftingMaterials} from "../../Interfaces/Crafting/ICraftingRecipe.sol";
+import {CraftingRecipe, RequiredEquipment} from "../../Interfaces/Crafting/ICraftingRecipe.sol";
+import {ItemType, MaterialRequirement} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {CraftingMaterial} from "../../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
 pragma solidity ^0.8.0;
 
 contract BootsHeavyRecipes {
-    function recipe(uint id) external view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function recipe(uint id) external view returns (CraftingRecipe memory _recipe) {
         if(id == 1) return SoldiersBoots();
         else if (id == 2) return ExecutionersBoots();
         else if (id == 3) return KnightsBoots();
@@ -27,550 +29,550 @@ contract BootsHeavyRecipes {
         
     }
 
-    function SoldiersBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function SoldiersBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.COPPER,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.COPPER,
         amount : 10
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.TATTERED_LEATHER,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.TATTERED_LEATHER,
         amount : 10
         });
     }
 
-    function ExecutionersBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function ExecutionersBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.COPPER_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.COPPER_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_TATTERED_LEATHER,
         amount :7
         });
     }
 
-    function KnightsBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function KnightsBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.TIN_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.COPPER_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.COPPER_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_RAGGED_LEATHER,
         amount : 5
         });
     }
 
-    function DwarvenBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function DwarvenBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.TIN_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.COPPER_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.COPPER_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_RAGGED_LEATHER,
         amount : 7
         });
     }
 
-    function ScaleBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function ScaleBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.IRON_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.TIN_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_RAW_LEATHER,
         amount : 5
         });
     }
 
-    function WingedBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function WingedBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.IRON_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.TIN_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_RAW_LEATHER,
         amount : 7
         });
     }
 
-    function JuggernautBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function JuggernautBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.SILVER_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.IRON_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_THIN_LEATHER,
         amount : 7
         });
     }
 
-    function DraconicBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function DraconicBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.SILVER_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.IRON_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_THIN_LEATHER,
         amount : 7
         });
     }
 
-    function DragonsilverBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function DragonsilverBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.GOLD_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.SILVER_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_COARSE_LEATHER,
         amount : 5
         });
     }
 
-    function GoldenBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function GoldenBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.GOLD_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.SILVER_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_COARSE_LEATHER,
         amount : 7
         });
     }
 
-    function MidassBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function MidassBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.PLATINUM_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.GOLD_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_RUGGED_LEATHER,
         amount : 5
         });
     }
 
-    function ChosensBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function ChosensBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.PLATINUM_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.GOLD_INGOT,
         amount : 2
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_RUGGED_LEATHER,
         amount : 7
         });
     }
 
-    function TemplarBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function TemplarBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.MYTHRIL_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.PLATINUM_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_THICK_LEATHER,
         amount : 5
         });
     }
 
-    function VanguardBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function VanguardBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.MYTHRIL_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.PLATINUM_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_THICK_LEATHER,
         amount : 7
         });
     }
 
-    function VoidDwellerBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function VoidDwellerBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.ORICALCHUM_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.MYTHRIL_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
         amount : 5
         });
     }
 
-    function MoonlightBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function MoonlightBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.ORICALCHUM_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.MYTHRIL_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
         amount : 7
         });
     }
 
-    function SunlightBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function SunlightBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.OBSIDIAN_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.ORICALCHUM_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_HARDENED_LEATHER,
         amount : 5
         });
     }
 
-    function CycleBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function CycleBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.OBSIDIAN_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.ORICALCHUM_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_HARDENED_LEATHER,
         amount : 7
         });
 
-        _recipe.equipmentRequirements = new ICraftingRecipe.RequiredEquipment[](2);
-        _recipe.equipmentRequirements[0] = ICraftingRecipe.RequiredEquipment({
+        _recipe.equipmentRequirements = new RequiredEquipment[](2);
+        _recipe.equipmentRequirements[0] = RequiredEquipment({
             itemType: ItemType.BOOTS,
             id: 16
         });
 
-        _recipe.equipmentRequirements[1] = ICraftingRecipe.RequiredEquipment({
+        _recipe.equipmentRequirements[1] = RequiredEquipment({
             itemType: ItemType.BOOTS,
             id: 17
         });
     }
 
-    function DemonicBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function DemonicBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.LUMINITE_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.OBSIDIAN_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_LORDLY_LEATHER,
         amount : 5
         });
     }
 
-    function AngelicBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function AngelicBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](3);
+        _recipe.materialRequirements = new MaterialRequirement[](3);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.LUMINITE_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.OBSIDIAN_INGOT,
         amount : 5
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_LORDLY_LEATHER,
         amount : 7
         });
     }
 
-    function EternalBoots() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function EternalBoots() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](20);
+        _recipe.materialRequirements = new MaterialRequirement[](20);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.LUMINITE_INGOT,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.LUMINITE_INGOT,
         amount : 15
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.COPPER_INGOT,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.COPPER_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.TIN_INGOT,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.TIN_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.IRON_INGOT,
+        _recipe.materialRequirements[3] = MaterialRequirement({
+        material : CraftingMaterial.IRON_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[4] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SILVER_INGOT,
+        _recipe.materialRequirements[4] = MaterialRequirement({
+        material : CraftingMaterial.SILVER_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[5] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GOLD_INGOT,
+        _recipe.materialRequirements[5] = MaterialRequirement({
+        material : CraftingMaterial.GOLD_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[6] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT,
+        _recipe.materialRequirements[6] = MaterialRequirement({
+        material : CraftingMaterial.PLATINUM_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[7] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT,
+        _recipe.materialRequirements[7] = MaterialRequirement({
+        material : CraftingMaterial.MYTHRIL_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[8] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT,
+        _recipe.materialRequirements[8] = MaterialRequirement({
+        material : CraftingMaterial.ORICALCHUM_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[9] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT,
+        _recipe.materialRequirements[9] = MaterialRequirement({
+        material : CraftingMaterial.OBSIDIAN_INGOT,
         amount : 10
         });
 
-        _recipe.materialRequirements[10] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER,
+        _recipe.materialRequirements[10] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_TATTERED_LEATHER,
         amount : 10
         });
 
-        _recipe.materialRequirements[11] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER,
+        _recipe.materialRequirements[11] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_RAGGED_LEATHER,
         amount : 10
         });
 
-        _recipe.materialRequirements[12] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER,
+        _recipe.materialRequirements[12] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_RAW_LEATHER,
         amount : 10
         });
 
-        _recipe.materialRequirements[13] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER,
+        _recipe.materialRequirements[13] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_THIN_LEATHER,
         amount : 10
         });
 
-        _recipe.materialRequirements[14] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER,
+        _recipe.materialRequirements[14] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_COARSE_LEATHER,
         amount : 10
         });
 
-        _recipe.materialRequirements[15] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER,
+        _recipe.materialRequirements[15] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_RUGGED_LEATHER,
         amount : 10
         });
 
-        _recipe.materialRequirements[16] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER,
+        _recipe.materialRequirements[16] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_THICK_LEATHER,
         amount : 10
         });
 
-        _recipe.materialRequirements[17] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
+        _recipe.materialRequirements[17] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_REINFORCED_LEATHER,
         amount : 10
         });
 
-        _recipe.materialRequirements[18] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER,
+        _recipe.materialRequirements[18] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_HARDENED_LEATHER,
         amount : 10
         });
 
-        _recipe.materialRequirements[19] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PROCESSED_LORDLY_LEATHER,
+        _recipe.materialRequirements[19] = MaterialRequirement({
+        material : CraftingMaterial.PROCESSED_LORDLY_LEATHER,
         amount : 10
         });
 

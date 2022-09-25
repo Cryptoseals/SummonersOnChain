@@ -16,7 +16,7 @@ async function main() {
     const navigator = Navigator.attach(deployedNavigator.navigator)
 
 
-    let Rewards = await ethers.getContractFactory("Reward")
+    let Rewards = await ethers.getContractFactory("Rewarder")
     let rewards = await upgrades.deployProxy(Rewards, [
         navigator.address,
         XPRewards

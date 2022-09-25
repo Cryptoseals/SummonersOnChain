@@ -1,5 +1,5 @@
 import {AnimalsL, ILand, ICookingItem} from "../Interfaces/Lands/ILand.sol";
-import {ICraftingMaterials} from "../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
+import {CraftingMaterial} from "../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
 import {IAlchemyItem} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/IAlchemyItem.sol";
 import {BasicRequirement} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
@@ -127,91 +127,91 @@ contract CodexLands {
         //        _reqs.requiredAlchemyItems[0].amount = 100;
         if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.COPPER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.COPPER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_TATTERED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.TIN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.IRON_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAW_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THIN_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_COARSE_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RUGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THICK_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -224,91 +224,91 @@ contract CodexLands {
 
         if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.COPPER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.COPPER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_TATTERED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.TIN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.IRON_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAW_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THIN_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_COARSE_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RUGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THICK_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -321,91 +321,91 @@ contract CodexLands {
 
         if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.COPPER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.COPPER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_TATTERED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.TIN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.IRON_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAW_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THIN_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_COARSE_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RUGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THICK_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -417,91 +417,91 @@ contract CodexLands {
 
         if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.COPPER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.COPPER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_TATTERED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.TIN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.IRON_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAW_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THIN_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_COARSE_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RUGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THICK_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -513,91 +513,91 @@ contract CodexLands {
 
         if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.COPPER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.COPPER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_TATTERED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.TIN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.IRON_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAW_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THIN_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_COARSE_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RUGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THICK_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -609,91 +609,91 @@ contract CodexLands {
 
         if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.COPPER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.COPPER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_TATTERED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.TIN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.IRON_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAW_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THIN_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_COARSE_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RUGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THICK_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -705,91 +705,91 @@ contract CodexLands {
 
         if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.COPPER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.COPPER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_TATTERED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.TIN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.IRON_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAW_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THIN_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_COARSE_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RUGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THICK_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -801,91 +801,91 @@ contract CodexLands {
 
         if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.COPPER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.COPPER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_TATTERED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.TIN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.IRON_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAW_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THIN_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_COARSE_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RUGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THICK_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;
@@ -897,91 +897,91 @@ contract CodexLands {
 
         if (tier == 2) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.GREEN_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.COPPER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.COPPER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_TATTERED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_TATTERED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.TIN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.IRON_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RAW_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RAW_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.SILVER_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THIN_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THIN_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.GOLD_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_COARSE_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_COARSE_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.PLATINUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_RUGGED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_RUGGED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.MYTHRIL_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_THICK_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_THICK_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.ORICALCHUM_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_REINFORCED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         }
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(ICraftingMaterials.CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
             _reqs.requiredMaterials[0].amount = 10;
-            _reqs.requiredMaterials[1].id = uint(ICraftingMaterials.CraftingMaterial.OBSIDIAN_INGOT);
+            _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
-            _reqs.requiredMaterials[2].id = uint(ICraftingMaterials.CraftingMaterial.PROCESSED_HARDENED_LEATHER);
+            _reqs.requiredMaterials[2].id = uint(CraftingMaterial.PROCESSED_HARDENED_LEATHER);
             _reqs.requiredMaterials[2].amount = 10;
         } else {
             _reqs.isValid = false;

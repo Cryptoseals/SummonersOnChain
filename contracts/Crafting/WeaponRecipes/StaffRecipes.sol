@@ -1,9 +1,11 @@
-import { ICraftingRecipe, ICraftingMaterials} from "../../Interfaces/Crafting/ICraftingRecipe.sol";
-import {ItemType} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {CraftingRecipe, RequiredEquipment} from "../../Interfaces/Crafting/ICraftingRecipe.sol";
+import {ItemType, MaterialRequirement} from "../../Interfaces/GameObjects/IGameObjects.sol";
+import {CraftingMaterial} from "../../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
+
 pragma solidity ^0.8.0;
 
 contract StaffRecipes {
-    function recipe(uint id) external view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function recipe(uint id) external view returns (CraftingRecipe memory _recipe) {
         if (id == 85) return WoodenStaff();
         else if (id == 86) return MarbleStaff();
         else if (id == 87) return TotemicStaff();
@@ -28,400 +30,400 @@ contract StaffRecipes {
         revert(".st");
     }
 
-    function WoodenStaff() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function WoodenStaff() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new MaterialRequirement[](1);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.GREEN_WOOD,
         amount : 20
         });
     }
 
-    function MarbleStaff() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function MarbleStaff() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](1);
+        _recipe.materialRequirements = new MaterialRequirement[](1);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.GREEN_WOOD_PLANK,
         amount : 35
         });
     }
 
-    function TotemicStaff() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function TotemicStaff() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.SOFT_WOOD_PLANK,
         amount : 20
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.GREEN_WOOD_PLANK,
         amount : 20
         });
     }
 
-    function AuraStaff() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function AuraStaff() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.SOFT_WOOD_PLANK,
         amount : 35
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.GREEN_WOOD_PLANK,
         amount : 10
         });
     }
 
-    function BattleseenStaff() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function BattleseenStaff() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.AGED_WOOD_PLANK,
         amount : 20
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.SOFT_WOOD_PLANK,
         amount : 20
         });
     }
 
-    function WizardStaff() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function WizardStaff() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.AGED_WOOD_PLANK,
         amount : 35
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.SOFT_WOOD_PLANK,
         amount : 10
         });
     }
 
-    function VerdantStaff() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function VerdantStaff() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.HARD_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.HARD_WOOD_PLANK,
         amount : 20
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.AGED_WOOD_PLANK,
         amount : 20
         });
     }
 
-    function RubyStaff() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function RubyStaff() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.HARD_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.HARD_WOOD_PLANK,
         amount : 35
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.AGED_WOOD_PLANK,
         amount : 10
         });
     }
 
-    function StarfallensStaff() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function StarfallensStaff() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.PETRIFIED_WOOD_PLANK,
         amount : 20
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.HARD_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.HARD_WOOD_PLANK,
         amount : 20
         });
     }
 
-    function Lightbringer() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function Lightbringer() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.PETRIFIED_WOOD_PLANK,
         amount : 35
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.HARD_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.HARD_WOOD_PLANK,
         amount : 10
         });
     }
 
-    function StaffOfMoonlight() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function StaffOfMoonlight() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.RED_OAK_WOOD_PLANK,
         amount : 20
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.PETRIFIED_WOOD_PLANK,
         amount : 20
         });
     }
 
-    function StaffOfSunlight() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function StaffOfSunlight() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.RED_OAK_WOOD_PLANK,
         amount : 35
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.PETRIFIED_WOOD_PLANK,
         amount : 10
         });
     }
 
-    function CycleStaff() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function CycleStaff() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.ELDER_WOOD_PLANK,
         amount : 20
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.RED_OAK_WOOD_PLANK,
         amount : 20
         });
 
-        _recipe.equipmentRequirements = new ICraftingRecipe.RequiredEquipment[](2);
-        _recipe.equipmentRequirements[0] = ICraftingRecipe.RequiredEquipment({
+        _recipe.equipmentRequirements = new RequiredEquipment[](2);
+        _recipe.equipmentRequirements[0] = RequiredEquipment({
             itemType: ItemType.WEAPON,
             id: 95
         });
 
-        _recipe.equipmentRequirements[1] = ICraftingRecipe.RequiredEquipment({
+        _recipe.equipmentRequirements[1] = RequiredEquipment({
             itemType: ItemType.WEAPON,
             id: 96
         });
     }
 
-    function PhantasmalStaff() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function PhantasmalStaff() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.ELDER_WOOD_PLANK,
         amount : 35
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.RED_OAK_WOOD_PLANK,
         amount : 10
         });
     }
 
-    function ArchmagesStaff() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function ArchmagesStaff() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.ANCIENT_WOOD_PLANK,
         amount : 20
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.ELDER_WOOD_PLANK,
         amount : 20
         });
     }
 
-    function LuminescentStaff() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function LuminescentStaff() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.ANCIENT_WOOD_PLANK,
         amount : 35
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.ELDER_WOOD_PLANK,
         amount : 10
         });
     }
 
-    function AncientElementalistsStaff() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function AncientElementalistsStaff() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.EBONY_WOOD_PLANK,
         amount : 20
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.ANCIENT_WOOD_PLANK,
         amount : 20
         });
     }
 
-    function Spellcatcher() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function Spellcatcher() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.EBONY_WOOD_PLANK,
         amount : 35
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.ANCIENT_WOOD_PLANK,
         amount : 10
         });
     }
 
-    function IncursionStaff() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function IncursionStaff() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SNAKEWOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.SNAKEWOOD_PLANK,
         amount : 20
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.EBONY_WOOD_PLANK,
         amount : 20
         });
     }
 
-    function EldersMark() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function EldersMark() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](2);
+        _recipe.materialRequirements = new MaterialRequirement[](2);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SNAKEWOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.SNAKEWOOD_PLANK,
         amount : 35
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.EBONY_WOOD_PLANK,
         amount : 10
         });
     }
 
-    function Soultrapper() public view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
+    function Soultrapper() public view returns (CraftingRecipe memory _recipe) {
         _recipe.requiredGold = 50;
         _recipe.requiredEssence = 5;
 
-        _recipe.materialRequirements = new ICraftingRecipe.MaterialRequirement[](10);
+        _recipe.materialRequirements = new MaterialRequirement[](10);
 
-        _recipe.materialRequirements[0] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SNAKEWOOD_PLANK,
+        _recipe.materialRequirements[0] = MaterialRequirement({
+        material : CraftingMaterial.SNAKEWOOD_PLANK,
         amount : 70
         });
 
-        _recipe.materialRequirements[1] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.GREEN_WOOD_PLANK,
+        _recipe.materialRequirements[1] = MaterialRequirement({
+        material : CraftingMaterial.GREEN_WOOD_PLANK,
         amount : 40
         });
 
-        _recipe.materialRequirements[2] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.SOFT_WOOD_PLANK,
+        _recipe.materialRequirements[2] = MaterialRequirement({
+        material : CraftingMaterial.SOFT_WOOD_PLANK,
         amount : 40
         });
 
-        _recipe.materialRequirements[3] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.AGED_WOOD_PLANK,
+        _recipe.materialRequirements[3] = MaterialRequirement({
+        material : CraftingMaterial.AGED_WOOD_PLANK,
         amount : 40
         });
 
-        _recipe.materialRequirements[4] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.HARD_WOOD_PLANK,
+        _recipe.materialRequirements[4] = MaterialRequirement({
+        material : CraftingMaterial.HARD_WOOD_PLANK,
         amount : 40
         });
 
-        _recipe.materialRequirements[5] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.PETRIFIED_WOOD_PLANK,
+        _recipe.materialRequirements[5] = MaterialRequirement({
+        material : CraftingMaterial.PETRIFIED_WOOD_PLANK,
         amount : 40
         });
 
-        _recipe.materialRequirements[6] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.RED_OAK_WOOD_PLANK,
+        _recipe.materialRequirements[6] = MaterialRequirement({
+        material : CraftingMaterial.RED_OAK_WOOD_PLANK,
         amount : 40
         });
 
-        _recipe.materialRequirements[7] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ELDER_WOOD_PLANK,
+        _recipe.materialRequirements[7] = MaterialRequirement({
+        material : CraftingMaterial.ELDER_WOOD_PLANK,
         amount : 40
         });
 
-        _recipe.materialRequirements[8] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.ANCIENT_WOOD_PLANK,
+        _recipe.materialRequirements[8] = MaterialRequirement({
+        material : CraftingMaterial.ANCIENT_WOOD_PLANK,
         amount : 40
         });
 
-        _recipe.materialRequirements[9] = ICraftingRecipe.MaterialRequirement({
-        material : ICraftingMaterials.CraftingMaterial.EBONY_WOOD_PLANK,
+        _recipe.materialRequirements[9] = MaterialRequirement({
+        material : CraftingMaterial.EBONY_WOOD_PLANK,
         amount : 40
         });
     }

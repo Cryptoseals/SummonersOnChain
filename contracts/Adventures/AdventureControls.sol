@@ -1,19 +1,19 @@
 import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
 import {SpellCategories} from "../Interfaces/GameObjects/ISpell.sol";
-import {IAdventure} from "../Interfaces/GameObjects/IAdventure.sol";
+import {AdventureBattle} from "../Interfaces/GameObjects/IAdventure.sol";
 import {ICalculator} from  "../Interfaces/Core/Calculator/ICalculator.sol";
 import {ICodexEnemies, IMonster} from "../Interfaces/Codex/ICodexEnemies.sol";
 import {Element, BattleStats} from "../Interfaces/GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
 interface IAdventures {
-    function activeBattle(uint summoner) external view returns (IAdventure.AdventureBattle memory);
+    function activeBattle(uint summoner) external view returns (AdventureBattle memory);
 
-    function attack(uint summoner, uint multiplier, uint overrideDps) external virtual;
+    function attack(uint summoner, uint multiplier, uint overrideDps) external;
 
-    function settleBattle(uint summoner) external virtual;
+    function settleBattle(uint summoner) external;
 
-    function flee(uint summoner) external virtual;
+    function flee(uint summoner) external;
 }
 
 contract AdventureControls is InitNavigator {
@@ -46,7 +46,7 @@ contract AdventureControls is InitNavigator {
         Element dummyEle = Element.FIRE;
 
         IAdventures adventures = adventuresContract;
-        IAdventure.AdventureBattle memory _battle = adventures.activeBattle(summoner);
+        AdventureBattle memory _battle = adventures.activeBattle(summoner);
 
         IMonster.Monster memory monster = enemyCodexContract.enemy(
             _battle.monster.element,

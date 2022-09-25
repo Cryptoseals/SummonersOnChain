@@ -1,26 +1,17 @@
-import {ItemType} from "../GameObjects/IGameObjects.sol";
-import {ICraftingMaterials} from "../GameObjects/ICrafting/ICraftingMaterials.sol";
+import {ItemType, MaterialRequirement} from "../GameObjects/IGameObjects.sol";
 pragma solidity ^0.8.0;
 
-interface ICraftingRecipe {
+struct CraftingRecipe {
+    uint256 requiredLevel;
+    uint256 requiredCraftingLevel;
+    uint256 requiredGold;
+    uint256 requiredEssence;
+    uint256 requiredXP;
+    MaterialRequirement[] materialRequirements;
+    RequiredEquipment[] equipmentRequirements;
+}
 
-    struct MaterialRequirement {
-        uint amount;
-        ICraftingMaterials.CraftingMaterial material;
-    }
-
-    struct CraftingRecipe {
-        uint requiredLevel;
-        uint requiredCraftingLevel;
-        uint requiredGold;
-        uint requiredEssence;
-        uint requiredXP;
-        MaterialRequirement[] materialRequirements;
-        RequiredEquipment[] equipmentRequirements;
-    }
-
-    struct RequiredEquipment {
-        ItemType itemType;
-        uint id;
-    }
+struct RequiredEquipment {
+    ItemType itemType;
+    uint256 id;
 }

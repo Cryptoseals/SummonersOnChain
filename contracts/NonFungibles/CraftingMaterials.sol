@@ -4,7 +4,8 @@ import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 import {ERC1155Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {EnumerableSetUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/structs/EnumerableSetUpgradeable.sol";
-import {IProcessingMaterialRecipes, ICraftingMaterials} from "../Interfaces/Crafting/Processing/IProcessingMaterialRecipes.sol";
+import {IProcessingMaterialRecipes} from "../Interfaces/Crafting/Processing/IProcessingMaterialRecipes.sol";
+import {MaterialTypes, CraftingMaterial, ProcessingRecipe, UpgradingRecipe, ProcessingProcess} from "../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
 
 pragma solidity ^0.8.0;
 
@@ -23,7 +24,7 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
 
     uint nextProcessId;
 
-    mapping(uint => ICraftingMaterials.ProcessingProcess) public ActiveProcessings;
+    mapping(uint => ProcessingProcess) public ActiveProcessings;
     mapping(address => EnumerableSetUpgradeable.UintSet) AccountsActiveProcessings;
 
     function initialize(address _navigator, string memory uri) external initializer {
@@ -44,12 +45,12 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         GEMSTONE_UPGRADING_RECIPES = IProcessingMaterialRecipes(contractAddress(INavigator.CONTRACT.GEMSTONE_UPGRADING_RECIPES));
     }
 
-    function mintMaterial(ICraftingMaterials.CraftingMaterial material, address to, uint amount) external onlyGameContracts {
+    function mintMaterial(CraftingMaterial material, address to, uint amount) external onlyGameContracts {
         require(amount > 0, "0");
         _mint(to, uint(material), amount, new bytes(0));
     }
     // test purposes
-    function mintDev(ICraftingMaterials.CraftingMaterial material, uint amount) external onlyOwner {
+    function mintDev(CraftingMaterial material, uint amount) external onlyOwner {
         _mint(msg.sender, uint(material), amount, new bytes(0));
     }
 
@@ -58,19 +59,19 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         _burn(from, uint(id), amount);
     }
 
-    function processMaterial(ICraftingMaterials.MaterialTypes materialType,
-        ICraftingMaterials.CraftingMaterial targetMaterial, uint amount) external {
-        ICraftingMaterials.ProcessingRecipe memory _recipe;
+    function processMaterial(MaterialTypes materialType,
+        CraftingMaterial targetMaterial, uint amount) external {
+        ProcessingRecipe memory _recipe;
 
-        if (materialType == ICraftingMaterials.MaterialTypes.ORE) {
+        if (materialType == MaterialTypes.ORE) {
             _recipe = ORE_PROCESSING_RECIPES.recipe(targetMaterial, amount);
-        } else if (materialType == ICraftingMaterials.MaterialTypes.WOOD) {
+        } else if (materialType == MaterialTypes.WOOD) {
             _recipe = WOOD_PROCESSING_RECIPES.recipe(targetMaterial, amount);
-        } else if (materialType == ICraftingMaterials.MaterialTypes.LEATHER) {
+        } else if (materialType == MaterialTypes.LEATHER) {
             _recipe = LEATHER_PROCESSING_RECIPES.recipe(targetMaterial, amount);
-        } else if (materialType == ICraftingMaterials.MaterialTypes.CLOTH) {
+        } else if (materialType == MaterialTypes.CLOTH) {
             _recipe = CLOTH_PROCESSING_RECIPES.recipe(targetMaterial, amount);
-        } else if (materialType == ICraftingMaterials.MaterialTypes.GEMSTONE) {
+        } else if (materialType == MaterialTypes.GEMSTONE) {
             _recipe = GEMSTONE_PROCESSING_RECIPES.recipe(targetMaterial, amount);
         } else {
             revert("?");
@@ -79,7 +80,7 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         require(_recipe.amount > 0 && _recipe.requiredTime > 0, "?rcp");
         _burn(msg.sender, uint(_recipe.requiredMaterial), _recipe.amount);
 
-        ActiveProcessings[nextProcessId] = ICraftingMaterials.ProcessingProcess({
+        ActiveProcessings[nextProcessId] = ProcessingProcess({
         amount : amount,
         rewardMaterial : targetMaterial,
         when : block.timestamp + _recipe.requiredTime,
@@ -95,7 +96,7 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
 
     function claimProcess(uint[] memory processIds) external {
         for (uint i = 0; i < processIds.length; i++) {
-            ICraftingMaterials.ProcessingProcess memory process = ActiveProcessings[processIds[i]];
+            ProcessingProcess memory process = ActiveProcessings[processIds[i]];
             require(process.isClaimed == false, "claimed");
             require(process.who == msg.sender, "unauth");
             require(process.when <= block.timestamp, "time");
@@ -125,16 +126,16 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         _mint(msg.sender, uint(ActiveProcessings[processId].rewardMaterial), amount, new bytes(0));
     }
 
-    function upgradeMaterial(ICraftingMaterials.MaterialTypes materialType,
-        ICraftingMaterials.CraftingMaterial targetMaterial, uint amount) external {
-        ICraftingMaterials.UpgradingRecipe memory _recipe;
-        if (materialType == ICraftingMaterials.MaterialTypes.ORE) {
+    function upgradeMaterial(MaterialTypes materialType,
+        CraftingMaterial targetMaterial, uint amount) external {
+        UpgradingRecipe memory _recipe;
+        if (materialType == MaterialTypes.ORE) {
             _recipe = ORE_UPGRADING_RECIPES.upgradeRecipe(targetMaterial, amount);
-        } else if (materialType == ICraftingMaterials.MaterialTypes.WOOD) {
+        } else if (materialType == MaterialTypes.WOOD) {
             _recipe = WOOD_UPGRADING_RECIPES.upgradeRecipe(targetMaterial, amount);
-        } else if (materialType == ICraftingMaterials.MaterialTypes.CLOTH) {
+        } else if (materialType == MaterialTypes.CLOTH) {
             _recipe = CLOTH_UPGRADING_RECIPES.upgradeRecipe(targetMaterial, amount);
-        } else if (materialType == ICraftingMaterials.MaterialTypes.GEMSTONE) {
+        } else if (materialType == MaterialTypes.GEMSTONE) {
             _recipe = GEMSTONE_UPGRADING_RECIPES.upgradeRecipe(targetMaterial, amount);
         } else {
             revert("?");
@@ -147,9 +148,9 @@ contract CraftingMaterials is Initializable, OwnableUpgradeable, InitNavigator, 
         return AccountsActiveProcessings[account].values();
     }
 
-    function activeProcessingsOfUser(address account) external view returns (ICraftingMaterials.ProcessingProcess[] memory) {
+    function activeProcessingsOfUser(address account) external view returns (ProcessingProcess[] memory) {
         uint[] memory processes = AccountsActiveProcessings[account].values();
-        ICraftingMaterials.ProcessingProcess[] memory _result = new ICraftingMaterials.ProcessingProcess[](processes.length);
+        ProcessingProcess[] memory _result = new ProcessingProcess[](processes.length);
         uint i;
         for (i; i < processes.length; i++) {
             _result[i] = ActiveProcessings[processes[i]];

@@ -1,10 +1,11 @@
 import {INavigator,UpgradeableCodex} from "./../../Codex/Common/UpgradeableCodex.sol";
-import {ICraftingRecipe} from "../../Interfaces/Crafting/ICraftingRecipe.sol";
+import {CraftingRecipe} from "../../Interfaces/Crafting/ICraftingRecipe.sol";
+import {CraftingMaterial} from "../../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
 pragma solidity ^0.8.0;
 
 
 interface IndividualRecipes {
-    function recipe(uint id) external view returns (ICraftingRecipe.CraftingRecipe memory);
+    function recipe(uint id) external view returns (CraftingRecipe memory);
 }
 
 contract BootsRecipes is UpgradeableCodex {
@@ -12,8 +13,8 @@ contract BootsRecipes is UpgradeableCodex {
     string constant public class = "BootsRecipes";
     string constant public version = "0.0.1";
 
-    function recipe(uint itemId) external view returns (ICraftingRecipe.CraftingRecipe memory _recipe) {
-        ICraftingRecipe.CraftingRecipe memory _recipe;
+    function recipe(uint itemId) external view returns (CraftingRecipe memory _recipe) {
+        CraftingRecipe memory _recipe;
         if (itemId > 0 && itemId < 22) {
             // H
             _recipe = IndividualRecipes(contractAddress(INavigator.CONTRACT.HEAVY_BOOTS_RECIPES)).recipe(itemId);

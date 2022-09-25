@@ -1,26 +1,26 @@
-import "../../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
+import {CraftingMaterial, UpgradingRecipe} from "../../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";
 pragma solidity ^0.8.0;
 
 contract UpgradingClothRecipes {
 
-    function upgradeRecipe (ICraftingMaterials.CraftingMaterial material, uint amount) external view returns(ICraftingMaterials.UpgradingRecipe memory _recipe){
-        if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_WOOL) {
+    function upgradeRecipe (CraftingMaterial material, uint amount) external view returns(UpgradingRecipe memory _recipe){
+        if (material == CraftingMaterial.BOLT_OF_WOOL) {
             return BoltOfWool(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_COTTON) {
+        } else if (material == CraftingMaterial.BOLT_OF_COTTON) {
             return BoltOfCotton(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_LINEN) {
+        } else if (material == CraftingMaterial.BOLT_OF_LINEN) {
             return BoltOfLinen(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_SILK) {
+        } else if (material == CraftingMaterial.BOLT_OF_SILK) {
             return BoltOfSilk(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_HEMP) {
+        } else if (material == CraftingMaterial.BOLT_OF_HEMP) {
             return BoltOfHemp(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_CASHMERE) {
+        } else if (material == CraftingMaterial.BOLT_OF_CASHMERE) {
             return BoltOfCashmere(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_VISCOSE) {
+        } else if (material == CraftingMaterial.BOLT_OF_VISCOSE) {
             return BoltOfViscose(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_LYOCELL) {
+        } else if (material == CraftingMaterial.BOLT_OF_LYOCELL) {
             return BoltOfLyocell(amount);
-        } else if (material == ICraftingMaterials.CraftingMaterial.BOLT_OF_RAYON) {
+        } else if (material == CraftingMaterial.BOLT_OF_RAYON) {
             return BoltOfRayon(amount);
         } else {
             revert("invalid");
@@ -28,48 +28,48 @@ contract UpgradingClothRecipes {
     }
 
 
-    function BoltOfWool (uint amount) public view returns(ICraftingMaterials.UpgradingRecipe memory _recipe) {
-        _recipe.requiredMaterial = ICraftingMaterials.CraftingMaterial.BOLT_OF_JUTE;
+    function BoltOfWool (uint amount) public view returns(UpgradingRecipe memory _recipe) {
+        _recipe.requiredMaterial = CraftingMaterial.BOLT_OF_JUTE;
         _recipe.amount = amount * 10;
     }
 
-    function BoltOfCotton (uint amount) public view returns(ICraftingMaterials.UpgradingRecipe memory _recipe) {
-        _recipe.requiredMaterial = ICraftingMaterials.CraftingMaterial.BOLT_OF_WOOL;
+    function BoltOfCotton (uint amount) public view returns(UpgradingRecipe memory _recipe) {
+        _recipe.requiredMaterial = CraftingMaterial.BOLT_OF_WOOL;
         _recipe.amount = amount * 10;
     }
 
-    function BoltOfLinen (uint amount) public view returns(ICraftingMaterials.UpgradingRecipe memory _recipe) {
-        _recipe.requiredMaterial = ICraftingMaterials.CraftingMaterial.BOLT_OF_COTTON;
+    function BoltOfLinen (uint amount) public view returns(UpgradingRecipe memory _recipe) {
+        _recipe.requiredMaterial = CraftingMaterial.BOLT_OF_COTTON;
         _recipe.amount = amount * 10;
     }
 
-    function BoltOfSilk (uint amount) public view returns(ICraftingMaterials.UpgradingRecipe memory _recipe) {
-        _recipe.requiredMaterial = ICraftingMaterials.CraftingMaterial.BOLT_OF_LINEN;
+    function BoltOfSilk (uint amount) public view returns(UpgradingRecipe memory _recipe) {
+        _recipe.requiredMaterial = CraftingMaterial.BOLT_OF_LINEN;
         _recipe.amount = amount * 10;
     }
 
-    function BoltOfHemp (uint amount) public view returns(ICraftingMaterials.UpgradingRecipe memory _recipe) {
-        _recipe.requiredMaterial = ICraftingMaterials.CraftingMaterial.BOLT_OF_SILK;
+    function BoltOfHemp (uint amount) public view returns(UpgradingRecipe memory _recipe) {
+        _recipe.requiredMaterial = CraftingMaterial.BOLT_OF_SILK;
         _recipe.amount = amount * 10;
     }
 
-    function BoltOfCashmere (uint amount) public view returns(ICraftingMaterials.UpgradingRecipe memory _recipe) {
-        _recipe.requiredMaterial = ICraftingMaterials.CraftingMaterial.BOLT_OF_HEMP;
+    function BoltOfCashmere (uint amount) public view returns(UpgradingRecipe memory _recipe) {
+        _recipe.requiredMaterial = CraftingMaterial.BOLT_OF_HEMP;
         _recipe.amount = amount * 10;
     }
 
-    function BoltOfViscose (uint amount) public view returns(ICraftingMaterials.UpgradingRecipe memory _recipe) {
-        _recipe.requiredMaterial = ICraftingMaterials.CraftingMaterial.BOLT_OF_CASHMERE;
+    function BoltOfViscose (uint amount) public view returns(UpgradingRecipe memory _recipe) {
+        _recipe.requiredMaterial = CraftingMaterial.BOLT_OF_CASHMERE;
         _recipe.amount = amount * 10;
     }
 
-    function BoltOfLyocell (uint amount) public view returns(ICraftingMaterials.UpgradingRecipe memory _recipe) {
-        _recipe.requiredMaterial = ICraftingMaterials.CraftingMaterial.BOLT_OF_VISCOSE;
+    function BoltOfLyocell (uint amount) public view returns(UpgradingRecipe memory _recipe) {
+        _recipe.requiredMaterial = CraftingMaterial.BOLT_OF_VISCOSE;
         _recipe.amount = amount * 10;
     }
 
-    function BoltOfRayon (uint amount) public view returns(ICraftingMaterials.UpgradingRecipe memory _recipe) {
-        _recipe.requiredMaterial = ICraftingMaterials.CraftingMaterial.BOLT_OF_LYOCELL;
+    function BoltOfRayon (uint amount) public view returns(UpgradingRecipe memory _recipe) {
+        _recipe.requiredMaterial = CraftingMaterial.BOLT_OF_LYOCELL;
         _recipe.amount = amount * 10;
     }
 }
