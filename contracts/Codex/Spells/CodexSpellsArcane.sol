@@ -37,9 +37,8 @@ contract CodexSpellsArcane {
         _spell.requirements.level = 2;
         _spell.requirements.levelRequirementPerTier = 3;
 
-        _spell.requirements.classRequirement = new Class[](2);
-        _spell.requirements.classRequirement[0] = Class.Wizard;
-        _spell.requirements.classRequirement[1] = Class.Assassin;
+        _spell.requirements.classRequirement = classRequirement();
+        
     }
 
     function MinorIllusions(uint tier) public pure returns (Spell memory _spell) {
@@ -62,9 +61,8 @@ contract CodexSpellsArcane {
         _spell.requirements.level = 6;
         _spell.requirements.levelRequirementPerTier = 3;
 
-        _spell.requirements.classRequirement = new Class[](2);
-        _spell.requirements.classRequirement[0] = Class.Wizard;
-        _spell.requirements.classRequirement[1] = Class.Assassin;
+        _spell.requirements.classRequirement = classRequirement();
+        
     }
 
     function ChromaticOrb(uint tier) public pure returns (Spell memory _spell) {
@@ -87,9 +85,8 @@ contract CodexSpellsArcane {
         _spell.requirements.level = 12;
         _spell.requirements.levelRequirementPerTier = 4;
 
-        _spell.requirements.classRequirement = new Class[](2);
-        _spell.requirements.classRequirement[0] = Class.Wizard;
-        _spell.requirements.classRequirement[1] = Class.Assassin;
+        _spell.requirements.classRequirement = classRequirement();
+        
     }
 
     function Charm(uint tier) public pure returns (Spell memory _spell) {
@@ -116,9 +113,8 @@ contract CodexSpellsArcane {
         _spell.requirements.level = 46;
         _spell.requirements.levelRequirementPerTier = 6;
 
-        _spell.requirements.classRequirement = new Class[](2);
-        _spell.requirements.classRequirement[0] = Class.Wizard;
-        _spell.requirements.classRequirement[1] = Class.Assassin;
+        _spell.requirements.classRequirement = classRequirement();
+        
     }
 
     function MirrorImage(uint tier) public pure returns (Spell memory _spell) {
@@ -139,9 +135,8 @@ contract CodexSpellsArcane {
         _spell.requirements.level = 24;
         _spell.requirements.levelRequirementPerTier = 8;
 
-        _spell.requirements.classRequirement = new Class[](2);
-        _spell.requirements.classRequirement[0] = Class.Wizard;
-        _spell.requirements.classRequirement[1] = Class.Assassin;
+        _spell.requirements.classRequirement = classRequirement();
+        
     }
 
     function ShatteredDreams(uint tier) public pure returns (Spell memory _spell) {
@@ -164,9 +159,8 @@ contract CodexSpellsArcane {
         _spell.requirements.level = 32;
         _spell.requirements.levelRequirementPerTier = 13;
 
-        _spell.requirements.classRequirement = new Class[](2);
-        _spell.requirements.classRequirement[0] = Class.Wizard;
-        _spell.requirements.classRequirement[1] = Class.Assassin;
+        _spell.requirements.classRequirement = classRequirement();
+        
     }
 
     function MassHypnosis(uint tier) public pure returns (Spell memory _spell) {
@@ -189,9 +183,8 @@ contract CodexSpellsArcane {
         _spell.requirements.level = 40;
         _spell.requirements.levelRequirementPerTier = 18;
 
-        _spell.requirements.classRequirement = new Class[](2);
-        _spell.requirements.classRequirement[0] = Class.Wizard;
-        _spell.requirements.classRequirement[1] = Class.Assassin;
+        _spell.requirements.classRequirement = classRequirement();
+        
     }
 
     function MindSliver(uint tier) public pure returns (Spell memory _spell) {
@@ -216,6 +209,7 @@ contract CodexSpellsArcane {
 
         _spell.requirements.classRequirement = classRequirement();
     }
+
 
     function classRequirement() internal pure returns (Class[] memory) {
         Class[] memory _reqClass = new Class[](2);

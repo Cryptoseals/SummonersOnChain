@@ -77,6 +77,8 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             BattleStats memory _summonerStats,
             BattleStats memory _monsterStats
         ) = calculatorContract.PVEBattleStats(summoner, _monster);
+        _summonerStats.MAX_HP = _summonerStats.TOTAL_HP;
+        _monsterStats.MAX_HP = _monsterStats.TOTAL_HP;
 
         activeBattles[summoner] = AdventureBattle({
             account: msg.sender,
@@ -114,7 +116,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         uint256 summoner,
         uint256 multiplier,
         uint256 overrideDps
-    ) external onlyGameContracts {
+    ) external onlyGameContracts returns (uint256 _dealt) {
         require(activeBattles[summoner].account != address(0), "no battle");
 
         AdventureBattle memory battle = activeBattles[summoner];
@@ -146,8 +148,10 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
             if (damage >= battle.monsterStats.TOTAL_HP) {
                 battle.monsterStats.TOTAL_HP = 0;
+                _dealt = 0;
             } else {
                 battle.monsterStats.TOTAL_HP -= damage;
+                _dealt = damage;
             }
         }
 
@@ -172,12 +176,36 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
                 battle.playerStats.TOTAL_HP -= damage;
             }
         }
-        if (overrideDps > 0) {
-            battle.playerStats.DPS = activeBattles[summoner].playerStats.DPS;
-        }
+
         activeBattles[summoner].monsterStats = battle.monsterStats;
         activeBattles[summoner].playerStats = battle.playerStats;
         battleNonce = nonce + 1;
+    }
+
+    function heal(
+        uint256 summoner,
+        uint256 minHealAmount,
+        uint256 maxHealAmount,
+        bool isPercentage
+    ) external onlyGameContracts {
+        require(activeBattles[summoner].account != address(0), "no battle");
+        require(minHealAmount > 0, "0h");
+        AdventureBattle memory battle = activeBattles[summoner];
+        uint256 roll = maxHealAmount == 0
+            ? 0
+            : RNG.dn(
+                block.number + minHealAmount + maxHealAmount + 1881,
+                maxHealAmount - minHealAmount
+            );
+        uint256 toHeal = minHealAmount + roll;
+
+        uint256 finalAmount = isPercentage
+            ? (battle.playerStats.MAX_HP * toHeal) / 100
+            : toHeal;
+
+        battle.playerStats.TOTAL_HP += finalAmount >= battle.playerStats.MAX_HP
+            ? battle.playerStats.MAX_HP
+            : finalAmount;
     }
 
     function settleBattle(uint256 summoner) external onlyGameContracts {

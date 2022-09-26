@@ -128,10 +128,7 @@ library ILand {
         uint reserveSlot;
         uint reserveSlot2;
         uint reserveSlot3;
-        uint reserveSlot4;
-        uint reserveSlot5;
         bool reserveSlot6;
-        bool reserveSlot7;
         bool reserveSlot8;
     }
 
@@ -152,9 +149,6 @@ library ILand {
         uint reserveSlot1;
         uint reserveSlot2;
         uint reserveSlot3;
-        uint reserveSlot4;
-        bool reserveSlot5;
-        bool reserveSlot6;
     }
 
     struct Mill {
@@ -217,10 +211,6 @@ library ILand {
         uint reserveSlot1;
         uint reserveSlot2;
         uint reserveSlot3;
-        bool reserveSlot4;
-        bool reserveSlot5;
-        bool reserveSlot6;
-        bool reserveSlot7;
     }
 
     // reward and reqs;

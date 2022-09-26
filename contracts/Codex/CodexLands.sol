@@ -40,26 +40,24 @@ contract CodexLands {
         _poultry.building.maxLevel = maxPoultryLevel;
         _poultry.building.bonusChance = 5 + (tier * 2);
         _poultry.building.upgradeReqs = poultryBuildReqs(tier + 1);
-        _poultry.capacity = 0 + (tier * 3);
+        _poultry.capacity = (tier * 3);
     }
 
     function barnHouse(uint tier) external view returns (ILand.BarnHouse memory _barnHouse){
         require(tier > 0 && tier <= maxBarnLevel, "t");
         _barnHouse.building.level = tier;
         _barnHouse.building.maxLevel = maxBarnLevel;
-        _barnHouse.building.bonusChance = 5 + (tier * 2);
         _barnHouse.building.upgradeReqs = barnBuilding(tier + 1);
-        _barnHouse.capacity = 0 + (tier * 3);
+        _barnHouse.capacity = (tier * 3);
     }
 
     function storages(uint tier) external view returns (ILand.Storages memory _storageBuilding){
         require(tier <= maxStorageLevel, "t");
         _storageBuilding.building.level = tier;
         _storageBuilding.building.maxLevel = maxStorageLevel;
-        _storageBuilding.building.bonusChance = 5 + (tier * 2);
         _storageBuilding.building.upgradeReqs = storageBuilding(tier + 1);
-        _storageBuilding.diaryCapacity = 5 + (tier * 2);
-        _storageBuilding.eggCapacity = 5 + (tier * 2);
+        _storageBuilding.diaryCapacity = 10 + (tier * 2);
+        _storageBuilding.eggCapacity = 10 + (tier * 2);
     }
 
     function mill(uint tier) external view returns (ILand.Mill memory _mill){
@@ -76,7 +74,6 @@ contract CodexLands {
         require(tier > 0 && tier <= maxFarmLevel, "t");
         _farm.building.level = tier;
         _farm.building.maxLevel = maxFarmLevel;
-        _farm.building.bonusChance = 5 + (tier * 2);
         _farm.building.upgradeReqs = farmBuilding(tier + 1);
         _farm.usablePlots = 3 + (tier * 3);
     }

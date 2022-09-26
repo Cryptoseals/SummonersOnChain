@@ -49,6 +49,7 @@ interface INavigator {
         FREE_SPOT_7,
         FREE_SPOT_8,
         FREE_SPOT_9,
+        SPELLS,
         SPELLS_CODEX,
         FIRE_SPELLS,
         COLD_SPELLS,

@@ -22,6 +22,7 @@ struct BattleStats {
     uint256 HIT_CHANCE;
     uint256 CRIT_CHANCE;
     uint256 CRIT_MULTI;
+    uint MAX_HP;
 }
 
 struct Stats {
