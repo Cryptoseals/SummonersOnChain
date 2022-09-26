@@ -72,15 +72,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -146,15 +140,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -220,15 +208,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -294,15 +276,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -368,15 +344,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -443,15 +413,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -517,15 +481,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -591,15 +549,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -665,15 +617,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -739,15 +685,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -813,15 +753,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -887,15 +821,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -961,15 +889,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -1035,15 +957,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -1109,15 +1025,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -1183,15 +1093,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -1257,15 +1161,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -1331,15 +1229,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -1405,15 +1297,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -1479,15 +1365,9 @@ contract CodexArea6 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.VOID,
@@ -1512,5 +1392,21 @@ contract CodexArea6 {
         monsterId : 21,
         level : 1
         });
+    }
+
+    function generateAdventureMonsterArray(uint256 len)
+        public
+        pure
+        returns (AdventureMonster[] memory)
+    {
+        return new AdventureMonster[](len);
+    }
+
+    function generateMaterialArray(uint256 len)
+        public
+        pure
+        returns (CraftingMaterialReward[] memory)
+    {
+        return new CraftingMaterialReward[](len);
     }
 }

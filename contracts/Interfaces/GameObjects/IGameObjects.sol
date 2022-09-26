@@ -244,7 +244,8 @@ enum ItemType {
     COOKING,
     GENERAL_ACCESSORY,
     PET,
-    SEAL
+    SEAL,
+    CORE
 }
 
 struct ElixirBonusEffect {

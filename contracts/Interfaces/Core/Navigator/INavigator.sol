@@ -144,7 +144,8 @@ interface INavigator {
         LAND_CONTROLS,
         ANIMALS,
         SEEDS,
-        TRADER
+        TRADER,
+        CORE_RECIPES
     }
 
     function setGameContractsAddresses(address[] memory _addresses, bool value) external;

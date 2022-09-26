@@ -56,7 +56,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 6e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](2);
+        _level.CurrencyRewards.materials = generateMaterialArray(2);
 
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.TATTERED_LEATHER,
@@ -71,15 +71,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -119,7 +113,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 11e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.RAGGED_LEATHER,
         min : 4,
@@ -145,15 +139,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -193,7 +181,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 22e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.RAGGED_LEATHER,
         min : 6,
@@ -219,15 +207,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -267,7 +249,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 44e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.RAW_LEATHER,
         min : 4,
@@ -293,15 +275,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -341,7 +317,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 88e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.RAW_LEATHER,
         min : 6,
@@ -367,15 +343,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -415,7 +385,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 176e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.THIN_LEATHER,
         min : 3,
@@ -441,15 +411,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -489,7 +453,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 352e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.THIN_LEATHER,
         min : 6,
@@ -515,15 +479,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -563,7 +521,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 704e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.COARSE_LEATHER,
         min : 3,
@@ -589,15 +547,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -637,7 +589,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 1408e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.COARSE_LEATHER,
         min : 5,
@@ -663,15 +615,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -711,7 +657,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 2816e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.RUGGED_LEATHER,
         min : 3,
@@ -737,15 +683,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -785,7 +725,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 5632e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.RUGGED_LEATHER,
         min : 5,
@@ -811,15 +751,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -859,7 +793,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 11264e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.THICK_LEATHER,
         min : 3,
@@ -885,15 +819,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -933,7 +861,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 22528e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.THICK_LEATHER,
         min : 4,
@@ -959,15 +887,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -1007,7 +929,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 45056e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.REINFORCED_LEATHER,
         min : 3,
@@ -1033,15 +955,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -1081,7 +997,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 90112e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.REINFORCED_LEATHER,
         min : 4,
@@ -1107,15 +1023,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -1155,7 +1065,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 180224e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.HARDENED_LEATHER,
         min : 3,
@@ -1181,15 +1091,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -1229,7 +1133,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 360778e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.HARDENED_LEATHER,
         min : 3,
@@ -1255,15 +1159,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -1303,7 +1201,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 720896e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.LORDLY_LEATHER,
         min : 2,
@@ -1329,15 +1227,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -1377,7 +1269,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 1441792e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.LORDLY_LEATHER,
         min : 3,
@@ -1403,15 +1295,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -1451,7 +1337,7 @@ contract CodexArea9 {
         _level.CurrencyRewards.essenceRewards.maxAmount = 2883584e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
-        _level.CurrencyRewards.materials = new CraftingMaterialReward[](4);
+        _level.CurrencyRewards.materials = generateMaterialArray(4);
         _level.CurrencyRewards.materials[0] = CraftingMaterialReward({
         material : CraftingMaterial.LORDLY_LEATHER,
         min : 4,
@@ -1477,15 +1363,9 @@ contract CodexArea9 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.rewards = new ItemReward[](1);
-        _level.Rewards.rewards.miscItemRewards.rewards[0] = ItemReward({
-        itemId : 1,
-        minAmount : 1,
-        maxAmount : 3
-        });
         _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
 
-        _level.MonsterList = new AdventureMonster[](4);
+        _level.MonsterList = generateAdventureMonsterArray(4);
 
         _level.MonsterList[0] = AdventureMonster({
         element : Element.COLD,
@@ -1510,5 +1390,21 @@ contract CodexArea9 {
         monsterId : 21,
         level : 1
         });
+    }
+
+    function generateAdventureMonsterArray(uint256 len)
+        public
+        pure
+        returns (AdventureMonster[] memory)
+    {
+        return new AdventureMonster[](len);
+    }
+
+    function generateMaterialArray(uint256 len)
+        public
+        pure
+        returns (CraftingMaterialReward[] memory)
+    {
+        return new CraftingMaterialReward[](len);
     }
 }
