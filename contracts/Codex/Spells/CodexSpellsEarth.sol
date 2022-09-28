@@ -205,8 +205,8 @@ contract CodexSpellsEarth {
 
     function classRequirement() internal pure returns (Class[] memory) {
         Class[] memory _reqClass = new Class[](2);
-        _reqClass[0] = Class.Wizard;
-        _reqClass[1] = Class.Assassin;
+        _reqClass[0] = Class.Barbarian;
+        _reqClass[1] = Class.Priest;
         return _reqClass;
     }
 }

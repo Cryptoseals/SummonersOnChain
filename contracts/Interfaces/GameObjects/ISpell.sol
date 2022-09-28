@@ -30,8 +30,6 @@ pragma solidity ^0.8.0;
     struct SpellRequirements {
         uint level;
         uint levelRequirementPerTier; // if level is 3, and @param levelRequirementPerTier is 5, skill will require 3+5=8 level at level 2, and 3+10 at level 3;
-        Stats statRequirement;
-        Stats additionalStatRequirementsPerTier;
         Class[] classRequirement;
         WeaponType requiredItem;
     }

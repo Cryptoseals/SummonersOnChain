@@ -1,5 +1,6 @@
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import {InitNavigator, INavigator, GameEntities, ISummoners} from "../Core/Navigator/InitNavigator.sol";
+import {InitNavigator, INavigator, ISummoners} from "../Core/Navigator/InitNavigator.sol";
+import {SummonerMetadata, SummonerState, SummonerData} from "../Interfaces/GameObjects/IGameEntities.sol";
 import {ICalculator} from "../Interfaces/Core/Calculator/ICalculator.sol";
 import {ICodexAdventures} from "../Interfaces/Codex/ICodexAdventures.sol";
 import {ICodexEnemies, IMonster} from "../Interfaces/Codex/ICodexEnemies.sol";
@@ -96,7 +97,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         battleId++;
         Summoners.setSummonerState(
             summoner,
-            GameEntities.SummonerState.IN_FIGHT
+            SummonerState.IN_FIGHT
         );
     }
 
@@ -108,7 +109,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         );
         delete activeBattles[summoner];
         timer[summoner] = block.timestamp + COOLDOWN * 4;
-        Summoners.setSummonerState(summoner, GameEntities.SummonerState.FREE);
+        Summoners.setSummonerState(summoner, SummonerState.FREE);
         elixirInventory.reduceConsumableDuration(summoner);
     }
 
@@ -250,7 +251,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
         Summoners.setSummonerState(
             battle.summoner,
-            GameEntities.SummonerState.FREE
+            SummonerState.FREE
         );
         delete activeBattles[battle.summoner];
         battleNonce = nonce;

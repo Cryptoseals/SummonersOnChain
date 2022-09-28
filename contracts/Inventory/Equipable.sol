@@ -1,10 +1,11 @@
 import {IAttributes} from "../Interfaces/Attributes/IAttributes.sol";
 import {IAllCodexViews} from "../Interfaces/Codex/IAllCodexViews.sol";
 import {IEquipableItems} from "../Interfaces/NonFungibles/EquipableItems/IEquipableItems.sol";
-import {InitNavigator, INavigator, Initializable, GameEntities, ISummoners} from "../Core/Navigator/InitNavigator.sol";
+import {InitNavigator, INavigator, Initializable, ISummoners} from "../Core/Navigator/InitNavigator.sol";
 import {ItemRequirement, ItemType, Element, EquippedItemStruct, ItemType, Element, SummonedCompanion, ElixirBonusEffect, BuffEffect, Artifact, Stats, GeneratedStats, ElementalStats, Weapon, EquipableItem} from "../Interfaces/GameObjects/IGameObjects.sol";
 import {IConsumablesAndArtifactsToken} from "../Interfaces/NonFungibles/ConsumablesAndArtifacts/IConsumablesAndArtifacts.sol";
 import {EquipableUtils} from "./EquipableUtils.sol";
+import {SummonerMetadata, SummonerState, SummonerData} from "../Interfaces/GameObjects/IGameEntities.sol";
 
 pragma solidity ^0.8.0;
 
@@ -98,7 +99,7 @@ contract Equipable is Initializable, InitNavigator {
         returns (bool)
     {
         //        IAttributes attributesContract = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES));
-        GameEntities.SummonerData memory _summoner = Summoners.summonerData(
+        SummonerData memory _summoner = Summoners.summonerData(
             summoner
         );
         //        Stats memory _summonerStats = attributesContract.stats(summoner);
@@ -114,7 +115,7 @@ contract Equipable is Initializable, InitNavigator {
         if (!classOk) revert("class");
         return
             _summoner.level >= _requirement.level &&
-            _summoner.state != GameEntities.SummonerState.IN_FIGHT;
+            _summoner.state != SummonerState.IN_FIGHT;
         //        checkStats(_summonerStats, _requirement);
     }
 

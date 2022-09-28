@@ -1,6 +1,6 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {ERC721EnumerableUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
-import {GameEntities} from "../Interfaces/GameObjects/IGameEntities.sol";
+import {SummonerMetadata, SummonerState, SummonerData} from "../Interfaces/GameObjects/IGameEntities.sol";
 import {Class, Stats, GeneratedStats, ElementalStats} from "../Interfaces/GameObjects/IGameObjects.sol";
 import {InitNavigator, INavigator} from "../Core/Navigator/InitNavigator.sol";
 import "../Core/Common/Errors.sol";
@@ -18,8 +18,8 @@ interface Equipables {
 }
 
 contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
-    mapping(uint => GameEntities.SummonerMetadata) public SummonerMetadatas;
-    mapping(uint => GameEntities.SummonerState) public SummonerState;
+    mapping(uint => SummonerMetadata) public SummonerMetadatas;
+    mapping(uint => SummonerState) public SummonerStates;
     mapping(uint => Class) public SummonerClasses;
 
     mapping(uint => uint) public SummonerEXP;
@@ -37,7 +37,7 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     function mintSummoner(Class _class) external {
         uint tokenId = totalSupply();
 
-        SummonerState[tokenId] = GameEntities.SummonerState.FREE;
+        SummonerStates[tokenId] = SummonerState.FREE;
         SummonerClasses[tokenId] = _class;
         SummonerMetadatas[tokenId].id = tokenId;
         SummonerMetadatas[tokenId].summonedBy = msg.sender;
@@ -69,8 +69,8 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     }
 
 
-    function setSummonerState(uint summoner, GameEntities.SummonerState _state) external onlyGameContracts {
-        SummonerState[summoner] = _state;
+    function setSummonerState(uint summoner, SummonerState _state) external onlyGameContracts {
+        SummonerStates[summoner] = _state;
     }
 
     function rewardXP(uint summoner, uint xp) external onlyGameContracts {
@@ -98,27 +98,27 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
         return SummonerEXP[id];
     }
 
-    function state(uint id) external view returns (GameEntities.SummonerState) {
-        return SummonerState[id];
+    function state(uint id) external view returns (SummonerState) {
+        return SummonerStates[id];
     }
 
-    function summonerData(uint id) external view returns (GameEntities.SummonerData memory) {
-        GameEntities.SummonerData memory _data = GameEntities.SummonerData({
+    function summonerData(uint id) external view returns (SummonerData memory) {
+        SummonerData memory _data = SummonerData({
         level : SummonerLevels[id],
         class : SummonerClasses[id],
-        state : SummonerState[id],
+        state : SummonerStates[id],
         EXP : SummonerEXP[id]
         });
         return _data;
     }
 
-    function summonerDatas(uint[] memory ids) external view returns (GameEntities.SummonerData[] memory) {
-        GameEntities.SummonerData[] memory _data = new GameEntities.SummonerData[](ids.length);
+    function summonerDatas(uint[] memory ids) external view returns (SummonerData[] memory) {
+        SummonerData[] memory _data = new SummonerData[](ids.length);
         for (uint i = 0; i < ids.length; i++) {
-            _data[i] = GameEntities.SummonerData({
+            _data[i] = SummonerData({
             level : SummonerLevels[ids[i]],
             class : SummonerClasses[ids[i]],
-            state : SummonerState[ids[i]],
+            state : SummonerStates[ids[i]],
             EXP : SummonerEXP[ids[i]]
             });
         }
@@ -127,8 +127,8 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
 
     function summonerFullDetails(uint id)
     public view returns (
-        GameEntities.SummonerData memory _data,
-        GameEntities.SummonerMetadata memory _metadata,
+        SummonerData memory _data,
+        SummonerMetadata memory _metadata,
         Stats memory _base_stats,
         Stats memory,
         GeneratedStats memory,
@@ -136,7 +136,7 @@ contract Summoners is ERC721EnumerableUpgradeable, InitNavigator {
     ){
         _data.level = SummonerLevels[id];
         _data.class = SummonerClasses[id];
-        _data.state = SummonerState[id];
+        _data.state = SummonerStates[id];
         _data.EXP = SummonerEXP[id];
         _base_stats = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES)).stats(id);
 

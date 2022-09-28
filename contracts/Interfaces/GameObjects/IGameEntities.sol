@@ -1,26 +1,22 @@
 import {Class} from "./IGameObjects.sol";
 pragma solidity ^0.8.0;
 
-library GameEntities {
+enum SummonerState {
+    FREE,
+    BUSY,
+    EXHAUSTED,
+    IN_FIGHT
+}
 
-    enum SummonerState {
-        FREE,
-        BUSY,
-        EXHAUSTED,
-        IN_FIGHT
-    }
+struct SummonerMetadata {
+    uint256 id;
+    string summonerName;
+    address summonedBy;
+}
 
-    struct SummonerMetadata {
-        uint id;
-        string summonerName;
-        address summonedBy;
-    }
-
-    struct SummonerData {
-        uint level;
-        Class class;
-        uint EXP;
-        SummonerState state;
-    }
-
+struct SummonerData {
+    uint256 level;
+    Class class;
+    uint256 EXP;
+    SummonerState state;
 }

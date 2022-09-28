@@ -1,7 +1,7 @@
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../Core/Common/Errors.sol";
 import {IAttributes} from "../Interfaces/Attributes/IAttributes.sol";
-import {GameEntities} from "../Interfaces/GameObjects/IGameEntities.sol";
+import {SummonerData} from "../Interfaces/GameObjects/IGameEntities.sol";
 import {Class, Stats} from "../Interfaces/GameObjects/IGameObjects.sol";
 import {EquipableUtils} from "../Inventory/EquipableUtils.sol";
 import {ICodexSpells} from "../Interfaces/Codex/ICodexSpells.sol";
@@ -19,6 +19,7 @@ contract Spells is Initializable, InitNavigator {
         public SummonerSpellLevels;
     ICodexSpells codexSpells;
     IFungibleInGameToken essence;
+    IAttributes attributes;
 
     function initialize(address _navigator) public initializer {
         initializeNavigator(_navigator);
@@ -30,6 +31,9 @@ contract Spells is Initializable, InitNavigator {
         );
         essence = IFungibleInGameToken(
             contractAddress(INavigator.CONTRACT.ESSENCE)
+        );
+        attributes = IAttributes(
+            contractAddress(INavigator.CONTRACT.ATTRIBUTES)
         );
     }
 
@@ -43,17 +47,12 @@ contract Spells is Initializable, InitNavigator {
             "learnt"
         );
         Spell memory spell = codexSpells.spell(category, spellId, 1);
-        GameEntities.SummonerData memory summoner = Summoners.summonerData(
+        SummonerData memory summoner = Summoners.summonerData(
             _summoner
         );
         require(summoner.level >= spell.requirements.level, "lvl");
         require(checkClass(summoner.class, category), "class");
-        require(
-            checkAttributes(_summoner, spell.requirements.statRequirement),
-            "low"
-        );
-        IFungibleInGameToken(contractAddress(INavigator.CONTRACT.ESSENCE))
-            .burnToken(msg.sender, spell.learningCost);
+        essence.burnToken(msg.sender, spell.learningCost);
         SummonerSpellLevels[_summoner][category][spellId] = 1;
     }
 
@@ -62,27 +61,8 @@ contract Spells is Initializable, InitNavigator {
         view
         returns (bool)
     {
-        bool[11] memory _validSpells = ICodexSpells(
-            contractAddress(INavigator.CONTRACT.SPELLS_CODEX)
-        ).classSpells(_summonerClass);
+        bool[11] memory _validSpells = codexSpells.classSpells(_summonerClass);
         return _validSpells[uint256(cat)];
-    }
-
-    function checkAttributes(uint256 summoner, Stats memory _spellAttr)
-        internal
-        view
-        returns (bool)
-    {
-        Stats memory _summonerAttr = IAttributes(
-            contractAddress(INavigator.CONTRACT.ATTRIBUTES)
-        ).stats(summoner);
-        return
-            _summonerAttr.STR >= _spellAttr.STR &&
-            _summonerAttr.DEX >= _spellAttr.DEX &&
-            _summonerAttr.INT >= _spellAttr.INT &&
-            _summonerAttr.AGI >= _spellAttr.AGI &&
-            _summonerAttr.VIT >= _spellAttr.VIT &&
-            _summonerAttr.LUCK >= _spellAttr.LUCK;
     }
 
     function upgradeSpell(
@@ -91,22 +71,15 @@ contract Spells is Initializable, InitNavigator {
         uint256 spellId
     ) external senderIsSummonerOwner(summoner) {
         require(SummonerSpellLevels[summoner][category][spellId] > 0, "not");
-        uint256 nextTier = SummonerSpellLevels[summoner][category][spellId];
+        uint256 nextTier = SummonerSpellLevels[summoner][category][spellId] + 1;
         Spell memory spell = codexSpells.spell(category, spellId, nextTier);
-
+        SummonerData memory _summoner = Summoners.summonerData(
+            summoner
+        );
+        require(_summoner.level >= spell.requirements.level, "lvl");
         uint256 nextTierCost = spell.learningCost *
             spell.upgradeCostMultiplier *
             nextTier;
-
-        require(
-            checkAttributesUpgrade(
-                summoner,
-                nextTier,
-                spell.requirements.statRequirement,
-                spell.requirements.additionalStatRequirementsPerTier
-            ),
-            "low"
-        );
 
         essence.burnToken(msg.sender, nextTierCost);
         SummonerSpellLevels[summoner][category][spellId]++;
@@ -118,9 +91,7 @@ contract Spells is Initializable, InitNavigator {
         Stats memory _spellAttr,
         Stats memory _perTier
     ) internal view returns (bool) {
-        Stats memory _summonerAttr = IAttributes(
-            contractAddress(INavigator.CONTRACT.ATTRIBUTES)
-        ).stats(summoner);
+        Stats memory _summonerAttr = attributes.stats(summoner);
 
         for (uint256 i = 1; i <= tier; i++) {
             _spellAttr = EquipableUtils.sumStats(_spellAttr, _perTier);

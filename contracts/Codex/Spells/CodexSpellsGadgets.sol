@@ -200,9 +200,10 @@ contract CodexSpellsGadgets {
     }
 
     function classRequirement() internal pure returns (Class[] memory) {
-        Class[] memory _reqClass = new Class[](2);
-        _reqClass[0] = Class.Wizard;
-        _reqClass[1] = Class.Assassin;
+        Class[] memory _reqClass = new Class[](3);
+        _reqClass[0] = Class.Ranger;
+        _reqClass[1] = Class.Engineer;
+        _reqClass[2] = Class.Barbarian;
         return _reqClass;
     }
 }

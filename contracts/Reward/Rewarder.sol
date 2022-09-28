@@ -3,7 +3,7 @@ import {ERC721EnumerableUpgradeable} from "@openzeppelin/contracts-upgradeable/t
 import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
 import {ICodexRandom} from "../Interfaces/Codex/ICodexRandom.sol";
 import {ElixirBonusEffect} from "../Interfaces/GameObjects/IGameObjects.sol";
-import {GameEntities} from "../Interfaces/GameObjects/IGameEntities.sol";
+import {SummonerMetadata, SummonerState, SummonerData} from "../Interfaces/GameObjects/IGameEntities.sol";
 import {InitNavigator, INavigator, ISummoners} from "../Core/Navigator/InitNavigator.sol";
 import {Reward, CurrencyRewards, CraftingMaterialReward, ArtifactRewards, ConsumableRewards, EquipableItemRewards, MiscItemRewards} from "../Interfaces/GameObjects/IGameRewards.sol";
 import {CraftingMaterial} from "../Interfaces/GameObjects/ICrafting/ICraftingMaterials.sol";

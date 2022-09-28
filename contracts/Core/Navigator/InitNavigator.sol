@@ -2,7 +2,7 @@ import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Ini
 import "../../Core/Common/Errors.sol";
 import {INavigator} from "../../Interfaces/Core/Navigator/INavigator.sol";
 import {ISummoners} from "../../Interfaces/Summoners/ISummoners.sol";
-import {GameEntities} from "../../Interfaces/GameObjects/IGameEntities.sol";
+import {SummonerState} from "../../Interfaces/GameObjects/IGameEntities.sol";
 
 pragma solidity ^0.8.0;
 
@@ -62,7 +62,7 @@ contract InitNavigator is Initializable {
     }
 
     modifier notInFight(uint summoner) {
-        require(Summoners.state(summoner) != GameEntities.SummonerState.IN_FIGHT, "IN_FIGHT");
+        require(Summoners.state(summoner) != SummonerState.IN_FIGHT, "IN_FIGHT");
         _;
     }
 }

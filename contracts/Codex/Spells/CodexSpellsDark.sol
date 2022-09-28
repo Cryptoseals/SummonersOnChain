@@ -210,9 +210,8 @@ contract CodexSpellsDark {
     }
 
     function classRequirement() internal pure returns (Class[] memory) {
-        Class[] memory _reqClass = new Class[](2);
-        _reqClass[0] = Class.Wizard;
-        _reqClass[1] = Class.Assassin;
+        Class[] memory _reqClass = new Class[](1);
+        _reqClass[0] = Class.Necromancer;
         return _reqClass;
     }
 }

@@ -212,9 +212,10 @@ contract CodexSpellsArcane {
 
 
     function classRequirement() internal pure returns (Class[] memory) {
-        Class[] memory _reqClass = new Class[](2);
+        Class[] memory _reqClass = new Class[](3);
         _reqClass[0] = Class.Wizard;
         _reqClass[1] = Class.Assassin;
+        _reqClass[2] = Class.Necromancer;
         return _reqClass;
     }
 }

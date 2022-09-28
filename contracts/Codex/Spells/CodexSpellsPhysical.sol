@@ -208,9 +208,11 @@ contract CodexSpellsPhysical {
     }
 
     function classRequirement() internal pure returns (Class[] memory) {
-        Class[] memory _reqClass = new Class[](2);
-        _reqClass[0] = Class.Wizard;
+        Class[] memory _reqClass = new Class[](4);
+        _reqClass[0] = Class.Ranger;
         _reqClass[1] = Class.Assassin;
+        _reqClass[2] = Class.Barbarian;
+        _reqClass[3] = Class.Engineer;
         return _reqClass;
     }
 }
