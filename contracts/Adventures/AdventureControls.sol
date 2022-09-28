@@ -72,9 +72,12 @@ contract AdventureControls is InitNavigator {
         SpellCategories spellCategory,
         uint256 spellId
     ) external ensureNotPaused senderIsSummonerOwner(summoner) {
-        // TODO("check if skill is learnt")
-        uint256 lvl = spells.spellLevel(summoner, spellCategory, spellId);
-        require(lvl > 0, "not learnt");
+        (bool isEquipped, uint256 lvl) = spells.isSpellEquipped(
+            summoner,
+            spellCategory,
+            spellId
+        );
+        require(isEquipped && lvl > 0, "not learnt");
         Spell memory _spell = spellCodex.spell(spellCategory, spellId, lvl);
 
         IAdventures adventures = adventuresContract;

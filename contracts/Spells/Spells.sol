@@ -5,7 +5,7 @@ import {SummonerData} from "../Interfaces/GameObjects/IGameEntities.sol";
 import {Class, Stats} from "../Interfaces/GameObjects/IGameObjects.sol";
 import {EquipableUtils} from "../Inventory/EquipableUtils.sol";
 import {ICodexSpells} from "../Interfaces/Codex/ICodexSpells.sol";
-import {SpellCategories, Spell} from "../Interfaces/GameObjects/ISpell.sol";
+import {SpellCategories, Spell, SpellSlot} from "../Interfaces/GameObjects/ISpell.sol";
 import {GameConstants} from "../Interfaces/Core/Constants/Constants.sol";
 import {ICalculator} from "../Interfaces/Core/Calculator/ICalculator.sol";
 import {IFungibleInGameToken} from "../Interfaces/Fungibles/Common/IFungibleInGameToken.sol";
@@ -15,11 +15,14 @@ pragma solidity ^0.8.0;
 
 contract Spells is Initializable, InitNavigator {
     // @dev summoner-> spell -> spell level
+    mapping(uint256 => mapping(uint256 => SpellSlot)) SpellSlots;
     mapping(uint256 => mapping(SpellCategories => mapping(uint256 => uint256)))
         public SummonerSpellLevels;
     ICodexSpells codexSpells;
     IFungibleInGameToken essence;
     IAttributes attributes;
+
+    // summoner -> slot -> spell
 
     function initialize(address _navigator) public initializer {
         initializeNavigator(_navigator);
@@ -37,6 +40,15 @@ contract Spells is Initializable, InitNavigator {
         );
     }
 
+    function checkClass(Class _summonerClass, SpellCategories cat)
+        internal
+        view
+        returns (bool)
+    {
+        bool[11] memory _validSpells = codexSpells.classSpells(_summonerClass);
+        return _validSpells[uint256(cat)];
+    }
+
     function learnSpell(
         uint256 _summoner,
         SpellCategories category,
@@ -47,22 +59,11 @@ contract Spells is Initializable, InitNavigator {
             "learnt"
         );
         Spell memory spell = codexSpells.spell(category, spellId, 1);
-        SummonerData memory summoner = Summoners.summonerData(
-            _summoner
-        );
+        SummonerData memory summoner = Summoners.summonerData(_summoner);
         require(summoner.level >= spell.requirements.level, "lvl");
         require(checkClass(summoner.class, category), "class");
         essence.burnToken(msg.sender, spell.learningCost);
         SummonerSpellLevels[_summoner][category][spellId] = 1;
-    }
-
-    function checkClass(Class _summonerClass, SpellCategories cat)
-        internal
-        view
-        returns (bool)
-    {
-        bool[11] memory _validSpells = codexSpells.classSpells(_summonerClass);
-        return _validSpells[uint256(cat)];
     }
 
     function upgradeSpell(
@@ -73,9 +74,8 @@ contract Spells is Initializable, InitNavigator {
         require(SummonerSpellLevels[summoner][category][spellId] > 0, "not");
         uint256 nextTier = SummonerSpellLevels[summoner][category][spellId] + 1;
         Spell memory spell = codexSpells.spell(category, spellId, nextTier);
-        SummonerData memory _summoner = Summoners.summonerData(
-            summoner
-        );
+        require(nextTier < spell.maxSpellLevel, "max");
+        SummonerData memory _summoner = Summoners.summonerData(summoner);
         require(_summoner.level >= spell.requirements.level, "lvl");
         uint256 nextTierCost = spell.learningCost *
             spell.upgradeCostMultiplier *
@@ -85,25 +85,23 @@ contract Spells is Initializable, InitNavigator {
         SummonerSpellLevels[summoner][category][spellId]++;
     }
 
-    function checkAttributesUpgrade(
+    function equipSpell(
         uint256 summoner,
-        uint256 tier,
-        Stats memory _spellAttr,
-        Stats memory _perTier
-    ) internal view returns (bool) {
-        Stats memory _summonerAttr = attributes.stats(summoner);
+        uint256 slot,
+        SpellCategories category,
+        uint256 spellId
+    ) external senderIsSummonerOwner(summoner) {
+        uint256 level = SummonerSpellLevels[summoner][category][spellId];
+        require(level > 0, "not learnt");
 
-        for (uint256 i = 1; i <= tier; i++) {
-            _spellAttr = EquipableUtils.sumStats(_spellAttr, _perTier);
+        for (uint256 index = 0; index < 4; index++) {
+            SpellSlot memory _slot = SpellSlots[summoner][index];
+            require(_slot.category != category && _slot.id != spellId, "same");
         }
-
-        return
-            _summonerAttr.STR >= _spellAttr.STR &&
-            _summonerAttr.DEX >= _spellAttr.DEX &&
-            _summonerAttr.INT >= _spellAttr.INT &&
-            _summonerAttr.AGI >= _spellAttr.AGI &&
-            _summonerAttr.VIT >= _spellAttr.VIT &&
-            _summonerAttr.LUCK >= _spellAttr.LUCK;
+        SpellSlots[summoner][slot] = SpellSlot({
+            category: category,
+            id: spellId
+        });
     }
 
     function spellLevel(
@@ -112,5 +110,18 @@ contract Spells is Initializable, InitNavigator {
         uint256 spellId
     ) public view returns (uint256) {
         return SummonerSpellLevels[summoner][category][spellId];
+    }
+
+    function isSpellEquipped(
+        uint256 summoner,
+        SpellCategories category,
+        uint256 spellId
+    ) external view returns (bool _isEquipped, uint256 lvl) {
+        lvl = spellLevel(summoner, category, spellId);
+        for (uint256 index = 0; index < 4; index++) {
+            SpellSlot memory _slot = SpellSlots[summoner][index];
+            _isEquipped = _slot.category == category && _slot.id == spellId;
+            if (_isEquipped) break;
+        }
     }
 }
