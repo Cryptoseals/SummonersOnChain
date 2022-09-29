@@ -49,7 +49,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         enemyCodex = ICodexEnemies(
             contractAddress(INavigator.CONTRACT.CODEX_ENEMIES)
         );
-        //        COOLDOWN = 1 minutes;
+        COOLDOWN = 10 minutes;
     }
 
     function setCooldown(uint256 _minutes) external onlyOwner {
@@ -95,10 +95,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
         battleNonce++;
         battleId++;
-        Summoners.setSummonerState(
-            summoner,
-            SummonerState.IN_FIGHT
-        );
+        Summoners.setSummonerState(summoner, SummonerState.IN_FIGHT);
     }
 
     function flee(uint256 summoner) external onlyGameContracts {
@@ -249,10 +246,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             revert("on going");
         }
 
-        Summoners.setSummonerState(
-            battle.summoner,
-            SummonerState.FREE
-        );
+        Summoners.setSummonerState(battle.summoner, SummonerState.FREE);
         delete activeBattles[battle.summoner];
         battleNonce = nonce;
         elixirInventory.reduceConsumableDuration(summoner);

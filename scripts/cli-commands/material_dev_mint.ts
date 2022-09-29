@@ -1,11 +1,11 @@
-import {config} from 'dotenv'
+import { config } from 'dotenv'
 
 config()
-import {ethers, upgrades} from "hardhat";
+import { ethers, upgrades } from "hardhat";
 import fs from "fs";
-import {CONTRACTS, DeployedFileLocations} from "../helpers/constants";
-import {ISummoners} from "../../typechain-types"
-import {BigNumber} from "ethers";
+import { CONTRACTS, DeployedFileLocations } from "../helpers/constants";
+import { ISummoners } from "../../typechain-types"
+import { BigNumber } from "ethers";
 
 enum MaterialTypes {
     ORE,
@@ -113,8 +113,17 @@ async function main() {
     // await tx.wait(1)
     // tx = await mats.mintMaterial(CraftingMaterial.GREEN_WOOD_PLANK, mintTo, 100)
     // await tx.wait(1)
-    // tx = await mats.mintMaterial(CraftingMaterial.BOLT_OF_JUTE, mintTo, 100)
-    // await tx.wait(1)
+    tx = await mats.mintMaterial(CraftingMaterial.JUTE, mintTo, 500)
+    await tx.wait(1)
+    tx = await mats.mintMaterial(CraftingMaterial.TATTERED_LEATHER, mintTo, 500)
+    await tx.wait(1)
+    tx = await mats.mintMaterial(CraftingMaterial.GREEN_WOOD, mintTo, 500)
+    await tx.wait(1)
+
+    tx = await mats.mintMaterial(CraftingMaterial.COPPER, mintTo, 500)
+    await tx.wait(1)
+    tx = await mats.mintMaterial(CraftingMaterial.AMBER, mintTo, 500)
+    await tx.wait(1)
 
 
     // let activeProcesses: any[] = await mats.activeProcessingsOfUser(deployer);

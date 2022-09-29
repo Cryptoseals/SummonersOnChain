@@ -191,6 +191,8 @@ contract Crafting is Initializable, InitNavigator {
             _recipe = BOOTS_RECIPES.recipe(id);
         } else if (_type == ItemType.WEAPON) {
             _recipe = WEAPON_RECIPES.recipe(id);
+        } else if (_type == ItemType.OFFHAND) {
+            _recipe = WEAPON_RECIPES.recipe(id);
         } else if (_type == ItemType.AMULET) {
             _recipe = AMULET_RECIPES.recipe(id);
         } else if (_type == ItemType.RING) {
@@ -268,6 +270,16 @@ contract Crafting is Initializable, InitNavigator {
             }
         }
 
+        for (uint256 i = 0; i < recipe.requiredMaterials.length; i++) {
+            if (recipe.requiredMaterials[i].amount > 0) {
+                craftingMaterialContract.burnMaterial(
+                    msg.sender,
+                    uint256(recipe.requiredMaterials[i].material),
+                    recipe.requiredMaterials[i].amount
+                );
+            }
+        }
+
         if (recipe.requiredAlchemyItems.length > 0) {
             for (uint256 i = 0; i < recipe.requiredAlchemyItems.length; i++) {
                 alchemy.burnAlchemyItem(
@@ -276,10 +288,6 @@ contract Crafting is Initializable, InitNavigator {
                     recipe.requiredAlchemyItems[i].amount * amount
                 );
             }
-        }
-
-        if (recipe.requiredGold > 0) {
-            goldContract.burnToken(msg.sender, recipe.requiredGold * amount);
         }
 
         if (recipe.requiredEssence > 0) {

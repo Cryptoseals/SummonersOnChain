@@ -181,7 +181,6 @@ contract EquipableItems is Initializable, OwnableUpgradeable, InitNavigator, ERC
     }
 
     function upgrade(uint256 id) external onlyGameContracts {
-        // @TODO implement upgrade costs and burners.
         require(_exists(id), "h4x0r");
         require(tokenToEnchantmentLevel[id] + 1 < 10, "exceeds");
         tokenToEnchantmentLevel[id]++;
