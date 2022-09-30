@@ -33,11 +33,11 @@ interface IAdventures {
 }
 
 contract AdventureControls is InitNavigator {
-    IAdventures adventuresContract;
-    ICodexEnemies enemyCodexContract;
-    ICalculator calculatorContract;
-    ICodexSpells spellCodex;
-    ISpells spells;
+    IAdventures public  adventuresContract;
+    ICodexEnemies public enemyCodexContract;
+    ICalculator public calculatorContract;
+    ICodexSpells public spellCodex;
+    ISpells public spells;
 
     function initialize(address _navigator) external initializer {
         initializeNavigator(_navigator);

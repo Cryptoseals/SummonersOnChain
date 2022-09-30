@@ -45,6 +45,7 @@ export enum CONTRACTS {
     FREE_SPOT_7,
     FREE_SPOT_8,
     FREE_SPOT_9,
+    SPELLS,
     SPELLS_CODEX,
     FIRE_SPELLS,
     COLD_SPELLS,
@@ -140,7 +141,8 @@ export enum CONTRACTS {
     LAND_CONTROLS,
     ANIMALS,
     SEEDS,
-    TRADER
+    TRADER,
+    CORE_RECIPES
 }
 
 export const DeployedFileLocations = {
@@ -176,5 +178,6 @@ export const DeployedFileLocations = {
     consumables: "./scripts/deployed-contracts/consumables.json",
     cores: "./scripts/deployed-contracts/cores.json",
     lands: "./scripts/deployed-contracts/lands.json",
+    spells: "./scripts/deployed-contracts/spells.json",
 }
 
