@@ -134,7 +134,7 @@ contract CodexLands {
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -144,7 +144,7 @@ contract CodexLands {
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -154,7 +154,7 @@ contract CodexLands {
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -164,7 +164,7 @@ contract CodexLands {
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -174,7 +174,7 @@ contract CodexLands {
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -184,7 +184,7 @@ contract CodexLands {
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -194,7 +194,7 @@ contract CodexLands {
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -204,7 +204,7 @@ contract CodexLands {
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -231,7 +231,7 @@ contract CodexLands {
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -241,7 +241,7 @@ contract CodexLands {
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -251,7 +251,7 @@ contract CodexLands {
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -261,7 +261,7 @@ contract CodexLands {
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -271,7 +271,7 @@ contract CodexLands {
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -281,7 +281,7 @@ contract CodexLands {
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -291,7 +291,7 @@ contract CodexLands {
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -301,7 +301,7 @@ contract CodexLands {
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -328,7 +328,7 @@ contract CodexLands {
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -338,7 +338,7 @@ contract CodexLands {
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -348,7 +348,7 @@ contract CodexLands {
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -358,7 +358,7 @@ contract CodexLands {
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -368,7 +368,7 @@ contract CodexLands {
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -378,7 +378,7 @@ contract CodexLands {
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -388,7 +388,7 @@ contract CodexLands {
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -398,7 +398,7 @@ contract CodexLands {
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -424,7 +424,7 @@ contract CodexLands {
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -434,7 +434,7 @@ contract CodexLands {
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -444,7 +444,7 @@ contract CodexLands {
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -454,7 +454,7 @@ contract CodexLands {
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -464,7 +464,7 @@ contract CodexLands {
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -474,7 +474,7 @@ contract CodexLands {
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -484,7 +484,7 @@ contract CodexLands {
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -494,7 +494,7 @@ contract CodexLands {
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -520,7 +520,7 @@ contract CodexLands {
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -530,7 +530,7 @@ contract CodexLands {
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -540,7 +540,7 @@ contract CodexLands {
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -550,7 +550,7 @@ contract CodexLands {
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -560,7 +560,7 @@ contract CodexLands {
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -570,7 +570,7 @@ contract CodexLands {
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -580,7 +580,7 @@ contract CodexLands {
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -590,7 +590,7 @@ contract CodexLands {
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -616,7 +616,7 @@ contract CodexLands {
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -626,7 +626,7 @@ contract CodexLands {
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -636,7 +636,7 @@ contract CodexLands {
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -646,7 +646,7 @@ contract CodexLands {
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -656,7 +656,7 @@ contract CodexLands {
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -666,7 +666,7 @@ contract CodexLands {
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -676,7 +676,7 @@ contract CodexLands {
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -686,7 +686,7 @@ contract CodexLands {
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -712,7 +712,7 @@ contract CodexLands {
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -722,7 +722,7 @@ contract CodexLands {
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -732,7 +732,7 @@ contract CodexLands {
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -742,7 +742,7 @@ contract CodexLands {
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -752,7 +752,7 @@ contract CodexLands {
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -762,7 +762,7 @@ contract CodexLands {
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -772,7 +772,7 @@ contract CodexLands {
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -782,7 +782,7 @@ contract CodexLands {
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -808,7 +808,7 @@ contract CodexLands {
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -818,7 +818,7 @@ contract CodexLands {
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -828,7 +828,7 @@ contract CodexLands {
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -838,7 +838,7 @@ contract CodexLands {
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -848,7 +848,7 @@ contract CodexLands {
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -858,7 +858,7 @@ contract CodexLands {
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -868,7 +868,7 @@ contract CodexLands {
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -878,7 +878,7 @@ contract CodexLands {
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -904,7 +904,7 @@ contract CodexLands {
 
         else if (tier == 3) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.SOFT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.TIN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -914,7 +914,7 @@ contract CodexLands {
 
         else if (tier == 4) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.AGED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.IRON_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -924,7 +924,7 @@ contract CodexLands {
 
         else if (tier == 5) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.HARD_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.SILVER_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -934,7 +934,7 @@ contract CodexLands {
 
         else if (tier == 6) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.PETRIFIED_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.GOLD_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -944,7 +944,7 @@ contract CodexLands {
 
         else if (tier == 7) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.RED_OAK_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.PLATINUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -954,7 +954,7 @@ contract CodexLands {
 
         else if (tier == 8) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ELDER_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.MYTHRIL_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -964,7 +964,7 @@ contract CodexLands {
 
         else if (tier == 9) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.ANCIENT_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.ORICALCHUM_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -974,7 +974,7 @@ contract CodexLands {
 
         else if (tier == 10) {
             _reqs.requiredMaterials = generateRequirement(3);
-            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD);
+            _reqs.requiredMaterials[0].id = uint(CraftingMaterial.EBONY_WOOD_PLANK);
             _reqs.requiredMaterials[0].amount = 10;
             _reqs.requiredMaterials[1].id = uint(CraftingMaterial.OBSIDIAN_INGOT);
             _reqs.requiredMaterials[1].amount = 10;
@@ -1380,7 +1380,7 @@ contract CodexLands {
         _seed.id = 1;
         _seed.growTime = 6 hours;
         // reward IAlchemyItem.List.Dill,
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 18e18;
         //@param id is alchemy item id
         _seed.alchemyReward.id = IAlchemyItem.List.Dill;
         _seed.alchemyReward.min = 1;
@@ -1393,7 +1393,7 @@ contract CodexLands {
     function Rucola() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 2;
         _seed.growTime = 8 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 24e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Rucola;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1404,7 +1404,7 @@ contract CodexLands {
     function Basilicum() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 3;
         _seed.growTime = 12 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 36e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Basilicum;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1415,7 +1415,7 @@ contract CodexLands {
     function Manaflower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 4;
         _seed.growTime = 10 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 30e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Manaflower;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1426,7 +1426,7 @@ contract CodexLands {
     function FireFlower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 5;
         _seed.growTime = 8 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 24e18;
         _seed.alchemyReward.id = IAlchemyItem.List.FireFlower;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1437,7 +1437,7 @@ contract CodexLands {
     function Parsley() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 6;
         _seed.growTime = 6 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 18e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Parsley;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1448,7 +1448,7 @@ contract CodexLands {
     function Shadowberry() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 7;
         _seed.growTime = 12 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 36e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Shadowberry;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 2;
@@ -1459,7 +1459,7 @@ contract CodexLands {
     function Raptorherb() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 16;
         _seed.growTime = 16 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 48e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Raptorherb;
         _seed.alchemyReward.min = 2;
         _seed.alchemyReward.max = 4;
@@ -1470,7 +1470,7 @@ contract CodexLands {
     function Dragonherb() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 9;
         _seed.growTime = 8 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 24e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Dragonherb;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1481,7 +1481,7 @@ contract CodexLands {
     function Shadowflower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 10;
         _seed.growTime = 18 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 54e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Shadowflower;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1492,7 +1492,7 @@ contract CodexLands {
     function Mistyflower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 11;
         _seed.growTime = 8 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 24e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Mistyflower;
         _seed.alchemyReward.min = 2;
         _seed.alchemyReward.max = 3;
@@ -1503,7 +1503,7 @@ contract CodexLands {
     function Green_Poisonous_Mushroom() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 12;
         _seed.growTime = 6 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 18e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Green_Poisonous_Mushroom;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1514,7 +1514,7 @@ contract CodexLands {
     function Red_Poisonous_Mushroom() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 13;
         _seed.growTime = 6 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 18e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Red_Poisonous_Mushroom;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1525,8 +1525,7 @@ contract CodexLands {
     function Mana_Mushroom() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 14;
         _seed.growTime = 16 hours;
-        _seed.buyPrice = 1e18;
-
+        _seed.buyPrice = 48e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Mana_Mushroom;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1537,8 +1536,7 @@ contract CodexLands {
     function Demon_Mushroom() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 15;
         _seed.growTime = 16 hours;
-        _seed.buyPrice = 1e18;
-
+        _seed.buyPrice = 48e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Demon_Mushroom;
         _seed.alchemyReward.min = 2;
         _seed.alchemyReward.max = 4;
@@ -1549,8 +1547,7 @@ contract CodexLands {
     function Raindrop_Mushroom() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 16;
         _seed.growTime = 16 hours;
-        _seed.buyPrice = 1e18;
-
+        _seed.buyPrice = 48e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Raindrop_Mushroom;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1561,8 +1558,7 @@ contract CodexLands {
     function Bloodberry() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 17;
         _seed.growTime = 8 hours;
-        _seed.buyPrice = 1e18;
-
+        _seed.buyPrice = 24e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Bloodberry;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1573,8 +1569,7 @@ contract CodexLands {
     function King_Flower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 18;
         _seed.growTime = 8 hours;
-        _seed.buyPrice = 1e18;
-
+        _seed.buyPrice = 24e18;
         _seed.alchemyReward.id = IAlchemyItem.List.King_Flower;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1585,8 +1580,7 @@ contract CodexLands {
     function Wood_Moss() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 19;
         _seed.growTime = 6 hours;
-        _seed.buyPrice = 1e18;
-
+        _seed.buyPrice = 18e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Wood_Moss;
         _seed.alchemyReward.min = 2;
         _seed.alchemyReward.max = 3;
@@ -1597,8 +1591,7 @@ contract CodexLands {
     function Ancient_Flower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 20;
         _seed.growTime = 12 hours;
-        _seed.buyPrice = 1e18;
-
+        _seed.buyPrice = 36e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Ancient_Flower;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 2;
@@ -1609,8 +1602,7 @@ contract CodexLands {
     function Fellherb() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 21;
         _seed.growTime = 12 hours;
-        _seed.buyPrice = 1e18;
-
+        _seed.buyPrice = 36e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Fellherb;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1621,8 +1613,7 @@ contract CodexLands {
     function Wild_Rose() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 22;
         _seed.growTime = 6 hours;
-        _seed.buyPrice = 1e18;
-
+        _seed.buyPrice = 18e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Wild_Rose;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1633,8 +1624,7 @@ contract CodexLands {
     function Red_Rose() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 23;
         _seed.growTime = 8 hours;
-        _seed.buyPrice = 1e18;
-
+        _seed.buyPrice = 24e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Red_Rose;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1645,7 +1635,7 @@ contract CodexLands {
     function Dragon_Flower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 24;
         _seed.growTime = 8 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 24e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Dragon_Flower;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1656,7 +1646,7 @@ contract CodexLands {
     function Golden_Flower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 25;
         _seed.growTime = 8 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 24e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Golden_Flower;
         _seed.alchemyReward.min = 1;
         _seed.alchemyReward.max = 3;
@@ -1667,7 +1657,7 @@ contract CodexLands {
     function Stinky_Flower() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 26;
         _seed.growTime = 6 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 18e18;
         _seed.alchemyReward.id = IAlchemyItem.List.Stinky_Flower;
         _seed.alchemyReward.min = 2;
         _seed.alchemyReward.max = 3;
@@ -1678,7 +1668,7 @@ contract CodexLands {
     function Apple() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 27;
         _seed.growTime = 8 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 24e18;
         _seed.cookingReward.id = ICookingItem.List.Apple;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 3;
@@ -1689,7 +1679,7 @@ contract CodexLands {
     function Carrot() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 28;
         _seed.growTime = 18 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 54e18;
         _seed.cookingReward.id = ICookingItem.List.Carrot;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 3;
@@ -1700,7 +1690,7 @@ contract CodexLands {
     function Cabbage() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 29;
         _seed.growTime = 18 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 54e18;
         _seed.cookingReward.id = ICookingItem.List.Cabbage;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 3;
@@ -1711,7 +1701,7 @@ contract CodexLands {
     function Bell_Pepper() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 30;
         _seed.growTime = 12 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 36e18;
         _seed.cookingReward.id = ICookingItem.List.Bell_Pepper;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 3;
@@ -1722,7 +1712,7 @@ contract CodexLands {
     function Chili_Pepper() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 31;
         _seed.growTime = 12 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 36e18;
         _seed.cookingReward.id = ICookingItem.List.Chili_Pepper;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 3;
@@ -1733,7 +1723,7 @@ contract CodexLands {
     function Tomato() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 32;
         _seed.growTime = 12 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 36e18;
         _seed.cookingReward.id = ICookingItem.List.Tomato;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 3;
@@ -1744,7 +1734,7 @@ contract CodexLands {
     function Onion() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 33;
         _seed.growTime = 8 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 24e18;
         _seed.cookingReward.id = ICookingItem.List.Onion;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 3;
@@ -1755,7 +1745,7 @@ contract CodexLands {
     function Corn() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 34;
         _seed.growTime = 8 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 24e18;
         _seed.cookingReward.id = ICookingItem.List.Corn;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 3;
@@ -1766,7 +1756,7 @@ contract CodexLands {
     function Mushroom() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 35;
         _seed.growTime = 18 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 54e18;
         _seed.cookingReward.id = ICookingItem.List.Mushroom;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 2;
@@ -1777,7 +1767,7 @@ contract CodexLands {
     function Turnip() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 36;
         _seed.growTime = 24 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 72e18;
         _seed.cookingReward.id = ICookingItem.List.Turnip;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 2;
@@ -1788,7 +1778,7 @@ contract CodexLands {
     function Grapes() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 37;
         _seed.growTime = 24 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 72e18;
         _seed.cookingReward.id = ICookingItem.List.Grapes;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 2;
@@ -1799,7 +1789,7 @@ contract CodexLands {
     function Black_Grapes() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 38;
         _seed.growTime = 12 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 36e18;
         _seed.cookingReward.id = ICookingItem.List.Black_Grapes;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 3;
@@ -1810,7 +1800,7 @@ contract CodexLands {
     function Red_Grapes() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 39;
         _seed.growTime = 12 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 36e18;
         _seed.cookingReward.id = ICookingItem.List.Red_Grapes;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 3;
@@ -1821,7 +1811,7 @@ contract CodexLands {
     function Strawberry() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 40;
         _seed.growTime = 12 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 36e18;
         _seed.cookingReward.id = ICookingItem.List.Strawberry;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 3;
@@ -1832,7 +1822,7 @@ contract CodexLands {
     function Cherry() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 41;
         _seed.growTime = 24 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 72e18;
         _seed.cookingReward.id = ICookingItem.List.Cherry;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 2;
@@ -1843,7 +1833,7 @@ contract CodexLands {
     function Cacao() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 42;
         _seed.growTime = 20 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 60e18;
         _seed.cookingReward.id = ICookingItem.List.Cacao;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 2;
@@ -1854,7 +1844,7 @@ contract CodexLands {
     function Banana() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 43;
         _seed.growTime = 24 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 72e18;
         _seed.cookingReward.id = ICookingItem.List.Banana;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 2;
@@ -1865,7 +1855,7 @@ contract CodexLands {
     function Potato() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 44;
         _seed.growTime = 20 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 60e18;
         _seed.cookingReward.id = ICookingItem.List.Potato;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 3;
@@ -1876,7 +1866,7 @@ contract CodexLands {
     function Wheat() public pure returns (ILand.Seed memory _seed) {
         _seed.id = 45;
         _seed.growTime = 8 hours;
-        _seed.buyPrice = 1e18;
+        _seed.buyPrice = 24e18;
         _seed.cookingReward.id = ICookingItem.List.Wheat;
         _seed.cookingReward.min = 1;
         _seed.cookingReward.max = 3;

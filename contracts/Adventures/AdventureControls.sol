@@ -33,7 +33,7 @@ interface IAdventures {
 }
 
 contract AdventureControls is InitNavigator {
-    IAdventures public  adventuresContract;
+    IAdventures public adventuresContract;
     ICodexEnemies public enemyCodexContract;
     ICalculator public calculatorContract;
     ICodexSpells public spellCodex;
@@ -65,6 +65,7 @@ contract AdventureControls is InitNavigator {
         senderIsSummonerOwner(summoner)
     {
         adventuresContract.attack(summoner, 100, 0);
+        spells.decreaseCooldowns(summoner);
     }
 
     function spellAttack(
@@ -77,6 +78,7 @@ contract AdventureControls is InitNavigator {
             spellCategory,
             spellId
         );
+        spells.markSpellUsed(summoner, spellCategory, spellId);
         require(isEquipped && lvl > 0, "not learnt");
         Spell memory _spell = spellCodex.spell(spellCategory, spellId, lvl);
 
@@ -101,26 +103,35 @@ contract AdventureControls is InitNavigator {
         } else if (_spell.spellType == SpellType.HEALING) {
             adventuresContract.heal(
                 summoner,
-                _spell.healingProps.minAmount,
-                _spell.healingProps.maxAmount,
+                _spell.healingProps.minAmount +
+                    _spell.healingProps.bonusHealingPerTier,
+                _spell.healingProps.maxAmount +
+                    _spell.healingProps.bonusHealingPerTier,
                 _spell.healingProps.isPercentage
             );
-        } else if (_spell.spellType == SpellType.HEALING) {
+        } else if (_spell.spellType == SpellType.LIFESTEAL) {
             uint256 dealt = adventuresContract.attack(
                 summoner,
-                _spell.attackProps.damageMultiplier,
-                summ.DPS
+                100,
+                summ.DPS +
+                    (summ.DPS * _spell.attackProps.damageMultiplier) /
+                    100
             );
 
             if (dealt > 0) {
                 adventuresContract.heal(
                     summoner,
-                    dealt,
-                    0,
+                    dealt +
+                        (dealt * _spell.healingProps.bonusHealingPerTier) /
+                        100,
+                    dealt +
+                        (dealt * _spell.healingProps.bonusHealingPerTier) /
+                        100,
                     _spell.healingProps.isPercentage
                 );
             }
         }
+        spells.decreaseCooldowns(summoner);
     }
 
     function settleBattle(uint256 summoner)

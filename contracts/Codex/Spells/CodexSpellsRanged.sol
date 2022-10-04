@@ -24,15 +24,15 @@ contract CodexSpellsRanged {
 
         _spell.attackProps.element = Element.PHYSICAL;
         _spell.attackProps.damageMultiplier = 25;
-        _spell.attackProps.multiplierBonusPerTier = 5;
+        _spell.attackProps.multiplierBonusPerTier = 3;
         _spell.attackProps.infusion = 3;
         _spell.attackProps.infusionBonusPerTier = 1;
 
         _spell.maxSpellLevel = 12;
 
-        _spell.learningCost = 12e18;
+        _spell.learningCost = 4e18;
 
-        _spell.upgradeCostMultiplier = 2;
+        _spell.upgradeCostMultiplier = 3;
 
         _spell.requirements.level = 2;
         _spell.requirements.levelRequirementPerTier = 3;
@@ -47,13 +47,13 @@ contract CodexSpellsRanged {
 
         _spell.attackProps.element = Element.PHYSICAL;
         _spell.attackProps.damageMultiplier = 30;
-        _spell.attackProps.multiplierBonusPerTier = 5;
+        _spell.attackProps.multiplierBonusPerTier = 4;
         _spell.attackProps.infusion = 3;
         _spell.attackProps.infusionBonusPerTier = 1;
 
-        _spell.maxSpellLevel = 12;
+        _spell.maxSpellLevel = 11;
 
-        _spell.learningCost = 24e18;
+        _spell.learningCost = 5e18;
 
         _spell.upgradeCostMultiplier = 3;
 
@@ -76,7 +76,7 @@ contract CodexSpellsRanged {
 
         _spell.maxSpellLevel = 10;
 
-        _spell.learningCost = 36e18;
+        _spell.learningCost = 6e18;
 
         _spell.upgradeCostMultiplier = 3;
 
@@ -93,13 +93,13 @@ contract CodexSpellsRanged {
 
         _spell.attackProps.element = Element.PHYSICAL;
         _spell.attackProps.damageMultiplier = 40;
-        _spell.attackProps.multiplierBonusPerTier = 5;
+        _spell.attackProps.multiplierBonusPerTier = 7;
         _spell.attackProps.infusion = 3;
         _spell.attackProps.infusionBonusPerTier = 1;
 
         _spell.maxSpellLevel = 8;
 
-        _spell.learningCost = 48e18;
+        _spell.learningCost = 10e18;
 
         _spell.upgradeCostMultiplier = 4;
 
@@ -116,15 +116,15 @@ contract CodexSpellsRanged {
 
         _spell.attackProps.element = Element.PHYSICAL;
         _spell.attackProps.damageMultiplier = 45;
-        _spell.attackProps.multiplierBonusPerTier = 5;
+        _spell.attackProps.multiplierBonusPerTier = 9;
         _spell.attackProps.infusion = 5;
         _spell.attackProps.infusionBonusPerTier = 1;
 
         _spell.maxSpellLevel = 6;
 
-        _spell.learningCost = 64e18;
+        _spell.learningCost = 24e18;
 
-        _spell.upgradeCostMultiplier = 6;
+        _spell.upgradeCostMultiplier = 4;
 
         _spell.requirements.level = 24;
         _spell.requirements.levelRequirementPerTier = 8;
@@ -139,7 +139,7 @@ contract CodexSpellsRanged {
 
         _spell.attackProps.element = Element.PHYSICAL;
         _spell.attackProps.damageMultiplier = 50;
-        _spell.attackProps.multiplierBonusPerTier = 5;
+        _spell.attackProps.multiplierBonusPerTier = 13;
         _spell.attackProps.infusion = 5;
         _spell.attackProps.infusionBonusPerTier = 1;
 
@@ -147,7 +147,7 @@ contract CodexSpellsRanged {
 
         _spell.learningCost = 80e18;
 
-        _spell.upgradeCostMultiplier = 12;
+        _spell.upgradeCostMultiplier = 5;
 
         _spell.requirements.level = 32;
         _spell.requirements.levelRequirementPerTier = 13;
@@ -162,13 +162,13 @@ contract CodexSpellsRanged {
 
         _spell.healingProps.maxAmount = 75;
         _spell.healingProps.maxAmount = 85;
-        _spell.healingProps.bonusHealingPerTier = 5;
+        _spell.healingProps.bonusHealingPerTier = 3;
 
         _spell.maxSpellLevel = 3;
 
         _spell.learningCost = 96e18;
 
-        _spell.upgradeCostMultiplier = 16;
+        _spell.upgradeCostMultiplier = 5;
 
         _spell.requirements.level = 40;
         _spell.requirements.levelRequirementPerTier = 18;
@@ -183,15 +183,15 @@ contract CodexSpellsRanged {
 
         _spell.attackProps.element = Element.PHYSICAL;
         _spell.attackProps.damageMultiplier = 75;
-        _spell.attackProps.multiplierBonusPerTier = 15;
+        _spell.attackProps.multiplierBonusPerTier = 25;
         _spell.attackProps.infusion = 5;
-        _spell.attackProps.infusionBonusPerTier = 1;
+        _spell.attackProps.infusionBonusPerTier = 3;
 
         _spell.maxSpellLevel = 2;
 
         _spell.learningCost = 120e18;
 
-        _spell.upgradeCostMultiplier = 24;
+        _spell.upgradeCostMultiplier = 6;
 
         _spell.requirements.level = 48;
         _spell.requirements.levelRequirementPerTier = 26;

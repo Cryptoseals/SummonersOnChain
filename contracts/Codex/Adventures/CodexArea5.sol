@@ -77,12 +77,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 38e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 55e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 135e17;
+        _level.CurrencyRewards.goldRewards.maxAmount = 165e17;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 4e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 6e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 9e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 11e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(1);
@@ -94,7 +94,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 40;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -119,12 +119,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 75e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 110e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 18e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 22e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 8e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 11e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 18e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 22e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -141,7 +141,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 41;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -166,12 +166,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 150e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 220e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 27e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 33e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 15e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 22e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 27e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 33e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -188,7 +188,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 42;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -213,12 +213,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 300e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 440e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 36e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 44e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 30e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 44e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 36e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 44e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -235,7 +235,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 43;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -260,12 +260,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 600e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 880e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 45e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 55e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 60e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 88e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 45e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 55e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -282,7 +282,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 44;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -307,12 +307,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 1200e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 1760e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 54e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 66e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 120e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 176e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 54e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 66e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -329,7 +329,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 45;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -354,12 +354,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 2400e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 3520e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 72e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 88e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 240e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 352e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 72e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 88e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -376,7 +376,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 46;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -401,12 +401,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 4800e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 7040e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 90e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 110e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 480e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 704e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 9e18;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 11e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -423,7 +423,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 47;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -448,12 +448,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 9600e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 14080e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 117e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 143e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 960e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 1408e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 117e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 143e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -470,7 +470,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 48;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -495,12 +495,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 19200e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 28160e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 135e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 165e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 1920e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 2816e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 135e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 165e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -517,7 +517,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 49;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -542,12 +542,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 38400e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 56320e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 180e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 220e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 3840e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 5632e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 18e18;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 22e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -589,12 +589,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 76400e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 112640e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 225e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 275e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 7640e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 11264e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 225e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 275e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -611,7 +611,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 51;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -636,12 +636,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 153600e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 225280e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 252e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 308e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 15360e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 22528e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 252e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 308e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -658,7 +658,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 52;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -683,12 +683,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 307200e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 450560e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 288e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 352e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 30720e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 45056e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 288e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 352e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -705,7 +705,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 53;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -730,12 +730,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 614400e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 901120e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 324e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 396e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 61440e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 90112e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 324e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 396e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -752,7 +752,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 54;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -777,12 +777,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 1228800e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 1802240e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 378e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 462e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 122880e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 180224e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 378e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 462e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -799,7 +799,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 55;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -824,12 +824,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 2457600e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 3607780e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 414e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 506e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 245760e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 360778e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 414e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 506e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -846,7 +846,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 56;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -871,12 +871,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 4915200e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 7208960e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 468e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 572e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 491520e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 720896e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 468e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 572e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -893,7 +893,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 57;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -918,12 +918,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 9830400e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 14417920e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 495e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 605e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 983040e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 1441792e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 495e17;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 605e17;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -940,7 +940,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 58;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({
@@ -965,12 +965,12 @@ contract CodexArea5 {
         _level.Difficulty = 100;
 
         _level.CurrencyRewards.yieldsGold = true;
-        _level.CurrencyRewards.goldRewards.minAmount = 19660800e18;
-        _level.CurrencyRewards.goldRewards.maxAmount = 28835840e18;
+        _level.CurrencyRewards.goldRewards.minAmount = 540e18;
+        _level.CurrencyRewards.goldRewards.maxAmount = 660e18;
 
         _level.CurrencyRewards.yieldsEssence = true;
-        _level.CurrencyRewards.essenceRewards.minAmount = 1966080e18;
-        _level.CurrencyRewards.essenceRewards.maxAmount = 2883584e18;
+        _level.CurrencyRewards.essenceRewards.minAmount = 54e18;
+        _level.CurrencyRewards.essenceRewards.maxAmount = 66e18;
 
         _level.CurrencyRewards.yieldsCraftingMaterial = true;
         _level.CurrencyRewards.materials = generateMaterialArray(2);
@@ -987,7 +987,7 @@ contract CodexArea5 {
         });
 
         _level.Rewards.pool.yieldsMiscItem = true;
-        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 50;
+        _level.Rewards.rewards.miscItemRewards.chanceToDrop = 59;
 
         _level.MonsterList = generateAdventureMonsterArray(2);
         _level.MonsterList[0] = AdventureMonster({

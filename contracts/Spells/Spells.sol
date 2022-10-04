@@ -14,10 +14,13 @@ import {InitNavigator, INavigator, ISummoners} from "../Core/Navigator/InitNavig
 pragma solidity ^0.8.0;
 
 contract Spells is Initializable, InitNavigator {
+    uint256 immutable MAX_SPELL_SLOT = 4;
     // @dev summoner-> spell -> spell level
     mapping(uint256 => mapping(uint256 => SpellSlot)) SpellSlots;
     mapping(uint256 => mapping(SpellCategories => mapping(uint256 => uint256)))
         public SummonerSpellLevels;
+    mapping(uint256 => mapping(SpellCategories => mapping(uint256 => uint256)))
+        public SummonerSpellCooldowns;
     ICodexSpells codexSpells;
     IFungibleInGameToken essence;
     IAttributes attributes;
@@ -26,6 +29,29 @@ contract Spells is Initializable, InitNavigator {
 
     function initialize(address _navigator) public initializer {
         initializeNavigator(_navigator);
+    }
+
+    function decreaseCooldowns(uint256 summoner) external onlyGameContracts {
+        for (uint256 index = 0; index < MAX_SPELL_SLOT; index++) {
+            SpellSlot memory slot = SpellSlots[summoner][index];
+            if (SummonerSpellCooldowns[summoner][slot.category][slot.id] > 0) {
+                SummonerSpellCooldowns[summoner][slot.category][slot.id]--;
+            }
+        }
+    }
+
+    function markSpellUsed(
+        uint256 summoner,
+        SpellCategories cat,
+        uint256 spellId
+    ) external onlyGameContracts {
+        require(
+            SummonerSpellCooldowns[summoner][cat][spellId] == 0,
+            "cooldown"
+        );
+        SummonerSpellCooldowns[summoner][cat][spellId] = codexSpells
+            .spell(cat, spellId, 1)
+            .cooldown;
     }
 
     function initializeContracts() external {
@@ -38,15 +64,6 @@ contract Spells is Initializable, InitNavigator {
         attributes = IAttributes(
             contractAddress(INavigator.CONTRACT.ATTRIBUTES)
         );
-    }
-
-    function checkClass(Class _summonerClass, SpellCategories cat)
-        internal
-        view
-        returns (bool)
-    {
-        bool[11] memory _validSpells = codexSpells.classSpells(_summonerClass);
-        return _validSpells[uint256(cat)];
     }
 
     function learnSpell(
@@ -94,7 +111,7 @@ contract Spells is Initializable, InitNavigator {
         uint256 level = SummonerSpellLevels[summoner][category][spellId];
         require(level > 0, "not learnt");
 
-        for (uint256 index = 0; index < 4; index++) {
+        for (uint256 index = 0; index < MAX_SPELL_SLOT; index++) {
             SpellSlot memory _slot = SpellSlots[summoner][index];
             require(_slot.category != category && _slot.id != spellId, "same");
         }
@@ -112,6 +129,23 @@ contract Spells is Initializable, InitNavigator {
         return SummonerSpellLevels[summoner][category][spellId];
     }
 
+    function spellSlots(uint256 summoner)
+        public
+        view
+        returns (SpellSlot[] memory, uint256[] memory)
+    {
+        SpellSlot[] memory result = new SpellSlot[](MAX_SPELL_SLOT);
+        uint256[] memory cooldowns = new uint256[](MAX_SPELL_SLOT);
+        for (uint256 index = 0; index < MAX_SPELL_SLOT; index++) {
+            result[index] = SpellSlots[summoner][index];
+            cooldowns[index] = SummonerSpellCooldowns[summoner][
+                result[index].category
+            ][result[index].id];
+        }
+
+        return (result, cooldowns);
+    }
+
     function isSpellEquipped(
         uint256 summoner,
         SpellCategories category,
@@ -123,5 +157,14 @@ contract Spells is Initializable, InitNavigator {
             _isEquipped = _slot.category == category && _slot.id == spellId;
             if (_isEquipped) break;
         }
+    }
+
+    function checkClass(Class _summonerClass, SpellCategories cat)
+        internal
+        view
+        returns (bool)
+    {
+        bool[11] memory _validSpells = codexSpells.classSpells(_summonerClass);
+        return _validSpells[uint256(cat)];
     }
 }

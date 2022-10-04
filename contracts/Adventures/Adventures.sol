@@ -187,7 +187,9 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         bool isPercentage
     ) external onlyGameContracts {
         require(activeBattles[summoner].account != address(0), "no battle");
-        require(minHealAmount > 0, "0h");
+
+        if (minHealAmount == 0) return;
+
         AdventureBattle memory battle = activeBattles[summoner];
         uint256 roll = maxHealAmount == 0
             ? 0

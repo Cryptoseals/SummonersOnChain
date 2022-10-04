@@ -103,6 +103,12 @@ const config: HardhatUserConfig = {
             gasPrice: 225000000000,
             chainId: 43214,
             accounts: [deploymentAccount]
+        },
+        play: {
+            url: chainInstance,
+            gasPrice: 225000000000,
+            chainId: 43214,
+            accounts: [deploymentAccount]
         }
     },
     etherscan: {

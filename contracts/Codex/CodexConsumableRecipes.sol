@@ -94,7 +94,7 @@ contract CodexBuffEffectRecipes {
 
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
 
-        _recipe.requiredEssence = 20e18;
+        _recipe.requiredEssence = 5e18;
     }
 
     function TonicOfTranscendence() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -110,7 +110,7 @@ contract CodexBuffEffectRecipes {
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
         _recipe.requiredCookingItems = _requiredCookingItems;
 
-        _recipe.requiredEssence = 10e18;
+        _recipe.requiredEssence = 3e18;
     }
 
     function CraftsmansPotion() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -123,7 +123,7 @@ contract CodexBuffEffectRecipes {
 
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
 
-        _recipe.requiredEssence = 15e18;
+        _recipe.requiredEssence = 7e18;
     }
 
     function TonicOfAnger() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -141,7 +141,7 @@ contract CodexBuffEffectRecipes {
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
         _recipe.requiredCookingItems = _requiredCookingItems;
 
-        _recipe.requiredEssence = 30e18;
+        _recipe.requiredEssence = 7e18;
     }
 
     function PhialOfAgility() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -157,7 +157,7 @@ contract CodexBuffEffectRecipes {
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
         _recipe.requiredCookingItems = _requiredCookingItems;
 
-        _recipe.requiredEssence = 30e18;
+        _recipe.requiredEssence = 7e18;
     }
 
     function PotionOfIronSkin() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -172,7 +172,7 @@ contract CodexBuffEffectRecipes {
 
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
 
-        _recipe.requiredEssence = 30e18;
+        _recipe.requiredEssence = 7e18;
     }
 
     function ElixirOfSolutions() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -187,7 +187,7 @@ contract CodexBuffEffectRecipes {
 
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
 
-        _recipe.requiredEssence = 30e18;
+        _recipe.requiredEssence = 7e18;
     }
 
     function AthletesFlask() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -200,7 +200,7 @@ contract CodexBuffEffectRecipes {
 
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
 
-        _recipe.requiredEssence = 30e18;
+        _recipe.requiredEssence = 7e18;
     }
 
     function PerfumeOfBlackwidow() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -213,7 +213,7 @@ contract CodexBuffEffectRecipes {
 
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
 
-        _recipe.requiredEssence = 30e18;
+        _recipe.requiredEssence = 7e18;
     }
 
     function VialOfMotherEarth() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -228,7 +228,7 @@ contract CodexBuffEffectRecipes {
 
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
 
-        _recipe.requiredEssence = 45e18;
+        _recipe.requiredEssence = 13e18;
     }
 
     function PotionOfCharge() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -241,7 +241,7 @@ contract CodexBuffEffectRecipes {
 
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
 
-        _recipe.requiredEssence = 45e18;
+        _recipe.requiredEssence = 13e18;
     }
 
     function ElixirOfFrosty() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -254,7 +254,7 @@ contract CodexBuffEffectRecipes {
 
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
 
-        _recipe.requiredEssence = 45e18;
+        _recipe.requiredEssence = 13e18;
     }
 
     function DragonBreathPotion() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -272,7 +272,7 @@ contract CodexBuffEffectRecipes {
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
         _recipe.requiredCookingItems = _requiredCookingItems;
 
-        _recipe.requiredEssence = 45e18;
+        _recipe.requiredEssence = 13e18;
     }
 
     function VialOfSpirit() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -287,7 +287,7 @@ contract CodexBuffEffectRecipes {
 
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
         _recipe.requiredCookingItems = _requiredCookingItems;
-        _recipe.requiredEssence = 45e18;
+        _recipe.requiredEssence = 13e18;
     }
 
     function NightmareFlask() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -302,7 +302,7 @@ contract CodexBuffEffectRecipes {
 
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
 
-        _recipe.requiredEssence = 45e18;
+        _recipe.requiredEssence = 13e18;
     }
 
     function NihilityTonic() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -319,7 +319,7 @@ contract CodexBuffEffectRecipes {
 
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
 
-        _recipe.requiredEssence = 75e18;
+        _recipe.requiredEssence = 26e18;
     }
 
     function PhialOfGladiator() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -337,7 +337,7 @@ contract CodexBuffEffectRecipes {
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
         _recipe.requiredCookingItems = _requiredCookingItems;
 
-        _recipe.requiredEssence = 45e18;
+        _recipe.requiredEssence = 13e18;
     }
 
     function PotionOfArchmage() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -355,7 +355,7 @@ contract CodexBuffEffectRecipes {
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
         _recipe.requiredCookingItems = _requiredCookingItems;
 
-        _recipe.requiredEssence = 45e18;
+        _recipe.requiredEssence = 13e18;
     }
 
     function PotionOfPrecision() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -373,7 +373,7 @@ contract CodexBuffEffectRecipes {
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
         _recipe.requiredCookingItems = _requiredCookingItems;
 
-        _recipe.requiredEssence = 20e18;
+        _recipe.requiredEssence = 10e18;
     }
 
     function ExactionPotion() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -386,7 +386,7 @@ contract CodexBuffEffectRecipes {
 
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
 
-        _recipe.requiredEssence = 20e18;
+        _recipe.requiredEssence = 10e18;
     }
 
     function MercilessFlask() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -402,7 +402,7 @@ contract CodexBuffEffectRecipes {
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
         _recipe.requiredCookingItems = _requiredCookingItems;
 
-        _recipe.requiredEssence = 20e18;
+        _recipe.requiredEssence = 10e18;
     }
 
     function ElixirOfMobility() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -418,7 +418,7 @@ contract CodexBuffEffectRecipes {
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
         _recipe.requiredCookingItems = _requiredCookingItems;
 
-        _recipe.requiredEssence = 20e18;
+        _recipe.requiredEssence = 10e18;
     }
 
     function TonicOfToughness() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -436,7 +436,7 @@ contract CodexBuffEffectRecipes {
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
         _recipe.requiredCookingItems = _requiredCookingItems;
 
-        _recipe.requiredEssence = 20e18;
+        _recipe.requiredEssence = 10e18;
     }
 
     function PiercingTonic() public pure returns (BuffEffectRecipe memory _recipe) {
@@ -449,7 +449,7 @@ contract CodexBuffEffectRecipes {
 
         _recipe.requiredAlchemyItems = _requiredAlchemyItems;
 
-        _recipe.requiredEssence = 30e18;
+        _recipe.requiredEssence = 10e18;
     }
 
     function WateryMushroomSoup() public pure returns (BuffEffectRecipe memory _recipe) {
