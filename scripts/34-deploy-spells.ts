@@ -6,7 +6,7 @@ const deployment_mode = process.env?.DEPLOYMENT_MODE || "dev-local"
 
 async function main() {
 
-    const deployedNavigator = JSON.parse(fs.readFileSync(DeployedFileLocations.spells, 'utf-8'))
+    const deployedNavigator = JSON.parse(fs.readFileSync(DeployedFileLocations.navigator, 'utf-8'))
     const Navigator = await ethers.getContractFactory("Navigator");
     const navigator = Navigator.attach(deployedNavigator.navigator)
     let tx
@@ -123,7 +123,7 @@ async function main() {
     console.log("and set in navigator.")
 
     let CodexSpells = await ethers.getContractFactory("CodexSpells")
-    let codexSpells = await upgrades.deployProxy(CodexSpells);
+    let codexSpells = await upgrades.deployProxy(CodexSpells, [navigator.address]);
 
     await codexSpells.deployed()
     console.log("codexSpells deployed to:", codexSpells.address,)
@@ -133,7 +133,7 @@ async function main() {
 
 
     let Spells = await ethers.getContractFactory("Spells")
-    let spells = await upgrades.deployProxy(Spells);
+    let spells = await upgrades.deployProxy(Spells, [navigator.address]);
 
     await spells.deployed()
     console.log("spells deployed to:", spells.address,)

@@ -113,6 +113,7 @@
     "upgrade-fuji-30": "npx hardhat run scripts/upgrade-scripts/30-upgrade-artifacts.ts --network fuji",
     "upgrade-fuji-31": "npx hardhat run scripts/upgrade-scripts/31-upgrade-elixirs.ts --network fuji",
     "upgrade-fuji-33": "npx hardhat run scripts/upgrade-scripts/33-upgrade-land.ts --network fuji",
+    "upgrade-fuji-34": "npx hardhat run scripts/upgrade-scripts/34-upgrade-spells.ts --network fuji",
     "fuji-summon": "npx hardhat run scripts/cli-commands/summon.ts --network fuji",
     "fuji-allocate": "npx hardhat run scripts/cli-commands/allocate.ts --network fuji",
     "fuji-equip": "npx hardhat run scripts/cli-commands/equip_basic_items.ts --network fuji",

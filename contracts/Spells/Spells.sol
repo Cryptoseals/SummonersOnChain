@@ -14,7 +14,7 @@ import {InitNavigator, INavigator, ISummoners} from "../Core/Navigator/InitNavig
 pragma solidity ^0.8.0;
 
 contract Spells is Initializable, InitNavigator {
-    uint256 immutable MAX_SPELL_SLOT = 4;
+    uint256 constant MAX_SPELL_SLOT = 4;
     // @dev summoner-> spell -> spell level
     mapping(uint256 => mapping(uint256 => SpellSlot)) SpellSlots;
     mapping(uint256 => mapping(SpellCategories => mapping(uint256 => uint256)))
@@ -93,7 +93,13 @@ contract Spells is Initializable, InitNavigator {
         Spell memory spell = codexSpells.spell(category, spellId, nextTier);
         require(nextTier < spell.maxSpellLevel, "max");
         SummonerData memory _summoner = Summoners.summonerData(summoner);
-        require(_summoner.level >= spell.requirements.level, "lvl");
+        require(
+            _summoner.level >=
+                spell.requirements.level +
+                    spell.requirements.levelRequirementPerTier *
+                    nextTier,
+            "lvl"
+        );
         uint256 nextTierCost = spell.learningCost *
             spell.upgradeCostMultiplier *
             nextTier;
@@ -110,11 +116,15 @@ contract Spells is Initializable, InitNavigator {
     ) external senderIsSummonerOwner(summoner) {
         uint256 level = SummonerSpellLevels[summoner][category][spellId];
         require(level > 0, "not learnt");
-
+        bool canEquip = true;
         for (uint256 index = 0; index < MAX_SPELL_SLOT; index++) {
             SpellSlot memory _slot = SpellSlots[summoner][index];
-            require(_slot.category != category && _slot.id != spellId, "same");
+            if (_slot.category == category && _slot.id == spellId) {
+                canEquip = false;
+            }
+            require(canEquip, "same");
         }
+
         SpellSlots[summoner][slot] = SpellSlot({
             category: category,
             id: spellId
@@ -154,7 +164,7 @@ contract Spells is Initializable, InitNavigator {
         lvl = spellLevel(summoner, category, spellId);
         for (uint256 index = 0; index < 4; index++) {
             SpellSlot memory _slot = SpellSlots[summoner][index];
-            _isEquipped = _slot.category == category && _slot.id == spellId;
+            _isEquipped = _slot.category == category && _slot.id == spellId && _slot.id > 0;
             if (_isEquipped) break;
         }
     }

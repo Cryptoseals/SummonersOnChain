@@ -73,6 +73,7 @@ contract CodexSpellsVoid {
         _spell.healingProps.maxAmount = 20;
         _spell.healingProps.maxAmount = 40;
         _spell.healingProps.bonusHealingPerTier = 2;
+        _spell.healingProps.isPercentage = true;
 
         _spell.maxSpellLevel = 10;
 
@@ -140,6 +141,7 @@ contract CodexSpellsVoid {
         _spell.healingProps.maxAmount = 35;
         _spell.healingProps.maxAmount = 55;
         _spell.healingProps.bonusHealingPerTier = 5;
+        _spell.healingProps.isPercentage = true;
 
         _spell.maxSpellLevel = 4;
 
@@ -180,6 +182,7 @@ contract CodexSpellsVoid {
         _spell.healingProps.maxAmount = 100;
         _spell.healingProps.maxAmount = 100;
         _spell.healingProps.bonusHealingPerTier = 0;
+        _spell.healingProps.isPercentage = true;
 
         _spell.maxSpellLevel = 2;
 

@@ -31,13 +31,24 @@ async function main() {
     console.log("and set in navigator.")
 
 
+
+    let CodexCoreRecipes = await ethers.getContractFactory("CodexCoreRecipes")
+    let codexCoreRecipes = await upgrades.deployProxy(CodexCoreRecipes);
+
+    await codexCoreRecipes.deployed()
+    console.log("codexCoreRecipes deployed to:", codexCoreRecipes.address,)
+    tx = await navigator.setGameContractsById(CONTRACTS.CORE_RECIPES, codexCoreRecipes.address, true)
+    await tx.wait(1)
+    console.log("and set in navigator.")
+
+
     fs.writeFileSync(DeployedFileLocations.cores,
         JSON.stringify({
             coreCodex: codexCores.address,
             core: cores.address,
+            codexCoreRecipes : codexCoreRecipes.address
         }), {});
-
-    //fs.writeFileSync('./scripts/contracts.json', JSON.stringify(contracts))
+    // fs.writeFileSync('./scripts/contracts.json', JSON.stringify(contracts))
 }
 
 main();

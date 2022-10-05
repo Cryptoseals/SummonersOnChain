@@ -94,6 +94,7 @@ contract CodexSpellsPhysical {
         _spell.healingProps.maxAmount = 35;
         _spell.healingProps.maxAmount = 45;
         _spell.healingProps.bonusHealingPerTier = 1;
+        _spell.healingProps.isPercentage = true;
 
         _spell.maxSpellLevel = 8;
 
@@ -144,6 +145,7 @@ contract CodexSpellsPhysical {
         _spell.healingProps.maxAmount = 20;
         _spell.healingProps.maxAmount = 35;
         _spell.healingProps.bonusHealingPerTier = 4;
+        _spell.healingProps.isPercentage = true;
 
         _spell.maxSpellLevel = 4;
 
@@ -194,6 +196,7 @@ contract CodexSpellsPhysical {
         _spell.healingProps.maxAmount = 35;
         _spell.healingProps.maxAmount = 45;
         _spell.healingProps.bonusHealingPerTier = 5;
+        _spell.healingProps.isPercentage = true;
 
         _spell.maxSpellLevel = 2;
 

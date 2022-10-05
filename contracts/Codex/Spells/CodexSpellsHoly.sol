@@ -25,6 +25,7 @@ contract CodexSpellsHoly {
         _spell.healingProps.minAmount = 15;
         _spell.healingProps.maxAmount = 25;
         _spell.healingProps.bonusHealingPerTier = 1;
+        _spell.healingProps.isPercentage = true;
 
         _spell.maxSpellLevel = 12;
 
@@ -69,6 +70,7 @@ contract CodexSpellsHoly {
         _spell.healingProps.minAmount = 25;
         _spell.healingProps.maxAmount = 35;
         _spell.healingProps.bonusHealingPerTier = 1;
+        _spell.healingProps.isPercentage = true;
 
         _spell.maxSpellLevel = 10;
 
@@ -96,6 +98,7 @@ contract CodexSpellsHoly {
         _spell.healingProps.minAmount = 20;
         _spell.healingProps.maxAmount = 40;
         _spell.healingProps.bonusHealingPerTier = 3;
+        _spell.healingProps.isPercentage = true;
 
         _spell.maxSpellLevel = 8;
 
@@ -117,6 +120,7 @@ contract CodexSpellsHoly {
         _spell.healingProps.minAmount = 35;
         _spell.healingProps.maxAmount = 45;
         _spell.healingProps.bonusHealingPerTier = 2;
+        _spell.healingProps.isPercentage = true;
 
         _spell.maxSpellLevel = 6;
 
@@ -167,6 +171,7 @@ contract CodexSpellsHoly {
         _spell.healingProps.minAmount = 25;
         _spell.healingProps.maxAmount = 45;
         _spell.healingProps.bonusHealingPerTier = 7;
+        _spell.healingProps.isPercentage = true;
 
         _spell.maxSpellLevel = 3;
 

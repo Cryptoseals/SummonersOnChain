@@ -82,8 +82,24 @@ contract AdventureControls is InitNavigator {
         require(isEquipped && lvl > 0, "not learnt");
         Spell memory _spell = spellCodex.spell(spellCategory, spellId, lvl);
 
-        IAdventures adventures = adventuresContract;
-        AdventureBattle memory _battle = adventures.activeBattle(summoner);
+        if (_spell.spellType == SpellType.HEALING) {
+            adventuresContract.heal(
+                summoner,
+                _spell.healingProps.minAmount +
+                    _spell.healingProps.bonusHealingPerTier *
+                    lvl,
+                _spell.healingProps.maxAmount +
+                    _spell.healingProps.bonusHealingPerTier *
+                    lvl,
+                _spell.healingProps.isPercentage
+            );
+            spells.decreaseCooldowns(summoner);
+            return;
+        }
+
+        AdventureBattle memory _battle = adventuresContract.activeBattle(
+            summoner
+        );
         Element ele = getType(spellCategory);
 
         IMonster.Monster memory monster = enemyCodexContract.enemy(
@@ -97,36 +113,23 @@ contract AdventureControls is InitNavigator {
         if (_spell.spellType == SpellType.ATTACK) {
             adventuresContract.attack(
                 summoner,
-                _spell.attackProps.damageMultiplier,
+                (_spell.attackProps.damageMultiplier + 100) +
+                    (_spell.attackProps.multiplierBonusPerTier * lvl),
                 summ.DPS
-            );
-        } else if (_spell.spellType == SpellType.HEALING) {
-            adventuresContract.heal(
-                summoner,
-                _spell.healingProps.minAmount +
-                    _spell.healingProps.bonusHealingPerTier,
-                _spell.healingProps.maxAmount +
-                    _spell.healingProps.bonusHealingPerTier,
-                _spell.healingProps.isPercentage
             );
         } else if (_spell.spellType == SpellType.LIFESTEAL) {
             uint256 dealt = adventuresContract.attack(
                 summoner,
-                100,
-                summ.DPS +
-                    (summ.DPS * _spell.attackProps.damageMultiplier) /
-                    100
+                (_spell.attackProps.damageMultiplier + 100) +
+                    (_spell.attackProps.multiplierBonusPerTier * lvl),
+                summ.DPS
             );
 
             if (dealt > 0) {
                 adventuresContract.heal(
-                    summoner,
-                    dealt +
-                        (dealt * _spell.healingProps.bonusHealingPerTier) /
-                        100,
-                    dealt +
-                        (dealt * _spell.healingProps.bonusHealingPerTier) /
-                        100,
+                        summoner,
+                        (dealt * (_spell.healingProps.minAmount + (_spell.healingProps.bonusHealingPerTier * lvl))) /100,
+                        (dealt * (_spell.healingProps.maxAmount + (_spell.healingProps.bonusHealingPerTier * lvl))) /100,
                     _spell.healingProps.isPercentage
                 );
             }

@@ -67,7 +67,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         notInFight(summoner)
     {
         require(timer[summoner] < block.timestamp, "early");
-        timer[summoner] = block.timestamp + COOLDOWN;
+        // timer[summoner] = block.timestamp + COOLDOWN;
         uint256 lvl = Summoners.level(summoner);
         (
             IMonster.Monster memory _monster,
@@ -118,7 +118,8 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         require(activeBattles[summoner].account != address(0), "no battle");
 
         AdventureBattle memory battle = activeBattles[summoner];
-        if (overrideDps > 0) battle.playerStats.DPS = overrideDps;
+        // if (overrideDps > 0) battle.playerStats.DPS = overrideDps;
+        uint dpsToUse = overrideDps > 0 ? overrideDps : battle.playerStats.DPS;
         require(
             battle.monsterStats.TOTAL_HP > 0 && battle.playerStats.TOTAL_HP > 0,
             "dead"
@@ -136,11 +137,11 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
                 nonce
             );
             uint256 damage = isCrit
-                ? (battle.playerStats.DPS * multiplier) /
+                ? (dpsToUse * multiplier) /
                     100 +
-                    (battle.playerStats.DPS * battle.playerStats.CRIT_MULTI) /
+                    (dpsToUse * battle.playerStats.CRIT_MULTI) /
                     100
-                : (battle.playerStats.DPS * multiplier) / 100;
+                : (dpsToUse * multiplier) / 100;
 
             nonce += roll + 1;
 
@@ -350,5 +351,17 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
         returns (AdventureBattle memory)
     {
         return activeBattles[summoner];
+    }
+
+    function cooldowns(uint256[] calldata summoners)
+        external
+        view
+        returns (uint256[] memory)
+    {
+        uint256[] memory result = new uint256[](summoners.length);
+        for (uint256 index = 0; index < summoners.length; index++) {
+            result[index] = timer[summoners[index]];
+        }
+        return result;
     }
 }

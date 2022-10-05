@@ -163,6 +163,7 @@ contract CodexSpellsRanged {
         _spell.healingProps.maxAmount = 75;
         _spell.healingProps.maxAmount = 85;
         _spell.healingProps.bonusHealingPerTier = 3;
+        _spell.healingProps.isPercentage = true;
 
         _spell.maxSpellLevel = 3;
 

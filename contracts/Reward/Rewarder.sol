@@ -114,7 +114,7 @@ contract Rewarder is InitNavigator, OwnableUpgradeable {
             block.number + optionalNonce + nonce,
             _reward.goldRewards.maxAmount - _reward.goldRewards.minAmount
         );
-        uint256 wODecimals = (roll - (roll % 1e17)) +
+        uint256 wODecimals = (roll - (roll % 1e15)) +
             _reward.goldRewards.minAmount;
         wODecimals = percentage(wODecimals, multiplier);
         gold.rewardToken(to, wODecimals);
@@ -131,7 +131,7 @@ contract Rewarder is InitNavigator, OwnableUpgradeable {
             block.number + optionalNonce + nonce,
             _reward.essenceRewards.maxAmount - _reward.essenceRewards.minAmount
         );
-        uint256 wODecimals = (roll - (roll % 1e17)) +
+        uint256 wODecimals = (roll - (roll % 1e15)) +
             _reward.essenceRewards.minAmount;
         wODecimals = percentage(wODecimals, multiplier);
         essence.rewardToken(to, wODecimals);
@@ -145,7 +145,9 @@ contract Rewarder is InitNavigator, OwnableUpgradeable {
         uint256 optionalNonce
     ) internal {
         //         roll chance to drop
-        uint256 dropRoll = RNG.d100(block.number + optionalNonce + nonce);
+        uint256 dropRoll = RNG.d100(
+            block.number + 545454545 + optionalNonce + nonce
+        );
         if (dropRoll <= _miscRewards.chanceToDrop) {
             uint256 pick = RNG.dn(
                 block.number + optionalNonce + 1,
@@ -155,13 +157,11 @@ contract Rewarder is InitNavigator, OwnableUpgradeable {
             uint256 amount = RNG.dn(block.number + optionalNonce + 2, 3);
 
             amount = percentage(
-                amount + _miscRewards.rewards[pick].minAmount,
+                amount + 1,
                 multiplier
             );
 
             misc.rewardMiscItem(to, IMiscs.List(pick + 1), amount);
-        } else {
-            misc.rewardMiscItem(to, IMiscs.List(0), 1);
         }
         nonce++;
     }
@@ -211,5 +211,9 @@ contract Rewarder is InitNavigator, OwnableUpgradeable {
     {
         uint256 reward = expRewardsByLevel[level] / 4;
         Summoners.rewardXP(summoner, reward);
+    }
+
+    function resetNonce(uint256 _nonce) external onlyOwner {
+        nonce = _nonce;
     }
 }

@@ -39,6 +39,7 @@ async function main() {
 
     const deployedReward = JSON.parse(fs.readFileSync(DeployedFileLocations.rewards, 'utf-8'))
     const deployedLandControls = JSON.parse(fs.readFileSync(DeployedFileLocations.lands, 'utf-8'))
+    const deployedSpells = JSON.parse(fs.readFileSync(DeployedFileLocations.spells, 'utf-8'))
 
 
     console.log(deployedAdventureControls.adventureControls)
@@ -102,6 +103,8 @@ async function main() {
     const lands = helpercontract.attach(deployedLandControls.lands);
 
     const traderContracts = helpercontract.attach(deployedLandControls.trader);
+    const spells = helpercontract.attach(deployedSpells.spells);
+    const codexSpells = helpercontract.attach(deployedSpells.codexSpells);
 
 
     tx = await traderContracts.initializeContracts();
@@ -192,11 +195,18 @@ async function main() {
     await tx.wait(1)
     console.log("landControls")
 
-
     tx = await lands.initializeContracts();
     await tx.wait(1)
     console.log("lands")
 
+
+    tx = await codexSpells.initializeContracts();
+    await tx.wait(1)
+    console.log("codexSpells")
+
+    tx = await spells.initializeContracts();
+    await tx.wait(1)
+    console.log("spells")
 
     console.log(adventureControls.address)
     console.log(adventures.address)

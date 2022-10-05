@@ -80,12 +80,12 @@ const config: HardhatUserConfig = {
             accounts: [deploymentAccount]
         },
 
-        fuji: {
-            url: chainInstance,
-            gasPrice: 25000000000,
-            chainId: 43113,
-            accounts: [deploymentAccount]
-        },
+        // fuji: {
+        //     url: chainInstance,
+        //     gasPrice: 25000000000,
+        //     chainId: 43113,
+        //     accounts: [deploymentAccount]
+        // },
         local: {
             url: chainInstance,
             gasPrice: 1000000000,
@@ -104,10 +104,10 @@ const config: HardhatUserConfig = {
             chainId: 43214,
             accounts: [deploymentAccount]
         },
-        play: {
+        fuji: {
             url: chainInstance,
-            gasPrice: 225000000000,
-            chainId: 43214,
+            gasPrice: 10000000000000,
+            chainId: 73773,
             accounts: [deploymentAccount]
         }
     },

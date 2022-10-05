@@ -9,15 +9,12 @@ const ether = ethers.utils.parseEther("1");
 async function main() {
     const deployedRewards = JSON.parse(fs.readFileSync(DeployedFileLocations.rewards, 'utf-8'))
 
-    let Rewards = await ethers.getContractFactory("Reward");
+    let Rewards = await ethers.getContractFactory("Rewarder");
     let rewards = await upgrades.upgradeProxy(deployedRewards.rewards,
         Rewards);
     await rewards.deployed();
-    rewards.setExp(XPRewards)
+    // rewards.setExp(XPRewards)
 
-    fs.writeFileSync(DeployedFileLocations.rewards, JSON.stringify({
-        rewards: rewards.address,
-    }), {});
 
 }
 

@@ -54,6 +54,7 @@ contract CodexSpells is Initializable, InitNavigator {
         uint256 _id,
         uint256 _tier
     ) public view returns (Spell memory) {
+        require(_id > 0, "0");
         SpellCodex _contract;
         if (_category == SpellCategories.PHYSICAL) {
             _contract = physical;
