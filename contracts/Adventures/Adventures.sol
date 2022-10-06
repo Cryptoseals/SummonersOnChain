@@ -119,7 +119,7 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
         AdventureBattle memory battle = activeBattles[summoner];
         // if (overrideDps > 0) battle.playerStats.DPS = overrideDps;
-        uint dpsToUse = overrideDps > 0 ? overrideDps : battle.playerStats.DPS;
+        uint dpsToUse = overrideDps > 0 ? battle.playerStats.DPS + overrideDps : battle.playerStats.DPS;
         require(
             battle.monsterStats.TOTAL_HP > 0 && battle.playerStats.TOTAL_HP > 0,
             "dead"
