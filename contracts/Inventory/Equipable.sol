@@ -99,9 +99,7 @@ contract Equipable is Initializable, InitNavigator {
         returns (bool)
     {
         //        IAttributes attributesContract = IAttributes(contractAddress(INavigator.CONTRACT.ATTRIBUTES));
-        SummonerData memory _summoner = Summoners.summonerData(
-            summoner
-        );
+        SummonerData memory _summoner = Summoners.summonerData(summoner);
         //        Stats memory _summonerStats = attributesContract.stats(summoner);
         bool classOk;
         if (_requirement.classRequirement.length > 0) {
@@ -474,36 +472,6 @@ contract Equipable is Initializable, InitNavigator {
             ElementalStats memory _ele_stats
         ) = _getSummonerBattleStatsFromEq(summoner);
 
-        // add stat percentage boost from elixir and artifacts
-        (
-            Stats memory _stats2,
-            GeneratedStats memory _gen_stats2,
-            ElementalStats memory _ele_stats2,
-            Stats memory _stats3,
-            GeneratedStats memory _gen_stats3,
-            ElementalStats memory _ele_stats3
-        ) = activeEffects(summoner);
-
-        _stats = EquipableUtils.sumStatsAsPercentage(_stats, _stats2);
-        _stats = EquipableUtils.sumStatsAsPercentage(_stats, _stats3);
-
-        _gen_stats = EquipableUtils.sumGeneratedStatsAsPercentage(
-            _gen_stats,
-            _gen_stats2
-        );
-        _gen_stats = EquipableUtils.sumGeneratedStatsAsPercentage(
-            _gen_stats,
-            _gen_stats3
-        );
-
-        _ele_stats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(
-            _ele_stats,
-            _ele_stats2
-        );
-        _ele_stats = EquipableUtils.sumGeneratedElementalStatsAsPercentage(
-            _ele_stats,
-            _ele_stats3
-        );
         _ele_stats.SummonerDamageType = DamageTypesOfSummoners[summoner];
         return (_stats, _gen_stats, _ele_stats);
     }

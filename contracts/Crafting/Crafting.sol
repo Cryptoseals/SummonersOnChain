@@ -306,7 +306,8 @@ contract Crafting is Initializable, InitNavigator {
     }
 
     function craftConsumable(uint256 consumable, uint256 amount) external {
-        require(amount > 0, "0");
+        require(amount > 0 && amount <= 10, "minmax");
+        // require(consumable % 10 == 0, ":D");
         BuffEffectRecipe memory recipe = CraftingConsumable(
             contractAddress(INavigator.CONTRACT.CONSUMABLE_RECIPES)
         ).recipe_by_id(consumable);
@@ -351,12 +352,24 @@ contract Crafting is Initializable, InitNavigator {
                 recipe.requiredEssence * amount
             );
         }
-        consumables.mintConsumable(consumable, 0, msg.sender, amount);
+
+        uint256 tier = rollConsumableTier(lastRoll + 1881);
+        consumables.mintConsumable(consumable, tier, msg.sender, amount);
+    }
+
+    function rollConsumableTier(uint256 seed) internal view returns (uint256) {
+        uint256 roll = rng.d100(seed + block.number) + 1;
+        if (roll > 98) return 5;
+        if (roll > 85) return 4;
+        if (roll > 75) return 3;
+        if (roll > 65) return 2;
+        if (roll > 35) return 1;
+        return 0;
     }
 
     function itemUpgradeChance(uint256 tier)
         internal
-        view
+        pure
         returns (uint256 _chance)
     {
         if (tier == 1) _chance = 100;

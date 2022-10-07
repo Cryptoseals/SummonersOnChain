@@ -41,7 +41,7 @@ library EquipableUtils {
         _a.DEX += percentage(_a.DEX, _b.DEX);
         _a.INT += percentage(_a.INT, _b.INT);
         _a.VIT += percentage(_a.VIT, _b.VIT);
-        _a.LUCK += percentage(_a.LUCK, _b.VIT);
+        _a.LUCK += percentage(_a.LUCK, _b.LUCK);
         return _a;
     }
 

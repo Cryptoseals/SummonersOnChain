@@ -85,7 +85,7 @@ async function main() {
     // console.log("ELDER_WOOD_PLANK:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.ELDER_WOOD_PLANK)))
     // console.log("RED_OAK_WOOD_PLANK:", parseInt(await mats.balanceOf(deployer, CraftingMaterial.RED_OAK_WOOD_PLANK)))
 
-    let mintTo = "0xCf2788A7f68462D80436b00d87c784F6ec1bED41"
+    let mintTo = "0x9D61113250007373fb605d18571AD85c8617fA7b"
     // for (const mat in CraftingMaterial) {
     //     tx = await mats.mintMaterial(mat, mintTo, 100)
     //     await tx.wait(1)
@@ -113,17 +113,17 @@ async function main() {
     // await tx.wait(1)
     // tx = await mats.mintMaterial(CraftingMaterial.GREEN_WOOD_PLANK, mintTo, 100)
     // await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.JUTE, mintTo, 500)
-    await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.TATTERED_LEATHER, mintTo, 500)
-    await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.GREEN_WOOD, mintTo, 500)
-    await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.JUTE, mintTo, 500)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.TATTERED_LEATHER, mintTo, 500)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.GREEN_WOOD, mintTo, 500)
+    // await tx.wait(1)
 
-    tx = await mats.mintMaterial(CraftingMaterial.COPPER, mintTo, 500)
-    await tx.wait(1)
-    tx = await mats.mintMaterial(CraftingMaterial.AMBER, mintTo, 500)
-    await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.COPPER, mintTo, 500)
+    // await tx.wait(1)
+    // tx = await mats.mintMaterial(CraftingMaterial.AMBER, mintTo, 500)
+    // await tx.wait(1)
 
 
     // let activeProcesses: any[] = await mats.activeProcessingsOfUser(deployer);
@@ -220,26 +220,26 @@ async function main() {
     // tx = await miscs.rewardMiscItem(mintTo, 40, 100);
     // await tx.wait(1);
 
-    let essence = await ethers.getContractAt("Essence", deployedFungibles.essence)
-    let gold = await ethers.getContractAt("Gold", deployedFungibles.gold)
+    // let essence = await ethers.getContractAt("Essence", deployedFungibles.essence)
+    // let gold = await ethers.getContractAt("Gold", deployedFungibles.gold)
     // //rewardToken(address _account, uint256 _amount)
-    tx = await essence.rewardToken(mintTo, BigNumber.from(10).pow(18).mul(50000))
-    await tx.wait(1)
-    tx = await gold.rewardToken(mintTo, BigNumber.from(10).pow(18).mul(50000))
-    await tx.wait(1)
-    // let cook = await ethers.getContractAt("CookingItems", deployedCook.cookingItems)
-    // let alch = await ethers.getContractAt("AlchemyItems", deployedCook.alchemyItems)
+    // tx = await essence.rewardToken(mintTo, BigNumber.from(10).pow(18).mul(50000))
+    // await tx.wait(1)
+    // tx = await gold.rewardToken(mintTo, BigNumber.from(10).pow(18).mul(50000))
+    // await tx.wait(1)
+    let cook = await ethers.getContractAt("CookingItems", deployedCook.cookingItems)
+    let alch = await ethers.getContractAt("AlchemyItems", deployedCook.alchemyItems)
 
 
     // for (const f in cookingitem) {
     //     tx = await cook.rewardCookingItem(mintTo, parseInt(f) + 1, 100)
-    //     await tx.wait(1)
-    // }
-    //
-    // for (const f in cookingitem) {
-    //     tx = await alch.rewardAlchemyItem(mintTo, parseInt(f) + 1, 100)
     //     await tx.wait(2)
     // }
+    
+    for (const f in List) {
+        tx = await alch.rewardAlchemyItem(mintTo, parseInt(f) + 5, 100)
+        await tx.wait(1)
+    }
 }
 
 
@@ -284,3 +284,40 @@ enum cookingitem {
     Sunflower_Oil,
     Wheat
 }
+
+enum List
+    {
+        None,
+        Dill,
+        Rucola,
+        Basilicum,
+        Manaflower,
+        FireFlower,
+        Parsley,
+        Shadowberry,
+        Raptorherb,
+        Dragonherb,
+        Shadowflower,
+        Mistyflower,
+        Green_Poisonous_Mushroom,
+        Red_Poisonous_Mushroom,
+        Mana_Mushroom,
+        Demon_Mushroom,
+        Raindrop_Mushroom,
+        Bloodberry,
+        King_Flower,
+        Wood_Moss,
+        Roots,
+        Cone,
+        Ancient_Flower,
+        Fellherb,
+        Wild_Rose,
+        Red_Rose,
+        Dragon_Flower,
+        Golden_Flower,
+        Frozen_Cube,
+        Burning_Cube,
+        Organs,
+        Gold_Dust,
+        Stinky_Flower
+    }
