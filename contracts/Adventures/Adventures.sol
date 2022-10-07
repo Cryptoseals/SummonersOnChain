@@ -119,7 +119,9 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
 
         AdventureBattle memory battle = activeBattles[summoner];
         // if (overrideDps > 0) battle.playerStats.DPS = overrideDps;
-        uint dpsToUse = overrideDps > 0 ? battle.playerStats.DPS + overrideDps : battle.playerStats.DPS;
+        uint256 dpsToUse = overrideDps > 0
+            ? battle.playerStats.DPS + overrideDps
+            : battle.playerStats.DPS;
         require(
             battle.monsterStats.TOTAL_HP > 0 && battle.playerStats.TOTAL_HP > 0,
             "dead"
@@ -204,9 +206,13 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
             ? (battle.playerStats.MAX_HP * toHeal) / 100
             : toHeal;
 
-        battle.playerStats.TOTAL_HP += finalAmount >= battle.playerStats.MAX_HP
-            ? battle.playerStats.MAX_HP
-            : finalAmount;
+        if (finalAmount > battle.playerStats.MAX_HP) {
+            activeBattles[summoner].playerStats.TOTAL_HP = battle
+                .playerStats
+                .MAX_HP;
+        } else {
+            activeBattles[summoner].playerStats.TOTAL_HP += finalAmount;
+        }
     }
 
     function settleBattle(uint256 summoner) external onlyGameContracts {
@@ -267,11 +273,11 @@ contract Adventures is Initializable, InitNavigator, OwnableUpgradeable {
     {
         nonce = battleNonce;
         nonce++;
-        uint256 roll1 = RNG.d100(1 + summoner + nonce);
+        uint256 roll1 = RNG.d100(1 + summoner + nonce + nonce / 2);
 
         // if player dodges or monster misses, skip atk, else roll crit chance
 
-        nonce += 1001;
+        nonce += 1321;
         uint256 roll2 = RNG.d100(
             2 + summoner + block.number + battle.monster.monsterId + nonce
         );

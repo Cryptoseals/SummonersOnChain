@@ -76,471 +76,471 @@ contract CodexBuffEffect {
     }
 
     function EldersPotion(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.BonusEXPPercentagePerTier = 2;
-        _effect.bonus.BonusEXPPercentage = 10 + (tier * _effect.bonus.BonusEXPPercentagePerTier);
+        _effect.bonus.BonusEXPPercentagePerTier = 20;
+        _effect.bonus.BonusEXPPercentage = 100 + (tier * _effect.bonus.BonusEXPPercentagePerTier);
         _effect.turnDuration = 2;
     }
 
     function TonicOfTranscendence(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.BonusEssencePercentagePerTier = 2;
-        _effect.bonus.BonusEssencePercentage = 3 + (tier * _effect.bonus.BonusEssencePercentagePerTier);
+        _effect.bonus.BonusEssencePercentagePerTier = 20;
+        _effect.bonus.BonusEssencePercentage = 30 + (tier * _effect.bonus.BonusEssencePercentagePerTier);
         _effect.turnDuration = 3;
     }
 
     function CraftsmansPotion(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.BonusMaterialPercentagePerTier = 3;
-        _effect.bonus.BonusMaterialPercentage = 5 + (tier * _effect.bonus.BonusMaterialPercentagePerTier);
+        _effect.bonus.BonusMaterialPercentagePerTier = 30;
+        _effect.bonus.BonusMaterialPercentage = 50 + (tier * _effect.bonus.BonusMaterialPercentagePerTier);
         _effect.turnDuration = 3;
     }
 
     function TonicOfAnger(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 2;
-        _effect.statBonus.STR = 3 + (tier * _effect.bonus.StatBonusPerTier);
-        _effect.turnDuration = 2;
+        _effect.bonus.StatBonusPerTier = 20;
+        _effect.statBonus.STR = 30 + (tier * _effect.bonus.StatBonusPerTier);
+        _effect.turnDuration = 3;
     }
 
     function PhialOfAgility(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 2;
-        _effect.statBonus.AGI = 3 + (tier * _effect.bonus.StatBonusPerTier);
-        _effect.turnDuration = 2;
+        _effect.bonus.StatBonusPerTier = 20;
+        _effect.statBonus.AGI = 30 + (tier * _effect.bonus.StatBonusPerTier);
+        _effect.turnDuration = 3;
     }
 
     function PotionOfIronSkin(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 2;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier);
-        _effect.turnDuration = 2;
+        _effect.bonus.StatBonusPerTier = 20;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier);
+        _effect.turnDuration = 3;
     }
 
     function ElixirOfSolutions(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 2;
-        _effect.statBonus.INT = 3 + (tier * _effect.bonus.StatBonusPerTier);
-        _effect.turnDuration = 2;
+        _effect.bonus.StatBonusPerTier = 20;
+        _effect.statBonus.INT = 30 + (tier * _effect.bonus.StatBonusPerTier);
+        _effect.turnDuration = 3;
     }
 
     function AthletesFlask(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 2;
-        _effect.statBonus.DEX = 3 + (tier * _effect.bonus.StatBonusPerTier);
-        _effect.turnDuration = 2;
+        _effect.bonus.StatBonusPerTier = 20;
+        _effect.statBonus.DEX = 30 + (tier * _effect.bonus.StatBonusPerTier);
+        _effect.turnDuration = 3;
     }
 
     function PerfumeOfBlackwidow(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 2;
-        _effect.statBonus.LUCK = 3 + (tier * _effect.bonus.StatBonusPerTier);
-        _effect.turnDuration = 2;
+        _effect.bonus.StatBonusPerTier = 20;
+        _effect.statBonus.LUCK = 30 + (tier * _effect.bonus.StatBonusPerTier);
+        _effect.turnDuration = 3;
     }
 
     function VialOfMotherEarth(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.EleStatBonusPerTier = 2;
-        _effect.elementalStats.ElementalAtk.EARTH_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
-        _effect.elementalStats.ElementalDef.EARTH_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.bonus.EleStatBonusPerTier = 20;
+        _effect.elementalStats.ElementalAtk.EARTH_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.elementalStats.ElementalDef.EARTH_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function PotionOfCharge(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.EleStatBonusPerTier = 2;
-        _effect.elementalStats.ElementalAtk.LIGHTNING_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
-        _effect.elementalStats.ElementalDef.LIGHTNING_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.bonus.EleStatBonusPerTier = 20;
+        _effect.elementalStats.ElementalAtk.LIGHTNING_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.elementalStats.ElementalDef.LIGHTNING_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function ElixirOfFrosty(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.EleStatBonusPerTier = 2;
-        _effect.elementalStats.ElementalAtk.COLD_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
-        _effect.elementalStats.ElementalDef.COLD_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.bonus.EleStatBonusPerTier = 20;
+        _effect.elementalStats.ElementalAtk.COLD_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.elementalStats.ElementalDef.COLD_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function DragonBreathPotion(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.EleStatBonusPerTier = 2;
-        _effect.elementalStats.ElementalAtk.FIRE_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
-        _effect.elementalStats.ElementalDef.FIRE_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.bonus.EleStatBonusPerTier = 20;
+        _effect.elementalStats.ElementalAtk.FIRE_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.elementalStats.ElementalDef.FIRE_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function VialOfSpirit(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.EleStatBonusPerTier = 2;
-        _effect.elementalStats.ElementalAtk.HOLY_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
-        _effect.elementalStats.ElementalDef.HOLY_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.bonus.EleStatBonusPerTier = 20;
+        _effect.elementalStats.ElementalAtk.HOLY_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.elementalStats.ElementalDef.HOLY_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function NightmareFlask(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.EleStatBonusPerTier = 2;
-        _effect.elementalStats.ElementalAtk.DARK_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
-        _effect.elementalStats.ElementalDef.DARK_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.bonus.EleStatBonusPerTier = 20;
+        _effect.elementalStats.ElementalAtk.DARK_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.elementalStats.ElementalDef.DARK_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function NihilityTonic(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.EleStatBonusPerTier = 2;
-        _effect.elementalStats.ElementalAtk.VOID_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
-        _effect.elementalStats.ElementalDef.VOID_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.bonus.EleStatBonusPerTier = 20;
+        _effect.elementalStats.ElementalAtk.VOID_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.elementalStats.ElementalDef.VOID_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function PhialOfGladiator(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.GenStatBonusPerTier = 2;
-        _effect.generatedStatBonus.P_ATK = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
-        _effect.generatedStatBonus.P_DEF = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
+        _effect.bonus.GenStatBonusPerTier = 20;
+        _effect.generatedStatBonus.P_ATK = 20 + (tier * _effect.bonus.GenStatBonusPerTier);
+        _effect.generatedStatBonus.P_DEF = 20 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function PotionOfArchmage(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.GenStatBonusPerTier = 2;
-        _effect.generatedStatBonus.M_ATK = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
-        _effect.generatedStatBonus.M_DEF = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
+        _effect.bonus.GenStatBonusPerTier = 20;
+        _effect.generatedStatBonus.M_ATK = 20 + (tier * _effect.bonus.GenStatBonusPerTier);
+        _effect.generatedStatBonus.M_DEF = 20 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function PotionOfPrecision(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.GenStatBonusPerTier = 2;
-        _effect.generatedStatBonus.ACCURACY = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
+        _effect.bonus.GenStatBonusPerTier = 20;
+        _effect.generatedStatBonus.ACCURACY = 20 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function ExactionPotion(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.GenStatBonusPerTier = 2;
-        _effect.generatedStatBonus.CRIT = 2 + (_effect.bonus.GenStatBonusPerTier * tier);
+        _effect.bonus.GenStatBonusPerTier = 20;
+        _effect.generatedStatBonus.CRIT = 20 + (_effect.bonus.GenStatBonusPerTier * tier);
         _effect.turnDuration = 2;
     }
 
     function MercilessFlask(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.GenStatBonusPerTier = 2;
-        _effect.generatedStatBonus.CRIT_MULTIPLIER = 5 + (tier * _effect.bonus.GenStatBonusPerTier);
+        _effect.bonus.GenStatBonusPerTier = 20;
+        _effect.generatedStatBonus.CRIT_MULTIPLIER = 50 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function ElixirOfMobility(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.GenStatBonusPerTier = 2;
-        _effect.generatedStatBonus.DODGE = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
+        _effect.bonus.GenStatBonusPerTier = 20;
+        _effect.generatedStatBonus.DODGE = 20 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function TonicOfToughness(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.GenStatBonusPerTier = 2;
-        _effect.generatedStatBonus.HP = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
+        _effect.bonus.GenStatBonusPerTier = 20;
+        _effect.generatedStatBonus.HP = 20 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function PiercingTonic(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.GenStatBonusPerTier = 2;
-        _effect.generatedStatBonus.INFUSION = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
+        _effect.bonus.GenStatBonusPerTier = 20;
+        _effect.generatedStatBonus.INFUSION = 20 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function WateryMushroomSoup(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.GenStatBonusPerTier = 2;
-        _effect.generatedStatBonus.HP = 2 + (tier * _effect.bonus.GenStatBonusPerTier);
+        _effect.bonus.GenStatBonusPerTier = 20;
+        _effect.generatedStatBonus.HP = 20 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function GrilledSteak(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.STR = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.STR = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function ApplePie(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.DEX = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.DEX = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function BaconOmelet(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.INT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.INT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function Bread(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function TomatoSoup(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.AGI = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.AGI = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function CandyCornCookie(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.LUCK = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.LUCK = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function MashedPotato(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.GenStatBonusPerTier = 3;
-        _effect.generatedStatBonus.P_DEF = 2 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.bonus.GenStatBonusPerTier = 30;
+        _effect.generatedStatBonus.P_DEF = 20 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function EggsBenedict(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.GenStatBonusPerTier = 3;
-        _effect.generatedStatBonus.INFUSION = 2 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.bonus.GenStatBonusPerTier = 30;
+        _effect.generatedStatBonus.INFUSION = 20 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function Ribs(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.AGI = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.AGI = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function Sausages(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.STR = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.STR = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function GrapeCookie(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.INT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.LUCK = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.INT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.LUCK = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function MeatyPastry(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.STR = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.AGI = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.STR = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.AGI = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function SugarCookie(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.DEX = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.AGI = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.DEX = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.AGI = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function CherryCookie(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.DEX = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.DEX = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function BananaBread(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.INT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.INT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function StrawberryCookie(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.INT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.LUCK = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.INT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.LUCK = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function SimpleMeatStew(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.STR = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.STR = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
 
-        _effect.bonus.GenStatBonusPerTier = 3;
-        _effect.generatedStatBonus.P_DEF = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.bonus.GenStatBonusPerTier = 30;
+        _effect.generatedStatBonus.P_DEF = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function FishStew(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.INT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.DEX = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.INT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.DEX = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function OceanFishStew(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.INT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.AGI = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.INT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.AGI = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function HotChicken(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
 
-        _effect.bonus.EleStatBonusPerTier = 3;
-        _effect.elementalStats.ElementalAtk.FIRE_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.bonus.EleStatBonusPerTier = 30;
+        _effect.elementalStats.ElementalAtk.FIRE_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function GrapePie(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier);
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier);
 
-        _effect.bonus.EleStatBonusPerTier = 3;
-        _effect.elementalStats.ElementalAtk.EARTH_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.bonus.EleStatBonusPerTier = 30;
+        _effect.elementalStats.ElementalAtk.EARTH_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function RedGrapePie(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier);
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier);
 
-        _effect.bonus.EleStatBonusPerTier = 3;
-        _effect.elementalStats.ElementalAtk.COLD_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.bonus.EleStatBonusPerTier = 30;
+        _effect.elementalStats.ElementalAtk.COLD_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function BlackGrapePie(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier);
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier);
 
-        _effect.bonus.EleStatBonusPerTier = 3;
-        _effect.elementalStats.ElementalAtk.DARK_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier);
+        _effect.bonus.EleStatBonusPerTier = 30;
+        _effect.elementalStats.ElementalAtk.DARK_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function PotatoFries(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier);
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier);
 
-        _effect.bonus.GenStatBonusPerTier = 3;
-        _effect.generatedStatBonus.P_DEF = 3 + (tier * _effect.bonus.GenStatBonusPerTier);
-        _effect.generatedStatBonus.M_DEF = 3 + (tier * _effect.bonus.GenStatBonusPerTier);
+        _effect.bonus.GenStatBonusPerTier = 30;
+        _effect.generatedStatBonus.P_DEF = 30 + (tier * _effect.bonus.GenStatBonusPerTier);
+        _effect.generatedStatBonus.M_DEF = 30 + (tier * _effect.bonus.GenStatBonusPerTier);
         _effect.turnDuration = 2;
     }
 
     function FruitSalad(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.INT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.LUCK = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.INT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.LUCK = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
 
-        _effect.bonus.EleStatBonusPerTier = 3;
-        _effect.elementalStats.ElementalAtk.EARTH_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
-        _effect.elementalStats.ElementalAtk.LIGHTNING_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
-        _effect.elementalStats.ElementalAtk.COLD_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
-        _effect.elementalStats.ElementalAtk.FIRE_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
-        _effect.elementalStats.ElementalAtk.HOLY_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
-        _effect.elementalStats.ElementalAtk.DARK_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
-        _effect.elementalStats.ElementalAtk.VOID_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.bonus.EleStatBonusPerTier = 30;
+        _effect.elementalStats.ElementalAtk.EARTH_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.elementalStats.ElementalAtk.LIGHTNING_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.elementalStats.ElementalAtk.COLD_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.elementalStats.ElementalAtk.FIRE_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.elementalStats.ElementalAtk.HOLY_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.elementalStats.ElementalAtk.DARK_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.elementalStats.ElementalAtk.VOID_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
 
-        _effect.bonus.GenStatBonusPerTier = 3;
-        _effect.generatedStatBonus.P_ATK = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
-        _effect.generatedStatBonus.M_ATK = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.bonus.GenStatBonusPerTier = 30;
+        _effect.generatedStatBonus.P_ATK = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.generatedStatBonus.M_ATK = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function Hamburger(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.STR = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.STR = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
 
-        _effect.bonus.EleStatBonusPerTier = 3;
-        _effect.elementalStats.ElementalAtk.EARTH_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.bonus.EleStatBonusPerTier = 30;
+        _effect.elementalStats.ElementalAtk.EARTH_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function DeluxeBurger(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.GenStatBonusPerTier = 3;
-        _effect.generatedStatBonus.INFUSION = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.bonus.GenStatBonusPerTier = 30;
+        _effect.generatedStatBonus.INFUSION = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
 
-        _effect.bonus.EleStatBonusPerTier = 3;
-        _effect.elementalStats.ElementalDef.EARTH_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
-        _effect.elementalStats.ElementalDef.LIGHTNING_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
-        _effect.elementalStats.ElementalDef.COLD_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
-        _effect.elementalStats.ElementalDef.FIRE_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
-        _effect.elementalStats.ElementalDef.HOLY_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
-        _effect.elementalStats.ElementalDef.DARK_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
-        _effect.elementalStats.ElementalDef.VOID_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.bonus.EleStatBonusPerTier = 30;
+        _effect.elementalStats.ElementalDef.EARTH_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.elementalStats.ElementalDef.LIGHTNING_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.elementalStats.ElementalDef.COLD_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.elementalStats.ElementalDef.FIRE_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.elementalStats.ElementalDef.HOLY_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.elementalStats.ElementalDef.DARK_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.elementalStats.ElementalDef.VOID_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
 
-        _effect.bonus.GenStatBonusPerTier = 3;
-        _effect.generatedStatBonus.P_DEF = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
-        _effect.generatedStatBonus.M_DEF = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.bonus.GenStatBonusPerTier = 30;
+        _effect.generatedStatBonus.P_DEF = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.generatedStatBonus.M_DEF = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function Cheeseburger(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.STR = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.STR = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
 
-        _effect.bonus.GenStatBonusPerTier = 3;
-        _effect.generatedStatBonus.M_ATK = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.bonus.GenStatBonusPerTier = 30;
+        _effect.generatedStatBonus.M_ATK = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function SpicyCheeseburger(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.GenStatBonusPerTier = 3;
-        _effect.generatedStatBonus.P_ATK = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
-        _effect.generatedStatBonus.M_ATK = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.bonus.GenStatBonusPerTier = 30;
+        _effect.generatedStatBonus.P_ATK = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.generatedStatBonus.M_ATK = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
 
-        _effect.bonus.EleStatBonusPerTier = 3;
-        _effect.elementalStats.ElementalAtk.FIRE_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.bonus.EleStatBonusPerTier = 30;
+        _effect.elementalStats.ElementalAtk.FIRE_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function MeatChili(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.AGI = 3 + (tier * _effect.bonus.StatBonusPerTier);
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.AGI = 30 + (tier * _effect.bonus.StatBonusPerTier);
 
-        _effect.bonus.EleStatBonusPerTier = 3;
-        _effect.elementalStats.ElementalAtk.FIRE_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
-        _effect.elementalStats.ElementalDef.FIRE_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
-        _effect.elementalStats.ElementalDef.COLD_DEF = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.bonus.EleStatBonusPerTier = 30;
+        _effect.elementalStats.ElementalAtk.FIRE_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.elementalStats.ElementalDef.FIRE_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.elementalStats.ElementalDef.COLD_DEF = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function Sushi(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.AGI = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.LUCK = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.AGI = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.LUCK = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
 
-        _effect.bonus.GenStatBonusPerTier = 3;
-        _effect.generatedStatBonus.CRIT_MULTIPLIER = 5 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.bonus.GenStatBonusPerTier = 30;
+        _effect.generatedStatBonus.CRIT_MULTIPLIER = 50 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function MeatballWithPotatoFries(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.VIT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.VIT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
 
-        _effect.bonus.GenStatBonusPerTier = 3;
-        _effect.generatedStatBonus.P_ATK = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
-        _effect.generatedStatBonus.P_DEF = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
-        _effect.generatedStatBonus.M_ATK = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
-        _effect.generatedStatBonus.M_DEF = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.bonus.GenStatBonusPerTier = 30;
+        _effect.generatedStatBonus.P_ATK = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.generatedStatBonus.P_DEF = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.generatedStatBonus.M_ATK = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.generatedStatBonus.M_DEF = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function SpicySteakWithMushrooms(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.STR = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.STR = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
 
-        _effect.bonus.GenStatBonusPerTier = 3;
-        _effect.generatedStatBonus.P_ATK = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
-        _effect.generatedStatBonus.P_DEF = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
-        _effect.generatedStatBonus.HP = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.bonus.GenStatBonusPerTier = 30;
+        _effect.generatedStatBonus.P_ATK = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.generatedStatBonus.P_DEF = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.generatedStatBonus.HP = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function ChocolateCake(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.INT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.INT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
 
-        _effect.bonus.GenStatBonusPerTier = 3;
-        _effect.generatedStatBonus.M_ATK = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
-        _effect.generatedStatBonus.M_DEF = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
-        _effect.generatedStatBonus.HP = 3 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.bonus.GenStatBonusPerTier = 30;
+        _effect.generatedStatBonus.M_ATK = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.generatedStatBonus.M_DEF = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
+        _effect.generatedStatBonus.HP = 30 + (tier * _effect.bonus.GenStatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 
     function BeefSkewer(uint tier) public pure returns (BuffEffect memory _effect) {
-        _effect.bonus.StatBonusPerTier = 3;
-        _effect.statBonus.AGI = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.DEX = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
-        _effect.statBonus.INT = 3 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.bonus.StatBonusPerTier = 30;
+        _effect.statBonus.AGI = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.DEX = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
+        _effect.statBonus.INT = 30 + (tier * _effect.bonus.StatBonusPerTier)/2;
 
-        _effect.bonus.EleStatBonusPerTier = 3;
-        _effect.elementalStats.ElementalAtk.FIRE_ATK = 3 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
+        _effect.bonus.EleStatBonusPerTier = 30;
+        _effect.elementalStats.ElementalAtk.FIRE_ATK = 30 + (tier * _effect.bonus.EleStatBonusPerTier)/2;
         _effect.turnDuration = 2;
     }
 }
